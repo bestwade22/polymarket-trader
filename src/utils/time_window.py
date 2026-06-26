@@ -1,5 +1,5 @@
-from datetime import datetime, timedelta, timezone
-from typing import Optional
+from datetime import date, datetime, timedelta, timezone
+from typing import Iterable, Optional, Union
 from zoneinfo import ZoneInfo
 
 from config.settings import settings
@@ -114,6 +114,29 @@ def is_in_trading_window(city_noon_utc: str, now_utc: Optional[datetime] = None)
         return start <= now < end
     except ValueError:
         return False
+
+
+def any_city_in_trading_window(
+    timezones: Iterable[str],
+    event_dates: Iterable[Union[date, str]],
+    now_utc: Optional[datetime] = None,
+) -> bool:
+    """True when now falls inside the trading window for any timezone and event date."""
+    now = now_utc or datetime.now(timezone.utc)
+    seen_tz: set[str] = set()
+    for tz_name in timezones:
+        if not tz_name or tz_name in seen_tz:
+            continue
+        seen_tz.add(tz_name)
+        for raw_date in event_dates:
+            event_date_str = raw_date.isoformat() if isinstance(raw_date, date) else str(raw_date)
+            bounds = trading_window_bounds_utc(event_date_str, tz_name)
+            if not bounds:
+                continue
+            start, end = bounds
+            if start <= now < end:
+                return True
+    return False
 
 
 def is_event_in_trading_window(event: dict, now_utc: Optional[datetime] = None) -> bool:

@@ -9,6 +9,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from config.settings import _parse_trading_window_time
 from src.utils.time_window import (
+    any_city_in_trading_window,
     is_event_in_trading_window,
     is_in_trading_window,
     trading_window_bounds_utc,
@@ -108,6 +109,52 @@ def test_trading_window_label():
     assert trading_window_label(12, 30, 15, 0) == "12:30–15:00"
 
 
+def test_any_city_in_trading_window_matches_one_timezone():
+    bounds = trading_window_bounds_utc(
+        "2026-06-19",
+        "America/New_York",
+        start_hour=12,
+        start_minute=0,
+        end_hour=14,
+        end_minute=0,
+    )
+    assert bounds is not None
+    start, _end = bounds
+    assert any_city_in_trading_window(
+        ["America/Los_Angeles", "America/New_York"],
+        ["2026-06-19"],
+        now_utc=start + timedelta(minutes=30),
+    )
+    assert not any_city_in_trading_window(
+        ["America/New_York"],
+        ["2026-06-19"],
+        now_utc=start - timedelta(hours=2),
+    )
+
+
+def test_should_run_trade_script():
+    import importlib.util
+
+    path = PROJECT_ROOT / "scripts" / "should_run_trade.py"
+    spec = importlib.util.spec_from_file_location("should_run_trade", path)
+    mod = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(mod)
+
+    bounds = trading_window_bounds_utc(
+        "2026-06-19",
+        "Asia/Seoul",
+        start_hour=12,
+        start_minute=0,
+        end_hour=14,
+        end_minute=0,
+    )
+    assert bounds is not None
+    start, _end = bounds
+    assert mod.should_run_trade(now_utc=start + timedelta(minutes=15)) is True
+    assert mod.should_run_trade(now_utc=start - timedelta(hours=5)) is False
+
+
 if __name__ == "__main__":
     test_parse_trading_window_time_formats()
     test_trading_window_bounds_default_hours()
@@ -117,4 +164,6 @@ if __name__ == "__main__":
     test_is_event_in_trading_window_uses_event_timezone()
     test_is_in_trading_window_legacy_city_noon_utc()
     test_trading_window_label()
+    test_any_city_in_trading_window_matches_one_timezone()
+    test_should_run_trade_script()
     print("All tests passed.")

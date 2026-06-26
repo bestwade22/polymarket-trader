@@ -135,6 +135,48 @@ logs/trades/                  # per-event step logs
 
 See [`scripts/cron.example`](scripts/cron.example).
 
+## GitHub Actions
+
+Two workflows in [`.github/workflows/`](.github/workflows/) automate fetch and trade on GitHub-hosted runners.
+
+| Workflow | Schedule | What it does |
+|----------|----------|--------------|
+| `fetch-daily.yml` | **00:01 HKT** daily (`16:01 UTC`) | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
+| `trade-hourly.yml` | Every hour at `:00 UTC` | Runs `trade-hourly` only when any city could be in its local trading window; commits `data/selections/*.json`; uploads `logs/` as a 90-day artifact |
+
+### Setup
+
+1. Push this repo to GitHub and enable Actions.
+2. Add **repository secrets** (Settings → Secrets → Actions):
+
+| Secret | Required | Notes |
+|--------|----------|-------|
+| `API_NINJAS_KEY` | Yes | Both workflows |
+| `PRIVATE_KEY` | Trade only | Wallet private key |
+| `DEPOSIT_WALLET_ADDRESS` | Trade only | Polymarket proxy address |
+| `DRY_RUN` | Yes | `true` until ready; set `false` for live orders |
+
+3. Optional **repository variables** (Settings → Variables → Actions): `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`, `ORDER_PRICE_SOURCE`, etc.
+
+4. If `main` has branch protection, allow GitHub Actions to push commits (or use a PAT with push access).
+
+### Manual runs
+
+- **fetch-daily** → Run workflow → optional `date` input (`YYYY-MM-DD`).
+- **trade-hourly** → Run workflow → optional `date` input; set `force=true` to run outside the global trading window.
+
+### Data storage
+
+- **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`).
+- **Verbose step logs** are uploaded as workflow artifacts (not committed).
+- **`bought_events.json`** is force-committed when live trading updates it.
+
+### Enabling live trading
+
+Set the `DRY_RUN` secret to `false`. The workflow passes `--live` automatically. Test with `workflow_dispatch` and `force=true` before relying on the schedule.
+
+**Note:** GitHub runners are US-based. Polymarket may block orders from restricted regions.
+
 ## Notes
 
 - Polymarket may block trading from geo-restricted regions.

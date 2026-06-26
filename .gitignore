@@ -3,7 +3,8 @@
 __pycache__/
 *.pyc
 logs/*.log
+logs/trades/*.json
+# Local fetch/trade output; CI force-adds on schedule
 data/events_*.json
 data/selections/*.json
 data/positions/bought_events.json
-logs/trades/*.json
