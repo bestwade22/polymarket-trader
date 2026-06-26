@@ -1,0 +1,8 @@
+# Polymarket weather trading bot — example crontab entries
+# Replace /path/to/polymarket-trader with your install path.
+
+# Daily fetch at 06:00 UTC
+0 6 * * * cd /path/to/polymarket-trader && .venv/bin/python -m src.main fetch-daily >> logs/cron.log 2>&1
+
+# Hourly trade check at minute 0
+0 * * * * cd /path/to/polymarket-trader && .venv/bin/python -m src.main trade-hourly >> logs/cron.log 2>&1

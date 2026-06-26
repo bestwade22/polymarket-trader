@@ -1,0 +1,19 @@
+[
+  {"city": "Ankara", "timezone": "Europe/Istanbul", "latitude": 39.9207759, "longitude": 32.8540497},
+  {"city": "Atlanta", "timezone": "America/New_York", "latitude": 33.7544657, "longitude": -84.3898151},
+  {"city": "Buenos Aires", "timezone": "America/Argentina/Buenos_Aires", "latitude": -34.6095579, "longitude": -58.3887904},
+  {"city": "Chicago", "timezone": "America/Chicago", "latitude": 41.8755616, "longitude": -87.6244212},
+  {"city": "Dallas", "timezone": "America/Chicago", "latitude": 32.7762719, "longitude": -96.7968559},
+  {"city": "London", "timezone": "Europe/London", "latitude": 51.5074456, "longitude": -0.1277653},
+  {"city": "Miami", "timezone": "America/New_York", "latitude": 25.7741566, "longitude": -80.1935973},
+  {"city": "NYC", "timezone": "America/New_York", "latitude": 40.7127753, "longitude": -74.0059728},
+  {"city": "New York City", "timezone": "America/New_York", "latitude": 40.7127753, "longitude": -74.0059728},
+  {"city": "Paris", "timezone": "Europe/Paris", "latitude": 48.8534951, "longitude": 2.3483915},
+  {"city": "Sao Paulo", "timezone": "America/Sao_Paulo", "latitude": -23.5506507, "longitude": -46.6333824},
+  {"city": "Seattle", "timezone": "America/Los_Angeles", "latitude": 47.6038321, "longitude": -122.330062},
+  {"city": "Seoul", "timezone": "Asia/Seoul", "latitude": 37.5666791, "longitude": 126.9782914},
+  {"city": "Toronto", "timezone": "America/Toronto", "latitude": 43.6534817, "longitude": -79.3839347},
+  {"city": "Wellington", "timezone": "Pacific/Auckland", "latitude": -41.2887953, "longitude": 174.7772114},
+  {"city": "Shanghai", "timezone": "Asia/Shanghai", "latitude": 31.230416, "longitude": 121.473701},
+  {"city": "Hong Kong", "timezone": "Asia/Hong_Kong", "latitude": 22.3193, "longitude": 114.1694}
+]

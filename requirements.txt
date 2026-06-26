@@ -1,0 +1,6 @@
+requests>=2.31.0
+python-dotenv>=1.0.0
+apscheduler>=3.10.0
+beautifulsoup4>=4.12.0
+# Live trading requires Python >=3.9.10 (3.12+ recommended):
+py-clob-client-v2>=1.0.0

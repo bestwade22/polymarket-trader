@@ -1,0 +1,9 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+logs/*.log
+data/events_*.json
+data/selections/*.json
+data/positions/bought_events.json
+logs/trades/*.json
