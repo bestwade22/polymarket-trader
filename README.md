@@ -135,47 +135,108 @@ logs/trades/                  # per-event step logs
 
 See [`scripts/cron.example`](scripts/cron.example).
 
-## GitHub Actions
+## AWS Lambda (scheduled jobs)
 
-Two workflows in [`.github/workflows/`](.github/workflows/) automate fetch and trade on GitHub-hosted runners.
+Fetch and trade run on **AWS Lambda in ap-southeast-1** (Singapore), avoiding US geo-blocks on Polymarket. A thin GitHub Actions workflow deploys code on push to `main`.
 
-| Workflow | Schedule | What it does |
-|----------|----------|--------------|
-| `fetch-daily.yml` | **00:01 HKT** daily (`16:01 UTC`) | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly.yml` | Every hour at `:00 UTC` | Runs `trade-hourly` only when any city could be in its local trading window; commits `data/selections/*.json`; uploads `logs/` as a 90-day artifact |
+| Job | Schedule | What it does |
+|-----|----------|--------------|
+| `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
+| `trade-hourly` | Every hour at **:00 UTC** | Runs `trade-hourly` when any city is in its local trading window; commits `data/selections/*.json` |
 
-### Setup
+```mermaid
+flowchart LR
+  subgraph github [GitHub]
+    Repo[polymarket-trader]
+    DeployGHA[deploy-lambda.yml]
+  end
+  subgraph aws [AWS ap-southeast-1]
+    EB1[Scheduler fetch 00:01 HKT]
+    EB2[Scheduler hourly UTC]
+    LF[fetch-daily Lambda]
+    LT[trade-hourly Lambda]
+    SM[Secrets Manager]
+  end
+  DeployGHA -->|sam deploy| LF
+  DeployGHA -->|sam deploy| LT
+  EB1 --> LF
+  EB2 --> LT
+  LF --> Repo
+  LT --> Repo
+  SM --> LF
+  SM --> LT
+```
 
-1. Push this repo to GitHub and enable Actions.
-2. Add **repository secrets** (Settings → Secrets → Actions):
+### One-time AWS setup
 
-| Secret | Required | Notes |
-|--------|----------|-------|
-| `API_NINJAS_KEY` | Yes | Both workflows |
-| `PRIVATE_KEY` | Trade only | Wallet private key |
-| `DEPOSIT_WALLET_ADDRESS` | Trade only | Polymarket proxy address |
-| `DRY_RUN` | Yes | `true` until ready; set `false` for live orders |
+1. **IAM OIDC for GitHub** — create an IAM OIDC identity provider for `token.actions.githubusercontent.com` and a deploy role trusted by your repo (`repo:OWNER/polymarket-trader:ref:refs/heads/main`). Grant CloudFormation, SAM, ECR, Lambda, Scheduler, S3 (SAM artifacts), and IAM pass-role permissions.
 
-3. Optional **repository variables** (Settings → Variables → Actions): `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`, `ORDER_PRICE_SOURCE`, etc.
+2. **GitHub repository variables** (Settings → Variables → Actions):
 
-4. If `main` has branch protection, allow GitHub Actions to push commits (or use a PAT with push access).
+| Variable | Example | Notes |
+|----------|---------|-------|
+| `AWS_REGION` | `ap-southeast-1` | Lambda region |
+| `AWS_DEPLOY_ROLE_ARN` | `arn:aws:iam::123456789012:role/github-deploy` | OIDC deploy role |
+| `REPO_SLUG` | `owner/polymarket-trader` | Passed to SAM as `GitHubRepo` (`owner/repo`; cannot use `GITHUB_` prefix — reserved by GitHub) |
 
-### Manual runs
+3. **Deploy the stack** (first time, from your laptop or via workflow_dispatch after OIDC is ready):
 
-- **fetch-daily** → Run workflow → optional `date` input (`YYYY-MM-DD`).
-- **trade-hourly** → Run workflow → optional `date` input; set `force=true` to run outside the global trading window.
+```bash
+cd infrastructure
+sam build
+sam deploy --guided
+# Set GitHubRepo=owner/polymarket-trader
+```
+
+4. **Secrets Manager** — after deploy, set the secret `polymarket-trader/credentials` (JSON):
+
+```json
+{
+  "API_NINJAS_KEY": "...",
+  "PRIVATE_KEY": "...",
+  "DEPOSIT_WALLET_ADDRESS": "...",
+  "GITHUB_PAT": "ghp_...",
+  "DRY_RUN": "true"
+}
+```
+
+The `GITHUB_PAT` needs **Contents: read and write** on this repo (fine-grained PAT recommended). Set `DRY_RUN` to `false` in this secret for live orders (same as `.env` locally).
+
+5. **Trading config** — non-secret settings are SAM parameters / Lambda env vars in [`infrastructure/template.yaml`](infrastructure/template.yaml): `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`, `ORDER_PRICE_SOURCE`, etc. Update via `sam deploy --parameter-overrides ...` or edit the template defaults.
+
+### Manual invoke
+
+```bash
+# Fetch today's events (HKT date)
+aws lambda invoke --function-name polymarket-trader-fetch-daily \
+  --region ap-southeast-1 \
+  --payload '{"date":"2026-06-27"}' out.json && cat out.json
+
+# Trade (respects trading window gate)
+aws lambda invoke --function-name polymarket-trader-trade-hourly \
+  --region ap-southeast-1 \
+  --payload '{"date":"2026-06-27"}' out.json && cat out.json
+
+# Force trade outside window (dry-run unless DRY_RUN=false in Secrets Manager / .env)
+aws lambda invoke --function-name polymarket-trader-trade-hourly \
+  --region ap-southeast-1 \
+  --payload '{"force":true,"date":"2026-06-27"}' out.json && cat out.json
+```
 
 ### Data storage
 
-- **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`).
-- **Verbose step logs** are uploaded as workflow artifacts (not committed).
+- **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`) via `git add -f` from Lambda.
+- **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`).
 - **`bought_events.json`** is force-committed when live trading updates it.
 
 ### Enabling live trading
 
-Set the `DRY_RUN` secret to `false`. The workflow passes `--live` automatically. Test with `workflow_dispatch` and `force=true` before relying on the schedule.
+Set `DRY_RUN=false` in Secrets Manager (`polymarket-trader/credentials`) or in your local `.env`. No redeploy needed — Lambda reads it on each invoke. Test with a manual invoke and `force: true` before relying on the schedule.
 
-**Note:** GitHub runners are US-based. Polymarket may block orders from restricted regions.
+### Code updates
+
+Push to `main` — [`.github/workflows/deploy-lambda.yml`](.github/workflows/deploy-lambda.yml) runs `sam build` and `sam deploy` automatically when `src/`, `lambda_handlers/`, `infrastructure/`, etc. change.
+
 
 ## Notes
 

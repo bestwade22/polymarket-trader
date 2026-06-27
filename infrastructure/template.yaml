@@ -1,0 +1,170 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Polymarket weather trader - scheduled fetch and trade Lambdas
+
+Parameters:
+  GitHubRepo:
+    Type: String
+    Description: GitHub repository as owner/name (e.g. myuser/polymarket-trader)
+  GitBranch:
+    Type: String
+    Default: main
+    Description: Branch to clone and push data commits
+  Strategy:
+    Type: String
+    Default: highest_yes
+  ShareCount:
+    Type: String
+    Default: '10'
+  YesPriceMax:
+    Type: String
+    Default: '0.60'
+  SelectionPriceSource:
+    Type: String
+    Default: midpoint
+  OrderPriceSource:
+    Type: String
+    Default: midpoint
+  OrderExpiryHours:
+    Type: String
+    Default: '2'
+  TradingWindowStartHour:
+    Type: String
+    Default: '12'
+  TradingWindowEndHour:
+    Type: String
+    Default: '14'
+  SignatureType:
+    Type: String
+    Default: '1'
+
+Globals:
+  Function:
+    Architectures:
+      - x86_64
+
+Resources:
+  TraderSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: polymarket-trader/credentials
+      Description: API keys, wallet credentials, and GitHub PAT for polymarket-trader
+
+  FetchDailyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: polymarket-trader-fetch-daily
+      PackageType: Image
+      ImageConfig:
+        Command:
+          - lambda_handlers.fetch_daily.handler
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          SECRETS_ARN: !Ref TraderSecret
+          GIT_REPO: !Ref GitHubRepo
+          GIT_BRANCH: !Ref GitBranch
+      Policies:
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref TraderSecret
+    Metadata:
+      Dockerfile: infrastructure/Dockerfile
+      DockerContext: ..
+      DockerTag: polymarket-trader-v1
+
+  TradeHourlyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: polymarket-trader-trade-hourly
+      PackageType: Image
+      ImageConfig:
+        Command:
+          - lambda_handlers.trade_hourly.handler
+      Timeout: 900
+      MemorySize: 1024
+      Environment:
+        Variables:
+          SECRETS_ARN: !Ref TraderSecret
+          GIT_REPO: !Ref GitHubRepo
+          GIT_BRANCH: !Ref GitBranch
+          STRATEGY: !Ref Strategy
+          SHARE_COUNT: !Ref ShareCount
+          YES_PRICE_MAX: !Ref YesPriceMax
+          SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource
+          ORDER_PRICE_SOURCE: !Ref OrderPriceSource
+          ORDER_EXPIRY_HOURS: !Ref OrderExpiryHours
+          TRADING_WINDOW_START_HOUR: !Ref TradingWindowStartHour
+          TRADING_WINDOW_END_HOUR: !Ref TradingWindowEndHour
+          SIGNATURE_TYPE: !Ref SignatureType
+      Policies:
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref TraderSecret
+    Metadata:
+      Dockerfile: infrastructure/Dockerfile
+      DockerContext: ..
+      DockerTag: polymarket-trader-v1
+
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: InvokeTraderLambdas
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource:
+                  - !GetAtt FetchDailyFunction.Arn
+                  - !GetAtt TradeHourlyFunction.Arn
+
+  FetchDailySchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: polymarket-trader-fetch-daily
+      Description: Fetch events daily at 00:01 Hong Kong time
+      ScheduleExpression: cron(1 0 * * ? *)
+      ScheduleExpressionTimezone: Asia/Hong_Kong
+      FlexibleTimeWindow:
+        Mode: 'OFF'
+      State: ENABLED
+      Target:
+        Arn: !GetAtt FetchDailyFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        RetryPolicy:
+          MaximumRetryAttempts: 2
+
+  TradeHourlySchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: polymarket-trader-trade-hourly
+      Description: Trade hourly at :00 UTC; gate skips outside city trading windows
+      ScheduleExpression: cron(0 * * * ? *)
+      ScheduleExpressionTimezone: UTC
+      FlexibleTimeWindow:
+        Mode: 'OFF'
+      State: ENABLED
+      Target:
+        Arn: !GetAtt TradeHourlyFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        RetryPolicy:
+          MaximumRetryAttempts: 2
+
+Outputs:
+  FetchDailyFunctionArn:
+    Description: Fetch daily Lambda ARN
+    Value: !GetAtt FetchDailyFunction.Arn
+  TradeHourlyFunctionArn:
+    Description: Trade hourly Lambda ARN
+    Value: !GetAtt TradeHourlyFunction.Arn
+  TraderSecretArn:
+    Description: Secrets Manager ARN — set JSON credentials here after first deploy
+    Value: !Ref TraderSecret

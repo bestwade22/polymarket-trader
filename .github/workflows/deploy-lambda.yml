@@ -1,0 +1,48 @@
+name: Deploy Lambda
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'config/**'
+      - 'lambda_handlers/**'
+      - 'infrastructure/**'
+      - 'requirements.txt'
+      - 'scripts/**'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'ap-southeast-1' }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install SAM CLI
+        run: pip install aws-sam-cli
+
+      - name: SAM build
+        working-directory: infrastructure
+        run: sam build
+
+      - name: SAM deploy
+        working-directory: infrastructure
+        run: |
+          sam deploy \
+            --no-confirm-changeset \
+            --no-fail-on-empty-changeset \
+            --parameter-overrides "GitHubRepo=${{ vars.REPO_SLUG }} GitBranch=main"
