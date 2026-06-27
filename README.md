@@ -188,7 +188,7 @@ sam deploy --guided
 # Set GitHubRepo=owner/polymarket-trader
 ```
 
-4. **Secrets Manager** — after deploy, set the secret `polymarket-trader/credentials` (JSON):
+4. **Secrets Manager** — after deploy, open the secret created by the stack (see CloudFormation output `TraderSecretArn`) and set JSON:
 
 ```json
 {
@@ -231,7 +231,23 @@ aws lambda invoke --function-name polymarket-trader-trade-hourly \
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` in Secrets Manager (`polymarket-trader/credentials`) or in your local `.env`. No redeploy needed — Lambda reads it on each invoke. Test with a manual invoke and `force: true` before relying on the schedule.
+Set `DRY_RUN=false` in that Secrets Manager secret or in your local `.env`. No redeploy needed — Lambda reads it on each invoke. Test with a manual invoke and `force: true` before relying on the schedule.
+
+### Deploy troubleshooting
+
+**`ROLLBACK_FAILED` on `sam deploy` (Creating the required resources…)**
+
+SAM creates a bootstrap stack `aws-sam-cli-managed-default` for the S3 artifact bucket. If a prior deploy failed, this stack can get stuck in `ROLLBACK_FAILED` and block all future deploys.
+
+1. AWS Console → **CloudFormation** → region **ap-southeast-1**
+2. Find stacks in `ROLLBACK_FAILED` or `CREATE_FAILED` (often `aws-sam-cli-managed-default` and/or `polymarket-trader`)
+3. **Delete** the failed stack(s). If delete is blocked, open **Events** to see the stuck resource, remove it manually (e.g. empty S3 bucket), then delete again
+4. Ensure the GitHub deploy IAM role can create **CloudFormation stacks**, **S3 buckets**, and **ECR** repos (see IAM setup above)
+5. Re-run **Deploy Lambda** workflow
+
+If deploy fails again, check the workflow step **Diagnose CloudFormation failure** for recent stack events.
+
+**Orphan secret:** If you manually created `polymarket-trader/credentials` before deploy, delete it or the stack may fail on duplicate names (the template now uses an auto-generated secret name).
 
 ### Code updates
 

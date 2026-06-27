@@ -47,7 +47,6 @@ Resources:
   TraderSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
-      Name: polymarket-trader/credentials
       Description: API keys, wallet credentials, and GitHub PAT for polymarket-trader
 
   FetchDailyFunction:
