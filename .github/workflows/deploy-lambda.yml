@@ -53,16 +53,16 @@ jobs:
         env:
           AWS_REGION: ${{ vars.AWS_REGION || 'ap-southeast-1' }}
         run: |
-          echo "=== Failed stacks ==="
-          aws cloudformation list-stacks \
-            --stack-status-filter ROLLBACK_FAILED CREATE_FAILED UPDATE_ROLLBACK_FAILED \
-            --query 'StackSummaries[].[StackName,StackStatus]' \
-            --output table || true
           for stack in aws-sam-cli-managed-default polymarket-trader; do
+            echo "=== Stack status: $stack ==="
+            aws cloudformation describe-stacks \
+              --stack-name "$stack" \
+              --query 'Stacks[0].[StackName,StackStatus]' \
+              --output table 2>/dev/null || echo "(stack $stack not found)"
             echo "=== Recent events: $stack ==="
             aws cloudformation describe-stack-events \
               --stack-name "$stack" \
               --max-items 20 \
               --query 'StackEvents[].[Timestamp,ResourceStatus,LogicalResourceId,ResourceStatusReason]' \
-              --output table 2>/dev/null || echo "(stack $stack not found)"
+              --output table 2>/dev/null || true
           done

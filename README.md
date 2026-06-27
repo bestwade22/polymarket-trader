@@ -169,7 +169,12 @@ flowchart LR
 
 ### One-time AWS setup
 
-1. **IAM OIDC for GitHub** — create an IAM OIDC identity provider for `token.actions.githubusercontent.com` and a deploy role trusted by your repo (`repo:OWNER/polymarket-trader:ref:refs/heads/main`). Grant CloudFormation, SAM, ECR, Lambda, Scheduler, S3 (SAM artifacts), and IAM pass-role permissions.
+1. **IAM OIDC for GitHub** — create an IAM OIDC identity provider for `token.actions.githubusercontent.com` and a deploy role (e.g. `github-polymarket-trader-deploy`):
+
+   - **Trust policy:** [`infrastructure/iam/github-deploy-trust.json`](infrastructure/iam/github-deploy-trust.json) — replace `ACCOUNT_ID` and `OWNER/polymarket-trader` with your values.
+   - **Permissions policy:** [`infrastructure/iam/github-deploy-policy.json`](infrastructure/iam/github-deploy-policy.json) — attach as an inline or managed policy on the deploy role.
+
+   The policy must include `s3:TagResource`, `s3:DeleteBucket`, and `cloudformation:ListStacks` (SAM bootstrap creates a tagged S3 bucket via CloudFormation). Without these, the `aws-sam-cli-managed-default` stack can get stuck in `ROLLBACK_FAILED`.
 
 2. **GitHub repository variables** (Settings → Variables → Actions):
 
@@ -237,13 +242,21 @@ Set `DRY_RUN=false` in that Secrets Manager secret or in your local `.env`. No r
 
 **`ROLLBACK_FAILED` on `sam deploy` (Creating the required resources…)**
 
-SAM creates a bootstrap stack `aws-sam-cli-managed-default` for the S3 artifact bucket. If a prior deploy failed, this stack can get stuck in `ROLLBACK_FAILED` and block all future deploys.
+SAM creates a bootstrap stack `aws-sam-cli-managed-default` for the S3 artifact bucket. If the deploy role lacks `s3:TagResource` or `s3:DeleteBucket`, bucket creation fails and the stack gets stuck in `ROLLBACK_FAILED`.
 
-1. AWS Console → **CloudFormation** → region **ap-southeast-1**
-2. Find stacks in `ROLLBACK_FAILED` or `CREATE_FAILED` (often `aws-sam-cli-managed-default` and/or `polymarket-trader`)
-3. **Delete** the failed stack(s). If delete is blocked, open **Events** to see the stuck resource, remove it manually (e.g. empty S3 bucket), then delete again
-4. Ensure the GitHub deploy IAM role can create **CloudFormation stacks**, **S3 buckets**, and **ECR** repos (see IAM setup above)
-5. Re-run **Deploy Lambda** workflow
+**Fix (in order):**
+
+1. **Update the deploy role policy** — attach [`infrastructure/iam/github-deploy-policy.json`](infrastructure/iam/github-deploy-policy.json) to `github-polymarket-trader-deploy` (or merge the missing actions into your existing policy). Key actions that are often missing:
+   - `s3:TagResource`
+   - `s3:DeleteBucket`
+   - `cloudformation:ListStacks`
+
+2. **Clean up the failed bootstrap stack** (AWS Console → **ap-southeast-1**):
+   - **S3** → find bucket `aws-sam-cli-managed-default-samclisourcebucket-*` → empty and delete it
+   - **CloudFormation** → delete stack `aws-sam-cli-managed-default` (if still present)
+   - If delete is blocked, use an admin/root account — the deploy role may not have had `s3:DeleteBucket` when the stack was created
+
+3. Re-run **Deploy Lambda** workflow
 
 If deploy fails again, check the workflow step **Diagnose CloudFormation failure** for recent stack events.
 
