@@ -1,7 +1,7 @@
 version = 0.1
 
 [default.global.parameters]
-stack_name = polymarket-trader
+stack_name = "polymarket-trader"
 
 [default.build.parameters]
 cached = true
@@ -12,7 +12,7 @@ capabilities = CAPABILITY_IAM
 confirm_changeset = true
 resolve_s3 = true
 resolve_image_repos = true
-region = ap-southeast-1
+region = "ap-southeast-1"
 # Override on first deploy: sam deploy --parameter-overrides GitHubRepo=owner/polymarket-trader
 parameter_overrides = "GitHubRepo=OWNER/REPO GitBranch=main"
 
