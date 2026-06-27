@@ -8,7 +8,7 @@ cached = true
 parallel = true
 
 [default.deploy.parameters]
-capabilities = CAPABILITY_IAM
+capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
 resolve_image_repos = true
@@ -23,7 +23,7 @@ resolve_s3 = true
 watch = true
 
 [default.local_start_api.parameters]
-warm_containers = EAGER
+warm_containers = "EAGER"
 
 [default.local_start_lambda.parameters]
-warm_containers = EAGER
+warm_containers = "EAGER"
