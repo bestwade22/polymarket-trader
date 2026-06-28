@@ -7,7 +7,7 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from lambda_handlers.git_sync import WORKSPACE, clone_or_update, commit_and_push, git_settings_from_env
 from lambda_handlers.secrets import apply_secrets
@@ -22,36 +22,27 @@ def resolve_trade_date(event: Dict[str, Any]) -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def should_run(force: bool) -> bool:
+def should_run(force: bool, data_dir: Optional[Path] = None) -> bool:
     if force:
         return True
     from scripts.should_run_trade import should_run_trade
 
-    return should_run_trade()
+    return should_run_trade(data_dir=data_dir)
 
 
-def is_geoblocked() -> bool:
-    from scripts.check_geoblock import fetch_geoblock, is_trading_blocked
+def gate_data_dir(force: bool) -> Optional[Path]:
+    """Fetch today/yesterday events from GitHub for an accurate pre-clone gate."""
+    if force:
+        return None
+    from lambda_handlers.gate_data import fetch_gate_data_from_env
 
-    try:
-        data = fetch_geoblock()
-    except Exception as exc:
-        logger.warning("Geoblock check failed (%s); proceeding with trade", exc)
-        return False
-    if is_trading_blocked(data):
-        logger.warning(
-            "Polymarket geoblock: trading restricted (country=%s region=%s ip=%s)",
-            data.get("country"),
-            data.get("region"),
-            data.get("ip"),
-        )
-        return True
-    logger.info(
-        "Polymarket geoblock OK (country=%s region=%s)",
-        data.get("country"),
-        data.get("region"),
-    )
-    return False
+    return fetch_gate_data_from_env()
+
+
+def tradable_dates_for_run(workspace: Path, now_utc: datetime) -> list[str]:
+    from scripts.should_run_trade import tradable_event_file_dates
+
+    return tradable_event_file_dates(now_utc=now_utc, data_dir=workspace / "data")
 
 
 def run_trade_hourly(workspace: Path, event_date: str) -> None:
@@ -82,37 +73,48 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 
     payload = event or {}
     force = bool(payload.get("force", False))
-    if not should_run(force):
-        logger.info("Outside global trading window; skipping trade-hourly")
+    gate_dir = gate_data_dir(force)
+    if not should_run(force, data_dir=gate_dir):
+        logger.info("No tradable events in gate check; skipping trade-hourly")
         return {
             "status": "skipped",
             "job": "trade-hourly",
             "reason": "outside_trading_window",
         }
 
-    if is_geoblocked():
-        return {
-            "status": "skipped",
-            "job": "trade-hourly",
-            "reason": "geoblocked",
-        }
-
-    event_date = resolve_trade_date(payload)
     git_repo, branch, github_pat = git_settings_from_env()
     workspace = clone_or_update(github_pat, git_repo, branch)
 
-    run_trade_hourly(workspace, event_date)
+    now_utc = datetime.now(timezone.utc)
+    explicit_date = payload.get("date")
+    if explicit_date:
+        dates_to_trade = [str(explicit_date).strip()]
+    else:
+        dates_to_trade = tradable_dates_for_run(workspace, now_utc)
+        if not dates_to_trade:
+            logger.info("No tradable events after clone; skipping trade-hourly")
+            return {
+                "status": "skipped",
+                "job": "trade-hourly",
+                "reason": "no_tradable_events",
+            }
 
-    paths = selection_paths(event_date)
+    all_paths: List[str] = []
+    for event_date in dates_to_trade:
+        run_trade_hourly(workspace, event_date)
+        all_paths.extend(selection_paths(event_date))
+
     bought = WORKSPACE / "data/positions/bought_events.json"
     if bought.exists():
-        paths.append("data/positions/bought_events.json")
+        all_paths.append("data/positions/bought_events.json")
 
+    paths = sorted(set(all_paths))
     committed = False
     if paths:
+        label = dates_to_trade[0] if len(dates_to_trade) == 1 else "multi"
         committed = commit_and_push(
             paths,
-            f"chore(data): trade selections {event_date}",
+            f"chore(data): trade selections {label}",
             github_pat=github_pat,
             git_repo=git_repo,
             branch=branch,
@@ -121,7 +123,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     return {
         "status": "ok",
         "job": "trade-hourly",
-        "date": event_date,
+        "dates": dates_to_trade,
         "committed": committed,
         "selection_files": paths,
         "force": force,

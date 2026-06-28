@@ -30,7 +30,7 @@ Lambda egress IP determines whether CLOB orders succeed. Per [Polymarket geobloc
 
 Singapore (`ap-southeast-1`) returns `403 Trading restricted in your region` for new orders. Hong Kong shares the `Asia/Hong_Kong` timezone used by the fetch schedule.
 
-Verify from Lambda or your laptop:
+Hong Kong (`HK`) does not appear on Polymarket's blocked or close-only country lists, so **ap-east-1 is safe for new orders**. Optional manual check from your laptop (egress IP differs from Lambda):
 
 ```bash
 python scripts/check_geoblock.py
@@ -168,7 +168,7 @@ Outputs:
 | Function | Timeout | Schedule |
 |----------|---------|----------|
 | `polymarket-trader-fetch-daily` | 5 min | 00:01 HKT daily |
-| `polymarket-trader-trade-hourly` | 15 min | :00 UTC hourly (gate inside handler) |
+| `polymarket-trader-trade-hourly` | 15 min | :00 UTC every hour (events-based gate inside handler) |
 
 Optional smoke test (AWS CLI):
 
@@ -181,16 +181,6 @@ aws lambda invoke \
 ```
 
 Check **Monitor** → **Logs** → CloudWatch log group `/aws/lambda/polymarket-trader-fetch-daily`.
-
-### Geoblock check
-
-From your laptop (approximate) or after a trade Lambda invoke (exact egress IP):
-
-```bash
-python scripts/check_geoblock.py
-```
-
-Inside a trade invoke with `force: true` and `DRY_RUN=true`, CloudWatch logs should show `Polymarket geoblock OK (country=HK ...)`. If blocked, the handler skips with `"reason": "geoblocked"`.
 
 ### EventBridge Scheduler
 
@@ -267,11 +257,11 @@ Switch console region to **Asia Pacific (Hong Kong) ap-east-1**:
    - Both Lambdas exist
    - Schedulers enabled
    - `aws lambda invoke ... fetch-daily --region ap-east-1` commits to git
-   - Trade invoke logs show `geoblock OK` with `country=HK`, or `python scripts/check_geoblock.py` returns exit 0
+   - Trade invoke completes without `403 Trading restricted in your region` (optional: `python scripts/check_geoblock.py` from a machine in HK returns `"blocked": false`)
 
-### Step D — If geoblock still fails
+### Step D — If trade still returns geoblock 403
 
-Try in order: **ap-northeast-1** (Tokyo) → **eu-west-1** (Ireland). Update `AWS_REGION`, [`samconfig.toml`](../infrastructure/samconfig.toml), and redeploy. Repeat Step B teardown in the failed region first.
+Confirm the Lambda is in **ap-east-1**, not Singapore. Alternatives: **ap-northeast-1** (Tokyo) or **eu-west-1** (Ireland). Update `AWS_REGION`, [`samconfig.toml`](../infrastructure/samconfig.toml), and redeploy. Repeat Step B teardown in the failed region first.
 
 ---
 

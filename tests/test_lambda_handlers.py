@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from lambda_handlers.fetch_daily import resolve_fetch_date
-from lambda_handlers.trade_hourly import is_geoblocked, resolve_trade_date, should_run
+from lambda_handlers.trade_hourly import resolve_trade_date, should_run
 
 
 class TestResolveFetchDate:
@@ -40,11 +40,11 @@ class TestShouldRun:
 
     @patch("scripts.should_run_trade.should_run_trade", return_value=False)
     def test_skips_outside_window(self, _mock_gate):
-        assert should_run(force=False) is False
+        assert should_run(force=False, data_dir=None) is False
 
     @patch("scripts.should_run_trade.should_run_trade", return_value=True)
     def test_runs_inside_window(self, _mock_gate):
-        assert should_run(force=False) is True
+        assert should_run(force=False, data_dir=None) is True
 
 
 class TestFetchDailyHandler:
@@ -65,31 +65,7 @@ class TestFetchDailyHandler:
         mock_commit.assert_called_once()
 
 
-class TestIsGeoblocked:
-    @patch("scripts.check_geoblock.fetch_geoblock", return_value={"blocked": False, "country": "HK"})
-    def test_allowed(self, _mock):
-        assert is_geoblocked() is False
-
-    @patch("scripts.check_geoblock.fetch_geoblock", return_value={"blocked": True, "country": "SG"})
-    def test_blocked(self, _mock):
-        assert is_geoblocked() is True
-
-    @patch("scripts.check_geoblock.fetch_geoblock", side_effect=RuntimeError("network"))
-    def test_check_failure_proceeds(self, _mock):
-        assert is_geoblocked() is False
-
-
 class TestTradeHourlyHandler:
-    @patch("lambda_handlers.trade_hourly.is_geoblocked", return_value=True)
-    @patch("lambda_handlers.trade_hourly.should_run", return_value=True)
-    @patch("lambda_handlers.trade_hourly.apply_secrets")
-    def test_skipped_geoblocked(self, _secrets, _gate, _geo):
-        from lambda_handlers.trade_hourly import handler
-
-        result = handler({"force": True}, None)
-        assert result["status"] == "skipped"
-        assert result["reason"] == "geoblocked"
-
     @patch("lambda_handlers.trade_hourly.should_run", return_value=False)
     @patch("lambda_handlers.trade_hourly.apply_secrets")
     def test_skipped_outside_window(self, _secrets, _gate):

@@ -145,7 +145,7 @@ Resources:
     Type: AWS::Scheduler::Schedule
     Properties:
       Name: polymarket-trader-trade-hourly
-      Description: Trade hourly at :00 UTC; gate skips outside city trading windows
+      Description: Trade hourly at :00 UTC; events-based gate skips when nothing tradable
       ScheduleExpression: cron(0 * * * ? *)
       ScheduleExpressionTimezone: UTC
       FlexibleTimeWindow:

@@ -142,7 +142,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | Every hour at **:00 UTC** | Runs `trade-hourly` when any city is in its local trading window; commits `data/selections/*.json` |
+| `trade-hourly` | Every hour at **:00 UTC** | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 
 ```mermaid
 flowchart LR
@@ -200,7 +200,7 @@ aws lambda invoke --function-name polymarket-trader-trade-hourly \
   --region ap-east-1 \
   --payload '{"force":true,"date":"2026-06-27"}' out.json && cat out.json
 
-# Verify Polymarket geoblock from your machine (or run inside Lambda)
+# Optional: verify Polymarket geoblock from your machine (HK/ap-east-1 is not restricted)
 python scripts/check_geoblock.py
 ```
 
