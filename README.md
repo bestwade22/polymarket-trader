@@ -137,7 +137,7 @@ See [`scripts/cron.example`](scripts/cron.example).
 
 ## AWS Lambda (scheduled jobs)
 
-Fetch and trade run on **AWS Lambda in ap-southeast-1** (Singapore), avoiding US geo-blocks on Polymarket. A thin GitHub Actions workflow deploys code on push to `main`.
+Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymarket geo-blocks (Singapore is close-only). A thin GitHub Actions workflow deploys code on push to `main`.
 
 | Job | Schedule | What it does |
 |-----|----------|--------------|
@@ -150,7 +150,7 @@ flowchart LR
     Repo[polymarket-trader]
     DeployGHA[deploy-lambda.yml]
   end
-  subgraph aws [AWS ap-southeast-1]
+  subgraph aws [AWS ap-east-1]
     EB1[Scheduler fetch 00:01 HKT]
     EB2[Scheduler hourly UTC]
     LF[fetch-daily Lambda]
@@ -169,63 +169,39 @@ flowchart LR
 
 ### One-time AWS setup
 
-1. **IAM OIDC for GitHub** — create an IAM OIDC identity provider for `token.actions.githubusercontent.com` and a deploy role (e.g. `github-polymarket-trader-deploy`):
+Full console walkthrough (steps 1–6) and region migration: **[`docs/aws-console-setup.md`](docs/aws-console-setup.md)**
 
-   - **Trust policy:** [`infrastructure/iam/github-deploy-trust.json`](infrastructure/iam/github-deploy-trust.json) — replace `ACCOUNT_ID` and `OWNER/polymarket-trader` with your values.
-   - **Permissions policy:** [`infrastructure/iam/github-deploy-policy.json`](infrastructure/iam/github-deploy-policy.json) — attach as an inline or managed policy on the deploy role.
+| Step | What |
+|------|------|
+| 1 | IAM OIDC provider for GitHub |
+| 2 | Deploy role trust policy |
+| 3 | Deploy role permissions policy |
+| 4 | GitHub variables + first deploy (GHA) |
+| 5 | Secrets Manager credentials |
+| 6 | Verify CloudFormation, Lambda, Scheduler |
 
-   The policy must include `s3:TagResource`, `s3:DeleteBucket`, and `cloudformation:ListStacks` (SAM bootstrap creates a tagged S3 bucket via CloudFormation). Without these, the `aws-sam-cli-managed-default` stack can get stuck in `ROLLBACK_FAILED`.
-
-2. **GitHub repository variables** (Settings → Variables → Actions):
-
-| Variable | Example | Notes |
-|----------|---------|-------|
-| `AWS_REGION` | `ap-southeast-1` | Lambda region |
-| `AWS_DEPLOY_ROLE_ARN` | `arn:aws:iam::123456789012:role/github-deploy` | OIDC deploy role |
-| `REPO_SLUG` | `owner/polymarket-trader` | Passed to SAM as `GitHubRepo` (`owner/repo`; cannot use `GITHUB_` prefix — reserved by GitHub) |
-
-3. **Deploy the stack** (first time, from your laptop or via workflow_dispatch after OIDC is ready):
-
-```bash
-cd infrastructure
-sam build
-sam deploy --guided
-# Set GitHubRepo=owner/polymarket-trader
-```
-
-4. **Secrets Manager** — after deploy, open the secret created by the stack (see CloudFormation output `TraderSecretArn`) and set JSON:
-
-```json
-{
-  "API_NINJAS_KEY": "...",
-  "PRIVATE_KEY": "...",
-  "DEPOSIT_WALLET_ADDRESS": "...",
-  "GITHUB_PAT": "ghp_...",
-  "DRY_RUN": "true"
-}
-```
-
-The `GITHUB_PAT` needs **Contents: read and write** on this repo (fine-grained PAT recommended). Set `DRY_RUN` to `false` in this secret for live orders (same as `.env` locally).
-
-5. **Trading config** — non-secret settings are SAM parameters / Lambda env vars in [`infrastructure/template.yaml`](infrastructure/template.yaml): `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`, `ORDER_PRICE_SOURCE`, etc. Update via `sam deploy --parameter-overrides ...` or edit the template defaults.
+Policy files: [`infrastructure/iam/github-deploy-trust.json`](infrastructure/iam/github-deploy-trust.json), [`infrastructure/iam/github-deploy-policy.json`](infrastructure/iam/github-deploy-policy.json).
 
 ### Manual invoke
 
 ```bash
 # Fetch today's events (HKT date)
 aws lambda invoke --function-name polymarket-trader-fetch-daily \
-  --region ap-southeast-1 \
+  --region ap-east-1 \
   --payload '{"date":"2026-06-27"}' out.json && cat out.json
 
 # Trade (respects trading window gate)
 aws lambda invoke --function-name polymarket-trader-trade-hourly \
-  --region ap-southeast-1 \
+  --region ap-east-1 \
   --payload '{"date":"2026-06-27"}' out.json && cat out.json
 
 # Force trade outside window (dry-run unless DRY_RUN=false in Secrets Manager / .env)
 aws lambda invoke --function-name polymarket-trader-trade-hourly \
-  --region ap-southeast-1 \
+  --region ap-east-1 \
   --payload '{"force":true,"date":"2026-06-27"}' out.json && cat out.json
+
+# Verify Polymarket geoblock from your machine (or run inside Lambda)
+python scripts/check_geoblock.py
 ```
 
 ### Data storage
@@ -251,7 +227,7 @@ SAM creates a bootstrap stack `aws-sam-cli-managed-default` for the S3 artifact 
    - `s3:DeleteBucket`
    - `cloudformation:ListStacks`
 
-2. **Clean up the failed bootstrap stack** (AWS Console → **ap-southeast-1**):
+2. **Clean up the failed bootstrap stack** (AWS Console → **ap-east-1**):
    - **S3** → find bucket `aws-sam-cli-managed-default-samclisourcebucket-*` → empty and delete it
    - **CloudFormation** → delete stack `aws-sam-cli-managed-default` (if still present)
    - If delete is blocked, use an admin/root account — the deploy role may not have had `s3:DeleteBucket` when the stack was created

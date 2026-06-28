@@ -30,6 +30,30 @@ def should_run(force: bool) -> bool:
     return should_run_trade()
 
 
+def is_geoblocked() -> bool:
+    from scripts.check_geoblock import fetch_geoblock, is_trading_blocked
+
+    try:
+        data = fetch_geoblock()
+    except Exception as exc:
+        logger.warning("Geoblock check failed (%s); proceeding with trade", exc)
+        return False
+    if is_trading_blocked(data):
+        logger.warning(
+            "Polymarket geoblock: trading restricted (country=%s region=%s ip=%s)",
+            data.get("country"),
+            data.get("region"),
+            data.get("ip"),
+        )
+        return True
+    logger.info(
+        "Polymarket geoblock OK (country=%s region=%s)",
+        data.get("country"),
+        data.get("region"),
+    )
+    return False
+
+
 def run_trade_hourly(workspace: Path, event_date: str) -> None:
     cmd = [sys.executable, "-m", "src.main", "trade-hourly", "--date", event_date]
     dry_run = os.environ.get("DRY_RUN", "true").strip().lower()
@@ -64,6 +88,13 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             "status": "skipped",
             "job": "trade-hourly",
             "reason": "outside_trading_window",
+        }
+
+    if is_geoblocked():
+        return {
+            "status": "skipped",
+            "job": "trade-hourly",
+            "reason": "geoblocked",
         }
 
     event_date = resolve_trade_date(payload)
