@@ -1,0 +1,32 @@
+{
+  "run_at": "2026-06-29T08:00:42.625828+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "639708",
+      "city": "Karachi",
+      "reason": "open_order",
+      "open_order_count": 1,
+      "open_order_ids": [
+        "0xeaf8898a63c0e17bc01889ae64d59164f476ffe3440a3bf89db15380a056e50e"
+      ]
+    },
+    {
+      "event_id": "639706",
+      "city": "Lucknow",
+      "market_id": "2703906",
+      "group_item_title": "38\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "33450310014475423308397149709786506275707309941674499090069903979310394286836",
+          "market_id": "2703905",
+          "group_item_title": "37\u00b0C",
+          "balance": 10.0
+        }
+      ]
+    }
+  ]
+}
