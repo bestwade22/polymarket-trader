@@ -50,7 +50,13 @@ class TestShouldRunTradeEvents:
 
         assert mod.should_run_trade(now_utc=now, data_dir=tmp_path) is False
 
-    def test_tradable_event_in_file_returns_true(self, tmp_path: Path):
+    def test_tradable_event_in_file_returns_true(self, tmp_path: Path, monkeypatch):
+        from config import settings as settings_mod
+
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_hour", 12)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_minute", 30)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_hour", 14)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_minute", 30)
         import importlib.util
 
         path = PROJECT_ROOT / "scripts" / "should_run_trade.py"
@@ -65,13 +71,13 @@ class TestShouldRunTradeEvents:
             "2026-06-28",
             "America/New_York",
             start_hour=12,
-            start_minute=0,
+            start_minute=30,
             end_hour=14,
-            end_minute=0,
+            end_minute=30,
         )
         assert bounds is not None
         start, _end = bounds
-        now = start + timedelta(minutes=30)
+        now = start + timedelta(minutes=15)
         events_path = tmp_path / f"events_{now.date().isoformat()}.json"
         events_path.write_text(json.dumps([_sample_event("2026-06-28", "America/New_York", "NYC")]))
 

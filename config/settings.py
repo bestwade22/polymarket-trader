@@ -98,12 +98,12 @@ def _minutes_since_midnight(hour: int, minute: int) -> int:
 
 def _parse_trading_window_bounds() -> tuple[int, int, int, int]:
     start_h, start_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_START_HOUR", "12"),
+        os.getenv("TRADING_WINDOW_START_HOUR", "12:30"),
         "TRADING_WINDOW_START_HOUR",
         allow_hour_24=False,
     )
     end_h, end_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_END_HOUR", "14"),
+        os.getenv("TRADING_WINDOW_END_HOUR", "14:30"),
         "TRADING_WINDOW_END_HOUR",
         allow_hour_24=True,
     )
@@ -120,6 +120,16 @@ _trading_window_start_h, _trading_window_start_m, _trading_window_end_h, _tradin
 )
 
 
+def _parse_order_expiry_hours() -> float:
+    mins = os.getenv("ORDER_EXPIRY_MINUTES")
+    if mins is not None and mins.strip():
+        return float(mins.strip()) / 60.0
+    hours = os.getenv("ORDER_EXPIRY_HOURS")
+    if hours is not None and hours.strip():
+        return float(hours.strip())
+    return 55.0 / 60.0
+
+
 class Settings:
     api_ninjas_key: str = os.getenv("API_NINJAS_KEY", "")
     private_key: str = os.getenv("PRIVATE_KEY", "")
@@ -134,7 +144,7 @@ class Settings:
     order_price_source: str = _normalize_order_price_source(
         os.getenv("ORDER_PRICE_SOURCE", "midpoint")
     )
-    order_expiry_hours: float = float(os.getenv("ORDER_EXPIRY_HOURS", "2"))
+    order_expiry_hours: float = _parse_order_expiry_hours()
     trading_window_start_hour: int = _trading_window_start_h
     trading_window_start_minute: int = _trading_window_start_m
     trading_window_end_hour: int = _trading_window_end_h

@@ -25,15 +25,15 @@ Parameters:
   OrderPriceSource:
     Type: String
     Default: midpoint
-  OrderExpiryHours:
+  OrderExpiryMinutes:
     Type: String
-    Default: '2'
+    Default: '55'
   TradingWindowStartHour:
     Type: String
-    Default: '12'
+    Default: '12:30'
   TradingWindowEndHour:
     Type: String
-    Default: '14'
+    Default: '14:30'
   SignatureType:
     Type: String
     Default: '1'
@@ -92,7 +92,7 @@ Resources:
           YES_PRICE_MAX: !Ref YesPriceMax
           SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource
           ORDER_PRICE_SOURCE: !Ref OrderPriceSource
-          ORDER_EXPIRY_HOURS: !Ref OrderExpiryHours
+          ORDER_EXPIRY_MINUTES: !Ref OrderExpiryMinutes
           TRADING_WINDOW_START_HOUR: !Ref TradingWindowStartHour
           TRADING_WINDOW_END_HOUR: !Ref TradingWindowEndHour
           SIGNATURE_TYPE: !Ref SignatureType
@@ -145,8 +145,8 @@ Resources:
     Type: AWS::Scheduler::Schedule
     Properties:
       Name: polymarket-trader-trade-hourly
-      Description: Trade hourly at :00 UTC; events-based gate skips when nothing tradable
-      ScheduleExpression: cron(0 * * * ? *)
+      Description: Trade hourly at :30 UTC; gate skips outside local hourly ticks (12:30, 13:30, 14:30, …)
+      ScheduleExpression: cron(30 * * * ? *)
       ScheduleExpressionTimezone: UTC
       FlexibleTimeWindow:
         Mode: 'OFF'

@@ -11,10 +11,13 @@ from config.settings import _parse_trading_window_time
 from src.utils.time_window import (
     any_city_in_trading_window,
     is_event_in_trading_window,
+    is_event_on_hourly_trade_tick,
+    is_event_tradable_now,
     is_in_trading_window,
     trading_window_bounds_utc,
     trading_window_duration,
     trading_window_label,
+    trading_window_trade_ticks,
 )
 
 
@@ -132,7 +135,65 @@ def test_any_city_in_trading_window_matches_one_timezone():
     )
 
 
-def test_should_run_trade_script():
+def _patch_trading_window(monkeypatch, start_h=12, start_m=30, end_h=14, end_m=30):
+    from config import settings as settings_mod
+
+    monkeypatch.setattr(settings_mod.settings, "trading_window_start_hour", start_h)
+    monkeypatch.setattr(settings_mod.settings, "trading_window_start_minute", start_m)
+    monkeypatch.setattr(settings_mod.settings, "trading_window_end_hour", end_h)
+    monkeypatch.setattr(settings_mod.settings, "trading_window_end_minute", end_m)
+
+
+def test_trading_window_trade_ticks_default():
+  ticks = trading_window_trade_ticks(
+      start_hour=12,
+      start_minute=30,
+      end_hour=14,
+      end_minute=30,
+  )
+  assert ticks == [(12, 30), (13, 30), (14, 30)]
+
+
+def test_is_event_tradable_now_requires_trade_tick(monkeypatch):
+    _patch_trading_window(monkeypatch)
+    event = {
+        "event_date": "2026-06-19",
+        "timezone": "America/New_York",
+        "city": "NYC",
+    }
+    bounds = trading_window_bounds_utc(
+        event["event_date"],
+        event["timezone"],
+        start_hour=12,
+        start_minute=30,
+        end_hour=14,
+        end_minute=30,
+    )
+    assert bounds is not None
+    start, end = bounds
+    assert is_event_tradable_now(event, now_utc=start + timedelta(minutes=10))
+    assert not is_event_tradable_now(event, now_utc=start + timedelta(minutes=40))
+    assert is_event_tradable_now(event, now_utc=end)
+
+
+def test_is_event_on_hourly_trade_tick_includes_window_end(monkeypatch):
+    _patch_trading_window(monkeypatch)
+    event = {"event_date": "2026-06-19", "timezone": "America/New_York"}
+    bounds = trading_window_bounds_utc(
+        event["event_date"],
+        event["timezone"],
+        start_hour=12,
+        start_minute=30,
+        end_hour=14,
+        end_minute=30,
+    )
+    assert bounds is not None
+    _start, end = bounds
+    assert is_event_on_hourly_trade_tick(event, now_utc=end)
+
+
+def test_should_run_trade_script(tmp_path: Path, monkeypatch):
+    _patch_trading_window(monkeypatch)
     import importlib.util
 
     path = PROJECT_ROOT / "scripts" / "should_run_trade.py"
@@ -145,14 +206,20 @@ def test_should_run_trade_script():
         "2026-06-19",
         "Asia/Seoul",
         start_hour=12,
-        start_minute=0,
+        start_minute=30,
         end_hour=14,
-        end_minute=0,
+        end_minute=30,
     )
     assert bounds is not None
     start, _end = bounds
-    assert mod.should_run_trade(now_utc=start + timedelta(minutes=15)) is True
-    assert mod.should_run_trade(now_utc=start - timedelta(hours=5)) is False
+    event = {"event_date": "2026-06-19", "timezone": "Asia/Seoul", "city": "Seoul"}
+    in_slot = start + timedelta(minutes=15)
+    events_path = tmp_path / f"events_{in_slot.date().isoformat()}.json"
+    events_path.write_text(
+        __import__("json").dumps([event])
+    )
+    assert mod.should_run_trade(now_utc=in_slot, data_dir=tmp_path) is True
+    assert mod.should_run_trade(now_utc=start + timedelta(minutes=45), data_dir=tmp_path) is False
 
 
 if __name__ == "__main__":
@@ -165,5 +232,8 @@ if __name__ == "__main__":
     test_is_in_trading_window_legacy_city_noon_utc()
     test_trading_window_label()
     test_any_city_in_trading_window_matches_one_timezone()
+    test_trading_window_trade_ticks_default()
+    test_is_event_tradable_now_requires_trade_tick()
+    test_is_event_on_hourly_trade_tick_includes_window_end()
     test_should_run_trade_script()
     print("All tests passed.")

@@ -21,6 +21,13 @@ def test_compute_order_expiration_gtc_when_zero():
     assert expiration == 0
 
 
+def test_compute_order_expiration_fifty_five_minutes():
+    now = 1_700_000_000
+    expiration, order_type = compute_order_expiration(55 / 60, now_ts=now)
+    assert order_type == "GTD"
+    assert expiration == now + 55 * 60
+
+
 def test_compute_order_expiration_custom_hours():
     now = 1_700_000_000
     expiration, order_type = compute_order_expiration(4.5, now_ts=now)

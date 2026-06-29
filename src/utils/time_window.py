@@ -140,7 +140,7 @@ def any_city_in_trading_window(
 
 
 def is_event_in_trading_window(event: dict, now_utc: Optional[datetime] = None) -> bool:
-    """True when now is within the trading window for this event's city and date."""
+    """True when now is within the configured trading window for this event's city and date."""
     event_date = event.get("event_date")
     tz_name = event.get("timezone")
     if event_date and tz_name:
@@ -148,8 +148,78 @@ def is_event_in_trading_window(event: dict, now_utc: Optional[datetime] = None) 
         if bounds:
             start, end = bounds
             now = now_utc or datetime.now(timezone.utc)
-            return start <= now < end
+            return start <= now <= end
     return is_in_trading_window(event.get("city_noon_utc", ""), now_utc)
+
+
+def trading_window_trade_ticks(
+    start_hour: Optional[int] = None,
+    start_minute: Optional[int] = None,
+    end_hour: Optional[int] = None,
+    end_minute: Optional[int] = None,
+) -> list[tuple[int, int]]:
+    """Local (hour, minute) ticks every hour from window start through window end."""
+    sh = settings.trading_window_start_hour if start_hour is None else start_hour
+    sm = settings.trading_window_start_minute if start_minute is None else start_minute
+    eh = settings.trading_window_end_hour if end_hour is None else end_hour
+    em = settings.trading_window_end_minute if end_minute is None else end_minute
+    start_total = sh * 60 + sm
+    end_total = 24 * 60 if eh == 24 else eh * 60 + em
+    ticks: list[tuple[int, int]] = []
+    current = start_total
+    while current <= end_total:
+        ticks.append((current // 60, current % 60))
+        current += 60
+    return ticks
+
+
+def is_event_on_hourly_trade_tick(event: dict, now_utc: Optional[datetime] = None) -> bool:
+    """True when local time is on a 30-minute trade tick (e.g. 12:30, 13:30, 14:30)."""
+    now = now_utc or datetime.now(timezone.utc)
+    event_date = event.get("event_date")
+    tz_name = event.get("timezone")
+    if not event_date or not tz_name:
+        return False
+
+    try:
+        event_d = datetime.strptime(event_date, "%Y-%m-%d").date()
+        tz = ZoneInfo(tz_name)
+        local_now = now.astimezone(tz)
+    except (ValueError, KeyError):
+        return False
+
+    if local_now.date() != event_d:
+        return False
+
+    for hour, minute in trading_window_trade_ticks():
+        tick_start = datetime(
+            event_d.year,
+            event_d.month,
+            event_d.day,
+            hour,
+            minute,
+            0,
+            tzinfo=tz,
+        )
+        tick_end = tick_start + timedelta(minutes=30)
+        if tick_start <= local_now < tick_end:
+            return True
+    return False
+
+
+def is_event_tradable_now(event: dict, now_utc: Optional[datetime] = None) -> bool:
+    """True when now is inside the trading window on an hourly trade tick."""
+    if not is_event_in_trading_window(event, now_utc):
+        return False
+    return is_event_on_hourly_trade_tick(event, now_utc)
+
+
+def trade_tick_label() -> str:
+    ticks = trading_window_trade_ticks()
+    if not ticks:
+        return "no trade ticks"
+    times = ", ".join(_format_local_time(h, m) for h, m in ticks)
+    return f"hourly ticks at {times} local"
 
 
 def next_trading_window_hint(events: list[dict], now_utc: Optional[datetime] = None) -> str:

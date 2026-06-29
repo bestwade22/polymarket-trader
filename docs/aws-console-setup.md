@@ -168,7 +168,7 @@ Outputs:
 | Function | Timeout | Schedule |
 |----------|---------|----------|
 | `polymarket-trader-fetch-daily` | 5 min | 00:01 HKT daily |
-| `polymarket-trader-trade-hourly` | 15 min | :00 UTC every hour (events-based gate inside handler) |
+| `polymarket-trader-trade-hourly` | 15 min | :30 UTC each hour (events-based gate inside handler) |
 
 Optional smoke test (AWS CLI):
 
@@ -189,7 +189,7 @@ Check **Monitor** → **Logs** → CloudWatch log group `/aws/lambda/polymarket-
 | Schedule | Expression | Timezone |
 |----------|------------|----------|
 | `polymarket-trader-fetch-daily` | `cron(1 0 * * ? *)` | Asia/Hong_Kong |
-| `polymarket-trader-trade-hourly` | `cron(0 * * * ? *)` | UTC |
+| `polymarket-trader-trade-hourly` | `cron(30 * * * ? *)` | UTC |
 
 Both should be **Enabled**, target = corresponding Lambda.
 
@@ -269,7 +269,7 @@ Confirm the Lambda is in **ap-east-1**, not Singapore. Alternatives: **ap-northe
 
 Non-secret settings are SAM parameters in [`infrastructure/template.yaml`](../infrastructure/template.yaml):
 
-- `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`
+- `STRATEGY`, `YES_PRICE_MAX`, `TRADING_WINDOW_START_HOUR`, `TRADING_WINDOW_END_HOUR`, `ORDER_EXPIRY_MINUTES`
 - `ORDER_PRICE_SOURCE`, `SELECTION_PRICE_SOURCE`, `SHARE_COUNT`, etc.
 
 Change defaults in the template or redeploy:

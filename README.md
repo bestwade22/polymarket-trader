@@ -5,7 +5,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 ## Features
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
-- **Hourly trade** (`trade-hourly`): trades events when city local time is within the configured trading window (default 12:00–14:00). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
+- **Hourly trade** (`trade-hourly`): trades events on each **hourly :30 local tick** (12:30, 13:30, 14:30, …) within the trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -66,12 +66,12 @@ python -m src.main run-scheduler
 
 ### When trades run
 
-By default, the bot only trades cities whose **local time is within `TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** on the event date (default **12:00–14:00**). Each value accepts an hour (`12`), `HH:MM` (`12:30`), or `HHMM` (`1230`). Window bounds are computed from each city's timezone and `event_date` in the events file (e.g. London on June 19 ≈ 11:00–13:00 UTC when window is 12–14 local).
+By default, the bot trades cities on **hourly ticks** derived from the trading window (default **12:30**, **13:30**, **14:30** local) while inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **12:30–14:30**). Ticks are generated every hour from window start through window end — no separate slot list needed. Window bounds use each city's timezone and `event_date` in the events file.
 
-- Run during a city's window → that city is tradable.
-- Run outside all windows → `Found 0 tradable events in noon window` (expected).
-- Past event dates → all noon windows have passed; use `--all-cities` for a manual run.
-- `run-scheduler` calls `trade-hourly` every hour at `:00` UTC and picks up whichever cities are in window.
+- Run during a city's :30 tick inside the window → tradable.
+- Run outside ticks or window → `Found 0 tradable events` (expected).
+- Past event dates → all windows have passed; use `--all-cities` for a manual run.
+- `run-scheduler` calls `trade-hourly` at **:30 UTC** each hour to hit local :30 ticks across timezones.
 
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
@@ -114,9 +114,9 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
-| `ORDER_EXPIRY_HOURS` | `2` | Hours until unfilled orders expire (`GTD`). Set `0` for no expiry (`GTC`). |
-| `TRADING_WINDOW_START_HOUR` | `12` | Local time when trading opens: `12`, `12:30`, or `1230` (city timezone) |
-| `TRADING_WINDOW_END_HOUR` | `14` | Local time when trading closes (exclusive; `14`, `14:30`, `1430`, or `24:00`) |
+| `ORDER_EXPIRY_MINUTES` | `55` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
+| `TRADING_WINDOW_START_HOUR` | `12:30` | Local time when trading opens: `12`, `12:30`, or `1230` (city timezone) |
+| `TRADING_WINDOW_END_HOUR` | `14:30` | Local time when trading closes: `14`, `14:30`, or `1430` (city timezone) |
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
@@ -142,7 +142,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | Every hour at **:00 UTC** | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
+| `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is on a local trade tick; otherwise runs trade and commits `data/selections/*.json` |
 
 ```mermaid
 flowchart LR

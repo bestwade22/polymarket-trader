@@ -5,7 +5,7 @@ from config.settings import settings
 from src.trade.strategies.base import BaseStrategy, MarketSelection
 from src.trade.strategies.forecast_match import ForecastMatchStrategy
 from src.trade.strategies.highest_yes import HighestYesStrategy
-from src.utils.time_window import is_event_in_trading_window, next_trading_window_hint, trading_window_label
+from src.utils.time_window import is_event_tradable_now, next_trading_window_hint, trading_window_label
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ def filter_tradable_events(events: list[dict], *, all_cities: bool = False) -> l
     tradable = []
     window_label = trading_window_label()
     for event in events:
-        if is_event_in_trading_window(event):
+        if is_event_tradable_now(event):
             tradable.append(event)
         else:
             logger.debug(

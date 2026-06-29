@@ -9,7 +9,7 @@ from typing import Optional
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.utils.time_window import any_city_in_trading_window, is_event_in_trading_window  # noqa: E402
+from src.utils.time_window import any_city_in_trading_window, is_event_tradable_now  # noqa: E402
 
 
 def load_city_timezones(data_dir: Path) -> set[str]:
@@ -54,7 +54,7 @@ def load_events_file(data_dir: Path, file_date: date) -> list[dict]:
 
 
 def tradable_events(events: list[dict], now_utc: datetime) -> list[dict]:
-    return [event for event in events if is_event_in_trading_window(event, now_utc=now_utc)]
+    return [event for event in events if is_event_tradable_now(event, now_utc=now_utc)]
 
 
 def tradable_event_file_dates(
