@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from lambda_handlers.fetch_daily import resolve_fetch_date
-from lambda_handlers.trade_hourly import resolve_trade_date, should_run
+from lambda_handlers.trade_hourly import resolve_trade_date
 
 
 class TestResolveFetchDate:
@@ -36,15 +36,64 @@ class TestResolveTradeDate:
 
 class TestShouldRun:
     def test_force_bypasses_gate(self):
-        assert should_run(force=True) is True
+        from scripts.should_run_trade import evaluate_trade_gate
 
-    @patch("scripts.should_run_trade.should_run_trade", return_value=False)
-    def test_skips_outside_window(self, _mock_gate):
-        assert should_run(force=False, data_dir=None) is False
+        gate = evaluate_trade_gate()
+        assert isinstance(gate["should_run"], bool)
 
-    @patch("scripts.should_run_trade.should_run_trade", return_value=True)
-    def test_runs_inside_window(self, _mock_gate):
-        assert should_run(force=False, data_dir=None) is True
+    @patch("lambda_handlers.trade_hourly.gate_data_dir", return_value=None)
+    @patch("scripts.should_run_trade.evaluate_trade_gate")
+    @patch("lambda_handlers.trade_hourly.apply_secrets")
+    def test_skips_outside_window(self, _secrets, mock_gate, _gate_dir):
+        from lambda_handlers.trade_hourly import handler
+
+        mock_gate.return_value = {
+            "should_run": False,
+            "status": "skip",
+            "reason": "no_tradable_events",
+            "now_utc": "2026-06-30T15:35:12+00:00",
+            "window": "12:30–14:30",
+            "ticks": "hourly ticks",
+            "tradable_cities": [],
+            "events_loaded": 49,
+        }
+        result = handler({}, None)
+        assert result["status"] == "skipped"
+        assert result["reason"] == "no_tradable_events"
+
+    @patch("lambda_handlers.trade_hourly.run_trade_hourly")
+    @patch("lambda_handlers.trade_hourly.clone_or_update")
+    @patch("lambda_handlers.trade_hourly.git_settings_from_env", return_value=("o/r", "main", "pat"))
+    @patch("lambda_handlers.trade_hourly.tradable_dates_for_run", return_value=["2026-06-30"])
+    @patch("lambda_handlers.trade_hourly.gate_data_dir", return_value=None)
+    @patch("scripts.should_run_trade.evaluate_trade_gate")
+    @patch("lambda_handlers.trade_hourly.apply_secrets")
+    def test_runs_inside_window(
+        self,
+        _secrets,
+        mock_gate,
+        _gate_dir,
+        _dates,
+        _git,
+        mock_clone,
+        mock_run,
+    ):
+        from lambda_handlers.trade_hourly import handler
+
+        mock_gate.return_value = {
+            "should_run": True,
+            "status": "go",
+            "reason": "tradable_events",
+            "now_utc": "2026-06-30T15:35:12+00:00",
+            "window": "12:30–14:30",
+            "ticks": "hourly ticks",
+            "tradable_cities": ["Sao Paulo"],
+            "events_loaded": 49,
+        }
+        mock_clone.return_value = MagicMock()
+        result = handler({}, None)
+        assert result["status"] == "ok"
+        mock_run.assert_called_once()
 
 
 class TestFetchDailyHandler:
@@ -66,11 +115,22 @@ class TestFetchDailyHandler:
 
 
 class TestTradeHourlyHandler:
-    @patch("lambda_handlers.trade_hourly.should_run", return_value=False)
+    @patch("lambda_handlers.trade_hourly.gate_data_dir", return_value=None)
+    @patch("scripts.should_run_trade.evaluate_trade_gate")
     @patch("lambda_handlers.trade_hourly.apply_secrets")
-    def test_skipped_outside_window(self, _secrets, _gate):
+    def test_skipped_outside_window(self, _secrets, mock_gate, _gate_dir):
         from lambda_handlers.trade_hourly import handler
 
+        mock_gate.return_value = {
+            "should_run": False,
+            "status": "skip",
+            "reason": "no_tradable_events",
+            "now_utc": "2026-06-30T15:35:12+00:00",
+            "window": "12:30–14:30",
+            "ticks": "hourly ticks",
+            "tradable_cities": [],
+            "events_loaded": 49,
+        }
         result = handler({}, None)
         assert result["status"] == "skipped"
-        assert result["reason"] == "outside_trading_window"
+        assert result["reason"] == "no_tradable_events"

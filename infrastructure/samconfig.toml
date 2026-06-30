@@ -14,7 +14,7 @@ resolve_s3 = true
 resolve_image_repos = true
 region = "ap-east-1"
 # Override on first deploy: sam deploy --parameter-overrides GitHubRepo=owner/polymarket-trader
-parameter_overrides = "GitHubRepo=OWNER/REPO GitBranch=main"
+parameter_overrides = "GitHubRepo=OWNER/REPO GitBranch=main TradingWindowStartHour=12:30 TradingWindowEndHour=14:30 OrderExpiryMinutes=55"
 
 [default.package.parameters]
 resolve_s3 = true
