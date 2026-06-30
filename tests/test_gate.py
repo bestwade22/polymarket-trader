@@ -85,6 +85,65 @@ class TestShouldRunTradeEvents:
         assert mod.tradable_event_file_dates(now_utc=now, data_dir=tmp_path) == [now.date().isoformat()]
 
 
+class TestDescribeEventGate:
+    def test_in_window_event(self, monkeypatch):
+        from config import settings as settings_mod
+
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_hour", 12)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_minute", 30)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_hour", 14)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_minute", 30)
+
+        import importlib.util
+
+        path = PROJECT_ROOT / "scripts" / "should_run_trade.py"
+        spec = importlib.util.spec_from_file_location("should_run_trade", path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(mod)
+
+        from src.utils.time_window import trading_window_bounds_utc
+
+        bounds = trading_window_bounds_utc("2026-06-28", "America/New_York")
+        assert bounds is not None
+        start, _end = bounds
+        now = start + timedelta(minutes=15)
+        event = _sample_event("2026-06-28", "America/New_York", "NYC")
+
+        detail = mod.describe_event_gate(event, now)
+        assert detail["tradable"] is True
+        assert detail["reason"] == "in_window"
+        assert detail["local_now"].startswith("2026-06-28")
+
+    def test_after_window_event(self, monkeypatch):
+        from config import settings as settings_mod
+
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_hour", 12)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_start_minute", 30)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_hour", 14)
+        monkeypatch.setattr(settings_mod.settings, "trading_window_end_minute", 30)
+
+        import importlib.util
+
+        path = PROJECT_ROOT / "scripts" / "should_run_trade.py"
+        spec = importlib.util.spec_from_file_location("should_run_trade", path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(mod)
+
+        from src.utils.time_window import trading_window_bounds_utc
+
+        bounds = trading_window_bounds_utc("2026-06-28", "America/New_York")
+        assert bounds is not None
+        _start, end = bounds
+        now = end + timedelta(minutes=5)
+        event = _sample_event("2026-06-28", "America/New_York", "NYC")
+
+        detail = mod.describe_event_gate(event, now)
+        assert detail["tradable"] is False
+        assert detail["reason"] == "after_window"
+
+
 class TestGateDataFetch:
     @patch("lambda_handlers.gate_data.requests.get")
     def test_fetch_skips_404(self, mock_get, tmp_path):

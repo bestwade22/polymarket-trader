@@ -5,7 +5,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 ## Features
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
-- **Hourly trade** (`trade-hourly`): trades events on each **hourly :30 local tick** (12:30, 13:30, 14:30, …) within the trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
+- **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -66,12 +66,12 @@ python -m src.main run-scheduler
 
 ### When trades run
 
-By default, the bot trades cities on **hourly ticks** derived from the trading window (default **12:30**, **13:30**, **14:30** local) while inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **12:30–14:30**). Ticks are generated every hour from window start through window end — no separate slot list needed. Window bounds use each city's timezone and `event_date` in the events file.
+By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **12:30–14:30** local). Window bounds use each city's timezone and `event_date` in the events file.
 
-- Run during a city's :30 tick inside the window → tradable.
-- Run outside ticks or window → `Found 0 tradable events` (expected).
+- Run during a city's trading window → tradable.
+- Run outside the window → `Found 0 tradable events` (expected).
 - Past event dates → all windows have passed; use `--all-cities` for a manual run.
-- `run-scheduler` calls `trade-hourly` at **:30 UTC** each hour to hit local :30 ticks across timezones.
+- `run-scheduler` and AWS Lambda call `trade-hourly` at **:30 UTC** each hour; the gate skips when no event is in its local window.
 
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
@@ -142,7 +142,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is on a local trade tick; otherwise runs trade and commits `data/selections/*.json` |
+| `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 
 ```mermaid
 flowchart LR

@@ -61,6 +61,64 @@ def selection_paths(event_date: str) -> List[str]:
     return [os.path.relpath(path, WORKSPACE) for path in sorted(glob.glob(pattern))]
 
 
+def log_gate_details(gate: Dict[str, Any]) -> None:
+    """Log per-event gate breakdown so CloudWatch shows why the gate passed or skipped."""
+    logger.info(
+        "Gate summary: status=%s reason=%s window=%s data_dir=%s files=%s "
+        "events_loaded=%s tradable_count=%s tradable_cities=%s",
+        gate.get("status"),
+        gate.get("reason"),
+        gate.get("window"),
+        gate.get("data_dir"),
+        gate.get("files_checked", []),
+        gate.get("events_loaded", 0),
+        gate.get("tradable_count", len(gate.get("tradable_cities", []))),
+        gate.get("tradable_cities", []),
+    )
+
+    for check in gate.get("event_checks", []):
+        if not check.get("tradable"):
+            continue
+        logger.info(
+            "Gate tradable: city=%s event_date=%s tz=%s local_now=%s "
+            "window_local=%s window_utc=%s..%s reason=%s",
+            check.get("city"),
+            check.get("event_date"),
+            check.get("timezone"),
+            check.get("local_now"),
+            check.get("window_local"),
+            check.get("window_utc_start"),
+            check.get("window_utc_end"),
+            check.get("reason"),
+        )
+
+    skipped = [check for check in gate.get("event_checks", []) if not check.get("tradable")]
+    if skipped:
+        reason_counts: Dict[str, int] = {}
+        for check in skipped:
+            reason = str(check.get("reason", "unknown"))
+            reason_counts[reason] = reason_counts.get(reason, 0) + 1
+        logger.info("Gate skipped events by reason: %s", reason_counts)
+
+        sample_limit = 8
+        for check in skipped[:sample_limit]:
+            logger.info(
+                "Gate skipped sample: city=%s event_date=%s tz=%s local_now=%s "
+                "window_local=%s reason=%s",
+                check.get("city"),
+                check.get("event_date"),
+                check.get("timezone"),
+                check.get("local_now"),
+                check.get("window_local"),
+                check.get("reason"),
+            )
+        if len(skipped) > sample_limit:
+            logger.info(
+                "Gate skipped %d more events (not shown); see gate.event_checks in response",
+                len(skipped) - sample_limit,
+            )
+
+
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     configure_logging()
     apply_secrets()
@@ -72,21 +130,29 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     force = bool(payload.get("force", False))
     now_utc = datetime.now(timezone.utc)
 
+    window_label = (
+        f"{settings.trading_window_start_hour:02d}:{settings.trading_window_start_minute:02d}"
+        f"-{settings.trading_window_end_hour:02d}:{settings.trading_window_end_minute:02d}"
+    )
     logger.info(
-        "trade-hourly start force=%s now_utc=%s window=%s ticks=%s",
+        "trade-hourly start force=%s now_utc=%s window=%s",
         force,
         now_utc.isoformat(),
-        f"{settings.trading_window_start_hour:02d}:{settings.trading_window_start_minute:02d}"
-        f"-{settings.trading_window_end_hour:02d}:{settings.trading_window_end_minute:02d}",
-        os.environ.get("TRADING_WINDOW_START_HOUR", ""),
+        window_label,
     )
 
     gate_dir = gate_data_dir(force)
+    if gate_dir is not None:
+        logger.info("Gate data dir: %s", gate_dir)
+    else:
+        logger.info("Gate data dir: none (force=%s or missing GIT/GITHUB_PAT)", force)
+
     gate = evaluate_trade_gate(now_utc=now_utc, data_dir=gate_dir)
+    log_gate_details(gate)
 
     if not force and gate["status"] == "skip":
         message = (
-            f"Gate skip: {gate['reason']}; window={gate['window']}; ticks={gate['ticks']}; "
+            f"Gate skip: {gate['reason']}; window={gate['window']}; "
             f"events_loaded={gate['events_loaded']}; now_utc={gate['now_utc']}"
         )
         logger.info(message)
@@ -120,7 +186,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         if not dates_to_trade:
             message = (
                 f"No tradable events after clone; window={gate['window']}; "
-                f"ticks={gate['ticks']}; now_utc={now_utc.isoformat()}"
+                f"now_utc={now_utc.isoformat()}"
             )
             logger.info(message)
             print(message)

@@ -53,7 +53,6 @@ class TestShouldRun:
             "reason": "no_tradable_events",
             "now_utc": "2026-06-30T15:35:12+00:00",
             "window": "12:30–14:30",
-            "ticks": "hourly ticks",
             "tradable_cities": [],
             "events_loaded": 49,
         }
@@ -86,7 +85,6 @@ class TestShouldRun:
             "reason": "tradable_events",
             "now_utc": "2026-06-30T15:35:12+00:00",
             "window": "12:30–14:30",
-            "ticks": "hourly ticks",
             "tradable_cities": ["Sao Paulo"],
             "events_loaded": 49,
         }
@@ -127,7 +125,6 @@ class TestTradeHourlyHandler:
             "reason": "no_tradable_events",
             "now_utc": "2026-06-30T15:35:12+00:00",
             "window": "12:30–14:30",
-            "ticks": "hourly ticks",
             "tradable_cities": [],
             "events_loaded": 49,
         }
