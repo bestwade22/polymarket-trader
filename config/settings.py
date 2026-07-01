@@ -132,6 +132,13 @@ def _parse_order_expiry_hours() -> float:
     return 55.0 / 60.0
 
 
+def _parse_stop_loss_order_expiry_hours() -> float:
+    mins = os.getenv("STOP_LOSS_ORDER_EXPIRY_MINUTES")
+    if mins is not None and mins.strip():
+        return float(mins.strip()) / 60.0
+    return 13.0 / 60.0
+
+
 def _parse_optional_int(name: str) -> Optional[int]:
     raw = os.getenv(name)
     if raw is None or not raw.strip():
@@ -154,6 +161,7 @@ class Settings:
         os.getenv("ORDER_PRICE_SOURCE", "midpoint")
     )
     order_expiry_hours: float = _parse_order_expiry_hours()
+    stop_loss_order_expiry_hours: float = _parse_stop_loss_order_expiry_hours()
     trading_window_start_hour: int = _trading_window_start_h
     trading_window_start_minute: int = _trading_window_start_m
     trading_window_end_hour: int = _trading_window_end_h

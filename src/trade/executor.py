@@ -237,7 +237,9 @@ class TradeExecutor:
     ) -> dict[str, Any]:
         size = float(share_count if share_count is not None else selection.share_count)
         order_price = self._resolve_sell_price(selection)
-        expiration, order_type_name = compute_order_expiration(settings.order_expiry_hours)
+        expiration, order_type_name = compute_order_expiration(
+            settings.stop_loss_order_expiry_hours
+        )
         expires_at = (
             datetime.fromtimestamp(expiration, tz=timezone.utc).isoformat()
             if expiration

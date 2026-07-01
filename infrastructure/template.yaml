@@ -45,7 +45,10 @@ Parameters:
     Default: highest-temperature-in-
   StopLossDryRun:
     Type: String
-    Default: 'true'
+    Default: 'false'
+  StopLossOrderExpiryMinutes:
+    Type: String
+    Default: '13'
 
 Globals:
   Function:
@@ -131,6 +134,7 @@ Resources:
           STOP_LOSS_PCT: !Ref StopLossPct
           STOP_LOSS_EVENT_SLUG_MARKER: !Ref StopLossEventSlugMarker
           STOP_LOSS_DRY_RUN: !Ref StopLossDryRun
+          STOP_LOSS_ORDER_EXPIRY_MINUTES: !Ref StopLossOrderExpiryMinutes
           SIGNATURE_TYPE: !Ref SignatureType
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:

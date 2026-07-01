@@ -125,7 +125,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
-| `STOP_LOSS_DRY_RUN` | `true` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
+| `STOP_LOSS_DRY_RUN` | `false` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
+| `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
 
 ## Data layout
 
@@ -231,7 +232,7 @@ python scripts/check_geoblock.py
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` to enable live **buy** orders, and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders. They are independent flags. No redeploy needed when sourced from Secrets Manager values loaded at runtime.
+Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=55`), and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders (default expiry `STOP_LOSS_ORDER_EXPIRY_MINUTES=13`). They are independent flags.
 
 ### Deploy troubleshooting
 

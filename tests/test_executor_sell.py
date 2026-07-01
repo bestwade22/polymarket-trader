@@ -48,6 +48,15 @@ class TestSellYes:
         assert mock_place.call_args.kwargs["share_count"] == 8.0
         assert result["order_id"] == "abc"
 
+    @patch("src.trade.executor.compute_order_expiration", return_value=(999, "GTD"))
+    @patch.object(TradeExecutor, "_resolve_sell_price", return_value=0.24)
+    def test_sell_uses_stop_loss_order_expiry(self, _price, mock_expiry):
+        from config.settings import settings
+
+        executor = TradeExecutor(dry_run=True)
+        executor.sell_yes(_selection(), share_count=10)
+        mock_expiry.assert_called_once_with(settings.stop_loss_order_expiry_hours)
+
     @patch("src.trade.executor._import_clob")
     @patch.object(TradeExecutor, "_get_client")
     def test_place_order_clamps_low_price_to_min(self, mock_get_client, mock_import):
