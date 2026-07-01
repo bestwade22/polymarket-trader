@@ -382,5 +382,17 @@
     "avg_buy_price": 0.46,
     "value_pct": 0.10869565217391304,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xa736fcd7d0769550453995623227d835ccea19089009fdc36c16c3d8b80c505e",
+    "token_id": "70886592436736558073435505985137456142757860091625899928866850367925516400128",
+    "order_id": "0xe1d7cd615c15bd09a0250bb28c0ecdb9b03aded3c970383958b513d9dbf75258",
+    "sold_at": "2026-07-01T18:15:19.176156+00:00",
+    "event_slug": "highest-temperature-in-warsaw-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
   }
 ]
