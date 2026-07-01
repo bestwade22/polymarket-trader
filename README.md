@@ -6,6 +6,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
 - **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
+- **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, sells when current midpoint value is ≤ `STOP_LOSS_PCT`% of average buy price (default 50%), and skips duplicate sells when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -44,6 +45,10 @@ python -m src.main trade-hourly --date 2026-06-19 --live
 
 # Manual run outside the noon window (trades every city for the date)
 python -m src.main trade-hourly --date 2026-06-19 --all-cities --live
+
+# Stop-loss check (dry-run by default)
+python -m src.main check-stop-loss
+python -m src.main check-stop-loss --live
 
 # Run built-in scheduler (daily fetch + hourly trade)
 python -m src.main run-scheduler
@@ -120,6 +125,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
+| `STOP_LOSS_DRY_RUN` | `true` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
 
 ## Data layout
 
@@ -143,6 +149,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
 | `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
+| `stop-loss-check` | **Every 15 min UTC** | Scans live positions via Data API; sells highest-temp holdings when value ≤ `STOP_LOSS_PCT`% of avg buy |
 
 ```mermaid
 flowchart LR
@@ -153,18 +160,24 @@ flowchart LR
   subgraph aws [AWS ap-east-1]
     EB1[Scheduler fetch 00:01 HKT]
     EB2[Scheduler hourly UTC]
+    EB3[Scheduler stop-loss 15m]
     LF[fetch-daily Lambda]
     LT[trade-hourly Lambda]
+    LS[stop-loss-check Lambda]
     SM[Secrets Manager]
   end
   DeployGHA -->|sam deploy| LF
   DeployGHA -->|sam deploy| LT
+  DeployGHA -->|sam deploy| LS
   EB1 --> LF
   EB2 --> LT
+  EB3 --> LS
   LF --> Repo
   LT --> Repo
+  LS --> Repo
   SM --> LF
   SM --> LT
+  SM --> LS
 ```
 
 ### One-time AWS setup
@@ -200,6 +213,11 @@ aws lambda invoke --function-name polymarket-trader-trade-hourly \
   --region ap-east-1 \
   --payload '{"force":true,"date":"2026-06-27"}' out.json && cat out.json
 
+# Stop-loss check (skips clone when wallet has no positions)
+aws lambda invoke --function-name polymarket-trader-stop-loss-check \
+  --region ap-east-1 \
+  --payload '{}' out.json && cat out.json
+
 # Optional: verify Polymarket geoblock from your machine (HK/ap-east-1 is not restricted)
 python scripts/check_geoblock.py
 ```
@@ -207,12 +225,13 @@ python scripts/check_geoblock.py
 ### Data storage
 
 - **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`) via `git add -f` from Lambda.
-- **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`).
+- **Stop-loss runs** commit `data/positions/sold_events.json` and `data/stop_loss/*.json`.
+- **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`, `...-stop-loss-check`).
 - **`bought_events.json`** is force-committed when live trading updates it.
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` in that Secrets Manager secret or in your local `.env`. No redeploy needed — Lambda reads it on each invoke. Test with a manual invoke and `force: true` before relying on the schedule.
+Set `DRY_RUN=false` to enable live **buy** orders, and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders. They are independent flags. No redeploy needed when sourced from Secrets Manager values loaded at runtime.
 
 ### Deploy troubleshooting
 

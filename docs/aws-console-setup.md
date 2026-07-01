@@ -159,6 +159,7 @@ Outputs:
 |--------|-----|
 | `FetchDailyFunctionArn` | Manual test / monitoring |
 | `TradeHourlyFunctionArn` | Manual test / monitoring |
+| `StopLossCheckFunctionArn` | Manual test / monitoring |
 | `TraderSecretArn` | Step 5 secret |
 
 ### Lambda
@@ -169,6 +170,7 @@ Outputs:
 |----------|---------|----------|
 | `polymarket-trader-fetch-daily` | 5 min | 00:01 HKT daily |
 | `polymarket-trader-trade-hourly` | 15 min | :30 UTC each hour (events-based gate inside handler) |
+| `polymarket-trader-stop-loss-check` | 15 min | Every 15 min UTC |
 
 Optional smoke test (AWS CLI):
 
@@ -190,6 +192,7 @@ Check **Monitor** → **Logs** → CloudWatch log group `/aws/lambda/polymarket-
 |----------|------------|----------|
 | `polymarket-trader-fetch-daily` | `cron(1 0 * * ? *)` | Asia/Hong_Kong |
 | `polymarket-trader-trade-hourly` | `cron(30 * * * ? *)` | UTC |
+| `polymarket-trader-stop-loss-check` | `cron(0/15 * * * ? *)` | UTC |
 
 Both should be **Enabled**, target = corresponding Lambda.
 
@@ -237,7 +240,7 @@ GitHub → Settings → Variables → Actions:
 
 Switch console region to **Asia Pacific (Singapore) ap-southeast-1**:
 
-1. **EventBridge Scheduler** → disable/delete `polymarket-trader-fetch-daily` and `polymarket-trader-trade-hourly`
+1. **EventBridge Scheduler** → disable/delete `polymarket-trader-fetch-daily`, `polymarket-trader-trade-hourly`, and `polymarket-trader-stop-loss-check`
 2. **CloudFormation** → delete stack `polymarket-trader` (wait for complete)
 3. **CloudFormation** → delete stack `aws-sam-cli-managed-default`
    - If stuck: **S3** → empty bucket `aws-sam-cli-managed-default-samclisourcebucket-*` → delete → retry stack delete

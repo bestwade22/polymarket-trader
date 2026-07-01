@@ -12,6 +12,8 @@ POSITIONS_DIR = DATA_DIR / "positions"
 LOGS_DIR = PROJECT_ROOT / "logs"
 TRADES_LOG_DIR = LOGS_DIR / "trades"
 BOUGHT_EVENTS_FILE = POSITIONS_DIR / "bought_events.json"
+SOLD_EVENTS_FILE = POSITIONS_DIR / "sold_events.json"
+STOP_LOSS_DIR = DATA_DIR / "stop_loss"
 CITY_COORDS_FILE = DATA_DIR / "city_coords.json"
 
 load_dotenv(PROJECT_ROOT / ".env")
@@ -130,6 +132,13 @@ def _parse_order_expiry_hours() -> float:
     return 55.0 / 60.0
 
 
+def _parse_optional_int(name: str) -> Optional[int]:
+    raw = os.getenv(name)
+    if raw is None or not raw.strip():
+        return None
+    return int(raw.strip())
+
+
 class Settings:
     api_ninjas_key: str = os.getenv("API_NINJAS_KEY", "")
     private_key: str = os.getenv("PRIVATE_KEY", "")
@@ -150,13 +159,20 @@ class Settings:
     trading_window_end_hour: int = _trading_window_end_h
     trading_window_end_minute: int = _trading_window_end_m
     dry_run: bool = _env_bool("DRY_RUN", True)
+    stop_loss_dry_run: bool = _env_bool("STOP_LOSS_DRY_RUN", _env_bool("DRY_RUN", True))
     daily_fetch_hour_utc: int = int(os.getenv("DAILY_FETCH_HOUR_UTC", "6"))
     event_date: str = os.getenv("EVENT_DATE", "")  # YYYY-MM-DD override; empty = today
+    stop_loss_pct: float = float(os.getenv("STOP_LOSS_PCT", "50"))
+    stop_loss_sell_shares: Optional[int] = _parse_optional_int("STOP_LOSS_SELL_SHARES")
+    stop_loss_event_slug_marker: str = os.getenv(
+        "STOP_LOSS_EVENT_SLUG_MARKER", "highest-temperature-in-"
+    )
+    data_api_base: str = os.getenv("DATA_API_BASE", "https://data-api.polymarket.com")
 
 
 settings = Settings()
 
 
 def ensure_dirs() -> None:
-    for path in (DATA_DIR, SELECTIONS_DIR, POSITIONS_DIR, LOGS_DIR, TRADES_LOG_DIR):
+    for path in (DATA_DIR, SELECTIONS_DIR, POSITIONS_DIR, STOP_LOSS_DIR, LOGS_DIR, TRADES_LOG_DIR):
         path.mkdir(parents=True, exist_ok=True)

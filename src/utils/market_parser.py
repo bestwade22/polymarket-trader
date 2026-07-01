@@ -150,6 +150,14 @@ def get_buy_price(market: dict) -> Optional[float]:
     return get_yes_price(market)
 
 
+def get_sell_price(market: dict) -> Optional[float]:
+    """Limit price for sell orders — midpoint first, then best bid."""
+    midpoint = _get_book_midpoint(market)
+    if midpoint is not None:
+        return midpoint
+    return parse_float(market.get("bestBid"))
+
+
 def get_order_min_size(market: dict) -> int:
     return int(market.get("orderMinSize") or 5)
 

@@ -70,6 +70,19 @@ def test_filter_events_without_open_orders_skips_city_with_open_order():
     assert skipped[0]["city"] == "Miami"
 
 
+def test_token_has_open_sell_order():
+    checker = _FakeChecker(
+        [
+            {"asset_id": "token_yes_92", "side": "SELL", "id": "0xs1"},
+            {"asset_id": "token_yes_94", "side": "BUY", "id": "0xb1"},
+        ]
+    )
+    has_open, orders = checker.token_has_open_sell_order("token_yes_92")
+    assert has_open is True
+    assert len(orders) == 1
+    assert orders[0]["id"] == "0xs1"
+
+
 if __name__ == "__main__":
     test_collect_event_yes_token_ids()
     test_event_has_open_order_matches_any_market_in_city()

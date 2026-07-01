@@ -15,6 +15,7 @@ from apscheduler.triggers.cron import CronTrigger
 from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
 from src.trade.hourly_runner import run_hourly_trade
+from src.trade.stop_loss_runner import run_stop_loss_check
 from src.utils.trade_logger import setup_app_logging
 
 
@@ -42,6 +43,11 @@ def cmd_trade_hourly(args: argparse.Namespace) -> None:
         all_cities=args.all_cities,
     )
     logging.info("Hourly trade complete: %s", result)
+
+
+def cmd_check_stop_loss(args: argparse.Namespace) -> None:
+    result = run_stop_loss_check(dry_run=args.dry_run)
+    logging.info("Stop-loss check complete: %s", result)
 
 
 def cmd_run_scheduler(_args: argparse.Namespace) -> None:
@@ -100,6 +106,19 @@ def main() -> None:
 
     sub.add_parser("run-scheduler", help="Run daily + hourly scheduler")
 
+    stop_loss_parser = sub.add_parser("check-stop-loss", help="Check live positions for stop-loss")
+    stop_loss_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        default=None,
+        help="Simulate sells without placing orders",
+    )
+    stop_loss_parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Place real sell orders (overrides DRY_RUN env)",
+    )
+
     args = parser.parse_args()
 
     if args.command == "trade-hourly":
@@ -108,9 +127,16 @@ def main() -> None:
         elif args.dry_run is None:
             args.dry_run = settings.dry_run
 
+    if args.command == "check-stop-loss":
+        if args.live:
+            args.dry_run = False
+        elif args.dry_run is None:
+            args.dry_run = settings.stop_loss_dry_run
+
     commands = {
         "fetch-daily": cmd_fetch_daily,
         "trade-hourly": cmd_trade_hourly,
+        "check-stop-loss": cmd_check_stop_loss,
         "run-scheduler": cmd_run_scheduler,
     }
     commands[args.command](args)

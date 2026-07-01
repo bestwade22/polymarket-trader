@@ -1,14 +1,17 @@
 import logging
 import time
 from datetime import datetime, timezone
+from decimal import Decimal, ROUND_DOWN, InvalidOperation
 from typing import Any, Optional
 
 from config.settings import CHAIN_ID, CLOB_HOST, settings
 from src.trade.price_refresher import refresh_market_prices
 from src.trade.strategies.base import MarketSelection
-from src.utils.market_parser import get_buy_price, get_order_price, get_selection_price
+from src.utils.market_parser import get_buy_price, get_order_price, get_selection_price, get_sell_price
 
 logger = logging.getLogger(__name__)
+MIN_ORDER_PRICE = Decimal("0.001")
+MAX_ORDER_PRICE = Decimal("0.999")
 
 SIGNER_API_KEY_MISMATCH = (
     "Order signer address does not match the CLOB API key address. "
@@ -25,7 +28,7 @@ def _import_clob():
     """Import CLOB client (v2 preferred, v1 fallback)."""
     try:
         from py_clob_client_v2 import ClobClient, OrderArgs, OrderType, PartialCreateOrderOptions
-        from py_clob_client_v2.order_builder.constants import BUY
+        from py_clob_client_v2.order_builder.constants import BUY, SELL
 
         try:
             from py_clob_client_v2 import SignatureTypeV2
@@ -39,16 +42,16 @@ def _import_clob():
         except ImportError:
             sig_map = None
 
-        return "v2", ClobClient, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, sig_map
+        return "v2", ClobClient, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, SELL, sig_map
     except ImportError:
         pass
 
     try:
         from py_clob_client.client import ClobClient
         from py_clob_client.clob_types import OrderArgs, OrderType, PartialCreateOrderOptions
-        from py_clob_client.order_builder.constants import BUY
+        from py_clob_client.order_builder.constants import BUY, SELL
 
-        return "v1", ClobClient, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, None
+        return "v1", ClobClient, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, SELL, None
     except ImportError as exc:
         raise ImportError(
             "Install py-clob-client-v2 (Python >=3.9.10) or py-clob-client for live trading"
@@ -78,7 +81,7 @@ class TradeExecutor:
         if not settings.private_key:
             raise ValueError("PRIVATE_KEY not configured")
 
-        version, ClobClient, _, _, _, _, sig_map = _import_clob()
+        version, ClobClient, _, _, _, _, _, sig_map = _import_clob()
 
         if version == "v2":
             signature_type = (
@@ -163,6 +166,35 @@ class TradeExecutor:
             f"Could not resolve order price for market {selection.market_id} (source={source})"
         )
 
+    def _resolve_sell_price(self, selection: MarketSelection) -> float:
+        if selection.market:
+            fresh = refresh_market_prices(selection.market)
+            selection.market = fresh
+            price = get_sell_price(fresh)
+            if price is not None:
+                logger.info(
+                    "Sell price for market %s (%s): %.4f via midpoint",
+                    selection.market_id,
+                    selection.group_item_title,
+                    price,
+                )
+                return price
+
+        if selection.market:
+            for key in ("midpoint", "bestBid"):
+                raw = selection.market.get(key)
+                if raw is not None:
+                    price = float(raw)
+                    logger.warning(
+                        "Using stale %s %.4f for sell market %s",
+                        key,
+                        price,
+                        selection.market_id,
+                    )
+                    return price
+
+        raise ValueError(f"Could not resolve sell price for market {selection.market_id}")
+
     def buy_yes(self, selection: MarketSelection) -> dict[str, Any]:
         order_price = self._resolve_order_price(selection)
         expiration, order_type_name = compute_order_expiration(settings.order_expiry_hours)
@@ -188,45 +220,144 @@ class TradeExecutor:
             logger.info("DRY RUN buy: %s", result)
             return result
 
-        version, _, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, _ = _import_clob()
+        return self._place_order(
+            selection=selection,
+            order_price=order_price,
+            share_count=float(selection.share_count),
+            side_name="BUY",
+            order_type_name=order_type_name,
+            expiration=expiration,
+            expires_at=expires_at,
+        )
+
+    def sell_yes(
+        self,
+        selection: MarketSelection,
+        share_count: Optional[float] = None,
+    ) -> dict[str, Any]:
+        size = float(share_count if share_count is not None else selection.share_count)
+        order_price = self._resolve_sell_price(selection)
+        expiration, order_type_name = compute_order_expiration(settings.order_expiry_hours)
+        expires_at = (
+            datetime.fromtimestamp(expiration, tz=timezone.utc).isoformat()
+            if expiration
+            else None
+        )
+
+        if self.dry_run:
+            result = {
+                "dry_run": True,
+                "status": "simulated",
+                "side": "SELL",
+                "token_id": selection.yes_token_id,
+                "price": order_price,
+                "size": size,
+                "market_id": selection.market_id,
+                "event_id": selection.event_id,
+                "order_type": order_type_name,
+                "expiration": expiration,
+                "expires_at": expires_at,
+            }
+            logger.info("DRY RUN sell: %s", result)
+            return result
+
+        return self._place_order(
+            selection=selection,
+            order_price=order_price,
+            share_count=size,
+            side_name="SELL",
+            order_type_name=order_type_name,
+            expiration=expiration,
+            expires_at=expires_at,
+        )
+
+    def _place_order(
+        self,
+        *,
+        selection: MarketSelection,
+        order_price: float,
+        share_count: float,
+        side_name: str,
+        order_type_name: str,
+        expiration: int,
+        expires_at: Optional[str],
+    ) -> dict[str, Any]:
+        version, _, OrderArgs, OrderType, PartialCreateOrderOptions, BUY, SELL, _ = _import_clob()
         client = self._get_client()
         order_type = OrderType.GTD if order_type_name == "GTD" else OrderType.GTC
+        side = SELL if side_name == "SELL" else BUY
+        safe_price = self._sanitize_order_price(
+            order_price=order_price,
+            tick_size=selection.tick_size,
+            market_id=selection.market_id,
+            side_name=side_name,
+        )
 
         order_kwargs = {
             "token_id": selection.yes_token_id,
-            "price": order_price,
-            "size": float(selection.share_count),
-            "side": BUY,
+            "price": safe_price,
+            "size": share_count,
+            "side": side,
             "expiration": expiration,
         }
 
-        if version == "v2":
-            response = client.create_and_post_order(
-                OrderArgs(**order_kwargs),
-                options=PartialCreateOrderOptions(
-                    tick_size=selection.tick_size,
-                    neg_risk=selection.neg_risk,
-                ),
-                order_type=order_type,
-            )
-        else:
-            response = client.create_and_post_order(
-                OrderArgs(**order_kwargs),
-                options=PartialCreateOrderOptions(
-                    tick_size=selection.tick_size,
-                    neg_risk=selection.neg_risk,
-                ),
-                order_type=order_type,
-            )
+        response = client.create_and_post_order(
+            OrderArgs(**order_kwargs),
+            options=PartialCreateOrderOptions(
+                tick_size=selection.tick_size,
+                neg_risk=selection.neg_risk,
+            ),
+            order_type=order_type,
+        )
 
-        logger.info("Order placed: %s", response)
+        logger.info("%s order placed: %s", side_name, response)
         return {
             "dry_run": False,
+            "side": side_name,
             "order_id": response.get("orderID") or response.get("order_id"),
             "status": response.get("status"),
-            "price": order_price,
+            "price": safe_price,
+            "size": share_count,
+            "market_id": selection.market_id,
+            "event_id": selection.event_id,
             "order_type": order_type_name,
             "expiration": expiration,
             "expires_at": expires_at,
             "response": response,
         }
+
+    def _sanitize_order_price(
+        self,
+        *,
+        order_price: float,
+        tick_size: str,
+        market_id: str,
+        side_name: str,
+    ) -> float:
+        raw = Decimal(str(order_price))
+        step = self._parse_tick_size(tick_size)
+        adjusted = max(MIN_ORDER_PRICE, min(MAX_ORDER_PRICE, raw))
+        ticks = (adjusted / step).to_integral_value(rounding=ROUND_DOWN)
+        normalized = ticks * step
+        normalized = max(MIN_ORDER_PRICE, min(MAX_ORDER_PRICE, normalized))
+        normalized_f = float(normalized)
+        if abs(normalized_f - order_price) > 1e-12:
+            logger.info(
+                "Adjusted %s price for market %s from %.6f to %.6f (tick=%s, range=0.001-0.999)",
+                side_name,
+                market_id,
+                order_price,
+                normalized_f,
+                step,
+            )
+        return normalized_f
+
+    @staticmethod
+    def _parse_tick_size(tick_size: str) -> Decimal:
+        try:
+            parsed = Decimal(str(tick_size))
+        except (InvalidOperation, TypeError, ValueError):
+            return Decimal("0.001")
+        if parsed <= 0:
+            return Decimal("0.001")
+        return parsed

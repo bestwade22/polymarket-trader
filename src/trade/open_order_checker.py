@@ -28,6 +28,11 @@ def _is_buy_order(order: dict[str, Any]) -> bool:
     return side in ("BUY", "B", "0")
 
 
+def _is_sell_order(order: dict[str, Any]) -> bool:
+    side = str(order.get("side", "")).upper()
+    return side in ("SELL", "S", "1")
+
+
 class LiveOpenOrderChecker:
     """Detect open CLOB buy orders for markets in a city/event."""
 
@@ -42,7 +47,7 @@ class LiveOpenOrderChecker:
             self._orders = []
             return self._orders
         try:
-            version, _, _, _, _, _, _ = _import_clob()
+            version, _, _, _, _, _, _, _ = _import_clob()
             client = self.executor._get_client()
             if version == "v2":
                 orders = client.get_open_orders()
@@ -64,6 +69,17 @@ class LiveOpenOrderChecker:
         for order in self.get_open_orders():
             asset_id = _order_asset_id(order)
             if asset_id and asset_id in token_ids and _is_buy_order(order):
+                matching.append(order)
+        return bool(matching), matching
+
+    def token_has_open_sell_order(self, token_id: str) -> tuple[bool, list[dict[str, Any]]]:
+        """True when the token already has an open sell order."""
+        if not token_id:
+            return False, []
+        matching: list[dict[str, Any]] = []
+        for order in self.get_open_orders():
+            asset_id = _order_asset_id(order)
+            if asset_id and asset_id == str(token_id) and _is_sell_order(order):
                 matching.append(order)
         return bool(matching), matching
 

@@ -47,7 +47,7 @@ class LivePositionChecker:
         if cached is not None or token_id in self._balance_cache:
             return cached
         try:
-            version, _, _, _, _, _, _ = _import_clob()
+            version, _, _, _, _, _, _, _ = _import_clob()
             client = self.executor._get_client()
             if version == "v2":
                 from py_clob_client_v2 import AssetType, BalanceAllowanceParams
