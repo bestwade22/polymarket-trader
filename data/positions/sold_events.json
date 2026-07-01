@@ -22,5 +22,17 @@
     "avg_buy_price": 0.316,
     "value_pct": 17.87974683544304,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xb23428547586a4bc91ed7588ecf54a19becd1e15cd4e6ca67a9380528d69c460",
+    "token_id": "95237430301401657245226662725430588508697639087502778499025757805918283777302",
+    "order_id": "0x491951e75bd0fee1f35f5559848f02f8a76f7dfc18baf012bf40c55788bfd8c3",
+    "sold_at": "2026-07-01T11:45:24.725342+00:00",
+    "event_slug": "highest-temperature-in-moscow-on-july-1-2026",
+    "price": 0.002,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "value_pct": 0.5,
+    "reason": "below_threshold"
   }
 ]
