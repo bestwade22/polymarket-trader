@@ -118,5 +118,41 @@
     "avg_buy_price": 0.46,
     "value_pct": 0.10869565217391304,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xfc75a18ee420a3b07818cd04baa408692b5e1028959d6946b8b0d1d69f6fc407",
+    "token_id": "34878794114545570538195820081543303698303416859058153540235242202558935050079",
+    "order_id": "0x3cca60c33dee4dadf57ba850708f1fd3bc69316d7c05ee249294cca53b6057fa",
+    "sold_at": "2026-07-01T15:00:24.726602+00:00",
+    "event_slug": "highest-temperature-in-cape-town-on-july-1-2026",
+    "price": 0.009,
+    "size": 10.0,
+    "avg_buy_price": 0.51,
+    "value_pct": 1.7647058823529411,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xd5bdf74c4892227c6560cc4c9fdd3b837ed5ab40532c2572978a65fd7344dd3c",
+    "token_id": "35224214345147737165680406530986145346592324420434755370677042231190733049488",
+    "order_id": "0x29fa40e9e949d3bf2b9f24f26ddd29c6c29014463bcf1633d79b381166080415",
+    "sold_at": "2026-07-01T15:00:26.154712+00:00",
+    "event_slug": "highest-temperature-in-qingdao-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xa736fcd7d0769550453995623227d835ccea19089009fdc36c16c3d8b80c505e",
+    "token_id": "70886592436736558073435505985137456142757860091625899928866850367925516400128",
+    "order_id": "0x9170721b19a121b7b73b7f100204b4efb8b6981c729603fbd214a611a5d100a5",
+    "sold_at": "2026-07-01T15:00:27.616193+00:00",
+    "event_slug": "highest-temperature-in-warsaw-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
   }
 ]
