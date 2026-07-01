@@ -15,7 +15,11 @@ from src.trade.open_order_checker import LiveOpenOrderChecker
 from src.trade.position_checker import MIN_POSITION_SHARES
 from src.trade.position_tracker import SoldPositionTracker
 from src.trade.price_refresher import refresh_market_prices
-from src.trade.stop_loss import is_stop_loss_eligible_event, should_stop_loss
+from src.trade.stop_loss import (
+    is_stop_loss_eligible_event,
+    is_stop_loss_local_time_eligible,
+    should_stop_loss,
+)
 from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import (
     get_buy_price,
@@ -124,6 +128,60 @@ def save_stop_loss_run(result: dict) -> Path:
     return path
 
 
+def _log_sell_placed(
+    position: LivePosition,
+    order_result: dict[str, Any],
+    value_pct: float,
+) -> None:
+    logger.info(
+        "stop-loss sell placed: event_slug=%s market=%s token=%s order_id=%s "
+        "price=%.4f size=%s value_pct=%.1f%% dry_run=%s expires_at=%s",
+        position.event_slug,
+        position.market_id,
+        position.token_id[:16],
+        order_result.get("order_id") or "n/a",
+        float(order_result.get("price") or 0),
+        order_result.get("size"),
+        value_pct,
+        order_result.get("dry_run"),
+        order_result.get("expires_at") or "n/a",
+    )
+
+
+def _log_run_summary(result: dict[str, Any]) -> None:
+    sold = result.get("sold", [])
+    if sold:
+        for entry in sold:
+            order = entry.get("order") or {}
+            logger.info(
+                "stop-loss run sold: event_slug=%s market=%s order_id=%s "
+                "price=%s size=%s dry_run=%s expires_at=%s",
+                entry.get("event_slug"),
+                entry.get("market_id"),
+                order.get("order_id") or "n/a",
+                order.get("price"),
+                order.get("size"),
+                order.get("dry_run"),
+                order.get("expires_at") or "n/a",
+            )
+    else:
+        logger.info("stop-loss run sold: none")
+
+    logger.info(
+        "Stop-loss check complete: status=%s dry_run=%s positions_loaded=%d "
+        "positions_checked=%d sold_count=%d skipped_count=%d error_count=%d "
+        "run_file=%s",
+        result.get("status"),
+        result.get("dry_run"),
+        result.get("positions_loaded"),
+        result.get("positions_checked"),
+        len(sold),
+        len(result.get("skipped", [])),
+        len(result.get("errors", [])),
+        result.get("run_file"),
+    )
+
+
 def run_stop_loss_check(
     dry_run: Optional[bool] = None,
     wallet_address: Optional[str] = None,
@@ -161,21 +219,6 @@ def run_stop_loss_check(
 
     for position in positions:
         if position.size < MIN_POSITION_SHARES:
-            continue
-        if sold_tracker.is_market_sold(position.market_id):
-            logger.info(
-                "stop-loss skip: market=%s token=%s event_slug=%s reason=already_sold",
-                position.market_id,
-                position.token_id[:16],
-                position.event_slug,
-            )
-            skipped.append(
-                {
-                    "market_id": position.market_id,
-                    "token_id": position.token_id,
-                    "reason": "already_sold",
-                }
-            )
             continue
 
         if not is_stop_loss_eligible_event(
@@ -219,6 +262,25 @@ def run_stop_loss_check(
                         "market_id": position.market_id,
                         "token_id": position.token_id,
                         "reason": "not_temp_market",
+                    }
+                )
+                continue
+
+            time_ok, time_reason = is_stop_loss_local_time_eligible(event)
+            if not time_ok:
+                logger.info(
+                    "stop-loss skip: market=%s token=%s event_slug=%s reason=%s",
+                    position.market_id,
+                    position.token_id[:16],
+                    position.event_slug,
+                    time_reason,
+                )
+                skipped.append(
+                    {
+                        "market_id": position.market_id,
+                        "token_id": position.token_id,
+                        "event_slug": position.event_slug,
+                        "reason": time_reason,
                     }
                 )
                 continue
@@ -331,6 +393,7 @@ def run_stop_loss_check(
                     "order": order_result,
                 }
             )
+            _log_sell_placed(position, order_result, value_pct)
         except Exception as exc:
             logger.exception(
                 "Stop-loss check failed for market %s token %s",
@@ -358,4 +421,5 @@ def run_stop_loss_check(
     }
     run_path = save_stop_loss_run(result)
     result["run_file"] = str(run_path)
+    _log_run_summary(result)
     return result

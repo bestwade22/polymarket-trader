@@ -46,8 +46,7 @@ def cmd_trade_hourly(args: argparse.Namespace) -> None:
 
 
 def cmd_check_stop_loss(args: argparse.Namespace) -> None:
-    result = run_stop_loss_check(dry_run=args.dry_run)
-    logging.info("Stop-loss check complete: %s", result)
+    run_stop_loss_check(dry_run=args.dry_run)
 
 
 def cmd_run_scheduler(_args: argparse.Namespace) -> None:

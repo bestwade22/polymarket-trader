@@ -90,6 +90,8 @@ class TestStopLossRunner:
             "title": "Highest temperature in NYC on June 28?",
             "slug": "highest-temperature-in-nyc-on-june-28",
             "city": "NYC",
+            "event_date": "2026-06-28",
+            "timezone": "America/New_York",
             "markets": [market],
         }
         mock_fetch.return_value = [_position()]
@@ -109,7 +111,11 @@ class TestStopLossRunner:
         }
         mock_executor_cls.return_value = executor
 
-        result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
+        with patch(
+            "src.trade.stop_loss_runner.is_stop_loss_local_time_eligible",
+            return_value=(True, "ok"),
+        ):
+            result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
 
         assert len(result["sold"]) == 1
         executor.sell_yes.assert_called_once()
@@ -140,6 +146,8 @@ class TestStopLossRunner:
         event = {
             "id": "ev1",
             "slug": "highest-temperature-in-nyc-on-june-28",
+            "event_date": "2026-06-28",
+            "timezone": "America/New_York",
             "markets": [market],
         }
         mock_fetch.return_value = [_position(avg_price=0.60)]
@@ -151,7 +159,11 @@ class TestStopLossRunner:
         mock_open_checker_cls.return_value = open_checker
         mock_executor_cls.return_value = MagicMock(dry_run=True)
 
-        result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
+        with patch(
+            "src.trade.stop_loss_runner.is_stop_loss_local_time_eligible",
+            return_value=(True, "ok"),
+        ):
+            result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
 
         assert result["sold"] == []
         assert any(s["reason"] == "above_threshold" for s in result["skipped"])
@@ -185,6 +197,8 @@ class TestStopLossRunner:
             "title": "Highest temperature in NYC on June 28?",
             "slug": "highest-temperature-in-nyc-on-june-28",
             "city": "NYC",
+            "event_date": "2026-06-28",
+            "timezone": "America/New_York",
             "markets": [market],
         }
         mock_fetch.return_value = [_position()]
@@ -202,11 +216,52 @@ class TestStopLossRunner:
         executor = MagicMock(dry_run=True)
         mock_executor_cls.return_value = executor
 
-        result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
+        with patch(
+            "src.trade.stop_loss_runner.is_stop_loss_local_time_eligible",
+            return_value=(True, "ok"),
+        ):
+            result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
 
         assert result["sold"] == []
         assert any(s["reason"] == "open_sell_order" for s in result["skipped"])
         executor.sell_yes.assert_not_called()
+
+    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
+    @patch("src.trade.stop_loss_runner.TradeExecutor")
+    @patch("src.trade.stop_loss_runner.resolve_event_for_position")
+    @patch("src.trade.stop_loss_runner.fetch_user_positions")
+    def test_skips_before_min_local_time(
+        self,
+        mock_fetch,
+        mock_resolve,
+        mock_executor_cls,
+        mock_save,
+    ):
+        market = {
+            "id": "m1",
+            "groupItemTitle": "72-73°F",
+            "clobTokenIds": '["tok1"]',
+        }
+        event = {
+            "id": "ev1",
+            "slug": "highest-temperature-in-nyc-on-june-28",
+            "event_date": "2026-06-28",
+            "timezone": "America/New_York",
+            "markets": [market],
+        }
+        mock_fetch.return_value = [_position()]
+        mock_resolve.return_value = event
+        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
+        mock_executor_cls.return_value = MagicMock(dry_run=True)
+
+        with patch(
+            "src.trade.stop_loss_runner.is_stop_loss_local_time_eligible",
+            return_value=(False, "before_min_local_time"),
+        ):
+            result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
+
+        assert result["sold"] == []
+        assert any(s["reason"] == "before_min_local_time" for s in result["skipped"])
 
 
 class TestSelectionFromPosition:

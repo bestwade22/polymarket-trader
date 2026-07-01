@@ -70,9 +70,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     git_repo, branch, github_pat = git_settings_from_env()
     workspace = clone_or_update(github_pat, git_repo, branch)
 
-    stop_loss_dry_run = os.environ.get("STOP_LOSS_DRY_RUN")
-    if stop_loss_dry_run is None:
-        stop_loss_dry_run = os.environ.get("DRY_RUN", "true")
+    stop_loss_dry_run = os.environ.get("STOP_LOSS_DRY_RUN", "false")
     live = str(stop_loss_dry_run).strip().lower() not in (
         "0",
         "false",
@@ -80,6 +78,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         "off",
     )
     live = not live
+    logger.info(
+        "stop-loss mode: STOP_LOSS_DRY_RUN=%s live=%s",
+        stop_loss_dry_run,
+        live,
+    )
     if (event or {}).get("live") is True:
         live = True
 

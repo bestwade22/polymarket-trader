@@ -122,6 +122,18 @@ _trading_window_start_h, _trading_window_start_m, _trading_window_end_h, _tradin
 )
 
 
+def _parse_stop_loss_min_local_time() -> tuple[int, int]:
+    hour, minute = _parse_trading_window_time(
+        os.getenv("STOP_LOSS_MIN_LOCAL_TIME", "15:30"),
+        "STOP_LOSS_MIN_LOCAL_TIME",
+        allow_hour_24=False,
+    )
+    return hour, minute
+
+
+_stop_loss_min_local_h, _stop_loss_min_local_m = _parse_stop_loss_min_local_time()
+
+
 def _parse_order_expiry_hours() -> float:
     mins = os.getenv("ORDER_EXPIRY_MINUTES")
     if mins is not None and mins.strip():
@@ -167,7 +179,7 @@ class Settings:
     trading_window_end_hour: int = _trading_window_end_h
     trading_window_end_minute: int = _trading_window_end_m
     dry_run: bool = _env_bool("DRY_RUN", True)
-    stop_loss_dry_run: bool = _env_bool("STOP_LOSS_DRY_RUN", _env_bool("DRY_RUN", True))
+    stop_loss_dry_run: bool = _env_bool("STOP_LOSS_DRY_RUN", False)
     daily_fetch_hour_utc: int = int(os.getenv("DAILY_FETCH_HOUR_UTC", "6"))
     event_date: str = os.getenv("EVENT_DATE", "")  # YYYY-MM-DD override; empty = today
     stop_loss_pct: float = float(os.getenv("STOP_LOSS_PCT", "50"))
@@ -175,6 +187,8 @@ class Settings:
     stop_loss_event_slug_marker: str = os.getenv(
         "STOP_LOSS_EVENT_SLUG_MARKER", "highest-temperature-in-"
     )
+    stop_loss_min_local_hour: int = _stop_loss_min_local_h
+    stop_loss_min_local_minute: int = _stop_loss_min_local_m
     data_api_base: str = os.getenv("DATA_API_BASE", "https://data-api.polymarket.com")
 
 

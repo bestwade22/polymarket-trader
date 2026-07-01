@@ -6,7 +6,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
 - **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
-- **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, sells when current midpoint value is ≤ `STOP_LOSS_PCT`% of average buy price (default 50%), and skips duplicate sells when an open sell order already exists.
+- **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **3:30 PM** on the event date; sells when current midpoint value is ≤ `STOP_LOSS_PCT`% of average buy price (default 50%), and skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -127,6 +127,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
 | `STOP_LOSS_DRY_RUN` | `false` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
 | `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
+| `STOP_LOSS_MIN_LOCAL_TIME` | `15:30` | Stop-loss only runs at or after this local time on the event date (city timezone) |
 
 ## Data layout
 

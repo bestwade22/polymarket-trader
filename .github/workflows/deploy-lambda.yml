@@ -46,7 +46,15 @@ jobs:
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \
             --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
-            --parameter-overrides "GitHubRepo=${{ vars.REPO_SLUG }} GitBranch=main"
+            --parameter-overrides \
+              "GitHubRepo=${{ vars.REPO_SLUG }} \
+              GitBranch=main \
+              TradingWindowStartHour=12:30 \
+              TradingWindowEndHour=14:30 \
+              OrderExpiryMinutes=55 \
+              StopLossPct=50 \
+              StopLossDryRun=false \
+              StopLossOrderExpiryMinutes=13"
 
       - name: Diagnose CloudFormation failure
         if: failure()
