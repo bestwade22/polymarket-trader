@@ -1,0 +1,104 @@
+{
+  "status": "ok",
+  "dry_run": true,
+  "positions_loaded": 11,
+  "positions_checked": 9,
+  "skipped": [
+    {
+      "market_id": "0x5e58a193e338611d73f7e752c34a14a483134d296c27cc31abfcd48d423bb7bf",
+      "token_id": "59990543122883709391614227852345485141128485867199430563901286221857453860567",
+      "event_slug": "highest-temperature-in-tokyo-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 178.48214285714286,
+      "avg_price": 0.56,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xe4863b03e1b1341024cddd85f8eef51714ae01f63382d991aa7cba528e543d00",
+      "token_id": "85436176279154524894534908910365636233918002784890191274939659931845754117073",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 175.11844183190036,
+      "avg_price": 0.5699,
+      "current_mid": 0.998
+    },
+    {
+      "market_id": "0x266c19c5fcafb67bc1485e884f6cdebf64036e87d2221ef481d4aaa315f472af",
+      "token_id": "93284685715370495121574781125892073779118737012439938250991073567922160520731",
+      "event_slug": "highest-temperature-in-shenzhen-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 181.27272727272725,
+      "avg_price": 0.55,
+      "current_mid": 0.997
+    },
+    {
+      "market_id": "0xc3d9ce442f886096116ef9aff720f56309a717e5843c9d118f8049ab0dde7178",
+      "token_id": "104846797037517884835434703055299066674615972186859467688114172422016536503234",
+      "event_slug": "highest-temperature-in-chengdu-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 283.42857142857144,
+      "avg_price": 0.35,
+      "current_mid": 0.992
+    },
+    {
+      "market_id": "0x6990429d9b745f0473220ea910d48e8fec57ac86376fe4d1fc5443aec10a624f",
+      "token_id": "30342911746261000464792165131679218237142238915367827761749945070895577692681",
+      "event_slug": "highest-temperature-in-beijing-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 193.79999999999998,
+      "avg_price": 0.5,
+      "current_mid": 0.969
+    },
+    {
+      "market_id": "0x6bdf24c1af56ed61d02a165eb4436a287e7926e0227e14cefd34cedcf00e3e8a",
+      "token_id": "64905453694214282432666213644321547265391249357807612856176168438051543837647",
+      "event_slug": "highest-temperature-in-wuhan-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 153.78787878787878,
+      "avg_price": 0.594,
+      "current_mid": 0.9135
+    },
+    {
+      "market_id": "0x887ba9669c13136412f5df62a2c43723a567f0e486216f0ce23b734b0d91bd15",
+      "token_id": "59024403984997175620590613630217846499028739023633449954719583620513619829483",
+      "event_slug": "highest-temperature-in-tel-aviv-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 102.54237288135593,
+      "avg_price": 0.59,
+      "current_mid": 0.605
+    },
+    {
+      "market_id": "0xb23428547586a4bc91ed7588ecf54a19becd1e15cd4e6ca67a9380528d69c460",
+      "token_id": "95237430301401657245226662725430588508697639087502778499025757805918283777302",
+      "event_slug": "highest-temperature-in-moscow-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 100.0,
+      "avg_price": 0.5,
+      "current_mid": 0.5
+    },
+    {
+      "market_id": "0xb15e0f8784d515ff39046ab0c144dfb40e440dbdc8deb3a7cfa1104371f75519",
+      "token_id": "33699671684095066730247572071970380431916623860203638651892780766571529288179",
+      "event_slug": "highest-temperature-in-helsinki-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 117.85714285714286,
+      "avg_price": 0.56,
+      "current_mid": 0.66
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0xd5bdf74c4892227c6560cc4c9fdd3b837ed5ab40532c2572978a65fd7344dd3c",
+      "token_id": "35224214345147737165680406530986145346592324420434755370677042231190733049488",
+      "reason": "already_sold"
+    }
+  ],
+  "sold": [],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-01T10:00:19.656590+00:00"
+}
