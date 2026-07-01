@@ -34,5 +34,53 @@
     "avg_buy_price": 0.5,
     "value_pct": 0.5,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xdcce9c5e0000f3ec4383c3738744bbd7c12f1ff5ab4a5ddcf8869acc1f94b3cd",
+    "token_id": "1876487156461390087614084468096446077368777732032702724705236471940580403855",
+    "order_id": "0xd567628f22c33b327b9bf87ebbeff46ba2db29c2a2e8e1f1a09d3da8c6c782ca",
+    "sold_at": "2026-07-01T13:30:23.201143+00:00",
+    "event_slug": "highest-temperature-in-london-on-july-1-2026",
+    "price": 0.25,
+    "size": 10.0,
+    "avg_buy_price": 0.54,
+    "value_pct": 46.29629629629629,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xb15e0f8784d515ff39046ab0c144dfb40e440dbdc8deb3a7cfa1104371f75519",
+    "token_id": "33699671684095066730247572071970380431916623860203638651892780766571529288179",
+    "order_id": "0xb10f2e8a1faa6b784d01c1e7c77eb49125325ae84fcc72a5b64c7edb60b245ed",
+    "sold_at": "2026-07-01T13:30:24.559973+00:00",
+    "event_slug": "highest-temperature-in-helsinki-on-july-1-2026",
+    "price": 0.04,
+    "size": 10.0,
+    "avg_buy_price": 0.56,
+    "value_pct": 8.035714285714285,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xfc75a18ee420a3b07818cd04baa408692b5e1028959d6946b8b0d1d69f6fc407",
+    "token_id": "34878794114545570538195820081543303698303416859058153540235242202558935050079",
+    "order_id": "0xfc375868279ea725a6f3a994215c17e84a00d5efbf71eb38bc841d193ea7f149",
+    "sold_at": "2026-07-01T13:30:26.005540+00:00",
+    "event_slug": "highest-temperature-in-cape-town-on-july-1-2026",
+    "price": 0.028,
+    "size": 10.0,
+    "avg_buy_price": 0.51,
+    "value_pct": 5.490196078431373,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xa736fcd7d0769550453995623227d835ccea19089009fdc36c16c3d8b80c505e",
+    "token_id": "70886592436736558073435505985137456142757860091625899928866850367925516400128",
+    "order_id": "0x85a4873e0d0b255ba300a870339160964be130ad63b40b8d1188726b45789c61",
+    "sold_at": "2026-07-01T13:30:27.364563+00:00",
+    "event_slug": "highest-temperature-in-warsaw-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
   }
 ]
