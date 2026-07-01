@@ -250,5 +250,29 @@
     "avg_buy_price": 0.46,
     "value_pct": 0.10869565217391304,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xd5bdf74c4892227c6560cc4c9fdd3b837ed5ab40532c2572978a65fd7344dd3c",
+    "token_id": "35224214345147737165680406530986145346592324420434755370677042231190733049488",
+    "order_id": "0x6bb268b8275144a550c2b8c43cda1b3416ae1324214083de655b0798d7b61999",
+    "sold_at": "2026-07-01T16:00:23.464946+00:00",
+    "event_slug": "highest-temperature-in-qingdao-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xa736fcd7d0769550453995623227d835ccea19089009fdc36c16c3d8b80c505e",
+    "token_id": "70886592436736558073435505985137456142757860091625899928866850367925516400128",
+    "order_id": "0x18685e6533c59e3bb9bf2bbdc0dcad82fa7cc1fcdcd46fcf6975b4ff0c5868d7",
+    "sold_at": "2026-07-01T16:00:24.869314+00:00",
+    "event_slug": "highest-temperature-in-warsaw-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "value_pct": 0.10869565217391304,
+    "reason": "below_threshold"
   }
 ]
