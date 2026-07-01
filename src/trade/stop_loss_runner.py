@@ -163,6 +163,12 @@ def run_stop_loss_check(
         if position.size < MIN_POSITION_SHARES:
             continue
         if sold_tracker.is_market_sold(position.market_id):
+            logger.info(
+                "stop-loss skip: market=%s token=%s event_slug=%s reason=already_sold",
+                position.market_id,
+                position.token_id[:16],
+                position.event_slug,
+            )
             skipped.append(
                 {
                     "market_id": position.market_id,
