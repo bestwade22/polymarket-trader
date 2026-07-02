@@ -1,0 +1,105 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 11,
+  "positions_checked": 9,
+  "skipped": [
+    {
+      "market_id": "0x7fc6dd6442285bcad26fbabf19da0a9b2f5483599e33f4ee72d6b7abec98ef32",
+      "token_id": "47409027353186732028923088276422435569406088258868433833345075716486953409857",
+      "event_slug": "highest-temperature-in-madrid-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 178.125,
+      "avg_price": 0.56,
+      "current_mid": 0.9975
+    },
+    {
+      "market_id": "0x675c1a0e31e4487de9afed4129977eac5cb97141518d9312c8e0db2470a29293",
+      "token_id": "74150737135240570458240506320783934924163866635774455006147147391927896934878",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 195.98039215686276,
+      "avg_price": 0.51,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xbbf32a1808a24636cfea9561757c01216f58c2a47692b602f637e611e48a17e0",
+      "token_id": "22266445251169557898058071219870547674910347671846509673417484828650441811654",
+      "event_slug": "highest-temperature-in-warsaw-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 232.32558139534882,
+      "avg_price": 0.43,
+      "current_mid": 0.999
+    },
+    {
+      "market_id": "0x4c68f6c2cb522f9b35efc36410c3659dad88683ff5a91ba52ac4e6ac8d93601f",
+      "token_id": "39882016810994949031847955047125678350704812977202368620389877471246181431325",
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0xaed6f46a064cf99a7bfaac7128b57a577c370f36fdb9de3afb5f25b2628434c1",
+      "token_id": "103277286282855173393059218729623610152916894828415625256191228800027844982895",
+      "event_slug": "highest-temperature-in-milan-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.08474576271186442,
+      "avg_price": 0.59,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x3074cfe4fa9b6835a88b6b2e5e19c5b01c7d1c4c0e8e892335fd8271a5b8f068",
+      "token_id": "21400780676090994576187731156144024471028971906752410171186677112732287853912",
+      "event_slug": "highest-temperature-in-munich-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.1,
+      "avg_price": 0.5,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xd37d093b0a50327a03fb1c1148a25a53072420f2bf313cc06810553276400c45",
+      "token_id": "40101665148565920468509144318329819558181626415263155124776719908910940729288",
+      "event_slug": "highest-temperature-in-jeddah-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.18115942028985504,
+      "avg_price": 0.276,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xdb021810ad455c7d4f4b6dc9a9b5dd9c3c5025df15088aa10b083671283c6a2c",
+      "token_id": "75874637964018536456600918755283888433528552293863417843601586005457607139854",
+      "event_slug": "highest-temperature-in-lucknow-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.09615384615384615,
+      "avg_price": 0.52,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xe999ab1388cda24399ff08a10d50a80f53f21235c136bbfcff9856d404de49fa",
+      "token_id": "7823464475350187449810444911002768291277395692957990528434159798522806632087",
+      "event_slug": "highest-temperature-in-paris-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.12345679012345678,
+      "avg_price": 0.405,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xe684486fb5766a060b51a6397447cc2d60eb32ab124fb092a74a97a439fac203",
+      "token_id": "82018555462680775090480457216911649723899916329992071891639714548319178859776",
+      "event_slug": "highest-temperature-in-helsinki-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.10638297872340426,
+      "avg_price": 0.47,
+      "current_mid": 0.0005
+    }
+  ],
+  "sold": [],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-02T17:15:19.323454+00:00"
+}
