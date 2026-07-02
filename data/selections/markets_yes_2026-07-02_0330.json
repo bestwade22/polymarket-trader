@@ -1,0 +1,58 @@
+{
+  "run_at": "2026-07-02T03:30:53.719544+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "650038",
+      "city": "Seoul",
+      "market_id": "2738594",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.49,
+      "yes_token_id": "700577902883272886282752527624614618027112132031844327122730608077412667280",
+      "buy_price": 0.53,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.49,
+      "selection_price": 0.49,
+      "gamma_yes_price": 0.6,
+      "best_bid": 0.45,
+      "best_ask": 0.53,
+      "clob_buy_price": 0.53,
+      "last_trade_price": 0.66,
+      "midpoint": 0.49,
+      "outcomePrices": [
+        0.6,
+        0.4
+      ],
+      "order_status": "live",
+      "order_id": "0xe9aaf6861f459365c586e7ad3bc21cf39eb1adbfe4025078f2afcd36bf2c6634",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-02T04:25:53+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "650040",
+      "city": "Tokyo",
+      "market_id": "2738615",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650057",
+      "city": "Busan",
+      "market_id": "2738730",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    }
+  ]
+}
