@@ -35,22 +35,29 @@ class TestIsStopLossEligibleEvent:
 
 
 class TestShouldStopLoss:
-    def test_at_threshold(self):
+    def test_at_threshold_skips(self):
         trigger, reason, pct = should_stop_loss(0.60, 0.30, 50.0)
-        assert trigger is True
-        assert reason == "below_threshold"
+        assert trigger is False
+        assert reason == "above_threshold"
         assert pct == pytest.approx(50.0)
 
-    def test_above_threshold(self):
+    def test_above_threshold_skips(self):
         trigger, reason, pct = should_stop_loss(0.60, 0.31, 50.0)
         assert trigger is False
         assert reason == "above_threshold"
         assert pct == pytest.approx(51.666, rel=1e-3)
 
-    def test_below_threshold(self):
-        trigger, reason, _ = should_stop_loss(0.60, 0.20, 50.0)
+    def test_below_floor_skips(self):
+        trigger, reason, pct = should_stop_loss(0.60, 0.06, 50.0)
+        assert trigger is False
+        assert reason == "below_floor"
+        assert pct == pytest.approx(10.0)
+
+    def test_within_band_sells(self):
+        trigger, reason, pct = should_stop_loss(0.60, 0.20, 50.0)
         assert trigger is True
-        assert reason == "below_threshold"
+        assert reason == "within_band"
+        assert pct == pytest.approx(33.333, rel=1e-3)
 
 
 class TestIsStopLossLocalTimeEligible:

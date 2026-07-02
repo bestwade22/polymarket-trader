@@ -11,6 +11,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from zoneinfo import ZoneInfo
 
+from src.utils.hk_time import format_hk
 from src.utils.time_window import (  # noqa: E402
     is_event_tradable_now,
     trading_window_bounds_utc,
@@ -74,8 +75,8 @@ def describe_event_gate(event: dict, now_utc: datetime) -> Dict[str, Any]:
 
     start, end = bounds
     detail["window_local"] = trading_window_label()
-    detail["window_utc_start"] = start.isoformat()
-    detail["window_utc_end"] = end.isoformat()
+    detail["window_hkt_start"] = format_hk(start)
+    detail["window_hkt_end"] = format_hk(end)
 
     if now_utc < start:
         detail["reason"] = "before_window"
@@ -122,7 +123,7 @@ def evaluate_trade_gate(
     tradable = tradable_events(loaded_events, now)
 
     base: Dict[str, Any] = {
-        "now_utc": now.isoformat(),
+        "now_hkt": format_hk(now),
         "window": window,
         "data_dir": str(root),
         "files_checked": files_checked,

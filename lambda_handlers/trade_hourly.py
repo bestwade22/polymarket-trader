@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional
 from lambda_handlers.git_sync import WORKSPACE, clone_or_update, commit_and_push, git_settings_from_env
 from lambda_handlers.logging_util import configure_logging
 from lambda_handlers.secrets import apply_secrets
+from src.utils.hk_time import format_hk
 
 logger = logging.getLogger(__name__)
 
@@ -81,14 +82,14 @@ def log_gate_details(gate: Dict[str, Any]) -> None:
             continue
         logger.info(
             "Gate tradable: city=%s event_date=%s tz=%s local_now=%s "
-            "window_local=%s window_utc=%s..%s reason=%s",
+            "window_local=%s window_hkt=%s..%s reason=%s",
             check.get("city"),
             check.get("event_date"),
             check.get("timezone"),
             check.get("local_now"),
             check.get("window_local"),
-            check.get("window_utc_start"),
-            check.get("window_utc_end"),
+            check.get("window_hkt_start"),
+            check.get("window_hkt_end"),
             check.get("reason"),
         )
 
@@ -135,9 +136,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         f"-{settings.trading_window_end_hour:02d}:{settings.trading_window_end_minute:02d}"
     )
     logger.info(
-        "trade-hourly start force=%s now_utc=%s window=%s",
+        "trade-hourly start force=%s now_hkt=%s window=%s",
         force,
-        now_utc.isoformat(),
+        format_hk(now_utc),
         window_label,
     )
 
@@ -153,7 +154,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if not force and gate["status"] == "skip":
         message = (
             f"Gate skip: {gate['reason']}; window={gate['window']}; "
-            f"events_loaded={gate['events_loaded']}; now_utc={gate['now_utc']}"
+            f"events_loaded={gate['events_loaded']}; now_hkt={gate['now_hkt']}"
         )
         logger.info(message)
         print(message)
@@ -186,7 +187,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         if not dates_to_trade:
             message = (
                 f"No tradable events after clone; window={gate['window']}; "
-                f"now_utc={now_utc.isoformat()}"
+                f"now_hkt={format_hk(now_utc)}"
             )
             logger.info(message)
             print(message)

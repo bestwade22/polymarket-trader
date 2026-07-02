@@ -5,19 +5,20 @@ from pathlib import Path
 from typing import Any
 
 from config.settings import LOGS_DIR, TRADES_LOG_DIR, ensure_dirs
+from src.utils.hk_time import HKTFormatter
 
 
 def setup_app_logging() -> None:
     ensure_dirs()
     log_file = LOGS_DIR / "app.log"
+    formatter = HKTFormatter("%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setFormatter(formatter)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter)
     logging.basicConfig(
         level=logging.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler(),
-        ],
+        handlers=[file_handler, stream_handler],
         force=True,
     )
 

@@ -32,9 +32,11 @@ def should_stop_loss(
 ) -> tuple[bool, str, float]:
     """Return (trigger_sell, reason, value_pct)."""
     pct = value_percentage(current_mid, avg_price)
-    if pct <= threshold_pct:
-        return True, "below_threshold", pct
-    return False, "above_threshold", pct
+    if pct <= settings.stop_loss_pct_floor:
+        return False, "below_floor", pct
+    if pct >= threshold_pct:
+        return False, "above_threshold", pct
+    return True, "within_band", pct
 
 
 def is_stop_loss_local_time_eligible(

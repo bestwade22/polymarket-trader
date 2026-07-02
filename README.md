@@ -6,7 +6,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
 - **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
-- **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **3:30 PM** on the event date; sells when current midpoint value is ≤ `STOP_LOSS_PCT`% of average buy price (default 50%), and skips when an open sell order already exists.
+- **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **3:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -115,7 +115,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DEPOSIT_WALLET_ADDRESS` | — | Polymarket proxy/funder address (from your profile) |
 | `SIGNATURE_TYPE` | `1` | `0`=MetaMask EOA, `1`=email/Magic proxy, `2`=Gnosis Safe. Avoid `3` until SDK fix |
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
-| `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
+| `SHARE_COUNT` | `15` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
@@ -127,6 +127,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
 | `STOP_LOSS_DRY_RUN` | `false` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
 | `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
+| `STOP_LOSS_PCT_FLOOR` | `10` | Stop-loss lower bound: only sell when value_pct is above this and below `STOP_LOSS_PCT` |
 | `STOP_LOSS_MIN_LOCAL_TIME` | `15:30` | Stop-loss only runs at or after this local time on the event date (city timezone) |
 
 ## Data layout

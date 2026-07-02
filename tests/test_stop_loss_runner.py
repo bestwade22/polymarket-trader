@@ -64,11 +64,11 @@ class TestStopLossRunner:
     @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.LiveOpenOrderChecker")
-    @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.30)
+    @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.20)
     @patch("src.trade.stop_loss_runner.refresh_market_prices")
     @patch("src.trade.stop_loss_runner.resolve_event_for_position")
     @patch("src.trade.stop_loss_runner.fetch_user_positions")
-    def test_sells_below_threshold(
+    def test_sells_within_band(
         self,
         mock_fetch,
         mock_resolve,
@@ -106,7 +106,7 @@ class TestStopLossRunner:
         executor.sell_yes.return_value = {
             "dry_run": True,
             "side": "SELL",
-            "price": 0.30,
+            "price": 0.20,
             "size": 10,
         }
         mock_executor_cls.return_value = executor
@@ -171,7 +171,7 @@ class TestStopLossRunner:
     @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.LiveOpenOrderChecker")
-    @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.30)
+    @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.20)
     @patch("src.trade.stop_loss_runner.refresh_market_prices")
     @patch("src.trade.stop_loss_runner.resolve_event_for_position")
     @patch("src.trade.stop_loss_runner.fetch_user_positions")

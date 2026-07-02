@@ -164,7 +164,7 @@ class Settings:
     deposit_wallet_address: str = os.getenv("DEPOSIT_WALLET_ADDRESS", "")
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
-    share_count: int = int(os.getenv("SHARE_COUNT", "10"))
+    share_count: int = int(os.getenv("SHARE_COUNT", "15"))
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
     selection_price_source: str = _normalize_selection_price_source(
         os.getenv("SELECTION_PRICE_SOURCE", "midpoint")
@@ -183,6 +183,7 @@ class Settings:
     daily_fetch_hour_utc: int = int(os.getenv("DAILY_FETCH_HOUR_UTC", "6"))
     event_date: str = os.getenv("EVENT_DATE", "")  # YYYY-MM-DD override; empty = today
     stop_loss_pct: float = float(os.getenv("STOP_LOSS_PCT", "50"))
+    stop_loss_pct_floor: float = float(os.getenv("STOP_LOSS_PCT_FLOOR", "10"))
     stop_loss_sell_shares: Optional[int] = _parse_optional_int("STOP_LOSS_SELL_SHARES")
     stop_loss_event_slug_marker: str = os.getenv(
         "STOP_LOSS_EVENT_SLUG_MARKER", "highest-temperature-in-"

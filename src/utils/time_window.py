@@ -3,6 +3,7 @@ from typing import Iterable, Optional, Union
 from zoneinfo import ZoneInfo
 
 from config.settings import settings
+from src.utils.hk_time import format_hk_range
 
 
 def _format_local_time(hour: int, minute: int) -> str:
@@ -189,6 +190,6 @@ def next_trading_window_hint(events: list[dict], now_utc: Optional[datetime] = N
     upcoming.sort()
     start, end, city = upcoming[0]
     return (
-        f"Next window: {city} at {start.strftime('%H:%M')}–{end.strftime('%H:%M')} UTC "
+        f"Next window: {city} at {format_hk_range(start, end)} "
         f"(local {trading_window_label()})."
     )

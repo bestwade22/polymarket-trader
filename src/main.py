@@ -16,6 +16,7 @@ from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
 from src.trade.hourly_runner import run_hourly_trade
 from src.trade.stop_loss_runner import run_stop_loss_check
+from src.utils.hk_time import utc_clock_label
 from src.utils.trade_logger import setup_app_logging
 
 
@@ -62,8 +63,9 @@ def cmd_run_scheduler(_args: argparse.Namespace) -> None:
         id="hourly_trade",
     )
     logging.info(
-        "Scheduler started: daily fetch at %02d:00 UTC, trade at :30 each hour",
-        settings.daily_fetch_hour_utc,
+        "Scheduler started: daily fetch at %s, trade at %s each hour",
+        utc_clock_label(settings.daily_fetch_hour_utc),
+        utc_clock_label(0, 30),
     )
     scheduler.start()
 

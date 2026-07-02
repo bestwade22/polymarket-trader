@@ -15,7 +15,7 @@ Parameters:
     Default: highest_yes
   ShareCount:
     Type: String
-    Default: '10'
+    Default: '15'
   YesPriceMax:
     Type: String
     Default: '0.60'
@@ -40,6 +40,9 @@ Parameters:
   StopLossPct:
     Type: String
     Default: '50'
+  StopLossPctFloor:
+    Type: String
+    Default: '10'
   StopLossEventSlugMarker:
     Type: String
     Default: highest-temperature-in-
@@ -108,6 +111,7 @@ Resources:
           TRADING_WINDOW_START_HOUR: !Ref TradingWindowStartHour
           TRADING_WINDOW_END_HOUR: !Ref TradingWindowEndHour
           SIGNATURE_TYPE: !Ref SignatureType
+          STOP_LOSS_PCT_FLOOR: !Ref StopLossPctFloor
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref TraderSecret
@@ -132,6 +136,7 @@ Resources:
           GIT_REPO: !Ref GitHubRepo
           GIT_BRANCH: !Ref GitBranch
           STOP_LOSS_PCT: !Ref StopLossPct
+          STOP_LOSS_PCT_FLOOR: !Ref StopLossPctFloor
           STOP_LOSS_EVENT_SLUG_MARKER: !Ref StopLossEventSlugMarker
           STOP_LOSS_DRY_RUN: !Ref StopLossDryRun
           STOP_LOSS_ORDER_EXPIRY_MINUTES: !Ref StopLossOrderExpiryMinutes
