@@ -1582,5 +1582,53 @@
     "avg_buy_price": 0.29,
     "value_pct": 0.1724137931034483,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0x732d56a83c59c4b413507dc1559c0c51a97e9bd082041e83bfa31bf73bde4a99",
+    "token_id": "27599163914099761266390998107772611416375855881672789412500817149007433354115",
+    "order_id": "0xff455fe769f29ec21d08344b9d8fe5a366baf254b4995e7fdf364202f9811081",
+    "sold_at": "2026-07-02T07:45:20.717212+00:00",
+    "event_slug": "highest-temperature-in-guangzhou-on-july-2-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.39,
+    "value_pct": 0.1282051282051282,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xf972d373ccb450ed3bd78bc981442f09fdc0b89e8a84413422f5d71dc5a68d51",
+    "token_id": "40207322722493983343194915294044452066738683301107302455385897927019068353507",
+    "order_id": "0x31fe76712959973bf6ce5aa1328f12881d9c2d90284cd75a7e8b5967f3807c0b",
+    "sold_at": "2026-07-02T07:45:22.203947+00:00",
+    "event_slug": "highest-temperature-in-manila-on-july-2-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "value_pct": 0.1,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0x5ec9140182643b575ff044a7b51d3de1c394c7b5ecff11d46329316f3ad20514",
+    "token_id": "63910418116433677841375800089590867569549774928756945299679978754973593182799",
+    "order_id": "0x6528235d6c09f147d85c261c0c36eac0b22a054b2216057b68a2433bed28b33b",
+    "sold_at": "2026-07-02T07:45:23.565482+00:00",
+    "event_slug": "highest-temperature-in-shanghai-on-july-2-2026",
+    "price": 0.001,
+    "size": 9.9927,
+    "avg_buy_price": 0.56,
+    "value_pct": 0.08928571428571429,
+    "reason": "below_threshold"
+  },
+  {
+    "market_id": "0xc6799a5e7b4d91b79ce0c0fed0d63315b1441606686c4b2a42dda1a9f3001a0d",
+    "token_id": "107525115166222467163398184200097292940105134106150317760849911533807391637788",
+    "order_id": "0xda2c38c9bed2dd52fbfc6bdfae555673f3d8522b598e8c83739bc6c66d311a7a",
+    "sold_at": "2026-07-02T07:45:25.049002+00:00",
+    "event_slug": "highest-temperature-in-chengdu-on-july-2-2026",
+    "price": 0.001,
+    "size": 6.98,
+    "avg_buy_price": 0.29,
+    "value_pct": 0.1724137931034483,
+    "reason": "below_threshold"
   }
 ]
