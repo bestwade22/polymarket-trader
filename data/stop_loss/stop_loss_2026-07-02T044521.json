@@ -1,0 +1,127 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 13,
+  "positions_checked": 6,
+  "skipped": [
+    {
+      "market_id": "0x564cfa3b4c26058f4187363077349080447cde115a25b097f0da43b0cbf90dd2",
+      "token_id": "110713356139560061656690190821509736203960036547661230167277872214389617650338",
+      "event_slug": "highest-temperature-in-denver-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 172.32758620689657,
+      "avg_price": 0.58,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x6f0765ab90e5ca3efff0ed2f776cec85f8350edd80c5c0b2b857e62cbd161c97",
+      "token_id": "12742829344934233329261954062392726596415060923310847806502374096932894449837",
+      "event_slug": "highest-temperature-in-nyc-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 249.87499999999997,
+      "avg_price": 0.4,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x90c3ffbb3c3ee7126e3d93a34301b364c4dacb705b903b199963594cc92a4393",
+      "token_id": "34192446287374880201546160705662137192276058594798224300049729565055461470292",
+      "event_slug": "highest-temperature-in-atlanta-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 208.22916666666669,
+      "avg_price": 0.48,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x69f6377e6cae9067b0a062fe45a49bf1a4f3e115639559f03fa5fc5447986c22",
+      "token_id": "51422508448432180339370163798950796511991939390078304222898952281742219090112",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 185.09259259259258,
+      "avg_price": 0.54,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xe5820d67422c27de088715887ea7871bf91ad588d1f4d05e3b1185be9b16ee55",
+      "token_id": "83010095464475198465309000778827763213371239620712119789508746596148149519158",
+      "event_slug": "highest-temperature-in-austin-on-july-1-2026",
+      "reason": "above_threshold",
+      "value_pct": 195.98039215686276,
+      "avg_price": 0.51,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xdf2f0cfa7ac2189a4a29a4613a38cdea8f74eca7b96ee21084ad7d9a25c73a19",
+      "token_id": "700577902883272886282752527624614618027112132031844327122730608077412667280",
+      "event_slug": "highest-temperature-in-seoul-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x675c1a0e31e4487de9afed4129977eac5cb97141518d9312c8e0db2470a29293",
+      "token_id": "74150737135240570458240506320783934924163866635774455006147147391927896934878",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xf972d373ccb450ed3bd78bc981442f09fdc0b89e8a84413422f5d71dc5a68d51",
+      "token_id": "40207322722493983343194915294044452066738683301107302455385897927019068353507",
+      "event_slug": "highest-temperature-in-manila-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x12dff3fbb0b7249fa96cf98a292b89eaac0c2c6b47e9564bc77da75902f4afcf",
+      "token_id": "63542319625655012503374643629198785585558056354513901665719375030631085906471",
+      "event_slug": "highest-temperature-in-qingdao-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x732d56a83c59c4b413507dc1559c0c51a97e9bd082041e83bfa31bf73bde4a99",
+      "token_id": "27599163914099761266390998107772611416375855881672789412500817149007433354115",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x1df615bd485145cf4ced91b5cf031dbc0e129e4adb200f7a5a8f454f8a384694",
+      "token_id": "115069942345779081739031531678254904446589786354266001970681851014577065542906",
+      "event_slug": "highest-temperature-in-wuhan-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    }
+  ],
+  "sold": [
+    {
+      "market_id": "0x5f6cdec538574de3743585050c6d92f01f7df7133e4e0228057833f2f06ed6dc",
+      "token_id": "69509975780324118643879175299992065676997076602842158758940399553212893374935",
+      "event_slug": "highest-temperature-in-mexico-city-on-july-1-2026",
+      "value_pct": 0.12048192771084339,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0x5078d1fb59f62e8aa81e5428fcbf792185644a0b5853c415062e24c3eb07573f",
+        "status": "live",
+        "price": 0.001,
+        "size": 10.0,
+        "market_id": "2737746",
+        "event_id": "649605",
+        "order_type": "GTD",
+        "expiration": 1782968301,
+        "expires_at": "2026-07-02T04:58:21+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0x5078d1fb59f62e8aa81e5428fcbf792185644a0b5853c415062e24c3eb07573f",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-02T04:45:21.890932+00:00"
+}
