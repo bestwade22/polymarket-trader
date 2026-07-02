@@ -2182,5 +2182,17 @@
     "avg_buy_price": 0.5,
     "value_pct": 18.0,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xd50e44345b6521936c886bd7ee1da981837420765bd10f4cc16112130940990f",
+    "token_id": "104293354657723017595337970411167813550355096194788340046302664080767146167495",
+    "order_id": "0x29ab041133cc9dfb26201568ddf7905ee0147dc720b8857f72709431d3c71dbb",
+    "sold_at": "2026-07-02T20:30:20.716131+00:00",
+    "event_slug": "highest-temperature-in-atlanta-on-july-2-2026",
+    "price": 0.22,
+    "size": 14.9929,
+    "avg_buy_price": 0.59,
+    "value_pct": 37.28813559322034,
+    "reason": "within_band"
   }
 ]
