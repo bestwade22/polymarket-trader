@@ -1438,5 +1438,17 @@
     "avg_buy_price": 0.415,
     "value_pct": 0.12048192771084339,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0x5f6cdec538574de3743585050c6d92f01f7df7133e4e0228057833f2f06ed6dc",
+    "token_id": "69509975780324118643879175299992065676997076602842158758940399553212893374935",
+    "order_id": "0xbdf9aee3441d9db8975d2a8c2dc1368ef5de7c2d1ea58a07c2b56e4721e9588e",
+    "sold_at": "2026-07-02T05:30:19.618008+00:00",
+    "event_slug": "highest-temperature-in-mexico-city-on-july-1-2026",
+    "price": 0.001,
+    "size": 10.0,
+    "avg_buy_price": 0.415,
+    "value_pct": 0.12048192771084339,
+    "reason": "below_threshold"
   }
 ]
