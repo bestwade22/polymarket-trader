@@ -2158,5 +2158,17 @@
     "avg_buy_price": 0.56,
     "value_pct": 0.08928571428571429,
     "reason": "below_threshold"
+  },
+  {
+    "market_id": "0x0de472c55ee41825feb61b982bda0995272b4bb358f9f254c7f1fdf37363dea3",
+    "token_id": "82396253415401137887033461506956282002353363996863552501451764241878633213591",
+    "order_id": "0xdcfb1fde66ebd46232252f21f1a233b8176ce5646ec8dc58ec7b1481cbdc180e",
+    "sold_at": "2026-07-02T12:30:24.285741+00:00",
+    "event_slug": "highest-temperature-in-ankara-on-july-2-2026",
+    "price": 0.14,
+    "size": 10.0,
+    "avg_buy_price": 0.42,
+    "value_pct": 33.333333333333336,
+    "reason": "within_band"
   }
 ]
