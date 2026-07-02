@@ -1,0 +1,159 @@
+{
+  "run_at": "2026-07-02T05:31:46.367040+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "650041",
+      "city": "Hong Kong",
+      "market_id": "2738626",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.68,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650042",
+      "city": "Shanghai",
+      "market_id": "2738642",
+      "group_item_title": "30\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.9975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650044",
+      "city": "Taipei",
+      "market_id": "2738659",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.83,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650052",
+      "city": "Chongqing",
+      "market_id": "2738680",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.953,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650056",
+      "city": "Shenzhen",
+      "market_id": "2738723",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650058",
+      "city": "Kuala Lumpur",
+      "market_id": "2738744",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.665,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650060",
+      "city": "Qingdao",
+      "market_id": "2738767",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650061",
+      "city": "Manila",
+      "market_id": "2738780",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.8615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "650043",
+      "city": "Singapore",
+      "market_id": "2738647",
+      "group_item_title": "29\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "99442976934844126919968413513185633382257586222456850430317259209796940598613",
+          "market_id": "2738648",
+          "group_item_title": "30\u00b0C",
+          "balance": 10.0
+        }
+      ]
+    },
+    {
+      "event_id": "650053",
+      "city": "Beijing",
+      "market_id": "2738690",
+      "group_item_title": "35\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "29873433503387729162775419096821489693972661154731741535503223743327501145919",
+          "market_id": "2738690",
+          "group_item_title": "35\u00b0C",
+          "balance": 9.994383
+        }
+      ]
+    },
+    {
+      "event_id": "650054",
+      "city": "Wuhan",
+      "market_id": "2738703",
+      "group_item_title": "32\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "115069942345779081739031531678254904446589786354266001970681851014577065542906",
+          "market_id": "2738702",
+          "group_item_title": "31\u00b0C",
+          "balance": 10.0
+        }
+      ]
+    },
+    {
+      "event_id": "650055",
+      "city": "Chengdu",
+      "market_id": "2738713",
+      "group_item_title": "33\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "107525115166222467163398184200097292940105134106150317760849911533807391637788",
+          "market_id": "2738713",
+          "group_item_title": "33\u00b0C",
+          "balance": 6.98
+        }
+      ]
+    },
+    {
+      "event_id": "650059",
+      "city": "Guangzhou",
+      "market_id": "2738756",
+      "group_item_title": "35\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "27599163914099761266390998107772611416375855881672789412500817149007433354115",
+          "market_id": "2738756",
+          "group_item_title": "35\u00b0C",
+          "balance": 10.0
+        }
+      ]
+    }
+  ]
+}
