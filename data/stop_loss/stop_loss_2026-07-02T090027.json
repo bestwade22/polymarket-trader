@@ -1,0 +1,214 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 13,
+  "positions_checked": 11,
+  "skipped": [
+    {
+      "market_id": "0xdf2f0cfa7ac2189a4a29a4613a38cdea8f74eca7b96ee21084ad7d9a25c73a19",
+      "token_id": "700577902883272886282752527624614618027112132031844327122730608077412667280",
+      "event_slug": "highest-temperature-in-seoul-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 203.97959183673473,
+      "avg_price": 0.49,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x675c1a0e31e4487de9afed4129977eac5cb97141518d9312c8e0db2470a29293",
+      "token_id": "74150737135240570458240506320783934924163866635774455006147147391927896934878",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 195.58823529411765,
+      "avg_price": 0.51,
+      "current_mid": 0.9975
+    },
+    {
+      "market_id": "0x1df615bd485145cf4ced91b5cf031dbc0e129e4adb200f7a5a8f454f8a384694",
+      "token_id": "115069942345779081739031531678254904446589786354266001970681851014577065542906",
+      "event_slug": "highest-temperature-in-wuhan-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 223.70786516853934,
+      "avg_price": 0.445,
+      "current_mid": 0.9955
+    },
+    {
+      "market_id": "0xd768d8faf9efd60cd86a038bce70f4e6b947c703492422554a4fef187989b233",
+      "token_id": "109536201344225236043233017685819618500026583904392209964277167329089555314819",
+      "event_slug": "highest-temperature-in-taipei-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 171.46551724137933,
+      "avg_price": 0.58,
+      "current_mid": 0.9945
+    },
+    {
+      "market_id": "0x12dff3fbb0b7249fa96cf98a292b89eaac0c2c6b47e9564bc77da75902f4afcf",
+      "token_id": "63542319625655012503374643629198785585558056354513901665719375030631085906471",
+      "event_slug": "highest-temperature-in-qingdao-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 269.8648648648649,
+      "avg_price": 0.37,
+      "current_mid": 0.9985
+    },
+    {
+      "market_id": "0xdb021810ad455c7d4f4b6dc9a9b5dd9c3c5025df15088aa10b083671283c6a2c",
+      "token_id": "75874637964018536456600918755283888433528552293863417843601586005457607139854",
+      "event_slug": "highest-temperature-in-lucknow-on-july-2-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    }
+  ],
+  "sold": [
+    {
+      "market_id": "0x6b6290dfc57dd817f7aa3cd3ce40eb938e40cb058b78a8bf08d85203ea9908c6",
+      "token_id": "99442976934844126919968413513185633382257586222456850430317259209796940598613",
+      "event_slug": "highest-temperature-in-singapore-on-july-2-2026",
+      "value_pct": 10.714285714285714,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0xb701fb940e8110492f2a90b69d30b938eb90a06bcc8af2d9e9b972a0a9b2f32f",
+        "status": "matched",
+        "price": 0.04,
+        "size": 10.0,
+        "market_id": "2738648",
+        "event_id": "650043",
+        "order_type": "GTD",
+        "expiration": 1782983599,
+        "expires_at": "2026-07-02T09:13:19+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xb701fb940e8110492f2a90b69d30b938eb90a06bcc8af2d9e9b972a0a9b2f32f",
+          "takingAmount": "0.1588",
+          "makingAmount": "3.97",
+          "status": "matched",
+          "transactionsHashes": [
+            "0x9bc4f476eb8545ea4c564fb047d06ceeb87fa5e36bc0a593e9477c0c4126b9f4"
+          ],
+          "success": true
+        }
+      }
+    },
+    {
+      "market_id": "0x732d56a83c59c4b413507dc1559c0c51a97e9bd082041e83bfa31bf73bde4a99",
+      "token_id": "27599163914099761266390998107772611416375855881672789412500817149007433354115",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-2-2026",
+      "value_pct": 0.1282051282051282,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0x0a6cda959e4eaec5ee6ddbfaa381600b739b8ae8527898c2f54f79a7eb2f3c7b",
+        "status": "live",
+        "price": 0.001,
+        "size": 10.0,
+        "market_id": "2738756",
+        "event_id": "650059",
+        "order_type": "GTD",
+        "expiration": 1782983602,
+        "expires_at": "2026-07-02T09:13:22+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0x0a6cda959e4eaec5ee6ddbfaa381600b739b8ae8527898c2f54f79a7eb2f3c7b",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    },
+    {
+      "market_id": "0xf972d373ccb450ed3bd78bc981442f09fdc0b89e8a84413422f5d71dc5a68d51",
+      "token_id": "40207322722493983343194915294044452066738683301107302455385897927019068353507",
+      "event_slug": "highest-temperature-in-manila-on-july-2-2026",
+      "value_pct": 0.1,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0x1789da486a424653aadbe9cedccfad6a8e5c85b22684b15d0918d3442cc282c4",
+        "status": "live",
+        "price": 0.001,
+        "size": 10.0,
+        "market_id": "2738778",
+        "event_id": "650061",
+        "order_type": "GTD",
+        "expiration": 1782983603,
+        "expires_at": "2026-07-02T09:13:23+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0x1789da486a424653aadbe9cedccfad6a8e5c85b22684b15d0918d3442cc282c4",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    },
+    {
+      "market_id": "0x5ec9140182643b575ff044a7b51d3de1c394c7b5ecff11d46329316f3ad20514",
+      "token_id": "63910418116433677841375800089590867569549774928756945299679978754973593182799",
+      "event_slug": "highest-temperature-in-shanghai-on-july-2-2026",
+      "value_pct": 0.08928571428571429,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0x9b55b289d652ba01c3bd2820032fcf403263dc557ceb612d3b73536112674241",
+        "status": "live",
+        "price": 0.001,
+        "size": 9.9927,
+        "market_id": "2738641",
+        "event_id": "650042",
+        "order_type": "GTD",
+        "expiration": 1782983605,
+        "expires_at": "2026-07-02T09:13:25+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0x9b55b289d652ba01c3bd2820032fcf403263dc557ceb612d3b73536112674241",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    },
+    {
+      "market_id": "0xc6799a5e7b4d91b79ce0c0fed0d63315b1441606686c4b2a42dda1a9f3001a0d",
+      "token_id": "107525115166222467163398184200097292940105134106150317760849911533807391637788",
+      "event_slug": "highest-temperature-in-chengdu-on-july-2-2026",
+      "value_pct": 0.1724137931034483,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0xec039daf18011cb5cb0cfae98fb022a68a8f558fa6f6c5c0324b2709b0e543ff",
+        "status": "live",
+        "price": 0.001,
+        "size": 6.98,
+        "market_id": "2738713",
+        "event_id": "650055",
+        "order_type": "GTD",
+        "expiration": 1782983606,
+        "expires_at": "2026-07-02T09:13:26+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xec039daf18011cb5cb0cfae98fb022a68a8f558fa6f6c5c0324b2709b0e543ff",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    }
+  ],
+  "errors": [
+    {
+      "market_id": "0xaa4e48f580ace9f3a4dbd93563ef00b974cdff6cad3471deab55d8dc9ebfae16",
+      "token_id": "29873433503387729162775419096821489693972661154731741535503223743327501145919",
+      "error": "PolyApiException[status_code=400, error_message={'error': 'order 0x63b6fcdc57fdecbea77dbf05e4903ca7ddd630029d280acce381de70c0193b74 is invalid. Size (3.33) lower than the minimum: 5'}]"
+    }
+  ],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-02T09:00:27.147332+00:00"
+}
