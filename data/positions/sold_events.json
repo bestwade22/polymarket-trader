@@ -2338,5 +2338,17 @@
     "avg_buy_price": 0.58,
     "value_pct": 29.31034482758621,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x0495c388d9107c5f16f238fd8e91a50ad5cb6d668b1aa16eadac18cd6ae2ab8f",
+    "token_id": "53866776341128817853593244735316803014847206378558519450774562697903216045605",
+    "order_id": "0x2806a7b10e7c68e568bd0ceb3c42a3880c4bdcdb8316a1a3eac52262c8f0f573",
+    "sold_at": "2026-07-03T15:15:22.630097+00:00",
+    "event_slug": "highest-temperature-in-paris-on-july-3-2026",
+    "price": 0.26,
+    "size": 15.0,
+    "avg_buy_price": 0.54,
+    "value_pct": 48.148148148148145,
+    "reason": "within_band"
   }
 ]
