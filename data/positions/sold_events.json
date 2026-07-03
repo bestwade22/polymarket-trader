@@ -2350,5 +2350,17 @@
     "avg_buy_price": 0.54,
     "value_pct": 48.148148148148145,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x2fa437cb258e2f490e6311dd7aad7dea943a537c901aebfc79a69a970b6ee617",
+    "token_id": "59048698082096922362394801106538660233749964211514429674901834203542108761547",
+    "order_id": "0xf6ba0a106d598dbb3f5d05d3f73bcecfc521631b5333f09b969c27f7e339f938",
+    "sold_at": "2026-07-03T22:30:19.822514+00:00",
+    "event_slug": "highest-temperature-in-san-francisco-on-july-3-2026",
+    "price": 0.25,
+    "size": 15.0,
+    "avg_buy_price": 0.59,
+    "value_pct": 42.37288135593221,
+    "reason": "within_band"
   }
 ]
