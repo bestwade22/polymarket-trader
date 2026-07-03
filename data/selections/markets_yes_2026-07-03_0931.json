@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-07-03T09:31:07.683466+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "653834",
+      "city": "Moscow",
+      "market_id": "2751291",
+      "groupItemTitle": "26\u00b0C",
+      "yes_price": 0.52,
+      "yes_token_id": "109577975535461248496253698080461553549355030118534340210667550679975143733799",
+      "buy_price": 0.56,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.52,
+      "selection_price": 0.52,
+      "gamma_yes_price": 0.465,
+      "best_bid": 0.48,
+      "best_ask": 0.56,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.48,
+      "midpoint": 0.52,
+      "outcomePrices": [
+        0.465,
+        0.535
+      ],
+      "order_status": "live",
+      "order_id": "0x5e3de9dfe8eb8ed221aecf3569d8b61683be95f3efe3f31bb32a6c05fa1601d0",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-03T10:26:06+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "653817",
+      "city": "Ankara",
+      "market_id": "2751104",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "653820",
+      "city": "Tel Aviv",
+      "market_id": "2751137",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.69,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "653835",
+      "city": "Istanbul",
+      "market_id": "2751302",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.64,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "653838",
+      "city": "Helsinki",
+      "market_id": "2751339",
+      "group_item_title": "18\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.67,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "653840",
+      "city": "Jeddah",
+      "market_id": "2751363",
+      "group_item_title": "38\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    }
+  ]
+}

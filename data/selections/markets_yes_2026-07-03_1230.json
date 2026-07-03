@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-07-03T12:30:37.408564+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "653814",
+      "city": "London",
+      "market_id": "2751071",
+      "group_item_title": "26\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "16992232989892564997572450884975622494087999051647050574458161983818850580650",
+          "market_id": "2751071",
+          "group_item_title": "26\u00b0C",
+          "balance": 15.0
+        }
+      ]
+    }
+  ]
+}

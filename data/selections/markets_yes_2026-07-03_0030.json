@@ -1,0 +1,38 @@
+{
+  "run_at": "2026-07-03T00:30:42.063867+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "653818",
+      "city": "Wellington",
+      "market_id": "2751118",
+      "groupItemTitle": "14\u00b0C",
+      "yes_price": 0.505,
+      "yes_token_id": "12396669355525165237288080825387431714239859313952900530024588403395374760642",
+      "buy_price": 0.51,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.505,
+      "selection_price": 0.505,
+      "gamma_yes_price": 0.53,
+      "best_bid": 0.5,
+      "best_ask": 0.51,
+      "clob_buy_price": 0.51,
+      "last_trade_price": 0.43,
+      "midpoint": 0.505,
+      "outcomePrices": [
+        0.53,
+        0.47
+      ],
+      "order_status": "live",
+      "order_id": "0x2c52a2e9543bb20f4efad282a9be47996d2b9975ebfd57c9f19b81154d147653",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-03T01:25:41+00:00"
+    }
+  ]
+}

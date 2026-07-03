@@ -1,0 +1,150 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 20,
+  "positions_checked": 6,
+  "skipped": [
+    {
+      "market_id": "0xffc91456b52c13b23b1fbbeec406f2c973ce00365b41d5e3950d679a1b88fb2e",
+      "token_id": "1655807230813266962201387686615085838866503569048894046173146814928784976122",
+      "event_slug": "highest-temperature-in-mexico-city-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 344.65517241379314,
+      "avg_price": 0.29,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xfac2618473660631f42f3e11bf4d32bcb8ceeb2832a9a8e6338170ad4a228192",
+      "token_id": "3500299320920734994160207722290869903074778824022796235589363002371655882144",
+      "event_slug": "highest-temperature-in-dallas-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 181.72727272727272,
+      "avg_price": 0.55,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x1a6f39348b7d468fa2f9dacb559b4026afbeb936e483aa4e0cff4131bc714758",
+      "token_id": "51521765839087897183993530487993570916565152427550397170906208116735452859651",
+      "event_slug": "highest-temperature-in-seattle-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 212.6595744680851,
+      "avg_price": 0.47,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xde2aff6f22d94278bf7b462a2acf99a0d89f238ad4d91bc0d967584d3f95be71",
+      "token_id": "9282488281549562411578443944827640363120824852604053865827267301931958661316",
+      "event_slug": "highest-temperature-in-san-francisco-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 217.28260869565216,
+      "avg_price": 0.46,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x88502dd0beb47187152a57a05a2408c37b59515abe513eab06e7e0c3949746cc",
+      "token_id": "49271313091257499910908816920703921469494253965491785113816147543243646403117",
+      "event_slug": "highest-temperature-in-shanghai-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe4346f7cd0b7fecd48ef984187d9086d68d83e255bd2dc61b2d719d63e8b256e",
+      "token_id": "32341620571208683218249480843885745437306072955085602550115827383357257978137",
+      "event_slug": "highest-temperature-in-tokyo-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x3c3e430ce33ed580380fb226c32b64959fd6563fd3816990136afbae854da68f",
+      "token_id": "79127295705262167161225423425142927285756611866444615721460679856479555858833",
+      "event_slug": "highest-temperature-in-shenzhen-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x649e4e04f648c4229925590ab7bc114bc1bbe08bd3de0253110d528a2eef6b01",
+      "token_id": "101394134441867743378965855126504350927141671027652588548898106808682874867218",
+      "event_slug": "highest-temperature-in-seoul-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x36e74adc6ee0782194851f94cf40f87ffb3ca8f100d3254baf6c7d4081f096fb",
+      "token_id": "67759011193947953101835747095184598873937429953969677804712477798991975668133",
+      "event_slug": "highest-temperature-in-qingdao-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xc9f4a5655d6bf898f086be4343b6b2ed4f4836356de6a9696405e91a71b7f091",
+      "token_id": "87865406360101686482006336963947641121597964215028533196922029254719372187952",
+      "event_slug": "highest-temperature-in-denver-on-july-2-2026",
+      "reason": "above_threshold",
+      "value_pct": 199.9,
+      "avg_price": 0.5,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x2a3931d3e6823df5236c756c602861158ad71045b8d20fb8a2d3e5c45f0d0929",
+      "token_id": "41333490476208844921426328022075634782757546883009471407003671503754207839441",
+      "event_slug": "highest-temperature-in-chengdu-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xab81e98d3ba0906b447dd4d6ea9e309942982519845ad59b1c81e8040d9f9078",
+      "token_id": "51585405439077408698479296516446807201671239035988847222961078734764402942475",
+      "event_slug": "highest-temperature-in-beijing-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x80cdf94c64ad7c70091b307b0f216d986f7d5b54f90435776fabec009add5537",
+      "token_id": "7826473768601348223864230585623492886692184104862070851555819250533543394465",
+      "event_slug": "highest-temperature-in-wuhan-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x467bc461d98cfb0710c5763592240209ffdc628d92397d915c4c3081fabaeaee",
+      "token_id": "86056627796356696402537383725563355290147085275107895599544650934223263639423",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xfc09f5f857621b02f933beefacafe35b428109f32f3abec86dcadaabe36cc845",
+      "token_id": "60095777226738131735735133319319916228094882449967202525623444308683597930552",
+      "event_slug": "highest-temperature-in-singapore-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0x874b17ca70c8da1d909f8fe10cea6e17e1761cb8f3d0fcb856dc268cf49958e4",
+      "token_id": "99599819085158209320934704917159507707760976469421076787495159709526193155143",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0x5bc9ab3385e22f952072d32ab275f6a9dc12693e2a00a87b7921afb2daa68636",
+      "token_id": "107234922803179256399547833942913339902166783816899679011445345481612084027952",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-2-2026",
+      "reason": "below_floor",
+      "value_pct": 0.09433962264150944,
+      "avg_price": 0.53,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x9cf69af19074e8f4f22c29ac367ff10adfe69c9faa979fe3b8e056bf4fdf9cbb",
+      "token_id": "38700422754212371927708644180506226126199983071443386105661966579261966206319",
+      "event_slug": "highest-temperature-in-chongqing-on-july-3-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xcbf0f94f475ab7573d60e5b84f6cfca41325a22133e60963b8dfd72e4180246c",
+      "token_id": "55410690758393740640095936845081602204635501423973202751116763106949887483151",
+      "event_slug": "highest-temperature-in-manila-on-july-3-2026",
+      "reason": "before_min_local_time"
+    }
+  ],
+  "sold": [],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-03T06:15:19.129962+00:00"
+}

@@ -1,0 +1,145 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 13,
+  "positions_checked": 12,
+  "skipped": [
+    {
+      "market_id": "0xe4346f7cd0b7fecd48ef984187d9086d68d83e255bd2dc61b2d719d63e8b256e",
+      "token_id": "32341620571208683218249480843885745437306072955085602550115827383357257978137",
+      "event_slug": "highest-temperature-in-tokyo-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 195.78431372549022,
+      "avg_price": 0.51,
+      "current_mid": 0.9985
+    },
+    {
+      "market_id": "0x88502dd0beb47187152a57a05a2408c37b59515abe513eab06e7e0c3949746cc",
+      "token_id": "49271313091257499910908816920703921469494253965491785113816147543243646403117",
+      "event_slug": "highest-temperature-in-shanghai-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 203.25865580448067,
+      "avg_price": 0.491,
+      "current_mid": 0.998
+    },
+    {
+      "market_id": "0x3c3e430ce33ed580380fb226c32b64959fd6563fd3816990136afbae854da68f",
+      "token_id": "79127295705262167161225423425142927285756611866444615721460679856479555858833",
+      "event_slug": "highest-temperature-in-shenzhen-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 216.52173913043478,
+      "avg_price": 0.46,
+      "current_mid": 0.996
+    },
+    {
+      "market_id": "0x36e74adc6ee0782194851f94cf40f87ffb3ca8f100d3254baf6c7d4081f096fb",
+      "token_id": "67759011193947953101835747095184598873937429953969677804712477798991975668133",
+      "event_slug": "highest-temperature-in-qingdao-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 228.02325581395348,
+      "avg_price": 0.43,
+      "current_mid": 0.9805
+    },
+    {
+      "market_id": "0x2a3931d3e6823df5236c756c602861158ad71045b8d20fb8a2d3e5c45f0d0929",
+      "token_id": "41333490476208844921426328022075634782757546883009471407003671503754207839441",
+      "event_slug": "highest-temperature-in-chengdu-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 146.22641509433961,
+      "avg_price": 0.53,
+      "current_mid": 0.775
+    },
+    {
+      "market_id": "0x80cdf94c64ad7c70091b307b0f216d986f7d5b54f90435776fabec009add5537",
+      "token_id": "7826473768601348223864230585623492886692184104862070851555819250533543394465",
+      "event_slug": "highest-temperature-in-wuhan-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 155.8139534883721,
+      "avg_price": 0.43,
+      "current_mid": 0.67
+    },
+    {
+      "market_id": "0x467bc461d98cfb0710c5763592240209ffdc628d92397d915c4c3081fabaeaee",
+      "token_id": "86056627796356696402537383725563355290147085275107895599544650934223263639423",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 220.88888888888886,
+      "avg_price": 0.45,
+      "current_mid": 0.994
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0x649e4e04f648c4229925590ab7bc114bc1bbe08bd3de0253110d528a2eef6b01",
+      "token_id": "101394134441867743378965855126504350927141671027652588548898106808682874867218",
+      "event_slug": "highest-temperature-in-seoul-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.125,
+      "avg_price": 0.4,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x9cf69af19074e8f4f22c29ac367ff10adfe69c9faa979fe3b8e056bf4fdf9cbb",
+      "token_id": "38700422754212371927708644180506226126199983071443386105661966579261966206319",
+      "event_slug": "highest-temperature-in-chongqing-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.16666666666666669,
+      "avg_price": 0.3,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xcbf0f94f475ab7573d60e5b84f6cfca41325a22133e60963b8dfd72e4180246c",
+      "token_id": "55410690758393740640095936845081602204635501423973202751116763106949887483151",
+      "event_slug": "highest-temperature-in-manila-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.13513513513513514,
+      "avg_price": 0.37,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x874b17ca70c8da1d909f8fe10cea6e17e1761cb8f3d0fcb856dc268cf49958e4",
+      "token_id": "99599819085158209320934704917159507707760976469421076787495159709526193155143",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.14285714285714288,
+      "avg_price": 0.35,
+      "current_mid": 0.0005
+    }
+  ],
+  "sold": [
+    {
+      "market_id": "0xab81e98d3ba0906b447dd4d6ea9e309942982519845ad59b1c81e8040d9f9078",
+      "token_id": "51585405439077408698479296516446807201671239035988847222961078734764402942475",
+      "event_slug": "highest-temperature-in-beijing-on-july-3-2026",
+      "value_pct": 15.217391304347828,
+      "order": {
+        "dry_run": false,
+        "side": "SELL",
+        "order_id": "0xbbf0378a03378c8c560ef56b7858212414d588374f47152e5e5463424ac052a9",
+        "status": "live",
+        "price": 0.07,
+        "size": 8.74,
+        "market_id": "2751249",
+        "event_id": "653830",
+        "order_type": "GTD",
+        "expiration": 1783068199,
+        "expires_at": "2026-07-03T08:43:19+00:00",
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xbbf0378a03378c8c560ef56b7858212414d588374f47152e5e5463424ac052a9",
+          "takingAmount": "",
+          "makingAmount": "",
+          "status": "live",
+          "success": true
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-03T08:30:21.981579+00:00"
+}

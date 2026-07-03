@@ -1,0 +1,163 @@
+{
+  "run_at": "2026-07-03T17:31:32.004974+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "657144",
+      "city": "Chicago",
+      "market_id": "2763866",
+      "groupItemTitle": "88-89\u00b0F",
+      "yes_price": 0.42,
+      "yes_token_id": "3874437595527233408844505611336900005542213245615873690302924751191567541296",
+      "buy_price": 0.46,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.42,
+      "selection_price": 0.42,
+      "gamma_yes_price": 0.42,
+      "best_bid": 0.38,
+      "best_ask": 0.46,
+      "clob_buy_price": 0.46,
+      "last_trade_price": 0.52,
+      "midpoint": 0.42,
+      "outcomePrices": [
+        0.42,
+        0.58
+      ],
+      "order_status": "live",
+      "order_id": "0xb095b3741c5fc966641a53b5769a5cfb04c04b5da7f10d6e7d56f8f0d26df876",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-03T18:26:30+00:00"
+    },
+    {
+      "event_id": "657145",
+      "city": "Austin",
+      "market_id": "2763875",
+      "groupItemTitle": "96-97\u00b0F",
+      "yes_price": 0.56,
+      "yes_token_id": "73091394269515816998421079800184185909514966793941168960399939609144395543475",
+      "buy_price": 0.66,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.56,
+      "selection_price": 0.56,
+      "gamma_yes_price": 0.59,
+      "best_bid": 0.46,
+      "best_ask": 0.66,
+      "clob_buy_price": 0.66,
+      "last_trade_price": 0.64,
+      "midpoint": 0.56,
+      "outcomePrices": [
+        0.59,
+        0.41
+      ],
+      "order_status": "live",
+      "order_id": "0xa597ddf1d94d0efcc48550863ef112c69d115a1b9826e24553056c366f505062",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-03T18:26:31+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "657141",
+      "city": "Dallas",
+      "market_id": "2763830",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.6,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "657147",
+      "city": "Houston",
+      "market_id": "2763901",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "657151",
+      "city": "Panama City",
+      "market_id": "2763946",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.88,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "657138",
+      "city": "Toronto",
+      "market_id": "2763799",
+      "group_item_title": "34\u00b0C",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "104441152074015230657209658698497479273797054376577209981969088683596817844893",
+          "market_id": "2763798",
+          "group_item_title": "33\u00b0C",
+          "balance": 13.180325
+        }
+      ]
+    },
+    {
+      "event_id": "657140",
+      "city": "NYC",
+      "market_id": "2763818",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "61043565334908828251031467567853205855184971711920349975485629836315236778487",
+          "market_id": "2763818",
+          "group_item_title": "100-101\u00b0F",
+          "balance": 15.0
+        }
+      ]
+    },
+    {
+      "event_id": "657142",
+      "city": "Atlanta",
+      "market_id": "2763843",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "87240994538803850057852667294477438795652687950920232070305248255761484586115",
+          "market_id": "2763843",
+          "group_item_title": "96-97\u00b0F",
+          "balance": 10.9
+        }
+      ]
+    },
+    {
+      "event_id": "657143",
+      "city": "Miami",
+      "market_id": "2763854",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "96205941686381853979235807608693803039590240005308145725055159613741624846822",
+          "market_id": "2763854",
+          "group_item_title": "90-91\u00b0F",
+          "balance": 15.0
+        }
+      ]
+    }
+  ]
+}

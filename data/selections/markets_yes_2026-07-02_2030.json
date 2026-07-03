@@ -1,0 +1,48 @@
+{
+  "run_at": "2026-07-02T20:30:47.670517+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "653295",
+      "city": "Los Angeles",
+      "market_id": "2750001",
+      "group_item_title": "72-73\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "653279",
+      "city": "Seattle",
+      "market_id": "2749893",
+      "group_item_title": "64-65\u00b0F",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "51521765839087897183993530487993570916565152427550397170906208116735452859651",
+          "market_id": "2749893",
+          "group_item_title": "64-65\u00b0F",
+          "balance": 15.0
+        }
+      ]
+    },
+    {
+      "event_id": "653296",
+      "city": "San Francisco",
+      "market_id": "2750012",
+      "group_item_title": "70-71\u00b0F",
+      "reason": "has_position",
+      "position_count": 1,
+      "positions": [
+        {
+          "token_id": "9282488281549562411578443944827640363120824852604053865827267301931958661316",
+          "market_id": "2750012",
+          "group_item_title": "70-71\u00b0F",
+          "balance": 14.987404
+        }
+      ]
+    }
+  ]
+}
