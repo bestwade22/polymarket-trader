@@ -1,4 +1,5 @@
 import logging
+import math
 from typing import Any, Optional
 
 from config.settings import settings
@@ -10,6 +11,22 @@ logger = logging.getLogger(__name__)
 
 CONDITIONAL_TOKEN_DECIMALS = 6
 MIN_POSITION_SHARES = 0.01
+
+
+def compute_top_up_shares(
+    held_balance: float,
+    target_share_count: int,
+    order_min_size: int,
+) -> tuple[bool, int, str]:
+    """Return (should_skip, order_shares, reason) for the selected market."""
+    if held_balance >= target_share_count:
+        return True, 0, "has_full_position"
+    if held_balance >= MIN_POSITION_SHARES:
+        needed = target_share_count - held_balance
+        order_shares = max(math.ceil(needed), order_min_size)
+        return False, int(order_shares), "partial_top_up"
+    order_shares = max(target_share_count, order_min_size)
+    return False, int(order_shares), "no_position"
 
 
 def parse_conditional_balance(response: dict) -> float:
@@ -90,25 +107,32 @@ class LivePositionChecker:
         self,
         event: dict,
         min_shares: float = MIN_POSITION_SHARES,
+        full_position_share_count: Optional[float] = None,
     ) -> tuple[bool, list[dict[str, Any]]]:
-        """True when wallet holds Yes shares for any market in this event."""
+        """True when wallet holds enough Yes shares on any market in this event."""
+        threshold = (
+            full_position_share_count
+            if full_position_share_count is not None
+            else min_shares
+        )
         token_markets = _event_token_market_map(event)
         if not token_markets:
             return False, []
 
         holdings: list[dict[str, Any]] = []
         for token_id, market in token_markets.items():
-            has_position, balance = self.has_position(token_id, min_shares=min_shares)
-            if has_position:
-                holdings.append(
-                    {
-                        "token_id": token_id,
-                        "market_id": str(market.get("id", "")),
-                        "group_item_title": market.get("groupItemTitle", ""),
-                        "balance": balance,
-                    }
-                )
-                break
+            balance = self.get_yes_balance(token_id)
+            if balance is None or balance < threshold:
+                continue
+            holdings.append(
+                {
+                    "token_id": token_id,
+                    "market_id": str(market.get("id", "")),
+                    "group_item_title": market.get("groupItemTitle", ""),
+                    "balance": balance,
+                }
+            )
+            break
         return bool(holdings), holdings
 
 
@@ -116,9 +140,13 @@ def filter_selections_without_position(
     selections: list,
     checker: LivePositionChecker,
 ) -> tuple[list, list[dict]]:
-    """Drop selections whose city/event already holds Yes shares on any market."""
+    """Drop selections that already hold SHARE_COUNT Yes shares on the selected market.
+
+    When 0 < held shares < SHARE_COUNT, keep the selection and order only the gap.
+    """
     kept = []
     skipped: list[dict] = []
+    target_share_count = settings.share_count
     for sel in selections:
         event = sel.event
         if not event:
@@ -126,21 +154,35 @@ def filter_selections_without_position(
             continue
         event_id = str(event.get("id", sel.event_id))
         city = sel.city or event.get("city", "")
-        has_position, holdings = checker.event_has_position(event)
         step_log = event.get("_step_logger")
-        if has_position:
+        balance = checker.get_yes_balance(sel.yes_token_id)
+        if balance is None:
+            if step_log:
+                step_log.log_step("check_position", has_position=False, balance_unavailable=True)
+            kept.append(sel)
+            continue
+
+        should_skip, order_shares, reason = compute_top_up_shares(
+            held_balance=balance,
+            target_share_count=target_share_count,
+            order_min_size=sel.order_min_size,
+        )
+        if should_skip:
             logger.info(
-                "event=%s city=%s has Yes position on %d market(s); skip",
+                "event=%s city=%s market=%s holds %.2f shares (target %d); skip",
                 event_id,
                 city,
-                len(holdings),
+                sel.market_id,
+                balance,
+                target_share_count,
             )
             if step_log:
                 step_log.log_step(
                     "check_position",
                     has_position=True,
-                    position_count=len(holdings),
-                    positions=holdings,
+                    held_shares=balance,
+                    target_share_count=target_share_count,
+                    reason=reason,
                 )
                 step_log.save()
             skipped.append(
@@ -149,14 +191,34 @@ def filter_selections_without_position(
                     "city": city,
                     "market_id": sel.market_id,
                     "group_item_title": sel.group_item_title,
-                    "reason": "has_position",
-                    "position_count": len(holdings),
-                    "positions": holdings,
+                    "reason": reason,
+                    "held_shares": balance,
+                    "target_share_count": target_share_count,
                 }
             )
             continue
+
+        if reason == "partial_top_up":
+            logger.info(
+                "event=%s city=%s market=%s partial position %.2f/%d; order %d shares",
+                event_id,
+                city,
+                sel.market_id,
+                balance,
+                target_share_count,
+                order_shares,
+            )
+            sel.share_count = order_shares
+
         if step_log:
-            step_log.log_step("check_position", has_position=False)
+            step_log.log_step(
+                "check_position",
+                has_position=reason != "no_position",
+                held_shares=balance,
+                target_share_count=target_share_count,
+                order_shares=sel.share_count,
+                reason=reason,
+            )
         kept.append(sel)
     return kept, skipped
 
@@ -165,17 +227,21 @@ def filter_events_without_position(
     events: list[dict],
     checker: LivePositionChecker,
 ) -> tuple[list[dict], list[dict]]:
-    """Drop events (cities) where the wallet already holds Yes shares on any market."""
+    """Drop events where the wallet already holds SHARE_COUNT Yes shares on any market."""
     kept: list[dict] = []
     skipped: list[dict] = []
+    target_share_count = settings.share_count
     for event in events:
         event_id = str(event.get("id"))
         city = event.get("city", "")
-        has_position, holdings = checker.event_has_position(event)
+        has_position, holdings = checker.event_has_position(
+            event,
+            full_position_share_count=target_share_count,
+        )
         step_log = event.get("_step_logger")
         if has_position:
             logger.info(
-                "event=%s city=%s has Yes position on %d market(s); skip",
+                "event=%s city=%s has full Yes position on %d market(s); skip",
                 event_id,
                 city,
                 len(holdings),
@@ -186,15 +252,17 @@ def filter_events_without_position(
                     has_position=True,
                     position_count=len(holdings),
                     positions=holdings,
+                    target_share_count=target_share_count,
                 )
                 step_log.save()
             skipped.append(
                 {
                     "event_id": event_id,
                     "city": city,
-                    "reason": "has_position",
+                    "reason": "has_full_position",
                     "position_count": len(holdings),
                     "positions": holdings,
+                    "target_share_count": target_share_count,
                 }
             )
             continue

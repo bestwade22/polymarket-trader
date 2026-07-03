@@ -81,7 +81,9 @@ By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADIN
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
 2. The selected market's live price is **≥ `YES_PRICE_MAX`** (no extra API calls), or
-3. You still hold **Yes shares** on any market for that city (checked only on cities that passed 1–2).
+3. You already hold **`SHARE_COUNT`** Yes shares on the **selected** market (checked only on cities that passed 1–2).
+
+If you hold a **partial** position (`0 < shares < SHARE_COUNT`) on the selected market, the bot still trades and orders only the gap: `SHARE_COUNT - held_shares` (rounded up).
 
 If your order is gone (filled, cancelled, or expired) and you have no position, the city can trade again. `data/positions/bought_events.json` is an audit log only.
 

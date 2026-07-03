@@ -7,6 +7,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.trade.position_checker import (
     LivePositionChecker,
+    compute_top_up_shares,
     filter_events_without_position,
     filter_selections_without_position,
     parse_conditional_balance,
@@ -44,6 +45,13 @@ class _FakeChecker(LivePositionChecker):
         return self._balances[token_id]
 
 
+def test_compute_top_up_shares():
+    assert compute_top_up_shares(0, 15, 5) == (False, 15, "no_position")
+    assert compute_top_up_shares(10, 15, 5) == (False, 5, "partial_top_up")
+    assert compute_top_up_shares(15, 15, 5) == (True, 0, "has_full_position")
+    assert compute_top_up_shares(10.3, 15, 5) == (False, 5, "partial_top_up")
+
+
 def test_parse_conditional_balance():
     assert parse_conditional_balance({"balance": "5000000"}) == 5.0
     assert parse_conditional_balance({"balance": ""}) == 0.0
@@ -64,12 +72,19 @@ def test_filter_events_without_position_keeps_clean_cities():
     assert skipped == []
 
 
-def test_filter_events_without_position_skips_city_with_position():
-    checker = _FakeChecker({"token_yes_92": 5.0})
+def test_filter_events_without_position_skips_city_with_full_position():
+    checker = _FakeChecker({"token_yes_92": 15.0})
     kept, skipped = filter_events_without_position([_miami_event()], checker)
     assert kept == []
-    assert skipped[0]["reason"] == "has_position"
+    assert skipped[0]["reason"] == "has_full_position"
     assert skipped[0]["city"] == "Miami"
+
+
+def test_filter_events_without_position_keeps_city_with_partial_position():
+    checker = _FakeChecker({"token_yes_92": 5.0})
+    kept, skipped = filter_events_without_position([_miami_event()], checker)
+    assert len(kept) == 1
+    assert skipped == []
 
 
 def test_event_has_position_stops_after_first_hit():
@@ -119,18 +134,30 @@ def _toronto_selection() -> MarketSelection:
     )
 
 
-def test_filter_selections_without_position_skips_city_with_position():
-    checker = _FakeChecker({"token_yes_24": 10.0})
+def test_filter_selections_without_position_skips_city_with_full_position():
+    checker = _FakeChecker({"token_yes_24": 15.0})
     kept, skipped = filter_selections_without_position([_toronto_selection()], checker)
     assert kept == []
-    assert skipped[0]["reason"] == "has_position"
+    assert skipped[0]["reason"] == "has_full_position"
+
+
+def test_filter_selections_without_position_top_up_partial_position():
+    checker = _FakeChecker({"token_yes_24": 10.0})
+    selection = _toronto_selection()
+    kept, skipped = filter_selections_without_position([selection], checker)
+    assert skipped == []
+    assert len(kept) == 1
+    assert kept[0].share_count == 5
 
 
 if __name__ == "__main__":
+    test_compute_top_up_shares()
     test_parse_conditional_balance()
     test_event_has_position_matches_any_market_in_city()
     test_event_has_position_stops_after_first_hit()
     test_filter_events_without_position_keeps_clean_cities()
-    test_filter_events_without_position_skips_city_with_position()
-    test_filter_selections_without_position_skips_city_with_position()
+    test_filter_events_without_position_skips_city_with_full_position()
+    test_filter_events_without_position_keeps_city_with_partial_position()
+    test_filter_selections_without_position_skips_city_with_full_position()
+    test_filter_selections_without_position_top_up_partial_position()
     print("All tests passed.")
