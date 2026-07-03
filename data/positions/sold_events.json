@@ -2254,5 +2254,17 @@
     "avg_buy_price": 0.5,
     "value_pct": 21.0,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xfc09f5f857621b02f933beefacafe35b428109f32f3abec86dcadaabe36cc845",
+    "token_id": "60095777226738131735735133319319916228094882449967202525623444308683597930552",
+    "order_id": "0x7f2032b46397ce97d819088a26d825173dfc971e6aeb4941c50998a1dccd7318",
+    "sold_at": "2026-07-03T07:45:23.062765+00:00",
+    "event_slug": "highest-temperature-in-singapore-on-july-3-2026",
+    "price": 0.133,
+    "size": 15.0,
+    "avg_buy_price": 0.49,
+    "value_pct": 27.142857142857146,
+    "reason": "within_band"
   }
 ]
