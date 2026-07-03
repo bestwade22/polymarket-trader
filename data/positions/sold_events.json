@@ -2314,5 +2314,17 @@
     "avg_buy_price": 0.29,
     "value_pct": 48.27586206896552,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x2efbf67c9ed00676c5c770f5616c354b57c465d534f81da0f320f1bb27ed18a0",
+    "token_id": "14438624206314781619815861715547853203744777659889912213823663627532891295169",
+    "order_id": "0xbaff32c0a133b8a5c952d23a50c3ebe4cf51840de850b330df14c1a339f52dc7",
+    "sold_at": "2026-07-03T13:30:23.556438+00:00",
+    "event_slug": "highest-temperature-in-munich-on-july-3-2026",
+    "price": 0.24,
+    "size": 15.0,
+    "avg_buy_price": 0.58,
+    "value_pct": 42.241379310344826,
+    "reason": "within_band"
   }
 ]
