@@ -2302,5 +2302,17 @@
     "avg_buy_price": 0.46,
     "value_pct": 15.217391304347828,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x1e70a419f8e7958fcc1ba657723615ad7fdd3decc746261e5594f00671b9f8b9",
+    "token_id": "15110786841354166756594175264000354465559670965756231501121198734084412408063",
+    "order_id": "0xa81044d46b3a513826ee8d2ca79d861bfa5de1cb98ce1a6f28b45598722affb4",
+    "sold_at": "2026-07-03T12:30:23.097182+00:00",
+    "event_slug": "highest-temperature-in-jeddah-on-july-3-2026",
+    "price": 0.14,
+    "size": 15.0,
+    "avg_buy_price": 0.29,
+    "value_pct": 48.27586206896552,
+    "reason": "within_band"
   }
 ]
