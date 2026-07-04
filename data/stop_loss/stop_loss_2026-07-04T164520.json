@@ -1,0 +1,126 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 14,
+  "positions_checked": 10,
+  "skipped": [
+    {
+      "market_id": "0x00a8a7b2575770a35e85a86a786b2a5281804438fd419723e8b8f62229d0ea2e",
+      "token_id": "63607568391097811170735742698040156934721929666798320544011896382060838987633",
+      "event_slug": "highest-temperature-in-ankara-on-july-4-2026",
+      "reason": "above_threshold",
+      "value_pct": 185.09259259259258,
+      "avg_price": 0.54,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x05b49d0e5492e9bc96bcda66cf50efdaa0c9293bd1be4e0c18e72d51405e35b7",
+      "token_id": "15064656346221166282082023276319839241659293917215288206648602809690326932124",
+      "event_slug": "highest-temperature-in-paris-on-july-4-2026",
+      "reason": "above_threshold",
+      "value_pct": 219.31818181818178,
+      "avg_price": 0.44,
+      "current_mid": 0.965
+    },
+    {
+      "market_id": "0x46cc55524f54d2fc59e17f7d987e57585b806bfa27b0d52434396f30676907e6",
+      "token_id": "34457220220532350600785214924659860310179891751866947308848060719165661028771",
+      "event_slug": "highest-temperature-in-madrid-on-july-4-2026",
+      "reason": "above_threshold",
+      "value_pct": 177.35849056603772,
+      "avg_price": 0.53,
+      "current_mid": 0.94
+    },
+    {
+      "market_id": "0xf7ccafe9040726d029480c05f6d6d2f73e01a1e2878c7401d79c8e9de700b2d4",
+      "token_id": "68040621816088138521617970411142947261335707851296919743553771875878815229896",
+      "event_slug": "highest-temperature-in-nyc-on-july-4-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xfef7fa6cc98fa7301752e629411e1e689b9bbdb45cc5e839077fd5a51453c0f0",
+      "token_id": "41351580704482150906067793318997241035317854735759331177322121373129940700594",
+      "event_slug": "highest-temperature-in-atlanta-on-july-4-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xe56180a5803d191ca6d590fac57d4dcd48e8ea0e906a811a22d8abf1d71a702b",
+      "token_id": "86826400431097956753944273901657148990278735732079717667631573703330951387773",
+      "event_slug": "highest-temperature-in-karachi-on-july-4-2026",
+      "reason": "above_threshold",
+      "value_pct": 188.58490566037736,
+      "avg_price": 0.53,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0xf6ea2eda5b6d0ce1f5983b2c0cd06eccaa8ad23193b9962d6d2822b4d3402b81",
+      "token_id": "19854842626998962403097523196032110151102461997699362699280285396769854936077",
+      "event_slug": "highest-temperature-in-helsinki-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 0.08650519031141869,
+      "avg_price": 0.578,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xdac560c66e2c81e35cfd923d01556f6fc03021b4d4b6fe8af656183280812155",
+      "token_id": "25515816528659555282758638227396583275371096799066387034893432071536585828748",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-4-2026",
+      "reason": "before_min_local_time"
+    },
+    {
+      "market_id": "0xc420cc3fc833543fe374b1a54d31e73720eebf3d5a9041cccafde9b7c22a8943",
+      "token_id": "58191387844568540273536036480762858157493396944251364332949451534110932874241",
+      "event_slug": "highest-temperature-in-lucknow-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 0.09433962264150944,
+      "avg_price": 0.53,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xe7370fdb459958bf9f45aca483750032369847b52f13e33802745661320fe034",
+      "token_id": "9512786579925673220467892304860322698996551611293325493263335104849764388014",
+      "event_slug": "highest-temperature-in-london-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 0.10869565217391304,
+      "avg_price": 0.46,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x1fe225cfded7ec5e6b798d4a620846971351d90aabe10ce056e8e1527ae633b2",
+      "token_id": "7880945197724198000452421875365311976425793021661962741669600172487090332619",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 0.102880658436214,
+      "avg_price": 0.486,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0x881ff87d8a0c57da96d908783b16de8fc5e845204fe849ad6fb9b02398b746ee",
+      "token_id": "113690096933913632634000333569229923788096845553555044117241563337204753369618",
+      "event_slug": "highest-temperature-in-warsaw-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 1.1702127659574468,
+      "avg_price": 0.47,
+      "current_mid": 0.0055
+    },
+    {
+      "market_id": "0xb32b476bd93423b8f5a8f92aca7fd8360a20bd319ae5f0e1e015ccacf394f98b",
+      "token_id": "39615052815055260706792837527789721880908893601243692198970918801492863153935",
+      "event_slug": "highest-temperature-in-jeddah-on-july-4-2026",
+      "reason": "below_floor",
+      "value_pct": 0.33333333333333337,
+      "avg_price": 0.3,
+      "current_mid": 0.001
+    }
+  ],
+  "sold": [],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-04T16:45:20.116826+00:00"
+}
