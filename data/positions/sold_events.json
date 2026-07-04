@@ -2410,5 +2410,17 @@
     "avg_buy_price": 0.54,
     "value_pct": 17.59259259259259,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xb809112a3b239d9aa1fa1b3064151b1a27b16e7868eda141548f3962531168e3",
+    "token_id": "60382533105783498289358106918187818691733002746811098199949115813304816865954",
+    "order_id": "0x9300dd7b5b831840339e0c35178c0c669147cc93cd3a0def64a346d23cfceca5",
+    "sold_at": "2026-07-04T08:15:19.573866+00:00",
+    "event_slug": "highest-temperature-in-chengdu-on-july-4-2026",
+    "price": 0.049,
+    "size": 14.9957,
+    "avg_buy_price": 0.44,
+    "value_pct": 11.363636363636365,
+    "reason": "within_band"
   }
 ]
