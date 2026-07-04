@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-04T20:30:53.077473+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "660806",
+      "city": "Seattle",
+      "market_id": "2777729",
+      "groupItemTitle": "70-71\u00b0F",
+      "yes_price": 0.49,
+      "yes_token_id": "115119723771338111554578947504512160091974440951158699681884502568423887389913",
+      "buy_price": 0.52,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.49,
+      "selection_price": 0.49,
+      "gamma_yes_price": 0.555,
+      "best_bid": 0.46,
+      "best_ask": 0.52,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.52,
+      "midpoint": 0.49,
+      "outcomePrices": [
+        0.555,
+        0.445
+      ],
+      "order_status": "live",
+      "order_id": "0x70827751d5c7da1450f49049f377354836f1a5b8f97fca7c18f1288fb067e649",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-04T21:25:51+00:00"
+    },
+    {
+      "event_id": "660823",
+      "city": "San Francisco",
+      "market_id": "2777850",
+      "groupItemTitle": "70-71\u00b0F",
+      "yes_price": 0.365,
+      "yes_token_id": "101369028110477274001155649014170609966825568626284276142727080231503584179644",
+      "buy_price": 0.43,
+      "share_count": 5,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.365,
+      "selection_price": 0.365,
+      "gamma_yes_price": 0.355,
+      "best_bid": 0.3,
+      "best_ask": 0.43,
+      "clob_buy_price": 0.43,
+      "last_trade_price": 0.34,
+      "midpoint": 0.365,
+      "outcomePrices": [
+        0.355,
+        0.645
+      ],
+      "order_status": "live",
+      "order_id": "0x1984582ca6421cb3746ae2d248c6f9cfd7c04bc8306aca745b911f33a20b7577",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-04T21:25:52+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "660822",
+      "city": "Los Angeles",
+      "market_id": "2777837",
+      "group_item_title": "72-73\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.87,
+      "yes_price_max": 0.6
+    }
+  ]
+}
