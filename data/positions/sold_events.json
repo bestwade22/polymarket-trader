@@ -2518,5 +2518,17 @@
     "avg_buy_price": 0.42,
     "value_pct": 13.095238095238097,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x69c4de2cef6693ec8a46279fcefa5b4b3dfea3604060c5ca72a4f03a897a5ef3",
+    "token_id": "44511821753214432705463181770887114785892219072202131509294567510645745638502",
+    "order_id": "0x724dcde065562801565219f5a4be7d6045012b879080fb6289fae29684eb18f5",
+    "sold_at": "2026-07-04T22:00:18.804754+00:00",
+    "event_slug": "highest-temperature-in-denver-on-july-4-2026",
+    "price": 0.22,
+    "size": 15.0,
+    "avg_buy_price": 0.49,
+    "value_pct": 46.93877551020408,
+    "reason": "within_band"
   }
 ]
