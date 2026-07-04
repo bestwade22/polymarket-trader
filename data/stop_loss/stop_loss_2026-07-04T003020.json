@@ -1,0 +1,108 @@
+{
+  "status": "ok",
+  "dry_run": false,
+  "positions_loaded": 11,
+  "positions_checked": 10,
+  "skipped": [
+    {
+      "market_id": "0x8b9e12dbe74966f60d5834251e8559f1d235311bd4cd4eb785f8c0e11ff88ea1",
+      "token_id": "12110915364748600265825347919425142289593929286842870916237761338386507882349",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 194.83430799220272,
+      "avg_price": 0.513,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x2882c1e3244c8a0c6159835e3f3153f0d024258da179b320336a3cc3b627c10e",
+      "token_id": "96205941686381853979235807608693803039590240005308145725055159613741624846822",
+      "event_slug": "highest-temperature-in-miami-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 175.38164590278998,
+      "avg_price": 0.5699,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0x549a6968f78987694ec5f786d7f1064bcb605d7b97c123a56ba5bdb614a1fb5a",
+      "token_id": "61043565334908828251031467567853205855184971711920349975485629836315236778487",
+      "event_slug": "highest-temperature-in-nyc-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 221.11111111111111,
+      "avg_price": 0.45,
+      "current_mid": 0.995
+    },
+    {
+      "market_id": "0x59045320094372b4b0ef611258cd8e3ae6283b2ead35665d63cc698ae7809cde",
+      "token_id": "22755348980295792141696240140544811194355490398170421215750126983941517230594",
+      "event_slug": "highest-temperature-in-seattle-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 183.0,
+      "avg_price": 0.5,
+      "current_mid": 0.915
+    },
+    {
+      "market_id": "0x1d8b084e042df9163dbae0c28480ec3afd498bcced198705faad58eb889abe52",
+      "token_id": "73091394269515816998421079800184185909514966793941168960399939609144395543475",
+      "event_slug": "highest-temperature-in-austin-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 177.85714285714283,
+      "avg_price": 0.56,
+      "current_mid": 0.996
+    },
+    {
+      "market_id": "0x301ffc850b0c3d5bbf8b9f95aeb616b35d43abb83a8566fc3c9f3bb3e39997b5",
+      "token_id": "115200599205803067401454776276536120973457385365544458655795257984368777667020",
+      "event_slug": "highest-temperature-in-mexico-city-on-july-3-2026",
+      "reason": "above_threshold",
+      "value_pct": 232.4418604651163,
+      "avg_price": 0.43,
+      "current_mid": 0.9995
+    },
+    {
+      "market_id": "0xe4f4b614a6c2b4ecd8eb700d19c0e6533d3fbd1bc28193b2255394ef74006e6f",
+      "token_id": "89576274136595202327975910079635847102293810595609428633134997662847357374694",
+      "event_slug": "highest-grossing-movie-in-2026",
+      "reason": "not_temp_market"
+    },
+    {
+      "market_id": "0x04eca713dd72e361c88c1fb5e617125185c4f4d14a14d0536369754a18016356",
+      "token_id": "3874437595527233408844505611336900005542213245615873690302924751191567541296",
+      "event_slug": "highest-temperature-in-chicago-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 1.5476190476190477,
+      "avg_price": 0.42,
+      "current_mid": 0.0065
+    },
+    {
+      "market_id": "0xceb8a25e6a63f193336f602fe40a02984d0df02df2ccc77910110a25fee098be",
+      "token_id": "87240994538803850057852667294477438795652687950920232070305248255761484586115",
+      "event_slug": "highest-temperature-in-atlanta-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.09606147934678194,
+      "avg_price": 0.5205,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xdf16b0ce47092fbd4e1e40737c06069b359ef9cbe0e7d5874e2f93b83b95c3f0",
+      "token_id": "102676701060886901119735525006661605152123814722774170470421714323492823887594",
+      "event_slug": "highest-temperature-in-denver-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.08928571428571429,
+      "avg_price": 0.56,
+      "current_mid": 0.0005
+    },
+    {
+      "market_id": "0xc66e7e0cde2354a173c66df6361e637626533f90fcddbdaa0e49eafb901007b3",
+      "token_id": "104441152074015230657209658698497479273797054376577209981969088683596817844893",
+      "event_slug": "highest-temperature-in-toronto-on-july-3-2026",
+      "reason": "below_floor",
+      "value_pct": 0.1282051282051282,
+      "avg_price": 0.39,
+      "current_mid": 0.0005
+    }
+  ],
+  "sold": [],
+  "errors": [],
+  "threshold_pct": 50.0,
+  "checked_at": "2026-07-04T00:30:20.180257+00:00"
+}
