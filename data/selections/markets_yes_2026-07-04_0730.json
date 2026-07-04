@@ -1,0 +1,70 @@
+{
+  "run_at": "2026-07-04T07:30:49.783226+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "657630",
+      "city": "Lucknow",
+      "market_id": "2765804",
+      "groupItemTitle": "37\u00b0C",
+      "yes_price": 0.535,
+      "yes_token_id": "58191387844568540273536036480762858157493396944251364332949451534110932874241",
+      "buy_price": 0.63,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.535,
+      "selection_price": 0.535,
+      "gamma_yes_price": 0.535,
+      "best_bid": 0.44,
+      "best_ask": 0.63,
+      "clob_buy_price": 0.63,
+      "last_trade_price": 0.44,
+      "midpoint": 0.535,
+      "outcomePrices": [
+        0.535,
+        0.465
+      ],
+      "order_status": "live",
+      "order_id": "0xeb2aefb9553cab4a6ea983cc79ef843670cb4fb66900b1e217f4a9d25792c5e3",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-04T08:25:48+00:00"
+    },
+    {
+      "event_id": "657642",
+      "city": "Karachi",
+      "market_id": "2765936",
+      "groupItemTitle": "34\u00b0C",
+      "yes_price": 0.53,
+      "yes_token_id": "86826400431097956753944273901657148990278735732079717667631573703330951387773",
+      "buy_price": 0.66,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.53,
+      "selection_price": 0.53,
+      "gamma_yes_price": 0.42,
+      "best_bid": 0.4,
+      "best_ask": 0.66,
+      "clob_buy_price": 0.66,
+      "last_trade_price": 0.46,
+      "midpoint": 0.53,
+      "outcomePrices": [
+        0.42,
+        0.58
+      ],
+      "order_status": "live",
+      "order_id": "0xae065a1311f1b0f61cf978e7fa24681ba76f494dd980c1be0d0ac7fa0282b49c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-04T08:25:49+00:00"
+    }
+  ]
+}
