@@ -2434,5 +2434,17 @@
     "avg_buy_price": 0.53,
     "value_pct": 16.037735849056602,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xc420cc3fc833543fe374b1a54d31e73720eebf3d5a9041cccafde9b7c22a8943",
+    "token_id": "58191387844568540273536036480762858157493396944251364332949451534110932874241",
+    "order_id": "0x6fcf1b36ad15cc0484cb08d3cc099f783f270d19b76a0a8cf3c90af64dab3e76",
+    "sold_at": "2026-07-04T10:30:19.292119+00:00",
+    "event_slug": "highest-temperature-in-lucknow-on-july-4-2026",
+    "price": 0.08,
+    "size": 15.0,
+    "avg_buy_price": 0.53,
+    "value_pct": 15.09433962264151,
+    "reason": "within_band"
   }
 ]
