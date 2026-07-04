@@ -8,6 +8,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from src.trade.position_checker import (
     LivePositionChecker,
     compute_top_up_shares,
+    event_position_holdings,
     filter_events_without_position,
     filter_selections_without_position,
     parse_conditional_balance,
@@ -104,6 +105,63 @@ def test_event_has_position_stops_after_first_hit():
     assert calls == ["token_yes_92"]
 
 
+def _miami_selection(market_id: str = "2646663") -> MarketSelection:
+    event = _miami_event()
+    market = next(m for m in event["markets"] if m["id"] == market_id)
+    token_id = "token_yes_94" if market_id == "2646663" else "token_yes_92"
+    return MarketSelection(
+        event_id="624144",
+        city="Miami",
+        market_id=market_id,
+        group_item_title=market["groupItemTitle"],
+        yes_price=0.45,
+        yes_token_id=token_id,
+        buy_price=0.46,
+        share_count=15,
+        neg_risk=True,
+        tick_size="0.01",
+        order_min_size=5,
+        strategy="highest_yes",
+        event=event,
+        market=market,
+    )
+
+
+def test_event_position_holdings_splits_full_and_partial():
+    checker = _FakeChecker({"token_yes_92": 10.0, "token_yes_94": 15.0})
+    full, partial, unavailable = event_position_holdings(_miami_event(), checker, 15)
+    assert unavailable is False
+    assert len(full) == 1
+    assert full[0]["market_id"] == "2646663"
+    assert len(partial) == 1
+    assert partial[0]["market_id"] == "2646662"
+
+
+def test_filter_selections_skips_partial_on_other_market():
+    checker = _FakeChecker({"token_yes_92": 10.0})
+    kept, skipped = filter_selections_without_position([_miami_selection("2646663")], checker)
+    assert kept == []
+    assert skipped[0]["reason"] == "partial_on_other_market"
+    assert skipped[0]["held_market_id"] == "2646662"
+
+
+def test_filter_selections_top_up_when_partial_matches_selected_market():
+    checker = _FakeChecker({"token_yes_94": 10.0})
+    selection = _miami_selection("2646663")
+    kept, skipped = filter_selections_without_position([selection], checker)
+    assert skipped == []
+    assert len(kept) == 1
+    assert kept[0].share_count == 5
+
+
+def test_filter_selections_skips_full_position_on_other_market():
+    checker = _FakeChecker({"token_yes_92": 15.0})
+    kept, skipped = filter_selections_without_position([_miami_selection("2646663")], checker)
+    assert kept == []
+    assert skipped[0]["reason"] == "has_full_position_other_market"
+    assert skipped[0]["held_market_id"] == "2646662"
+
+
 def _toronto_selection() -> MarketSelection:
     event = {
         "id": "624139",
@@ -158,6 +216,10 @@ if __name__ == "__main__":
     test_filter_events_without_position_keeps_clean_cities()
     test_filter_events_without_position_skips_city_with_full_position()
     test_filter_events_without_position_keeps_city_with_partial_position()
+    test_event_position_holdings_splits_full_and_partial()
+    test_filter_selections_skips_partial_on_other_market()
+    test_filter_selections_top_up_when_partial_matches_selected_market()
+    test_filter_selections_skips_full_position_on_other_market()
     test_filter_selections_without_position_skips_city_with_full_position()
     test_filter_selections_without_position_top_up_partial_position()
     print("All tests passed.")
