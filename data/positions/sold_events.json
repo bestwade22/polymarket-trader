@@ -2362,5 +2362,17 @@
     "avg_buy_price": 0.59,
     "value_pct": 42.37288135593221,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xff060c87e080c694eb091d2b626a6007dd01fd258ed72cf435567ea426698030",
+    "token_id": "104808943517666777661232598712811303974357849758654450553098514882312151265988",
+    "order_id": "0x2635ae028fbab84dea6390418d0b99283010bb11c478dffc2796a43319dc0701",
+    "sold_at": "2026-07-04T07:30:21.217718+00:00",
+    "event_slug": "highest-temperature-in-wuhan-on-july-4-2026",
+    "price": 0.09,
+    "size": 15.0,
+    "avg_buy_price": 0.54,
+    "value_pct": 17.59259259259259,
+    "reason": "within_band"
   }
 ]
