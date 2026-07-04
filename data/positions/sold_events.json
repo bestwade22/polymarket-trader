@@ -2374,5 +2374,29 @@
     "avg_buy_price": 0.54,
     "value_pct": 17.59259259259259,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xa196a73da184e561f8ac9756e96bdc62413f17454292892717f3f9a74dfe17a1",
+    "token_id": "6125129872716193444432547674086165470588516008738866678533676662148899174358",
+    "order_id": "0xd40326a3f06e5020e3dace79cdb75a70607afa08da671ea000d747d0623adc97",
+    "sold_at": "2026-07-04T07:45:19.850318+00:00",
+    "event_slug": "highest-temperature-in-chongqing-on-july-4-2026",
+    "price": 0.19,
+    "size": 12.01,
+    "avg_buy_price": 0.47,
+    "value_pct": 32.97872340425532,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xff060c87e080c694eb091d2b626a6007dd01fd258ed72cf435567ea426698030",
+    "token_id": "104808943517666777661232598712811303974357849758654450553098514882312151265988",
+    "order_id": "0xab690cb98f40dbc16c3a2f2ddbdae4e8df5ae0189e4d7bc72a8023ef1f372125",
+    "sold_at": "2026-07-04T07:45:21.816819+00:00",
+    "event_slug": "highest-temperature-in-wuhan-on-july-4-2026",
+    "price": 0.06,
+    "size": 10.11,
+    "avg_buy_price": 0.54,
+    "value_pct": 11.11111111111111,
+    "reason": "within_band"
   }
 ]
