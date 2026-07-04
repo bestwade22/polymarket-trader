@@ -231,7 +231,7 @@ python scripts/check_geoblock.py
 ### Data storage
 
 - **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`) via `git add -f` from Lambda.
-- **Stop-loss runs** commit `data/positions/sold_events.json` and `data/stop_loss/*.json`.
+- **Stop-loss runs** commit `data/positions/sold_events.json` when a sell is placed.
 - **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`, `...-stop-loss-check`).
 - **`bought_events.json`** is force-committed when live trading updates it.
 

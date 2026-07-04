@@ -35,7 +35,6 @@ class TestStopLossRunner:
         assert result["status"] == "skipped"
         assert result["reason"] == "no_positions"
 
-    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.refresh_market_prices")
     @patch("src.trade.stop_loss_runner.resolve_event_for_position")
@@ -46,12 +45,10 @@ class TestStopLossRunner:
         mock_resolve,
         mock_refresh_market,
         mock_executor_cls,
-        mock_save,
     ):
         mock_fetch.return_value = [
             _position(event_slug="will-x-win-election", title="Will X win?")
         ]
-        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
         mock_executor_cls.return_value = MagicMock(dry_run=True)
 
         result = run_stop_loss_check(dry_run=True, wallet_address="0xabc")
@@ -61,7 +58,6 @@ class TestStopLossRunner:
         mock_resolve.assert_not_called()
         mock_refresh_market.assert_not_called()
 
-    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.LiveOpenOrderChecker")
     @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.20)
@@ -76,7 +72,6 @@ class TestStopLossRunner:
         _sell_price,
         mock_open_checker_cls,
         mock_executor_cls,
-        mock_save,
     ):
         market = {
             "id": "m1",
@@ -97,7 +92,6 @@ class TestStopLossRunner:
         mock_fetch.return_value = [_position()]
         mock_resolve.return_value = event
         mock_refresh_market.return_value = market
-        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
         open_checker = MagicMock()
         open_checker.token_has_open_sell_order.return_value = (False, [])
         mock_open_checker_cls.return_value = open_checker
@@ -121,7 +115,6 @@ class TestStopLossRunner:
         executor.sell_yes.assert_called_once()
         mock_refresh_market.assert_called_once()
 
-    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.LiveOpenOrderChecker")
     @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.35)
@@ -136,7 +129,6 @@ class TestStopLossRunner:
         _sell_price,
         mock_open_checker_cls,
         mock_executor_cls,
-        mock_save,
     ):
         market = {
             "id": "m1",
@@ -153,7 +145,6 @@ class TestStopLossRunner:
         mock_fetch.return_value = [_position(avg_price=0.60)]
         mock_resolve.return_value = event
         mock_refresh_market.return_value = market
-        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
         open_checker = MagicMock()
         open_checker.token_has_open_sell_order.return_value = (False, [])
         mock_open_checker_cls.return_value = open_checker
@@ -168,7 +159,6 @@ class TestStopLossRunner:
         assert result["sold"] == []
         assert any(s["reason"] == "above_threshold" for s in result["skipped"])
 
-    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.LiveOpenOrderChecker")
     @patch("src.trade.stop_loss_runner.get_sell_price", return_value=0.20)
@@ -183,7 +173,6 @@ class TestStopLossRunner:
         _sell_price,
         mock_open_checker_cls,
         mock_executor_cls,
-        mock_save,
     ):
         market = {
             "id": "m1",
@@ -204,7 +193,6 @@ class TestStopLossRunner:
         mock_fetch.return_value = [_position()]
         mock_resolve.return_value = event
         mock_refresh_market.return_value = market
-        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
 
         open_checker = MagicMock()
         open_checker.token_has_open_sell_order.return_value = (
@@ -226,7 +214,6 @@ class TestStopLossRunner:
         assert any(s["reason"] == "open_sell_order" for s in result["skipped"])
         executor.sell_yes.assert_not_called()
 
-    @patch("src.trade.stop_loss_runner.save_stop_loss_run")
     @patch("src.trade.stop_loss_runner.TradeExecutor")
     @patch("src.trade.stop_loss_runner.resolve_event_for_position")
     @patch("src.trade.stop_loss_runner.fetch_user_positions")
@@ -235,7 +222,6 @@ class TestStopLossRunner:
         mock_fetch,
         mock_resolve,
         mock_executor_cls,
-        mock_save,
     ):
         market = {
             "id": "m1",
@@ -251,7 +237,6 @@ class TestStopLossRunner:
         }
         mock_fetch.return_value = [_position()]
         mock_resolve.return_value = event
-        mock_save.side_effect = lambda r: __import__("pathlib").Path("/tmp/run.json")
         mock_executor_cls.return_value = MagicMock(dry_run=True)
 
         with patch(

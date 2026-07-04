@@ -43,14 +43,7 @@ def run_check_stop_loss(workspace: str, live: bool) -> None:
 
 
 def collect_commit_paths(workspace: str) -> List[str]:
-    from pathlib import Path
-
-    paths = ["data/positions/sold_events.json"]
-    stop_loss_dir = Path(workspace) / "data" / "stop_loss"
-    if stop_loss_dir.is_dir():
-        for path in sorted(stop_loss_dir.glob("stop_loss_*.json")):
-            paths.append(f"data/stop_loss/{path.name}")
-    return paths
+    return ["data/positions/sold_events.json"]
 
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:

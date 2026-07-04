@@ -7,7 +7,7 @@ from glob import glob
 from pathlib import Path
 from typing import Any, Optional
 
-from config.settings import DATA_DIR, STOP_LOSS_DIR, ensure_dirs, settings
+from config.settings import DATA_DIR, ensure_dirs, settings
 from src.api.data_client import DataClient, LivePosition, fetch_user_positions
 from src.api.gamma_client import GammaClient
 from src.trade.executor import TradeExecutor
@@ -120,14 +120,6 @@ def selection_from_position(
     )
 
 
-def save_stop_loss_run(result: dict) -> Path:
-    ensure_dirs()
-    now = datetime.now(timezone.utc)
-    path = STOP_LOSS_DIR / f"stop_loss_{now.strftime('%Y-%m-%dT%H%M%S')}.json"
-    path.write_text(json.dumps(result, indent=2))
-    return path
-
-
 def _log_sell_placed(
     position: LivePosition,
     order_result: dict[str, Any],
@@ -169,8 +161,7 @@ def _log_run_summary(result: dict[str, Any]) -> None:
 
     logger.info(
         "Stop-loss check complete: status=%s dry_run=%s positions_loaded=%d "
-        "positions_checked=%d sold_count=%d skipped_count=%d error_count=%d "
-        "run_file=%s",
+        "positions_checked=%d sold_count=%d skipped_count=%d error_count=%d",
         result.get("status"),
         result.get("dry_run"),
         result.get("positions_loaded"),
@@ -178,7 +169,6 @@ def _log_run_summary(result: dict[str, Any]) -> None:
         len(sold),
         len(result.get("skipped", [])),
         len(result.get("errors", [])),
-        result.get("run_file"),
     )
 
 
@@ -419,7 +409,5 @@ def run_stop_loss_check(
         "threshold_pct": settings.stop_loss_pct,
         "checked_at": datetime.now(timezone.utc).isoformat(),
     }
-    run_path = save_stop_loss_run(result)
-    result["run_file"] = str(run_path)
     _log_run_summary(result)
     return result

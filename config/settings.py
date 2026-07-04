@@ -13,7 +13,6 @@ LOGS_DIR = PROJECT_ROOT / "logs"
 TRADES_LOG_DIR = LOGS_DIR / "trades"
 BOUGHT_EVENTS_FILE = POSITIONS_DIR / "bought_events.json"
 SOLD_EVENTS_FILE = POSITIONS_DIR / "sold_events.json"
-STOP_LOSS_DIR = DATA_DIR / "stop_loss"
 CITY_COORDS_FILE = DATA_DIR / "city_coords.json"
 
 load_dotenv(PROJECT_ROOT / ".env")
@@ -197,5 +196,5 @@ settings = Settings()
 
 
 def ensure_dirs() -> None:
-    for path in (DATA_DIR, SELECTIONS_DIR, POSITIONS_DIR, STOP_LOSS_DIR, LOGS_DIR, TRADES_LOG_DIR):
+    for path in (DATA_DIR, SELECTIONS_DIR, POSITIONS_DIR, LOGS_DIR, TRADES_LOG_DIR):
         path.mkdir(parents=True, exist_ok=True)
