@@ -11,6 +11,7 @@ from src.trade.position_checker import (
     event_position_holdings,
     filter_events_without_position,
     filter_selections_without_position,
+    other_market_position_holding,
     parse_conditional_balance,
 )
 from src.trade.strategies.base import MarketSelection
@@ -208,6 +209,54 @@ def test_filter_selections_without_position_top_up_partial_position():
     assert kept[0].share_count == 5
 
 
+def test_filter_selections_checks_selected_market_first_for_full_position():
+    calls: list[str] = []
+
+    class _TrackingChecker(LivePositionChecker):
+        def get_yes_balance(self, token_id: str):
+            calls.append(token_id)
+            if token_id == "token_yes_24":
+                return 15.0
+            return 0.0
+
+    checker = _TrackingChecker(executor=object())  # type: ignore[arg-type]
+    kept, skipped = filter_selections_without_position([_toronto_selection()], checker)
+    assert kept == []
+    assert skipped[0]["reason"] == "has_full_position"
+    assert calls == ["token_yes_24"]
+
+
+def test_filter_selections_scans_others_only_when_selected_empty():
+    calls: list[str] = []
+
+    class _TrackingChecker(LivePositionChecker):
+        def get_yes_balance(self, token_id: str):
+            calls.append(token_id)
+            if token_id == "token_yes_92":
+                return 10.0
+            return 0.0
+
+    checker = _TrackingChecker(executor=object())  # type: ignore[arg-type]
+    kept, skipped = filter_selections_without_position([_miami_selection("2646663")], checker)
+    assert kept == []
+    assert skipped[0]["reason"] == "partial_on_other_market"
+    assert calls == ["token_yes_94", "token_yes_92"]
+
+
+def test_other_market_position_holding_excludes_selected():
+    checker = _FakeChecker({"token_yes_92": 15.0, "token_yes_94": 5.0})
+    full, partial, unavailable = other_market_position_holding(
+        _miami_event(),
+        checker,
+        15,
+        exclude_token_id="token_yes_94",
+    )
+    assert unavailable is False
+    assert full is not None
+    assert full["market_id"] == "2646662"
+    assert partial is None
+
+
 if __name__ == "__main__":
     test_compute_top_up_shares()
     test_parse_conditional_balance()
@@ -222,4 +271,7 @@ if __name__ == "__main__":
     test_filter_selections_skips_full_position_on_other_market()
     test_filter_selections_without_position_skips_city_with_full_position()
     test_filter_selections_without_position_top_up_partial_position()
+    test_filter_selections_checks_selected_market_first_for_full_position()
+    test_filter_selections_scans_others_only_when_selected_empty()
+    test_other_market_position_holding_excludes_selected()
     print("All tests passed.")

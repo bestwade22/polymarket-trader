@@ -5,7 +5,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 ## Features
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
-- **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **12:30–14:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
+- **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **13:30–15:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **3:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
@@ -71,7 +71,7 @@ python -m src.main run-scheduler
 
 ### When trades run
 
-By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **12:30–14:30** local). Window bounds use each city's timezone and `event_date` in the events file.
+By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **13:30–15:30** local). Window bounds use each city's timezone and `event_date` in the events file.
 
 - Run during a city's trading window → tradable.
 - Run outside the window → `Found 0 tradable events` (expected).
@@ -123,8 +123,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
 | `ORDER_EXPIRY_MINUTES` | `55` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
-| `TRADING_WINDOW_START_HOUR` | `12:30` | Local time when trading opens: `12`, `12:30`, or `1230` (city timezone) |
-| `TRADING_WINDOW_END_HOUR` | `14:30` | Local time when trading closes: `14`, `14:30`, or `1430` (city timezone) |
+| `TRADING_WINDOW_START_HOUR` | `13:30` | Local time when trading opens: `13`, `13:30`, or `1330` (city timezone) |
+| `TRADING_WINDOW_END_HOUR` | `15:30` | Local time when trading closes: `15`, `15:30`, or `1530` (city timezone) |
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |

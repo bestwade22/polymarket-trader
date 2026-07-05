@@ -149,13 +149,18 @@ def event_position_holdings(
     event: dict,
     checker: LivePositionChecker,
     target_share_count: int,
+    *,
+    exclude_token_ids: Optional[set[str]] = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], bool]:
     """Return (full_holdings, partial_holdings, balance_unavailable)."""
     full_holdings: list[dict[str, Any]] = []
     partial_holdings: list[dict[str, Any]] = []
     balance_unavailable = False
+    excluded = exclude_token_ids or set()
 
     for token_id, market in _event_token_market_map(event).items():
+        if token_id in excluded:
+            continue
         balance = checker.get_yes_balance(token_id)
         if balance is None:
             balance_unavailable = True
@@ -166,6 +171,31 @@ def event_position_holdings(
             partial_holdings.append(_holding_record(token_id, market, balance))
 
     return full_holdings, partial_holdings, balance_unavailable
+
+
+def other_market_position_holding(
+    event: dict,
+    checker: LivePositionChecker,
+    target_share_count: int,
+    exclude_token_id: str,
+) -> tuple[Optional[dict[str, Any]], Optional[dict[str, Any]], bool]:
+    """First full/partial holding on non-selected markets; stops early on full."""
+    first_partial: Optional[dict[str, Any]] = None
+    balance_unavailable = False
+
+    for token_id, market in _event_token_market_map(event).items():
+        if token_id == exclude_token_id:
+            continue
+        balance = checker.get_yes_balance(token_id)
+        if balance is None:
+            balance_unavailable = True
+            continue
+        if balance >= target_share_count:
+            return _holding_record(token_id, market, balance), None, balance_unavailable
+        if balance >= MIN_POSITION_SHARES and first_partial is None:
+            first_partial = _holding_record(token_id, market, balance)
+
+    return None, first_partial, balance_unavailable
 
 
 def _append_position_skip(
@@ -201,8 +231,9 @@ def filter_selections_without_position(
 ) -> tuple[list, list[dict]]:
     """Drop selections that already hold SHARE_COUNT Yes shares on any city market.
 
-    When 0 < held shares < SHARE_COUNT, only top up when the selected market is the
-    same market that already holds the partial position.
+    Checks the selected market (post YES_PRICE_MAX) first. Other markets are scanned
+    only when the selected market has no position. Partial top-up runs only when the
+    partial holding is on that same selected market.
     """
     kept = []
     skipped: list[dict] = []
@@ -216,24 +247,153 @@ def filter_selections_without_position(
         city = sel.city or event.get("city", "")
         step_log = event.get("_step_logger")
 
-        full_holdings, partial_holdings, balance_unavailable = event_position_holdings(
-            event,
-            checker,
-            target_share_count,
-        )
-        if balance_unavailable and not full_holdings and not partial_holdings:
+        selected_balance = checker.get_yes_balance(sel.yes_token_id)
+
+        if selected_balance is None:
+            other_full, other_partial, balance_unavailable = other_market_position_holding(
+                event,
+                checker,
+                target_share_count,
+                exclude_token_id=str(sel.yes_token_id),
+            )
+            if other_full or other_partial:
+                held = other_full or other_partial
+                reason = (
+                    "has_full_position_other_market"
+                    if other_full
+                    else "partial_on_other_market"
+                )
+                logger.info(
+                    "event=%s city=%s selected balance unavailable; %s on market %s; skip",
+                    event_id,
+                    city,
+                    reason,
+                    held["market_id"],
+                )
+                if step_log:
+                    step_log.log_step(
+                        "check_position",
+                        has_position=True,
+                        held_shares=held["balance"],
+                        held_market_id=held["market_id"],
+                        selected_market_id=sel.market_id,
+                        target_share_count=target_share_count,
+                        reason=reason,
+                        balance_unavailable=True,
+                    )
+                    step_log.save()
+                _append_position_skip(
+                    skipped,
+                    event_id=event_id,
+                    city=city,
+                    sel=sel,
+                    reason=reason,
+                    target_share_count=target_share_count,
+                    held_shares=held["balance"],
+                    held_market_id=held["market_id"],
+                    held_group_item_title=held["group_item_title"],
+                )
+                continue
             if step_log:
                 step_log.log_step("check_position", has_position=False, balance_unavailable=True)
             kept.append(sel)
             continue
 
-        if full_holdings:
-            held = full_holdings[0]
-            reason = (
-                "has_full_position"
-                if held["market_id"] == sel.market_id
-                else "has_full_position_other_market"
+        if selected_balance >= target_share_count:
+            logger.info(
+                "event=%s city=%s selected=%s holds %.2f shares on market %s (target %d); skip",
+                event_id,
+                city,
+                sel.market_id,
+                selected_balance,
+                sel.market_id,
+                target_share_count,
             )
+            if step_log:
+                step_log.log_step(
+                    "check_position",
+                    has_position=True,
+                    held_shares=selected_balance,
+                    held_market_id=sel.market_id,
+                    target_share_count=target_share_count,
+                    reason="has_full_position",
+                )
+                step_log.save()
+            _append_position_skip(
+                skipped,
+                event_id=event_id,
+                city=city,
+                sel=sel,
+                reason="has_full_position",
+                target_share_count=target_share_count,
+                held_shares=selected_balance,
+                held_market_id=sel.market_id,
+                held_group_item_title=sel.group_item_title,
+            )
+            continue
+
+        if selected_balance >= MIN_POSITION_SHARES:
+            should_skip, order_shares, reason = compute_top_up_shares(
+                held_balance=selected_balance,
+                target_share_count=target_share_count,
+                order_min_size=sel.order_min_size,
+            )
+            if should_skip:
+                if step_log:
+                    step_log.log_step(
+                        "check_position",
+                        has_position=True,
+                        held_shares=selected_balance,
+                        held_market_id=sel.market_id,
+                        target_share_count=target_share_count,
+                        reason=reason,
+                    )
+                    step_log.save()
+                _append_position_skip(
+                    skipped,
+                    event_id=event_id,
+                    city=city,
+                    sel=sel,
+                    reason=reason,
+                    target_share_count=target_share_count,
+                    held_shares=selected_balance,
+                    held_market_id=sel.market_id,
+                    held_group_item_title=sel.group_item_title,
+                )
+                continue
+
+            logger.info(
+                "event=%s city=%s market=%s partial position %.2f/%d; order %d shares",
+                event_id,
+                city,
+                sel.market_id,
+                selected_balance,
+                target_share_count,
+                order_shares,
+            )
+            sel.share_count = order_shares
+            if step_log:
+                step_log.log_step(
+                    "check_position",
+                    has_position=True,
+                    held_shares=selected_balance,
+                    held_market_id=sel.market_id,
+                    target_share_count=target_share_count,
+                    order_shares=sel.share_count,
+                    reason=reason,
+                )
+            kept.append(sel)
+            continue
+
+        other_full, other_partial, balance_unavailable = other_market_position_holding(
+            event,
+            checker,
+            target_share_count,
+            exclude_token_id=str(sel.yes_token_id),
+        )
+
+        if other_full:
+            held = other_full
             logger.info(
                 "event=%s city=%s selected=%s holds %.2f shares on market %s (target %d); skip",
                 event_id,
@@ -250,7 +410,7 @@ def filter_selections_without_position(
                     held_shares=held["balance"],
                     held_market_id=held["market_id"],
                     target_share_count=target_share_count,
-                    reason=reason,
+                    reason="has_full_position_other_market",
                 )
                 step_log.save()
             _append_position_skip(
@@ -258,7 +418,7 @@ def filter_selections_without_position(
                 event_id=event_id,
                 city=city,
                 sel=sel,
-                reason=reason,
+                reason="has_full_position_other_market",
                 target_share_count=target_share_count,
                 held_shares=held["balance"],
                 held_market_id=held["market_id"],
@@ -266,100 +426,42 @@ def filter_selections_without_position(
             )
             continue
 
-        if partial_holdings:
-            held = partial_holdings[0]
-            if held["market_id"] != sel.market_id:
-                logger.info(
-                    "event=%s city=%s partial %.2f shares on market %s but selected %s; skip",
-                    event_id,
-                    city,
-                    held["balance"],
-                    held["market_id"],
-                    sel.market_id,
-                )
-                if step_log:
-                    step_log.log_step(
-                        "check_position",
-                        has_position=True,
-                        held_shares=held["balance"],
-                        held_market_id=held["market_id"],
-                        selected_market_id=sel.market_id,
-                        target_share_count=target_share_count,
-                        reason="partial_on_other_market",
-                    )
-                    step_log.save()
-                _append_position_skip(
-                    skipped,
-                    event_id=event_id,
-                    city=city,
-                    sel=sel,
-                    reason="partial_on_other_market",
-                    target_share_count=target_share_count,
-                    held_shares=held["balance"],
-                    held_market_id=held["market_id"],
-                    held_group_item_title=held["group_item_title"],
-                )
-                continue
-
-            should_skip, order_shares, reason = compute_top_up_shares(
-                held_balance=held["balance"],
-                target_share_count=target_share_count,
-                order_min_size=sel.order_min_size,
-            )
-            if should_skip:
-                if step_log:
-                    step_log.log_step(
-                        "check_position",
-                        has_position=True,
-                        held_shares=held["balance"],
-                        target_share_count=target_share_count,
-                        reason=reason,
-                    )
-                    step_log.save()
-                _append_position_skip(
-                    skipped,
-                    event_id=event_id,
-                    city=city,
-                    sel=sel,
-                    reason=reason,
-                    target_share_count=target_share_count,
-                    held_shares=held["balance"],
-                    held_market_id=held["market_id"],
-                    held_group_item_title=held["group_item_title"],
-                )
-                continue
-
+        if other_partial:
+            held = other_partial
             logger.info(
-                "event=%s city=%s market=%s partial position %.2f/%d; order %d shares",
+                "event=%s city=%s partial %.2f shares on market %s but selected %s; skip",
                 event_id,
                 city,
-                sel.market_id,
                 held["balance"],
-                target_share_count,
-                order_shares,
+                held["market_id"],
+                sel.market_id,
             )
-            sel.share_count = order_shares
             if step_log:
                 step_log.log_step(
                     "check_position",
                     has_position=True,
                     held_shares=held["balance"],
+                    held_market_id=held["market_id"],
+                    selected_market_id=sel.market_id,
                     target_share_count=target_share_count,
-                    order_shares=sel.share_count,
-                    reason=reason,
+                    reason="partial_on_other_market",
                 )
-            kept.append(sel)
-            continue
-
-        balance = checker.get_yes_balance(sel.yes_token_id)
-        if balance is None:
-            if step_log:
-                step_log.log_step("check_position", has_position=False, balance_unavailable=True)
-            kept.append(sel)
+                step_log.save()
+            _append_position_skip(
+                skipped,
+                event_id=event_id,
+                city=city,
+                sel=sel,
+                reason="partial_on_other_market",
+                target_share_count=target_share_count,
+                held_shares=held["balance"],
+                held_market_id=held["market_id"],
+                held_group_item_title=held["group_item_title"],
+            )
             continue
 
         should_skip, order_shares, reason = compute_top_up_shares(
-            held_balance=balance,
+            held_balance=selected_balance,
             target_share_count=target_share_count,
             order_min_size=sel.order_min_size,
         )
@@ -369,14 +471,14 @@ def filter_selections_without_position(
                 event_id,
                 city,
                 sel.market_id,
-                balance,
+                selected_balance,
                 target_share_count,
             )
             if step_log:
                 step_log.log_step(
                     "check_position",
                     has_position=True,
-                    held_shares=balance,
+                    held_shares=selected_balance,
                     target_share_count=target_share_count,
                     reason=reason,
                 )
@@ -388,7 +490,7 @@ def filter_selections_without_position(
                 sel=sel,
                 reason=reason,
                 target_share_count=target_share_count,
-                held_shares=balance,
+                held_shares=selected_balance,
             )
             continue
 
@@ -396,11 +498,13 @@ def filter_selections_without_position(
             step_log.log_step(
                 "check_position",
                 has_position=False,
-                held_shares=balance,
+                held_shares=selected_balance,
                 target_share_count=target_share_count,
-                order_shares=sel.share_count,
+                order_shares=order_shares,
                 reason=reason,
+                balance_unavailable=balance_unavailable,
             )
+        sel.share_count = order_shares
         kept.append(sel)
     return kept, skipped
 

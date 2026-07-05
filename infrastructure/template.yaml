@@ -30,10 +30,10 @@ Parameters:
     Default: '55'
   TradingWindowStartHour:
     Type: String
-    Default: '12:30'
+    Default: '13:30'
   TradingWindowEndHour:
     Type: String
-    Default: '14:30'
+    Default: '15:30'
   SignatureType:
     Type: String
     Default: '1'

@@ -49,8 +49,8 @@ jobs:
             --parameter-overrides \
               "GitHubRepo=${{ vars.REPO_SLUG }} \
               GitBranch=main \
-              TradingWindowStartHour=12:30 \
-              TradingWindowEndHour=14:30 \
+              TradingWindowStartHour=13:30 \
+              TradingWindowEndHour=15:30 \
               ShareCount=15 \
               OrderExpiryMinutes=55 \
               StopLossPct=50 \

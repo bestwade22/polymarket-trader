@@ -99,12 +99,12 @@ def _minutes_since_midnight(hour: int, minute: int) -> int:
 
 def _parse_trading_window_bounds() -> tuple[int, int, int, int]:
     start_h, start_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_START_HOUR", "12:30"),
+        os.getenv("TRADING_WINDOW_START_HOUR", "13:30"),
         "TRADING_WINDOW_START_HOUR",
         allow_hour_24=False,
     )
     end_h, end_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_END_HOUR", "14:30"),
+        os.getenv("TRADING_WINDOW_END_HOUR", "15:30"),
         "TRADING_WINDOW_END_HOUR",
         allow_hour_24=True,
     )
