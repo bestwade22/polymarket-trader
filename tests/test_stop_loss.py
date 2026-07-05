@@ -78,7 +78,7 @@ class TestIsStopLossLocalTimeEligible:
     def test_at_cutoff_allows(self):
         ok, reason = is_stop_loss_local_time_eligible(
             self._event(),
-            now_utc=datetime(2026, 6, 28, 19, 30, tzinfo=timezone.utc),  # 15:30 ET
+            now_utc=datetime(2026, 6, 28, 20, 30, tzinfo=timezone.utc),  # 16:30 ET
         )
         assert ok is True
         assert reason == "ok"

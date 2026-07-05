@@ -52,6 +52,9 @@ Parameters:
   StopLossOrderExpiryMinutes:
     Type: String
     Default: '13'
+  StopLossMinLocalTime:
+    Type: String
+    Default: '16:30'
 
 Globals:
   Function:
@@ -140,6 +143,7 @@ Resources:
           STOP_LOSS_EVENT_SLUG_MARKER: !Ref StopLossEventSlugMarker
           STOP_LOSS_DRY_RUN: !Ref StopLossDryRun
           STOP_LOSS_ORDER_EXPIRY_MINUTES: !Ref StopLossOrderExpiryMinutes
+          STOP_LOSS_MIN_LOCAL_TIME: !Ref StopLossMinLocalTime
           SIGNATURE_TYPE: !Ref SignatureType
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:

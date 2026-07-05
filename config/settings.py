@@ -123,7 +123,7 @@ _trading_window_start_h, _trading_window_start_m, _trading_window_end_h, _tradin
 
 def _parse_stop_loss_min_local_time() -> tuple[int, int]:
     hour, minute = _parse_trading_window_time(
-        os.getenv("STOP_LOSS_MIN_LOCAL_TIME", "15:30"),
+        os.getenv("STOP_LOSS_MIN_LOCAL_TIME", "16:30"),
         "STOP_LOSS_MIN_LOCAL_TIME",
         allow_hour_24=False,
     )

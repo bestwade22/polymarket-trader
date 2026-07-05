@@ -56,7 +56,8 @@ jobs:
               StopLossPct=50 \
               StopLossPctFloor=10 \
               StopLossDryRun=false \
-              StopLossOrderExpiryMinutes=13"
+              StopLossOrderExpiryMinutes=13 \
+              StopLossMinLocalTime=16:30"
 
       - name: Diagnose CloudFormation failure
         if: failure()
