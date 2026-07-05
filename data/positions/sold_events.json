@@ -2722,5 +2722,29 @@
     "avg_buy_price": 0.352,
     "value_pct": 33.23863636363637,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xa7d8e1b9e9b8e41db2e52625cbcccf46b4788e80377c4748e7cb94d7a7b8207c",
+    "token_id": "101827301003657004959728587239309996312801608593193029126245778007162576590905",
+    "order_id": "0xb1949d34bd43ca734d9f9fdd9b7716c64b4d9017c6fedb536f77cf7d2030ed7c",
+    "sold_at": "2026-07-05T21:45:23.037823+00:00",
+    "event_slug": "highest-temperature-in-nyc-on-july-5-2026",
+    "price": 0.087,
+    "size": 10.0,
+    "avg_buy_price": 0.352,
+    "value_pct": 24.71590909090909,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0x71e8d66715bd80b7c306b2dec1f5364476b0cfd9c9a312d8db5a6f0ed7e7eac2",
+    "token_id": "26386926466302283503222355727424770265156164853022112870441342231114979985365",
+    "order_id": "0xd108ce1e9b4b19060fb2270b45c7dcdc1e293b17733a1d50949926e29ceb0489",
+    "sold_at": "2026-07-05T21:45:24.446830+00:00",
+    "event_slug": "highest-temperature-in-dallas-on-july-5-2026",
+    "price": 0.057,
+    "size": 10.0,
+    "avg_buy_price": 0.53,
+    "value_pct": 10.849056603773585,
+    "reason": "within_band"
   }
 ]
