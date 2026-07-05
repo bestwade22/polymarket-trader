@@ -2746,5 +2746,17 @@
     "avg_buy_price": 0.53,
     "value_pct": 10.849056603773585,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x2a3d8939bc2019f5ff80226f6faf0a5570ccb8c087b5e123992fecedd3b5d2a9",
+    "token_id": "3785273964179633399385815497066424699445272254966012546382652457338336784488",
+    "order_id": "0x125676e0eae6d9c147e5e736ac705eb5f3a9937df3d378dd36cd5ffe985796d8",
+    "sold_at": "2026-07-05T22:00:20.018884+00:00",
+    "event_slug": "highest-temperature-in-austin-on-july-5-2026",
+    "price": 0.08,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "value_pct": 17.346938775510207,
+    "reason": "within_band"
   }
 ]
