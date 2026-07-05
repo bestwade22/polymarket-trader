@@ -2554,5 +2554,17 @@
     "avg_buy_price": 0.52,
     "value_pct": 23.94230769230769,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x83bec6ee9f4aaee032d7c1fc3db9429c083fd175f2921872517fcfa77a96ddde",
+    "token_id": "70669846835947628033865982980788920457692318339663888740242256183574472270596",
+    "order_id": "0x61bf0947c05d2ce8581ae6087b63e18cf2e58102acc856e416905bd7cc6c363b",
+    "sold_at": "2026-07-05T10:30:19.347270+00:00",
+    "event_slug": "highest-temperature-in-karachi-on-july-5-2026",
+    "price": 0.06,
+    "size": 15.0,
+    "avg_buy_price": 0.48,
+    "value_pct": 13.541666666666668,
+    "reason": "within_band"
   }
 ]
