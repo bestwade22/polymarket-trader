@@ -2494,5 +2494,65 @@
     "avg_buy_price": 0.47,
     "value_pct": 16.595744680851066,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xb9e61ab946be7c63e1c37be761bb0c2e4353c0a01c52ae68403a42d0a15bdb16",
+    "token_id": "52561269801376685168383774459596820296612706099553446498452525020056904519982",
+    "order_id": "0x47f888550bb80ef0ee055cd4d5953cc9214075a0fba1e4d3150051b60f68355d",
+    "sold_at": "2026-07-04T19:30:20.135714+00:00",
+    "event_slug": "highest-temperature-in-atlanta-on-july-4-2026",
+    "price": 0.15,
+    "size": 15.0,
+    "avg_buy_price": 0.42,
+    "value_pct": 36.904761904761905,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xb9e61ab946be7c63e1c37be761bb0c2e4353c0a01c52ae68403a42d0a15bdb16",
+    "token_id": "52561269801376685168383774459596820296612706099553446498452525020056904519982",
+    "order_id": "0x624943365edcd3b03b2e63f43c8a76e693c0eb9d8871551d17bd65c50b78de91",
+    "sold_at": "2026-07-04T19:45:19.814283+00:00",
+    "event_slug": "highest-temperature-in-atlanta-on-july-4-2026",
+    "price": 0.05,
+    "size": 15.0,
+    "avg_buy_price": 0.42,
+    "value_pct": 13.095238095238097,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0x69c4de2cef6693ec8a46279fcefa5b4b3dfea3604060c5ca72a4f03a897a5ef3",
+    "token_id": "44511821753214432705463181770887114785892219072202131509294567510645745638502",
+    "order_id": "0x724dcde065562801565219f5a4be7d6045012b879080fb6289fae29684eb18f5",
+    "sold_at": "2026-07-04T22:00:18.804754+00:00",
+    "event_slug": "highest-temperature-in-denver-on-july-4-2026",
+    "price": 0.22,
+    "size": 15.0,
+    "avg_buy_price": 0.49,
+    "value_pct": 46.93877551020408,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xe6ca2b11c175e9f9ed0af617f6ef2268a4238cb6f69aa637b6c87e42e53fb334",
+    "token_id": "101369028110477274001155649014170609966825568626284276142727080231503584179644",
+    "order_id": "0xc74362b06ff0c32c5cf3cd1132ed016079adf320da1e24fd14037a94cf5605a0",
+    "sold_at": "2026-07-04T22:30:18.540843+00:00",
+    "event_slug": "highest-temperature-in-san-francisco-on-july-4-2026",
+    "price": 0.04,
+    "size": 19.9964,
+    "avg_buy_price": 0.3974,
+    "value_pct": 11.32360342224459,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xcf405f50a771268415d9286521d5674523af916921749f188856f7aa45ee883a",
+    "token_id": "4762352654060848895878788121343295448473195482548959459426789352157613061911",
+    "order_id": "0x7675a5bb6e829051439ab70e213d8945a128267a0c31f6e6c7f53cf0cf75a5dc",
+    "sold_at": "2026-07-05T06:30:18.214883+00:00",
+    "event_slug": "highest-temperature-in-tokyo-on-july-5-2026",
+    "price": 0.124,
+    "size": 15.0,
+    "avg_buy_price": 0.52,
+    "value_pct": 23.94230769230769,
+    "reason": "within_band"
   }
 ]
