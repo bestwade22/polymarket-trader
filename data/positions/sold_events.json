@@ -2626,5 +2626,29 @@
     "avg_buy_price": 0.42,
     "value_pct": 20.952380952380953,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x31aab8e6a94fdac0ffbe805b326f7d91e8ad47a9bc880045c8ffcbaa3aefec08",
+    "token_id": "109988998519317692685711807180615062481701556549748973707147846780865027169002",
+    "order_id": "0x381015e09c247c0dd0fd17c0ac1711f10cbc5ad0e6431c0808bf5e26866c906c",
+    "sold_at": "2026-07-05T15:00:18.823451+00:00",
+    "event_slug": "highest-temperature-in-milan-on-july-5-2026",
+    "price": 0.07,
+    "size": 15.77,
+    "avg_buy_price": 0.5504,
+    "value_pct": 13.626453488372093,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xc16e92a7e5d3ad8f54dca82821fb6e622538547a870c612fa3d36319721470ab",
+    "token_id": "47624868930435642727867749213809926950344618303988754656151726073752295100592",
+    "order_id": "0x923ad4302379594f3154952c3b7f3ddd10bd73e608ab9c038135f1a23171bada",
+    "sold_at": "2026-07-05T15:00:20.285200+00:00",
+    "event_slug": "highest-temperature-in-helsinki-on-july-5-2026",
+    "price": 0.119,
+    "size": 12.53,
+    "avg_buy_price": 0.42,
+    "value_pct": 29.642857142857142,
+    "reason": "within_band"
   }
 ]
