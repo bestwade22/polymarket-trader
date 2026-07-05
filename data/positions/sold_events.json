@@ -2650,5 +2650,29 @@
     "avg_buy_price": 0.42,
     "value_pct": 29.642857142857142,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x07dffd33e640bbed207c11233c3e73e7ec580bc27b46feddd1eae5097f933b71",
+    "token_id": "34646511225402272237604378695995658835013548061281368025824343622459246263025",
+    "order_id": "0x6181b95e967fba2a2f0837fbdaa9d57a27b74fadf70eb7afa874649034b3cd9b",
+    "sold_at": "2026-07-05T15:15:17.940877+00:00",
+    "event_slug": "highest-temperature-in-paris-on-july-5-2026",
+    "price": 0.19,
+    "size": 15.0,
+    "avg_buy_price": 0.45,
+    "value_pct": 43.333333333333336,
+    "reason": "within_band"
+  },
+  {
+    "market_id": "0xc16e92a7e5d3ad8f54dca82821fb6e622538547a870c612fa3d36319721470ab",
+    "token_id": "47624868930435642727867749213809926950344618303988754656151726073752295100592",
+    "order_id": "0x9fb007edf023457bc829e46cd261886da4375aed95f9d917a18a2706f7b3a94e",
+    "sold_at": "2026-07-05T15:15:19.304703+00:00",
+    "event_slug": "highest-temperature-in-helsinki-on-july-5-2026",
+    "price": 0.068,
+    "size": 12.53,
+    "avg_buy_price": 0.42,
+    "value_pct": 16.19047619047619,
+    "reason": "within_band"
   }
 ]
