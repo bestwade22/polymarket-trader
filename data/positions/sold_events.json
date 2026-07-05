@@ -2698,5 +2698,17 @@
     "avg_buy_price": 0.42,
     "value_pct": 40.11904761904762,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xc16e92a7e5d3ad8f54dca82821fb6e622538547a870c612fa3d36319721470ab",
+    "token_id": "47624868930435642727867749213809926950344618303988754656151726073752295100592",
+    "order_id": "0x1cbf22bf3723d558b123faf1d517c4df86f9fb7c05b56910cbd49c7b6d7360d2",
+    "sold_at": "2026-07-05T15:45:18.538635+00:00",
+    "event_slug": "highest-temperature-in-helsinki-on-july-5-2026",
+    "price": 0.044,
+    "size": 12.53,
+    "avg_buy_price": 0.42,
+    "value_pct": 10.595238095238095,
+    "reason": "within_band"
   }
 ]
