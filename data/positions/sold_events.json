@@ -2710,5 +2710,17 @@
     "avg_buy_price": 0.42,
     "value_pct": 10.595238095238095,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xa7d8e1b9e9b8e41db2e52625cbcccf46b4788e80377c4748e7cb94d7a7b8207c",
+    "token_id": "101827301003657004959728587239309996312801608593193029126245778007162576590905",
+    "order_id": "0xb4c9ffdfa3dc368b2621913c31ac9fca91d43e2fdb09349c68170ac7559bb5cd",
+    "sold_at": "2026-07-05T21:15:20.188606+00:00",
+    "event_slug": "highest-temperature-in-nyc-on-july-5-2026",
+    "price": 0.117,
+    "size": 10.0,
+    "avg_buy_price": 0.352,
+    "value_pct": 33.23863636363637,
+    "reason": "within_band"
   }
 ]
