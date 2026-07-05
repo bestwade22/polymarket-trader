@@ -15,7 +15,7 @@ Parameters:
     Default: highest_yes
   ShareCount:
     Type: String
-    Default: '15'
+    Default: '10'
   YesPriceMax:
     Type: String
     Default: '0.60'

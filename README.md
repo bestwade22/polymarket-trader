@@ -118,7 +118,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DEPOSIT_WALLET_ADDRESS` | — | Polymarket proxy/funder address (from your profile) |
 | `SIGNATURE_TYPE` | `1` | `0`=MetaMask EOA, `1`=email/Magic proxy, `2`=Gnosis Safe. Avoid `3` until SDK fix |
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
-| `SHARE_COUNT` | `15` | Shares per buy (min 5 on weather markets) |
+| `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |

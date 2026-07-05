@@ -51,7 +51,7 @@ jobs:
               GitBranch=main \
               TradingWindowStartHour=13:30 \
               TradingWindowEndHour=15:30 \
-              ShareCount=15 \
+              ShareCount=10 \
               OrderExpiryMinutes=55 \
               StopLossPct=50 \
               StopLossPctFloor=10 \

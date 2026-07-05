@@ -163,7 +163,7 @@ class Settings:
     deposit_wallet_address: str = os.getenv("DEPOSIT_WALLET_ADDRESS", "")
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
-    share_count: int = int(os.getenv("SHARE_COUNT", "15"))
+    share_count: int = int(os.getenv("SHARE_COUNT", "10"))
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
     selection_price_source: str = _normalize_selection_price_source(
         os.getenv("SELECTION_PRICE_SOURCE", "midpoint")
