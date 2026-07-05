@@ -172,7 +172,7 @@ Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp
 
 Local preview: `python3 -m http.server 8080` from repo root → http://localhost:8080/web/
 
-**GitHub Pages setup (one-time):** Settings → Pages → Build and deployment → **Source: GitHub Actions**, then run the [Deploy GitHub Pages](.github/workflows/pages.yml) workflow (or push a change under `web/` / `data/analysis/`). Alternatively, add a `GITHUB_PAT` repository secret (repo admin scope) and the workflow will enable Pages automatically.
+**GitHub Pages setup (one-time, if the URL 404s):** Settings → Pages → Build and deployment → **Source: Deploy from a branch** → branch **gh-pages** → folder **/ (root)**. The workflow pushes site files to `gh-pages` on each run (no PAT required).
 
 | Column | Description |
 |--------|-------------|

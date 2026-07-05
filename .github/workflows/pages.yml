@@ -10,9 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -21,40 +19,29 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Enable GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_PAT }}
+      - name: Prepare site
         run: |
-          set -euo pipefail
-          repo="${GITHUB_REPOSITORY}"
-          if gh api "repos/${repo}/pages" >/dev/null 2>&1; then
-            echo "GitHub Pages already enabled"
-            exit 0
-          fi
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::error::GitHub Pages is not enabled for this repository."
-            echo "Enable it once: Settings → Pages → Build and deployment → Source: GitHub Actions"
-            echo "Or add repository secret GITHUB_PAT (repo admin) to auto-enable in this workflow."
-            exit 1
-          fi
-          gh api --method POST "repos/${repo}/pages" -f build_type=workflow
-          echo "GitHub Pages enabled (build type: workflow)"
+          mkdir -p _site/web _site/data/analysis
+          cp -r web/. _site/web/
+          cp data/analysis/trade_history.json _site/data/analysis/
+          printf '%s\n' \
+            '<!DOCTYPE html>' \
+            '<meta http-equiv="refresh" content="0; url=web/">' \
+            '<a href="web/">Trade history dashboard</a>' \
+            > _site/index.html
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Pages URL
+        run: |
+          echo "::notice title=Dashboard URL::https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/web/"
+          echo "::notice title=One-time setup (if site 404)::Settings → Pages → Build and deployment → Source: Deploy from branch → gh-pages / (root)"
