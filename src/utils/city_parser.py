@@ -47,3 +47,32 @@ def parse_event_date_from_title(title: str) -> Optional[date]:
 
 def is_highest_temperature_event(title: str) -> bool:
     return parse_city_from_title(title) is not None
+
+
+SLUG_PATTERN = re.compile(
+    r"highest-temperature-in-(.+)-on-"
+    r"(january|february|march|april|may|june|july|august|september|october|november|december)-"
+    r"(\d{1,2})-(\d{4})",
+    re.IGNORECASE,
+)
+
+
+def parse_city_from_slug(slug: str) -> Optional[str]:
+    match = SLUG_PATTERN.search(slug or "")
+    if not match:
+        return None
+    city_part = match.group(1).replace("-", " ")
+    return " ".join(word.capitalize() for word in city_part.split())
+
+
+def parse_date_from_slug(slug: str) -> Optional[date]:
+    match = SLUG_PATTERN.search(slug or "")
+    if not match:
+        return None
+    month = MONTH_MAP[match.group(2).lower()]
+    day = int(match.group(3))
+    year = int(match.group(4))
+    try:
+        return date(year, month, day)
+    except ValueError:
+        return None

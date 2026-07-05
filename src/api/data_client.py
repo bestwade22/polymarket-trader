@@ -1,6 +1,7 @@
-"""Polymarket Data API client for live wallet positions."""
+"""Polymarket Data API client for wallet positions, activity, and closed positions."""
 
 import logging
+import time
 from dataclasses import dataclass
 from typing import Any, Optional
 
@@ -11,6 +12,14 @@ from src.trade.position_checker import MIN_POSITION_SHARES
 from src.utils.market_parser import parse_float
 
 logger = logging.getLogger(__name__)
+
+HIGHEST_TEMP_SLUG_PREFIX = "highest-temperature-in-"
+ACTIVITY_PAGE_SIZE = 500
+CLOSED_POSITIONS_PAGE_SIZE = 50
+
+
+def is_highest_temp_slug(slug: str) -> bool:
+    return str(slug or "").startswith(HIGHEST_TEMP_SLUG_PREFIX)
 
 
 @dataclass
@@ -115,7 +124,168 @@ class DataClient:
         logger.info("Fetched %d live positions for wallet %s", len(positions), wallet_address[:10])
         return positions
 
+    def fetch_user_activity_page(
+        self,
+        wallet_address: str,
+        *,
+        types: Optional[list[str]] = None,
+        start: Optional[int] = None,
+        end: Optional[int] = None,
+        offset: int = 0,
+        limit: int = ACTIVITY_PAGE_SIZE,
+        sort_direction: str = "ASC",
+    ) -> list[dict[str, Any]]:
+        if not wallet_address:
+            raise ValueError("wallet address required")
+
+        params: dict[str, Any] = {
+            "user": wallet_address,
+            "limit": limit,
+            "offset": offset,
+            "sortBy": "TIMESTAMP",
+            "sortDirection": sort_direction,
+        }
+        if types:
+            params["type"] = ",".join(types)
+        if start is not None:
+            params["start"] = start
+        if end is not None:
+            params["end"] = end
+
+        url = f"{self.base_url}/activity"
+        resp = self.session.get(url, params=params, timeout=60)
+        resp.raise_for_status()
+        data = resp.json()
+        if isinstance(data, list):
+            return [row for row in data if isinstance(row, dict)]
+        return []
+
+    def fetch_all_user_activity(
+        self,
+        wallet_address: str,
+        *,
+        types: Optional[list[str]] = None,
+        start: Optional[int] = None,
+        end: Optional[int] = None,
+        sort_direction: str = "ASC",
+        highest_temp_only: bool = True,
+    ) -> list[dict[str, Any]]:
+        all_rows: list[dict[str, Any]] = []
+        offset = 0
+        while True:
+            page = self.fetch_user_activity_page(
+                wallet_address,
+                types=types,
+                start=start,
+                end=end,
+                offset=offset,
+                sort_direction=sort_direction,
+            )
+            if not page:
+                break
+            for row in page:
+                if highest_temp_only and not is_highest_temp_slug(
+                    str(row.get("eventSlug") or row.get("event_slug") or "")
+                ):
+                    continue
+                all_rows.append(row)
+            if len(page) < ACTIVITY_PAGE_SIZE:
+                break
+            offset += ACTIVITY_PAGE_SIZE
+            time.sleep(0.1)
+        logger.info(
+            "Fetched %d highest-temp activity rows for wallet %s",
+            len(all_rows),
+            wallet_address[:10],
+        )
+        return all_rows
+
+    def fetch_closed_positions_page(
+        self,
+        wallet_address: str,
+        *,
+        offset: int = 0,
+        limit: int = CLOSED_POSITIONS_PAGE_SIZE,
+        sort_by: str = "TIMESTAMP",
+        sort_direction: str = "DESC",
+    ) -> list[dict[str, Any]]:
+        if not wallet_address:
+            raise ValueError("wallet address required")
+
+        params = {
+            "user": wallet_address,
+            "limit": limit,
+            "offset": offset,
+            "sortBy": sort_by,
+            "sortDirection": sort_direction,
+        }
+        url = f"{self.base_url}/closed-positions"
+        resp = self.session.get(url, params=params, timeout=60)
+        resp.raise_for_status()
+        data = resp.json()
+        if isinstance(data, list):
+            return [row for row in data if isinstance(row, dict)]
+        return []
+
+    def fetch_all_closed_positions(
+        self,
+        wallet_address: str,
+        *,
+        highest_temp_only: bool = True,
+    ) -> list[dict[str, Any]]:
+        all_rows: list[dict[str, Any]] = []
+        offset = 0
+        while True:
+            page = self.fetch_closed_positions_page(wallet_address, offset=offset)
+            if not page:
+                break
+            for row in page:
+                if highest_temp_only and not is_highest_temp_slug(
+                    str(row.get("eventSlug") or row.get("event_slug") or "")
+                ):
+                    continue
+                all_rows.append(row)
+            if len(page) < CLOSED_POSITIONS_PAGE_SIZE:
+                break
+            offset += CLOSED_POSITIONS_PAGE_SIZE
+            time.sleep(0.1)
+        logger.info(
+            "Fetched %d highest-temp closed positions for wallet %s",
+            len(all_rows),
+            wallet_address[:10],
+        )
+        return all_rows
+
 
 def fetch_user_positions(wallet_address: Optional[str] = None) -> list[LivePosition]:
     wallet = wallet_address or settings.deposit_wallet_address
     return DataClient().fetch_user_positions(wallet)
+
+
+def fetch_all_user_activity(
+    wallet_address: Optional[str] = None,
+    *,
+    types: Optional[list[str]] = None,
+    start: Optional[int] = None,
+    end: Optional[int] = None,
+    sort_direction: str = "ASC",
+    highest_temp_only: bool = True,
+) -> list[dict[str, Any]]:
+    wallet = wallet_address or settings.deposit_wallet_address
+    return DataClient().fetch_all_user_activity(
+        wallet,
+        types=types or ["TRADE", "REDEEM"],
+        start=start,
+        end=end,
+        sort_direction=sort_direction,
+        highest_temp_only=highest_temp_only,
+    )
+
+
+def fetch_all_closed_positions(
+    wallet_address: Optional[str] = None,
+    *,
+    highest_temp_only: bool = True,
+) -> list[dict[str, Any]]:
+    wallet = wallet_address or settings.deposit_wallet_address
+    return DataClient().fetch_all_closed_positions(wallet, highest_temp_only=highest_temp_only)

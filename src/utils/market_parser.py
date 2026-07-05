@@ -190,7 +190,37 @@ def parse_temperature_bucket(group_item_title: str) -> Optional[Tuple[int, Optio
     if range_match:
         return int(range_match.group(1)), int(range_match.group(2)), unit
 
+    single_match = re.match(r"(\d+)[°]?[FC]\s*$", title, re.IGNORECASE)
+    if single_match:
+        temp = int(single_match.group(1))
+        return temp, temp, unit
+
     return None
+
+
+def temp_bucket_sort_value(bucket: Optional[Tuple[int, Optional[int], str]]) -> Optional[int]:
+    """Numeric value for comparing temperature buckets (uses low bound)."""
+    if not bucket:
+        return None
+    low, _high, _unit = bucket
+    return low
+
+
+def compare_temp_buckets(
+    bought_title: str, winning_title: str
+) -> str:
+    """Return higher, lower, same, or unknown comparing two bucket labels."""
+    bought = parse_temperature_bucket(bought_title)
+    winning = parse_temperature_bucket(winning_title)
+    bought_val = temp_bucket_sort_value(bought)
+    winning_val = temp_bucket_sort_value(winning)
+    if bought_val is None or winning_val is None:
+        return "unknown"
+    if bought_val == winning_val:
+        return "same"
+    if winning_val > bought_val:
+        return "higher"
+    return "lower"
 
 
 def market_price_snapshot(market: dict) -> dict:

@@ -14,6 +14,7 @@ from apscheduler.triggers.cron import CronTrigger
 
 from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
+from src.analysis.sync_runner import run_sync_trade_history
 from src.trade.hourly_runner import run_hourly_trade
 from src.trade.stop_loss_runner import run_stop_loss_check
 from src.utils.hk_time import utc_clock_label
@@ -48,6 +49,14 @@ def cmd_trade_hourly(args: argparse.Namespace) -> None:
 
 def cmd_check_stop_loss(args: argparse.Namespace) -> None:
     run_stop_loss_check(dry_run=args.dry_run)
+
+
+def cmd_sync_trade_history(args: argparse.Namespace) -> None:
+    result = run_sync_trade_history(
+        init_days=args.init_days,
+        fetch_price_drop=not args.skip_price_drop,
+    )
+    logging.info("Trade history sync complete: %s", result)
 
 
 def cmd_run_scheduler(_args: argparse.Namespace) -> None:
@@ -120,6 +129,23 @@ def main() -> None:
         help="Place real sell orders (overrides DRY_RUN env)",
     )
 
+    sync_parser = sub.add_parser(
+        "sync-trade-history",
+        help="Sync wallet highest-temp trade history from Data API activity",
+    )
+    sync_parser.add_argument(
+        "--init-days",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Backfill last N days (replaces incremental window)",
+    )
+    sync_parser.add_argument(
+        "--skip-price-drop",
+        action="store_true",
+        help="Skip CLOB price-history lookups for loss/sold rows",
+    )
+
     args = parser.parse_args()
 
     if args.command == "trade-hourly":
@@ -138,6 +164,7 @@ def main() -> None:
         "fetch-daily": cmd_fetch_daily,
         "trade-hourly": cmd_trade_hourly,
         "check-stop-loss": cmd_check_stop_loss,
+        "sync-trade-history": cmd_sync_trade_history,
         "run-scheduler": cmd_run_scheduler,
     }
     commands[args.command](args)

@@ -153,6 +153,29 @@ Resources:
       DockerContext: ..
       DockerTag: polymarket-trader-v1
 
+  SyncTradeHistoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: polymarket-trader-sync-trade-history
+      PackageType: Image
+      ImageConfig:
+        Command:
+          - lambda_handlers.sync_trade_history.handler
+      Timeout: 900
+      MemorySize: 1024
+      Environment:
+        Variables:
+          SECRETS_ARN: !Ref TraderSecret
+          GIT_REPO: !Ref GitHubRepo
+          GIT_BRANCH: !Ref GitBranch
+      Policies:
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref TraderSecret
+    Metadata:
+      Dockerfile: infrastructure/Dockerfile
+      DockerContext: ..
+      DockerTag: polymarket-trader-v1
+
   SchedulerRole:
     Type: AWS::IAM::Role
     Properties:
@@ -174,6 +197,7 @@ Resources:
                   - !GetAtt FetchDailyFunction.Arn
                   - !GetAtt TradeHourlyFunction.Arn
                   - !GetAtt StopLossCheckFunction.Arn
+                  - !GetAtt SyncTradeHistoryFunction.Arn
 
   FetchDailySchedule:
     Type: AWS::Scheduler::Schedule
@@ -223,6 +247,22 @@ Resources:
         RetryPolicy:
           MaximumRetryAttempts: 2
 
+  SyncTradeHistorySchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: polymarket-trader-sync-trade-history
+      Description: Sync wallet trade history every 6 hours UTC
+      ScheduleExpression: cron(0 */6 * * ? *)
+      ScheduleExpressionTimezone: UTC
+      FlexibleTimeWindow:
+        Mode: 'OFF'
+      State: ENABLED
+      Target:
+        Arn: !GetAtt SyncTradeHistoryFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        RetryPolicy:
+          MaximumRetryAttempts: 2
+
 Outputs:
   FetchDailyFunctionArn:
     Description: Fetch daily Lambda ARN
@@ -233,6 +273,9 @@ Outputs:
   StopLossCheckFunctionArn:
     Description: Stop-loss check Lambda ARN
     Value: !GetAtt StopLossCheckFunction.Arn
+  SyncTradeHistoryFunctionArn:
+    Description: Sync trade history Lambda ARN
+    Value: !GetAtt SyncTradeHistoryFunction.Arn
   TraderSecretArn:
     Description: Secrets Manager ARN — set JSON credentials here after first deploy
     Value: !Ref TraderSecret

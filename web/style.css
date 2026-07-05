@@ -1,0 +1,128 @@
+/* Temperature market trade history dashboard */
+
+:root {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --border: #2d3a4d;
+  --text: #e7ecf3;
+  --muted: #8b9cb3;
+  --win: #3dd68c;
+  --loss: #f87171;
+  --sold: #fbbf24;
+  --open: #60a5fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
+#sync-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.filters select,
+.filters input {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  min-width: 120px;
+}
+
+.insights {
+  margin: 1rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+.insights pre {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  color: var(--muted);
+}
+
+.table-wrap {
+  padding: 0 2rem 2rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: var(--surface);
+  cursor: pointer;
+  user-select: none;
+  position: sticky;
+  top: 0;
+}
+
+th:hover { color: #fff; }
+
+tfoot td {
+  font-weight: 600;
+  background: var(--surface);
+  position: sticky;
+  bottom: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-win { background: rgba(61, 214, 140, 0.2); color: var(--win); }
+.badge-loss { background: rgba(248, 113, 113, 0.2); color: var(--loss); }
+.badge-sold { background: rgba(251, 191, 36, 0.2); color: var(--sold); }
+.badge-open { background: rgba(96, 165, 250, 0.2); color: var(--open); }
+
+.pnl-pos { color: var(--win); }
+.pnl-neg { color: var(--loss); }
+
+a.event-link { color: var(--open); text-decoration: none; }
+a.event-link:hover { text-decoration: underline; }

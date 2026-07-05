@@ -50,6 +50,10 @@ python -m src.main trade-hourly --date 2026-06-19 --all-cities --live
 python -m src.main check-stop-loss
 python -m src.main check-stop-loss --live
 
+# Sync wallet trade history from Data API activity (no local bot audit files)
+python -m src.main sync-trade-history --init-days 7
+python -m src.main sync-trade-history
+
 # Run built-in scheduler (daily fetch + hourly trade)
 python -m src.main run-scheduler
 ```
@@ -139,9 +143,43 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 data/events_*.json           # daily event cache per date
 data/selections/              # markets_yes_DATE_TIME.json snapshots
 data/positions/bought_events.json
+data/analysis/trade_history.json   # wallet trade ledger (from Data API activity)
+data/analysis/sync_state.json
+data/analysis/resolutions_cache.json  # cached winning temp per event (slim)
 logs/app.log
 logs/trades/                  # per-event step logs
+web/                          # trade history dashboard (GitHub Pages)
 ```
+
+## Trade history analysis
+
+Builds a unified ledger of **all wallet highest-temperature market trades** from Polymarket Data API `/activity` (TRADE + REDEEM) and `/closed-positions`. Does **not** use `bought_events.json`, `sold_events.json`, or `selections/` snapshots.
+
+```bash
+# Initial backfill (last 7 days)
+python -m src.main sync-trade-history --init-days 7
+
+# Incremental sync (since last run)
+python -m src.main sync-trade-history
+
+# Skip slow CLOB price-history lookups
+python -m src.main sync-trade-history --skip-price-drop
+```
+
+Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp, result, P&L, winning temp comparison, sell regret flags) plus summary and strategy insights.
+
+**Dashboard:** open [`web/index.html`](web/index.html) locally (`python -m http.server` from repo root, then visit `/web/`) or enable GitHub Pages via [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
+
+| Column | Description |
+|--------|-------------|
+| `result` | `win`, `loss`, `sold`, or `open` |
+| `win_temp_vs_bought` | Whether the winning bucket was higher/lower/same vs bought temp |
+| `sold_but_would_have_won` | Sold early but bought temp matched final winner |
+| `sell_value_pct` | Sell price as % of buy price (stop-loss timing analysis) |
+| `final_value_usd` | Realized P&L (from closed-positions when available) |
+
+Scheduled on AWS: `sync-trade-history` Lambda every **6 hours UTC** commits `data/analysis/*` to git.
+
 
 ## Cron
 
@@ -156,6 +194,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
 | `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Every 15 min UTC** | Scans live positions via Data API; sells highest-temp holdings when value ≤ `STOP_LOSS_PCT`% of avg buy |
+| `sync-trade-history` | **Every 6 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
 ```mermaid
 flowchart LR

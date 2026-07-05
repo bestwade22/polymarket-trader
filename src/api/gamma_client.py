@@ -6,6 +6,7 @@ import requests
 
 from config.settings import GAMMA_API_BASE
 from src.utils.city_parser import is_highest_temperature_event
+from src.utils.market_parser import get_outcome_prices, parse_json_field
 
 logger = logging.getLogger(__name__)
 
@@ -101,3 +102,51 @@ class GammaClient:
         resp.raise_for_status()
         data = resp.json()
         return data.get("events", data) if isinstance(data, dict) else data
+
+    def fetch_event_by_slug(self, slug: str) -> Optional[dict]:
+        """Fetch event by slug (active or closed)."""
+        url = f"{self.base_url}/events"
+        resp = self.session.get(url, params={"slug": slug}, timeout=30)
+        if resp.status_code == 404:
+            return None
+        resp.raise_for_status()
+        data = resp.json()
+        if isinstance(data, list):
+            return data[0] if data else None
+        if isinstance(data, dict):
+            events = data.get("data", data.get("events", []))
+            if isinstance(events, list) and events:
+                return events[0]
+            return data
+        return None
+
+
+def get_winning_market(event: dict) -> Optional[dict]:
+    """Return the market whose Yes outcome resolved to ~1.0."""
+    markets = event.get("markets") or []
+    for market in markets:
+        if not market.get("closed"):
+            continue
+        prices = get_outcome_prices(market)
+        if not prices:
+            continue
+        try:
+            outcomes = parse_json_field(market.get("outcomes", []))
+        except (TypeError, ValueError):
+            outcomes = []
+        yes_index = 0
+        for i, outcome in enumerate(outcomes):
+            if str(outcome).lower() == "yes":
+                yes_index = i
+                break
+        yes_price = prices[yes_index] if yes_index < len(prices) else prices[0]
+        if yes_price is not None and yes_price >= 0.99:
+            return market
+    return None
+
+
+def winning_temp_label(event: dict) -> Optional[str]:
+    market = get_winning_market(event)
+    if not market:
+        return None
+    return str(market.get("groupItemTitle") or market.get("title") or "").strip() or None

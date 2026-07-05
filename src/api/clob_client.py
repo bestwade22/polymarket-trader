@@ -127,3 +127,57 @@ class ClobPriceClient:
             "last_trade_price": last_trade,
             "midpoint": midpoint,
         }
+
+    def get_prices_history(
+        self,
+        token_id: str,
+        *,
+        start_ts: Optional[int] = None,
+        end_ts: Optional[int] = None,
+        interval: Optional[str] = None,
+        fidelity: int = 60,
+    ) -> list[dict[str, Any]]:
+        """Historical price points: each {t: unix_seconds, p: price}."""
+        params: dict[str, Any] = {"market": token_id, "fidelity": fidelity}
+        if start_ts is not None and end_ts is not None:
+            params["startTs"] = start_ts
+            params["endTs"] = end_ts
+        elif interval:
+            params["interval"] = interval
+        else:
+            params["interval"] = "max"
+
+        try:
+            resp = self.session.get(
+                f"{self.host}/prices-history",
+                params=params,
+                timeout=30,
+            )
+            if resp.status_code == 404:
+                return []
+            resp.raise_for_status()
+            data = resp.json()
+            history = data.get("history", data) if isinstance(data, dict) else data
+            if not isinstance(history, list):
+                return []
+            return [point for point in history if isinstance(point, dict)]
+        except requests.RequestException as exc:
+            logger.debug("CLOB prices-history failed for token %s: %s", token_id, exc)
+            return []
+
+
+def first_price_below_threshold(
+    history: list[dict[str, Any]],
+    *,
+    threshold: float,
+    after_ts: int,
+) -> Optional[int]:
+    """First unix timestamp when price dropped below threshold after buy."""
+    for point in sorted(history, key=lambda p: int(p.get("t") or 0)):
+        ts = int(point.get("t") or 0)
+        if ts < after_ts:
+            continue
+        price = parse_float(point.get("p"))
+        if price is not None and price < threshold:
+            return ts
+    return None

@@ -9,6 +9,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 SELECTIONS_DIR = DATA_DIR / "selections"
 POSITIONS_DIR = DATA_DIR / "positions"
+ANALYSIS_DIR = DATA_DIR / "analysis"
+RESOLUTIONS_CACHE_FILE = ANALYSIS_DIR / "resolutions_cache.json"
+TRADE_HISTORY_FILE = ANALYSIS_DIR / "trade_history.json"
+SYNC_STATE_FILE = ANALYSIS_DIR / "sync_state.json"
 LOGS_DIR = PROJECT_ROOT / "logs"
 TRADES_LOG_DIR = LOGS_DIR / "trades"
 BOUGHT_EVENTS_FILE = POSITIONS_DIR / "bought_events.json"
@@ -196,5 +200,12 @@ settings = Settings()
 
 
 def ensure_dirs() -> None:
-    for path in (DATA_DIR, SELECTIONS_DIR, POSITIONS_DIR, LOGS_DIR, TRADES_LOG_DIR):
+    for path in (
+        DATA_DIR,
+        SELECTIONS_DIR,
+        POSITIONS_DIR,
+        ANALYSIS_DIR,
+        LOGS_DIR,
+        TRADES_LOG_DIR,
+    ):
         path.mkdir(parents=True, exist_ok=True)
