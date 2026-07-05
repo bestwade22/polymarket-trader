@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-07-05T09:30:43.562708+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "661247",
+      "city": "Lucknow",
+      "market_id": "2778721",
+      "group_item_title": "37\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.62,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "661273",
+      "city": "Karachi",
+      "market_id": "2779010",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.791,
+      "yes_price_max": 0.6
+    }
+  ]
+}
