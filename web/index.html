@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temp Market Trade History</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Temperature Market Trade History</h1>
+    <p id="sync-meta">Loading…</p>
+  </header>
+
+  <section class="filters">
+    <label>
+      Result
+      <select id="filter-result">
+        <option value="">All</option>
+        <option value="win">Win</option>
+        <option value="loss">Loss</option>
+        <option value="sold">Sold</option>
+        <option value="open">Open</option>
+      </select>
+    </label>
+    <label>
+      City
+      <select id="filter-city"><option value="">All</option></select>
+    </label>
+    <label>
+      Win temp vs bought
+      <select id="filter-vs">
+        <option value="">All</option>
+        <option value="higher">Higher</option>
+        <option value="lower">Lower</option>
+        <option value="same">Same</option>
+      </select>
+    </label>
+    <label>
+      Sold but would win
+      <select id="filter-regret">
+        <option value="">All</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </label>
+    <label>
+      Buy price band
+      <select id="filter-price">
+        <option value="">All</option>
+        <option value="<0.50">&lt;0.50</option>
+        <option value="0.50–0.60">0.50–0.60</option>
+        <option value=">0.60">&gt;0.60</option>
+      </select>
+    </label>
+    <label>
+      From
+      <input type="date" id="filter-date-from" />
+    </label>
+    <label>
+      To
+      <input type="date" id="filter-date-to" />
+    </label>
+  </section>
+
+  <details id="insights-panel" class="insights">
+    <summary>Strategy insights</summary>
+    <pre id="insights-content"></pre>
+  </details>
+
+  <div class="table-wrap">
+    <table id="trade-table">
+      <thead>
+        <tr>
+          <th data-sort="date">Date</th>
+          <th data-sort="city">City</th>
+          <th data-sort="bought_temp">Temp</th>
+          <th data-sort="bought_at">Bought</th>
+          <th data-sort="sold_at">Sold</th>
+          <th data-sort="shares">Shares</th>
+          <th data-sort="buy_price">Buy $</th>
+          <th data-sort="result">Result</th>
+          <th data-sort="final_value_usd">P&amp;L</th>
+          <th data-sort="winning_temp">Won temp</th>
+          <th data-sort="win_temp_vs_bought">vs bought</th>
+          <th data-sort="sell_value_pct">Sell %</th>
+        </tr>
+      </thead>
+      <tbody id="trade-body"></tbody>
+      <tfoot>
+        <tr id="summary-row">
+          <td colspan="12">Summary loading…</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
