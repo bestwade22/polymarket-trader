@@ -168,7 +168,11 @@ python -m src.main sync-trade-history --skip-price-drop
 
 Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp, result, P&L, winning temp comparison, sell regret flags) plus summary and strategy insights.
 
-**Dashboard:** open [`web/index.html`](web/index.html) locally (`python -m http.server` from repo root, then visit `/web/`) or enable GitHub Pages via [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
+**Dashboard:** https://bestwade22.github.io/polymarket-trader/web/
+
+Local preview: `python3 -m http.server 8080` from repo root → http://localhost:8080/web/
+
+**GitHub Pages setup (one-time):** Settings → Pages → Build and deployment → **Source: GitHub Actions**, then run the [Deploy GitHub Pages](.github/workflows/pages.yml) workflow (or push a change under `web/` / `data/analysis/`). Alternatively, add a `GITHUB_PAT` repository secret (repo admin scope) and the workflow will enable Pages automatically.
 
 | Column | Description |
 |--------|-------------|

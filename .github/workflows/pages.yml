@@ -6,6 +6,7 @@ on:
     paths:
       - 'web/**'
       - 'data/analysis/**'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +25,27 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_PAT }}
+        run: |
+          set -euo pipefail
+          repo="${GITHUB_REPOSITORY}"
+          if gh api "repos/${repo}/pages" >/dev/null 2>&1; then
+            echo "GitHub Pages already enabled"
+            exit 0
+          fi
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::GitHub Pages is not enabled for this repository."
+            echo "Enable it once: Settings → Pages → Build and deployment → Source: GitHub Actions"
+            echo "Or add repository secret GITHUB_PAT (repo admin) to auto-enable in this workflow."
+            exit 1
+          fi
+          gh api --method POST "repos/${repo}/pages" -f build_type=workflow
+          echo "GitHub Pages enabled (build type: workflow)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
