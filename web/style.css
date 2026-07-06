@@ -57,6 +57,38 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   min-width: 120px;
 }
 
+.summary-panel {
+  margin: 0;
+  padding: 1rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.summary-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 90px;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .insights {
   margin: 1rem 2rem;
   background: var(--surface);
@@ -100,13 +132,6 @@ th {
 
 th:hover { color: #fff; }
 
-tfoot td {
-  font-weight: 600;
-  background: var(--surface);
-  position: sticky;
-  bottom: 0;
-}
-
 .badge {
   display: inline-block;
   padding: 0.15rem 0.5rem;
@@ -123,6 +148,9 @@ tfoot td {
 
 .pnl-pos { color: var(--win); }
 .pnl-neg { color: var(--loss); }
+
+.regret-yes { color: var(--sold); font-weight: 600; }
+.regret-no { color: var(--muted); }
 
 a.event-link { color: var(--open); text-decoration: none; }
 a.event-link:hover { text-decoration: underline; }
