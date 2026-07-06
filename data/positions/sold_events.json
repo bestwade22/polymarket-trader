@@ -2770,5 +2770,17 @@
     "avg_buy_price": 0.5,
     "value_pct": 34.0,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x88291041732e1b084f84b1cfe7325365051834da307afc166346f39f272b04a6",
+    "token_id": "7297034175831338787194224858153885214163440868912595497899235950839725922709",
+    "order_id": "0x79e4be78fbe410e605dd6c296f76282e9c20281593d8099a70f27ab2c6b0acc0",
+    "sold_at": "2026-07-06T08:30:17.315799+00:00",
+    "event_slug": "highest-temperature-in-beijing-on-july-6-2026",
+    "price": 0.12,
+    "size": 10.0,
+    "avg_buy_price": 0.42,
+    "value_pct": 28.57142857142857,
+    "reason": "within_band"
   }
 ]
