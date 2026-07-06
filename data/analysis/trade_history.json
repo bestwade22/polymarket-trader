@@ -1,7 +1,36 @@
 {
-  "synced_at": "2026-07-06T17:21:56.896503+00:00",
+  "synced_at": "2026-07-06T18:00:31.797840+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
+    {
+      "date": "2026-07-06",
+      "city": "Miami",
+      "bought_temp": "88-89\u00b0F",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T17:31:56+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.44,
+      "sell_price": null,
+      "cost_basis_usd": 4.4,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-miami-on-july-6-2026",
+      "token_id": "43435594067310150280964550142482095990436826241653562175584405459465617571214",
+      "condition_id": "0xe31f672424dbc920a1d604a43f4d13b1f519e0ff2578c12bd14028b371c4f30f",
+      "transaction_hash": "0xacd267a2e92e74d49000c4e1cb0827eee7929d282831c6631f9a12ec606ad80a",
+      "bought_at_hk": "2026-07-07 01:31:56 HKT",
+      "bought_at_local": "13:31"
+    },
     {
       "date": "2026-07-06",
       "city": "Buenos Aires",
@@ -153,22 +182,22 @@
       "bought_temp": "39\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T11:34:40+00:00",
-      "sold_at": null,
+      "sold_at": "2026-07-06T17:31:55+00:00",
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
+      "result": "win",
+      "final_value_usd": 4.28,
       "winning_temp": null,
       "win_temp_vs_bought": "unknown",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.57,
-      "sell_price": null,
+      "sell_price": 0.998,
       "cost_basis_usd": 5.7,
-      "realized_pnl_usd": null,
-      "roi_pct": null,
-      "sell_value_pct": null,
-      "held_hours": null,
+      "realized_pnl_usd": 4.28,
+      "roi_pct": 75.09,
+      "sell_value_pct": 175.09,
+      "held_hours": 5.95,
       "event_slug": "highest-temperature-in-madrid-on-july-6-2026",
       "token_id": "83516591128963095439231659669614633343793252203940358418075173037892134556806",
       "condition_id": "0x3de267808a05cbcd480bf0f508d9671d8eea12250804200b1bab6694f54b85fb",
@@ -218,7 +247,7 @@
       "final_value_usd": -2.88,
       "winning_temp": null,
       "win_temp_vs_bought": "unknown",
-      "price_drop_below_threshold_at": "2026-07-06T17:21:05+00:00",
+      "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.519,
       "sell_price": 0.231,
@@ -6471,14 +6500,14 @@
     }
   ],
   "summary": {
-    "total_count": 223,
-    "win_count": 102,
+    "total_count": 224,
+    "win_count": 103,
     "loss_count": 103,
     "sold_count": 8,
     "open_count": 10,
-    "win_pct": 47.9,
-    "total_cost_basis_usd": 1238.0,
-    "total_realized_pnl_usd": -100.09,
+    "win_pct": 48.1,
+    "total_cost_basis_usd": 1242.4,
+    "total_realized_pnl_usd": -95.81,
     "sold_but_would_have_won_count": 0
   },
   "insights": {
@@ -6605,8 +6634,8 @@
       },
       "Madrid": {
         "win_rate_pct": 100.0,
-        "win": 4,
-        "total": 4
+        "win": 5,
+        "total": 5
       },
       "Manila": {
         "win_rate_pct": 0.0,
@@ -6731,9 +6760,9 @@
     },
     "win_rate_by_buy_price_band": {
       "0.50\u20130.60": {
-        "win_rate_pct": 56.3,
-        "win": 58,
-        "total": 103
+        "win_rate_pct": 56.7,
+        "win": 59,
+        "total": 104
       },
       "<0.50": {
         "win_rate_pct": 40.0,
@@ -6747,8 +6776,8 @@
       "lower": 3
     },
     "avg_pnl_by_result": {
+      "win": 4.79,
       "sold": -4.09,
-      "win": 4.8,
       "loss": -5.4
     },
     "avg_sell_value_pct": 31.18,
