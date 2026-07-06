@@ -1,11 +1,156 @@
 {
-  "synced_at": "2026-07-06T12:00:29.623679+00:00",
+  "synced_at": "2026-07-06T17:21:56.896503+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
       "date": "2026-07-06",
+      "city": "Buenos Aires",
+      "bought_temp": "10\u00b0C",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T16:34:37+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.6,
+      "sell_price": null,
+      "cost_basis_usd": 6.0,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-6-2026",
+      "token_id": "84224461402198921014509971905883334287593205734741003971445208351191579943819",
+      "condition_id": "0x819208b4ecad3de66420bafc3fc4f36e9d74dfe206e20b56b36ffec32353aab7",
+      "transaction_hash": "0xc10d4f9e932499ea42a01f005d3027f5f23f4a62f2389878cd439195c06c52c7",
+      "bought_at_hk": "2026-07-07 00:34:37 HKT",
+      "bought_at_local": "13:34"
+    },
+    {
+      "date": "2026-07-06",
+      "city": "Sao Paulo",
+      "bought_temp": "24\u00b0C",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T16:33:10+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.4,
+      "sell_price": null,
+      "cost_basis_usd": 4.0,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-6-2026",
+      "token_id": "106603487082264033920706352728245333197593064315567364740076469929972514882771",
+      "condition_id": "0xf96b0f5beb403f83cab5979dfe72547b0fa2da93f4a52b989719812996faca5f",
+      "transaction_hash": "0xfdbcc71d9c4f257d05fb5b7f17c30c25d441866c2c3cac5d42a2369d33075f17",
+      "bought_at_hk": "2026-07-07 00:33:10 HKT",
+      "bought_at_local": "13:33"
+    },
+    {
+      "date": "2026-07-06",
+      "city": "London",
+      "bought_temp": "32\u00b0C",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T12:33:23+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.54,
+      "sell_price": null,
+      "cost_basis_usd": 5.4,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-london-on-july-6-2026",
+      "token_id": "110197247417279553947997085758874541956315343962539713915170888767951880376894",
+      "condition_id": "0x386875ba2147fc49d4f33f409f81e3bf971261706fb61fd493e02858e046645e",
+      "transaction_hash": "0x78490723bb5392cf0370b301b821616ccc9974c1436577daaeefac9ab30761c1",
+      "bought_at_hk": "2026-07-06 20:33:23 HKT",
+      "bought_at_local": "13:33"
+    },
+    {
+      "date": "2026-07-06",
+      "city": "Milan",
+      "bought_temp": "32\u00b0C or below",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T12:32:13+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.47,
+      "sell_price": null,
+      "cost_basis_usd": 4.7,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-milan-on-july-6-2026",
+      "token_id": "33033719833176948675928242803253240824487998557834937858965179215894581134150",
+      "condition_id": "0x155ba580e03cb8cf4df31b18cdd9d0d04fd659f65d1faf8c0172ce010739fe18",
+      "transaction_hash": "0x25fad8cd14ab592aaf5ca8df4a39fcf1bf9d17f8c67a70f46d60b7378bc056b9",
+      "bought_at_hk": "2026-07-06 20:32:13 HKT",
+      "bought_at_local": "14:32"
+    },
+    {
+      "date": "2026-07-06",
+      "city": "Paris",
+      "bought_temp": "34\u00b0C",
+      "trade_window": "13:30\u201315:30",
+      "bought_at": "2026-07-06T12:09:35+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.52,
+      "sell_price": null,
+      "cost_basis_usd": 5.2,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-paris-on-july-6-2026",
+      "token_id": "90434965436924481246354545437398574745962771985475565896743542176397942603099",
+      "condition_id": "0x1e1891338b55a14e6b85bd8bc73750a5ee313c6591166789065c73822b510fcb",
+      "transaction_hash": "0xa54a7823f456bec35cc2ccb4b6b10ce577b6df4bf87538c91b3804ae4c752a50",
+      "bought_at_hk": "2026-07-06 20:09:35 HKT",
+      "bought_at_local": "14:09"
+    },
+    {
+      "date": "2026-07-06",
       "city": "Madrid",
-      "bought_temp": "Will the highest temperature in Madrid be 39\u00b0C on July 6?",
+      "bought_temp": "39\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T11:34:40+00:00",
       "sold_at": null,
@@ -27,12 +172,14 @@
       "event_slug": "highest-temperature-in-madrid-on-july-6-2026",
       "token_id": "83516591128963095439231659669614633343793252203940358418075173037892134556806",
       "condition_id": "0x3de267808a05cbcd480bf0f508d9671d8eea12250804200b1bab6694f54b85fb",
-      "transaction_hash": "0x893b59fb575a316ddc39dff824889c215889d80af9642ecc209317769cb9a8cf"
+      "transaction_hash": "0x893b59fb575a316ddc39dff824889c215889d80af9642ecc209317769cb9a8cf",
+      "bought_at_hk": "2026-07-06 19:34:40 HKT",
+      "bought_at_local": "13:34"
     },
     {
       "date": "2026-07-06",
       "city": "Munich",
-      "bought_temp": "Will the highest temperature in Munich be 24\u00b0C on July 6?",
+      "bought_temp": "24\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T11:33:20+00:00",
       "sold_at": null,
@@ -54,66 +201,72 @@
       "event_slug": "highest-temperature-in-munich-on-july-6-2026",
       "token_id": "1655041833184267557344201785678536352531767097557322404284296089307300331249",
       "condition_id": "0x814450574966786a13e9474ae2b497cb0769934ec78f58ec945b3cbc7a1c63d5",
-      "transaction_hash": "0xc3671398dcd35c391c4e71a5d1eed17a4dbfc47015f395de549a84db3a38cb71"
+      "transaction_hash": "0xc3671398dcd35c391c4e71a5d1eed17a4dbfc47015f395de549a84db3a38cb71",
+      "bought_at_hk": "2026-07-06 19:33:20 HKT",
+      "bought_at_local": "13:33"
     },
     {
       "date": "2026-07-06",
       "city": "Amsterdam",
-      "bought_temp": "Will the highest temperature in Amsterdam be 24\u00b0C on July 6?",
+      "bought_temp": "24\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T11:32:11+00:00",
-      "sold_at": null,
+      "sold_at": "2026-07-06T14:53:14+00:00",
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
+      "result": "sold",
+      "final_value_usd": -2.88,
       "winning_temp": null,
       "win_temp_vs_bought": "unknown",
-      "price_drop_below_threshold_at": null,
+      "price_drop_below_threshold_at": "2026-07-06T17:21:05+00:00",
       "sold_but_would_have_won": false,
       "buy_price": 0.519,
-      "sell_price": null,
+      "sell_price": 0.231,
       "cost_basis_usd": 5.19,
       "realized_pnl_usd": null,
-      "roi_pct": null,
-      "sell_value_pct": null,
-      "held_hours": null,
+      "roi_pct": -55.49,
+      "sell_value_pct": 44.51,
+      "held_hours": 3.35,
       "event_slug": "highest-temperature-in-amsterdam-on-july-6-2026",
       "token_id": "60610595982096884947920685534108550775970976131368916035348003832182713475522",
       "condition_id": "0x833ab258255e5b4298ca9de1edc92a6f619e50548c55f84837f195ed7546add9",
-      "transaction_hash": "0xd39bfc031f16bb7371fa0d4c465631496297c438e5d965e70a0963dede0ec3d7"
+      "transaction_hash": "0xd39bfc031f16bb7371fa0d4c465631496297c438e5d965e70a0963dede0ec3d7",
+      "bought_at_hk": "2026-07-06 19:32:11 HKT",
+      "bought_at_local": "13:32"
     },
     {
       "date": "2026-07-06",
       "city": "Moscow",
-      "bought_temp": "Will the highest temperature in Moscow be 22\u00b0C on July 6?",
+      "bought_temp": "22\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T10:48:05+00:00",
-      "sold_at": null,
+      "sold_at": "2026-07-06T15:50:47+00:00",
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
+      "result": "win",
+      "final_value_usd": 4.29,
       "winning_temp": null,
       "win_temp_vs_bought": "unknown",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.57,
-      "sell_price": null,
+      "sell_price": 0.999,
       "cost_basis_usd": 5.7,
-      "realized_pnl_usd": null,
-      "roi_pct": null,
-      "sell_value_pct": null,
-      "held_hours": null,
+      "realized_pnl_usd": 4.29,
+      "roi_pct": 75.26,
+      "sell_value_pct": 175.26,
+      "held_hours": 5.04,
       "event_slug": "highest-temperature-in-moscow-on-july-6-2026",
       "token_id": "7247526166253974465021220101079658707756800481769902504173551349615603803377",
       "condition_id": "0x45d0d33c5e4c7ea62b23f1d1d0ec7112a7bbf9ca8efd9ead4e3cac37dc90d713",
-      "transaction_hash": "0x4535b9728371d0dd7b520ce01bd468268c511138772f102c31eee8b4978c81d7"
+      "transaction_hash": "0x4535b9728371d0dd7b520ce01bd468268c511138772f102c31eee8b4978c81d7",
+      "bought_at_hk": "2026-07-06 18:48:05 HKT",
+      "bought_at_local": "13:48"
     },
     {
       "date": "2026-07-06",
       "city": "Istanbul",
-      "bought_temp": "Will the highest temperature in Istanbul be 26\u00b0C on July 6?",
+      "bought_temp": "26\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T10:44:16+00:00",
       "sold_at": null,
@@ -135,12 +288,14 @@
       "event_slug": "highest-temperature-in-istanbul-on-july-6-2026",
       "token_id": "37394408482843291052062195266705733429202063708892150501219226696350645595947",
       "condition_id": "0xb2355d2046c17c6db0898bf99f783b10f28ea84436a784d96be385849bf7d7f9",
-      "transaction_hash": "0xbbc6d57c933eaa4d800966c861b9dfc4ca2ce559ed19febc9a5b81fc27c555a4"
+      "transaction_hash": "0xbbc6d57c933eaa4d800966c861b9dfc4ca2ce559ed19febc9a5b81fc27c555a4",
+      "bought_at_hk": "2026-07-06 18:44:16 HKT",
+      "bought_at_local": "13:44"
     },
     {
       "date": "2026-07-06",
       "city": "Ankara",
-      "bought_temp": "Will the highest temperature in Ankara be 26\u00b0C on July 6?",
+      "bought_temp": "26\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T10:31:26+00:00",
       "sold_at": null,
@@ -162,12 +317,14 @@
       "event_slug": "highest-temperature-in-ankara-on-july-6-2026",
       "token_id": "20654055775662751957556252597712378363895943235419446402041902491953689043393",
       "condition_id": "0xded16840a01885091d005b9c675228d91d7410efb736b07ac80ba9e5984e9c22",
-      "transaction_hash": "0xaf2cefc8a7368a78049838f1605262e1c412af4914d0055317738ecd9b4bcb9d"
+      "transaction_hash": "0xaf2cefc8a7368a78049838f1605262e1c412af4914d0055317738ecd9b4bcb9d",
+      "bought_at_hk": "2026-07-06 18:31:26 HKT",
+      "bought_at_local": "13:31"
     },
     {
       "date": "2026-07-06",
       "city": "Karachi",
-      "bought_temp": "Will the highest temperature in Karachi be 35\u00b0C on July 6?",
+      "bought_temp": "35\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T09:01:34+00:00",
       "sold_at": null,
@@ -189,93 +346,101 @@
       "event_slug": "highest-temperature-in-karachi-on-july-6-2026",
       "token_id": "71347512184368733297375163099270605559241823428737294881949606642468882520433",
       "condition_id": "0x743cb49e06c1beab1f7e8cd293bae3797ba5eb98d3924e768a398b43597448b9",
-      "transaction_hash": "0x8b64794fe387297e8b84bf67aeec2babcbc08d308579271795f43d7e5fa3db67"
+      "transaction_hash": "0x8b64794fe387297e8b84bf67aeec2babcbc08d308579271795f43d7e5fa3db67",
+      "bought_at_hk": "2026-07-06 17:01:34 HKT",
+      "bought_at_local": "14:01"
     },
     {
       "date": "2026-07-06",
       "city": "Chongqing",
-      "bought_temp": "Will the highest temperature in Chongqing be 36\u00b0C on July 6?",
+      "bought_temp": "36\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T06:41:56+00:00",
       "sold_at": null,
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "loss",
+      "final_value_usd": -4.1,
+      "winning_temp": "37\u00b0C",
+      "win_temp_vs_bought": "higher",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.41,
       "sell_price": null,
       "cost_basis_usd": 4.1,
       "realized_pnl_usd": null,
-      "roi_pct": null,
+      "roi_pct": -100.0,
       "sell_value_pct": null,
       "held_hours": null,
       "event_slug": "highest-temperature-in-chongqing-on-july-6-2026",
       "token_id": "15286746250384020770148178898298626833401812786875365091373844187762782239041",
       "condition_id": "0x25d245912f5e1c624e47783951201f3904bf59f6afa2a4a92581064aaab17e12",
-      "transaction_hash": "0xbd9acdb7d931f4c3393d94a0e27d32a65265c1339f1024f43ae1f7ed594a8a60"
+      "transaction_hash": "0xbd9acdb7d931f4c3393d94a0e27d32a65265c1339f1024f43ae1f7ed594a8a60",
+      "bought_at_hk": "2026-07-06 14:41:56 HKT",
+      "bought_at_local": "14:41"
     },
     {
       "date": "2026-07-06",
       "city": "Beijing",
-      "bought_temp": "Will the highest temperature in Beijing be 34\u00b0C on July 6?",
+      "bought_temp": "34\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T05:45:01+00:00",
       "sold_at": null,
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "loss",
+      "final_value_usd": -4.2,
+      "winning_temp": "33\u00b0C",
+      "win_temp_vs_bought": "lower",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.42,
       "sell_price": null,
       "cost_basis_usd": 4.2,
       "realized_pnl_usd": null,
-      "roi_pct": null,
+      "roi_pct": -100.0,
       "sell_value_pct": null,
       "held_hours": null,
       "event_slug": "highest-temperature-in-beijing-on-july-6-2026",
       "token_id": "7297034175831338787194224858153885214163440868912595497899235950839725922709",
       "condition_id": "0x88291041732e1b084f84b1cfe7325365051834da307afc166346f39f272b04a6",
-      "transaction_hash": "0xaf3bd489482a167ba9f9c1fed9bc4ba5c5abaf65b2e9cfcb308fce9feb919d33"
+      "transaction_hash": "0xaf3bd489482a167ba9f9c1fed9bc4ba5c5abaf65b2e9cfcb308fce9feb919d33",
+      "bought_at_hk": "2026-07-06 13:45:01 HKT",
+      "bought_at_local": "13:45"
     },
     {
       "date": "2026-07-06",
       "city": "Shenzhen",
-      "bought_temp": "Will the highest temperature in Shenzhen be 31\u00b0C on July 6?",
+      "bought_temp": "31\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T05:38:19+00:00",
       "sold_at": null,
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "loss",
+      "final_value_usd": -4.2,
+      "winning_temp": "29\u00b0C",
+      "win_temp_vs_bought": "lower",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.42,
       "sell_price": null,
       "cost_basis_usd": 4.2,
       "realized_pnl_usd": null,
-      "roi_pct": null,
+      "roi_pct": -100.0,
       "sell_value_pct": null,
       "held_hours": null,
       "event_slug": "highest-temperature-in-shenzhen-on-july-6-2026",
       "token_id": "28259240027267641535526404537471869204794570756531136804759462463616162259405",
       "condition_id": "0x81ce84d34ff77a4ec4fc3b13564a5989c5f0e44d507c0e18d3b667dec7f01084",
-      "transaction_hash": "0x082e426681097a1c0d75eed702d011681462e1046650a58e7fc9fc8b62d44760"
+      "transaction_hash": "0x082e426681097a1c0d75eed702d011681462e1046650a58e7fc9fc8b62d44760",
+      "bought_at_hk": "2026-07-06 13:38:19 HKT",
+      "bought_at_local": "13:38"
     },
     {
       "date": "2026-07-06",
       "city": "Chengdu",
-      "bought_temp": "Will the highest temperature in Chengdu be 38\u00b0C on July 6?",
+      "bought_temp": "38\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T05:33:43+00:00",
       "sold_at": "2026-07-06T08:50:28+00:00",
@@ -283,8 +448,8 @@
       "shares": 10.0,
       "result": "loss",
       "final_value_usd": -2.3979,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "winning_temp": "37\u00b0C",
+      "win_temp_vs_bought": "lower",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.33,
@@ -297,88 +462,96 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-6-2026",
       "token_id": "87473236474643997729761033570184732766640168064296263413086711650321446463048",
       "condition_id": "0xb6498196415162ef277a1b4d1ef4acdb85408cd064222c4cce14ac4cbfb03858",
-      "transaction_hash": "0x119253f507368ca62b8e080c502812c20558769aaaa5110500603d8c7af2af34"
+      "transaction_hash": "0x119253f507368ca62b8e080c502812c20558769aaaa5110500603d8c7af2af34",
+      "bought_at_hk": "2026-07-06 13:33:43 HKT",
+      "bought_at_local": "13:33"
     },
     {
       "date": "2026-07-06",
       "city": "Wuhan",
-      "bought_temp": "Will the highest temperature in Wuhan be 29\u00b0C on July 6?",
+      "bought_temp": "29\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T05:33:22+00:00",
-      "sold_at": null,
+      "sold_at": "2026-07-06T13:23:32+00:00",
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "win",
+      "final_value_usd": 5.79,
+      "winning_temp": "29\u00b0C",
+      "win_temp_vs_bought": "same",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.42,
-      "sell_price": null,
+      "sell_price": 0.999,
       "cost_basis_usd": 4.2,
-      "realized_pnl_usd": null,
-      "roi_pct": null,
-      "sell_value_pct": null,
-      "held_hours": null,
+      "realized_pnl_usd": 5.79,
+      "roi_pct": 137.86,
+      "sell_value_pct": 237.86,
+      "held_hours": 7.84,
       "event_slug": "highest-temperature-in-wuhan-on-july-6-2026",
       "token_id": "30603912680082029145983196822583787494150756011928352782755786622821862562213",
       "condition_id": "0x40851f17b9d2a43add7635e3391f482a4efd7f7fa2c4b4d57be19f581f3a21a2",
-      "transaction_hash": "0xd8a74302ddf6f6e39b5f448ac1a0c6e1e1a8cdad87ca347e12e65a6eba734fb5"
+      "transaction_hash": "0xd8a74302ddf6f6e39b5f448ac1a0c6e1e1a8cdad87ca347e12e65a6eba734fb5",
+      "bought_at_hk": "2026-07-06 13:33:22 HKT",
+      "bought_at_local": "13:33"
     },
     {
       "date": "2026-07-06",
       "city": "Shanghai",
-      "bought_temp": "Will the highest temperature in Shanghai be 35\u00b0C on July 6?",
+      "bought_temp": "35\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T05:32:49+00:00",
       "sold_at": null,
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "loss",
+      "final_value_usd": -5.54,
+      "winning_temp": "36\u00b0C",
+      "win_temp_vs_bought": "higher",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.554,
       "sell_price": null,
       "cost_basis_usd": 5.54,
       "realized_pnl_usd": null,
-      "roi_pct": null,
+      "roi_pct": -100.0,
       "sell_value_pct": null,
       "held_hours": null,
       "event_slug": "highest-temperature-in-shanghai-on-july-6-2026",
       "token_id": "96168744770876266315138949920943314322078794893193321388793745751938496715616",
       "condition_id": "0xda1ccda86cb6e17f952b744fc859c6c222a1054e5288e4750493555370d3d5e9",
-      "transaction_hash": "0xf517e7ee0c0659ae24a52aaffefaf3870f00084a3ab58a46bdbc3882c96268ca"
+      "transaction_hash": "0xf517e7ee0c0659ae24a52aaffefaf3870f00084a3ab58a46bdbc3882c96268ca",
+      "bought_at_hk": "2026-07-06 13:32:49 HKT",
+      "bought_at_local": "13:32"
     },
     {
       "date": "2026-07-06",
       "city": "Seoul",
-      "bought_temp": "Will the highest temperature in Seoul be 27\u00b0C on July 6?",
+      "bought_temp": "27\u00b0C",
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-06T04:31:32+00:00",
       "sold_at": null,
       "redeemed_at": null,
       "shares": 9.9991,
-      "result": "open",
-      "final_value_usd": null,
-      "winning_temp": null,
-      "win_temp_vs_bought": "unknown",
+      "result": "loss",
+      "final_value_usd": -4.4996,
+      "winning_temp": "28\u00b0C",
+      "win_temp_vs_bought": "higher",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.45,
       "sell_price": null,
       "cost_basis_usd": 4.4996,
       "realized_pnl_usd": null,
-      "roi_pct": null,
+      "roi_pct": -100.0,
       "sell_value_pct": null,
       "held_hours": null,
       "event_slug": "highest-temperature-in-seoul-on-july-6-2026",
       "token_id": "102588347711563100175050703056930929212983752981369842674862133470139152468250",
       "condition_id": "0x40bf8d37125ca31de274f4a43a75b44584c98052b829020a03647070f1af0f14",
-      "transaction_hash": "0x4ac480107e122d5bd096a52041b3b822cc6acbae08decc20700eea8f704537e1"
+      "transaction_hash": "0x4ac480107e122d5bd096a52041b3b822cc6acbae08decc20700eea8f704537e1",
+      "bought_at_hk": "2026-07-06 12:31:32 HKT",
+      "bought_at_local": "13:31"
     },
     {
       "date": "2026-07-06",
@@ -405,7 +578,9 @@
       "event_slug": "highest-temperature-in-wellington-on-july-6-2026",
       "token_id": "101950249907251573717846031210021859713574448945575482951465821104250649272072",
       "condition_id": "0x289d1a8688617da963ea4c19784609621ccf040ff22a0f27820ba46f9802460b",
-      "transaction_hash": "0xbc9622fdde102c3f365cc2a2a0eed94ea709e3d3c4848806f94d4b6178eda046"
+      "transaction_hash": "0xbc9622fdde102c3f365cc2a2a0eed94ea709e3d3c4848806f94d4b6178eda046",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -432,7 +607,9 @@
       "event_slug": "highest-temperature-in-seattle-on-july-5-2026",
       "token_id": "66570149371115796324307571165882532187198235136436201698659709360704397136651",
       "condition_id": "0x055c8e5392297331c5b19c09f88ab8deb71c42c24ca4054785b443d6518575b0",
-      "transaction_hash": "0xfb98b1551ac1f0b1c1eb60fe562516102bd073e430ec81a9ba883cc1cc0edcbe"
+      "transaction_hash": "0xfb98b1551ac1f0b1c1eb60fe562516102bd073e430ec81a9ba883cc1cc0edcbe",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -459,7 +636,9 @@
       "event_slug": "highest-temperature-in-los-angeles-on-july-5-2026",
       "token_id": "8648784475680997947779397680734319304927488644650034215463342854116357314754",
       "condition_id": "0x233bfdd8f971586d1f1e9f100c0301434668e9a07a1490fdbde71f8de6eb3a51",
-      "transaction_hash": "0x0822a8c2c815291f3d8316cebdcfdd4ec5b355ddbc4a22ebd6c5b32b9d818b12"
+      "transaction_hash": "0x0822a8c2c815291f3d8316cebdcfdd4ec5b355ddbc4a22ebd6c5b32b9d818b12",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -486,7 +665,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-july-5-2026",
       "token_id": "44258962592517676324204593991992192109943156581094704711022291880950600862611",
       "condition_id": "0x34ee5456f78eeb91ae902e565143e175bdbb4ba23578f561850816c7e086a533",
-      "transaction_hash": "0x550792f86102c02554956ff4d67b6a138c2d3fbd073ac97ee72ca397d7928f11"
+      "transaction_hash": "0x550792f86102c02554956ff4d67b6a138c2d3fbd073ac97ee72ca397d7928f11",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -513,7 +694,9 @@
       "event_slug": "highest-temperature-in-dallas-on-july-5-2026",
       "token_id": "26386926466302283503222355727424770265156164853022112870441342231114979985365",
       "condition_id": "0x71e8d66715bd80b7c306b2dec1f5364476b0cfd9c9a312d8db5a6f0ed7e7eac2",
-      "transaction_hash": "0xe7b18ec5494fffeecfbbec9bd7e8e67acee7a3d0637ccdd8ff74329c0d6e1258"
+      "transaction_hash": "0xe7b18ec5494fffeecfbbec9bd7e8e67acee7a3d0637ccdd8ff74329c0d6e1258",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -540,7 +723,9 @@
       "event_slug": "highest-temperature-in-austin-on-july-5-2026",
       "token_id": "3785273964179633399385815497066424699445272254966012546382652457338336784488",
       "condition_id": "0x2a3d8939bc2019f5ff80226f6faf0a5570ccb8c087b5e123992fecedd3b5d2a9",
-      "transaction_hash": "0xd22971867799267e0e0a9d5c62f2ae3eb8445ead2befde8ad512525057e2961f"
+      "transaction_hash": "0xd22971867799267e0e0a9d5c62f2ae3eb8445ead2befde8ad512525057e2961f",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -567,7 +752,9 @@
       "event_slug": "highest-temperature-in-panama-city-on-july-5-2026",
       "token_id": "110169489881965394664081898190910044423233150820227614490063128767127119307801",
       "condition_id": "0x38c919a277c7c7944cd1f393af6ad1f0da3267903a33c7b1af520c19b1fa4ea4",
-      "transaction_hash": "0x24d369ed89543fc61b84bcc4944a168cc01b6aab6e66280220d6f8b379da7415"
+      "transaction_hash": "0x24d369ed89543fc61b84bcc4944a168cc01b6aab6e66280220d6f8b379da7415",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -594,7 +781,9 @@
       "event_slug": "highest-temperature-in-toronto-on-july-5-2026",
       "token_id": "44435173681908178122724135544495500240774916022208663690862831284006176251681",
       "condition_id": "0x4caa64a79dddd9dfe9ab0a1e6a6d26ba78671347c22759af763f7e8216c6289b",
-      "transaction_hash": "0xd39dbcd442660d59e74bbc2eddc86599d6f5ffcd53abac6ff1c757524cca57d2"
+      "transaction_hash": "0xd39dbcd442660d59e74bbc2eddc86599d6f5ffcd53abac6ff1c757524cca57d2",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -621,7 +810,9 @@
       "event_slug": "highest-temperature-in-houston-on-july-5-2026",
       "token_id": "79267921372705030365672298286351761285880401526801006836445154212387141294080",
       "condition_id": "0x3eb3c52dc105f46b53c5b4dd4bbd30c5d1cdb3a95d64c0166a1574d5f99fe143",
-      "transaction_hash": "0xbf3df071e3640a5a482c8b1de10fb742dd6b897e260df5c799805fd055b68c47"
+      "transaction_hash": "0xbf3df071e3640a5a482c8b1de10fb742dd6b897e260df5c799805fd055b68c47",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -648,7 +839,9 @@
       "event_slug": "highest-temperature-in-chicago-on-july-5-2026",
       "token_id": "86452935475302537636619873891965058846017599119021501788759473645434219066177",
       "condition_id": "0x4dd5fc0d9cc08b627ceffd1e65b336887899c1009e1732d6fc1cfce06aaaa789",
-      "transaction_hash": "0x49792f373fe3bb50236207ab6c15443daba44e8bccc0f79280ef4247129f9ce1"
+      "transaction_hash": "0x49792f373fe3bb50236207ab6c15443daba44e8bccc0f79280ef4247129f9ce1",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -675,7 +868,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-5-2026",
       "token_id": "41341915404692211462674613046173708185829388731432055191570707297114637236968",
       "condition_id": "0x7ad998cc59f1cf1cb435d46e4e4ab57d24505d7f377d1bbd1232e081065862d4",
-      "transaction_hash": "0x97c624dcf45bad92e3a1347c1073269065e9f0e0fedd2632b221696260d75fe2"
+      "transaction_hash": "0x97c624dcf45bad92e3a1347c1073269065e9f0e0fedd2632b221696260d75fe2",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -702,7 +897,9 @@
       "event_slug": "highest-temperature-in-nyc-on-july-5-2026",
       "token_id": "101827301003657004959728587239309996312801608593193029126245778007162576590905",
       "condition_id": "0xa7d8e1b9e9b8e41db2e52625cbcccf46b4788e80377c4748e7cb94d7a7b8207c",
-      "transaction_hash": "0x62de698a665244e3f4f2f5a9fe18e53a47a593623f84c75416349a6d566737fa"
+      "transaction_hash": "0x62de698a665244e3f4f2f5a9fe18e53a47a593623f84c75416349a6d566737fa",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -729,7 +926,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-july-5-2026",
       "token_id": "42571193528252430368898219341575596215982273505860827112159433877122381646913",
       "condition_id": "0xd545564e0af0dac8ac9bbdeb6441c7b743e0bf4d88e0c16749576259884c466b",
-      "transaction_hash": "0x00402e4614d2988bbe84365e2b6c6378f1f0e53a49c517828475e4fae03187df"
+      "transaction_hash": "0x00402e4614d2988bbe84365e2b6c6378f1f0e53a49c517828475e4fae03187df",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -756,7 +955,9 @@
       "event_slug": "highest-temperature-in-london-on-july-5-2026",
       "token_id": "113061602570477046966047942405261372404881492393464900507633836229722187115720",
       "condition_id": "0xf5e05f73de0a4b225796a3ca93bec73bc1a5c5bbdd20dcc9fbca647421f00b88",
-      "transaction_hash": "0x594ed6aba0b8f4328905c51c5ecc340ca5c3cdb73cb1d9d3a41c6877b9c2724d"
+      "transaction_hash": "0x594ed6aba0b8f4328905c51c5ecc340ca5c3cdb73cb1d9d3a41c6877b9c2724d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -783,7 +984,9 @@
       "event_slug": "highest-temperature-in-milan-on-july-5-2026",
       "token_id": "109988998519317692685711807180615062481701556549748973707147846780865027169002",
       "condition_id": "0x31aab8e6a94fdac0ffbe805b326f7d91e8ad47a9bc880045c8ffcbaa3aefec08",
-      "transaction_hash": "0x3d36359d35a4eef217fa851d2eed3630a3c69f24693c5094d800022cd99c0501"
+      "transaction_hash": "0x3d36359d35a4eef217fa851d2eed3630a3c69f24693c5094d800022cd99c0501",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -810,7 +1013,9 @@
       "event_slug": "highest-temperature-in-cape-town-on-july-5-2026",
       "token_id": "35136693827375762455435148056807445495835292089598982123782698578835875151",
       "condition_id": "0xdf94b676c9ce94acadfecca1100870140c1d8f95be2b7899ebd901326544a58b",
-      "transaction_hash": "0x628a5346f641dc9b8e44d7eee86b4a2f862aeff90e9c24afd6ee93db9120e33a"
+      "transaction_hash": "0x628a5346f641dc9b8e44d7eee86b4a2f862aeff90e9c24afd6ee93db9120e33a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -837,7 +1042,9 @@
       "event_slug": "highest-temperature-in-paris-on-july-5-2026",
       "token_id": "34646511225402272237604378695995658835013548061281368025824343622459246263025",
       "condition_id": "0x07dffd33e640bbed207c11233c3e73e7ec580bc27b46feddd1eae5097f933b71",
-      "transaction_hash": "0x12d305aadab16b11980d70aace6e052ce4743950c200c7ee48296f06cf20854f"
+      "transaction_hash": "0x12d305aadab16b11980d70aace6e052ce4743950c200c7ee48296f06cf20854f",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -864,7 +1071,9 @@
       "event_slug": "highest-temperature-in-madrid-on-july-5-2026",
       "token_id": "78858145680171707367195150802572226684539077096850053256849918125327208924761",
       "condition_id": "0xbd253965e06046dad9588b220230c0e2119e7ea36062ef2a5c48dd7d2051ac13",
-      "transaction_hash": "0x8fde306e664eba72d803419b822a5e9f58a58da34041c8ec5783eb0339fcc545"
+      "transaction_hash": "0x8fde306e664eba72d803419b822a5e9f58a58da34041c8ec5783eb0339fcc545",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -891,7 +1100,9 @@
       "event_slug": "highest-temperature-in-munich-on-july-5-2026",
       "token_id": "42441140792844319824755627588433676505670785926280079487994507318065184589181",
       "condition_id": "0x454b22f4bea9e00cd803a825fed4f162abd50dbf9fe36cbc6938970781f475dc",
-      "transaction_hash": "0x0447fd8271743149565dd0f8b7800340fc4ca83cd12daf1bccb290865a69ed15"
+      "transaction_hash": "0x0447fd8271743149565dd0f8b7800340fc4ca83cd12daf1bccb290865a69ed15",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -918,7 +1129,9 @@
       "event_slug": "highest-temperature-in-moscow-on-july-5-2026",
       "token_id": "12104429221028440126768328523543272320853129256564955951552345599658996211579",
       "condition_id": "0x2c8b80bb3eeca491999e5557a9adae30b10c370fa4bf0b9a7a625bbd06971e76",
-      "transaction_hash": "0xf4c6efcdfe5bbd341fc37c8b9939757fecf6f5e916a20bc5c7847cb4dd76a370"
+      "transaction_hash": "0xf4c6efcdfe5bbd341fc37c8b9939757fecf6f5e916a20bc5c7847cb4dd76a370",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -945,7 +1158,9 @@
       "event_slug": "highest-temperature-in-helsinki-on-july-5-2026",
       "token_id": "47624868930435642727867749213809926950344618303988754656151726073752295100592",
       "condition_id": "0xc16e92a7e5d3ad8f54dca82821fb6e622538547a870c612fa3d36319721470ab",
-      "transaction_hash": "0x4b7086eb45608e6c3445b46a9184246d0f750f78ec459513fbda21cd5378ca5d"
+      "transaction_hash": "0x4b7086eb45608e6c3445b46a9184246d0f750f78ec459513fbda21cd5378ca5d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -972,7 +1187,9 @@
       "event_slug": "highest-temperature-in-jeddah-on-july-5-2026",
       "token_id": "65168810174999607724005047249550613818387195529445443576071309857173229906496",
       "condition_id": "0x027e87fed9c420bd1559d1c113b41f2a2473bb28f147b225926b222fd6b7b9b4",
-      "transaction_hash": "0x5dcea29d2a41b35615ced3da6dbceb3f7e44a9ff7ed8c570f639af1a50902bb8"
+      "transaction_hash": "0x5dcea29d2a41b35615ced3da6dbceb3f7e44a9ff7ed8c570f639af1a50902bb8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -999,7 +1216,9 @@
       "event_slug": "highest-temperature-in-ankara-on-july-5-2026",
       "token_id": "53847028542566043537741602206677401057719275941207287590740554204645926554499",
       "condition_id": "0x359ea76ef51854049855b27ef74da5d94bb144862621b4924f962ed8e821c8b9",
-      "transaction_hash": "0x3d79f89159c4800c9cbf040758f058c56dfdd758deb9e9a1064d109459221bdd"
+      "transaction_hash": "0x3d79f89159c4800c9cbf040758f058c56dfdd758deb9e9a1064d109459221bdd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1026,7 +1245,9 @@
       "event_slug": "highest-temperature-in-karachi-on-july-5-2026",
       "token_id": "70669846835947628033865982980788920457692318339663888740242256183574472270596",
       "condition_id": "0x83bec6ee9f4aaee032d7c1fc3db9429c083fd175f2921872517fcfa77a96ddde",
-      "transaction_hash": "0x5c949994eaf6b2dcaa253841164156cfe38e35b7e4cd9ee142c167fcc0d01a25"
+      "transaction_hash": "0x5c949994eaf6b2dcaa253841164156cfe38e35b7e4cd9ee142c167fcc0d01a25",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1053,7 +1274,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-5-2026",
       "token_id": "8284479176230589331600802447094773065721827757713560109209388076138034710676",
       "condition_id": "0xbab49e7550ee4dc8e7cb58e7519b23c8d7413103cd5642c2aee30b6df2cd4b9d",
-      "transaction_hash": "0x93b752dbdb356641e5b1ce671f5cd26c9c84f485016ef6e7c2baca79edecaac6"
+      "transaction_hash": "0x93b752dbdb356641e5b1ce671f5cd26c9c84f485016ef6e7c2baca79edecaac6",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1080,7 +1303,9 @@
       "event_slug": "highest-temperature-in-beijing-on-july-5-2026",
       "token_id": "6111886535343705278041039718347044696251023439255418790347958745718447473905",
       "condition_id": "0x135bf47ac180689fad0ea2cc73de4f3de209914a1aeb5256b05f78efbaa52085",
-      "transaction_hash": "0xc1c972aa710e55099d89469dc49f7d7339dff3a357debc408ff434b5e1dca32b"
+      "transaction_hash": "0xc1c972aa710e55099d89469dc49f7d7339dff3a357debc408ff434b5e1dca32b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1107,7 +1332,9 @@
       "event_slug": "highest-temperature-in-singapore-on-july-5-2026",
       "token_id": "34632205518326498743882369659824991480999982891913490693224769104591213114084",
       "condition_id": "0xa702925f40bdd48338fb8d84106df89d02f1aeb5bfddf44f8ac0477c35d3a689",
-      "transaction_hash": "0x90667034767dc1c7e2417b95341fae9b4e8cefe93d78bbfadc2bb9ecd79065c2"
+      "transaction_hash": "0x90667034767dc1c7e2417b95341fae9b4e8cefe93d78bbfadc2bb9ecd79065c2",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1134,7 +1361,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-july-5-2026",
       "token_id": "26482266103557194136354019381132324345438859758447483762343748961062783261230",
       "condition_id": "0x2136d219e6f404e82a30d6807dc60f7186454121e289c44f28f9b9e1f10f7dd8",
-      "transaction_hash": "0x3fa4802af0d361692763c1a1729b1ef835720e6e500a5b5c80d1fbca093481c7"
+      "transaction_hash": "0x3fa4802af0d361692763c1a1729b1ef835720e6e500a5b5c80d1fbca093481c7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1161,7 +1390,9 @@
       "event_slug": "highest-temperature-in-chongqing-on-july-5-2026",
       "token_id": "41397963367050185894594564898655185136569984809559276493120732349555080564875",
       "condition_id": "0x8933c3865ed60429bf26c24df3df417127b39e5418abad496462021597137864",
-      "transaction_hash": "0x223c99adbd598fb73d270a7bef41a51992872c74ea26189157403bfd3fe82ead"
+      "transaction_hash": "0x223c99adbd598fb73d270a7bef41a51992872c74ea26189157403bfd3fe82ead",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1188,7 +1419,9 @@
       "event_slug": "highest-temperature-in-hong-kong-on-july-5-2026",
       "token_id": "90604393632504605077891102794194212305643774899615656856127081759042387630925",
       "condition_id": "0x7898fe4cd41eebfad34befff1fa30b26d5ca9232bc07bcd1a8b2900b0490e2de",
-      "transaction_hash": "0x795c74115665c9c28692a2d05bffdcb624cb9b56737908f84b5e66a15764662f"
+      "transaction_hash": "0x795c74115665c9c28692a2d05bffdcb624cb9b56737908f84b5e66a15764662f",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1215,7 +1448,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-july-5-2026",
       "token_id": "68352227183256340413186841732115566273179073303766038769911254309554509431041",
       "condition_id": "0x745ef76e5dd9af8a82c5c89d2608fb015667c6e802659614c02cc485492088b2",
-      "transaction_hash": "0xb4021b02ad46e03f8265aff97678ed72257879dea991cf8ae9fe15e75d0ac663"
+      "transaction_hash": "0xb4021b02ad46e03f8265aff97678ed72257879dea991cf8ae9fe15e75d0ac663",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1242,7 +1477,9 @@
       "event_slug": "highest-temperature-in-tokyo-on-july-5-2026",
       "token_id": "4762352654060848895878788121343295448473195482548959459426789352157613061911",
       "condition_id": "0xcf405f50a771268415d9286521d5674523af916921749f188856f7aa45ee883a",
-      "transaction_hash": "0xa884a9a052f9526db1ca9b429f64226382f66c8304afb3186c60b0951449d07c"
+      "transaction_hash": "0xa884a9a052f9526db1ca9b429f64226382f66c8304afb3186c60b0951449d07c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-05",
@@ -1269,7 +1506,9 @@
       "event_slug": "highest-temperature-in-seoul-on-july-5-2026",
       "token_id": "43774295310676797603865776440660674090765473220201701266966383479531115539415",
       "condition_id": "0x19846f14cc5ce8bc115f84c6e51f295862b476261caa9ea27ce6f292d59c433c",
-      "transaction_hash": "0xb3c2302289f23c3e3f12d49f6d653afa3e15f055f564e3563141249066fd9143"
+      "transaction_hash": "0xb3c2302289f23c3e3f12d49f6d653afa3e15f055f564e3563141249066fd9143",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1296,7 +1535,9 @@
       "event_slug": "highest-temperature-in-seattle-on-july-4-2026",
       "token_id": "115119723771338111554578947504512160091974440951158699681884502568423887389913",
       "condition_id": "0xd8093e585fce25cd269e9a8bfd2d244e49c3da7cc6620d66f02f02688d1049b2",
-      "transaction_hash": "0x863dda39f5b6aa87b2eaa0a5c39a16c6b39ea7d86466e5cfa362b1870b234292"
+      "transaction_hash": "0x863dda39f5b6aa87b2eaa0a5c39a16c6b39ea7d86466e5cfa362b1870b234292",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1323,7 +1564,9 @@
       "event_slug": "highest-temperature-in-san-francisco-on-july-4-2026",
       "token_id": "101369028110477274001155649014170609966825568626284276142727080231503584179644",
       "condition_id": "0xe6ca2b11c175e9f9ed0af617f6ef2268a4238cb6f69aa637b6c87e42e53fb334",
-      "transaction_hash": "0x60eda8cedbc359687704708bdaa484a3f0bceef9e7291636c881b6776d81d7ee"
+      "transaction_hash": "0x60eda8cedbc359687704708bdaa484a3f0bceef9e7291636c881b6776d81d7ee",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1350,7 +1593,9 @@
       "event_slug": "highest-temperature-in-austin-on-july-4-2026",
       "token_id": "4963189127248697144578556831650146348904454750806234162747072941238214348546",
       "condition_id": "0x15af6b1b40f415cc22a543bdad894d0d89a0b3fbc109a4e6d2c45fd4c49f69ae",
-      "transaction_hash": "0x2e6f3c3a1ae61d69fb125f2c549e4ad8cf52b183393aacd230067d316739a0b5"
+      "transaction_hash": "0x2e6f3c3a1ae61d69fb125f2c549e4ad8cf52b183393aacd230067d316739a0b5",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1377,7 +1622,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-july-4-2026",
       "token_id": "22402420632183790841130789824060907421913480050665691657262665853753838579629",
       "condition_id": "0x1fa9bbafcc355739017500ba51d22f88b6d54805f89dc0213d22451f16a09531",
-      "transaction_hash": "0xed9a7315c3cd90c396436686d47fc8d6b802998e6135c6809cb5543847ac607c"
+      "transaction_hash": "0xed9a7315c3cd90c396436686d47fc8d6b802998e6135c6809cb5543847ac607c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1404,7 +1651,9 @@
       "event_slug": "highest-temperature-in-denver-on-july-4-2026",
       "token_id": "44511821753214432705463181770887114785892219072202131509294567510645745638502",
       "condition_id": "0x69c4de2cef6693ec8a46279fcefa5b4b3dfea3604060c5ca72a4f03a897a5ef3",
-      "transaction_hash": "0x0d4f16ce93268acdb29fe06c7fabc0a49c84d2e0d67c1f1d98f1ac0f3fb9da42"
+      "transaction_hash": "0x0d4f16ce93268acdb29fe06c7fabc0a49c84d2e0d67c1f1d98f1ac0f3fb9da42",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1431,7 +1680,9 @@
       "event_slug": "highest-temperature-in-chicago-on-july-4-2026",
       "token_id": "44367071558813947947929353158969928384715066312103785061356018361655339797798",
       "condition_id": "0xe63549d0e01d946c1c81db4ba7790da42947941497b48a0ede93daf5de60860d",
-      "transaction_hash": "0x042e582d5c8282f40db87d6a23f029b33a5b568e73051722d7b4fd0d51b346b5"
+      "transaction_hash": "0x042e582d5c8282f40db87d6a23f029b33a5b568e73051722d7b4fd0d51b346b5",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1458,7 +1709,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-4-2026",
       "token_id": "52561269801376685168383774459596820296612706099553446498452525020056904519982",
       "condition_id": "0xb9e61ab946be7c63e1c37be761bb0c2e4353c0a01c52ae68403a42d0a15bdb16",
-      "transaction_hash": "0xf23161449291516466f668d07787db9c56b387cc91aa47b46dec24e961603326"
+      "transaction_hash": "0xf23161449291516466f668d07787db9c56b387cc91aa47b46dec24e961603326",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1485,7 +1738,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-4-2026",
       "token_id": "41351580704482150906067793318997241035317854735759331177322121373129940700594",
       "condition_id": "0xfef7fa6cc98fa7301752e629411e1e689b9bbdb45cc5e839077fd5a51453c0f0",
-      "transaction_hash": "0x19ae3fcf88bdfd0a6314d3c29d4a2f492cd69fad0ecbee9eb8cca9c8b54e87a0"
+      "transaction_hash": "0x19ae3fcf88bdfd0a6314d3c29d4a2f492cd69fad0ecbee9eb8cca9c8b54e87a0",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1512,7 +1767,9 @@
       "event_slug": "highest-temperature-in-nyc-on-july-4-2026",
       "token_id": "68040621816088138521617970411142947261335707851296919743553771875878815229896",
       "condition_id": "0xf7ccafe9040726d029480c05f6d6d2f73e01a1e2878c7401d79c8e9de700b2d4",
-      "transaction_hash": "0xced2b5f37ede5eb7482357012b8d4161d4eadd5d8b104f7af9de649b152a370b"
+      "transaction_hash": "0xced2b5f37ede5eb7482357012b8d4161d4eadd5d8b104f7af9de649b152a370b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1539,7 +1796,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-july-4-2026",
       "token_id": "25515816528659555282758638227396583275371096799066387034893432071536585828748",
       "condition_id": "0xdac560c66e2c81e35cfd923d01556f6fc03021b4d4b6fe8af656183280812155",
-      "transaction_hash": "0x73c048a28062dc0e9996c0ae0e6ebeee2cd50691e026b6879ce532bd62fe2c62"
+      "transaction_hash": "0x73c048a28062dc0e9996c0ae0e6ebeee2cd50691e026b6879ce532bd62fe2c62",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1566,7 +1825,9 @@
       "event_slug": "highest-temperature-in-london-on-july-4-2026",
       "token_id": "9512786579925673220467892304860322698996551611293325493263335104849764388014",
       "condition_id": "0xe7370fdb459958bf9f45aca483750032369847b52f13e33802745661320fe034",
-      "transaction_hash": "0xd4ab4ae1507e7145242eba9bbb837a1da68f7dc31ca48e424f286dca1cc7dee3"
+      "transaction_hash": "0xd4ab4ae1507e7145242eba9bbb837a1da68f7dc31ca48e424f286dca1cc7dee3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1593,7 +1854,9 @@
       "event_slug": "highest-temperature-in-madrid-on-july-4-2026",
       "token_id": "34457220220532350600785214924659860310179891751866947308848060719165661028771",
       "condition_id": "0x46cc55524f54d2fc59e17f7d987e57585b806bfa27b0d52434396f30676907e6",
-      "transaction_hash": "0xcda34a0cffc3a54b146e8a388f966bcf91f2e16eabee37f78cadfd585e3c71fd"
+      "transaction_hash": "0xcda34a0cffc3a54b146e8a388f966bcf91f2e16eabee37f78cadfd585e3c71fd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1620,7 +1883,9 @@
       "event_slug": "highest-temperature-in-paris-on-july-4-2026",
       "token_id": "15064656346221166282082023276319839241659293917215288206648602809690326932124",
       "condition_id": "0x05b49d0e5492e9bc96bcda66cf50efdaa0c9293bd1be4e0c18e72d51405e35b7",
-      "transaction_hash": "0xc71cec16f23728b4b47a881b75bc5e31d6396dbc4e865e0d16f55c8c867f080c"
+      "transaction_hash": "0xc71cec16f23728b4b47a881b75bc5e31d6396dbc4e865e0d16f55c8c867f080c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1647,7 +1912,9 @@
       "event_slug": "highest-temperature-in-munich-on-july-4-2026",
       "token_id": "105620709501688183775478902623539120291787060293314704377375642777542692670550",
       "condition_id": "0x0dac8a8953fb09ec948dee5fdf69e8c9088b7ec29aba43747a7a8e6f80d95b9f",
-      "transaction_hash": "0xdc7558140e1cb75a2abfd31172a28ab3f1101908a6a4e7163a3dfbddca06c01e"
+      "transaction_hash": "0xdc7558140e1cb75a2abfd31172a28ab3f1101908a6a4e7163a3dfbddca06c01e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1674,7 +1941,9 @@
       "event_slug": "highest-temperature-in-warsaw-on-july-4-2026",
       "token_id": "113690096933913632634000333569229923788096845553555044117241563337204753369618",
       "condition_id": "0x881ff87d8a0c57da96d908783b16de8fc5e845204fe849ad6fb9b02398b746ee",
-      "transaction_hash": "0xc035383d5eb2fbb7fff7227657767d85a76baea7b15f9ab71a43288635a8b10c"
+      "transaction_hash": "0xc035383d5eb2fbb7fff7227657767d85a76baea7b15f9ab71a43288635a8b10c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1701,7 +1970,9 @@
       "event_slug": "highest-temperature-in-amsterdam-on-july-4-2026",
       "token_id": "7880945197724198000452421875365311976425793021661962741669600172487090332619",
       "condition_id": "0x1fe225cfded7ec5e6b798d4a620846971351d90aabe10ce056e8e1527ae633b2",
-      "transaction_hash": "0x601f15d34f77110d6d9c23d3cd8cd18cf26ab7415df929d42d5f38494db5eeae"
+      "transaction_hash": "0x601f15d34f77110d6d9c23d3cd8cd18cf26ab7415df929d42d5f38494db5eeae",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1728,7 +1999,9 @@
       "event_slug": "highest-temperature-in-jeddah-on-july-4-2026",
       "token_id": "39615052815055260706792837527789721880908893601243692198970918801492863153935",
       "condition_id": "0xb32b476bd93423b8f5a8f92aca7fd8360a20bd319ae5f0e1e015ccacf394f98b",
-      "transaction_hash": "0x291e60a12f7461a1667756c379f89189c7ae552e037858d4936fbc68a8b01883"
+      "transaction_hash": "0x291e60a12f7461a1667756c379f89189c7ae552e037858d4936fbc68a8b01883",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1755,7 +2028,9 @@
       "event_slug": "highest-temperature-in-helsinki-on-july-4-2026",
       "token_id": "19854842626998962403097523196032110151102461997699362699280285396769854936077",
       "condition_id": "0xf6ea2eda5b6d0ce1f5983b2c0cd06eccaa8ad23193b9962d6d2822b4d3402b81",
-      "transaction_hash": "0x84a72bdc383375a7359dc948b5522923a72488f57a7ee99bc8a9dd83248703e4"
+      "transaction_hash": "0x84a72bdc383375a7359dc948b5522923a72488f57a7ee99bc8a9dd83248703e4",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1782,7 +2057,9 @@
       "event_slug": "highest-temperature-in-ankara-on-july-4-2026",
       "token_id": "63607568391097811170735742698040156934721929666798320544011896382060838987633",
       "condition_id": "0x00a8a7b2575770a35e85a86a786b2a5281804438fd419723e8b8f62229d0ea2e",
-      "transaction_hash": "0xeded6c876b76e50a1f67c2b590c6f92e75125c34f4c2fe801cc565615fdaed35"
+      "transaction_hash": "0xeded6c876b76e50a1f67c2b590c6f92e75125c34f4c2fe801cc565615fdaed35",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1809,7 +2086,9 @@
       "event_slug": "highest-temperature-in-lucknow-on-july-4-2026",
       "token_id": "58191387844568540273536036480762858157493396944251364332949451534110932874241",
       "condition_id": "0xc420cc3fc833543fe374b1a54d31e73720eebf3d5a9041cccafde9b7c22a8943",
-      "transaction_hash": "0x784d272c2efab6020dc7e3a4d55955b9e57e9a4955cc0991ed0ca08f2bba84e3"
+      "transaction_hash": "0x784d272c2efab6020dc7e3a4d55955b9e57e9a4955cc0991ed0ca08f2bba84e3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1836,7 +2115,9 @@
       "event_slug": "highest-temperature-in-karachi-on-july-4-2026",
       "token_id": "86826400431097956753944273901657148990278735732079717667631573703330951387773",
       "condition_id": "0xe56180a5803d191ca6d590fac57d4dcd48e8ea0e906a811a22d8abf1d71a702b",
-      "transaction_hash": "0x9d6d29fb5a951656857d2e373bc99a86fd90f167d339e2010f600e4032ce9232"
+      "transaction_hash": "0x9d6d29fb5a951656857d2e373bc99a86fd90f167d339e2010f600e4032ce9232",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1863,7 +2144,9 @@
       "event_slug": "highest-temperature-in-qingdao-on-july-4-2026",
       "token_id": "106556668097198062129437296438886115504323897613085233921526956105499860731457",
       "condition_id": "0x6d2e1b6c17f235e4965ace97060cd95564e5aa214185bf83e86d2c257106d4cf",
-      "transaction_hash": "0xb475de75ff677d8fe50c3990eb2848d415ab85ac91d91ff797248333ab7d3d63"
+      "transaction_hash": "0xb475de75ff677d8fe50c3990eb2848d415ab85ac91d91ff797248333ab7d3d63",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1890,7 +2173,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-4-2026",
       "token_id": "60382533105783498289358106918187818691733002746811098199949115813304816865954",
       "condition_id": "0xb809112a3b239d9aa1fa1b3064151b1a27b16e7868eda141548f3962531168e3",
-      "transaction_hash": "0x62d2f5c69a0234c4e001c3ecf5b2c365979a3adfec9035b510adbcb498fb018d"
+      "transaction_hash": "0x62d2f5c69a0234c4e001c3ecf5b2c365979a3adfec9035b510adbcb498fb018d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1917,7 +2202,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-july-4-2026",
       "token_id": "104808943517666777661232598712811303974357849758654450553098514882312151265988",
       "condition_id": "0xff060c87e080c694eb091d2b626a6007dd01fd258ed72cf435567ea426698030",
-      "transaction_hash": "0xc7b75f4f3114878630977e6a444fcd8a10b5b22851219588914316ca80af5d5f"
+      "transaction_hash": "0xc7b75f4f3114878630977e6a444fcd8a10b5b22851219588914316ca80af5d5f",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1944,7 +2231,9 @@
       "event_slug": "highest-temperature-in-shanghai-on-july-4-2026",
       "token_id": "29829372941767526873375321231470988785688456010375278984875638124181789459849",
       "condition_id": "0xb728e243caab3b7cb041d0a184a8707f1a5babd49ead0ee5787eb4e0087b9452",
-      "transaction_hash": "0xbebf68d802f887f6b48b0cd90c1ddcbcefd452142ced867a59eeac01c60ce2eb"
+      "transaction_hash": "0xbebf68d802f887f6b48b0cd90c1ddcbcefd452142ced867a59eeac01c60ce2eb",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1971,7 +2260,9 @@
       "event_slug": "highest-temperature-in-singapore-on-july-4-2026",
       "token_id": "46037677842190296350494265082590315544693311371108178199223482090709182823789",
       "condition_id": "0x7529de1ce23a8aba1d4ee1ebc462dcf6afef25f801ffe1f13303a56e8042dc19",
-      "transaction_hash": "0xf8be26f16ec89230e3a74455f94082c0d97f077a0a06da553968e271559f1a7c"
+      "transaction_hash": "0xf8be26f16ec89230e3a74455f94082c0d97f077a0a06da553968e271559f1a7c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -1998,7 +2289,9 @@
       "event_slug": "highest-temperature-in-chongqing-on-july-4-2026",
       "token_id": "6125129872716193444432547674086165470588516008738866678533676662148899174358",
       "condition_id": "0xa196a73da184e561f8ac9756e96bdc62413f17454292892717f3f9a74dfe17a1",
-      "transaction_hash": "0x67c9a8e889a5bd1fe5b943d8ef1eff34371acc6c0192818327753ee036fa6957"
+      "transaction_hash": "0x67c9a8e889a5bd1fe5b943d8ef1eff34371acc6c0192818327753ee036fa6957",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -2025,7 +2318,9 @@
       "event_slug": "highest-temperature-in-kuala-lumpur-on-july-4-2026",
       "token_id": "33596509744678788548322288350029439308714115212650591904196379220593958518203",
       "condition_id": "0x5dd4c6641fc67b309108db0c46824b0887199df64289fbf7bf171a12480f8670",
-      "transaction_hash": "0x45e809c2f2f924a3e9d8ba64dbf9b6e0b5f4e34b23a09247d392183c35c9e9f9"
+      "transaction_hash": "0x45e809c2f2f924a3e9d8ba64dbf9b6e0b5f4e34b23a09247d392183c35c9e9f9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -2052,7 +2347,9 @@
       "event_slug": "highest-temperature-in-beijing-on-july-4-2026",
       "token_id": "101233884631928766625841525466056061284510265881856887661873531726434138003715",
       "condition_id": "0x2bf8cc193f1ec72cacee762a012675ab57d5853af6c8eb97145842a0f0791492",
-      "transaction_hash": "0x2850a773269c4060b1fe7c69b6e2116852d177ae4be7efaa9fabd99f9a451202"
+      "transaction_hash": "0x2850a773269c4060b1fe7c69b6e2116852d177ae4be7efaa9fabd99f9a451202",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -2079,7 +2376,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-july-4-2026",
       "token_id": "127680475449637475252593226900472919992517405953930832695652664094800451078",
       "condition_id": "0x0a7d7857d55d487157edc802c89c0d19a7ed2a55a0faf5d3c039e95675cb54de",
-      "transaction_hash": "0xf83fbe81fc900884bec7146e0d684619b93ae13dbab0553dcc33274b34c302d7"
+      "transaction_hash": "0xf83fbe81fc900884bec7146e0d684619b93ae13dbab0553dcc33274b34c302d7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -2106,7 +2405,9 @@
       "event_slug": "highest-temperature-in-busan-on-july-4-2026",
       "token_id": "113804113206583706640986106426703262573907687119282798232807408716360807482782",
       "condition_id": "0x81849481b17d4c1e983969045dbde21c9db0ac64322f8a65e311b2a03adca1ad",
-      "transaction_hash": "0x2fc09191a5248571d89260468ca8922de418d043fba7189a3d9edfdbf20d2fe6"
+      "transaction_hash": "0x2fc09191a5248571d89260468ca8922de418d043fba7189a3d9edfdbf20d2fe6",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-04",
@@ -2133,7 +2434,9 @@
       "event_slug": "highest-temperature-in-wellington-on-july-4-2026",
       "token_id": "109345229730913020893192477290008401093028997164873030053611994332139864538265",
       "condition_id": "0x9dfe9a9c54d8b83df58768a708bc3f3f22c9aa6d4226414ca3a45d87bceec535",
-      "transaction_hash": "0xf58950709fcdd09642eade588da065fb35ac7f7f70cb3cb07dfa77b770fccf43"
+      "transaction_hash": "0xf58950709fcdd09642eade588da065fb35ac7f7f70cb3cb07dfa77b770fccf43",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2160,7 +2463,9 @@
       "event_slug": "highest-temperature-in-seattle-on-july-3-2026",
       "token_id": "22755348980295792141696240140544811194355490398170421215750126983941517230594",
       "condition_id": "0x59045320094372b4b0ef611258cd8e3ae6283b2ead35665d63cc698ae7809cde",
-      "transaction_hash": "0x2024d0c01f6520d795001ff8979a676bcbd72acb798cbdb5ce2190da61c3af29"
+      "transaction_hash": "0x2024d0c01f6520d795001ff8979a676bcbd72acb798cbdb5ce2190da61c3af29",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2187,7 +2492,9 @@
       "event_slug": "highest-temperature-in-san-francisco-on-july-3-2026",
       "token_id": "59048698082096922362394801106538660233749964211514429674901834203542108761547",
       "condition_id": "0x2fa437cb258e2f490e6311dd7aad7dea943a537c901aebfc79a69a970b6ee617",
-      "transaction_hash": "0xbc33fcc3144f8766c21f617cc175012bd03172f6441274f906e84a49033e0fd5"
+      "transaction_hash": "0xbc33fcc3144f8766c21f617cc175012bd03172f6441274f906e84a49033e0fd5",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2214,7 +2521,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-july-3-2026",
       "token_id": "115200599205803067401454776276536120973457385365544458655795257984368777667020",
       "condition_id": "0x301ffc850b0c3d5bbf8b9f95aeb616b35d43abb83a8566fc3c9f3bb3e39997b5",
-      "transaction_hash": "0xac5ec8b3c4805152b4cc1a819669e898ae71317c5664ec5bc8e5f9af54aeea42"
+      "transaction_hash": "0xac5ec8b3c4805152b4cc1a819669e898ae71317c5664ec5bc8e5f9af54aeea42",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2241,7 +2550,9 @@
       "event_slug": "highest-temperature-in-denver-on-july-3-2026",
       "token_id": "102676701060886901119735525006661605152123814722774170470421714323492823887594",
       "condition_id": "0xdf16b0ce47092fbd4e1e40737c06069b359ef9cbe0e7d5874e2f93b83b95c3f0",
-      "transaction_hash": "0x789ade1b05d406f36e78a72dd69158205f15bfc4543cac47c51d715fd70426a0"
+      "transaction_hash": "0x789ade1b05d406f36e78a72dd69158205f15bfc4543cac47c51d715fd70426a0",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2268,7 +2579,9 @@
       "event_slug": "highest-temperature-in-chicago-on-july-3-2026",
       "token_id": "3874437595527233408844505611336900005542213245615873690302924751191567541296",
       "condition_id": "0x04eca713dd72e361c88c1fb5e617125185c4f4d14a14d0536369754a18016356",
-      "transaction_hash": "0x18e5a827032e574393f31389a1047807c7aded4409db036b04898391396346b2"
+      "transaction_hash": "0x18e5a827032e574393f31389a1047807c7aded4409db036b04898391396346b2",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2295,7 +2608,9 @@
       "event_slug": "highest-temperature-in-austin-on-july-3-2026",
       "token_id": "73091394269515816998421079800184185909514966793941168960399939609144395543475",
       "condition_id": "0x1d8b084e042df9163dbae0c28480ec3afd498bcced198705faad58eb889abe52",
-      "transaction_hash": "0x1aec988148556af9858ca7cb126b7ad62bb6a538d5b575362c36575369473f33"
+      "transaction_hash": "0x1aec988148556af9858ca7cb126b7ad62bb6a538d5b575362c36575369473f33",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2322,7 +2637,9 @@
       "event_slug": "highest-temperature-in-nyc-on-july-3-2026",
       "token_id": "61043565334908828251031467567853205855184971711920349975485629836315236778487",
       "condition_id": "0x549a6968f78987694ec5f786d7f1064bcb605d7b97c123a56ba5bdb614a1fb5a",
-      "transaction_hash": "0x8b3d8ea966d3d2f9e50cfce428c75249afc23dbe9f66654d390b9b7cc3dd85fe"
+      "transaction_hash": "0x8b3d8ea966d3d2f9e50cfce428c75249afc23dbe9f66654d390b9b7cc3dd85fe",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2349,7 +2666,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-3-2026",
       "token_id": "87240994538803850057852667294477438795652687950920232070305248255761484586115",
       "condition_id": "0xceb8a25e6a63f193336f602fe40a02984d0df02df2ccc77910110a25fee098be",
-      "transaction_hash": "0xb614208c003ef6aae8b5ec07bbfe370aeec3b7dff8a95096dde658008cb8913a"
+      "transaction_hash": "0xb614208c003ef6aae8b5ec07bbfe370aeec3b7dff8a95096dde658008cb8913a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2376,7 +2695,9 @@
       "event_slug": "highest-temperature-in-toronto-on-july-3-2026",
       "token_id": "104441152074015230657209658698497479273797054376577209981969088683596817844893",
       "condition_id": "0xc66e7e0cde2354a173c66df6361e637626533f90fcddbdaa0e49eafb901007b3",
-      "transaction_hash": "0x2e6871b858883b71423b26b6c679e36f52b57d79441719b8e861dfd87229b750"
+      "transaction_hash": "0x2e6871b858883b71423b26b6c679e36f52b57d79441719b8e861dfd87229b750",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2403,7 +2724,9 @@
       "event_slug": "highest-temperature-in-miami-on-july-3-2026",
       "token_id": "96205941686381853979235807608693803039590240005308145725055159613741624846822",
       "condition_id": "0x2882c1e3244c8a0c6159835e3f3153f0d024258da179b320336a3cc3b627c10e",
-      "transaction_hash": "0x3f1b5ba4eec4a344f0a5e46b9b63aff9aff4141b60a37679da5958387870c3f3"
+      "transaction_hash": "0x3f1b5ba4eec4a344f0a5e46b9b63aff9aff4141b60a37679da5958387870c3f3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2430,7 +2753,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-july-3-2026",
       "token_id": "12110915364748600265825347919425142289593929286842870916237761338386507882349",
       "condition_id": "0x8b9e12dbe74966f60d5834251e8559f1d235311bd4cd4eb785f8c0e11ff88ea1",
-      "transaction_hash": "0x2032b8e3f2f4ae2aa2a9f188ea41f01b8628859e133fa4dafe67e68d6c5ed2ef"
+      "transaction_hash": "0x2032b8e3f2f4ae2aa2a9f188ea41f01b8628859e133fa4dafe67e68d6c5ed2ef",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2457,7 +2782,9 @@
       "event_slug": "highest-temperature-in-warsaw-on-july-3-2026",
       "token_id": "2927770646063143590440601230437317936006432620340300850719975486576564656899",
       "condition_id": "0xf8a72ec0c0577fa85b02e28568a956611509afdd55092a37acaad1ae59e24ae6",
-      "transaction_hash": "0xb40dbaef625070a249a832ce15a9be758b3810f8fea9ebbe9d3d3eb0d3f1f050"
+      "transaction_hash": "0xb40dbaef625070a249a832ce15a9be758b3810f8fea9ebbe9d3d3eb0d3f1f050",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2484,7 +2811,9 @@
       "event_slug": "highest-temperature-in-london-on-july-3-2026",
       "token_id": "16992232989892564997572450884975622494087999051647050574458161983818850580650",
       "condition_id": "0x34c115a00e7d6020859caac2c47d24d97e6d78d4b6ca5996649b38218a7ff3e1",
-      "transaction_hash": "0x600313f29784d5c7c36728f18257a7a8e8720caf55973c199dda898be053a8c9"
+      "transaction_hash": "0x600313f29784d5c7c36728f18257a7a8e8720caf55973c199dda898be053a8c9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2511,7 +2840,9 @@
       "event_slug": "highest-temperature-in-jeddah-on-july-3-2026",
       "token_id": "15110786841354166756594175264000354465559670965756231501121198734084412408063",
       "condition_id": "0x1e70a419f8e7958fcc1ba657723615ad7fdd3decc746261e5594f00671b9f8b9",
-      "transaction_hash": "0xe43eb662ca3e4d42ed167640ce402b77453488ee658ca2c45797180d65b76ee7"
+      "transaction_hash": "0xe43eb662ca3e4d42ed167640ce402b77453488ee658ca2c45797180d65b76ee7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2538,7 +2869,9 @@
       "event_slug": "highest-temperature-in-helsinki-on-july-3-2026",
       "token_id": "24653631172353799391914694802732156856538587377476542029980635810275780528205",
       "condition_id": "0x3899ea000d664e15620172e7632a0cd7297ceb998800121e7869a7d3609a19f5",
-      "transaction_hash": "0x61b5d2579e9faae6bc2a54feb6ce5c1e047dc735b8f05204611b92deaa39f61e"
+      "transaction_hash": "0x61b5d2579e9faae6bc2a54feb6ce5c1e047dc735b8f05204611b92deaa39f61e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2565,7 +2898,9 @@
       "event_slug": "highest-temperature-in-paris-on-july-3-2026",
       "token_id": "53866776341128817853593244735316803014847206378558519450774562697903216045605",
       "condition_id": "0x0495c388d9107c5f16f238fd8e91a50ad5cb6d668b1aa16eadac18cd6ae2ab8f",
-      "transaction_hash": "0xf8b89311438ac5d5480b4e5958ce80f8e50bfb74dd552c63957159b40cef65da"
+      "transaction_hash": "0xf8b89311438ac5d5480b4e5958ce80f8e50bfb74dd552c63957159b40cef65da",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2592,7 +2927,9 @@
       "event_slug": "highest-temperature-in-cape-town-on-july-3-2026",
       "token_id": "1516933033199734162100869487820186029172501536810415788463793339004135170720",
       "condition_id": "0x391e764f9ed7ed1a03893127e98611dd339916151f7c4a94f80b1d4e17e8e9ca",
-      "transaction_hash": "0x46bb5a55ba1eaf14b63e7fbcb4a668a5758d49b8eb98366746e01b5aa0f44517"
+      "transaction_hash": "0x46bb5a55ba1eaf14b63e7fbcb4a668a5758d49b8eb98366746e01b5aa0f44517",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2619,7 +2956,9 @@
       "event_slug": "highest-temperature-in-munich-on-july-3-2026",
       "token_id": "14438624206314781619815861715547853203744777659889912213823663627532891295169",
       "condition_id": "0x2efbf67c9ed00676c5c770f5616c354b57c465d534f81da0f320f1bb27ed18a0",
-      "transaction_hash": "0x965b485d68485a314564828d8c783448df7e8410f1137eba3767bd7aa467cdc8"
+      "transaction_hash": "0x965b485d68485a314564828d8c783448df7e8410f1137eba3767bd7aa467cdc8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2646,7 +2985,9 @@
       "event_slug": "highest-temperature-in-moscow-on-july-3-2026",
       "token_id": "109577975535461248496253698080461553549355030118534340210667550679975143733799",
       "condition_id": "0x776aa2a78f3cce2f0ccb9131afad0d37686e6b77d1ce7aef7cbd5c8bd27fa217",
-      "transaction_hash": "0x96ad10216eb06b52ab813965597f23fa3c7d8339cb19762ba6eebc12f1dbb0cb"
+      "transaction_hash": "0x96ad10216eb06b52ab813965597f23fa3c7d8339cb19762ba6eebc12f1dbb0cb",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2673,7 +3014,9 @@
       "event_slug": "highest-temperature-in-singapore-on-july-3-2026",
       "token_id": "60095777226738131735735133319319916228094882449967202525623444308683597930552",
       "condition_id": "0xfc09f5f857621b02f933beefacafe35b428109f32f3abec86dcadaabe36cc845",
-      "transaction_hash": "0x52acdb6c46e0e8e27b2d10ec9d563991a0da32eaa826aa52e2ae38c6bef2394c"
+      "transaction_hash": "0x52acdb6c46e0e8e27b2d10ec9d563991a0da32eaa826aa52e2ae38c6bef2394c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2700,7 +3043,9 @@
       "event_slug": "highest-temperature-in-beijing-on-july-3-2026",
       "token_id": "51585405439077408698479296516446807201671239035988847222961078734764402942475",
       "condition_id": "0xab81e98d3ba0906b447dd4d6ea9e309942982519845ad59b1c81e8040d9f9078",
-      "transaction_hash": "0x43107ab2fd91ba993167189f3468d51dd7cf54e29790dd1cdaae823bb2396eca"
+      "transaction_hash": "0x43107ab2fd91ba993167189f3468d51dd7cf54e29790dd1cdaae823bb2396eca",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2727,7 +3072,9 @@
       "event_slug": "highest-temperature-in-kuala-lumpur-on-july-3-2026",
       "token_id": "86056627796356696402537383725563355290147085275107895599544650934223263639423",
       "condition_id": "0x467bc461d98cfb0710c5763592240209ffdc628d92397d915c4c3081fabaeaee",
-      "transaction_hash": "0x24b039afeaafdd98d5f27f2846dedbed5a63d73af2032397a39d0fb333209e1f"
+      "transaction_hash": "0x24b039afeaafdd98d5f27f2846dedbed5a63d73af2032397a39d0fb333209e1f",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2754,7 +3101,9 @@
       "event_slug": "highest-temperature-in-shanghai-on-july-3-2026",
       "token_id": "49271313091257499910908816920703921469494253965491785113816147543243646403117",
       "condition_id": "0x88502dd0beb47187152a57a05a2408c37b59515abe513eab06e7e0c3949746cc",
-      "transaction_hash": "0x6faed6575868585fd8f8507d7a0f17561dd677842db25bd563cb67128e444443"
+      "transaction_hash": "0x6faed6575868585fd8f8507d7a0f17561dd677842db25bd563cb67128e444443",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2781,7 +3130,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-july-3-2026",
       "token_id": "7826473768601348223864230585623492886692184104862070851555819250533543394465",
       "condition_id": "0x80cdf94c64ad7c70091b307b0f216d986f7d5b54f90435776fabec009add5537",
-      "transaction_hash": "0x825b4064b6d477092b259e49fabcd0025b04e753ce5210aaa0ad3221ade0f981"
+      "transaction_hash": "0x825b4064b6d477092b259e49fabcd0025b04e753ce5210aaa0ad3221ade0f981",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2808,7 +3159,9 @@
       "event_slug": "highest-temperature-in-manila-on-july-3-2026",
       "token_id": "55410690758393740640095936845081602204635501423973202751116763106949887483151",
       "condition_id": "0xcbf0f94f475ab7573d60e5b84f6cfca41325a22133e60963b8dfd72e4180246c",
-      "transaction_hash": "0x559e79782b7698cda11209d886018192d375f05a03e087bf2880d75c422e9df8"
+      "transaction_hash": "0x559e79782b7698cda11209d886018192d375f05a03e087bf2880d75c422e9df8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2835,7 +3188,9 @@
       "event_slug": "highest-temperature-in-chongqing-on-july-3-2026",
       "token_id": "38700422754212371927708644180506226126199983071443386105661966579261966206319",
       "condition_id": "0x9cf69af19074e8f4f22c29ac367ff10adfe69c9faa979fe3b8e056bf4fdf9cbb",
-      "transaction_hash": "0xc141fa0ae980340e45372627e8adafc1934b10766201f3d1229c711b3f2a2321"
+      "transaction_hash": "0xc141fa0ae980340e45372627e8adafc1934b10766201f3d1229c711b3f2a2321",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2862,7 +3217,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-july-3-2026",
       "token_id": "99599819085158209320934704917159507707760976469421076787495159709526193155143",
       "condition_id": "0x874b17ca70c8da1d909f8fe10cea6e17e1761cb8f3d0fcb856dc268cf49958e4",
-      "transaction_hash": "0x2926f65c13c5c7498e428973126a6b359789b1d8d47479d9acaa12b49edc7d07"
+      "transaction_hash": "0x2926f65c13c5c7498e428973126a6b359789b1d8d47479d9acaa12b49edc7d07",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2889,7 +3246,9 @@
       "event_slug": "highest-temperature-in-shenzhen-on-july-3-2026",
       "token_id": "79127295705262167161225423425142927285756611866444615721460679856479555858833",
       "condition_id": "0x3c3e430ce33ed580380fb226c32b64959fd6563fd3816990136afbae854da68f",
-      "transaction_hash": "0xf20636c5f921df16998ea8a608cdbca9f7a827a1b79315d455cc8fbe14cbead1"
+      "transaction_hash": "0xf20636c5f921df16998ea8a608cdbca9f7a827a1b79315d455cc8fbe14cbead1",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2916,7 +3275,9 @@
       "event_slug": "highest-temperature-in-tokyo-on-july-3-2026",
       "token_id": "32341620571208683218249480843885745437306072955085602550115827383357257978137",
       "condition_id": "0xe4346f7cd0b7fecd48ef984187d9086d68d83e255bd2dc61b2d719d63e8b256e",
-      "transaction_hash": "0xe3142592ea4bb54f354513cf7ea06a1e5aa11bce1110272f3c462c33c276677a"
+      "transaction_hash": "0xe3142592ea4bb54f354513cf7ea06a1e5aa11bce1110272f3c462c33c276677a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2943,7 +3304,9 @@
       "event_slug": "highest-temperature-in-qingdao-on-july-3-2026",
       "token_id": "67759011193947953101835747095184598873937429953969677804712477798991975668133",
       "condition_id": "0x36e74adc6ee0782194851f94cf40f87ffb3ca8f100d3254baf6c7d4081f096fb",
-      "transaction_hash": "0x2665cfc6fe4c5471f9010280ece7f0317e7d50ee41a6ed957209d58a0a3b2123"
+      "transaction_hash": "0x2665cfc6fe4c5471f9010280ece7f0317e7d50ee41a6ed957209d58a0a3b2123",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2970,7 +3333,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-3-2026",
       "token_id": "41333490476208844921426328022075634782757546883009471407003671503754207839441",
       "condition_id": "0x2a3931d3e6823df5236c756c602861158ad71045b8d20fb8a2d3e5c45f0d0929",
-      "transaction_hash": "0xd7a0620cbb498522e87f551a0be17b78107e140ff9b62ad45cdbb0127fc405bd"
+      "transaction_hash": "0xd7a0620cbb498522e87f551a0be17b78107e140ff9b62ad45cdbb0127fc405bd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -2997,7 +3362,9 @@
       "event_slug": "highest-temperature-in-seoul-on-july-3-2026",
       "token_id": "101394134441867743378965855126504350927141671027652588548898106808682874867218",
       "condition_id": "0x649e4e04f648c4229925590ab7bc114bc1bbe08bd3de0253110d528a2eef6b01",
-      "transaction_hash": "0x420bbffdc7692fc5204c503201b897949cbdef86454a8153d3582a67064dcccc"
+      "transaction_hash": "0x420bbffdc7692fc5204c503201b897949cbdef86454a8153d3582a67064dcccc",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-03",
@@ -3024,7 +3391,9 @@
       "event_slug": "highest-temperature-in-wellington-on-july-3-2026",
       "token_id": "12396669355525165237288080825387431714239859313952900530024588403395374760642",
       "condition_id": "0x8c035a9f8f419871f173635582373d03d1edf856eaa469565dbfaf25656b229e",
-      "transaction_hash": "0x20e804f1f3f52693a29e0d930222ae921e4e89994e1e8205b24afe8d5708371b"
+      "transaction_hash": "0x20e804f1f3f52693a29e0d930222ae921e4e89994e1e8205b24afe8d5708371b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3051,7 +3420,9 @@
       "event_slug": "highest-temperature-in-san-francisco-on-july-2-2026",
       "token_id": "9282488281549562411578443944827640363120824852604053865827267301931958661316",
       "condition_id": "0xde2aff6f22d94278bf7b462a2acf99a0d89f238ad4d91bc0d967584d3f95be71",
-      "transaction_hash": "0xbf4719527f689f9fd7fac13c357a440cece5ae922e3dfcf67c94b4cda214bb75"
+      "transaction_hash": "0xbf4719527f689f9fd7fac13c357a440cece5ae922e3dfcf67c94b4cda214bb75",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3078,7 +3449,9 @@
       "event_slug": "highest-temperature-in-seattle-on-july-2-2026",
       "token_id": "51521765839087897183993530487993570916565152427550397170906208116735452859651",
       "condition_id": "0x1a6f39348b7d468fa2f9dacb559b4026afbeb936e483aa4e0cff4131bc714758",
-      "transaction_hash": "0x9d2425dc636028b7a30cd1465a1076170a20c1c315b023b7a3659aea9b6c9cfe"
+      "transaction_hash": "0x9d2425dc636028b7a30cd1465a1076170a20c1c315b023b7a3659aea9b6c9cfe",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3105,7 +3478,9 @@
       "event_slug": "highest-temperature-in-los-angeles-on-july-2-2026",
       "token_id": "107234922803179256399547833942913339902166783816899679011445345481612084027952",
       "condition_id": "0x5bc9ab3385e22f952072d32ab275f6a9dc12693e2a00a87b7921afb2daa68636",
-      "transaction_hash": "0xc6ca0201c1f821e5116bf7202ff8b2f428cae59ffe9093437a3d2ffd40bc262c"
+      "transaction_hash": "0xc6ca0201c1f821e5116bf7202ff8b2f428cae59ffe9093437a3d2ffd40bc262c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3132,7 +3507,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-july-2-2026",
       "token_id": "1655807230813266962201387686615085838866503569048894046173146814928784976122",
       "condition_id": "0xffc91456b52c13b23b1fbbeec406f2c973ce00365b41d5e3950d679a1b88fb2e",
-      "transaction_hash": "0x638f7d12cb6b5f530a83dfea924623323d43dde88bda5a7370c1cff0400ff300"
+      "transaction_hash": "0x638f7d12cb6b5f530a83dfea924623323d43dde88bda5a7370c1cff0400ff300",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3159,7 +3536,9 @@
       "event_slug": "highest-temperature-in-denver-on-july-2-2026",
       "token_id": "87865406360101686482006336963947641121597964215028533196922029254719372187952",
       "condition_id": "0xc9f4a5655d6bf898f086be4343b6b2ed4f4836356de6a9696405e91a71b7f091",
-      "transaction_hash": "0xbba681c4d3d4705fc8379a8c5ed1283c164c27656f46a5336a5a3b3b65f0b06b"
+      "transaction_hash": "0xbba681c4d3d4705fc8379a8c5ed1283c164c27656f46a5336a5a3b3b65f0b06b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3186,7 +3565,9 @@
       "event_slug": "highest-temperature-in-dallas-on-july-2-2026",
       "token_id": "3500299320920734994160207722290869903074778824022796235589363002371655882144",
       "condition_id": "0xfac2618473660631f42f3e11bf4d32bcb8ceeb2832a9a8e6338170ad4a228192",
-      "transaction_hash": "0x979fe22604dc3e77c343abf480218e280a61a61cdd158aedb9ccabc2b845a0ef"
+      "transaction_hash": "0x979fe22604dc3e77c343abf480218e280a61a61cdd158aedb9ccabc2b845a0ef",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3213,7 +3594,9 @@
       "event_slug": "highest-temperature-in-nyc-on-july-2-2026",
       "token_id": "67438141408857300559232932310218421718883475539941028800986125966021233525742",
       "condition_id": "0xd46dfb9d8284cfa06f7f0532e2ee2c2985127f7e298dd46c699a7c9d424ec9f4",
-      "transaction_hash": "0x7bc452a97e8b133e0b33d9a25d7ed24db34520f66b4b5f840aeda8c3d3e4e746"
+      "transaction_hash": "0x7bc452a97e8b133e0b33d9a25d7ed24db34520f66b4b5f840aeda8c3d3e4e746",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3240,7 +3623,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-2-2026",
       "token_id": "104293354657723017595337970411167813550355096194788340046302664080767146167495",
       "condition_id": "0xd50e44345b6521936c886bd7ee1da981837420765bd10f4cc16112130940990f",
-      "transaction_hash": "0xfcc899ec7a9abc5c6d524fe0a8726ec26da1746099ce6990c95dd9827a29f68e"
+      "transaction_hash": "0xfcc899ec7a9abc5c6d524fe0a8726ec26da1746099ce6990c95dd9827a29f68e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3267,7 +3652,9 @@
       "event_slug": "highest-temperature-in-austin-on-july-2-2026",
       "token_id": "115750837718908263371614996812575593341579655083659702896445514499059031344440",
       "condition_id": "0x11626f547e5fab6237373b561ee852f2cbffe080c969b7f73bb6d93eed21b1aa",
-      "transaction_hash": "0x54ca7166a45d21075ec644a2e5029dfba5a2ac9c3f08698241ad206f61e52ef6"
+      "transaction_hash": "0x54ca7166a45d21075ec644a2e5029dfba5a2ac9c3f08698241ad206f61e52ef6",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3294,7 +3681,9 @@
       "event_slug": "highest-temperature-in-buenos-aires-on-july-2-2026",
       "token_id": "39882016810994949031847955047125678350704812977202368620389877471246181431325",
       "condition_id": "0x4c68f6c2cb522f9b35efc36410c3659dad88683ff5a91ba52ac4e6ac8d93601f",
-      "transaction_hash": "0x8e697be65aae2ea6f207feb983625a7fa5e42ea27f77ae9d019f3bd11fee442c"
+      "transaction_hash": "0x8e697be65aae2ea6f207feb983625a7fa5e42ea27f77ae9d019f3bd11fee442c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3321,7 +3710,9 @@
       "event_slug": "highest-temperature-in-madrid-on-july-2-2026",
       "token_id": "47409027353186732028923088276422435569406088258868433833345075716486953409857",
       "condition_id": "0x7fc6dd6442285bcad26fbabf19da0a9b2f5483599e33f4ee72d6b7abec98ef32",
-      "transaction_hash": "0x9f2195273fbf9296a2b8d5b57a628c3e90dea0648d3451b71ce604a08d031cee"
+      "transaction_hash": "0x9f2195273fbf9296a2b8d5b57a628c3e90dea0648d3451b71ce604a08d031cee",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3348,7 +3739,9 @@
       "event_slug": "highest-temperature-in-milan-on-july-2-2026",
       "token_id": "103277286282855173393059218729623610152916894828415625256191228800027844982895",
       "condition_id": "0xaed6f46a064cf99a7bfaac7128b57a577c370f36fdb9de3afb5f25b2628434c1",
-      "transaction_hash": "0x7c8620200930b5404cc37952e495c0c65b9a0e942bf375fba611171f39222973"
+      "transaction_hash": "0x7c8620200930b5404cc37952e495c0c65b9a0e942bf375fba611171f39222973",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3375,7 +3768,9 @@
       "event_slug": "highest-temperature-in-warsaw-on-july-2-2026",
       "token_id": "22266445251169557898058071219870547674910347671846509673417484828650441811654",
       "condition_id": "0xbbf32a1808a24636cfea9561757c01216f58c2a47692b602f637e611e48a17e0",
-      "transaction_hash": "0xeef8919ba9605623ff934441537c5b815408df149b28a974bb3992823dfb36a9"
+      "transaction_hash": "0xeef8919ba9605623ff934441537c5b815408df149b28a974bb3992823dfb36a9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3402,7 +3797,9 @@
       "event_slug": "highest-temperature-in-munich-on-july-2-2026",
       "token_id": "21400780676090994576187731156144024471028971906752410171186677112732287853912",
       "condition_id": "0x3074cfe4fa9b6835a88b6b2e5e19c5b01c7d1c4c0e8e892335fd8271a5b8f068",
-      "transaction_hash": "0x4a028dfd325ab3892694a0d8fa80daa23ae21087ae8741928f985026d2dedae0"
+      "transaction_hash": "0x4a028dfd325ab3892694a0d8fa80daa23ae21087ae8741928f985026d2dedae0",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3429,7 +3826,9 @@
       "event_slug": "highest-temperature-in-paris-on-july-2-2026",
       "token_id": "7823464475350187449810444911002768291277395692957990528434159798522806632087",
       "condition_id": "0xe999ab1388cda24399ff08a10d50a80f53f21235c136bbfcff9856d404de49fa",
-      "transaction_hash": "0xf17a83471e13e45e518a378b0bfd6b8c94f4618a94a747ef3b8c96cc8897910e"
+      "transaction_hash": "0xf17a83471e13e45e518a378b0bfd6b8c94f4618a94a747ef3b8c96cc8897910e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3456,7 +3855,9 @@
       "event_slug": "highest-temperature-in-jeddah-on-july-2-2026",
       "token_id": "40101665148565920468509144318329819558181626415263155124776719908910940729288",
       "condition_id": "0xd37d093b0a50327a03fb1c1148a25a53072420f2bf313cc06810553276400c45",
-      "transaction_hash": "0xfa27ff657e7edeb4e280e369261f3a8f86fc4ff86e5ebdb2fd0cd49ffcc23b60"
+      "transaction_hash": "0xfa27ff657e7edeb4e280e369261f3a8f86fc4ff86e5ebdb2fd0cd49ffcc23b60",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3483,7 +3884,9 @@
       "event_slug": "highest-temperature-in-moscow-on-july-2-2026",
       "token_id": "52001479381998354999771851253438882296759582144123617292061438139204782002074",
       "condition_id": "0x9a760c0874e7425985382f1131adcb58c586f095c24374e2a90a5ba2518397ce",
-      "transaction_hash": "0xbc6ddba038d463b17febd93aa0f532af8a55eee435b3e9182f7ed732a8b51053"
+      "transaction_hash": "0xbc6ddba038d463b17febd93aa0f532af8a55eee435b3e9182f7ed732a8b51053",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3510,7 +3913,9 @@
       "event_slug": "highest-temperature-in-ankara-on-july-2-2026",
       "token_id": "82396253415401137887033461506956282002353363996863552501451764241878633213591",
       "condition_id": "0x0de472c55ee41825feb61b982bda0995272b4bb358f9f254c7f1fdf37363dea3",
-      "transaction_hash": "0x08aff97cdf0e3925f86e016addc9310af4fd5678550da3b1c94016e97df520d9"
+      "transaction_hash": "0x08aff97cdf0e3925f86e016addc9310af4fd5678550da3b1c94016e97df520d9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3537,7 +3942,9 @@
       "event_slug": "highest-temperature-in-helsinki-on-july-2-2026",
       "token_id": "82018555462680775090480457216911649723899916329992071891639714548319178859776",
       "condition_id": "0xe684486fb5766a060b51a6397447cc2d60eb32ab124fb092a74a97a439fac203",
-      "transaction_hash": "0x37305d75a8af10b180c24514294e5cdea9969c854357551cadadbf5089a45c0d"
+      "transaction_hash": "0x37305d75a8af10b180c24514294e5cdea9969c854357551cadadbf5089a45c0d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3564,7 +3971,9 @@
       "event_slug": "highest-temperature-in-lucknow-on-july-2-2026",
       "token_id": "75874637964018536456600918755283888433528552293863417843601586005457607139854",
       "condition_id": "0xdb021810ad455c7d4f4b6dc9a9b5dd9c3c5025df15088aa10b083671283c6a2c",
-      "transaction_hash": "0x89f54659636dabeccb2b0482b2246dbc6693b9acb3e005eccb8b522276679a7e"
+      "transaction_hash": "0x89f54659636dabeccb2b0482b2246dbc6693b9acb3e005eccb8b522276679a7e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3591,7 +4000,9 @@
       "event_slug": "highest-temperature-in-beijing-on-july-2-2026",
       "token_id": "29873433503387729162775419096821489693972661154731741535503223743327501145919",
       "condition_id": "0xaa4e48f580ace9f3a4dbd93563ef00b974cdff6cad3471deab55d8dc9ebfae16",
-      "transaction_hash": "0xa4dc424dbfefa6ceadeac80f3b0ffaf560f41f03815eef8f166e74ec340b691b"
+      "transaction_hash": "0xa4dc424dbfefa6ceadeac80f3b0ffaf560f41f03815eef8f166e74ec340b691b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3618,7 +4029,9 @@
       "event_slug": "highest-temperature-in-taipei-on-july-2-2026",
       "token_id": "109536201344225236043233017685819618500026583904392209964277167329089555314819",
       "condition_id": "0xd768d8faf9efd60cd86a038bce70f4e6b947c703492422554a4fef187989b233",
-      "transaction_hash": "0x045b9f86628f415a2dc350813da514294220a1e9a0e77e8a02d36cd95cc5a027"
+      "transaction_hash": "0x045b9f86628f415a2dc350813da514294220a1e9a0e77e8a02d36cd95cc5a027",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3645,7 +4058,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-2-2026",
       "token_id": "107525115166222467163398184200097292940105134106150317760849911533807391637788",
       "condition_id": "0xc6799a5e7b4d91b79ce0c0fed0d63315b1441606686c4b2a42dda1a9f3001a0d",
-      "transaction_hash": "0x1829f0cb0f3e4321bcb9599733d47a9faa25dbdfb96782cb3b4b13e77a408028"
+      "transaction_hash": "0x1829f0cb0f3e4321bcb9599733d47a9faa25dbdfb96782cb3b4b13e77a408028",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3672,7 +4087,9 @@
       "event_slug": "highest-temperature-in-singapore-on-july-2-2026",
       "token_id": "99442976934844126919968413513185633382257586222456850430317259209796940598613",
       "condition_id": "0x6b6290dfc57dd817f7aa3cd3ce40eb938e40cb058b78a8bf08d85203ea9908c6",
-      "transaction_hash": "0x757c62c03b0cb75579ac0a807936f72c6b65d0886aaa93dfb1fa931d4ae88c6d"
+      "transaction_hash": "0x757c62c03b0cb75579ac0a807936f72c6b65d0886aaa93dfb1fa931d4ae88c6d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3699,7 +4116,9 @@
       "event_slug": "highest-temperature-in-shanghai-on-july-2-2026",
       "token_id": "63910418116433677841375800089590867569549774928756945299679978754973593182799",
       "condition_id": "0x5ec9140182643b575ff044a7b51d3de1c394c7b5ecff11d46329316f3ad20514",
-      "transaction_hash": "0x5b2887cb95ed9084cb7d9ac8e467c00fb8028edbfea5a350ef5507c32b8d6cd3"
+      "transaction_hash": "0x5b2887cb95ed9084cb7d9ac8e467c00fb8028edbfea5a350ef5507c32b8d6cd3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3726,7 +4145,9 @@
       "event_slug": "highest-temperature-in-qingdao-on-july-2-2026",
       "token_id": "63542319625655012503374643629198785585558056354513901665719375030631085906471",
       "condition_id": "0x12dff3fbb0b7249fa96cf98a292b89eaac0c2c6b47e9564bc77da75902f4afcf",
-      "transaction_hash": "0x565b78cc7140a28a9b20fa1deb9c2bb00a9e63214191ffb844badc3f45d79865"
+      "transaction_hash": "0x565b78cc7140a28a9b20fa1deb9c2bb00a9e63214191ffb844badc3f45d79865",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3753,7 +4174,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-july-2-2026",
       "token_id": "115069942345779081739031531678254904446589786354266001970681851014577065542906",
       "condition_id": "0x1df615bd485145cf4ced91b5cf031dbc0e129e4adb200f7a5a8f454f8a384694",
-      "transaction_hash": "0x6f0f9de1ffd26592d11aa649fb049944edb81ac2bb0d90b001afcec4d4da39d0"
+      "transaction_hash": "0x6f0f9de1ffd26592d11aa649fb049944edb81ac2bb0d90b001afcec4d4da39d0",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3780,7 +4203,9 @@
       "event_slug": "highest-temperature-in-manila-on-july-2-2026",
       "token_id": "40207322722493983343194915294044452066738683301107302455385897927019068353507",
       "condition_id": "0xf972d373ccb450ed3bd78bc981442f09fdc0b89e8a84413422f5d71dc5a68d51",
-      "transaction_hash": "0x4a087ac32155f3aba941c7a84e8a6ca56cc75f31e4a762d7a7f04f1580f3a068"
+      "transaction_hash": "0x4a087ac32155f3aba941c7a84e8a6ca56cc75f31e4a762d7a7f04f1580f3a068",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3807,7 +4232,9 @@
       "event_slug": "highest-temperature-in-hong-kong-on-july-2-2026",
       "token_id": "74150737135240570458240506320783934924163866635774455006147147391927896934878",
       "condition_id": "0x675c1a0e31e4487de9afed4129977eac5cb97141518d9312c8e0db2470a29293",
-      "transaction_hash": "0xd267efb246bd7241259513ac6573be69db8911b7c31cb226d349d2ff73182454"
+      "transaction_hash": "0xd267efb246bd7241259513ac6573be69db8911b7c31cb226d349d2ff73182454",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3834,7 +4261,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-july-2-2026",
       "token_id": "27599163914099761266390998107772611416375855881672789412500817149007433354115",
       "condition_id": "0x732d56a83c59c4b413507dc1559c0c51a97e9bd082041e83bfa31bf73bde4a99",
-      "transaction_hash": "0x766c22efc3400fedf566cbbd4a8bc1fd42982ff2f6400a120ce014bdb892d346"
+      "transaction_hash": "0x766c22efc3400fedf566cbbd4a8bc1fd42982ff2f6400a120ce014bdb892d346",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-02",
@@ -3861,7 +4290,9 @@
       "event_slug": "highest-temperature-in-seoul-on-july-2-2026",
       "token_id": "700577902883272886282752527624614618027112132031844327122730608077412667280",
       "condition_id": "0xdf2f0cfa7ac2189a4a29a4613a38cdea8f74eca7b96ee21084ad7d9a25c73a19",
-      "transaction_hash": "0xec762c77ef73f94c1d45ba7dd4953186600d8d6cc42c8a594850b5ecba36fba8"
+      "transaction_hash": "0xec762c77ef73f94c1d45ba7dd4953186600d8d6cc42c8a594850b5ecba36fba8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -3888,7 +4319,9 @@
       "event_slug": "highest-temperature-in-seattle-on-july-1-2026",
       "token_id": "21837458617015306259948925145219426231602873787735734327100886303709571304028",
       "condition_id": "0x989f97c22cf22c3917ef712bc6e190357f386d92710fcb0e11d76dcb6c48b4fa",
-      "transaction_hash": "0xc3d7d50d588b61844aca14d87ef5f8d4c212a7e2dec545e937e5ffaa5ab4dc6d"
+      "transaction_hash": "0xc3d7d50d588b61844aca14d87ef5f8d4c212a7e2dec545e937e5ffaa5ab4dc6d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -3915,7 +4348,9 @@
       "event_slug": "highest-temperature-in-los-angeles-on-july-1-2026",
       "token_id": "51422508448432180339370163798950796511991939390078304222898952281742219090112",
       "condition_id": "0x69f6377e6cae9067b0a062fe45a49bf1a4f3e115639559f03fa5fc5447986c22",
-      "transaction_hash": "0x2a5b681aaad18528359a545db31286da037b405146927e72f06bf0d2b83c5fdd"
+      "transaction_hash": "0x2a5b681aaad18528359a545db31286da037b405146927e72f06bf0d2b83c5fdd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -3942,7 +4377,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-july-1-2026",
       "token_id": "69509975780324118643879175299992065676997076602842158758940399553212893374935",
       "condition_id": "0x5f6cdec538574de3743585050c6d92f01f7df7133e4e0228057833f2f06ed6dc",
-      "transaction_hash": "0xa53e24b59c8415ee1bd7b88e6aebd9dabe046a4d64cf65e8a0316542c1c862d7"
+      "transaction_hash": "0xa53e24b59c8415ee1bd7b88e6aebd9dabe046a4d64cf65e8a0316542c1c862d7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -3969,7 +4406,9 @@
       "event_slug": "highest-temperature-in-denver-on-july-1-2026",
       "token_id": "110713356139560061656690190821509736203960036547661230167277872214389617650338",
       "condition_id": "0x564cfa3b4c26058f4187363077349080447cde115a25b097f0da43b0cbf90dd2",
-      "transaction_hash": "0x17c170d8b9e687297e4a04a250ae485c5a8599ce6db5103ac001591c34d4a8d9"
+      "transaction_hash": "0x17c170d8b9e687297e4a04a250ae485c5a8599ce6db5103ac001591c34d4a8d9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -3996,7 +4435,9 @@
       "event_slug": "highest-temperature-in-toronto-on-july-1-2026",
       "token_id": "13212139598649297226135290676477609569670714260837568591930249606714075224715",
       "condition_id": "0x9b9beee83b08133358344f14cc1ad072d6c24430c692a1e1511ec2207f99c8c5",
-      "transaction_hash": "0x1c6ada765710d4fa581f672e28d86d1850e8c2e1eaf57cb8b1e7df6ac04b45f1"
+      "transaction_hash": "0x1c6ada765710d4fa581f672e28d86d1850e8c2e1eaf57cb8b1e7df6ac04b45f1",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4023,7 +4464,9 @@
       "event_slug": "highest-temperature-in-austin-on-july-1-2026",
       "token_id": "83010095464475198465309000778827763213371239620712119789508746596148149519158",
       "condition_id": "0xe5820d67422c27de088715887ea7871bf91ad588d1f4d05e3b1185be9b16ee55",
-      "transaction_hash": "0x329ecc33b1b6967e2cf6c4b13bc5a587385db9072671d82a6160c133d108b098"
+      "transaction_hash": "0x329ecc33b1b6967e2cf6c4b13bc5a587385db9072671d82a6160c133d108b098",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4050,7 +4493,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-july-1-2026",
       "token_id": "34192446287374880201546160705662137192276058594798224300049729565055461470292",
       "condition_id": "0x90c3ffbb3c3ee7126e3d93a34301b364c4dacb705b903b199963594cc92a4393",
-      "transaction_hash": "0xd5ec6c3ceed1a57ba4f89386a175f75f19424fd927b0e4468901e1f3bcdbf0f8"
+      "transaction_hash": "0xd5ec6c3ceed1a57ba4f89386a175f75f19424fd927b0e4468901e1f3bcdbf0f8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4077,7 +4522,9 @@
       "event_slug": "highest-temperature-in-nyc-on-july-1-2026",
       "token_id": "12742829344934233329261954062392726596415060923310847806502374096932894449837",
       "condition_id": "0x6f0765ab90e5ca3efff0ed2f776cec85f8350edd80c5c0b2b857e62cbd161c97",
-      "transaction_hash": "0x15408f74722eb42a8b1e4cc610a8c44095d0485bcaabd8e96468d7f55cbdaab5"
+      "transaction_hash": "0x15408f74722eb42a8b1e4cc610a8c44095d0485bcaabd8e96468d7f55cbdaab5",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4104,7 +4551,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-july-1-2026",
       "token_id": "95022133562477371915290267758412354672896276407535277518633200841688132497689",
       "condition_id": "0x7a7a4f3184f58728352e666acb9432552902cd767e2cbba18e8d3469d9073ec3",
-      "transaction_hash": "0xb8b5227ec47b295505d60d7c84e6123cb467929aed05796e9812c8a9d7021948"
+      "transaction_hash": "0xb8b5227ec47b295505d60d7c84e6123cb467929aed05796e9812c8a9d7021948",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4131,7 +4580,9 @@
       "event_slug": "highest-temperature-in-buenos-aires-on-july-1-2026",
       "token_id": "74452790306523976398202427453382543564423314467810129616663933096066903983941",
       "condition_id": "0x79461a00dbcc63b0e1ea8e6955b70c2a80da39ac5033f7c9548e10e77b751d71",
-      "transaction_hash": "0xf381ef4ce946d90aa2a978b1b2f31b063a86b4296e07cfa14366636f7c9f401a"
+      "transaction_hash": "0xf381ef4ce946d90aa2a978b1b2f31b063a86b4296e07cfa14366636f7c9f401a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4158,7 +4609,9 @@
       "event_slug": "highest-temperature-in-london-on-july-1-2026",
       "token_id": "1876487156461390087614084468096446077368777732032702724705236471940580403855",
       "condition_id": "0xdcce9c5e0000f3ec4383c3738744bbd7c12f1ff5ab4a5ddcf8869acc1f94b3cd",
-      "transaction_hash": "0xc81275423d4023720240ecf91c97828ec4818891edae6f63777fb56b1c7f03c4"
+      "transaction_hash": "0xc81275423d4023720240ecf91c97828ec4818891edae6f63777fb56b1c7f03c4",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4185,7 +4638,9 @@
       "event_slug": "highest-temperature-in-cape-town-on-july-1-2026",
       "token_id": "34878794114545570538195820081543303698303416859058153540235242202558935050079",
       "condition_id": "0xfc75a18ee420a3b07818cd04baa408692b5e1028959d6946b8b0d1d69f6fc407",
-      "transaction_hash": "0x2261916e074ddbf40178c9ef0a1eeb5f5658162472c80de66a5f0a4e62ae406b"
+      "transaction_hash": "0x2261916e074ddbf40178c9ef0a1eeb5f5658162472c80de66a5f0a4e62ae406b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4212,7 +4667,9 @@
       "event_slug": "highest-temperature-in-milan-on-july-1-2026",
       "token_id": "56729464811899095974336402085979117435041612157243804852086073574311127372348",
       "condition_id": "0x8000e19ceeb46c617943dcb5d57c4deb6532c9618a784e59027092c3a67fb5bd",
-      "transaction_hash": "0xc8a487ccaf0e6a5665fa18111566a5d46a1057b9ddcde68107ddd0fd17b031b8"
+      "transaction_hash": "0xc8a487ccaf0e6a5665fa18111566a5d46a1057b9ddcde68107ddd0fd17b031b8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4239,7 +4696,9 @@
       "event_slug": "highest-temperature-in-warsaw-on-july-1-2026",
       "token_id": "70886592436736558073435505985137456142757860091625899928866850367925516400128",
       "condition_id": "0xa736fcd7d0769550453995623227d835ccea19089009fdc36c16c3d8b80c505e",
-      "transaction_hash": "0xe5d875f062d547f2c511a2f66bff4d7ae718de3080bed59185f8923ce0cf3229"
+      "transaction_hash": "0xe5d875f062d547f2c511a2f66bff4d7ae718de3080bed59185f8923ce0cf3229",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4266,7 +4725,9 @@
       "event_slug": "highest-temperature-in-madrid-on-july-1-2026",
       "token_id": "95602163761671534839626719576669875354448790649105774334624366288505291577252",
       "condition_id": "0xf1e7b2a24a048b0716ecf4b79f037367bde5b59afdd2d1af83cef7e20ca8b7cb",
-      "transaction_hash": "0x070b610174438f425de71f5419d72d01637aece0a45463f1f1d9f045774c4920"
+      "transaction_hash": "0x070b610174438f425de71f5419d72d01637aece0a45463f1f1d9f045774c4920",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4293,7 +4754,9 @@
       "event_slug": "highest-temperature-in-helsinki-on-july-1-2026",
       "token_id": "33699671684095066730247572071970380431916623860203638651892780766571529288179",
       "condition_id": "0xb15e0f8784d515ff39046ab0c144dfb40e440dbdc8deb3a7cfa1104371f75519",
-      "transaction_hash": "0xf607609b8871e6e2ebf157742747a5cf6d2139d86ec304165932d6b323f5242c"
+      "transaction_hash": "0xf607609b8871e6e2ebf157742747a5cf6d2139d86ec304165932d6b323f5242c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4320,7 +4783,9 @@
       "event_slug": "highest-temperature-in-moscow-on-july-1-2026",
       "token_id": "95237430301401657245226662725430588508697639087502778499025757805918283777302",
       "condition_id": "0xb23428547586a4bc91ed7588ecf54a19becd1e15cd4e6ca67a9380528d69c460",
-      "transaction_hash": "0xe8b01af571aa244d1a7060161e6f1426c08d04e1ff75eb53eb45d6d19d24d19e"
+      "transaction_hash": "0xe8b01af571aa244d1a7060161e6f1426c08d04e1ff75eb53eb45d6d19d24d19e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4347,7 +4812,9 @@
       "event_slug": "highest-temperature-in-tel-aviv-on-july-1-2026",
       "token_id": "59024403984997175620590613630217846499028739023633449954719583620513619829483",
       "condition_id": "0x887ba9669c13136412f5df62a2c43723a567f0e486216f0ce23b734b0d91bd15",
-      "transaction_hash": "0x0e5ea8e5ecfaf3e18cd625a7ed63e0cfb542934b2f344514191fb8a980e52716"
+      "transaction_hash": "0x0e5ea8e5ecfaf3e18cd625a7ed63e0cfb542934b2f344514191fb8a980e52716",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4374,7 +4841,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-july-1-2026",
       "token_id": "67264116115117731995374819576255386382289965406822992502554169462631954106495",
       "condition_id": "0x89abb61d8cb3265a39f3260e226555dfc0806cd9dcca3db56530b7200533a2e4",
-      "transaction_hash": "0x33be8eef7aa6bbd4de701ff7fb7b9157ca5b2f2644f24ee385701109ac03edc3"
+      "transaction_hash": "0x33be8eef7aa6bbd4de701ff7fb7b9157ca5b2f2644f24ee385701109ac03edc3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4401,7 +4870,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-july-1-2026",
       "token_id": "64905453694214282432666213644321547265391249357807612856176168438051543837647",
       "condition_id": "0x6bdf24c1af56ed61d02a165eb4436a287e7926e0227e14cefd34cedcf00e3e8a",
-      "transaction_hash": "0xeec170ac197e1b29fee11e2b5fef9b5405b05e96cf1248b534cca3a61ed71767"
+      "transaction_hash": "0xeec170ac197e1b29fee11e2b5fef9b5405b05e96cf1248b534cca3a61ed71767",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4428,7 +4899,9 @@
       "event_slug": "highest-temperature-in-kuala-lumpur-on-july-1-2026",
       "token_id": "85436176279154524894534908910365636233918002784890191274939659931845754117073",
       "condition_id": "0xe4863b03e1b1341024cddd85f8eef51714ae01f63382d991aa7cba528e543d00",
-      "transaction_hash": "0xb8a836a7471db479c62db762a4f25040d458da963c0f20550f8d6fe1a051d333"
+      "transaction_hash": "0xb8a836a7471db479c62db762a4f25040d458da963c0f20550f8d6fe1a051d333",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4455,7 +4928,9 @@
       "event_slug": "highest-temperature-in-qingdao-on-july-1-2026",
       "token_id": "35224214345147737165680406530986145346592324420434755370677042231190733049488",
       "condition_id": "0xd5bdf74c4892227c6560cc4c9fdd3b837ed5ab40532c2572978a65fd7344dd3c",
-      "transaction_hash": "0xeecbeaaafe7dc438740badfcf0a863de0b7470b53c5d2137c9e04612c1b93f30"
+      "transaction_hash": "0xeecbeaaafe7dc438740badfcf0a863de0b7470b53c5d2137c9e04612c1b93f30",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4482,7 +4957,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-july-1-2026",
       "token_id": "104846797037517884835434703055299066674615972186859467688114172422016536503234",
       "condition_id": "0xc3d9ce442f886096116ef9aff720f56309a717e5843c9d118f8049ab0dde7178",
-      "transaction_hash": "0x8584136917fc039c07e0f72a91a94cce5dc36f7f5328a92802b00446e81f6f06"
+      "transaction_hash": "0x8584136917fc039c07e0f72a91a94cce5dc36f7f5328a92802b00446e81f6f06",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4509,7 +4986,9 @@
       "event_slug": "highest-temperature-in-beijing-on-july-1-2026",
       "token_id": "30342911746261000464792165131679218237142238915367827761749945070895577692681",
       "condition_id": "0x6990429d9b745f0473220ea910d48e8fec57ac86376fe4d1fc5443aec10a624f",
-      "transaction_hash": "0x73cf59cb8368fc3848f1f9bc3efaaa5b69b167c5fab0d1c317b3653b10caf0aa"
+      "transaction_hash": "0x73cf59cb8368fc3848f1f9bc3efaaa5b69b167c5fab0d1c317b3653b10caf0aa",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4536,7 +5015,9 @@
       "event_slug": "highest-temperature-in-shenzhen-on-july-1-2026",
       "token_id": "93284685715370495121574781125892073779118737012439938250991073567922160520731",
       "condition_id": "0x266c19c5fcafb67bc1485e884f6cdebf64036e87d2221ef481d4aaa315f472af",
-      "transaction_hash": "0xc16074ae6dd80595e149fcdddd0b95f13536bc773cf70eef136c28c137409087"
+      "transaction_hash": "0xc16074ae6dd80595e149fcdddd0b95f13536bc773cf70eef136c28c137409087",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-07-01",
@@ -4563,7 +5044,9 @@
       "event_slug": "highest-temperature-in-tokyo-on-july-1-2026",
       "token_id": "59990543122883709391614227852345485141128485867199430563901286221857453860567",
       "condition_id": "0x5e58a193e338611d73f7e752c34a14a483134d296c27cc31abfcd48d423bb7bf",
-      "transaction_hash": "0xc54a21715826f3b5c105adf31826ed9b08820caccd35471c6fdd944fd89adbd3"
+      "transaction_hash": "0xc54a21715826f3b5c105adf31826ed9b08820caccd35471c6fdd944fd89adbd3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4590,7 +5073,9 @@
       "event_slug": "highest-temperature-in-san-francisco-on-june-30-2026",
       "token_id": "51565754373581492683166845314945604403120684393224655139698252198671018213435",
       "condition_id": "0x7099383598baff8e2ef62db099a080b5ff77b09203169bf198478d1d73bfc8bc",
-      "transaction_hash": "0xbe8280e93e0573062aba31e55ded80d28ff642f00d5e1a2ca339d42ea6ac68f1"
+      "transaction_hash": "0xbe8280e93e0573062aba31e55ded80d28ff642f00d5e1a2ca339d42ea6ac68f1",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4617,7 +5102,9 @@
       "event_slug": "highest-temperature-in-seattle-on-june-30-2026",
       "token_id": "12749745943763128929197311718289517147045451253347072997898305028738799383882",
       "condition_id": "0x957eec8afd7a60bd9bada99d219002ed55d058db9310defb13bf933e22a51a28",
-      "transaction_hash": "0x515deef8764aae1d7e914e4618d07d732d3f9b982358de2f3e9c05993884c02e"
+      "transaction_hash": "0x515deef8764aae1d7e914e4618d07d732d3f9b982358de2f3e9c05993884c02e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4644,7 +5131,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-june-30-2026",
       "token_id": "24238698253890119186966827791067736426785560001106644587310078712710210973601",
       "condition_id": "0xa0ba8a03d2410d282d48ad02c70f0ddc2fa0f654a2d4dc3d3548c18ab9d6d873",
-      "transaction_hash": "0xe5e1c125c080e49353f1b3e45122fbe75d679ff0ac462a93b9fe8ed0de3136cc"
+      "transaction_hash": "0xe5e1c125c080e49353f1b3e45122fbe75d679ff0ac462a93b9fe8ed0de3136cc",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4671,7 +5160,9 @@
       "event_slug": "highest-temperature-in-denver-on-june-30-2026",
       "token_id": "92092217272281333661917729156202291103964845077916235563581393405710776462840",
       "condition_id": "0xd918d2c8497cffd5b65f6bd810c29d37b6f81e9ac3bc9b755822f6219d417609",
-      "transaction_hash": "0xabcd3d032d8e6c42c73f810aef0bcd8670dbc91eba6edc4a3788403c0bb30d7a"
+      "transaction_hash": "0xabcd3d032d8e6c42c73f810aef0bcd8670dbc91eba6edc4a3788403c0bb30d7a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4698,7 +5189,9 @@
       "event_slug": "highest-temperature-in-chicago-on-june-30-2026",
       "token_id": "88002257153135910143221382688566352644274870753753505934602443789928693650027",
       "condition_id": "0x49be5ba068f20a2d1a1ac6909e85a2002b3da601a80901d22412c08b3b276a06",
-      "transaction_hash": "0x79e42ff6076c5c0eacf883941ab2bb67629bc8e64aa23463f32e76882fbceafd"
+      "transaction_hash": "0x79e42ff6076c5c0eacf883941ab2bb67629bc8e64aa23463f32e76882fbceafd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4725,7 +5218,9 @@
       "event_slug": "highest-temperature-in-dallas-on-june-30-2026",
       "token_id": "113026287202093853421684845411388117288949611980252249086362557886243262156937",
       "condition_id": "0x7b8a6e77df2bce765f77050b7e9cad8b57e772387f6d991b583f8a361cefe753",
-      "transaction_hash": "0x08c448d4999d7577b88bc16f36a7feec5964c9c3742d08b8e4124e541f3a729d"
+      "transaction_hash": "0x08c448d4999d7577b88bc16f36a7feec5964c9c3742d08b8e4124e541f3a729d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4752,7 +5247,9 @@
       "event_slug": "highest-temperature-in-austin-on-june-30-2026",
       "token_id": "24361816036273450596864596053238008555005355265261146207046941393841152530699",
       "condition_id": "0x1faadc48bc3435fd41da5593486735a92ced3bec5b3f0ac77abaaf165f4015a9",
-      "transaction_hash": "0x11c88cd633d50dff4d356a978c8bf5adef6cedb43526d3f4ed1fa368d0b379d3"
+      "transaction_hash": "0x11c88cd633d50dff4d356a978c8bf5adef6cedb43526d3f4ed1fa368d0b379d3",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4779,7 +5276,9 @@
       "event_slug": "highest-temperature-in-toronto-on-june-30-2026",
       "token_id": "95070679909189018696681917728806838908194428021888241636340793838076575179198",
       "condition_id": "0xd49ea1b48e9a77b128082af0ffebf52504be66de770e81344eb942690d2a4eb4",
-      "transaction_hash": "0x6d70da8a9c76f1b49d8f0c1b6a8742775bc47301a96a476bd88d6bdb1b359f90"
+      "transaction_hash": "0x6d70da8a9c76f1b49d8f0c1b6a8742775bc47301a96a476bd88d6bdb1b359f90",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4806,7 +5305,9 @@
       "event_slug": "highest-temperature-in-buenos-aires-on-june-30-2026",
       "token_id": "46822582357454570277888120091978504997071506751256021121761667576382365027944",
       "condition_id": "0x7a67e586a6f14fb2a685aeeadf83efba90107401ec1eb34f7559d87648cd0bc4",
-      "transaction_hash": "0x50e0ec393c2a1442a86958f1b38abd9c00adb84b6edfedefa1c73f2025ae22b9"
+      "transaction_hash": "0x50e0ec393c2a1442a86958f1b38abd9c00adb84b6edfedefa1c73f2025ae22b9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4833,7 +5334,9 @@
       "event_slug": "highest-temperature-in-nyc-on-june-30-2026",
       "token_id": "41190706688060907689496401959856146986983063827176455392873825726952918167168",
       "condition_id": "0x7f9021c452aca4c144bf62e7c9192ccf09c062b91f24edb339ffa55997edb497",
-      "transaction_hash": "0x96d0cab83f0430bda429fa48aacb305ba3fe2bad0a2ef4f3c44952f52d7b062d"
+      "transaction_hash": "0x96d0cab83f0430bda429fa48aacb305ba3fe2bad0a2ef4f3c44952f52d7b062d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-30",
@@ -4860,7 +5363,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-june-30-2026",
       "token_id": "71146245931139032327334816530129882549003753438160854069935285470887525392841",
       "condition_id": "0x070a93532f47002ecffce5bae35573625c0970f13dcc14b572200603a226bd61",
-      "transaction_hash": "0xc02e13cbfd29f52b8e14e44a11bc932ca2a12becff560c4ac9a0ddb0c1ae89b7"
+      "transaction_hash": "0xc02e13cbfd29f52b8e14e44a11bc932ca2a12becff560c4ac9a0ddb0c1ae89b7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -4887,7 +5392,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-june-29-2026",
       "token_id": "45320207791711428955974643536486845310680426744427217248639381338354515280423",
       "condition_id": "0xcb197c736a3163f7a3962aaa78462d8712bbb26b1ede63e49ad5abb1d6dde377",
-      "transaction_hash": "0x9c65d4545bf89e2a0495213f3fc7c3d50f3d4a5edfc743e48efb53a877bd06e8"
+      "transaction_hash": "0x9c65d4545bf89e2a0495213f3fc7c3d50f3d4a5edfc743e48efb53a877bd06e8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -4914,7 +5421,9 @@
       "event_slug": "highest-temperature-in-denver-on-june-29-2026",
       "token_id": "62688522893309780366034195136104082066538908817170924960257332427289260910888",
       "condition_id": "0xc60692f40509d147d2d8a9f48c4e95bc9d9c476a3d245090218c339a58d705d0",
-      "transaction_hash": "0x9b40f000e7d1581aca19d47a237ef52414f15a95dc08048c6a637a71786db954"
+      "transaction_hash": "0x9b40f000e7d1581aca19d47a237ef52414f15a95dc08048c6a637a71786db954",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -4941,7 +5450,9 @@
       "event_slug": "highest-temperature-in-dallas-on-june-29-2026",
       "token_id": "46627626272492328064364545719178260855205781159960022843263078312111284589381",
       "condition_id": "0xffdc138459d19fa3610292c39156b965b4e5d38cac462d5ee29531954b491f3d",
-      "transaction_hash": "0x0e23126a258bd8fb740fbe5f6ac8be81b5ecb0ee541b212ee42c64118bc2a444"
+      "transaction_hash": "0x0e23126a258bd8fb740fbe5f6ac8be81b5ecb0ee541b212ee42c64118bc2a444",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -4968,7 +5479,9 @@
       "event_slug": "highest-temperature-in-austin-on-june-29-2026",
       "token_id": "45000199611548870631068419667071085169499616115728545810560488047266398686860",
       "condition_id": "0xf9c322801105a3dd4be5d8b7f227216b4484d03a3570c764d7515d3428490ff1",
-      "transaction_hash": "0xb69deb74e2ecd0e7d5e5fdd184b4f9b8a8d8207b09bd0232a59f9c98798f6d87"
+      "transaction_hash": "0xb69deb74e2ecd0e7d5e5fdd184b4f9b8a8d8207b09bd0232a59f9c98798f6d87",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -4995,7 +5508,9 @@
       "event_slug": "highest-temperature-in-chicago-on-june-29-2026",
       "token_id": "104731151991775829530898867001308797559508505585986273054939511693211358463775",
       "condition_id": "0x827eb218c55d9bef7b7064ad41465f1544b4c01f8f99e293d5ad1f3dfef13ada",
-      "transaction_hash": "0x979403eead7eed4bf6319f42738ad968d9190979ab55a1c895af1f5382025c99"
+      "transaction_hash": "0x979403eead7eed4bf6319f42738ad968d9190979ab55a1c895af1f5382025c99",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5022,7 +5537,9 @@
       "event_slug": "highest-temperature-in-nyc-on-june-29-2026",
       "token_id": "13365022920249980613464785400281064992312113706830254197909126800868287121129",
       "condition_id": "0x58f044a672ba70c4cee47c8b7ab91011dcb281237c6d22cbc5f9c1a3c5f461e7",
-      "transaction_hash": "0xb2b5f4bf0a8005ff89cc602ebd405d533502d5217254b157c20351d690ba0bd2"
+      "transaction_hash": "0xb2b5f4bf0a8005ff89cc602ebd405d533502d5217254b157c20351d690ba0bd2",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5049,7 +5566,9 @@
       "event_slug": "highest-temperature-in-toronto-on-june-29-2026",
       "token_id": "42816583653334069656742400022523258749644551572728114509747028225085726742423",
       "condition_id": "0x3171aff8e487bc0faf5810a2fb6768691e9a19790a818c6d3d0e6846018f94dc",
-      "transaction_hash": "0xd52a72dbf3d94e5ee5f3653f1fe199f8573bb3eb30ac44c917d00af964cd3a5e"
+      "transaction_hash": "0xd52a72dbf3d94e5ee5f3653f1fe199f8573bb3eb30ac44c917d00af964cd3a5e",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5076,7 +5595,9 @@
       "event_slug": "highest-temperature-in-atlanta-on-june-29-2026",
       "token_id": "111080736788924079610728258704342834087722467146252465033879078929494690893904",
       "condition_id": "0x0841280b09068b4f07e63e18b632e7c6c42fddc9ab0b95976d26f78294a63407",
-      "transaction_hash": "0x3cd43bb1f113f2193e83eaefdf4a2d7b7039f3dcdb0916166033615db398b057"
+      "transaction_hash": "0x3cd43bb1f113f2193e83eaefdf4a2d7b7039f3dcdb0916166033615db398b057",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5103,7 +5624,9 @@
       "event_slug": "highest-temperature-in-buenos-aires-on-june-29-2026",
       "token_id": "8687977129532477345128220499008801564042426747950047762637276309000406230406",
       "condition_id": "0x03969b5f8701e4ef43a48a79251ea81c90e257e8f4f10dcd8b83255506313ecf",
-      "transaction_hash": "0xfb690c1aec105604148f93cc6cad593dd9ee9838b20ac4a4eb6d8c0989af0a97"
+      "transaction_hash": "0xfb690c1aec105604148f93cc6cad593dd9ee9838b20ac4a4eb6d8c0989af0a97",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5130,7 +5653,9 @@
       "event_slug": "highest-temperature-in-sao-paulo-on-june-29-2026",
       "token_id": "11796027537265482476555271694806942210715110950962799729678403485595772333220",
       "condition_id": "0x745608aba4aedd0641a287d662f5ecc23a803246803cca36122c72dcec385590",
-      "transaction_hash": "0x6b9a369f4fd998f4b5c66c1a0947c428dbda185baefd8d4a097b67a02015e375"
+      "transaction_hash": "0x6b9a369f4fd998f4b5c66c1a0947c428dbda185baefd8d4a097b67a02015e375",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5157,7 +5682,9 @@
       "event_slug": "highest-temperature-in-warsaw-on-june-29-2026",
       "token_id": "112017355788483494622757017393129012926614379428693303311560915501840028270136",
       "condition_id": "0x93f682128306106cdfb2524d5b24c0c5a6ccbfce0a2dd733d74924d15ea84efd",
-      "transaction_hash": "0xd4f8d6670247cd9ab8d7f0e981e563868a619e914144f5f0e1fecdcba5ba7ef9"
+      "transaction_hash": "0xd4f8d6670247cd9ab8d7f0e981e563868a619e914144f5f0e1fecdcba5ba7ef9",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5184,7 +5711,9 @@
       "event_slug": "highest-temperature-in-london-on-june-29-2026",
       "token_id": "65869135785417384569437821784151979689273881470879074687082168809156384894689",
       "condition_id": "0xb46d7eb4a102d5a677e0cacbbd5f87c8570908a851c2770c4e67051340c84c3d",
-      "transaction_hash": "0x4a81be01f33da015f8417b046fea7732b2971fde256f7b99b21a7d507040ef43"
+      "transaction_hash": "0x4a81be01f33da015f8417b046fea7732b2971fde256f7b99b21a7d507040ef43",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5211,7 +5740,9 @@
       "event_slug": "highest-temperature-in-munich-on-june-29-2026",
       "token_id": "50341535267080862549019811061786135373717039232259678263403799985402835917529",
       "condition_id": "0x68f330d19f6230d4666bb84e91c4c5c637f2f4848e0afbd6a221420cad89ae6d",
-      "transaction_hash": "0xf86da0a74621c4e5ffb4464f798d7a5775337b0f310836a4cd1bc52e58c1ca8d"
+      "transaction_hash": "0xf86da0a74621c4e5ffb4464f798d7a5775337b0f310836a4cd1bc52e58c1ca8d",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5238,7 +5769,9 @@
       "event_slug": "highest-temperature-in-paris-on-june-29-2026",
       "token_id": "41618998724718427665213030145864384088718763171414251474325826938392498853946",
       "condition_id": "0x59b84ef1a6b2698924b310f9aa8644a1c4e0043883290770947e3f93fff31b1a",
-      "transaction_hash": "0x7bc3b601eb68ef2940be8969c9b2f90f28d84fb1c51a24953d1c9c2dea324922"
+      "transaction_hash": "0x7bc3b601eb68ef2940be8969c9b2f90f28d84fb1c51a24953d1c9c2dea324922",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5265,7 +5798,9 @@
       "event_slug": "highest-temperature-in-amsterdam-on-june-29-2026",
       "token_id": "28208699581073082830003154011492928275020804134500889740809270264187857821317",
       "condition_id": "0x6dc8d1753d4190b7b016ff66c26aef50524b5473dcfaaa356654c7b54a00757a",
-      "transaction_hash": "0x01bfff378c8c11008ef5cbd8a8a722dcdd09a3558cef634c221513448f82e69b"
+      "transaction_hash": "0x01bfff378c8c11008ef5cbd8a8a722dcdd09a3558cef634c221513448f82e69b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5292,7 +5827,9 @@
       "event_slug": "highest-temperature-in-moscow-on-june-29-2026",
       "token_id": "27816289505313101932238022027936948948090753150130202131630778063989532968271",
       "condition_id": "0xe5210f395e792d7dfbc9aaf27911b6b81f9565b188b6702611735a8bf1a376ea",
-      "transaction_hash": "0x0c48564bc4df15ed4fbe964063f5a0fe4ac8f06294b84e70a25f41e9ce1805ed"
+      "transaction_hash": "0x0c48564bc4df15ed4fbe964063f5a0fe4ac8f06294b84e70a25f41e9ce1805ed",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5319,7 +5856,9 @@
       "event_slug": "highest-temperature-in-istanbul-on-june-29-2026",
       "token_id": "77891759091347804973513890993162143601239448710012336895919611447349358111340",
       "condition_id": "0x93fa8c3398be5ba611dc2bce23f75b90b2d1c1c63ace20ccc52cbe504a63c04c",
-      "transaction_hash": "0x58446a2a4082ee089cbf57ec98503c8c1516c9bf6c2e2543950ddb317ca2e3c1"
+      "transaction_hash": "0x58446a2a4082ee089cbf57ec98503c8c1516c9bf6c2e2543950ddb317ca2e3c1",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5346,7 +5885,9 @@
       "event_slug": "highest-temperature-in-tel-aviv-on-june-29-2026",
       "token_id": "77297441642658678024461834305271105714173740108440721949870731663999142393640",
       "condition_id": "0x92c12765f98792c2fc35eecf9f08af2c4ccdae854440d83475ca125af6aacf40",
-      "transaction_hash": "0x77b650caaaba5f0c68cbe5a58b9947fe22cb598bea75f7c90c195bcde86b535c"
+      "transaction_hash": "0x77b650caaaba5f0c68cbe5a58b9947fe22cb598bea75f7c90c195bcde86b535c",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5373,7 +5914,9 @@
       "event_slug": "highest-temperature-in-ankara-on-june-29-2026",
       "token_id": "73574006991730494428165917273055116264760320310344340667949031730913357507854",
       "condition_id": "0xe95b1dcfe0792dfd3d72d1b298882f3246c0a1ccb548cdd676d9965b2e593445",
-      "transaction_hash": "0xe3732bc4b21091b7bb9f57fe2a434d3f4f14870100e42ed9800e504d072da082"
+      "transaction_hash": "0xe3732bc4b21091b7bb9f57fe2a434d3f4f14870100e42ed9800e504d072da082",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5400,7 +5943,9 @@
       "event_slug": "highest-temperature-in-lucknow-on-june-29-2026",
       "token_id": "33450310014475423308397149709786506275707309941674499090069903979310394286836",
       "condition_id": "0xd71548b1c8944c2aaec1cc97fb29d63a539461542f541c709cdd7d039590310e",
-      "transaction_hash": "0x718d107268cf3cfc5649f1d01e5c24f5937295d06e8684218e0b354bca2c98ea"
+      "transaction_hash": "0x718d107268cf3cfc5649f1d01e5c24f5937295d06e8684218e0b354bca2c98ea",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5427,7 +5972,9 @@
       "event_slug": "highest-temperature-in-karachi-on-june-29-2026",
       "token_id": "30405822241087683752879682795149113149577405531988419922898856019306306926858",
       "condition_id": "0xe498f4659ab60ed59456404c0d1febbf1024c5ef9af419fb2c752aa650252265",
-      "transaction_hash": "0x84baf2039d4e5c5944ae90ecef7dbd938eafa0f39756166d53c938c215d59cac"
+      "transaction_hash": "0x84baf2039d4e5c5944ae90ecef7dbd938eafa0f39756166d53c938c215d59cac",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5454,7 +6001,9 @@
       "event_slug": "highest-temperature-in-wuhan-on-june-29-2026",
       "token_id": "45407632542859800353511960723891621674407608517792669792001685955370260752407",
       "condition_id": "0x389ae33473c0b0151ff5f684222431ad1702d47681275e6b6762b1539b9f5e6e",
-      "transaction_hash": "0xd903f2083af186694483675980f9cb12ff36eb6681c917a1b8501d1ac28e78f6"
+      "transaction_hash": "0xd903f2083af186694483675980f9cb12ff36eb6681c917a1b8501d1ac28e78f6",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5481,7 +6030,9 @@
       "event_slug": "highest-temperature-in-chongqing-on-june-29-2026",
       "token_id": "31597238750337786970221393742282126882372076011970641857700131846620458540174",
       "condition_id": "0x0d757c81ae079e9ef0e0e33c3fe35d70e2f793e9794abf30886ae05fb59c9d87",
-      "transaction_hash": "0xe3b9002c2a01ebd2864272cf0523d42ea97a6acd68f0a04bbd460a24409499a4"
+      "transaction_hash": "0xe3b9002c2a01ebd2864272cf0523d42ea97a6acd68f0a04bbd460a24409499a4",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5508,7 +6059,9 @@
       "event_slug": "highest-temperature-in-manila-on-june-29-2026",
       "token_id": "103157501523207293233135185273460554424192416082419071688570973079514183101946",
       "condition_id": "0x1fdea25a41a086350d71e47bfba4198b438a7cb80915b3a62ad7f824236d92cb",
-      "transaction_hash": "0xd7dd265eb38a2d66a2a6b89173259daa488d16fa16f255a09ec7a21a2acc6d5a"
+      "transaction_hash": "0xd7dd265eb38a2d66a2a6b89173259daa488d16fa16f255a09ec7a21a2acc6d5a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5535,7 +6088,9 @@
       "event_slug": "highest-temperature-in-beijing-on-june-29-2026",
       "token_id": "1800446057071802619948908345413005568923057470305768033859465736379668663382",
       "condition_id": "0xfd8c5c3ff6a609c38cb12aaa50052e92b7c0e9342c37038c3a225d9884ab94fa",
-      "transaction_hash": "0x432d131075d0c58dd89635a2f98b13e1341b77c6d16e28ac1ff744b1539bebcd"
+      "transaction_hash": "0x432d131075d0c58dd89635a2f98b13e1341b77c6d16e28ac1ff744b1539bebcd",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5562,7 +6117,9 @@
       "event_slug": "highest-temperature-in-chengdu-on-june-29-2026",
       "token_id": "60748504353253671968668805811386473145140920681631857564646071095734021218026",
       "condition_id": "0x3d6fb9cc3d0fc10d07b475e19c5662c4c2ba7242bc8770ad6eaddc1bd36b6274",
-      "transaction_hash": "0xcbfc74112f584ba6114fb38e3709474eb0929a4e68d5f28f10211f0692b6f8f5"
+      "transaction_hash": "0xcbfc74112f584ba6114fb38e3709474eb0929a4e68d5f28f10211f0692b6f8f5",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5589,7 +6146,9 @@
       "event_slug": "highest-temperature-in-kuala-lumpur-on-june-29-2026",
       "token_id": "58642002597559533448067339973152440135311215814193895157141092288741743635255",
       "condition_id": "0x964bbee095ea1f46e8c44d5b6d988f1a25759247993ca1f2be974b76fb90e377",
-      "transaction_hash": "0x55bc0bb24a545b357e47481b69fb794cec9c4bc07ee264d1259fcaa22710affc"
+      "transaction_hash": "0x55bc0bb24a545b357e47481b69fb794cec9c4bc07ee264d1259fcaa22710affc",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5616,7 +6175,9 @@
       "event_slug": "highest-temperature-in-guangzhou-on-june-29-2026",
       "token_id": "55016156028251225283581875629700566299742254831407335482136621905491025446084",
       "condition_id": "0x53a8bfe15f6062051d83142e3f04d18b8b404ba4d4e4c344c086fe8c848214b5",
-      "transaction_hash": "0xfadb475ad3cbf7fbd8a13aa54d3da73a3051ba99d608b72aa3480182e044d07a"
+      "transaction_hash": "0xfadb475ad3cbf7fbd8a13aa54d3da73a3051ba99d608b72aa3480182e044d07a",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5643,7 +6204,9 @@
       "event_slug": "highest-temperature-in-shenzhen-on-june-29-2026",
       "token_id": "108858340625495043260016600928971484611875134798892393151535977221684037225468",
       "condition_id": "0x76bc1a13a6dc6b34c1078c8a0046a31be6f479c08688e2b6256101e7c588fcd8",
-      "transaction_hash": "0x1be2f41aa1604addede8f112b246e8ac6031fb2e3c8d0296ee9bd31c81ce1cb8"
+      "transaction_hash": "0x1be2f41aa1604addede8f112b246e8ac6031fb2e3c8d0296ee9bd31c81ce1cb8",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5670,7 +6233,9 @@
       "event_slug": "highest-temperature-in-busan-on-june-29-2026",
       "token_id": "2865880618104518277250423205101385861130891693538266456530299646125807943995",
       "condition_id": "0x156680915ad34f59295744e49b71769e2a4a1db663f76e757cbfe2b7bb8fc524",
-      "transaction_hash": "0xf5672942c208637bd0c4f55c5adc111af96fac731c3b9fbdc3bc646897d486ac"
+      "transaction_hash": "0xf5672942c208637bd0c4f55c5adc111af96fac731c3b9fbdc3bc646897d486ac",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5697,7 +6262,9 @@
       "event_slug": "highest-temperature-in-tokyo-on-june-29-2026",
       "token_id": "65374905865393010109891023148601187416997872749969597192487095424873243874125",
       "condition_id": "0x1ccf293cda6a734fa17e90096937c29bdd79559b8242bf4b9ff48c7c697d0bf5",
-      "transaction_hash": "0x65bdb4a3d90aabb8532aa2815e62356091eea41da0e170a4f497e72fa85974c7"
+      "transaction_hash": "0x65bdb4a3d90aabb8532aa2815e62356091eea41da0e170a4f497e72fa85974c7",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5724,7 +6291,9 @@
       "event_slug": "highest-temperature-in-seoul-on-june-29-2026",
       "token_id": "100553115995324601449090187593829973361156342757509071165585487756431086565136",
       "condition_id": "0x8e7652c275aca13711b26b6263aa921706cc45958f3d171446da08a480b3dd8c",
-      "transaction_hash": "0xbb2bf85e9b319c550a49cd36b1d9f6adc17067b069692d03832b122c8fc0a116"
+      "transaction_hash": "0xbb2bf85e9b319c550a49cd36b1d9f6adc17067b069692d03832b122c8fc0a116",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-29",
@@ -5751,7 +6320,9 @@
       "event_slug": "highest-temperature-in-wellington-on-june-29-2026",
       "token_id": "16202283948771835826065936078271610361392219005461552612273854475823256343372",
       "condition_id": "0xb7da06129d29b3342719f2e6d695ba2dabb3cd8bf0c75f313e556e048033d9b3",
-      "transaction_hash": "0xe63f3228ea8a24595de31c03910e041a6bee35c9ff2d1012a04a6e17db997860"
+      "transaction_hash": "0xe63f3228ea8a24595de31c03910e041a6bee35c9ff2d1012a04a6e17db997860",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-28",
@@ -5778,7 +6349,9 @@
       "event_slug": "highest-temperature-in-seattle-on-june-28-2026",
       "token_id": "74115467126828183897549046852842916101791331426371678372100839261658948005626",
       "condition_id": "0x21812f6e19fa570252775f8d5b8e257bc3db97b8c70da875d34b2e9386fdc013",
-      "transaction_hash": "0xec835fb2d5a843159760ffd2537d18c21ffaa63a82a3a42016f21bb9de3fddf6"
+      "transaction_hash": "0xec835fb2d5a843159760ffd2537d18c21ffaa63a82a3a42016f21bb9de3fddf6",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-28",
@@ -5805,7 +6378,9 @@
       "event_slug": "highest-temperature-in-houston-on-june-28-2026",
       "token_id": "79760420893252324276270786718817013640140919309382314099321750468777355234662",
       "condition_id": "0x697f101a793768cbb7d0087642fb4147e8206a214ec4e7c73fc660b0b5b68cf3",
-      "transaction_hash": "0x133f5a946cb25f619472179b563e9464e8c96d1e17fc7a2258f2e9c57df74f20"
+      "transaction_hash": "0x133f5a946cb25f619472179b563e9464e8c96d1e17fc7a2258f2e9c57df74f20",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-28",
@@ -5832,7 +6407,9 @@
       "event_slug": "highest-temperature-in-mexico-city-on-june-28-2026",
       "token_id": "39591149003558718745142921480136664550514400110054842165440591594589304797947",
       "condition_id": "0x45803baee6bc168eb87bf89cc7ec9c55d880f4ad0dd16befcd763fa6fa9d1b6e",
-      "transaction_hash": "0x7e54843070a90158b6474b6adf11278130fd6ad241282944bb7c81473dc4150b"
+      "transaction_hash": "0x7e54843070a90158b6474b6adf11278130fd6ad241282944bb7c81473dc4150b",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-28",
@@ -5859,7 +6436,9 @@
       "event_slug": "highest-temperature-in-denver-on-june-28-2026",
       "token_id": "74239707922980058408976357838501015195851772845846547639226237579074881766388",
       "condition_id": "0x1be170d2042329543f5bd30a6ca67b8e7465a8d2cdaf99eeed7f6e38b892f826",
-      "transaction_hash": "0x68cf9eadf7caba021a37d8ec78f1f2ab8042443e39c115d1c4cfd013c2fa6f88"
+      "transaction_hash": "0x68cf9eadf7caba021a37d8ec78f1f2ab8042443e39c115d1c4cfd013c2fa6f88",
+      "bought_at_hk": null,
+      "bought_at_local": null
     },
     {
       "date": "2026-06-28",
@@ -5886,18 +6465,20 @@
       "event_slug": "highest-temperature-in-chicago-on-june-28-2026",
       "token_id": "96354283006398434187220384117939125287201022516086114239845423192141804889930",
       "condition_id": "0x852549081d8e43dbc9c6636361eb81f4286dfad6e697478aff018370a57304f8",
-      "transaction_hash": "0x76a736a28078c0145cf475971d49a2c3c99197aa3333e453aec8b3b4e56d43fb"
+      "transaction_hash": "0x76a736a28078c0145cf475971d49a2c3c99197aa3333e453aec8b3b4e56d43fb",
+      "bought_at_hk": null,
+      "bought_at_local": null
     }
   ],
   "summary": {
-    "total_count": 218,
-    "win_count": 100,
-    "loss_count": 98,
-    "sold_count": 7,
-    "open_count": 13,
-    "win_pct": 48.8,
-    "total_cost_basis_usd": 1212.7,
-    "total_realized_pnl_usd": -84.75,
+    "total_count": 223,
+    "win_count": 102,
+    "loss_count": 103,
+    "sold_count": 8,
+    "open_count": 10,
+    "win_pct": 47.9,
+    "total_cost_basis_usd": 1238.0,
+    "total_realized_pnl_usd": -100.09,
     "sold_but_would_have_won_count": 0
   },
   "insights": {
@@ -5905,7 +6486,7 @@
       "Amsterdam": {
         "win_rate_pct": 0.0,
         "win": 0,
-        "total": 2
+        "total": 3
       },
       "Ankara": {
         "win_rate_pct": 75.0,
@@ -5923,9 +6504,9 @@
         "total": 7
       },
       "Beijing": {
-        "win_rate_pct": 50.0,
+        "win_rate_pct": 42.9,
         "win": 3,
-        "total": 6
+        "total": 7
       },
       "Buenos Aires": {
         "win_rate_pct": 75.0,
@@ -5953,9 +6534,9 @@
         "total": 6
       },
       "Chongqing": {
-        "win_rate_pct": 25.0,
+        "win_rate_pct": 20.0,
         "win": 1,
-        "total": 4
+        "total": 5
       },
       "Dallas": {
         "win_rate_pct": 75.0,
@@ -6048,9 +6629,9 @@
         "total": 3
       },
       "Moscow": {
-        "win_rate_pct": 20.0,
-        "win": 1,
-        "total": 5
+        "win_rate_pct": 33.3,
+        "win": 2,
+        "total": 6
       },
       "Munich": {
         "win_rate_pct": 40.0,
@@ -6093,19 +6674,19 @@
         "total": 7
       },
       "Seoul": {
+        "win_rate_pct": 40.0,
+        "win": 2,
+        "total": 5
+      },
+      "Shanghai": {
         "win_rate_pct": 50.0,
         "win": 2,
         "total": 4
       },
-      "Shanghai": {
-        "win_rate_pct": 66.7,
-        "win": 2,
-        "total": 3
-      },
       "Shenzhen": {
-        "win_rate_pct": 66.7,
+        "win_rate_pct": 50.0,
         "win": 2,
-        "total": 3
+        "total": 4
       },
       "Singapore": {
         "win_rate_pct": 25.0,
@@ -6143,31 +6724,34 @@
         "total": 4
       },
       "Wuhan": {
-        "win_rate_pct": 66.7,
-        "win": 4,
-        "total": 6
+        "win_rate_pct": 71.4,
+        "win": 5,
+        "total": 7
       }
     },
     "win_rate_by_buy_price_band": {
       "0.50\u20130.60": {
-        "win_rate_pct": 57.0,
-        "win": 57,
-        "total": 100
+        "win_rate_pct": 56.3,
+        "win": 58,
+        "total": 103
       },
       "<0.50": {
-        "win_rate_pct": 41.0,
-        "win": 43,
-        "total": 105
+        "win_rate_pct": 40.0,
+        "win": 44,
+        "total": 110
       }
     },
     "stop_loss_regret_rate_pct": 0.0,
-    "loss_misselection": {},
-    "avg_pnl_by_result": {
-      "loss": -5.45,
-      "win": 4.79,
-      "sold": -4.26
+    "loss_misselection": {
+      "higher": 3,
+      "lower": 3
     },
-    "avg_sell_value_pct": 29.28,
+    "avg_pnl_by_result": {
+      "sold": -4.09,
+      "win": 4.8,
+      "loss": -5.4
+    },
+    "avg_sell_value_pct": 31.18,
     "best_trades": [
       {
         "date": "2026-07-02",

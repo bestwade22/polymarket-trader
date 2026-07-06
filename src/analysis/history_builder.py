@@ -2,19 +2,21 @@
 
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Optional
+from zoneinfo import ZoneInfo
 
-from config.settings import settings
+from config.settings import DATA_DIR, settings
 from src.analysis.models import TradeRecord
-from src.analysis.resolution import fetch_resolved_event, resolve_winning_temp
+from src.analysis.resolution import CachedResolution, fetch_resolved_event, resolve_winning_temp
 from src.api.clob_client import ClobPriceClient, first_price_below_threshold
 from src.api.data_client import fetch_user_positions
-from src.analysis.resolution import CachedResolution
 from src.utils.city_parser import parse_city_from_slug, parse_city_from_title, parse_date_from_slug
-from src.utils.market_parser import compare_temp_buckets, parse_float
+from src.utils.hk_time import format_hk
+from src.utils.market_parser import compare_temp_buckets, extract_temp_label, parse_float
 
 logger = logging.getLogger(__name__)
 
@@ -115,6 +117,31 @@ def _iso_from_ts(ts: Optional[int]) -> Optional[str]:
     if ts is None or ts <= 0:
         return None
     return datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+
+
+_city_tz_cache: Optional[dict[str, str]] = None
+
+
+def _city_timezones() -> dict[str, str]:
+    global _city_tz_cache
+    if _city_tz_cache is None:
+        path = DATA_DIR / "city_timezones.json"
+        if path.exists():
+            _city_tz_cache = json.loads(path.read_text())
+        else:
+            _city_tz_cache = {}
+    return _city_tz_cache
+
+
+def _format_bought_times(ts: int, city: str) -> tuple[str, str]:
+    dt = datetime.fromtimestamp(ts, tz=timezone.utc)
+    hk = format_hk(dt)
+    tz_name = _city_timezones().get(city)
+    if tz_name:
+        local = dt.astimezone(ZoneInfo(tz_name)).strftime("%H:%M")
+    else:
+        local = ""
+    return hk, local
 
 
 def _trade_window_label() -> str:
@@ -228,7 +255,7 @@ def build_trade_record(
     )
 
     winning_temp = resolve_winning_temp(group.event_slug)
-    bought_temp = group.title
+    bought_temp = extract_temp_label(group.title)
     win_temp_vs_bought = (
         compare_temp_buckets(bought_temp, winning_temp)
         if winning_temp
@@ -278,12 +305,16 @@ def build_trade_record(
     if not city and resolution:
         city = parse_city_from_title(resolution.title) or ""
 
+    bought_at_hk, bought_at_local = _format_bought_times(bought_ts, city)
+
     return TradeRecord(
         date=date_str,
         city=city,
         bought_temp=bought_temp,
         trade_window=_trade_window_label(),
         bought_at=_iso_from_ts(bought_ts) or "",
+        bought_at_hk=bought_at_hk,
+        bought_at_local=bought_at_local,
         sold_at=_iso_from_ts(sold_ts),
         redeemed_at=_iso_from_ts(redeemed_ts),
         shares=round(shares, 4),

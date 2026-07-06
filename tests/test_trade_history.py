@@ -9,7 +9,11 @@ from src.analysis.history_builder import build_trade_record, group_activity_rows
 from src.analysis.models import TradeRecord, summarize_records
 from src.analysis.resolution import CachedResolution
 from src.analysis.strategy_insights import compute_insights
-from src.utils.market_parser import compare_temp_buckets, parse_temperature_bucket
+from src.utils.market_parser import (
+    compare_temp_buckets,
+    extract_temp_label,
+    parse_temperature_bucket,
+)
 
 
 def _buy_row(
@@ -60,6 +64,14 @@ def _redeem_row(token_id: str = "tok1", ts: int = 1_700_200_000) -> dict:
 class TestTemperatureParsing:
     def test_single_degree_celsius(self):
         assert parse_temperature_bucket("28°C") == (28, 28, "C")
+
+    def test_parse_from_question_title(self):
+        title = "Will the highest temperature in London be 28°C on July 5?"
+        assert parse_temperature_bucket(title) == (28, 28, "C")
+        assert extract_temp_label(title) == "28°C"
+
+    def test_compare_bought_29_won_30_is_higher(self):
+        assert compare_temp_buckets("29°C", "30°C") == "higher"
 
     def test_compare_same(self):
         assert compare_temp_buckets("28°C", "28°C") == "same"
@@ -152,54 +164,55 @@ class TestResultClassification:
         assert rec.sold_but_would_have_won is True
 
 
+def _sample_record(**overrides):
+    base = dict(
+        date="2026-07-05",
+        city="London",
+        bought_temp="28°C",
+        bought_at_hk="2026-07-05 20:00:00 HKT",
+        bought_at_local="13:00",
+        trade_window="13:30–15:30",
+        bought_at="2026-07-05T12:00:00+00:00",
+        sold_at=None,
+        redeemed_at=None,
+        shares=10,
+        result="win",
+        final_value_usd=5.0,
+        winning_temp="28°C",
+        win_temp_vs_bought="same",
+        price_drop_below_threshold_at=None,
+        sold_but_would_have_won=False,
+        buy_price=0.5,
+        sell_price=None,
+        cost_basis_usd=5.0,
+        realized_pnl_usd=5.0,
+        roi_pct=100.0,
+        sell_value_pct=None,
+        held_hours=None,
+        event_slug="highest-temperature-in-london-on-july-5-2026",
+        token_id="tok1",
+        condition_id="0xabc",
+        transaction_hash="0xtx",
+    )
+    base.update(overrides)
+    return TradeRecord(**base)
+
+
 class TestSummary:
     def test_summarize_counts(self):
         records = [
-            TradeRecord(
-                date="2026-07-05",
-                city="London",
-                bought_temp="28°C",
-                trade_window="13:30–15:30",
-                bought_at="2026-07-05T12:00:00+00:00",
-                sold_at=None,
-                redeemed_at=None,
-                shares=10,
-                result="win",
-                final_value_usd=5.0,
-                winning_temp="28°C",
-                win_temp_vs_bought="same",
-                price_drop_below_threshold_at=None,
-                sold_but_would_have_won=False,
-                buy_price=0.5,
-                sell_price=None,
-                cost_basis_usd=5.0,
-                realized_pnl_usd=5.0,
-                roi_pct=100.0,
-                sell_value_pct=None,
-                held_hours=None,
-                event_slug="highest-temperature-in-london-on-july-5-2026",
-                token_id="tok1",
-                condition_id="0xabc",
-                transaction_hash="0xtx",
-            ),
-            TradeRecord(
+            _sample_record(),
+            _sample_record(
                 date="2026-07-04",
                 city="Paris",
                 bought_temp="29°C",
-                trade_window="13:30–15:30",
                 bought_at="2026-07-04T12:00:00+00:00",
                 sold_at="2026-07-04T18:00:00+00:00",
-                redeemed_at=None,
-                shares=10,
                 result="sold",
                 final_value_usd=-3.0,
                 winning_temp="29°C",
-                win_temp_vs_bought="same",
-                price_drop_below_threshold_at=None,
                 sold_but_would_have_won=True,
-                buy_price=0.5,
                 sell_price=0.2,
-                cost_basis_usd=5.0,
                 realized_pnl_usd=-3.0,
                 roi_pct=-60.0,
                 sell_value_pct=40.0,
@@ -218,33 +231,7 @@ class TestSummary:
         assert summary.win_pct == 50.0
 
     def test_insights(self):
-        rec = TradeRecord(
-            date="2026-07-05",
-            city="London",
-            bought_temp="28°C",
-            trade_window="13:30–15:30",
-            bought_at="2026-07-05T12:00:00+00:00",
-            sold_at=None,
-            redeemed_at=None,
-            shares=10,
-            result="win",
-            final_value_usd=5.0,
-            winning_temp="28°C",
-            win_temp_vs_bought="same",
-            price_drop_below_threshold_at=None,
-            sold_but_would_have_won=False,
-            buy_price=0.5,
-            sell_price=None,
-            cost_basis_usd=5.0,
-            realized_pnl_usd=5.0,
-            roi_pct=100.0,
-            sell_value_pct=None,
-            held_hours=None,
-            event_slug="slug",
-            token_id="tok1",
-            condition_id="0xabc",
-            transaction_hash=None,
-        )
+        rec = _sample_record(event_slug="slug", transaction_hash=None)
         insights = compute_insights([rec])
         assert "London" in insights["win_rate_by_city"]
         assert insights["win_rate_by_city"]["London"]["win_rate_pct"] == 100.0

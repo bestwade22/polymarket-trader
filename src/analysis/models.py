@@ -31,6 +31,8 @@ class TradeRecord:
     token_id: str
     condition_id: str
     transaction_hash: Optional[str]
+    bought_at_hk: str = ""
+    bought_at_local: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

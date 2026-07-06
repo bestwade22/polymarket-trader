@@ -174,28 +174,54 @@ def is_neg_risk(market: dict) -> bool:
 
 
 def parse_temperature_bucket(group_item_title: str) -> Optional[Tuple[int, Optional[int], str]]:
-    """Parse groupItemTitle into (low, high, unit). high is None for open-ended buckets."""
+    """Parse groupItemTitle or market question into (low, high, unit). high is None for open-ended buckets."""
     title = (group_item_title or "").strip()
     unit = "F" if "°F" in title or "F" in title else "C"
 
-    below_match = re.match(r"(\d+)[°]?[FC]\s+or\s+below", title, re.IGNORECASE)
+    below_match = re.search(r"(\d+)[°]?[FC]\s+or\s+below", title, re.IGNORECASE)
     if below_match:
         return int(below_match.group(1)), None, unit
 
-    above_match = re.match(r"(\d+)[°]?[FC]\s+or\s+higher", title, re.IGNORECASE)
+    above_match = re.search(r"(\d+)[°]?[FC]\s+or\s+higher", title, re.IGNORECASE)
     if above_match:
         return int(above_match.group(1)), None, unit
 
-    range_match = re.match(r"(\d+)-(\d+)[°]?[FC]", title, re.IGNORECASE)
+    range_match = re.search(r"(\d+)-(\d+)[°]?[FC]", title, re.IGNORECASE)
     if range_match:
         return int(range_match.group(1)), int(range_match.group(2)), unit
 
-    single_match = re.match(r"(\d+)[°]?[FC]\s*$", title, re.IGNORECASE)
+    single_match = re.search(r"(\d+)[°]?[FC]\s*$", title, re.IGNORECASE)
     if single_match:
         temp = int(single_match.group(1))
         return temp, temp, unit
 
+    question_match = re.search(r"be\s+(\d+)[°]?([FC])\b", title, re.IGNORECASE)
+    if question_match:
+        temp = int(question_match.group(1))
+        unit = question_match.group(2).upper()
+        return temp, temp, unit
+
     return None
+
+
+def extract_temp_label(title: str) -> str:
+    """Human-readable temperature bucket from groupItemTitle or market question."""
+    raw = (title or "").strip()
+    if not raw:
+        return ""
+    bucket = parse_temperature_bucket(raw)
+    if not bucket:
+        return raw
+    low, high, unit = bucket
+    sym = f"°{unit}"
+    lower = raw.lower()
+    if high is None and "or below" in lower:
+        return f"{low}{sym} or below"
+    if high is None and "or higher" in lower:
+        return f"{low}{sym} or higher"
+    if high is not None and high != low:
+        return f"{low}-{high}{sym}"
+    return f"{low}{sym}"
 
 
 def temp_bucket_sort_value(bucket: Optional[Tuple[int, Optional[int], str]]) -> Optional[int]:
