@@ -2794,5 +2794,17 @@
     "avg_buy_price": 0.33,
     "value_pct": 25.757575757575758,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x81ce84d34ff77a4ec4fc3b13564a5989c5f0e44d507c0e18d3b667dec7f01084",
+    "token_id": "28259240027267641535526404537471869204794570756531136804759462463616162259405",
+    "order_id": "0xfe1af9e78b7e452e4f7192d94309f561b7f1c26894c92765a896ccbb1fa4ea0c",
+    "sold_at": "2026-07-06T12:00:17.557090+00:00",
+    "event_slug": "highest-temperature-in-shenzhen-on-july-6-2026",
+    "price": 0.05,
+    "size": 10.0,
+    "avg_buy_price": 0.42,
+    "value_pct": 12.380952380952381,
+    "reason": "within_band"
   }
 ]
