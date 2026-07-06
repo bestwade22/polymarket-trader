@@ -2818,5 +2818,17 @@
     "avg_buy_price": 0.519,
     "value_pct": 40.17341040462428,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x5091c22412aac6ac252ce9fb87d6810c45a4e7f6756de61200fd4c9adaa83618",
+    "token_id": "56702837306674168877502086535301662145958790122873477346944260129847017000514",
+    "order_id": "0x326b1102d8bad5b325bb13568868c860bb4cc3cf24f0f5ebaef216b657de099f",
+    "sold_at": "2026-07-06T20:45:18.895397+00:00",
+    "event_slug": "highest-temperature-in-toronto-on-july-6-2026",
+    "price": 0.18,
+    "size": 10.0,
+    "avg_buy_price": 0.44,
+    "value_pct": 42.04545454545455,
+    "reason": "within_band"
   }
 ]
