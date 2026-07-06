@@ -2758,5 +2758,17 @@
     "avg_buy_price": 0.49,
     "value_pct": 17.346938775510207,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x289d1a8688617da963ea4c19784609621ccf040ff22a0f27820ba46f9802460b",
+    "token_id": "101950249907251573717846031210021859713574448945575482951465821104250649272072",
+    "order_id": "0x0755273bd65cb3b757a8f42cec5b3dc64bd39dcdc3871c3340885bc3d8d61e84",
+    "sold_at": "2026-07-06T06:30:16.712798+00:00",
+    "event_slug": "highest-temperature-in-wellington-on-july-6-2026",
+    "price": 0.17,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "value_pct": 34.0,
+    "reason": "within_band"
   }
 ]
