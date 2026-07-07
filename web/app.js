@@ -183,6 +183,14 @@ function vsBoughtLabel(r) {
   return map[r.win_temp_vs_bought] || r.win_temp_vs_bought;
 }
 
+function soldOutcomeKey(r) {
+  if (r.result !== "sold") return "";
+  if (isSoldWin(r)) return "sold_win";
+  if (r.sold_but_would_have_won) return "would_win";
+  if (isSoldLose(r)) return "sold_lose";
+  return "sold";
+}
+
 function soldOutcomeLabel(r) {
   if (r.result !== "sold") return "—";
   if (isSoldWin(r)) {
@@ -206,7 +214,7 @@ function getFilters() {
     city: document.getElementById("filter-city").value,
     localTime: document.getElementById("filter-local-time").value,
     vs: document.getElementById("filter-vs").value,
-    regret: document.getElementById("filter-regret").value,
+    soldOutcome: document.getElementById("filter-sold-outcome").value,
     price: document.getElementById("filter-price").value,
     dateFrom: document.getElementById("filter-date-from").value,
     dateTo: document.getElementById("filter-date-to").value,
@@ -224,8 +232,10 @@ function applyFilters(records) {
       if (!inLocalTimeRange(mins, f.localTime)) return false;
     }
     if (f.vs && r.win_temp_vs_bought !== f.vs) return false;
-    if (f.regret === "true" && !r.sold_but_would_have_won) return false;
-    if (f.regret === "false" && r.sold_but_would_have_won) return false;
+    if (f.soldOutcome === "not_sold" && r.result === "sold") return false;
+    if (f.soldOutcome && f.soldOutcome !== "not_sold" && soldOutcomeKey(r) !== f.soldOutcome) {
+      return false;
+    }
     if (f.price && buyPriceBand(r.buy_price) !== f.price) return false;
     if (f.dateFrom && r.date < f.dateFrom) return false;
     if (f.dateTo && r.date > f.dateTo) return false;
@@ -244,6 +254,10 @@ function sortRecords(records) {
     if (sortKey === "bought_at_local") {
       av = cityLocalMinutes(a.bought_at, a.city, a.bought_at_local) ?? "";
       bv = cityLocalMinutes(b.bought_at, b.city, b.bought_at_local) ?? "";
+    }
+    if (sortKey === "sold_outcome") {
+      av = soldOutcomeKey(a);
+      bv = soldOutcomeKey(b);
     }
     if (av == null) av = "";
     if (bv == null) bv = "";
@@ -431,10 +445,12 @@ function renderGroupTable(title, data, options = {}) {
   return `
     <section class="insight-card" data-insight-title="${title}">
       <h3>${title}</h3>
-      <table class="mini-table">
-        <thead><tr>${header}</tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
+      <div class="mini-table-wrap">
+        <table class="mini-table">
+          <thead><tr>${header}</tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
     </section>`;
 }
 

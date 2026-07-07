@@ -48,11 +48,13 @@
       </select>
     </label>
     <label>
-      Sold but would win
-      <select id="filter-regret">
+      Sold outcome
+      <select id="filter-sold-outcome">
         <option value="">All</option>
-        <option value="true">Yes (sold lose)</option>
-        <option value="false">No</option>
+        <option value="sold_win">Sold win</option>
+        <option value="would_win">Would win (sold lose)</option>
+        <option value="sold_lose">Sold lose</option>
+        <option value="not_sold">Not sold</option>
       </select>
     </label>
     <label>
@@ -106,7 +108,7 @@
           <th data-sort="final_value_usd">P&amp;L</th>
           <th data-sort="winning_temp">Won temp</th>
           <th data-sort="win_temp_vs_bought">Win vs bought</th>
-          <th data-sort="sold_but_would_have_won">Sold outcome</th>
+          <th data-sort="sold_outcome">Sold outcome</th>
           <th data-sort="price_drop_below_threshold_at_hk">Drop &lt;1%</th>
           <th data-sort="sell_value_pct">Sell %</th>
         </tr>
