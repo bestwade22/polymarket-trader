@@ -24,6 +24,10 @@
       </select>
     </label>
     <label>
+      Timezone group
+      <select id="filter-timezone"><option value="">All</option></select>
+    </label>
+    <label>
       City
       <select id="filter-city"><option value="">All</option></select>
     </label>
@@ -31,10 +35,7 @@
       City local buy time
       <select id="filter-local-time">
         <option value="">All</option>
-        <option value="12:00-15:00">12:00–15:00</option>
-        <option value="13:30-15:30">13:30–15:30</option>
         <option value="before-12:00">Before 12:00</option>
-        <option value="after-15:00">After 15:00</option>
       </select>
     </label>
     <label>
@@ -82,7 +83,7 @@
 
   <details id="insights-panel" class="insights">
     <summary>Strategy insights</summary>
-    <pre id="insights-content"></pre>
+    <div id="insights-content"></div>
   </details>
 
   <div class="table-wrap">

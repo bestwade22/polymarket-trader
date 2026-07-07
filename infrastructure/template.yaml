@@ -251,8 +251,8 @@ Resources:
     Type: AWS::Scheduler::Schedule
     Properties:
       Name: polymarket-trader-sync-trade-history
-      Description: Sync wallet trade history every 6 hours UTC
-      ScheduleExpression: cron(0 */6 * * ? *)
+      Description: Sync wallet trade history every 3 hours UTC
+      ScheduleExpression: cron(0 */3 * * ? *)
       ScheduleExpressionTimezone: UTC
       FlexibleTimeWindow:
         Mode: 'OFF'

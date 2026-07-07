@@ -177,20 +177,6 @@ def _classify_result(
     open_tokens: set[str],
     resolution: Optional[CachedResolution],
 ) -> str:
-    if closed_row is not None:
-        cur = parse_float(closed_row.get("curPrice"))
-        if cur is not None and cur >= 0.99:
-            return "win"
-        if cur is not None and cur <= 0.01:
-            return "loss"
-        pnl = parse_float(closed_row.get("realizedPnl"))
-        if pnl is not None and pnl > 0:
-            return "win"
-        if pnl is not None and pnl < 0:
-            if group.sell_fills:
-                return "sold"
-            return "loss"
-
     if group.redeems:
         return "win"
     if group.sell_fills:
@@ -205,6 +191,16 @@ def _classify_result(
             return "loss"
         if not resolution.closed:
             return "open"
+
+    if closed_row is not None:
+        cur = parse_float(closed_row.get("curPrice"))
+        if cur is not None and cur >= 0.99:
+            return "win"
+        if cur is not None and cur <= 0.01:
+            return "loss"
+        pnl = parse_float(closed_row.get("realizedPnl"))
+        if pnl is not None:
+            return "win" if pnl > 0 else "loss"
 
     return "open"
 

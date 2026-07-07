@@ -1,4 +1,4 @@
-"""Lambda handler: sync trade history every 6 hours, commit analysis JSON to git."""
+"""Lambda handler: sync trade history every 3 hours, commit analysis JSON to git."""
 
 import logging
 import subprocess

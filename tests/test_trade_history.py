@@ -117,6 +117,19 @@ class TestResultClassification:
         assert rec.sell_value_pct == pytest.approx(40.0)
 
     @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
+    @patch("src.analysis.history_builder.resolve_winning_temp", return_value="28°C")
+    def test_sell_fill_stays_sold_even_if_closed_position_pnl_positive(self, _win, _event):
+        group = group_activity_rows([_buy_row(title="28°C"), _sell_row(price=0.9)])[0]
+        rec = build_trade_record(
+            group,
+            closed_positions=[{"asset": "tok1", "realizedPnl": 4.0, "curPrice": 1.0}],
+            open_tokens=set(),
+            clob_client=None,
+            fetch_price_drop=False,
+        )
+        assert rec.result == "sold"
+
+    @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
     @patch("src.analysis.history_builder.resolve_winning_temp", return_value=None)
     def test_win_from_redeem(self, _win, _event):
         group = group_activity_rows([_buy_row(), _redeem_row()])[0]
@@ -229,12 +242,15 @@ class TestSummary:
         assert summary.sold_count == 1
         assert summary.sold_but_would_have_won_count == 1
         assert summary.win_pct == 50.0
+        assert summary.avg_buy_usd == 5.0
+        assert summary.avg_pnl_usd == 1.0
 
     def test_insights(self):
         rec = _sample_record(event_slug="slug", transaction_hash=None)
         insights = compute_insights([rec])
-        assert "London" in insights["win_rate_by_city"]
-        assert insights["win_rate_by_city"]["London"]["win_rate_pct"] == 100.0
+        assert "London" in insights["summary_by_city"]
+        assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
+        assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
 
 
 class TestNoLocalBotFiles:
