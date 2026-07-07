@@ -104,6 +104,50 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   color: var(--muted);
 }
 
+#insights-content {
+  margin-top: 0.75rem;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.insight-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: rgba(15, 20, 25, 0.5);
+}
+
+.insight-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.insight-highlights {
+  margin-bottom: 1rem;
+}
+
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.mini-table th,
+.mini-table td {
+  padding: 0.4rem 0.45rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.mini-table th {
+  position: static;
+  cursor: default;
+}
+
 .table-wrap {
   padding: 0 2rem 2rem;
   overflow-x: auto;

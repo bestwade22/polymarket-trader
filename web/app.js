@@ -8,6 +8,20 @@ let cityTimezones = {};
 let sortKey = "bought_at";
 let sortAsc = false;
 
+function timezoneGroup(city) {
+  const groups = [
+    ["Asia", ["Tokyo", "Seoul", "Busan"]],
+    ["Europe", ["Paris", "London", "Milan", "Madrid", "Berlin"]],
+    ["North America", ["New York", "Chicago", "Dallas", "Houston", "Atlanta", "Phoenix", "Denver"]],
+    ["Oceania", ["Sydney", "Melbourne", "Brisbane", "Wellington", "Auckland"]],
+    ["South America", ["Sao Paulo", "Rio de Janeiro", "Buenos Aires", "Santiago"]],
+  ];
+  for (const [label, cities] of groups) {
+    if (cities.includes(city)) return label;
+  }
+  return "Other";
+}
+
 function buyPriceBand(price) {
   if (price < 0.4) return "<0.40";
   if (price < 0.5) return "0.40–0.50";
@@ -85,9 +99,9 @@ function parseRangeMinutes(range) {
 function inLocalTimeRange(mins, band) {
   if (mins == null) return false;
   if (band === "before-12:00") return mins < 12 * 60;
-  if (band === "after-15:00") return mins > 15 * 60;
+  if (band === "after-15:30") return mins >= 15 * 60 + 30;
   const [lo, hi] = parseRangeMinutes(band);
-  return mins >= lo && mins <= hi;
+  return mins >= lo && mins < hi;
 }
 
 function fmtMoney(v) {
@@ -129,6 +143,7 @@ function soldWouldWinLabel(r) {
 function getFilters() {
   return {
     result: document.getElementById("filter-result").value,
+    timezone: document.getElementById("filter-timezone").value,
     city: document.getElementById("filter-city").value,
     localTime: document.getElementById("filter-local-time").value,
     vs: document.getElementById("filter-vs").value,
@@ -143,6 +158,7 @@ function applyFilters(records) {
   const f = getFilters();
   return records.filter((r) => {
     if (f.result && r.result !== f.result) return false;
+    if (f.timezone && timezoneGroup(r.city) !== f.timezone) return false;
     if (f.city && r.city !== f.city) return false;
     if (f.localTime) {
       const mins = cityLocalMinutes(r.bought_at, r.city, r.bought_at_local);
@@ -219,6 +235,7 @@ function computeFilteredSummary(records) {
     total_cost_basis_usd: 0,
     total_realized_pnl_usd: 0,
     sold_but_would_have_won_count: 0,
+    pnl_count: 0,
   };
   for (const r of records) {
     if (r.result === "win") s.win_count++;
@@ -227,13 +244,18 @@ function computeFilteredSummary(records) {
     else if (r.result === "open") s.open_count++;
     s.total_cost_basis_usd += r.cost_basis_usd || 0;
     const pnl = r.realized_pnl_usd ?? r.final_value_usd;
-    if (pnl != null) s.total_realized_pnl_usd += pnl;
+    if (pnl != null) {
+      s.total_realized_pnl_usd += pnl;
+      s.pnl_count += 1;
+    }
     if (r.sold_but_would_have_won) s.sold_but_would_have_won_count++;
   }
   const settled = s.win_count + s.loss_count + s.sold_count;
   s.win_pct = settled ? Math.round((s.win_count / settled) * 1000) / 10 : 0;
-  s.avg_bought_value =
+  s.avg_buy_usd =
     records.length ? s.total_cost_basis_usd / records.length : 0;
+  s.avg_pnl_usd =
+    s.pnl_count ? s.total_realized_pnl_usd / s.pnl_count : 0;
   s.avg_bought_time_hk = avgHkMinutes(records);
   return s;
 }
@@ -248,12 +270,79 @@ function renderSummary(records) {
       <div><span class="summary-label">Sold</span><span class="summary-value">${fs.sold_count}</span></div>
       <div><span class="summary-label">Open</span><span class="summary-value">${fs.open_count}</span></div>
       <div><span class="summary-label">Win%</span><span class="summary-value">${fs.win_pct}%</span></div>
-      <div><span class="summary-label">Avg bought value</span><span class="summary-value">$${fs.avg_bought_value.toFixed(2)}</span></div>
+      <div><span class="summary-label">Avg buy $</span><span class="summary-value">$${fs.avg_buy_usd.toFixed(2)}</span></div>
+      <div><span class="summary-label">Avg P&amp;L</span><span class="summary-value">$${fs.avg_pnl_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Avg bought time</span><span class="summary-value">${fs.avg_bought_time_hk || "—"}</span></div>
       <div><span class="summary-label">Total cost</span><span class="summary-value">$${fs.total_cost_basis_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Total P&amp;L</span><span class="summary-value">$${fs.total_realized_pnl_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Sold→would win</span><span class="summary-value">${fs.sold_but_would_have_won_count}</span></div>
     </div>`;
+}
+
+function renderGroupTable(title, data, limit = 12) {
+  const entries = Object.entries(data || {})
+    .sort((a, b) => {
+      if ((b[1].count || 0) !== (a[1].count || 0)) return (b[1].count || 0) - (a[1].count || 0);
+      return String(a[0]).localeCompare(String(b[0]));
+    })
+    .slice(0, limit);
+  const rows = entries.length
+    ? entries
+        .map(
+          ([key, stats]) => `
+            <tr>
+              <td>${key}</td>
+              <td>${stats.count ?? 0}</td>
+              <td>${stats.settled ?? 0}</td>
+              <td>${(stats.win_rate_pct ?? 0).toFixed(1)}%</td>
+              <td>$${(stats.avg_buy_usd ?? 0).toFixed(2)}</td>
+              <td>$${(stats.avg_pnl_usd ?? 0).toFixed(2)}</td>
+            </tr>`
+        )
+        .join("")
+    : `<tr><td colspan="6">No data</td></tr>`;
+  return `
+    <section class="insight-card">
+      <h3>${title}</h3>
+      <table class="mini-table">
+        <thead>
+          <tr>
+            <th>Group</th>
+            <th>Count</th>
+            <th>Settled</th>
+            <th>Win%</th>
+            <th>Avg buy $</th>
+            <th>Avg P&amp;L</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </section>`;
+}
+
+function renderInsights(data) {
+  const container = document.getElementById("insights-content");
+  const insightSections = [
+    ["By city", data.summary_by_city],
+    ["By timezone group", data.summary_by_timezone_group],
+    ["By buy price band", data.summary_by_buy_price_band],
+    ["By local buy time", data.summary_by_local_buy_time_band],
+    ["By win temp vs bought", data.summary_by_win_temp_vs_bought],
+    ["By weekday", data.summary_by_weekday],
+  ];
+  const cards = insightSections.map(([title, stats]) => renderGroupTable(title, stats)).join("");
+  const highlights = `
+    <section class="insight-card insight-highlights">
+      <h3>Highlights</h3>
+      <div class="summary-grid">
+        <div><span class="summary-label">Sold regret rate</span><span class="summary-value">${(data.stop_loss_regret_rate_pct ?? 0).toFixed(1)}%</span></div>
+        <div><span class="summary-label">Avg sell %</span><span class="summary-value">${data.avg_sell_value_pct != null ? `${data.avg_sell_value_pct.toFixed(1)}%` : "—"}</span></div>
+        <div><span class="summary-label">Avg win P&amp;L</span><span class="summary-value">$${((data.avg_pnl_by_result || {}).win ?? 0).toFixed(2)}</span></div>
+        <div><span class="summary-label">Avg loss P&amp;L</span><span class="summary-value">$${((data.avg_pnl_by_result || {}).loss ?? 0).toFixed(2)}</span></div>
+        <div><span class="summary-label">Avg sold P&amp;L</span><span class="summary-value">$${((data.avg_pnl_by_result || {}).sold ?? 0).toFixed(2)}</span></div>
+      </div>
+    </section>`;
+  container.innerHTML = `${highlights}<div class="insight-grid">${cards}</div>`;
 }
 
 function renderTable(records) {
@@ -294,12 +383,52 @@ function render() {
 function populateCityFilter() {
   const cities = [...new Set(allRecords.map((r) => r.city).filter(Boolean))].sort();
   const sel = document.getElementById("filter-city");
+  const groups = new Map();
   for (const city of cities) {
+    const group = timezoneGroup(city);
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(city);
+  }
+  for (const [group, groupCities] of [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = group;
+    for (const city of groupCities) {
+      const opt = document.createElement("option");
+      opt.value = city;
+      opt.textContent = city;
+      optgroup.appendChild(opt);
+    }
+    sel.appendChild(optgroup);
+  }
+}
+
+function populateTimezoneFilter() {
+  const sel = document.getElementById("filter-timezone");
+  const zones = [...new Set(allRecords.map((r) => timezoneGroup(r.city)).filter(Boolean))].sort();
+  for (const zone of zones) {
     const opt = document.createElement("option");
-    opt.value = city;
-    opt.textContent = city;
+    opt.value = zone;
+    opt.textContent = zone;
     sel.appendChild(opt);
   }
+}
+
+function populateLocalTimeFilter() {
+  const sel = document.getElementById("filter-local-time");
+  const start = 12 * 60;
+  const end = 15 * 60 + 30;
+  for (let mins = start; mins < end; mins += 15) {
+    const next = mins + 15;
+    const label = `${String(Math.floor(mins / 60)).padStart(2, "0")}:${String(mins % 60).padStart(2, "0")}-${String(Math.floor(next / 60)).padStart(2, "0")}:${String(next % 60).padStart(2, "0")}`;
+    const opt = document.createElement("option");
+    opt.value = label;
+    opt.textContent = label.replace("-", "–");
+    sel.appendChild(opt);
+  }
+  const after = document.createElement("option");
+  after.value = "after-15:30";
+  after.textContent = "After 15:30";
+  sel.appendChild(after);
 }
 
 async function loadData() {
@@ -314,12 +443,10 @@ async function loadData() {
   allRecords = data.records || [];
   document.getElementById("sync-meta").textContent =
     `Synced ${data.synced_at || "?"} · ${allRecords.length} trades · wallet ${(data.wallet || "").slice(0, 10)}…`;
-  document.getElementById("insights-content").textContent = JSON.stringify(
-    data.insights || {},
-    null,
-    2
-  );
+  populateLocalTimeFilter();
+  populateTimezoneFilter();
   populateCityFilter();
+  renderInsights(data.insights || {});
   render();
 }
 
