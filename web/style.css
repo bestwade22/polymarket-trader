@@ -110,8 +110,9 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
 
 .insight-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .insight-card {
@@ -119,6 +120,8 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   border-radius: 6px;
   padding: 0.75rem;
   background: rgba(15, 20, 25, 0.5);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .insight-card h3 {
@@ -128,10 +131,18 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
 
 .insight-highlights {
   margin-bottom: 1rem;
+  grid-column: 1 / -1;
+}
+
+.mini-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mini-table {
   width: 100%;
+  min-width: max-content;
   border-collapse: collapse;
   font-size: 0.78rem;
 }
