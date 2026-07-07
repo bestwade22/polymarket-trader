@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-07T21:00:59.582216+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "671359",
+      "city": "Seattle",
+      "market_id": "2811566",
+      "groupItemTitle": "74-75\u00b0F",
+      "yes_price": 0.435,
+      "yes_token_id": "53522508248127672731818667955536043745778949863926357468143593998676022405913",
+      "buy_price": 0.5,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.435,
+      "selection_price": 0.435,
+      "gamma_yes_price": 0.41,
+      "best_bid": 0.37,
+      "best_ask": 0.5,
+      "clob_buy_price": 0.5,
+      "last_trade_price": 0.36,
+      "midpoint": 0.435,
+      "outcomePrices": [
+        0.41,
+        0.59
+      ],
+      "order_status": "live",
+      "order_id": "0xdf57441d102e73695cb6c68152ce502b1be1130d90304c8150a97879f20115a9",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-07T21:25:58+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "671366",
+      "city": "Denver",
+      "market_id": "2811645",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "671368",
+      "city": "Los Angeles",
+      "market_id": "2811667",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "671369",
+      "city": "San Francisco",
+      "market_id": "2811678",
+      "group_item_title": "62-63\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "671370",
+      "city": "Mexico City",
+      "market_id": "2811690",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    }
+  ]
+}
