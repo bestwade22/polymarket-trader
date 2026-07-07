@@ -2890,5 +2890,17 @@
     "avg_buy_price": 0.41,
     "value_pct": 33.53658536585366,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0xcd82b6407c3fdee6ca852cf4bcf2376d8268748712bac155aff548d7461afd5f",
+    "token_id": "53522508248127672731818667955536043745778949863926357468143593998676022405913",
+    "order_id": "0xbdcbd94e50b2d0fd76317665f0efc75eca5fb87585c1f0747bc453e33dfe5742",
+    "sold_at": "2026-07-07T23:30:16.982565+00:00",
+    "event_slug": "highest-temperature-in-seattle-on-july-7-2026",
+    "price": 0.17,
+    "size": 10.0,
+    "avg_buy_price": 0.43,
+    "value_pct": 40.69767441860465,
+    "reason": "within_band"
   }
 ]
