@@ -2878,5 +2878,17 @@
     "avg_buy_price": 0.41,
     "value_pct": 13.292682926829269,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x182b0febe9a1ff9b4bc99c5c2c71238ebec9352ed96625dca2f4414261e2dba7",
+    "token_id": "6298571990283784299002232574299702199067482215630166111758742619106856783853",
+    "order_id": "0x088cc32f4b3d8aa9c8fac49ffe28dd1cf0b01e7104758eb4f46ac63ef7445c44",
+    "sold_at": "2026-07-07T22:45:18.256774+00:00",
+    "event_slug": "highest-temperature-in-houston-on-july-7-2026",
+    "price": 0.124,
+    "size": 10.0,
+    "avg_buy_price": 0.41,
+    "value_pct": 33.53658536585366,
+    "reason": "within_band"
   }
 ]
