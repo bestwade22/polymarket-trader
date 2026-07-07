@@ -300,6 +300,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "57600230276868542884639399229959491027842471184111948053884723991173380987224"
     },
+    "highest-temperature-in-busan-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Busan on July 7?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "24467223268633261170026274691487344281375820816990630099529870333446203091998"
+    },
     "highest-temperature-in-busan-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Busan on June 25?",
@@ -383,6 +389,12 @@
       "title": "Highest temperature in Chengdu on July 6?",
       "winning_temp": "37\u00b0C",
       "winning_token_id": "43325981450974708588298542567534612038670875439873508449845832768085279089722"
+    },
+    "highest-temperature-in-chengdu-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 7?",
+      "winning_temp": "37\u00b0C",
+      "winning_token_id": "32009811301395153807866553251393999117994724403273407736392342803887526688050"
     },
     "highest-temperature-in-chengdu-on-june-25-2026": {
       "closed": true,
@@ -491,6 +503,12 @@
       "title": "Highest temperature in Chongqing on July 6?",
       "winning_temp": "37\u00b0C",
       "winning_token_id": "95068468226430346226558768502910505171111953784585132163507417081478925093839"
+    },
+    "highest-temperature-in-chongqing-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 7?",
+      "winning_temp": "37\u00b0C",
+      "winning_token_id": "23614586082357684231651411458650156743404613401472733733858945574446950883228"
     },
     "highest-temperature-in-chongqing-on-june-27-2026": {
       "closed": true,
@@ -971,6 +989,12 @@
       "title": "Highest temperature in Manila on July 3?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "95813321744194730940131507138810505528155382053371029749521101682180700816484"
+    },
+    "highest-temperature-in-manila-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on July 7?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "35868701116685900465215107791260415384742280677059138341172574138042962828281"
     },
     "highest-temperature-in-manila-on-june-27-2026": {
       "closed": true,
@@ -1560,6 +1584,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "57296022352091439697488498790940886026542418625275133348125268768028030156035"
     },
+    "highest-temperature-in-shenzhen-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shenzhen on July 7?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "99856745898606296641854031923854311033638220268362786187881029278045139777852"
+    },
     "highest-temperature-in-shenzhen-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Shenzhen on June 25?",
@@ -1829,6 +1859,12 @@
       "title": "Highest temperature in Wuhan on July 6?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "30603912680082029145983196822583787494150756011928352782755786622821862562213"
+    },
+    "highest-temperature-in-wuhan-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Wuhan on July 7?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "427215713379242677377471180144638354127889892095234640024127528824877125357"
     },
     "highest-temperature-in-wuhan-on-june-25-2026": {
       "closed": true,

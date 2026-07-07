@@ -296,7 +296,18 @@ def filter_selections_without_position(
                 continue
             if step_log:
                 step_log.log_step("check_position", has_position=False, balance_unavailable=True)
-            kept.append(sel)
+                step_log.save()
+            _append_position_skip(
+                skipped,
+                event_id=event_id,
+                city=city,
+                sel=sel,
+                reason="balance_unavailable",
+                target_share_count=target_share_count,
+                held_shares=None,
+                held_market_id=sel.market_id,
+                held_group_item_title=sel.group_item_title,
+            )
             continue
 
         if selected_balance >= target_share_count:

@@ -20,7 +20,8 @@ from src.utils.market_parser import compare_temp_buckets, extract_temp_label, pa
 
 logger = logging.getLogger(__name__)
 
-PRICE_DROP_THRESHOLD = 0.05
+PRICE_DROP_THRESHOLD = 0.01
+MIN_POSITION_SHARES = 0.01
 
 
 @dataclass
@@ -40,6 +41,10 @@ class PositionGroup:
     @property
     def shares(self) -> float:
         return sum(parse_float(r.get("size")) or 0.0 for r in self.buy_fills)
+
+    @property
+    def sell_shares(self) -> float:
+        return sum(parse_float(r.get("size")) or 0.0 for r in self.sell_fills)
 
     @property
     def buy_price(self) -> float:
@@ -86,31 +91,61 @@ class PositionGroup:
         return None
 
 
+def _new_position_group(row: dict[str, Any], token_id: str) -> PositionGroup:
+    return PositionGroup(
+        token_id=token_id,
+        condition_id=str(row.get("conditionId") or ""),
+        event_slug=str(row.get("eventSlug") or row.get("event_slug") or ""),
+        title=str(row.get("title") or ""),
+    )
+
+
 def group_activity_rows(activity: list[dict[str, Any]]) -> list[PositionGroup]:
-    groups: dict[str, PositionGroup] = {}
+    """Group wallet activity into position cycles (reset after each sell/redeem)."""
+    by_token: dict[str, list[dict[str, Any]]] = {}
     for row in activity:
         token_id = str(row.get("asset") or "").strip()
         if not token_id:
             continue
-        event_slug = str(row.get("eventSlug") or row.get("event_slug") or "")
-        if token_id not in groups:
-            groups[token_id] = PositionGroup(
-                token_id=token_id,
-                condition_id=str(row.get("conditionId") or ""),
-                event_slug=event_slug,
-                title=str(row.get("title") or ""),
-            )
-        group = groups[token_id]
-        row_type = str(row.get("type") or "").upper()
-        side = str(row.get("side") or "").upper()
-        if row_type == "TRADE" and side == "BUY":
-            group.buy_fills.append(row)
-        elif row_type == "TRADE" and side == "SELL":
-            group.sell_fills.append(row)
-        elif row_type == "REDEEM":
-            group.redeems.append(row)
+        by_token.setdefault(token_id, []).append(row)
 
-    return [g for g in groups.values() if g.buy_fills]
+    groups: list[PositionGroup] = []
+    for token_id, rows in by_token.items():
+        rows.sort(key=lambda r: int(r.get("timestamp") or 0))
+        current: Optional[PositionGroup] = None
+        open_shares = 0.0
+
+        for row in rows:
+            row_type = str(row.get("type") or "").upper()
+            side = str(row.get("side") or "").upper()
+            size = parse_float(row.get("size")) or 0.0
+
+            if row_type == "TRADE" and side == "BUY":
+                if current is None:
+                    current = _new_position_group(row, token_id)
+                current.buy_fills.append(row)
+                open_shares += size
+            elif row_type == "TRADE" and side == "SELL":
+                if current is None:
+                    continue
+                current.sell_fills.append(row)
+                open_shares = max(0.0, open_shares - size)
+                if open_shares <= MIN_POSITION_SHARES:
+                    groups.append(current)
+                    current = None
+                    open_shares = 0.0
+            elif row_type == "REDEEM":
+                if current is None:
+                    current = _new_position_group(row, token_id)
+                current.redeems.append(row)
+                groups.append(current)
+                current = None
+                open_shares = 0.0
+
+        if current is not None and current.buy_fills:
+            groups.append(current)
+
+    return groups
 
 
 def _iso_from_ts(ts: Optional[int]) -> Optional[str]:
@@ -205,7 +240,7 @@ def _classify_result(
     return "open"
 
 
-def _compute_final_value(
+def _record_pnl(
     result: str,
     shares: float,
     buy_price: float,
@@ -222,6 +257,12 @@ def _compute_final_value(
     if result == "sold" and sell_price is not None:
         return round(shares * sell_price - cost, 4)
     return None
+
+
+def _position_shares(group: PositionGroup, result: str) -> float:
+    if result == "sold" and group.sell_shares > 0:
+        return group.sell_shares
+    return group.shares
 
 
 def _held_hours(
@@ -257,9 +298,8 @@ def build_trade_record(
         if winning_temp
         else "unknown"
     )
-    sold_but_would_have_won = result == "sold" and win_temp_vs_bought == "same"
 
-    shares = group.shares
+    shares = _position_shares(group, result)
     buy_price = round(group.buy_price, 4)
     sell_price = group.sell_price
     if sell_price is not None:
@@ -267,7 +307,13 @@ def build_trade_record(
     cost_basis = round(shares * buy_price, 4)
 
     realized_pnl = parse_float(closed_row.get("realizedPnl")) if closed_row else None
-    final_value = _compute_final_value(result, shares, buy_price, sell_price, realized_pnl)
+    final_value = _record_pnl(result, shares, buy_price, sell_price, realized_pnl)
+    sold_but_would_have_won = (
+        result == "sold"
+        and final_value is not None
+        and final_value < 0
+        and win_temp_vs_bought == "same"
+    )
     roi_pct = (
         round((final_value / cost_basis) * 100, 2)
         if final_value is not None and cost_basis > 0
@@ -302,6 +348,16 @@ def build_trade_record(
         city = parse_city_from_title(resolution.title) or ""
 
     bought_at_hk, bought_at_local = _format_bought_times(bought_ts, city)
+    sold_at_hk = ""
+    if sold_ts:
+        sold_at_hk = format_hk(datetime.fromtimestamp(sold_ts, tz=timezone.utc))
+    price_drop_at_hk = ""
+    if price_drop_at:
+        try:
+            drop_dt = datetime.fromisoformat(price_drop_at)
+            price_drop_at_hk = format_hk(drop_dt)
+        except ValueError:
+            price_drop_at_hk = ""
 
     return TradeRecord(
         date=date_str,
@@ -312,13 +368,17 @@ def build_trade_record(
         bought_at_hk=bought_at_hk,
         bought_at_local=bought_at_local,
         sold_at=_iso_from_ts(sold_ts),
+        sold_at_hk=sold_at_hk,
         redeemed_at=_iso_from_ts(redeemed_ts),
         shares=round(shares, 4),
+        share_count_target=settings.share_count,
+        shares_over_target=round(group.shares, 4) > float(settings.share_count) + 0.5,
         result=result,
         final_value_usd=final_value,
         winning_temp=winning_temp,
         win_temp_vs_bought=win_temp_vs_bought,
         price_drop_below_threshold_at=price_drop_at,
+        price_drop_below_threshold_at_hk=price_drop_at_hk,
         sold_but_would_have_won=sold_but_would_have_won,
         buy_price=buy_price,
         sell_price=sell_price,

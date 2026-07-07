@@ -38,7 +38,7 @@ def _buy_row(
     }
 
 
-def _sell_row(token_id: str = "tok1", ts: int = 1_700_100_000, price: float = 0.2) -> dict:
+def _sell_row(token_id: str = "tok1", ts: int = 1_700_100_000, price: float = 0.2, size: float = 10.0) -> dict:
     return {
         "type": "TRADE",
         "side": "SELL",
@@ -47,7 +47,7 @@ def _sell_row(token_id: str = "tok1", ts: int = 1_700_100_000, price: float = 0.
         "title": "28°C",
         "timestamp": ts,
         "price": price,
-        "size": 10.0,
+        "size": size,
     }
 
 
@@ -95,10 +95,32 @@ class TestActivityGrouping:
         assert groups[0].buy_price == pytest.approx(0.5)
 
     def test_attaches_sell_and_redeem(self):
-        rows = [_buy_row(), _sell_row(), _redeem_row()]
-        group = group_activity_rows(rows)[0]
-        assert len(group.sell_fills) == 1
-        assert len(group.redeems) == 1
+        sell_group = group_activity_rows([_buy_row(), _sell_row()])[0]
+        assert len(sell_group.sell_fills) == 1
+        redeem_group = group_activity_rows([_buy_row(), _redeem_row()])[0]
+        assert len(redeem_group.redeems) == 1
+
+    def test_splits_cycles_after_sell(self):
+        rows = [
+            _buy_row(ts=100, size=10),
+            _sell_row(ts=200, size=10),
+            _buy_row(ts=300, size=10),
+        ]
+        groups = group_activity_rows(rows)
+        assert len(groups) == 2
+        assert groups[0].shares == 10.0
+        assert groups[1].shares == 10.0
+
+    def test_splits_cycles_after_sell(self):
+        rows = [
+            _buy_row(ts=100, size=10),
+            _sell_row(ts=200, size=10),
+            _buy_row(ts=300, size=10),
+        ]
+        groups = group_activity_rows(rows)
+        assert len(groups) == 2
+        assert groups[0].shares == 10.0
+        assert groups[1].shares == 10.0
 
 
 class TestResultClassification:
@@ -165,8 +187,8 @@ class TestResultClassification:
 
     @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
     @patch("src.analysis.history_builder.resolve_winning_temp", return_value="28°C")
-    def test_sold_regret_same_temp(self, _win, _event):
-        group = group_activity_rows([_buy_row(title="28°C"), _sell_row()])[0]
+    def test_sold_regret_same_temp_negative_pnl_only(self, _win, _event):
+        group = group_activity_rows([_buy_row(title="28°C"), _sell_row(price=0.2)])[0]
         rec = build_trade_record(
             group,
             closed_positions=[],
@@ -175,6 +197,19 @@ class TestResultClassification:
             fetch_price_drop=False,
         )
         assert rec.sold_but_would_have_won is True
+
+    @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
+    @patch("src.analysis.history_builder.resolve_winning_temp", return_value="28°C")
+    def test_sold_regret_not_counted_when_pnl_positive(self, _win, _event):
+        group = group_activity_rows([_buy_row(title="28°C"), _sell_row(price=0.9)])[0]
+        rec = build_trade_record(
+            group,
+            closed_positions=[],
+            open_tokens=set(),
+            clob_client=None,
+            fetch_price_drop=False,
+        )
+        assert rec.sold_but_would_have_won is False
 
 
 def _sample_record(**overrides):
@@ -243,7 +278,9 @@ class TestSummary:
         assert summary.sold_but_would_have_won_count == 1
         assert summary.win_pct == 50.0
         assert summary.avg_buy_usd == 5.0
+        assert summary.avg_buy_price == 0.5
         assert summary.avg_pnl_usd == 1.0
+        assert summary.sold_lose_count == 1
 
     def test_insights(self):
         rec = _sample_record(event_slug="slug", transaction_hash=None)
