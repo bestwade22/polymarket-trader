@@ -405,6 +405,7 @@
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-07T05:59:14+00:00",
       "sold_at": "2026-07-07T13:08:26+00:00",
+      "sold_at": "2026-07-07T13:08:26+00:00",
       "redeemed_at": null,
       "shares": 14.3264,
       "result": "sold",
@@ -537,6 +538,7 @@
       "trade_window": "13:30\u201315:30",
       "bought_at": "2026-07-07T04:52:04+00:00",
       "sold_at": "2026-07-07T09:35:10+00:00",
+      "sold_at": "2026-07-07T09:35:10+00:00",
       "redeemed_at": null,
       "shares": 10.0,
       "result": "sold",
@@ -547,7 +549,12 @@
       "sold_but_would_have_won": false,
       "buy_price": 0.357,
       "sell_price": 0.998,
+      "sell_price": 0.998,
       "cost_basis_usd": 3.57,
+      "realized_pnl_usd": 6.41,
+      "roi_pct": 179.55,
+      "sell_value_pct": 279.55,
+      "held_hours": 4.72,
       "realized_pnl_usd": 6.41,
       "roi_pct": 179.55,
       "sell_value_pct": 279.55,
@@ -10796,6 +10803,7 @@
   ],
   "summary": {
     "total_count": 327,
+    "total_count": 327,
     "win_count": 128,
     "loss_count": 131,
     "sold_count": 59,
@@ -10829,6 +10837,7 @@
         "total_pnl_usd": -19.06
       },
       "Ankara": {
+        "count": 8,
         "count": 8,
         "wins": 4,
         "sold_wins": 1,
@@ -10913,6 +10922,7 @@
         "total_pnl_usd": 3.35
       },
       "Cape Town": {
+        "count": 6,
         "count": 6,
         "wins": 1,
         "sold_wins": 0,
@@ -11012,6 +11022,7 @@
       },
       "Helsinki": {
         "count": 6,
+        "count": 6,
         "wins": 0,
         "sold_wins": 0,
         "sold_loses": 2,
@@ -11053,6 +11064,7 @@
         "total_pnl_usd": 3.7
       },
       "Istanbul": {
+        "count": 4,
         "count": 4,
         "wins": 2,
         "sold_wins": 0,
@@ -11110,6 +11122,7 @@
       },
       "London": {
         "count": 9,
+        "count": 9,
         "wins": 3,
         "sold_wins": 1,
         "sold_loses": 1,
@@ -11151,6 +11164,7 @@
         "total_pnl_usd": -21.55
       },
       "Madrid": {
+        "count": 8,
         "count": 8,
         "wins": 4,
         "sold_wins": 1,
@@ -11236,6 +11250,7 @@
       },
       "Munich": {
         "count": 9,
+        "count": 9,
         "wins": 3,
         "sold_wins": 0,
         "sold_loses": 2,
@@ -11277,6 +11292,7 @@
         "total_pnl_usd": 1.0
       },
       "Paris": {
+        "count": 8,
         "count": 8,
         "wins": 2,
         "sold_wins": 0,
@@ -11459,6 +11475,7 @@
         "total_pnl_usd": 0.17
       },
       "Warsaw": {
+        "count": 7,
         "count": 7,
         "wins": 4,
         "sold_wins": 0,
@@ -11982,6 +11999,7 @@
       },
       "0.50\u20130.55": {
         "count": 87,
+        "count": 87,
         "wins": 39,
         "sold_wins": 7,
         "sold_loses": 13,
@@ -12110,6 +12128,7 @@
       },
       "13:30-13:45": {
         "count": 72,
+        "count": 72,
         "wins": 22,
         "sold_wins": 7,
         "sold_loses": 12,
@@ -12123,6 +12142,7 @@
         "total_pnl_usd": -36.11
       },
       "13:45-14:00": {
+        "count": 20,
         "count": 20,
         "wins": 4,
         "sold_wins": 5,
@@ -12165,6 +12185,7 @@
         "total_pnl_usd": 0.32
       },
       "14:30-14:45": {
+        "count": 4,
         "count": 4,
         "wins": 0,
         "sold_wins": 0,
@@ -12337,6 +12358,7 @@
         "total_pnl_usd": -21.65
       },
       "Tuesday": {
+        "count": 35,
         "count": 35,
         "wins": 11,
         "sold_wins": 4,
