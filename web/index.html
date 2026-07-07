@@ -51,7 +51,7 @@
       Sold but would win
       <select id="filter-regret">
         <option value="">All</option>
-        <option value="true">Yes</option>
+        <option value="true">Yes (sold lose)</option>
         <option value="false">No</option>
       </select>
     </label>
@@ -59,12 +59,14 @@
       Buy price band
       <select id="filter-price">
         <option value="">All</option>
-        <option value="<0.40">&lt;0.40</option>
-        <option value="0.40–0.50">0.40–0.50</option>
+        <option value="&lt;0.30">&lt;0.30</option>
+        <option value="0.30–0.35">0.30–0.35</option>
+        <option value="0.35–0.40">0.35–0.40</option>
+        <option value="0.40–0.45">0.40–0.45</option>
+        <option value="0.45–0.50">0.45–0.50</option>
         <option value="0.50–0.55">0.50–0.55</option>
         <option value="0.55–0.60">0.55–0.60</option>
-        <option value="0.60–0.70">0.60–0.70</option>
-        <option value=">0.70">&gt;0.70</option>
+        <option value=">0.60">&gt;0.60</option>
       </select>
     </label>
     <label>
@@ -93,17 +95,19 @@
           <th data-sort="date">Date</th>
           <th data-sort="city">City</th>
           <th data-sort="bought_temp">Bought temp</th>
+          <th data-sort="trade_window">Trade window</th>
           <th data-sort="bought_at_hk">Bought (HKT)</th>
           <th data-sort="bought_at_local">Bought (local)</th>
           <th data-sort="cost_basis_usd">Bought value</th>
-          <th data-sort="sold_at">Sold</th>
+          <th data-sort="sold_at_hk">Sold (HKT)</th>
           <th data-sort="shares">Shares</th>
           <th data-sort="buy_price">Buy $</th>
           <th data-sort="result">Result</th>
           <th data-sort="final_value_usd">P&amp;L</th>
           <th data-sort="winning_temp">Won temp</th>
           <th data-sort="win_temp_vs_bought">Win vs bought</th>
-          <th data-sort="sold_but_would_have_won">Sold→win?</th>
+          <th data-sort="sold_but_would_have_won">Sold outcome</th>
+          <th data-sort="price_drop_below_threshold_at_hk">Drop &lt;1%</th>
           <th data-sort="sell_value_pct">Sell %</th>
         </tr>
       </thead>
