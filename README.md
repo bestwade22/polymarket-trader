@@ -5,7 +5,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 ## Features
 
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
-- **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **13:30–15:30**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
+- **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **14:00–16:00**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **4:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
@@ -75,12 +75,12 @@ python -m src.main run-scheduler
 
 ### When trades run
 
-By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **13:30–15:30** local). Window bounds use each city's timezone and `event_date` in the events file.
+By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADING_WINDOW_END_HOUR`** (default **14:00–16:00** local). Window bounds use each city's timezone and `event_date` in the events file.
 
 - Run during a city's trading window → tradable.
 - Run outside the window → `Found 0 tradable events` (expected).
 - Past event dates → all windows have passed; use `--all-cities` for a manual run.
-- `run-scheduler` and AWS Lambda call `trade-hourly` at **:30 UTC** each hour; the gate skips when no event is in its local window.
+- `run-scheduler` and AWS Lambda call `trade-hourly` at **:00 and :30 UTC** each hour; the gate skips when no event is in its local window.
 
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
@@ -126,9 +126,9 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
-| `ORDER_EXPIRY_MINUTES` | `55` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
-| `TRADING_WINDOW_START_HOUR` | `13:30` | Local time when trading opens: `13`, `13:30`, or `1330` (city timezone) |
-| `TRADING_WINDOW_END_HOUR` | `15:30` | Local time when trading closes: `15`, `15:30`, or `1530` (city timezone) |
+| `ORDER_EXPIRY_MINUTES` | `25` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
+| `TRADING_WINDOW_START_HOUR` | `14:00` | Local time when trading opens: `14`, `14:00`, or `1400` (city timezone) |
+| `TRADING_WINDOW_END_HOUR` | `16:00` | Local time when trading closes: `16`, `16:00`, or `1600` (city timezone) |
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
@@ -196,7 +196,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | **:30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
+| `trade-hourly` | **:00 and :30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Every 15 min UTC** | Scans live positions via Data API; sells highest-temp holdings when value ≤ `STOP_LOSS_PCT`% of avg buy |
 | `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
@@ -280,7 +280,7 @@ python scripts/check_geoblock.py
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=55`), and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders (default expiry `STOP_LOSS_ORDER_EXPIRY_MINUTES=13`). They are independent flags.
+Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders (default expiry `STOP_LOSS_ORDER_EXPIRY_MINUTES=13`). They are independent flags.
 
 ### Deploy troubleshooting
 

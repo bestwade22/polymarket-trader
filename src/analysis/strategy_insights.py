@@ -28,12 +28,12 @@ def _local_time_band(local_time: str) -> str:
         return "unknown"
     hour, minute = (int(part) for part in local_time.split(":", 1))
     total = hour * 60 + minute
-    start = 12 * 60
-    end = 15 * 60 + 30
+    start = 14 * 60
+    end = 16 * 60
     if total < start:
-        return "before 12:00"
+        return "before 14:00"
     if total >= end:
-        return "after 15:30"
+        return "after 16:00"
     band_start = start + ((total - start) // 15) * 15
     band_end = band_start + 15
     return (

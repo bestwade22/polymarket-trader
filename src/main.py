@@ -68,12 +68,13 @@ def cmd_run_scheduler(_args: argparse.Namespace) -> None:
     )
     scheduler.add_job(
         lambda: run_hourly_trade(target_date=date.today()),
-        CronTrigger(minute="30"),
+        CronTrigger(minute="0,30"),
         id="hourly_trade",
     )
     logging.info(
-        "Scheduler started: daily fetch at %s, trade at %s each hour",
+        "Scheduler started: daily fetch at %s, trade at %s and %s UTC each hour",
         utc_clock_label(settings.daily_fetch_hour_utc),
+        utc_clock_label(0, 0),
         utc_clock_label(0, 30),
     )
     scheduler.start()

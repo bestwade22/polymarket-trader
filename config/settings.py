@@ -103,12 +103,12 @@ def _minutes_since_midnight(hour: int, minute: int) -> int:
 
 def _parse_trading_window_bounds() -> tuple[int, int, int, int]:
     start_h, start_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_START_HOUR", "13:30"),
+        os.getenv("TRADING_WINDOW_START_HOUR", "14:00"),
         "TRADING_WINDOW_START_HOUR",
         allow_hour_24=False,
     )
     end_h, end_m = _parse_trading_window_time(
-        os.getenv("TRADING_WINDOW_END_HOUR", "15:30"),
+        os.getenv("TRADING_WINDOW_END_HOUR", "16:00"),
         "TRADING_WINDOW_END_HOUR",
         allow_hour_24=True,
     )
@@ -144,7 +144,7 @@ def _parse_order_expiry_hours() -> float:
     hours = os.getenv("ORDER_EXPIRY_HOURS")
     if hours is not None and hours.strip():
         return float(hours.strip())
-    return 55.0 / 60.0
+    return 25.0 / 60.0
 
 
 def _parse_stop_loss_order_expiry_hours() -> float:

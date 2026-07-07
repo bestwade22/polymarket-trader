@@ -52,7 +52,7 @@ class TestShouldRun:
             "status": "skip",
             "reason": "no_tradable_events",
             "now_hkt": "2026-07-01 23:35:12 HKT",
-            "window": "13:30–15:30",
+            "window": "14:00–16:00",
             "tradable_cities": [],
             "events_loaded": 49,
         }
@@ -84,7 +84,7 @@ class TestShouldRun:
             "status": "go",
             "reason": "tradable_events",
             "now_hkt": "2026-07-01 23:35:12 HKT",
-            "window": "13:30–15:30",
+            "window": "14:00–16:00",
             "tradable_cities": ["Sao Paulo"],
             "events_loaded": 49,
         }
@@ -124,7 +124,7 @@ class TestTradeHourlyHandler:
             "status": "skip",
             "reason": "no_tradable_events",
             "now_hkt": "2026-07-01 23:35:12 HKT",
-            "window": "13:30–15:30",
+            "window": "14:00–16:00",
             "tradable_cities": [],
             "events_loaded": 49,
         }

@@ -79,7 +79,8 @@ def test_trading_window_duration_with_minutes():
     assert duration == timedelta(hours=2, minutes=30)
 
 
-def test_is_event_in_trading_window_uses_event_timezone():
+def test_is_event_in_trading_window_uses_event_timezone(monkeypatch):
+    _patch_trading_window(monkeypatch, 12, 0, 14, 0)
     event = {
         "event_date": "2026-06-19",
         "timezone": "America/New_York",
@@ -110,7 +111,8 @@ def test_trading_window_label():
     assert trading_window_label(12, 30, 15, 0) == "12:30–15:00"
 
 
-def test_any_city_in_trading_window_matches_one_timezone():
+def test_any_city_in_trading_window_matches_one_timezone(monkeypatch):
+    _patch_trading_window(monkeypatch, 12, 0, 14, 0)
     bounds = trading_window_bounds_utc(
         "2026-06-19",
         "America/New_York",

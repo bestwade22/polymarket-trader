@@ -219,7 +219,7 @@ def _sample_record(**overrides):
         bought_temp="28°C",
         bought_at_hk="2026-07-05 20:00:00 HKT",
         bought_at_local="13:00",
-        trade_window="13:30–15:30",
+        trade_window="14:00–16:00",
         bought_at="2026-07-05T12:00:00+00:00",
         sold_at=None,
         redeemed_at=None,
@@ -287,7 +287,7 @@ class TestSummary:
         insights = compute_insights([rec])
         assert "London" in insights["summary_by_city"]
         assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
-        assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
+        assert "before 14:00" in insights["summary_by_local_buy_time_band"]
 
 
 class TestNoLocalBotFiles:
