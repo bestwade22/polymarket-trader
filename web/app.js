@@ -145,15 +145,15 @@ function parseRangeMinutes(range) {
 
 function inLocalTimeRange(mins, band) {
   if (mins == null) return false;
-  if (band === "before-12:00") return mins < 12 * 60;
-  if (band === "after-15:30") return mins >= 15 * 60 + 30;
+  if (band === "before-14:00") return mins < 14 * 60;
+  if (band === "after-16:00") return mins >= 16 * 60;
   const [lo, hi] = parseRangeMinutes(band);
   return mins >= lo && mins < hi;
 }
 
 function localTimeBandSortKey(label) {
-  if (label === "before 12:00") return -1;
-  if (label === "after 15:30") return 24 * 60;
+  if (label === "before 14:00") return -1;
+  if (label === "after 16:00") return 24 * 60;
   if (label === "unknown") return 9999;
   const [start] = label.split("-");
   const [h, m] = start.split(":").map(Number);
@@ -561,8 +561,8 @@ function populateTimezoneFilter() {
 
 function populateLocalTimeFilter() {
   const sel = document.getElementById("filter-local-time");
-  const start = 12 * 60;
-  const end = 15 * 60 + 30;
+  const start = 14 * 60;
+  const end = 16 * 60;
   for (let mins = start; mins < end; mins += 15) {
     const next = mins + 15;
     const label = `${String(Math.floor(mins / 60)).padStart(2, "0")}:${String(mins % 60).padStart(2, "0")}-${String(Math.floor(next / 60)).padStart(2, "0")}:${String(next % 60).padStart(2, "0")}`;
@@ -572,8 +572,8 @@ function populateLocalTimeFilter() {
     sel.appendChild(opt);
   }
   const after = document.createElement("option");
-  after.value = "after-15:30";
-  after.textContent = "After 15:30";
+  after.value = "after-16:00";
+  after.textContent = "After 16:00";
   sel.appendChild(after);
 }
 
