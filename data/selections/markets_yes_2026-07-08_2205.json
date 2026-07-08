@@ -1,0 +1,36 @@
+{
+  "run_at": "2026-07-08T22:05:48.142412+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "675130",
+      "city": "Los Angeles",
+      "market_id": "2824923",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.983,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675131",
+      "city": "San Francisco",
+      "market_id": "2824936",
+      "group_item_title": "64-65\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675114",
+      "city": "Seattle",
+      "market_id": "2824818",
+      "group_item_title": "70-71\u00b0F",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2824819",
+      "held_group_item_title": "72-73\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
