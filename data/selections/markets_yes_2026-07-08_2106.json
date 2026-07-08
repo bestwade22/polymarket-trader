@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-08T21:06:04.120835+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "675114",
+      "city": "Seattle",
+      "market_id": "2824819",
+      "groupItemTitle": "72-73\u00b0F",
+      "yes_price": 0.395,
+      "yes_token_id": "38780834935139792857756634838571070273194982698932790081735665994188424738226",
+      "buy_price": 0.41,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.395,
+      "selection_price": 0.395,
+      "gamma_yes_price": 0.405,
+      "best_bid": 0.38,
+      "best_ask": 0.41,
+      "clob_buy_price": 0.41,
+      "last_trade_price": 0.5,
+      "midpoint": 0.395,
+      "outcomePrices": [
+        0.405,
+        0.595
+      ],
+      "order_status": "live",
+      "order_id": "0xd98404c0f1db0ca8948bb9a5a4a2d0aeea402fc43f0c36eec9b2224d2ffd1f4a",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-08T21:31:03+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "675128",
+      "city": "Denver",
+      "market_id": "2824905",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9905,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675130",
+      "city": "Los Angeles",
+      "market_id": "2824923",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.988,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675131",
+      "city": "San Francisco",
+      "market_id": "2824936",
+      "group_item_title": "64-65\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.635,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675132",
+      "city": "Mexico City",
+      "market_id": "2824948",
+      "group_item_title": "23\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.6,
+      "yes_price_max": 0.6
+    }
+  ]
+}
