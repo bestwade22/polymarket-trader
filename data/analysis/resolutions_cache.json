@@ -240,6 +240,12 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "26563659982240870954423258674316144692909806571726589394468464867599713468938"
     },
+    "highest-temperature-in-beijing-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 8?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "79169523549508383932608350210913132352996580821033913038985954540911914043941"
+    },
     "highest-temperature-in-beijing-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on June 25?",
@@ -408,6 +414,12 @@
       "winning_temp": "37\u00b0C",
       "winning_token_id": "32009811301395153807866553251393999117994724403273407736392342803887526688050"
     },
+    "highest-temperature-in-chengdu-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 8?",
+      "winning_temp": "39\u00b0C",
+      "winning_token_id": "111372196943644744553906579242086092429710462994067124051656197645989907760438"
+    },
     "highest-temperature-in-chengdu-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Chengdu on June 25?",
@@ -521,6 +533,12 @@
       "title": "Highest temperature in Chongqing on July 7?",
       "winning_temp": "37\u00b0C",
       "winning_token_id": "23614586082357684231651411458650156743404613401472733733858945574446950883228"
+    },
+    "highest-temperature-in-chongqing-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 8?",
+      "winning_temp": "37\u00b0C",
+      "winning_token_id": "89116942868993602690337918608932770506233661932814995294563189273981274084292"
     },
     "highest-temperature-in-chongqing-on-june-27-2026": {
       "closed": true,
@@ -1440,6 +1458,12 @@
       "winning_temp": "30\u00b0C",
       "winning_token_id": "8989898285970441297716916709841279714038799628850431167689467005491855762802"
     },
+    "highest-temperature-in-qingdao-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Qingdao on July 8?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "44940243644043624425660179083973860771191307591166759591582646227286990209192"
+    },
     "highest-temperature-in-san-francisco-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on July 2?",
@@ -1674,6 +1698,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "99856745898606296641854031923854311033638220268362786187881029278045139777852"
     },
+    "highest-temperature-in-shenzhen-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shenzhen on July 8?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "67016751831564804716296945931831814771344362012689192750530260934083056317720"
+    },
     "highest-temperature-in-shenzhen-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Shenzhen on June 25?",
@@ -1715,6 +1745,12 @@
       "title": "Highest temperature in Singapore on July 5?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "25484296505392080580749447182213097827070730430259110308598226512649262297537"
+    },
+    "highest-temperature-in-singapore-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on July 8?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "68252204439657430432179011431336937430101811382916733665868168801993275361692"
     },
     "highest-temperature-in-singapore-on-june-27-2026": {
       "closed": true,
@@ -1775,6 +1811,12 @@
       "title": "Highest temperature in Tokyo on July 5?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "92993661078337241185463498674784941038472279998858220719570740511308414657909"
+    },
+    "highest-temperature-in-tokyo-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tokyo on July 8?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "95383415891847800667762728830211991869318026632584993299575523123845805335492"
     },
     "highest-temperature-in-tokyo-on-june-29-2026": {
       "closed": true,
