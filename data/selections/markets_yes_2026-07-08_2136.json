@@ -1,0 +1,78 @@
+{
+  "run_at": "2026-07-08T21:36:03.256119+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "675131",
+      "city": "San Francisco",
+      "market_id": "2824936",
+      "groupItemTitle": "64-65\u00b0F",
+      "yes_price": 0.595,
+      "yes_token_id": "49279219112825324296115164014194322782201407800681086797877748231070508111397",
+      "buy_price": 0.6,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.595,
+      "selection_price": 0.595,
+      "gamma_yes_price": 0.6,
+      "best_bid": 0.59,
+      "best_ask": 0.6,
+      "clob_buy_price": 0.6,
+      "last_trade_price": 0.63,
+      "midpoint": 0.595,
+      "outcomePrices": [
+        0.6,
+        0.4
+      ],
+      "order_status": "live",
+      "order_id": "0x4951f987fc56d100d32292a16113c38b01c33fa7b7ccebd2b75fd0c796e4b955",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-08T22:01:02+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "675128",
+      "city": "Denver",
+      "market_id": "2824905",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9885,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675130",
+      "city": "Los Angeles",
+      "market_id": "2824923",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.973,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675132",
+      "city": "Mexico City",
+      "market_id": "2824948",
+      "group_item_title": "23\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675114",
+      "city": "Seattle",
+      "market_id": "2824819",
+      "group_item_title": "72-73\u00b0F",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2824819",
+      "held_group_item_title": "72-73\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
