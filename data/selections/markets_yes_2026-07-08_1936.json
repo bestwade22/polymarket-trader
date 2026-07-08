@@ -1,0 +1,92 @@
+{
+  "run_at": "2026-07-08T19:36:23.063510+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "675115",
+      "city": "NYC",
+      "market_id": "2824834",
+      "group_item_title": "86-87\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.721,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675116",
+      "city": "Dallas",
+      "market_id": "2824841",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.625,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675117",
+      "city": "Atlanta",
+      "market_id": "2824852",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.785,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675118",
+      "city": "Miami",
+      "market_id": "2824865",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9495,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675119",
+      "city": "Chicago",
+      "market_id": "2824876",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675127",
+      "city": "Austin",
+      "market_id": "2824893",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675133",
+      "city": "Panama City",
+      "market_id": "2824962",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675113",
+      "city": "Toronto",
+      "market_id": "2824807",
+      "group_item_title": "29\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2824808",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "675129",
+      "city": "Houston",
+      "market_id": "2824915",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "top_up_would_overshoot",
+      "held_shares": 6.148147,
+      "held_market_id": "2824915",
+      "held_group_item_title": "94-95\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
