@@ -48,6 +48,9 @@ Parameters:
     Default: highest-temperature-in-
   StopLossDryRun:
     Type: String
+    Default: 'true'
+  StopLossScheduleEnabled:
+    Type: String
     Default: 'false'
   StopLossOrderExpiryMinutes:
     Type: String
@@ -55,6 +58,9 @@ Parameters:
   StopLossMinLocalTime:
     Type: String
     Default: '16:30'
+
+Conditions:
+  StopLossScheduleIsEnabled: !Equals [!Ref StopLossScheduleEnabled, 'true']
 
 Globals:
   Function:
@@ -142,6 +148,7 @@ Resources:
           STOP_LOSS_PCT_FLOOR: !Ref StopLossPctFloor
           STOP_LOSS_EVENT_SLUG_MARKER: !Ref StopLossEventSlugMarker
           STOP_LOSS_DRY_RUN: !Ref StopLossDryRun
+          STOP_LOSS_SCHEDULE_ENABLED: !Ref StopLossScheduleEnabled
           STOP_LOSS_ORDER_EXPIRY_MINUTES: !Ref StopLossOrderExpiryMinutes
           STOP_LOSS_MIN_LOCAL_TIME: !Ref StopLossMinLocalTime
           SIGNATURE_TYPE: !Ref SignatureType
@@ -219,8 +226,8 @@ Resources:
     Type: AWS::Scheduler::Schedule
     Properties:
       Name: polymarket-trader-trade-hourly
-      Description: Trade at :00 and :30 UTC each hour; gate skips when no event is in local trading window
-      ScheduleExpression: cron(0/30 * * * ? *)
+      Description: Trade at :05 and :35 UTC each hour; gate skips when no event is in local trading window
+      ScheduleExpression: cron(5,35 * * * ? *)
       ScheduleExpressionTimezone: UTC
       FlexibleTimeWindow:
         Mode: 'OFF'
@@ -240,7 +247,7 @@ Resources:
       ScheduleExpressionTimezone: UTC
       FlexibleTimeWindow:
         Mode: 'OFF'
-      State: ENABLED
+      State: !If [StopLossScheduleIsEnabled, ENABLED, DISABLED]
       Target:
         Arn: !GetAtt StopLossCheckFunction.Arn
         RoleArn: !GetAtt SchedulerRole.Arn

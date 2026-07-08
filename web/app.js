@@ -145,14 +145,14 @@ function parseRangeMinutes(range) {
 
 function inLocalTimeRange(mins, band) {
   if (mins == null) return false;
-  if (band === "before-14:00") return mins < 14 * 60;
+  if (band === "before-12:00") return mins < 12 * 60;
   if (band === "after-16:00") return mins >= 16 * 60;
   const [lo, hi] = parseRangeMinutes(band);
   return mins >= lo && mins < hi;
 }
 
 function localTimeBandSortKey(label) {
-  if (label === "before 14:00") return -1;
+  if (label === "before 12:00") return -1;
   if (label === "after 16:00") return 24 * 60;
   if (label === "unknown") return 9999;
   const [start] = label.split("-");
@@ -312,6 +312,7 @@ function computeFilteredSummary(records) {
     sold_but_would_have_won_count: 0,
     pnl_count: 0,
     buy_price_total: 0,
+    would_win_total: 0,
   };
   for (const r of records) {
     if (r.result === "win") s.win_count++;
@@ -329,6 +330,10 @@ function computeFilteredSummary(records) {
       s.pnl_count += 1;
     }
     if (r.sold_but_would_have_won) s.sold_but_would_have_won_count++;
+
+    if (r.would_win_value_usd != null) {
+      s.would_win_total += Number(r.would_win_value_usd) || 0;
+    }
   }
   const settled = s.win_count + s.loss_count + s.sold_count;
   s.win_pct = settled ? Math.round((s.win_count / settled) * 1000) / 10 : 0;
@@ -340,6 +345,7 @@ function computeFilteredSummary(records) {
   s.avg_buy_price = records.length ? s.buy_price_total / records.length : 0;
   s.avg_pnl_usd = s.pnl_count ? s.total_realized_pnl_usd / s.pnl_count : 0;
   s.avg_bought_time_hk = avgHkMinutes(records);
+  s.total_would_win_value_usd = s.would_win_total;
   return s;
 }
 
@@ -364,6 +370,7 @@ function renderSummary(records) {
       <div><span class="summary-label">Total cost</span><span class="summary-value">$${fs.total_cost_basis_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Total P&amp;L</span><span class="summary-value">$${fs.total_realized_pnl_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Sold→would win</span><span class="summary-value">${fs.sold_but_would_have_won_count}</span></div>
+      <div><span class="summary-label">Is would win total</span><span class="summary-value">$${(fs.total_would_win_value_usd ?? 0).toFixed(2)}</span></div>
     </div>`;
 }
 
@@ -512,6 +519,7 @@ function renderTable(records) {
       const sharesTitle = r.shares_over_target
         ? ` title="Over target ${r.share_count_target ?? 10}"`
         : "";
+      const wouldWin = r.would_win_value_usd != null ? `$${Number(r.would_win_value_usd).toFixed(2)}` : "—";
       return `
     <tr>
       <td>${r.date}</td>
@@ -530,6 +538,7 @@ function renderTable(records) {
       <td>${vsBoughtLabel(r)}</td>
       <td>${soldOutcomeLabel(r)}</td>
       <td>${dropHk}</td>
+      <td>${wouldWin}</td>
       <td>${r.sell_value_pct != null ? r.sell_value_pct.toFixed(1) + "%" : "—"}</td>
     </tr>`;
     })
@@ -577,7 +586,18 @@ function populateTimezoneFilter() {
 
 function populateLocalTimeFilter() {
   const sel = document.getElementById("filter-local-time");
-  const start = 14 * 60;
+  sel.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = "";
+  all.textContent = "All";
+  sel.appendChild(all);
+
+  const before = document.createElement("option");
+  before.value = "before-12:00";
+  before.textContent = "Before 12:00";
+  sel.appendChild(before);
+
+  const start = 12 * 60;
   const end = 16 * 60;
   for (let mins = start; mins < end; mins += 15) {
     const next = mins + 15;

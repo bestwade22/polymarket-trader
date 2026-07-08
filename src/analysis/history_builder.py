@@ -12,7 +12,11 @@ from zoneinfo import ZoneInfo
 from config.settings import DATA_DIR, settings
 from src.analysis.models import TradeRecord
 from src.analysis.resolution import CachedResolution, fetch_resolved_event, resolve_winning_temp
-from src.api.clob_client import ClobPriceClient, first_price_below_threshold
+from src.api.clob_client import (
+    ClobPriceClient,
+    first_price_below_threshold,
+    last_price_above_threshold_before_drop,
+)
 from src.api.data_client import fetch_user_positions
 from src.utils.city_parser import parse_city_from_slug, parse_city_from_title, parse_date_from_slug
 from src.utils.hk_time import format_hk
@@ -21,6 +25,7 @@ from src.utils.market_parser import compare_temp_buckets, extract_temp_label, pa
 logger = logging.getLogger(__name__)
 
 PRICE_DROP_THRESHOLD = 0.01
+PRICE_LAST_ABOVE_THRESHOLD = 0.25
 MIN_POSITION_SHARES = 0.01
 
 
@@ -336,10 +341,23 @@ def build_trade_record(
             start_ts=bought_ts,
             end_ts=sold_ts or int(datetime.now(timezone.utc).timestamp()),
         )
-        drop_ts = first_price_below_threshold(
-            history, threshold=PRICE_DROP_THRESHOLD, after_ts=bought_ts
-        )
-        price_drop_at = _iso_from_ts(drop_ts)
+        if result == "loss":
+            last_above_ts = last_price_above_threshold_before_drop(
+                history,
+                above_threshold=PRICE_LAST_ABOVE_THRESHOLD,
+                drop_below_threshold=PRICE_DROP_THRESHOLD,
+                after_ts=bought_ts,
+            )
+            if last_above_ts is None:
+                last_above_ts = first_price_below_threshold(
+                    history, threshold=PRICE_DROP_THRESHOLD, after_ts=bought_ts
+                )
+            price_drop_at = _iso_from_ts(last_above_ts)
+        else:
+            drop_ts = first_price_below_threshold(
+                history, threshold=PRICE_DROP_THRESHOLD, after_ts=bought_ts
+            )
+            price_drop_at = _iso_from_ts(drop_ts)
 
     event_date = parse_date_from_slug(group.event_slug)
     date_str = event_date.isoformat() if event_date else ""
@@ -358,6 +376,10 @@ def build_trade_record(
             price_drop_at_hk = format_hk(drop_dt)
         except ValueError:
             price_drop_at_hk = ""
+
+    would_win_value_usd: Optional[float] = None
+    if final_value is not None:
+        would_win_value_usd = round(cost_basis + final_value, 4)
 
     return TradeRecord(
         date=date_str,
@@ -391,6 +413,7 @@ def build_trade_record(
         token_id=group.token_id,
         condition_id=group.condition_id,
         transaction_hash=group.transaction_hash,
+        would_win_value_usd=would_win_value_usd,
     )
 
 

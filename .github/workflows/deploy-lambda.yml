@@ -55,7 +55,8 @@ jobs:
               OrderExpiryMinutes=25 \
               StopLossPct=50 \
               StopLossPctFloor=10 \
-              StopLossDryRun=false \
+              StopLossDryRun=true \
+              StopLossScheduleEnabled=false \
               StopLossOrderExpiryMinutes=13 \
               StopLossMinLocalTime=16:30"
 

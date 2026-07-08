@@ -51,7 +51,7 @@ def test_compute_top_up_shares():
     assert compute_top_up_shares(0, 15, 5) == (False, 15, "no_position")
     assert compute_top_up_shares(10, 15, 5) == (False, 5, "partial_top_up")
     assert compute_top_up_shares(15, 15, 5) == (True, 0, "has_full_position")
-    assert compute_top_up_shares(10.3, 15, 5) == (False, 5, "partial_top_up")
+    assert compute_top_up_shares(10.3, 15, 5) == (True, 0, "top_up_would_overshoot")
 
 
 def test_parse_conditional_balance():
@@ -139,7 +139,7 @@ def test_event_position_holdings_splits_full_and_partial():
 
 
 def test_filter_selections_skips_partial_on_other_market():
-    checker = _FakeChecker({"token_yes_92": 10.0})
+    checker = _FakeChecker({"token_yes_92": 5.0})
     kept, skipped = filter_selections_without_position([_miami_selection("2646663")], checker)
     assert kept == []
     assert skipped[0]["reason"] == "partial_on_other_market"
@@ -147,7 +147,7 @@ def test_filter_selections_skips_partial_on_other_market():
 
 
 def test_filter_selections_top_up_when_partial_matches_selected_market():
-    checker = _FakeChecker({"token_yes_94": 10.0})
+    checker = _FakeChecker({"token_yes_94": 5.0})
     selection = _miami_selection("2646663")
     kept, skipped = filter_selections_without_position([selection], checker)
     assert skipped == []
@@ -201,7 +201,7 @@ def test_filter_selections_without_position_skips_city_with_full_position():
 
 
 def test_filter_selections_without_position_top_up_partial_position():
-    checker = _FakeChecker({"token_yes_24": 10.0})
+    checker = _FakeChecker({"token_yes_24": 5.0})
     selection = _toronto_selection()
     kept, skipped = filter_selections_without_position([selection], checker)
     assert skipped == []
@@ -233,7 +233,7 @@ def test_filter_selections_scans_others_only_when_selected_empty():
         def get_yes_balance(self, token_id: str):
             calls.append(token_id)
             if token_id == "token_yes_92":
-                return 10.0
+                return 5.0
             return 0.0
 
     checker = _TrackingChecker(executor=object())  # type: ignore[arg-type]

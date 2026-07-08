@@ -24,6 +24,11 @@ def compute_top_up_shares(
     if held_balance >= MIN_POSITION_SHARES:
         needed = target_share_count - held_balance
         order_shares = max(math.ceil(needed), order_min_size)
+        # Never top up when the required integer order would overshoot target.
+        # This protects against follow-up buys like +5 when balance already
+        # appears effectively full but has small decimal drift.
+        if held_balance + order_shares > target_share_count:
+            return True, 0, "top_up_would_overshoot"
         return False, int(order_shares), "partial_top_up"
     order_shares = max(target_share_count, order_min_size)
     return False, int(order_shares), "no_position"

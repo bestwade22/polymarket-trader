@@ -80,7 +80,7 @@ By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADIN
 - Run during a city's trading window → tradable.
 - Run outside the window → `Found 0 tradable events` (expected).
 - Past event dates → all windows have passed; use `--all-cities` for a manual run.
-- `run-scheduler` and AWS Lambda call `trade-hourly` at **:00 and :30 UTC** each hour; the gate skips when no event is in its local window.
+- `run-scheduler` and AWS Lambda call `trade-hourly` at **:05 and :35 UTC** each hour; the gate skips when no event is in its local window.
 
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
@@ -132,7 +132,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DRY_RUN` | `true` | Skip real order placement |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
-| `STOP_LOSS_DRY_RUN` | `false` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
+| `STOP_LOSS_DRY_RUN` | `true` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
+| `STOP_LOSS_SCHEDULE_ENABLED` | `false` | Enable/disable the AWS stop-loss scheduler (schedule is disabled by default) |
 | `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
 | `STOP_LOSS_PCT_FLOOR` | `10` | Stop-loss lower bound: only sell when value_pct is above this and below `STOP_LOSS_PCT` |
 | `STOP_LOSS_MIN_LOCAL_TIME` | `16:30` | Stop-loss only runs at or after this local time on the event date (city timezone) |
@@ -196,8 +197,8 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | **:00 and :30 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
-| `stop-loss-check` | **Every 15 min UTC** | Scans live positions via Data API; sells highest-temp holdings when value ≤ `STOP_LOSS_PCT`% of avg buy |
+| `trade-hourly` | **:05 and :35 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
+| `stop-loss-check` | **Disabled (manual only)** | Stop-loss code and Lambda remain available, but the scheduler is disabled by default |
 | `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
 ```mermaid

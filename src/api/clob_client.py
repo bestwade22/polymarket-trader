@@ -181,3 +181,35 @@ def first_price_below_threshold(
         if price is not None and price < threshold:
             return ts
     return None
+
+
+def last_price_above_threshold_before_drop(
+    history: list[dict[str, Any]],
+    *,
+    above_threshold: float,
+    drop_below_threshold: float,
+    after_ts: int,
+) -> Optional[int]:
+    """Last unix timestamp where price was above `above_threshold` before it drops below `drop_below_threshold`."""
+    points = sorted(history, key=lambda p: int(p.get("t") or 0))
+    drop_ts: Optional[int] = None
+    for point in points:
+        ts = int(point.get("t") or 0)
+        if ts < after_ts:
+            continue
+        price = parse_float(point.get("p"))
+        if price is not None and price < drop_below_threshold:
+            drop_ts = ts
+            break
+    if drop_ts is None:
+        return None
+
+    last_above: Optional[int] = None
+    for point in points:
+        ts = int(point.get("t") or 0)
+        if ts < after_ts or ts > drop_ts:
+            continue
+        price = parse_float(point.get("p"))
+        if price is not None and price > above_threshold:
+            last_above = ts
+    return last_above

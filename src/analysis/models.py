@@ -37,6 +37,7 @@ class TradeRecord:
     price_drop_below_threshold_at_hk: str = ""
     share_count_target: int = 10
     shares_over_target: bool = False
+    would_win_value_usd: Optional[float] = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -60,6 +61,7 @@ class TradeSummary:
     sold_lose_count: int = 0
     win_plus_sold_win_count: int = 0
     win_plus_sold_win_pct: float = 0.0
+    total_would_win_value_usd: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -91,6 +93,7 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
     has_realized = False
     pnl_count = 0
     buy_price_total = 0.0
+    would_win_total = 0.0
     for rec in records:
         summary.total_cost_basis_usd += rec.cost_basis_usd
         buy_price_total += rec.buy_price
@@ -113,6 +116,8 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
             realized_total += pnl
             has_realized = True
             pnl_count += 1
+        if rec.would_win_value_usd is not None:
+            would_win_total += float(rec.would_win_value_usd)
 
     settled = summary.win_count + summary.loss_count + summary.sold_count
     summary.win_pct = round((summary.win_count / settled) * 100, 1) if settled else 0.0
@@ -123,6 +128,7 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
     summary.total_cost_basis_usd = round(summary.total_cost_basis_usd, 2)
     summary.avg_buy_usd = round(summary.total_cost_basis_usd / len(records), 2) if records else 0.0
     summary.avg_buy_price = round(buy_price_total / len(records), 3) if records else 0.0
+    summary.total_would_win_value_usd = round(would_win_total, 2)
     if has_realized:
         summary.total_realized_pnl_usd = round(realized_total, 2)
         summary.avg_pnl_usd = round(realized_total / pnl_count, 2) if pnl_count else 0.0

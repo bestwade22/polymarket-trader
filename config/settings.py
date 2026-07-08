@@ -182,7 +182,8 @@ class Settings:
     trading_window_end_hour: int = _trading_window_end_h
     trading_window_end_minute: int = _trading_window_end_m
     dry_run: bool = _env_bool("DRY_RUN", True)
-    stop_loss_dry_run: bool = _env_bool("STOP_LOSS_DRY_RUN", False)
+    stop_loss_dry_run: bool = _env_bool("STOP_LOSS_DRY_RUN", True)
+    stop_loss_schedule_enabled: bool = _env_bool("STOP_LOSS_SCHEDULE_ENABLED", False)
     daily_fetch_hour_utc: int = int(os.getenv("DAILY_FETCH_HOUR_UTC", "6"))
     event_date: str = os.getenv("EVENT_DATE", "")  # YYYY-MM-DD override; empty = today
     stop_loss_pct: float = float(os.getenv("STOP_LOSS_PCT", "50"))
