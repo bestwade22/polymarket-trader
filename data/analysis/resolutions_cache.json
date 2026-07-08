@@ -552,6 +552,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "15143619991758179129699334310262001376852243333877273904125261006500495389828"
     },
+    "highest-temperature-in-dallas-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 7?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "74039732664244526633501304949991874360077923469525413933272455345882852831937"
+    },
     "highest-temperature-in-dallas-on-june-23-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on June 23?",
@@ -749,6 +755,12 @@
       "title": "Highest temperature in Houston on July 5?",
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "114151473487944502012129558408979400376953540461977200897513862861329646708055"
+    },
+    "highest-temperature-in-houston-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on July 7?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "77107574914807009660122253628811243142254793637656495325457934363907465041310"
     },
     "highest-temperature-in-houston-on-june-24-2026": {
       "closed": true,
@@ -1559,6 +1571,12 @@
       "title": "Highest temperature in Seattle on July 6?",
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "64937268564571725418120539434354010990478672841445567970360970507986149778932"
+    },
+    "highest-temperature-in-seattle-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on July 7?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "53522508248127672731818667955536043745778949863926357468143593998676022405913"
     },
     "highest-temperature-in-seattle-on-june-27-2026": {
       "closed": true,
