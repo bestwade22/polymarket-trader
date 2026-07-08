@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-07-08T10:30:36.695233+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "671866",
+      "city": "Karachi",
+      "market_id": "2812957",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9885,
+      "yes_price_max": 0.6
+    }
+  ]
+}
