@@ -1308,6 +1308,12 @@
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "25495809435163850671036716008604697910963890987083563837282920002567733659793"
     },
+    "highest-temperature-in-nyc-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 7?",
+      "winning_temp": "72-73\u00b0F",
+      "winning_token_id": "55142487752353300564167362764431404016557900280620226582979643037970073541880"
+    },
     "highest-temperature-in-nyc-on-june-24-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on June 24?",
@@ -1781,6 +1787,12 @@
       "title": "Highest temperature in Toronto on July 6?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "25629468762436954622489794830690481058464431761697532576946188813966311075790"
+    },
+    "highest-temperature-in-toronto-on-july-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 7?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "83335756797184841798004882272948177497098685809117759161355298345340032994870"
     },
     "highest-temperature-in-toronto-on-june-23-2026": {
       "closed": true,
