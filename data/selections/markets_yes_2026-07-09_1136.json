@@ -1,0 +1,65 @@
+{
+  "run_at": "2026-07-09T11:36:08.854349+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "675486",
+      "city": "Ankara",
+      "market_id": "2825815",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.75,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675489",
+      "city": "Tel Aviv",
+      "market_id": "2825849",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675504",
+      "city": "Istanbul",
+      "market_id": "2826014",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675509",
+      "city": "Jeddah",
+      "market_id": "2826072",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "675503",
+      "city": "Moscow",
+      "market_id": "2826005",
+      "group_item_title": "20\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2826005",
+      "held_group_item_title": "20\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "675507",
+      "city": "Helsinki",
+      "market_id": "2826050",
+      "group_item_title": "18\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2826050",
+      "held_group_item_title": "18\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
