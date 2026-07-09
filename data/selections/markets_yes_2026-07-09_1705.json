@@ -1,0 +1,50 @@
+{
+  "run_at": "2026-07-09T17:05:55.910805+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "678803",
+      "city": "Buenos Aires",
+      "market_id": "2840221",
+      "groupItemTitle": "18\u00b0C",
+      "yes_price": 0.37,
+      "yes_token_id": "78633868014283925730346854345491283578361936869963946547544159581563080369984",
+      "buy_price": 0.38,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.37,
+      "selection_price": 0.37,
+      "gamma_yes_price": 0.37,
+      "best_bid": 0.36,
+      "best_ask": 0.38,
+      "clob_buy_price": null,
+      "last_trade_price": 0.38,
+      "midpoint": null,
+      "outcomePrices": [
+        0.37,
+        0.63
+      ],
+      "order_status": null,
+      "order_id": null,
+      "dry_run": true,
+      "order_type": null,
+      "expires_at": null,
+      "order_error": "PolyApiException[status_code=400, error_message={'error': 'invalid token id'}]"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "678802",
+      "city": "Sao Paulo",
+      "market_id": "2840209",
+      "group_item_title": "22\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.665,
+      "yes_price_max": 0.6
+    }
+  ]
+}
