@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-09T21:06:03.328982+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "678805",
+      "city": "Seattle",
+      "market_id": "2840241",
+      "groupItemTitle": "76-77\u00b0F",
+      "yes_price": 0.475,
+      "yes_token_id": "6668060153486931795969921132439765332283477149700648585319659230971778060710",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.475,
+      "selection_price": 0.475,
+      "gamma_yes_price": 0.525,
+      "best_bid": 0.44,
+      "best_ask": 0.56,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.52,
+      "midpoint": 0.475,
+      "outcomePrices": [
+        0.525,
+        0.475
+      ],
+      "order_status": "live",
+      "order_id": "0x80bff45b751e2d7daa83c62fc244f7619ecb6b81d7541401a945b1a532f57026",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-09T21:31:02+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "678812",
+      "city": "Denver",
+      "market_id": "2840319",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "678814",
+      "city": "Los Angeles",
+      "market_id": "2840339",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "678815",
+      "city": "San Francisco",
+      "market_id": "2840350",
+      "group_item_title": "66-67\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "678816",
+      "city": "Mexico City",
+      "market_id": "2840363",
+      "group_item_title": "23\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.974,
+      "yes_price_max": 0.6
+    }
+  ]
+}
