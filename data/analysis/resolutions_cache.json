@@ -246,6 +246,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "79169523549508383932608350210913132352996580821033913038985954540911914043941"
     },
+    "highest-temperature-in-beijing-on-july-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 9?",
+      "winning_temp": "35\u00b0C",
+      "winning_token_id": "74178217614406732095357226259131316211258227479245113057766609557130592613909"
+    },
     "highest-temperature-in-beijing-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on June 25?",
@@ -420,6 +426,12 @@
       "winning_temp": "39\u00b0C",
       "winning_token_id": "111372196943644744553906579242086092429710462994067124051656197645989907760438"
     },
+    "highest-temperature-in-chengdu-on-july-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 9?",
+      "winning_temp": "39\u00b0C",
+      "winning_token_id": "45027378647961836694831666920095650765226183070551125766450196890880104658392"
+    },
     "highest-temperature-in-chengdu-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in Chengdu on June 25?",
@@ -539,6 +551,12 @@
       "title": "Highest temperature in Chongqing on July 8?",
       "winning_temp": "37\u00b0C",
       "winning_token_id": "89116942868993602690337918608932770506233661932814995294563189273981274084292"
+    },
+    "highest-temperature-in-chongqing-on-july-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 9?",
+      "winning_temp": "38\u00b0C",
+      "winning_token_id": "2621866082431404058070683171233402855938384389246580964153586738363077367196"
     },
     "highest-temperature-in-chongqing-on-june-27-2026": {
       "closed": true,
@@ -1727,6 +1745,12 @@
       "title": "Highest temperature in Shanghai on July 6?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "38252294941922717439791141058188272586356247047842288310756679751233350316821"
+    },
+    "highest-temperature-in-shanghai-on-july-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shanghai on July 9?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "21228376712237475600668109296701015202528306799398733301685395236790708303125"
     },
     "highest-temperature-in-shenzhen-on-july-1-2026": {
       "closed": true,
