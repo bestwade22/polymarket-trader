@@ -948,6 +948,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "90027005478780540504690054770733966086843089111877744814417040769472547407825"
     },
+    "highest-temperature-in-london-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on July 8?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "81390893468706376576844287210082130117046430358567919855231388820700686070686"
+    },
     "highest-temperature-in-london-on-june-25-2026": {
       "closed": true,
       "title": "Highest temperature in London on June 25?",
@@ -1043,6 +1049,12 @@
       "title": "Highest temperature in Madrid on July 7?",
       "winning_temp": "40\u00b0C",
       "winning_token_id": "12379942416560824050627467830474887048473955758612936179010550367290765372135"
+    },
+    "highest-temperature-in-madrid-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Madrid on July 8?",
+      "winning_temp": "39\u00b0C",
+      "winning_token_id": "26399447145553858538209977082416452058074763950554191722994756850042595448705"
     },
     "highest-temperature-in-madrid-on-june-25-2026": {
       "closed": true,
@@ -1193,6 +1205,12 @@
       "title": "Highest temperature in Milan on July 6?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "51783800493655206833485024012072135866370422992105453671271575957898323375530"
+    },
+    "highest-temperature-in-milan-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on July 8?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "96509131128573050302755608326875998873682883228697551344570555232103506964118"
     },
     "highest-temperature-in-milan-on-june-25-2026": {
       "closed": true,
@@ -1421,6 +1439,12 @@
       "title": "Highest temperature in Paris on July 7?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "4098307739642386849110116877441263286074483923159741135947763402840953298069"
+    },
+    "highest-temperature-in-paris-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on July 8?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "73521863171696715276420196914029835991286345624350445946162898572660505966973"
     },
     "highest-temperature-in-paris-on-june-25-2026": {
       "closed": true,
