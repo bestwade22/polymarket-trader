@@ -1548,6 +1548,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "106603487082264033920706352728245333197593064315567364740076469929972514882771"
     },
+    "highest-temperature-in-sao-paulo-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on July 8?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "81486370926865255171804794345215450645495689630503343988377035715185622566313"
+    },
     "highest-temperature-in-sao-paulo-on-june-19-2026": {
       "closed": true,
       "title": "Highest temperature in Sao Paulo on June 19?",
@@ -1877,6 +1883,12 @@
       "title": "Highest temperature in Toronto on July 7?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "83335756797184841798004882272948177497098685809117759161355298345340032994870"
+    },
+    "highest-temperature-in-toronto-on-july-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 8?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "47054582646968284302636183977441332280352206929067674933035609241792319768957"
     },
     "highest-temperature-in-toronto-on-june-23-2026": {
       "closed": true,
