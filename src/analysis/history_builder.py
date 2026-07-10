@@ -10,7 +10,7 @@ from typing import Any, Optional
 from zoneinfo import ZoneInfo
 
 from config.settings import DATA_DIR, settings
-from src.analysis.models import TradeRecord
+from src.analysis.models import TradeRecord, compute_outcome_value_parts
 from src.analysis.resolution import CachedResolution, fetch_resolved_event, resolve_winning_temp
 from src.api.clob_client import (
     ClobPriceClient,
@@ -377,9 +377,11 @@ def build_trade_record(
         except ValueError:
             price_drop_at_hk = ""
 
-    would_win_value_usd: Optional[float] = None
-    if final_value is not None:
-        would_win_value_usd = round(cost_basis + final_value, 4)
+    outcome_value = compute_outcome_value_parts(
+        result=result,
+        cost_basis_usd=cost_basis,
+        pnl=final_value,
+    )
 
     return TradeRecord(
         date=date_str,
@@ -413,7 +415,7 @@ def build_trade_record(
         token_id=group.token_id,
         condition_id=group.condition_id,
         transaction_hash=group.transaction_hash,
-        would_win_value_usd=would_win_value_usd,
+        outcome_value_usd=outcome_value,
     )
 
 

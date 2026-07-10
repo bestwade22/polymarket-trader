@@ -67,6 +67,7 @@ function recordPnl(r) {
 
 function isSoldWin(r) {
   if (r.result !== "sold") return false;
+  if (r.sold_but_would_have_won || isSoldWouldLose(r)) return false;
   const pnl = recordPnl(r);
   return pnl != null && pnl >= 0;
 }
@@ -75,6 +76,22 @@ function isSoldLose(r) {
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
   return pnl != null && pnl < 0;
+}
+
+function isSoldWouldLose(r) {
+  if (r.result !== "sold") return false;
+  const pnl = recordPnl(r);
+  if (pnl == null || pnl < 0) return false;
+  return r.win_temp_vs_bought && r.win_temp_vs_bought !== "same" && r.win_temp_vs_bought !== "unknown";
+}
+
+function outcomeValue(r) {
+  if (r.outcome_value_usd != null) return Number(r.outcome_value_usd);
+  if (r.would_win_value_usd != null) return Number(r.would_win_value_usd);
+  const pnl = recordPnl(r);
+  if (pnl == null) return null;
+  if (r.result === "loss") return pnl;
+  return (r.cost_basis_usd || 0) + pnl;
 }
 
 function extractTempLabel(text) {
@@ -185,21 +202,27 @@ function vsBoughtLabel(r) {
 
 function soldOutcomeKey(r) {
   if (r.result !== "sold") return "";
-  if (isSoldWin(r)) return "sold_win";
   if (r.sold_but_would_have_won) return "would_win";
+  if (isSoldWouldLose(r)) return "would_lose";
+  if (isSoldWin(r)) return "sold_win";
   if (isSoldLose(r)) return "sold_lose";
   return "sold";
 }
 
 function soldOutcomeLabel(r) {
   if (r.result !== "sold") return "—";
-  if (isSoldWin(r)) {
-    return `<span class="sold-win">Sold win</span>`;
-  }
   if (r.sold_but_would_have_won) {
     const bought = extractTempLabel(r.bought_temp);
     const won = r.winning_temp || "?";
     return `<span class="regret-yes">Would win (${bought}=${won})</span>`;
+  }
+  if (isSoldWouldLose(r)) {
+    const bought = extractTempLabel(r.bought_temp);
+    const won = r.winning_temp || "?";
+    return `<span class="sold-win">Would lose (${bought}→${won})</span>`;
+  }
+  if (isSoldWin(r)) {
+    return `<span class="sold-win">Sold win</span>`;
   }
   if (isSoldLose(r)) {
     return `<span class="regret-no">Sold lose</span>`;
@@ -259,6 +282,10 @@ function sortRecords(records) {
       av = soldOutcomeKey(a);
       bv = soldOutcomeKey(b);
     }
+    if (sortKey === "outcome_value_usd") {
+      av = outcomeValue(a) ?? "";
+      bv = outcomeValue(b) ?? "";
+    }
     if (av == null) av = "";
     if (bv == null) bv = "";
     if (typeof av === "number" && typeof bv === "number") {
@@ -312,7 +339,8 @@ function computeFilteredSummary(records) {
     sold_but_would_have_won_count: 0,
     pnl_count: 0,
     buy_price_total: 0,
-    would_win_total: 0,
+    outcome_total: 0,
+    outcome_count: 0,
   };
   for (const r of records) {
     if (r.result === "win") s.win_count++;
@@ -331,8 +359,10 @@ function computeFilteredSummary(records) {
     }
     if (r.sold_but_would_have_won) s.sold_but_would_have_won_count++;
 
-    if (r.would_win_value_usd != null) {
-      s.would_win_total += Number(r.would_win_value_usd) || 0;
+    const outcome = outcomeValue(r);
+    if (outcome != null) {
+      s.outcome_total += outcome;
+      s.outcome_count += 1;
     }
   }
   const settled = s.win_count + s.loss_count + s.sold_count;
@@ -345,7 +375,8 @@ function computeFilteredSummary(records) {
   s.avg_buy_price = records.length ? s.buy_price_total / records.length : 0;
   s.avg_pnl_usd = s.pnl_count ? s.total_realized_pnl_usd / s.pnl_count : 0;
   s.avg_bought_time_hk = avgHkMinutes(records);
-  s.total_would_win_value_usd = s.would_win_total;
+  s.total_outcome_value_usd = s.outcome_total;
+  s.avg_outcome_value_usd = s.outcome_count ? s.outcome_total / s.outcome_count : 0;
   return s;
 }
 
@@ -370,7 +401,8 @@ function renderSummary(records) {
       <div><span class="summary-label">Total cost</span><span class="summary-value">$${fs.total_cost_basis_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Total P&amp;L</span><span class="summary-value">$${fs.total_realized_pnl_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Sold→would win</span><span class="summary-value">${fs.sold_but_would_have_won_count}</span></div>
-      <div><span class="summary-label">Is would win total</span><span class="summary-value">$${(fs.total_would_win_value_usd ?? 0).toFixed(2)}</span></div>
+      <div><span class="summary-label">Total outcome</span><span class="summary-value">$${(fs.total_outcome_value_usd ?? 0).toFixed(2)}</span></div>
+      <div><span class="summary-label">Avg outcome</span><span class="summary-value">$${(fs.avg_outcome_value_usd ?? 0).toFixed(2)}</span></div>
     </div>`;
 }
 
@@ -382,18 +414,32 @@ const INSIGHT_COLUMNS = [
   { key: "win_plus_sold_win_pct", label: "Win+Sold%", type: "number" },
   { key: "avg_buy_price", label: "Avg buy", type: "number" },
   { key: "avg_pnl_usd", label: "Avg P&amp;L", type: "number" },
+  { key: "avg_outcome_value_usd", label: "Avg outcome", type: "number" },
 ];
+
+const INSIGHT_COLUMNS_WITH_CITIES = [
+  { key: "group", label: "Group (UTC)", type: "string" },
+  { key: "city_count", label: "Cities", type: "number" },
+  ...INSIGHT_COLUMNS.slice(1),
+];
+
+function insightColumnsFor(title) {
+  if (title === "By UTC buy time" || title === "By timezone group (UTC)") {
+    return INSIGHT_COLUMNS_WITH_CITIES;
+  }
+  return INSIGHT_COLUMNS;
+}
 
 function sortInsightEntries(title, data, limit) {
   const state = insightSortState[title] || { key: "group", asc: true };
-  if (title === "By local buy time" && !insightSortState[title]) {
+  if ((title === "By local buy time" || title === "By UTC buy time") && !insightSortState[title]) {
     state.key = "group";
     state.asc = true;
     state.groupSort = "time";
   }
 
   let entries = Object.entries(data || {});
-  if (title === "By local buy time" && state.groupSort === "time") {
+  if ((title === "By local buy time" || title === "By UTC buy time") && state.groupSort === "time") {
     entries.sort((a, b) => localTimeBandSortKey(a[0]) - localTimeBandSortKey(b[0]));
     if (limit) entries = entries.slice(0, limit);
     return entries;
@@ -421,15 +467,16 @@ function sortInsightEntries(title, data, limit) {
 
 function renderGroupTable(title, data, options = {}) {
   const { limit = null, defaultSort = null } = options;
+  const columns = insightColumnsFor(title);
   if (!insightSortState[title]) {
     insightSortState[title] = defaultSort || { key: "count", asc: false };
-    if (title === "By local buy time") {
+    if (title === "By local buy time" || title === "By UTC buy time") {
       insightSortState[title] = { key: "group", asc: true, groupSort: "time" };
     }
   }
   const state = insightSortState[title];
   const entries = sortInsightEntries(title, data, limit);
-  const header = INSIGHT_COLUMNS.map(
+  const header = columns.map(
     (col) =>
       `<th class="insight-sort" data-insight="${title}" data-key="${col.key}">${col.label}${state.key === col.key ? (state.asc ? " ▲" : " ▼") : ""}</th>`
   ).join("");
@@ -439,16 +486,23 @@ function renderGroupTable(title, data, options = {}) {
           ([key, stats]) => `
             <tr>
               <td>${key}</td>
-              <td>${stats.count ?? 0}</td>
-              <td>${stats.settled ?? 0}</td>
-              <td>${(stats.win_rate_pct ?? 0).toFixed(1)}%</td>
-              <td>${(stats.win_plus_sold_win_pct ?? 0).toFixed(1)}%</td>
-              <td>${(stats.avg_buy_price ?? 0).toFixed(3)}</td>
-              <td>$${(stats.avg_pnl_usd ?? 0).toFixed(2)}</td>
+              ${columns.slice(1).map((col) => {
+                const val = stats[col.key] ?? 0;
+                if (col.key === "win_rate_pct" || col.key === "win_plus_sold_win_pct") {
+                  return `<td>${Number(val).toFixed(1)}%</td>`;
+                }
+                if (col.key === "avg_buy_price") {
+                  return `<td>${Number(val).toFixed(3)}</td>`;
+                }
+                if (col.key.startsWith("avg_") || col.key.startsWith("total_")) {
+                  return `<td>$${Number(val).toFixed(2)}</td>`;
+                }
+                return `<td>${val}</td>`;
+              }).join("")}
             </tr>`
         )
         .join("")
-    : `<tr><td colspan="${INSIGHT_COLUMNS.length}">No data</td></tr>`;
+    : `<tr><td colspan="${columns.length}">No data</td></tr>`;
   return `
     <section class="insight-card" data-insight-title="${title}">
       <h3>${title}</h3>
@@ -465,11 +519,19 @@ function renderInsights(data) {
   const container = document.getElementById("insights-content");
   const insightSections = [
     ["By city", data.summary_by_city, { limit: null }],
-    ["By timezone group", data.summary_by_timezone_group, { limit: null }],
-    ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
+    ["By timezone group (UTC)", data.summary_by_timezone_group, { limit: null }],
+    ["By UTC buy time", data.summary_by_utc_buy_time_band, { limit: null }],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
+    ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
+    ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
+    ["By result", data.summary_by_result, { limit: null }],
     ["By win temp vs bought", data.summary_by_win_temp_vs_bought, { limit: null }],
+    ["By trade window", data.summary_by_trade_window, { limit: null }],
     ["By weekday", data.summary_by_weekday, { limit: null }],
+    ["By month", data.summary_by_month, { limit: null }],
+    ["By ROI band", data.summary_by_roi_band, { limit: null }],
+    ["By shares band", data.summary_by_shares_band, { limit: null }],
+    ["By city timezone", data.summary_by_city_timezone, { limit: null }],
   ];
   const cards = insightSections
     .map(([title, stats, opts]) => renderGroupTable(title, stats, opts))
@@ -479,6 +541,7 @@ function renderInsights(data) {
       <h3>Highlights</h3>
       <div class="summary-grid">
         <div><span class="summary-label">Sold regret rate</span><span class="summary-value">${(data.stop_loss_regret_rate_pct ?? 0).toFixed(1)}%</span></div>
+        <div><span class="summary-label">Sold would-lose rate</span><span class="summary-value">${(data.sold_would_lose_rate_pct ?? 0).toFixed(1)}%</span></div>
         <div><span class="summary-label">Avg sell %</span><span class="summary-value">${data.avg_sell_value_pct != null ? `${data.avg_sell_value_pct.toFixed(1)}%` : "—"}</span></div>
         <div><span class="summary-label">Avg win P&amp;L</span><span class="summary-value">$${((data.avg_pnl_by_result || {}).win ?? 0).toFixed(2)}</span></div>
         <div><span class="summary-label">Avg loss P&amp;L</span><span class="summary-value">$${((data.avg_pnl_by_result || {}).loss ?? 0).toFixed(2)}</span></div>
@@ -496,7 +559,7 @@ function renderInsights(data) {
         state.key = key;
         state.asc = key === "group";
       }
-      if (title === "By local buy time") {
+      if (title === "By local buy time" || title === "By UTC buy time") {
         state.groupSort = state.key === "group" && state.asc ? "time" : "value";
       }
       insightSortState[title] = state;
@@ -513,13 +576,11 @@ function renderTable(records) {
       const hk = fmtHk(r.bought_at, r.bought_at_hk);
       const soldHk = fmtHk(r.sold_at, r.sold_at_hk);
       const local = fmtLocal(r.bought_at, r.city, r.bought_at_local);
-      const dropHk = r.price_drop_below_threshold_at_hk
-        || fmtHk(r.price_drop_below_threshold_at);
       const sharesCls = r.shares_over_target ? "shares-warn" : "";
       const sharesTitle = r.shares_over_target
         ? ` title="Over target ${r.share_count_target ?? 10}"`
         : "";
-      const wouldWin = r.would_win_value_usd != null ? `$${Number(r.would_win_value_usd).toFixed(2)}` : "—";
+      const outcome = outcomeValue(r);
       return `
     <tr>
       <td>${r.date}</td>
@@ -527,18 +588,16 @@ function renderTable(records) {
       <td><a class="event-link" href="https://polymarket.com/event/${r.event_slug}" target="_blank" rel="noopener">${temp}</a></td>
       <td>${r.trade_window || "—"}</td>
       <td>${hk}</td>
+      <td>${soldHk}</td>
       <td>${local}</td>
       <td>$${(r.cost_basis_usd ?? 0).toFixed(2)}</td>
-      <td>${soldHk}</td>
       <td class="${sharesCls}"${sharesTitle}>${r.shares}</td>
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
       <td>${resultBadge(r.result)}</td>
       <td>${fmtMoney(recordPnl(r))}</td>
-      <td>${r.winning_temp ?? "—"}</td>
+      <td>${outcome != null ? fmtMoney(outcome) : "—"}</td>
       <td>${vsBoughtLabel(r)}</td>
       <td>${soldOutcomeLabel(r)}</td>
-      <td>${dropHk}</td>
-      <td>${wouldWin}</td>
       <td>${r.sell_value_pct != null ? r.sell_value_pct.toFixed(1) + "%" : "—"}</td>
     </tr>`;
     })

@@ -15,7 +15,7 @@ from config.settings import (
     settings,
 )
 from src.analysis.history_builder import build_records_from_activity
-from src.analysis.models import TradeRecord, summarize_records
+from src.analysis.models import TradeRecord, compute_outcome_value, summarize_records
 from src.analysis.strategy_insights import compute_insights
 from src.api.data_client import fetch_all_closed_positions, fetch_all_user_activity
 
@@ -36,6 +36,18 @@ def save_sync_state(state: dict[str, Any]) -> None:
     SYNC_STATE_FILE.write_text(json.dumps(state, indent=2))
 
 
+def _record_from_dict(row: dict) -> TradeRecord:
+    fields = TradeRecord.__dataclass_fields__
+    data = {k: row.get(k) for k in fields}
+    # Legacy field rename
+    if data.get("outcome_value_usd") is None and row.get("would_win_value_usd") is not None:
+        data["outcome_value_usd"] = row.get("would_win_value_usd")
+    rec = TradeRecord(**data)
+    if rec.outcome_value_usd is None:
+        rec.outcome_value_usd = compute_outcome_value(rec)
+    return rec
+
+
 def load_existing_records() -> dict[str, TradeRecord]:
     if not TRADE_HISTORY_FILE.exists():
         return {}
@@ -51,8 +63,15 @@ def load_existing_records() -> dict[str, TradeRecord]:
         token_id = str(row.get("token_id") or "")
         if not token_id:
             continue
-        result[token_id] = TradeRecord(**{k: row.get(k) for k in TradeRecord.__dataclass_fields__})
+        result[token_id] = _record_from_dict(row)
     return result
+
+
+def _backfill_outcome_values(records: list[TradeRecord]) -> list[TradeRecord]:
+    for rec in records:
+        if rec.outcome_value_usd is None:
+            rec.outcome_value_usd = compute_outcome_value(rec)
+    return records
 
 
 def _merge_records(
@@ -149,7 +168,7 @@ def run_sync_trade_history(
                     fetch_price_drop=fetch_price_drop,
                 )
 
-    all_records = _merge_records(existing, fresh_records)
+    all_records = _backfill_outcome_values(_merge_records(existing, fresh_records))
     summary = summarize_records(all_records)
     insights = compute_insights(all_records)
 

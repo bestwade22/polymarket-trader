@@ -4,12 +4,19 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from functools import lru_cache
-from typing import Any
+from typing import Any, Callable
 
 from config.settings import DATA_DIR
-from src.analysis.models import TradeRecord, _is_sold_lose, _is_sold_win, _record_pnl_value
+from src.analysis.models import (
+    TradeRecord,
+    _is_sold_lose,
+    _is_sold_win,
+    _is_sold_would_lose,
+    _record_pnl_value,
+    compute_outcome_value,
+)
 
 
 def _buy_price_band(price: float) -> str:
@@ -23,23 +30,37 @@ def _buy_price_band(price: float) -> str:
     return f"{lo:.2f}–{hi:.2f}"
 
 
-def _local_time_band(local_time: str) -> str:
-    if not local_time or ":" not in local_time:
-        return "unknown"
-    hour, minute = (int(part) for part in local_time.split(":", 1))
-    total = hour * 60 + minute
-    start = 14 * 60
-    end = 16 * 60
+def _time_band_from_minutes(total: int, *, start: int, end: int) -> str:
     if total < start:
-        return "before 14:00"
+        return f"before {start // 60:02d}:{start % 60:02d}"
     if total >= end:
-        return "after 16:00"
+        return f"after {end // 60:02d}:{end % 60:02d}"
     band_start = start + ((total - start) // 15) * 15
     band_end = band_start + 15
     return (
         f"{band_start // 60:02d}:{band_start % 60:02d}-"
         f"{band_end // 60:02d}:{band_end % 60:02d}"
     )
+
+
+def _local_time_band(local_time: str) -> str:
+    if not local_time or ":" not in local_time:
+        return "unknown"
+    hour, minute = (int(part) for part in local_time.split(":", 1))
+    return _time_band_from_minutes(hour * 60 + minute, start=12 * 60, end=16 * 60)
+
+
+def _utc_time_band(bought_at: str) -> str:
+    if not bought_at:
+        return "unknown"
+    try:
+        dt = datetime.fromisoformat(bought_at)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        dt = dt.astimezone(timezone.utc)
+    except ValueError:
+        return "unknown"
+    return _time_band_from_minutes(dt.hour * 60 + dt.minute, start=12 * 60, end=16 * 60)
 
 
 _TZ_LABELS: dict[str, str] = {
@@ -103,8 +124,56 @@ def _weekday_label(date_str: str) -> str:
         return "Unknown"
 
 
-def _group_metrics(records: list[TradeRecord], key_fn) -> dict[str, dict[str, float | int]]:
-    grouped: dict[str, dict[str, float | int]] = defaultdict(
+def _month_label(date_str: str) -> str:
+    if not date_str:
+        return "Unknown"
+    return date_str[:7] if len(date_str) >= 7 else "Unknown"
+
+
+def _roi_band(rec: TradeRecord) -> str:
+    if rec.roi_pct is None:
+        return "unknown"
+    roi = rec.roi_pct
+    if roi < -50:
+        return "<-50%"
+    if roi < 0:
+        return "-50–0%"
+    if roi < 50:
+        return "0–50%"
+    if roi < 100:
+        return "50–100%"
+    return ">100%"
+
+
+def _shares_band(shares: float) -> str:
+    if shares <= 10.5:
+        return "≤10"
+    if shares <= 15.5:
+        return "11–15"
+    return ">15"
+
+
+def _sold_outcome_label(rec: TradeRecord) -> str:
+    if rec.result != "sold":
+        return "not_sold"
+    if rec.sold_but_would_have_won:
+        return "would_win"
+    if _is_sold_would_lose(rec):
+        return "would_lose"
+    if _is_sold_win(rec):
+        return "sold_win"
+    if _is_sold_lose(rec):
+        return "sold_lose"
+    return "sold"
+
+
+def _group_metrics(
+    records: list[TradeRecord],
+    key_fn: Callable[[TradeRecord], str],
+    *,
+    track_cities: bool = False,
+) -> dict[str, dict[str, float | int]]:
+    grouped: dict[str, dict[str, float | int | set[str]]] = defaultdict(
         lambda: {
             "count": 0,
             "wins": 0,
@@ -114,6 +183,9 @@ def _group_metrics(records: list[TradeRecord], key_fn) -> dict[str, dict[str, fl
             "pnl_usd": 0.0,
             "buy_usd": 0.0,
             "buy_price": 0.0,
+            "outcome_usd": 0.0,
+            "outcome_count": 0,
+            "cities": set(),
         }
     )
     for rec in records:
@@ -122,9 +194,17 @@ def _group_metrics(records: list[TradeRecord], key_fn) -> dict[str, dict[str, fl
         stats["count"] += 1
         stats["buy_usd"] += rec.cost_basis_usd
         stats["buy_price"] += rec.buy_price
+        if track_cities and rec.city:
+            stats["cities"].add(rec.city)
         pnl = _record_pnl_value(rec)
         if pnl is not None:
             stats["pnl_usd"] += pnl
+        outcome = rec.outcome_value_usd
+        if outcome is None:
+            outcome = compute_outcome_value(rec)
+        if outcome is not None:
+            stats["outcome_usd"] += float(outcome)
+            stats["outcome_count"] += 1
         if rec.result in ("win", "loss", "sold"):
             stats["settled"] += 1
         if rec.result == "win":
@@ -144,7 +224,9 @@ def _group_metrics(records: list[TradeRecord], key_fn) -> dict[str, dict[str, fl
         pnl_usd = float(stats["pnl_usd"])
         buy_usd = float(stats["buy_usd"])
         buy_price = float(stats["buy_price"])
-        result[key] = {
+        outcome_count = int(stats["outcome_count"])
+        outcome_usd = float(stats["outcome_usd"])
+        row: dict[str, float | int] = {
             "count": count,
             "wins": wins,
             "sold_wins": sold_wins,
@@ -157,7 +239,13 @@ def _group_metrics(records: list[TradeRecord], key_fn) -> dict[str, dict[str, fl
             "avg_buy_price": round(buy_price / count, 3) if count else 0.0,
             "avg_pnl_usd": round(pnl_usd / count, 2) if count else 0.0,
             "total_pnl_usd": round(pnl_usd, 2),
+            "avg_outcome_value_usd": round(outcome_usd / outcome_count, 2) if outcome_count else 0.0,
+            "total_outcome_value_usd": round(outcome_usd, 2),
         }
+        if track_cities:
+            cities = stats["cities"]
+            row["city_count"] = len(cities) if isinstance(cities, set) else 0
+        result[key] = row
     return dict(sorted(result.items()))
 
 
@@ -171,6 +259,7 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
 
     sold_count = 0
     sold_regret = 0
+    sold_would_lose = 0
 
     for rec in records:
         if rec.result == "loss" and rec.win_temp_vs_bought != "unknown":
@@ -180,6 +269,8 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             sold_count += 1
             if rec.sold_but_would_have_won:
                 sold_regret += 1
+            if _is_sold_would_lose(rec):
+                sold_would_lose += 1
             if rec.sell_value_pct is not None:
                 sell_value_pcts.append(rec.sell_value_pct)
 
@@ -206,23 +297,40 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             "buy_price": rec.buy_price,
             "result": rec.result,
             "pnl_usd": _record_pnl_value(rec),
+            "outcome_value_usd": rec.outcome_value_usd or compute_outcome_value(rec),
         }
 
     return {
         "summary_by_city": _group_metrics(records, lambda rec: rec.city or "Unknown"),
-        "summary_by_timezone_group": _group_metrics(records, lambda rec: _timezone_group(rec.city)),
+        "summary_by_timezone_group": _group_metrics(
+            records, lambda rec: _utc_time_band(rec.bought_at), track_cities=True
+        ),
         "summary_by_buy_price_band": _group_metrics(records, lambda rec: _buy_price_band(rec.buy_price)),
         "summary_by_local_buy_time_band": _group_metrics(
             records, lambda rec: _local_time_band(rec.bought_at_local)
         ),
+        "summary_by_utc_buy_time_band": _group_metrics(
+            records, lambda rec: _utc_time_band(rec.bought_at), track_cities=True
+        ),
         "summary_by_win_temp_vs_bought": _group_metrics(
             records, lambda rec: rec.win_temp_vs_bought or "unknown"
         ),
-        "summary_by_weekday": _group_metrics(
-            records,
-            lambda rec: _weekday_label(rec.date),
+        "summary_by_weekday": _group_metrics(records, lambda rec: _weekday_label(rec.date)),
+        "summary_by_month": _group_metrics(records, lambda rec: _month_label(rec.date)),
+        "summary_by_result": _group_metrics(records, lambda rec: rec.result or "unknown"),
+        "summary_by_sold_outcome": _group_metrics(records, lambda rec: _sold_outcome_label(rec)),
+        "summary_by_trade_window": _group_metrics(
+            records, lambda rec: rec.trade_window or "unknown"
+        ),
+        "summary_by_roi_band": _group_metrics(records, lambda rec: _roi_band(rec)),
+        "summary_by_shares_band": _group_metrics(records, lambda rec: _shares_band(rec.shares)),
+        "summary_by_city_timezone": _group_metrics(
+            records, lambda rec: _timezone_group(rec.city)
         ),
         "stop_loss_regret_rate_pct": round((sold_regret / sold_count) * 100, 1)
+        if sold_count
+        else 0.0,
+        "sold_would_lose_rate_pct": round((sold_would_lose / sold_count) * 100, 1)
         if sold_count
         else 0.0,
         "loss_misselection": dict(loss_vs_bought),

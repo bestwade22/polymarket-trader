@@ -287,7 +287,7 @@ class TestSummary:
         insights = compute_insights([rec])
         assert "London" in insights["summary_by_city"]
         assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
-        assert "before 14:00" in insights["summary_by_local_buy_time_band"]
+        assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
 
 
 class TestNoLocalBotFiles:
