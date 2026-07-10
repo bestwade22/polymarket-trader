@@ -1,0 +1,87 @@
+{
+  "run_at": "2026-07-10T18:36:05.664109+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "682454",
+      "city": "Toronto",
+      "market_id": "2853311",
+      "groupItemTitle": "27\u00b0C",
+      "yes_price": 0.5,
+      "yes_token_id": "83292951964083322752918145378378156977289972376005244948805563132072694341590",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.5,
+      "selection_price": 0.5,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.44,
+      "best_ask": 0.56,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.52,
+      "midpoint": 0.5,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "order_status": "live",
+      "order_id": "0xebb5595cb5901e6cda83a4fc60e60f32a41929ddfeb8cd2c13baf9da7a725ecb",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-10T19:01:05+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "682445",
+      "city": "Sao Paulo",
+      "market_id": "2853283",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9075,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682456",
+      "city": "NYC",
+      "market_id": "2853332",
+      "group_item_title": "84-85\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.6325,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682458",
+      "city": "Atlanta",
+      "market_id": "2853356",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.8,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682459",
+      "city": "Miami",
+      "market_id": "2853370",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682446",
+      "city": "Buenos Aires",
+      "market_id": "2853293",
+      "group_item_title": "13\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2853293",
+      "held_group_item_title": "13\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
