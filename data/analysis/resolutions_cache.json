@@ -294,6 +294,12 @@
       "winning_temp": "15\u00b0C",
       "winning_token_id": "40390238021430314563234216666519029265249902478613079937593160791041922400610"
     },
+    "highest-temperature-in-buenos-aires-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Buenos Aires on July 10?",
+      "winning_temp": "14\u00b0C",
+      "winning_token_id": "51281675732782497496234299081088979269133918440408621951735127010930794448936"
+    },
     "highest-temperature-in-buenos-aires-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Buenos Aires on July 2?",
@@ -2039,6 +2045,12 @@
       "title": "Highest temperature in Toronto on July 1?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "13212139598649297226135290676477609569670714260837568591930249606714075224715"
+    },
+    "highest-temperature-in-toronto-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 10?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "77610470357138831215579835087419892173778187590923458051416856121405076659008"
     },
     "highest-temperature-in-toronto-on-july-3-2026": {
       "closed": true,
