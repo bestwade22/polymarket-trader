@@ -1,5 +1,11 @@
 {
   "events": {
+    "highest-temperature-in-amsterdam-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Amsterdam on July 10?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "83074088720839185726810874219645543142964284215441120872519043449349611615725"
+    },
     "highest-temperature-in-amsterdam-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Amsterdam on July 4?",
@@ -1104,6 +1110,12 @@
       "winning_temp": "38\u00b0C",
       "winning_token_id": "95602163761671534839626719576669875354448790649105774334624366288505291577252"
     },
+    "highest-temperature-in-madrid-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Madrid on July 10?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "56062147772196578578827358619956606125043703355348491572902295447639362884234"
+    },
     "highest-temperature-in-madrid-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Madrid on July 2?",
@@ -1278,6 +1290,12 @@
       "winning_temp": "30\u00b0C or below",
       "winning_token_id": "56729464811899095974336402085979117435041612157243804852086073574311127372348"
     },
+    "highest-temperature-in-milan-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on July 10?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "40418686716969640128452332784983774305896089670300544782703824402669091277827"
+    },
     "highest-temperature-in-milan-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Milan on July 2?",
@@ -1373,6 +1391,12 @@
       "title": "Highest temperature in Moscow on June 29?",
       "winning_temp": "21\u00b0C",
       "winning_token_id": "27816289505313101932238022027936948948090753150130202131630778063989532968271"
+    },
+    "highest-temperature-in-munich-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on July 10?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "57437959948405952303299462074355177346100632389048504570681812324328040448302"
     },
     "highest-temperature-in-munich-on-july-2-2026": {
       "closed": true,
