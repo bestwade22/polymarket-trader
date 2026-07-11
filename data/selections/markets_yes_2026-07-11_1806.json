@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-07-11T18:06:07.407865+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "686138",
+      "city": "Atlanta",
+      "market_id": "2865595",
+      "groupItemTitle": "92-93\u00b0F",
+      "yes_price": 0.525,
+      "yes_token_id": "1725837933101632370948663548255899938902308145032614046213743565214594592980",
+      "buy_price": 0.63,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.525,
+      "selection_price": 0.525,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.42,
+      "best_ask": 0.63,
+      "clob_buy_price": 0.63,
+      "last_trade_price": 0.46,
+      "midpoint": 0.525,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "order_status": "live",
+      "order_id": "0xbdc6b5b3bcc93c05adda88dd970220a20250f7d9bd5293f4a13cd38eace2f727",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-11T18:31:06+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "686125",
+      "city": "Sao Paulo",
+      "market_id": "2865522",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9645,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686126",
+      "city": "Buenos Aires",
+      "market_id": "2865531",
+      "group_item_title": "12\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.7125,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686127",
+      "city": "Toronto",
+      "market_id": "2865541",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.7995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686136",
+      "city": "NYC",
+      "market_id": "2865573",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686139",
+      "city": "Miami",
+      "market_id": "2865605",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.78,
+      "yes_price_max": 0.6
+    }
+  ]
+}
