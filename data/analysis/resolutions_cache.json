@@ -780,6 +780,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "84557019121142463862124254295880750352005534251644036017412617197863076599664"
     },
+    "highest-temperature-in-helsinki-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on July 10?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "13915768933016081067984314425910866798442811778629518542105031902505420188076"
+    },
     "highest-temperature-in-helsinki-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on July 2?",
@@ -1319,6 +1325,12 @@
       "title": "Highest temperature in Moscow on July 1?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "8176726661872400742723314836103046631588941861660896977473730817864811398272"
+    },
+    "highest-temperature-in-moscow-on-july-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on July 10?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "29603089226262257736595163735913613825952216955975582941145749436459964671436"
     },
     "highest-temperature-in-moscow-on-july-2-2026": {
       "closed": true,
