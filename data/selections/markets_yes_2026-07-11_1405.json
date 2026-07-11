@@ -1,0 +1,38 @@
+{
+  "run_at": "2026-07-11T14:05:40.612333+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "682935",
+      "city": "London",
+      "market_id": "2854414",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.54,
+      "yes_token_id": "31953173698402468093890881963907581147695795685595436465723296611108892326142",
+      "buy_price": 0.6,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.54,
+      "selection_price": 0.54,
+      "gamma_yes_price": 0.405,
+      "best_bid": 0.48,
+      "best_ask": 0.6,
+      "clob_buy_price": 0.6,
+      "last_trade_price": 0.36,
+      "midpoint": 0.54,
+      "outcomePrices": [
+        0.405,
+        0.595
+      ],
+      "order_status": "live",
+      "order_id": "0x1088ceecb71ae668ffd0127188f397f07e54d01228443fbd49319ca2079674e1",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-11T14:30:39+00:00"
+    }
+  ]
+}
