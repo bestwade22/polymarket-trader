@@ -1,0 +1,78 @@
+{
+  "run_at": "2026-07-11T21:06:03.547787+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "686135",
+      "city": "Seattle",
+      "market_id": "2865560",
+      "groupItemTitle": "72-73\u00b0F",
+      "yes_price": 0.59,
+      "yes_token_id": "104092698657731758492880814710553907436586698274550493547684630770899224877053",
+      "buy_price": 0.68,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.59,
+      "selection_price": 0.59,
+      "gamma_yes_price": 0.515,
+      "best_bid": 0.5,
+      "best_ask": 0.68,
+      "clob_buy_price": 0.68,
+      "last_trade_price": 0.53,
+      "midpoint": 0.59,
+      "outcomePrices": [
+        0.515,
+        0.485
+      ],
+      "order_status": "live",
+      "order_id": "0x2126ad2028c24d8bed7b75189f7480e902d0b9a59b1ee7a3c5e1c5184b100307",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-11T21:31:02+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "686145",
+      "city": "Los Angeles",
+      "market_id": "2865666",
+      "group_item_title": "74-75\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686146",
+      "city": "San Francisco",
+      "market_id": "2865676",
+      "group_item_title": "64-65\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.7975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686147",
+      "city": "Mexico City",
+      "market_id": "2865692",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686142",
+      "city": "Denver",
+      "market_id": "2865638",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2865637",
+      "held_group_item_title": "94-95\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
