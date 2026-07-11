@@ -27,37 +27,37 @@ def build_sell_win_tiers() -> list[SellWinTier]:
         SellWinTier(
             name="tier1",
             start_local=_local_time_from_settings(
-                settings.sold_win_tier1_start_hour,
-                settings.sold_win_tier1_start_minute,
+                settings.sell_win_tier1_start_hour,
+                settings.sell_win_tier1_start_minute,
             ),
-            floor_price=settings.sold_win_tier1_price,
+            floor_price=settings.sell_win_tier1_price,
             expire_before_local=_local_time_from_settings(
-                settings.sold_win_tier1_expire_before_hour,
-                settings.sold_win_tier1_expire_before_minute,
+                settings.sell_win_tier1_expire_before_hour,
+                settings.sell_win_tier1_expire_before_minute,
             ),
         ),
         SellWinTier(
             name="tier2",
             start_local=_local_time_from_settings(
-                settings.sold_win_tier2_start_hour,
-                settings.sold_win_tier2_start_minute,
+                settings.sell_win_tier2_start_hour,
+                settings.sell_win_tier2_start_minute,
             ),
-            floor_price=settings.sold_win_tier2_price,
+            floor_price=settings.sell_win_tier2_price,
             expire_before_local=_local_time_from_settings(
-                settings.sold_win_tier2_expire_before_hour,
-                settings.sold_win_tier2_expire_before_minute,
+                settings.sell_win_tier2_expire_before_hour,
+                settings.sell_win_tier2_expire_before_minute,
             ),
         ),
         SellWinTier(
             name="tier3",
             start_local=_local_time_from_settings(
-                settings.sold_win_tier3_start_hour,
-                settings.sold_win_tier3_start_minute,
+                settings.sell_win_tier3_start_hour,
+                settings.sell_win_tier3_start_minute,
             ),
-            floor_price=settings.sold_win_tier3_price,
+            floor_price=settings.sell_win_tier3_price,
             expire_before_local=_local_time_from_settings(
-                settings.sold_win_tier3_expire_before_hour,
-                settings.sold_win_tier3_expire_before_minute,
+                settings.sell_win_tier3_expire_before_hour,
+                settings.sell_win_tier3_expire_before_minute,
             ),
         ),
     ]
@@ -70,7 +70,7 @@ def is_sell_win_eligible_event(
     slug: str = "",
 ) -> bool:
     """True when slug/title contains the configured highest-temperature marker."""
-    marker = settings.sold_win_event_slug_marker.lower()
+    marker = settings.sell_win_event_slug_marker.lower()
     haystacks = (event_slug, title, slug)
     return any(marker in (h or "").lower() for h in haystacks)
 
@@ -111,14 +111,14 @@ def active_sell_win_tier(
 
     window_start = _time_to_minutes(
         _local_time_from_settings(
-            settings.sold_win_window_start_hour,
-            settings.sold_win_window_start_minute,
+            settings.sell_win_window_start_hour,
+            settings.sell_win_window_start_minute,
         )
     )
     window_end = _time_to_minutes(
         _local_time_from_settings(
-            settings.sold_win_window_end_hour,
-            settings.sold_win_window_end_minute,
+            settings.sell_win_window_end_hour,
+            settings.sell_win_window_end_minute,
         )
     )
     local_mins = _local_now_minutes(local_now)

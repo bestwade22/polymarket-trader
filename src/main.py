@@ -148,7 +148,7 @@ def main() -> None:
     sell_win_parser.add_argument(
         "--live",
         action="store_true",
-        help="Place real sell orders (overrides SOLD_WIN_DRY_RUN env)",
+        help="Place real sell orders (overrides SELL_WIN_DRY_RUN env)",
     )
 
     sync_parser = sub.add_parser(
@@ -186,7 +186,7 @@ def main() -> None:
         if args.live:
             args.dry_run = False
         elif args.dry_run is None:
-            args.dry_run = settings.sold_win_dry_run
+            args.dry_run = settings.sell_win_dry_run
 
     commands = {
         "fetch-daily": cmd_fetch_daily,

@@ -142,11 +142,11 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
 | `STOP_LOSS_PCT_FLOOR` | `10` | Stop-loss lower bound: only sell when value_pct is above this and below `STOP_LOSS_PCT` |
 | `STOP_LOSS_MIN_LOCAL_TIME` | `16:30` | Stop-loss only runs at or after this local time on the event date (city timezone) |
-| `SOLD_WIN_DRY_RUN` | `false` | Sell-win dry-run flag (independent from `DRY_RUN` and `STOP_LOSS_DRY_RUN`) |
-| `SOLD_WIN_SCHEDULE_ENABLED` | `false` | Enable/disable the AWS sell-win scheduler (disabled by default) |
-| `SOLD_WIN_WINDOW_START` | `15:00` | Sell-win local window start (city timezone) |
-| `SOLD_WIN_WINDOW_END` | `18:00` | Sell-win local window end (exclusive) |
-| `SOLD_WIN_TIER1_PRICE` / `TIER2_PRICE` / `TIER3_PRICE` | `0.91` / `0.93` / `0.95` | Tier floor prices for limit sell orders |
+| `SELL_WIN_DRY_RUN` | `false` | Sell-win dry-run flag (independent from `DRY_RUN` and `STOP_LOSS_DRY_RUN`) |
+| `SELL_WIN_SCHEDULE_ENABLED` | `true` | Enable/disable the AWS sell-win scheduler |
+| `SELL_WIN_WINDOW_START` | `15:00` | Sell-win local window start (city timezone) |
+| `SELL_WIN_WINDOW_END` | `18:00` | Sell-win local window end (exclusive) |
+| `SELL_WIN_TIER1_PRICE` / `TIER2_PRICE` / `TIER3_PRICE` | `0.91` / `0.93` / `0.95` | Tier floor prices for limit sell orders |
 
 ## Data layout
 
@@ -209,7 +209,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
 | `trade-hourly` | **:05 and :35 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Disabled (manual only)** | Stop-loss code and Lambda remain available, but the scheduler is disabled by default |
-| `sell-win-check` | **Disabled (manual only)** | Hourly sell-win scheduler; disabled unless `SOLD_WIN_SCHEDULE_ENABLED=true` |
+| `sell-win-check` | **Hourly (UTC)** | Sell-win scheduler; disable with `SELL_WIN_SCHEDULE_ENABLED=false` |
 | `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
 ```mermaid
@@ -299,7 +299,7 @@ python scripts/check_geoblock.py
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders, and set `SOLD_WIN_DRY_RUN=false` (default) for live **sell-win** limit orders. They are independent flags.
+Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders, and set `SELL_WIN_DRY_RUN=false` (default) for live **sell-win** limit orders. They are independent flags.
 
 ### Deploy troubleshooting
 

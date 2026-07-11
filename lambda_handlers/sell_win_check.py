@@ -63,8 +63,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     git_repo, branch, github_pat = git_settings_from_env()
     workspace = clone_or_update(github_pat, git_repo, branch)
 
-    sold_win_dry_run = os.environ.get("SOLD_WIN_DRY_RUN", "false")
-    live = str(sold_win_dry_run).strip().lower() not in (
+    sell_win_dry_run = os.environ.get("SELL_WIN_DRY_RUN", "false")
+    live = str(sell_win_dry_run).strip().lower() not in (
         "0",
         "false",
         "no",
@@ -72,8 +72,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     )
     live = not live
     logger.info(
-        "sell-win mode: SOLD_WIN_DRY_RUN=%s live=%s",
-        sold_win_dry_run,
+        "sell-win mode: SELL_WIN_DRY_RUN=%s live=%s",
+        sell_win_dry_run,
         live,
     )
     if (event or {}).get("live") is True:

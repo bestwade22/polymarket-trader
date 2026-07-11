@@ -59,8 +59,8 @@ jobs:
               StopLossScheduleEnabled=false \
               StopLossOrderExpiryMinutes=13 \
               StopLossMinLocalTime=16:30 \
-              SoldWinDryRun=false \
-              SoldWinScheduleEnabled=false"
+              SellWinDryRun=false \
+              SellWinScheduleEnabled=true"
 
       - name: Diagnose CloudFormation failure
         if: failure()

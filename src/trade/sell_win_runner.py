@@ -302,8 +302,8 @@ def run_sell_win_check(
                 continue
 
             sell_size = position.size
-            if settings.sold_win_sell_shares is not None:
-                sell_size = min(sell_size, float(settings.sold_win_sell_shares))
+            if settings.sell_win_sell_shares is not None:
+                sell_size = min(sell_size, float(settings.sell_win_sell_shares))
 
             selection = _selection_for_sell_win(event, market, position, sell_size)
             order_result = executor.sell_yes(

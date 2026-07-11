@@ -58,31 +58,31 @@ Parameters:
   StopLossMinLocalTime:
     Type: String
     Default: '16:30'
-  SoldWinDryRun:
+  SellWinDryRun:
     Type: String
     Default: 'false'
-  SoldWinScheduleEnabled:
+  SellWinScheduleEnabled:
     Type: String
-    Default: 'false'
-  SoldWinWindowStart:
+    Default: 'true'
+  SellWinWindowStart:
     Type: String
     Default: '15:00'
-  SoldWinWindowEnd:
+  SellWinWindowEnd:
     Type: String
     Default: '18:00'
-  SoldWinTier1Price:
+  SellWinTier1Price:
     Type: String
     Default: '0.91'
-  SoldWinTier2Price:
+  SellWinTier2Price:
     Type: String
     Default: '0.93'
-  SoldWinTier3Price:
+  SellWinTier3Price:
     Type: String
     Default: '0.95'
 
 Conditions:
   StopLossScheduleIsEnabled: !Equals [!Ref StopLossScheduleEnabled, 'true']
-  SellWinScheduleIsEnabled: !Equals [!Ref SoldWinScheduleEnabled, 'true']
+  SellWinScheduleIsEnabled: !Equals [!Ref SellWinScheduleEnabled, 'true']
 
 Globals:
   Function:
@@ -197,13 +197,13 @@ Resources:
           SECRETS_ARN: !Ref TraderSecret
           GIT_REPO: !Ref GitHubRepo
           GIT_BRANCH: !Ref GitBranch
-          SOLD_WIN_DRY_RUN: !Ref SoldWinDryRun
-          SOLD_WIN_SCHEDULE_ENABLED: !Ref SoldWinScheduleEnabled
-          SOLD_WIN_WINDOW_START: !Ref SoldWinWindowStart
-          SOLD_WIN_WINDOW_END: !Ref SoldWinWindowEnd
-          SOLD_WIN_TIER1_PRICE: !Ref SoldWinTier1Price
-          SOLD_WIN_TIER2_PRICE: !Ref SoldWinTier2Price
-          SOLD_WIN_TIER3_PRICE: !Ref SoldWinTier3Price
+          SELL_WIN_DRY_RUN: !Ref SellWinDryRun
+          SELL_WIN_SCHEDULE_ENABLED: !Ref SellWinScheduleEnabled
+          SELL_WIN_WINDOW_START: !Ref SellWinWindowStart
+          SELL_WIN_WINDOW_END: !Ref SellWinWindowEnd
+          SELL_WIN_TIER1_PRICE: !Ref SellWinTier1Price
+          SELL_WIN_TIER2_PRICE: !Ref SellWinTier2Price
+          SELL_WIN_TIER3_PRICE: !Ref SellWinTier3Price
           SIGNATURE_TYPE: !Ref SignatureType
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:

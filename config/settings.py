@@ -137,26 +137,26 @@ def _parse_stop_loss_min_local_time() -> tuple[int, int]:
 _stop_loss_min_local_h, _stop_loss_min_local_m = _parse_stop_loss_min_local_time()
 
 
-def _parse_sold_win_window_bounds() -> tuple[int, int, int, int]:
+def _parse_sell_win_window_bounds() -> tuple[int, int, int, int]:
     start_h, start_m = _parse_trading_window_time(
-        os.getenv("SOLD_WIN_WINDOW_START", "15:00"),
-        "SOLD_WIN_WINDOW_START",
+        os.getenv("SELL_WIN_WINDOW_START", "15:00"),
+        "SELL_WIN_WINDOW_START",
         allow_hour_24=False,
     )
     end_h, end_m = _parse_trading_window_time(
-        os.getenv("SOLD_WIN_WINDOW_END", "18:00"),
-        "SOLD_WIN_WINDOW_END",
+        os.getenv("SELL_WIN_WINDOW_END", "18:00"),
+        "SELL_WIN_WINDOW_END",
         allow_hour_24=True,
     )
     if _minutes_since_midnight(end_h, end_m) <= _minutes_since_midnight(start_h, start_m):
         raise ValueError(
-            f"SOLD_WIN_WINDOW_END ({end_h:02d}:{end_m:02d}) must be after "
-            f"SOLD_WIN_WINDOW_START ({start_h:02d}:{start_m:02d})"
+            f"SELL_WIN_WINDOW_END ({end_h:02d}:{end_m:02d}) must be after "
+            f"SELL_WIN_WINDOW_START ({start_h:02d}:{start_m:02d})"
         )
     return start_h, start_m, end_h, end_m
 
 
-def _parse_sold_win_tier_time(env_name: str, default: str) -> tuple[int, int]:
+def _parse_sell_win_tier_time(env_name: str, default: str) -> tuple[int, int]:
     return _parse_trading_window_time(
         os.getenv(env_name, default),
         env_name,
@@ -164,26 +164,26 @@ def _parse_sold_win_tier_time(env_name: str, default: str) -> tuple[int, int]:
     )
 
 
-_sold_win_window_start_h, _sold_win_window_start_m, _sold_win_window_end_h, _sold_win_window_end_m = (
-    _parse_sold_win_window_bounds()
+_sell_win_window_start_h, _sell_win_window_start_m, _sell_win_window_end_h, _sell_win_window_end_m = (
+    _parse_sell_win_window_bounds()
 )
-_sold_win_tier1_start_h, _sold_win_tier1_start_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER1_START", "15:00"
+_sell_win_tier1_start_h, _sell_win_tier1_start_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER1_START", "15:00"
 )
-_sold_win_tier1_expire_h, _sold_win_tier1_expire_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER1_EXPIRE_BEFORE", "15:55"
+_sell_win_tier1_expire_h, _sell_win_tier1_expire_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER1_EXPIRE_BEFORE", "15:55"
 )
-_sold_win_tier2_start_h, _sold_win_tier2_start_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER2_START", "16:00"
+_sell_win_tier2_start_h, _sell_win_tier2_start_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER2_START", "16:00"
 )
-_sold_win_tier2_expire_h, _sold_win_tier2_expire_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER2_EXPIRE_BEFORE", "16:55"
+_sell_win_tier2_expire_h, _sell_win_tier2_expire_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER2_EXPIRE_BEFORE", "16:55"
 )
-_sold_win_tier3_start_h, _sold_win_tier3_start_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER3_START", "17:00"
+_sell_win_tier3_start_h, _sell_win_tier3_start_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER3_START", "17:00"
 )
-_sold_win_tier3_expire_h, _sold_win_tier3_expire_m = _parse_sold_win_tier_time(
-    "SOLD_WIN_TIER3_EXPIRE_BEFORE", "17:55"
+_sell_win_tier3_expire_h, _sell_win_tier3_expire_m = _parse_sell_win_tier_time(
+    "SELL_WIN_TIER3_EXPIRE_BEFORE", "17:55"
 )
 
 
@@ -244,31 +244,31 @@ class Settings:
     )
     stop_loss_min_local_hour: int = _stop_loss_min_local_h
     stop_loss_min_local_minute: int = _stop_loss_min_local_m
-    sold_win_dry_run: bool = _env_bool("SOLD_WIN_DRY_RUN", False)
-    sold_win_schedule_enabled: bool = _env_bool("SOLD_WIN_SCHEDULE_ENABLED", False)
-    sold_win_window_start_hour: int = _sold_win_window_start_h
-    sold_win_window_start_minute: int = _sold_win_window_start_m
-    sold_win_window_end_hour: int = _sold_win_window_end_h
-    sold_win_window_end_minute: int = _sold_win_window_end_m
-    sold_win_tier1_start_hour: int = _sold_win_tier1_start_h
-    sold_win_tier1_start_minute: int = _sold_win_tier1_start_m
-    sold_win_tier1_price: float = float(os.getenv("SOLD_WIN_TIER1_PRICE", "0.91"))
-    sold_win_tier1_expire_before_hour: int = _sold_win_tier1_expire_h
-    sold_win_tier1_expire_before_minute: int = _sold_win_tier1_expire_m
-    sold_win_tier2_start_hour: int = _sold_win_tier2_start_h
-    sold_win_tier2_start_minute: int = _sold_win_tier2_start_m
-    sold_win_tier2_price: float = float(os.getenv("SOLD_WIN_TIER2_PRICE", "0.93"))
-    sold_win_tier2_expire_before_hour: int = _sold_win_tier2_expire_h
-    sold_win_tier2_expire_before_minute: int = _sold_win_tier2_expire_m
-    sold_win_tier3_start_hour: int = _sold_win_tier3_start_h
-    sold_win_tier3_start_minute: int = _sold_win_tier3_start_m
-    sold_win_tier3_price: float = float(os.getenv("SOLD_WIN_TIER3_PRICE", "0.95"))
-    sold_win_tier3_expire_before_hour: int = _sold_win_tier3_expire_h
-    sold_win_tier3_expire_before_minute: int = _sold_win_tier3_expire_m
-    sold_win_event_slug_marker: str = os.getenv(
-        "SOLD_WIN_EVENT_SLUG_MARKER", "highest-temperature-in-"
+    sell_win_dry_run: bool = _env_bool("SELL_WIN_DRY_RUN", False)
+    sell_win_schedule_enabled: bool = _env_bool("SELL_WIN_SCHEDULE_ENABLED", True)
+    sell_win_window_start_hour: int = _sell_win_window_start_h
+    sell_win_window_start_minute: int = _sell_win_window_start_m
+    sell_win_window_end_hour: int = _sell_win_window_end_h
+    sell_win_window_end_minute: int = _sell_win_window_end_m
+    sell_win_tier1_start_hour: int = _sell_win_tier1_start_h
+    sell_win_tier1_start_minute: int = _sell_win_tier1_start_m
+    sell_win_tier1_price: float = float(os.getenv("SELL_WIN_TIER1_PRICE", "0.91"))
+    sell_win_tier1_expire_before_hour: int = _sell_win_tier1_expire_h
+    sell_win_tier1_expire_before_minute: int = _sell_win_tier1_expire_m
+    sell_win_tier2_start_hour: int = _sell_win_tier2_start_h
+    sell_win_tier2_start_minute: int = _sell_win_tier2_start_m
+    sell_win_tier2_price: float = float(os.getenv("SELL_WIN_TIER2_PRICE", "0.93"))
+    sell_win_tier2_expire_before_hour: int = _sell_win_tier2_expire_h
+    sell_win_tier2_expire_before_minute: int = _sell_win_tier2_expire_m
+    sell_win_tier3_start_hour: int = _sell_win_tier3_start_h
+    sell_win_tier3_start_minute: int = _sell_win_tier3_start_m
+    sell_win_tier3_price: float = float(os.getenv("SELL_WIN_TIER3_PRICE", "0.95"))
+    sell_win_tier3_expire_before_hour: int = _sell_win_tier3_expire_h
+    sell_win_tier3_expire_before_minute: int = _sell_win_tier3_expire_m
+    sell_win_event_slug_marker: str = os.getenv(
+        "SELL_WIN_EVENT_SLUG_MARKER", "highest-temperature-in-"
     )
-    sold_win_sell_shares: Optional[int] = _parse_optional_int("SOLD_WIN_SELL_SHARES")
+    sell_win_sell_shares: Optional[int] = _parse_optional_int("SELL_WIN_SELL_SHARES")
     data_api_base: str = os.getenv("DATA_API_BASE", "https://data-api.polymarket.com")
 
 
