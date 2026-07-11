@@ -2902,5 +2902,37 @@
     "avg_buy_price": 0.43,
     "value_pct": 40.69767441860465,
     "reason": "within_band"
+  },
+  {
+    "market_id": "0x51c3c1f24923a301db5139ecd7912bec638805c634bb470b71fa3b3d2376de16",
+    "token_id": "79828298954612333730843764079622431898480904722717219887526898282384845183629",
+    "order_id": "0x20db75d09a2e4a3e1c5e5d01943d46fe533bd01e17ab6c9b25f38de42fb598a4",
+    "sold_at": "2026-07-11T18:15:24.916071+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-buenos-aires-on-july-11-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.599,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.7615,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x068b4b6e24e6a9d5c4006a025399ca2edcb57466525eb3b6d06db044091f8ab2",
+    "token_id": "2383423067698073348949851289383971648986831849779946718669692637347733359555",
+    "order_id": "0x49e6e8dd168dd8b7f0364c68e55a8c7f0e3f9f2455aadc83f1854108263f8967",
+    "sold_at": "2026-07-11T18:15:26.251917+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-sao-paulo-on-july-11-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.0005,
+    "reason": "tier1"
   }
 ]

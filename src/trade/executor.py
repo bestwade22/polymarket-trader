@@ -69,6 +69,11 @@ def compute_order_expiration(
     return now + int(expiry_hours * 3600), "GTD"
 
 
+def compute_order_expiration_at(expire_at_utc: datetime) -> tuple[int, str]:
+    """Return (unix_expiration, order_type) for an absolute GTD cutoff."""
+    return int(expire_at_utc.timestamp()), "GTD"
+
+
 class TradeExecutor:
     def __init__(self, dry_run: Optional[bool] = None):
         self.dry_run = settings.dry_run if dry_run is None else dry_run
@@ -234,12 +239,20 @@ class TradeExecutor:
         self,
         selection: MarketSelection,
         share_count: Optional[float] = None,
+        order_price: Optional[float] = None,
+        expiration_ts: Optional[int] = None,
     ) -> dict[str, Any]:
         size = float(share_count if share_count is not None else selection.share_count)
-        order_price = self._resolve_sell_price(selection)
-        expiration, order_type_name = compute_order_expiration(
-            settings.stop_loss_order_expiry_hours
+        resolved_price = (
+            order_price if order_price is not None else self._resolve_sell_price(selection)
         )
+        if expiration_ts is not None:
+            expiration = expiration_ts
+            order_type_name = "GTD"
+        else:
+            expiration, order_type_name = compute_order_expiration(
+                settings.stop_loss_order_expiry_hours
+            )
         expires_at = (
             datetime.fromtimestamp(expiration, tz=timezone.utc).isoformat()
             if expiration
@@ -252,7 +265,7 @@ class TradeExecutor:
                 "status": "simulated",
                 "side": "SELL",
                 "token_id": selection.yes_token_id,
-                "price": order_price,
+                "price": resolved_price,
                 "size": size,
                 "market_id": selection.market_id,
                 "event_id": selection.event_id,
@@ -265,7 +278,7 @@ class TradeExecutor:
 
         return self._place_order(
             selection=selection,
-            order_price=order_price,
+            order_price=resolved_price,
             share_count=size,
             side_name="SELL",
             order_type_name=order_type_name,

@@ -174,3 +174,46 @@ class TestStopLossHandler:
         assert result["job"] == "check-stop-loss"
         mock_run.assert_called_once()
         mock_commit.assert_called_once()
+
+
+class TestSellWinHandler:
+    @patch("lambda_handlers.sell_win_check.apply_secrets")
+    @patch("lambda_handlers.sell_win_check.count_live_positions", return_value=0)
+    def test_skips_when_no_positions(self, _count, _secrets):
+        from lambda_handlers.sell_win_check import handler
+
+        result = handler({}, None)
+        assert result["status"] == "skipped"
+        assert result["reason"] == "no_positions"
+
+    @patch("lambda_handlers.sell_win_check.commit_and_push", return_value=True)
+    @patch(
+        "lambda_handlers.sell_win_check.collect_commit_paths",
+        return_value=["data/positions/sold_events.json"],
+    )
+    @patch("lambda_handlers.sell_win_check.run_check_sell_win")
+    @patch("lambda_handlers.sell_win_check.clone_or_update")
+    @patch(
+        "lambda_handlers.sell_win_check.git_settings_from_env",
+        return_value=("o/r", "main", "pat"),
+    )
+    @patch("lambda_handlers.sell_win_check.count_live_positions", return_value=2)
+    @patch("lambda_handlers.sell_win_check.apply_secrets")
+    def test_runs_when_positions_exist(
+        self,
+        _secrets,
+        _count,
+        _git,
+        mock_clone,
+        mock_run,
+        _paths,
+        mock_commit,
+    ):
+        mock_clone.return_value = "/tmp/repo"
+        from lambda_handlers.sell_win_check import handler
+
+        result = handler({}, None)
+        assert result["status"] == "ok"
+        assert result["job"] == "check-sell-win"
+        mock_run.assert_called_once()
+        mock_commit.assert_called_once()

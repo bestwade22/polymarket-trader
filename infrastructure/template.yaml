@@ -58,9 +58,31 @@ Parameters:
   StopLossMinLocalTime:
     Type: String
     Default: '16:30'
+  SoldWinDryRun:
+    Type: String
+    Default: 'false'
+  SoldWinScheduleEnabled:
+    Type: String
+    Default: 'false'
+  SoldWinWindowStart:
+    Type: String
+    Default: '15:00'
+  SoldWinWindowEnd:
+    Type: String
+    Default: '18:00'
+  SoldWinTier1Price:
+    Type: String
+    Default: '0.91'
+  SoldWinTier2Price:
+    Type: String
+    Default: '0.93'
+  SoldWinTier3Price:
+    Type: String
+    Default: '0.95'
 
 Conditions:
   StopLossScheduleIsEnabled: !Equals [!Ref StopLossScheduleEnabled, 'true']
+  SellWinScheduleIsEnabled: !Equals [!Ref SoldWinScheduleEnabled, 'true']
 
 Globals:
   Function:
@@ -160,6 +182,37 @@ Resources:
       DockerContext: ..
       DockerTag: polymarket-trader-v1
 
+  SellWinCheckFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: polymarket-trader-sell-win-check
+      PackageType: Image
+      ImageConfig:
+        Command:
+          - lambda_handlers.sell_win_check.handler
+      Timeout: 900
+      MemorySize: 1024
+      Environment:
+        Variables:
+          SECRETS_ARN: !Ref TraderSecret
+          GIT_REPO: !Ref GitHubRepo
+          GIT_BRANCH: !Ref GitBranch
+          SOLD_WIN_DRY_RUN: !Ref SoldWinDryRun
+          SOLD_WIN_SCHEDULE_ENABLED: !Ref SoldWinScheduleEnabled
+          SOLD_WIN_WINDOW_START: !Ref SoldWinWindowStart
+          SOLD_WIN_WINDOW_END: !Ref SoldWinWindowEnd
+          SOLD_WIN_TIER1_PRICE: !Ref SoldWinTier1Price
+          SOLD_WIN_TIER2_PRICE: !Ref SoldWinTier2Price
+          SOLD_WIN_TIER3_PRICE: !Ref SoldWinTier3Price
+          SIGNATURE_TYPE: !Ref SignatureType
+      Policies:
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref TraderSecret
+    Metadata:
+      Dockerfile: infrastructure/Dockerfile
+      DockerContext: ..
+      DockerTag: polymarket-trader-v1
+
   SyncTradeHistoryFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -204,6 +257,7 @@ Resources:
                   - !GetAtt FetchDailyFunction.Arn
                   - !GetAtt TradeHourlyFunction.Arn
                   - !GetAtt StopLossCheckFunction.Arn
+                  - !GetAtt SellWinCheckFunction.Arn
                   - !GetAtt SyncTradeHistoryFunction.Arn
 
   FetchDailySchedule:
@@ -254,6 +308,22 @@ Resources:
         RetryPolicy:
           MaximumRetryAttempts: 2
 
+  SellWinSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: polymarket-trader-sell-win-check
+      Description: Sell-win check every hour UTC
+      ScheduleExpression: cron(0 * * * ? *)
+      ScheduleExpressionTimezone: UTC
+      FlexibleTimeWindow:
+        Mode: 'OFF'
+      State: !If [SellWinScheduleIsEnabled, ENABLED, DISABLED]
+      Target:
+        Arn: !GetAtt SellWinCheckFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+        RetryPolicy:
+          MaximumRetryAttempts: 2
+
   SyncTradeHistorySchedule:
     Type: AWS::Scheduler::Schedule
     Properties:
@@ -280,6 +350,9 @@ Outputs:
   StopLossCheckFunctionArn:
     Description: Stop-loss check Lambda ARN
     Value: !GetAtt StopLossCheckFunction.Arn
+  SellWinCheckFunctionArn:
+    Description: Sell-win check Lambda ARN
+    Value: !GetAtt SellWinCheckFunction.Arn
   SyncTradeHistoryFunctionArn:
     Description: Sync trade history Lambda ARN
     Value: !GetAtt SyncTradeHistoryFunction.Arn

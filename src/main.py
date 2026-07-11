@@ -16,6 +16,7 @@ from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
 from src.analysis.sync_runner import run_sync_trade_history
 from src.trade.hourly_runner import run_hourly_trade
+from src.trade.sell_win_runner import run_sell_win_check
 from src.trade.stop_loss_runner import run_stop_loss_check
 from src.utils.hk_time import utc_clock_label
 from src.utils.trade_logger import setup_app_logging
@@ -49,6 +50,10 @@ def cmd_trade_hourly(args: argparse.Namespace) -> None:
 
 def cmd_check_stop_loss(args: argparse.Namespace) -> None:
     run_stop_loss_check(dry_run=args.dry_run)
+
+
+def cmd_check_sell_win(args: argparse.Namespace) -> None:
+    run_sell_win_check(dry_run=args.dry_run)
 
 
 def cmd_sync_trade_history(args: argparse.Namespace) -> None:
@@ -130,6 +135,22 @@ def main() -> None:
         help="Place real sell orders (overrides DRY_RUN env)",
     )
 
+    sell_win_parser = sub.add_parser(
+        "check-sell-win",
+        help="Place tiered sell-win limit orders on live positions",
+    )
+    sell_win_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        default=None,
+        help="Simulate sell orders without placing them",
+    )
+    sell_win_parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Place real sell orders (overrides SOLD_WIN_DRY_RUN env)",
+    )
+
     sync_parser = sub.add_parser(
         "sync-trade-history",
         help="Sync wallet highest-temp trade history from Data API activity",
@@ -161,10 +182,17 @@ def main() -> None:
         elif args.dry_run is None:
             args.dry_run = settings.stop_loss_dry_run
 
+    if args.command == "check-sell-win":
+        if args.live:
+            args.dry_run = False
+        elif args.dry_run is None:
+            args.dry_run = settings.sold_win_dry_run
+
     commands = {
         "fetch-daily": cmd_fetch_daily,
         "trade-hourly": cmd_trade_hourly,
         "check-stop-loss": cmd_check_stop_loss,
+        "check-sell-win": cmd_check_sell_win,
         "sync-trade-history": cmd_sync_trade_history,
         "run-scheduler": cmd_run_scheduler,
     }

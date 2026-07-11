@@ -7,6 +7,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
 - **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **14:00–16:00**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **4:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
+- **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **91¢ / 93¢ / 95¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -49,6 +50,10 @@ python -m src.main trade-hourly --date 2026-06-19 --all-cities --live
 # Stop-loss check (dry-run by default)
 python -m src.main check-stop-loss
 python -m src.main check-stop-loss --live
+
+# Sell-win check (live by default; use --dry-run to simulate)
+python -m src.main check-sell-win --dry-run
+python -m src.main check-sell-win --live
 
 # Sync wallet trade history from Data API activity (no local bot audit files)
 python -m src.main sync-trade-history --init-days 7
@@ -137,6 +142,11 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `STOP_LOSS_ORDER_EXPIRY_MINUTES` | `13` | Stop-loss sell order expiry (independent from `ORDER_EXPIRY_MINUTES`) |
 | `STOP_LOSS_PCT_FLOOR` | `10` | Stop-loss lower bound: only sell when value_pct is above this and below `STOP_LOSS_PCT` |
 | `STOP_LOSS_MIN_LOCAL_TIME` | `16:30` | Stop-loss only runs at or after this local time on the event date (city timezone) |
+| `SOLD_WIN_DRY_RUN` | `false` | Sell-win dry-run flag (independent from `DRY_RUN` and `STOP_LOSS_DRY_RUN`) |
+| `SOLD_WIN_SCHEDULE_ENABLED` | `false` | Enable/disable the AWS sell-win scheduler (disabled by default) |
+| `SOLD_WIN_WINDOW_START` | `15:00` | Sell-win local window start (city timezone) |
+| `SOLD_WIN_WINDOW_END` | `18:00` | Sell-win local window end (exclusive) |
+| `SOLD_WIN_TIER1_PRICE` / `TIER2_PRICE` / `TIER3_PRICE` | `0.91` / `0.93` / `0.95` | Tier floor prices for limit sell orders |
 
 ## Data layout
 
@@ -199,6 +209,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
 | `trade-hourly` | **:05 and :35 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Disabled (manual only)** | Stop-loss code and Lambda remain available, but the scheduler is disabled by default |
+| `sell-win-check` | **Disabled (manual only)** | Hourly sell-win scheduler; disabled unless `SOLD_WIN_SCHEDULE_ENABLED=true` |
 | `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
 ```mermaid
@@ -211,9 +222,11 @@ flowchart LR
     EB1[Scheduler fetch 00:01 HKT]
     EB2[Scheduler hourly UTC]
     EB3[Scheduler stop-loss 15m]
+    EB4[Scheduler sell-win hourly]
     LF[fetch-daily Lambda]
     LT[trade-hourly Lambda]
     LS[stop-loss-check Lambda]
+    LSW[sell-win-check Lambda]
     SM[Secrets Manager]
   end
   DeployGHA -->|sam deploy| LF
@@ -268,6 +281,11 @@ aws lambda invoke --function-name polymarket-trader-stop-loss-check \
   --region ap-east-1 \
   --payload '{}' out.json && cat out.json
 
+# Sell-win check (skips clone when wallet has no positions)
+aws lambda invoke --function-name polymarket-trader-sell-win-check \
+  --region ap-east-1 \
+  --payload '{}' out.json && cat out.json
+
 # Optional: verify Polymarket geoblock from your machine (HK/ap-east-1 is not restricted)
 python scripts/check_geoblock.py
 ```
@@ -275,13 +293,13 @@ python scripts/check_geoblock.py
 ### Data storage
 
 - **Events and selections** are committed to git (`data/events_*.json`, `data/selections/*.json`) via `git add -f` from Lambda.
-- **Stop-loss runs** commit `data/positions/sold_events.json` when a sell is placed.
-- **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`, `...-stop-loss-check`).
+- **Stop-loss and sell-win runs** commit `data/positions/sold_events.json` when a sell order is placed.
+- **Verbose step logs** go to CloudWatch Logs (`/aws/lambda/polymarket-trader-trade-hourly`, `...-stop-loss-check`, `...-sell-win-check`).
 - **`bought_events.json`** is force-committed when live trading updates it.
 
 ### Enabling live trading
 
-Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), and set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders (default expiry `STOP_LOSS_ORDER_EXPIRY_MINUTES=13`). They are independent flags.
+Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders, and set `SOLD_WIN_DRY_RUN=false` (default) for live **sell-win** limit orders. They are independent flags.
 
 ### Deploy troubleshooting
 
