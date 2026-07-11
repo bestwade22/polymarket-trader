@@ -1,0 +1,70 @@
+{
+  "run_at": "2026-07-11T17:05:51.747220+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "686125",
+      "city": "Sao Paulo",
+      "market_id": "2865521",
+      "groupItemTitle": "27\u00b0C",
+      "yes_price": 0.58,
+      "yes_token_id": "2383423067698073348949851289383971648986831849779946718669692637347733359555",
+      "buy_price": 0.64,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.58,
+      "selection_price": 0.58,
+      "gamma_yes_price": 0.58,
+      "best_bid": 0.52,
+      "best_ask": 0.64,
+      "clob_buy_price": 0.64,
+      "last_trade_price": 0.56,
+      "midpoint": 0.58,
+      "outcomePrices": [
+        0.58,
+        0.42
+      ],
+      "order_status": "live",
+      "order_id": "0xce025a80cc83e7c0d7c062a9e955dc17e62a7980fbed4512fc8c53c0cf7b15f4",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-11T17:30:50+00:00"
+    },
+    {
+      "event_id": "686126",
+      "city": "Buenos Aires",
+      "market_id": "2865531",
+      "groupItemTitle": "12\u00b0C",
+      "yes_price": 0.5995,
+      "yes_token_id": "79828298954612333730843764079622431898480904722717219887526898282384845183629",
+      "buy_price": 0.69,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.001",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.5995,
+      "selection_price": 0.5995,
+      "gamma_yes_price": 0.442,
+      "best_bid": 0.509,
+      "best_ask": 0.69,
+      "clob_buy_price": 0.69,
+      "last_trade_price": 0.34,
+      "midpoint": 0.5995,
+      "outcomePrices": [
+        0.442,
+        0.558
+      ],
+      "order_status": "live",
+      "order_id": "0xd32b4a31556f334252addf1e73daf359b0ffc23f29b41f58ce6cd084ce6bf1ac",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-11T17:30:51+00:00"
+    }
+  ]
+}
