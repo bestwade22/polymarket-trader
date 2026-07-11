@@ -2998,5 +2998,21 @@
     "floor_price": 0.93,
     "current_mid": 0.51,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x41f185569bad4ec34486461167c96c751a0dabc60dabfa3fa28027325f89125a",
+    "token_id": "54156848612519347120790523040093386945946131559772197835553507375078413548389",
+    "order_id": "0x252aed6987d7b1b746901eb1f5f9a1523ed19dd84cf2728681cbde18f8e2c387",
+    "sold_at": "2026-07-11T21:00:10.001744+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-denver-on-july-11-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.48,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.505,
+    "reason": "tier1"
   }
 ]
