@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-11T13:36:22.093361+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "682936",
+      "city": "Paris",
+      "market_id": "2854428",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.85,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682941",
+      "city": "Munich",
+      "market_id": "2854483",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682947",
+      "city": "Milan",
+      "market_id": "2854550",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.69,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682948",
+      "city": "Madrid",
+      "market_id": "2854558",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682949",
+      "city": "Warsaw",
+      "market_id": "2854567",
+      "group_item_title": "21\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.825,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682963",
+      "city": "Cape Town",
+      "market_id": "2854725",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "682959",
+      "city": "Amsterdam",
+      "market_id": "2854678",
+      "group_item_title": "26\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2854678",
+      "held_group_item_title": "26\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "682935",
+      "city": "London",
+      "market_id": "2854413",
+      "group_item_title": "27\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.634,
+      "yes_price_max": 0.6
+    }
+  ]
+}
