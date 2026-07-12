@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-07-12T13:06:22.266696+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "686630",
+      "city": "London",
+      "market_id": "2866905",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686635",
+      "city": "Munich",
+      "market_id": "2866961",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.64,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686642",
+      "city": "Madrid",
+      "market_id": "2867035",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686653",
+      "city": "Amsterdam",
+      "market_id": "2867157",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686795",
+      "city": "Cape Town",
+      "market_id": "2867555",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "686631",
+      "city": "Paris",
+      "market_id": "2866915",
+      "group_item_title": "36\u00b0C",
+      "reason": "partial_on_other_market",
+      "held_shares": 6.126593,
+      "held_market_id": "2866914",
+      "held_group_item_title": "35\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "686641",
+      "city": "Milan",
+      "market_id": "2867027",
+      "group_item_title": "33\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2867027",
+      "held_group_item_title": "33\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "686643",
+      "city": "Warsaw",
+      "market_id": "2867050",
+      "group_item_title": "19\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2867050",
+      "held_group_item_title": "19\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
