@@ -3670,5 +3670,21 @@
     "floor_price": 0.91,
     "current_mid": 0.49,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xc2b24c377e6acba9034c6961890fbc003209b8aa96755dd42f4769bef1a5f255",
+    "token_id": "84165795068733326472639512797294571791685446320019131304288413011281336621997",
+    "order_id": "0x6f777489ebc7c0006bc5c6bf9c5d529871efe802fb92de3136fd74f8e7ad31ef",
+    "sold_at": "2026-07-12T23:00:10.302828+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seattle-on-july-12-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.555,
+    "reason": "tier2"
   }
 ]
