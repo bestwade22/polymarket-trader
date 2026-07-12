@@ -246,6 +246,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "30342911746261000464792165131679218237142238915367827761749945070895577692681"
     },
+    "highest-temperature-in-beijing-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 12?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "105763729642734904494038915656578713706227457010973089712626667590763424877549"
+    },
     "highest-temperature-in-beijing-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 2?",
@@ -437,6 +443,12 @@
       "title": "Highest temperature in Chengdu on July 11?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "77639890481238400911542533125597033023404940821427582981971204735200183622534"
+    },
+    "highest-temperature-in-chengdu-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 12?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "76856087686758103052029696763432059386421936016680284321161753516273296076947"
     },
     "highest-temperature-in-chengdu-on-july-2-2026": {
       "closed": true,
@@ -2015,6 +2027,12 @@
       "title": "Highest temperature in Shenzhen on July 10?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "75440586164657662136456808454555063712439536540911258853238502032989779855700"
+    },
+    "highest-temperature-in-shenzhen-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shenzhen on July 12?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "20032272373403681880923985055106579525544648111824990771911537800056967294141"
     },
     "highest-temperature-in-shenzhen-on-july-3-2026": {
       "closed": true,
