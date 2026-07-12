@@ -822,6 +822,12 @@
       "winning_temp": "22\u00b0C",
       "winning_token_id": "13915768933016081067984314425910866798442811778629518542105031902505420188076"
     },
+    "highest-temperature-in-helsinki-on-july-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on July 11?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "31237943585491103098473350791510340788666378772070295673737144140696569989928"
+    },
     "highest-temperature-in-helsinki-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on July 2?",
@@ -1337,6 +1343,12 @@
       "title": "Highest temperature in Milan on July 10?",
       "winning_temp": "34\u00b0C",
       "winning_token_id": "40418686716969640128452332784983774305896089670300544782703824402669091277827"
+    },
+    "highest-temperature-in-milan-on-july-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on July 11?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "85388453075544603400099026211413523695512232446172137103229667533253560595315"
     },
     "highest-temperature-in-milan-on-july-2-2026": {
       "closed": true,
@@ -2171,6 +2183,12 @@
       "title": "Highest temperature in Warsaw on July 1?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "114265294291603925305843465570010136490123115306710498249547484090407955108467"
+    },
+    "highest-temperature-in-warsaw-on-july-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on July 11?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "103490054283323404415589692436281264881938253854392170667590563421941607611087"
     },
     "highest-temperature-in-warsaw-on-july-2-2026": {
       "closed": true,
