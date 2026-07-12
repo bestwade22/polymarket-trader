@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-07-12T02:35:37.386159+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "686634",
+      "city": "Wellington",
+      "market_id": "2866951",
+      "group_item_title": "11\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.875,
+      "yes_price_max": 0.6
+    }
+  ]
+}
