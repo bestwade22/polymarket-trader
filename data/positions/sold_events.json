@@ -4038,5 +4038,53 @@
     "floor_price": 0.91,
     "current_mid": 0.52,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xe040c08b1701ffc977cbf2e96145e5ec4f5cef653307e9c86dafdae7655e2928",
+    "token_id": "28547941001246016437709310380804205567220685950717114281403030712170554772939",
+    "order_id": "0xde93fbd14473981ed2fafb466fa370695e93fe90aa1585cc83516902a8ac54b2",
+    "sold_at": "2026-07-13T20:00:11.074225+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-austin-on-july-13-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.83,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x2a1f0ae653526065823c565c6b3b1edebe8cfadf13fb0b9e86568068bbc83966",
+    "token_id": "113631709267155003291138079921207834929909016409300590852802933672637880694787",
+    "order_id": "0x93657eb27d839e8092657c2d071737e4ed75358588a2e631c1f601ea68809d8f",
+    "sold_at": "2026-07-13T20:00:12.105996+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-toronto-on-july-13-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.62,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x101fd1af4b7989ac443a2e0aee647359fcc771fa05a8023a7bfef0b19620a048",
+    "token_id": "16458455455747351495253416194150408228778490737648256447741004355430290140102",
+    "order_id": "0xed703ba550aaa81b314ee7c3d62b66569a5439ce3304e81b0f94e3f9d50bea9a",
+    "sold_at": "2026-07-13T20:00:13.110229+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-july-13-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.485,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.4445,
+    "reason": "tier1"
   }
 ]
