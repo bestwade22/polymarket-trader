@@ -85,6 +85,12 @@ function isSoldWouldLose(r) {
   return r.win_temp_vs_bought && r.win_temp_vs_bought !== "same" && r.win_temp_vs_bought !== "unknown";
 }
 
+function countsInWinSummary(r) {
+  if (r.result === "win") return true;
+  if (r.result !== "sold") return false;
+  return isSoldWin(r) || r.sold_but_would_have_won || isSoldWouldLose(r);
+}
+
 function outcomeValue(r) {
   if (r.outcome_value_usd != null) return Number(r.outcome_value_usd);
   if (r.would_win_value_usd != null) return Number(r.would_win_value_usd);
@@ -337,6 +343,7 @@ function computeFilteredSummary(records) {
     total_cost_basis_usd: 0,
     total_realized_pnl_usd: 0,
     sold_but_would_have_won_count: 0,
+    sold_would_lose_count: 0,
     pnl_count: 0,
     buy_price_total: 0,
     outcome_total: 0,
@@ -358,6 +365,7 @@ function computeFilteredSummary(records) {
       s.pnl_count += 1;
     }
     if (r.sold_but_would_have_won) s.sold_but_would_have_won_count++;
+    if (isSoldWouldLose(r)) s.sold_would_lose_count++;
 
     const outcome = outcomeValue(r);
     if (outcome != null) {
@@ -367,7 +375,7 @@ function computeFilteredSummary(records) {
   }
   const settled = s.win_count + s.loss_count + s.sold_count;
   s.win_pct = settled ? Math.round((s.win_count / settled) * 1000) / 10 : 0;
-  s.win_plus_sold_win_count = s.win_count + s.sold_win_count;
+  s.win_plus_sold_win_count = records.filter(countsInWinSummary).length;
   s.win_plus_sold_win_pct = settled
     ? Math.round((s.win_plus_sold_win_count / settled) * 1000) / 10
     : 0;
@@ -387,8 +395,8 @@ function renderSummary(records) {
       <div><span class="summary-label">Total</span><span class="summary-value">${fs.total_count}</span></div>
       <div><span class="summary-label">Win</span><span class="summary-value">${fs.win_count}</span></div>
       <div><span class="summary-label">Sold win</span><span class="summary-value">${fs.sold_win_count}</span></div>
-      <div><span class="summary-label">Win+Sold win</span><span class="summary-value">${fs.win_plus_sold_win_count}</span></div>
-      <div><span class="summary-label">Win+Sold win%</span><span class="summary-value">${fs.win_plus_sold_win_pct}%</span></div>
+      <div><span class="summary-label">Win summary</span><span class="summary-value">${fs.win_plus_sold_win_count}</span></div>
+      <div><span class="summary-label">Win summary%</span><span class="summary-value">${fs.win_plus_sold_win_pct}%</span></div>
       <div><span class="summary-label">Loss</span><span class="summary-value">${fs.loss_count}</span></div>
       <div><span class="summary-label">Sold lose</span><span class="summary-value">${fs.sold_lose_count}</span></div>
       <div><span class="summary-label">Sold</span><span class="summary-value">${fs.sold_count}</span></div>
@@ -411,35 +419,26 @@ const INSIGHT_COLUMNS = [
   { key: "count", label: "Count", type: "number" },
   { key: "settled", label: "Settled", type: "number" },
   { key: "win_rate_pct", label: "Win%", type: "number" },
-  { key: "win_plus_sold_win_pct", label: "Win+Sold%", type: "number" },
+  { key: "win_plus_sold_win_pct", label: "Win summary%", type: "number" },
   { key: "avg_buy_price", label: "Avg buy", type: "number" },
   { key: "avg_pnl_usd", label: "Avg P&amp;L", type: "number" },
   { key: "avg_outcome_value_usd", label: "Avg outcome", type: "number" },
 ];
 
-const INSIGHT_COLUMNS_WITH_CITIES = [
-  { key: "group", label: "Group (UTC)", type: "string" },
-  { key: "city_count", label: "Cities", type: "number" },
-  ...INSIGHT_COLUMNS.slice(1),
-];
-
-function insightColumnsFor(title) {
-  if (title === "By UTC buy time" || title === "By timezone group (UTC)") {
-    return INSIGHT_COLUMNS_WITH_CITIES;
-  }
+function insightColumnsFor(_title) {
   return INSIGHT_COLUMNS;
 }
 
 function sortInsightEntries(title, data, limit) {
   const state = insightSortState[title] || { key: "group", asc: true };
-  if ((title === "By local buy time" || title === "By UTC buy time") && !insightSortState[title]) {
+  if (title === "By local buy time" && !insightSortState[title]) {
     state.key = "group";
     state.asc = true;
     state.groupSort = "time";
   }
 
   let entries = Object.entries(data || {});
-  if ((title === "By local buy time" || title === "By UTC buy time") && state.groupSort === "time") {
+  if (title === "By local buy time" && state.groupSort === "time") {
     entries.sort((a, b) => localTimeBandSortKey(a[0]) - localTimeBandSortKey(b[0]));
     if (limit) entries = entries.slice(0, limit);
     return entries;
@@ -466,11 +465,11 @@ function sortInsightEntries(title, data, limit) {
 }
 
 function renderGroupTable(title, data, options = {}) {
-  const { limit = null, defaultSort = null } = options;
+  const { limit = null, defaultSort = null, description = null } = options;
   const columns = insightColumnsFor(title);
   if (!insightSortState[title]) {
     insightSortState[title] = defaultSort || { key: "count", asc: false };
-    if (title === "By local buy time" || title === "By UTC buy time") {
+    if (title === "By local buy time") {
       insightSortState[title] = { key: "group", asc: true, groupSort: "time" };
     }
   }
@@ -505,7 +504,7 @@ function renderGroupTable(title, data, options = {}) {
     : `<tr><td colspan="${columns.length}">No data</td></tr>`;
   return `
     <section class="insight-card" data-insight-title="${title}">
-      <h3>${title}</h3>
+      <h3>${title}${description ? `<span class="insight-desc">${description}</span>` : ""}</h3>
       <div class="mini-table-wrap">
         <table class="mini-table">
           <thead><tr>${header}</tr></thead>
@@ -519,8 +518,6 @@ function renderInsights(data) {
   const container = document.getElementById("insights-content");
   const insightSections = [
     ["By city", data.summary_by_city, { limit: null }],
-    ["By timezone group (UTC)", data.summary_by_timezone_group, { limit: null }],
-    ["By UTC buy time", data.summary_by_utc_buy_time_band, { limit: null }],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
@@ -528,9 +525,16 @@ function renderInsights(data) {
     ["By win temp vs bought", data.summary_by_win_temp_vs_bought, { limit: null }],
     ["By trade window", data.summary_by_trade_window, { limit: null }],
     ["By weekday", data.summary_by_weekday, { limit: null }],
+    ["By week", data.summary_by_week, { limit: null }],
     ["By month", data.summary_by_month, { limit: null }],
-    ["By ROI band", data.summary_by_roi_band, { limit: null }],
-    ["By shares band", data.summary_by_shares_band, { limit: null }],
+    [
+      "By return % (ROI)",
+      data.summary_by_roi_band,
+      {
+        limit: null,
+        description: "P&amp;L ÷ cost basis: &lt;-50%, -50–0%, 0–50%, 50–100%, &gt;100%",
+      },
+    ],
     ["By city timezone", data.summary_by_city_timezone, { limit: null }],
   ];
   const cards = insightSections
@@ -559,7 +563,7 @@ function renderInsights(data) {
         state.key = key;
         state.asc = key === "group";
       }
-      if (title === "By local buy time" || title === "By UTC buy time") {
+      if (title === "By local buy time") {
         state.groupSort = state.key === "group" && state.asc ? "time" : "value";
       }
       insightSortState[title] = state;

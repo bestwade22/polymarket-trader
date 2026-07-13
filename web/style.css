@@ -129,6 +129,14 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   font-size: 0.95rem;
 }
 
+.insight-desc {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--muted);
+}
+
 .insight-highlights {
   margin-bottom: 1rem;
   grid-column: 1 / -1;

@@ -100,6 +100,14 @@ def _is_sold_would_lose(rec: TradeRecord) -> bool:
     return rec.win_temp_vs_bought not in ("same", "unknown")
 
 
+def _counts_toward_win_summary(rec: TradeRecord) -> bool:
+    if rec.result == "win":
+        return True
+    if rec.result != "sold":
+        return False
+    return _is_sold_win(rec) or rec.sold_but_would_have_won or _is_sold_would_lose(rec)
+
+
 def compute_outcome_value(rec: TradeRecord) -> Optional[float]:
     """Cash returned for wins/sold; negative P&L for losses."""
     return compute_outcome_value_parts(
@@ -161,7 +169,7 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
 
     settled = summary.win_count + summary.loss_count + summary.sold_count
     summary.win_pct = round((summary.win_count / settled) * 100, 1) if settled else 0.0
-    summary.win_plus_sold_win_count = summary.win_count + summary.sold_win_count
+    summary.win_plus_sold_win_count = sum(1 for rec in records if _counts_toward_win_summary(rec))
     summary.win_plus_sold_win_pct = (
         round((summary.win_plus_sold_win_count / settled) * 100, 1) if settled else 0.0
     )

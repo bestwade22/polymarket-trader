@@ -281,6 +281,25 @@ class TestSummary:
         assert summary.avg_buy_price == 0.5
         assert summary.avg_pnl_usd == 1.0
         assert summary.sold_lose_count == 1
+        assert summary.win_plus_sold_win_count == 2
+
+    def test_win_summary_includes_sold_would_lose(self):
+        records = [
+            _sample_record(
+                result="sold",
+                sold_at="2026-07-05T18:00:00+00:00",
+                final_value_usd=2.0,
+                realized_pnl_usd=2.0,
+                roi_pct=40.0,
+                winning_temp="30°C",
+                win_temp_vs_bought="higher",
+                sell_price=0.7,
+                sell_value_pct=140.0,
+            ),
+        ]
+        summary = summarize_records(records)
+        assert summary.sold_win_count == 0
+        assert summary.win_plus_sold_win_count == 1
 
     def test_insights(self):
         rec = _sample_record(event_slug="slug", transaction_hash=None)
@@ -288,6 +307,7 @@ class TestSummary:
         assert "London" in insights["summary_by_city"]
         assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
         assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
+        assert "2026-W27" in insights["summary_by_week"]
 
 
 class TestNoLocalBotFiles:

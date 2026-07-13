@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime
 from functools import lru_cache
 from typing import Any, Callable
 
@@ -48,19 +48,6 @@ def _local_time_band(local_time: str) -> str:
         return "unknown"
     hour, minute = (int(part) for part in local_time.split(":", 1))
     return _time_band_from_minutes(hour * 60 + minute, start=12 * 60, end=16 * 60)
-
-
-def _utc_time_band(bought_at: str) -> str:
-    if not bought_at:
-        return "unknown"
-    try:
-        dt = datetime.fromisoformat(bought_at)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
-        dt = dt.astimezone(timezone.utc)
-    except ValueError:
-        return "unknown"
-    return _time_band_from_minutes(dt.hour * 60 + dt.minute, start=12 * 60, end=16 * 60)
 
 
 _TZ_LABELS: dict[str, str] = {
@@ -130,6 +117,17 @@ def _month_label(date_str: str) -> str:
     return date_str[:7] if len(date_str) >= 7 else "Unknown"
 
 
+def _week_label(date_str: str) -> str:
+    if not date_str:
+        return "Unknown"
+    try:
+        dt = datetime.fromisoformat(date_str)
+        year, week, _ = dt.isocalendar()
+        return f"{year}-W{week:02d}"
+    except ValueError:
+        return "Unknown"
+
+
 def _roi_band(rec: TradeRecord) -> str:
     if rec.roi_pct is None:
         return "unknown"
@@ -143,14 +141,6 @@ def _roi_band(rec: TradeRecord) -> str:
     if roi < 100:
         return "50–100%"
     return ">100%"
-
-
-def _shares_band(shares: float) -> str:
-    if shares <= 10.5:
-        return "≤10"
-    if shares <= 15.5:
-        return "11–15"
-    return ">15"
 
 
 def _sold_outcome_label(rec: TradeRecord) -> str:
@@ -178,6 +168,8 @@ def _group_metrics(
             "count": 0,
             "wins": 0,
             "sold_wins": 0,
+            "sold_would_wins": 0,
+            "sold_would_loses": 0,
             "sold_loses": 0,
             "settled": 0,
             "pnl_usd": 0.0,
@@ -211,6 +203,10 @@ def _group_metrics(
             stats["wins"] += 1
         if _is_sold_win(rec):
             stats["sold_wins"] += 1
+        if rec.sold_but_would_have_won:
+            stats["sold_would_wins"] += 1
+        if _is_sold_would_lose(rec):
+            stats["sold_would_loses"] += 1
         if _is_sold_lose(rec):
             stats["sold_loses"] += 1
 
@@ -220,7 +216,9 @@ def _group_metrics(
         settled = int(stats["settled"])
         wins = int(stats["wins"])
         sold_wins = int(stats["sold_wins"])
-        win_plus_sold = wins + sold_wins
+        sold_would_wins = int(stats["sold_would_wins"])
+        sold_would_loses = int(stats["sold_would_loses"])
+        win_plus_sold = wins + sold_wins + sold_would_wins + sold_would_loses
         pnl_usd = float(stats["pnl_usd"])
         buy_usd = float(stats["buy_usd"])
         buy_price = float(stats["buy_price"])
@@ -302,20 +300,15 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
 
     return {
         "summary_by_city": _group_metrics(records, lambda rec: rec.city or "Unknown"),
-        "summary_by_timezone_group": _group_metrics(
-            records, lambda rec: _utc_time_band(rec.bought_at), track_cities=True
-        ),
         "summary_by_buy_price_band": _group_metrics(records, lambda rec: _buy_price_band(rec.buy_price)),
         "summary_by_local_buy_time_band": _group_metrics(
             records, lambda rec: _local_time_band(rec.bought_at_local)
-        ),
-        "summary_by_utc_buy_time_band": _group_metrics(
-            records, lambda rec: _utc_time_band(rec.bought_at), track_cities=True
         ),
         "summary_by_win_temp_vs_bought": _group_metrics(
             records, lambda rec: rec.win_temp_vs_bought or "unknown"
         ),
         "summary_by_weekday": _group_metrics(records, lambda rec: _weekday_label(rec.date)),
+        "summary_by_week": _group_metrics(records, lambda rec: _week_label(rec.date)),
         "summary_by_month": _group_metrics(records, lambda rec: _month_label(rec.date)),
         "summary_by_result": _group_metrics(records, lambda rec: rec.result or "unknown"),
         "summary_by_sold_outcome": _group_metrics(records, lambda rec: _sold_outcome_label(rec)),
@@ -323,7 +316,6 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             records, lambda rec: rec.trade_window or "unknown"
         ),
         "summary_by_roi_band": _group_metrics(records, lambda rec: _roi_band(rec)),
-        "summary_by_shares_band": _group_metrics(records, lambda rec: _shares_band(rec.shares)),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: _timezone_group(rec.city)
         ),
