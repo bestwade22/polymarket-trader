@@ -174,6 +174,12 @@
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "83010095464475198465309000778827763213371239620712119789508746596148149519158"
     },
+    "highest-temperature-in-austin-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on July 12?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "59076411401303076208423960714641005132963959282211486721881097493845290278344"
+    },
     "highest-temperature-in-austin-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on July 2?",
@@ -672,6 +678,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "27132408683379436975739105065694580009619387849858678793397684455490561514915"
     },
+    "highest-temperature-in-dallas-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 12?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "12617842422589967733968298753521845297400442761227436243429345832901587525285"
+    },
     "highest-temperature-in-dallas-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on July 2?",
@@ -755,6 +767,12 @@
       "title": "Highest temperature in Denver on July 11?",
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "27266811520196704419774030552922872411967354620915343613744301426583958336218"
+    },
+    "highest-temperature-in-denver-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on July 12?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "20700472649039019579978866590168324115324824239247030854987681061180599024144"
     },
     "highest-temperature-in-denver-on-july-2-2026": {
       "closed": true,
@@ -1812,6 +1830,12 @@
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "2084386505658106042053022569246695523873845467816152501951941224067770870402"
     },
+    "highest-temperature-in-san-francisco-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on July 12?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "105549118675976649502794019969494546042724762479350670119853685189313526819492"
+    },
     "highest-temperature-in-san-francisco-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on July 2?",
@@ -1949,6 +1973,12 @@
       "title": "Highest temperature in Seattle on July 11?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "24179228723590212823457283611312054592263077643113878792485277549428168300887"
+    },
+    "highest-temperature-in-seattle-on-july-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on July 12?",
+      "winning_temp": "72-73\u00b0F",
+      "winning_token_id": "84165795068733326472639512797294571791685446320019131304288413011281336621997"
     },
     "highest-temperature-in-seattle-on-july-2-2026": {
       "closed": true,
