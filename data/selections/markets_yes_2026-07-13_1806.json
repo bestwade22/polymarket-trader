@@ -1,0 +1,110 @@
+{
+  "run_at": "2026-07-13T18:06:18.195702+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "693377",
+      "city": "Toronto",
+      "market_id": "2887888",
+      "groupItemTitle": "33\u00b0C",
+      "yes_price": 0.5,
+      "yes_token_id": "113631709267155003291138079921207834929909016409300590852802933672637880694787",
+      "buy_price": 0.69,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.5,
+      "selection_price": 0.5,
+      "gamma_yes_price": 0.505,
+      "best_bid": 0.31,
+      "best_ask": 0.69,
+      "clob_buy_price": 0.69,
+      "last_trade_price": 0.47,
+      "midpoint": 0.5,
+      "outcomePrices": [
+        0.505,
+        0.495
+      ],
+      "order_status": "live",
+      "order_id": "0xd8097945959f94cb27ceb5ff071890526ec8c601f18ee23a817d0d4cdbfa37a0",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-13T18:31:16+00:00"
+    },
+    {
+      "event_id": "693381",
+      "city": "Atlanta",
+      "market_id": "2887931",
+      "groupItemTitle": "80-81\u00b0F",
+      "yes_price": 0.48,
+      "yes_token_id": "28065653544373648784631990497532230640786877045961414103680091664453592647074",
+      "buy_price": 0.52,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.48,
+      "selection_price": 0.48,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.44,
+      "best_ask": 0.52,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.53,
+      "midpoint": 0.48,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "order_status": "live",
+      "order_id": "0x80480e621851c796202bd19f22d4f856f3158dd9b10a2121bc8eaa30a54391c4",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-13T18:31:17+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "693375",
+      "city": "Sao Paulo",
+      "market_id": "2887866",
+      "group_item_title": "17\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.992,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693379",
+      "city": "NYC",
+      "market_id": "2887909",
+      "group_item_title": "84-85\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693382",
+      "city": "Miami",
+      "market_id": "2887943",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.81,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693376",
+      "city": "Buenos Aires",
+      "market_id": "2887875",
+      "group_item_title": "10\u00b0C",
+      "reason": "partial_on_other_market",
+      "held_shares": 9.99714,
+      "held_market_id": "2887877",
+      "held_group_item_title": "12\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
