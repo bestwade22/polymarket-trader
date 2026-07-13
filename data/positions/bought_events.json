@@ -3949,5 +3949,68 @@
     "bought_at": "2026-07-13T11:36:16.927769+00:00",
     "price": 0.4,
     "size": 10
+  },
+  {
+    "event_id": "690235",
+    "market_id": "2877652",
+    "strategy": "highest_yes",
+    "order_id": "0xbcb0f795d69872c83535f071d7d2712cd922c24d11ed72ff8b0bd7d9f24a041f",
+    "bought_at": "2026-07-13T12:07:05.566898+00:00",
+    "price": 0.52,
+    "size": 10
+  },
+  {
+    "event_id": "690240",
+    "market_id": "2877714",
+    "strategy": "highest_yes",
+    "order_id": "0xd876fb599afd5a9a32f01a4a9f9a1d76127915baa1a7af01eacc3285c4257d1c",
+    "bought_at": "2026-07-13T12:07:06.459728+00:00",
+    "price": 0.47,
+    "size": 10
+  },
+  {
+    "event_id": "690246",
+    "market_id": "2877781",
+    "strategy": "highest_yes",
+    "order_id": "0x3007d9224c6e2a740ca94821044bc21045a784ba19bd1a21cc60959777e36daf",
+    "bought_at": "2026-07-13T12:07:07.312877+00:00",
+    "price": 0.63,
+    "size": 10
+  },
+  {
+    "event_id": "690248",
+    "market_id": "2877804",
+    "strategy": "highest_yes",
+    "order_id": "0x1e2e49003581f6cf70a2185da2dce1c0106c560767948577413a26e3ea0c1f6b",
+    "bought_at": "2026-07-13T12:07:08.339137+00:00",
+    "price": 0.34,
+    "size": 10
+  },
+  {
+    "event_id": "690255",
+    "market_id": "2877882",
+    "strategy": "highest_yes",
+    "order_id": "0x8a5ca6453e54556326ce3b69b997e59d9763f9ab65882e2c6b6f38a720ee035c",
+    "bought_at": "2026-07-13T12:07:09.229584+00:00",
+    "price": 0.4,
+    "size": 10
+  },
+  {
+    "event_id": "690258",
+    "market_id": "2877909",
+    "strategy": "highest_yes",
+    "order_id": "0x3ca886674bb4ae64e42dd8cbd36f0e120ec81d0006f6b0a3a0dc08a5ea911e33",
+    "bought_at": "2026-07-13T12:07:10.079612+00:00",
+    "price": 0.48,
+    "size": 10
+  },
+  {
+    "event_id": "690417",
+    "market_id": "2878661",
+    "strategy": "highest_yes",
+    "order_id": "0x7db738495515b935f5434cdafabdf79dd0235219e4b083909a197882415450d4",
+    "bought_at": "2026-07-13T12:07:10.934842+00:00",
+    "price": 0.379,
+    "size": 10
   }
 ]
