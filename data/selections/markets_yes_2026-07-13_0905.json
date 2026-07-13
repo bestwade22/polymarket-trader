@@ -1,0 +1,49 @@
+{
+  "run_at": "2026-07-13T09:05:45.743546+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "690416",
+      "city": "Lucknow",
+      "market_id": "2878651",
+      "groupItemTitle": "37\u00b0C",
+      "yes_price": 0.42,
+      "yes_token_id": "115537927612102052627742804821153393250988412110571705577937152118334216897717",
+      "buy_price": 0.44,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.42,
+      "selection_price": 0.42,
+      "gamma_yes_price": 0.54,
+      "best_bid": 0.4,
+      "best_ask": 0.44,
+      "clob_buy_price": 0.44,
+      "last_trade_price": 0.63,
+      "midpoint": 0.42,
+      "outcomePrices": [
+        0.54,
+        0.46
+      ],
+      "order_status": "live",
+      "order_id": "0xa3b3cc7c29647b1f30cd9a86ae03bccea2c8e5b2492eee7fe5862548789ef923",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-13T09:30:45+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "690418",
+      "city": "Karachi",
+      "market_id": "2878673",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.88,
+      "yes_price_max": 0.6
+    }
+  ]
+}
