@@ -1,0 +1,27 @@
+{
+  "run_at": "2026-07-13T17:35:45.282891+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "693375",
+      "city": "Sao Paulo",
+      "market_id": "2887866",
+      "group_item_title": "17\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693376",
+      "city": "Buenos Aires",
+      "market_id": "2887876",
+      "group_item_title": "11\u00b0C",
+      "reason": "partial_on_other_market",
+      "held_shares": 9.99714,
+      "held_market_id": "2887877",
+      "held_group_item_title": "12\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
