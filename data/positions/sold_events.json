@@ -4022,5 +4022,21 @@
     "floor_price": 0.91,
     "current_mid": 0.125,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x2a1f0ae653526065823c565c6b3b1edebe8cfadf13fb0b9e86568068bbc83966",
+    "token_id": "113631709267155003291138079921207834929909016409300590852802933672637880694787",
+    "order_id": "0xced28f848d45e0b81cb2091312be4ed7f6cfd51f9aa1aeb99069084a412c339f",
+    "sold_at": "2026-07-13T19:00:11.819719+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-toronto-on-july-13-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.52,
+    "reason": "tier1"
   }
 ]
