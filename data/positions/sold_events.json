@@ -3718,5 +3718,21 @@
     "floor_price": 0.91,
     "current_mid": 0.8,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x64baafb05fedd1f5f57ded7f152cd8bf3a0fa691d025672fc62f00221efe74cd",
+    "token_id": "42752449952696165779967146307746769225549611943366587784284399994414467741527",
+    "order_id": "0xc4d90110958ed32f1a1608e1e380c261dd78bb2c5ba0d1fbdeda734dd57546aa",
+    "sold_at": "2026-07-13T07:00:09.960126+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chengdu-on-july-13-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.345,
+    "reason": "tier1"
   }
 ]
