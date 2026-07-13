@@ -3734,5 +3734,21 @@
     "floor_price": 0.91,
     "current_mid": 0.345,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xb9c5a240dfd1658fe2080dbdc1f8deb38f3d9aa9f0938fece53921b319c6909a",
+    "token_id": "113594752210951180553970560067875422509632692811797095550056185266247490415777",
+    "order_id": "0xcc27a6354cb3a9a039b0386923a7bbb4705bfbf5d2ce9325d281a23385477f72",
+    "sold_at": "2026-07-13T08:00:11.046513+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chongqing-on-july-13-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.84,
+    "reason": "tier2"
   }
 ]
