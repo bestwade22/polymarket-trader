@@ -4006,5 +4006,21 @@
     "floor_price": 0.95,
     "current_mid": 0.37,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x314d02b445749ae80dd84a82104f6fcd9293218f1c1055adcb0eed9c2156e0c1",
+    "token_id": "50688456706531729629045895539343048170230538549303541685856081106698771412983",
+    "order_id": "0x4f26b4534efecd65b45fa516c60728738740b4b677470e44266effb1dfcc3f62",
+    "sold_at": "2026-07-13T18:00:10.639724+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-buenos-aires-on-july-13-2026",
+    "price": 0.91,
+    "size": 9.9971,
+    "avg_buy_price": 0.3,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.125,
+    "reason": "tier1"
   }
 ]
