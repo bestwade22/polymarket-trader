@@ -3766,5 +3766,21 @@
     "floor_price": 0.91,
     "current_mid": 0.11,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xf656e6586d0cffb852d40290a45b0765246c2825d933163929646326c9c060b7",
+    "token_id": "115537927612102052627742804821153393250988412110571705577937152118334216897717",
+    "order_id": "0xab59e6104f7a327f68bbf7dcf42a9b20c82e2a198a3bd66cdc2b34333fad150f",
+    "sold_at": "2026-07-13T11:00:09.709402+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-lucknow-on-july-13-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.42,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.115,
+    "reason": "tier2"
   }
 ]
