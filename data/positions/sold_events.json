@@ -4614,5 +4614,21 @@
     "floor_price": 0.95,
     "current_mid": 0.38,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x44d7e9b4e6c6114744c9e3fd3b4ef1c5f7ec9dbc999222ec01d8bb4e53b8ed1c",
+    "token_id": "30196216051167008566384698525382269104129700281378598807231729746489823210518",
+    "order_id": "0xf7c9a3c56090acb3f0ab75e9ba676188cbe18a718afa43fdce26a71b05a30b5b",
+    "sold_at": "2026-07-14T22:00:10.365778+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-july-14-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.43,
+    "tier": "tier3",
+    "floor_price": 0.95,
+    "current_mid": 0.925,
+    "reason": "tier3"
   }
 ]
