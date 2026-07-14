@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-07-14T00:00:30.026381+00:00",
+  "synced_at": "2026-07-14T03:00:30.470037+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -8,33 +8,33 @@
       "bought_temp": "78-79\u00b0F",
       "trade_window": "14:00\u201316:00",
       "bought_at": "2026-07-13T21:06:08+00:00",
-      "sold_at": null,
+      "sold_at": "2026-07-14T00:24:37+00:00",
       "redeemed_at": null,
       "shares": 10.0,
-      "result": "open",
-      "final_value_usd": null,
+      "result": "sold",
+      "final_value_usd": 4.7,
       "winning_temp": null,
       "win_temp_vs_bought": "unknown",
       "price_drop_below_threshold_at": null,
       "sold_but_would_have_won": false,
       "buy_price": 0.48,
-      "sell_price": null,
+      "sell_price": 0.95,
       "cost_basis_usd": 4.8,
-      "realized_pnl_usd": null,
-      "roi_pct": null,
-      "sell_value_pct": null,
-      "held_hours": null,
+      "realized_pnl_usd": 4.7,
+      "roi_pct": 97.92,
+      "sell_value_pct": 197.92,
+      "held_hours": 3.31,
       "event_slug": "highest-temperature-in-seattle-on-july-13-2026",
       "token_id": "36837524013066554220506304151105927059393403038022594971741826971790691392684",
       "condition_id": "0xb700ec202864218dca5016236a31af685150c58a16b0b17ea87b673a69f5f0d4",
       "transaction_hash": "0x4df9fd1d58ca8125dad1a03a0215d529b280057c666b8c3849ecff48f1c7d653",
       "bought_at_hk": "2026-07-14 05:06:08 HKT",
       "bought_at_local": "14:06",
-      "sold_at_hk": "",
+      "sold_at_hk": "2026-07-14 08:24:37 HKT",
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": null
+      "outcome_value_usd": 9.5
     },
     {
       "date": "2026-07-13",
@@ -15375,21 +15375,21 @@
     "total_count": 452,
     "win_count": 144,
     "loss_count": 192,
-    "sold_count": 113,
-    "open_count": 3,
-    "win_pct": 32.1,
+    "sold_count": 114,
+    "open_count": 2,
+    "win_pct": 32.0,
     "total_cost_basis_usd": 2300.43,
-    "total_realized_pnl_usd": -104.02,
+    "total_realized_pnl_usd": -99.32,
     "sold_but_would_have_won_count": 19,
     "avg_buy_usd": 5.09,
     "avg_buy_price": 0.48,
-    "avg_pnl_usd": -0.23,
-    "sold_win_count": 53,
+    "avg_pnl_usd": -0.22,
+    "sold_win_count": 54,
     "sold_lose_count": 45,
-    "win_plus_sold_win_count": 220,
-    "win_plus_sold_win_pct": 49.0,
-    "total_outcome_value_usd": 1288.21,
-    "avg_outcome_value_usd": 2.87
+    "win_plus_sold_win_count": 221,
+    "win_plus_sold_win_pct": 49.1,
+    "total_outcome_value_usd": 1297.71,
+    "avg_outcome_value_usd": 2.88
   },
   "insights": {
     "summary_by_city": {
@@ -15988,18 +15988,18 @@
       "Seattle": {
         "count": 16,
         "wins": 4,
-        "sold_wins": 1,
+        "sold_wins": 2,
         "sold_loses": 2,
-        "win_plus_sold_win": 6,
-        "settled": 15,
-        "win_rate_pct": 26.7,
-        "win_plus_sold_win_pct": 40.0,
+        "win_plus_sold_win": 7,
+        "settled": 16,
+        "win_rate_pct": 25.0,
+        "win_plus_sold_win_pct": 43.8,
         "avg_buy_usd": 5.12,
         "avg_buy_price": 0.497,
-        "avg_pnl_usd": -0.92,
-        "total_pnl_usd": -14.68,
-        "avg_outcome_value_usd": 1.86,
-        "total_outcome_value_usd": 27.96
+        "avg_pnl_usd": -0.62,
+        "total_pnl_usd": -9.98,
+        "avg_outcome_value_usd": 2.34,
+        "total_outcome_value_usd": 37.46
       },
       "Seoul": {
         "count": 5,
@@ -16230,18 +16230,18 @@
       "0.45\u20130.50": {
         "count": 91,
         "wins": 26,
-        "sold_wins": 10,
+        "sold_wins": 11,
         "sold_loses": 11,
-        "win_plus_sold_win": 41,
-        "settled": 89,
-        "win_rate_pct": 29.2,
-        "win_plus_sold_win_pct": 46.1,
+        "win_plus_sold_win": 42,
+        "settled": 90,
+        "win_rate_pct": 28.9,
+        "win_plus_sold_win_pct": 46.7,
         "avg_buy_usd": 5.04,
         "avg_buy_price": 0.472,
-        "avg_pnl_usd": -0.46,
-        "total_pnl_usd": -41.83,
-        "avg_outcome_value_usd": 2.6,
-        "total_outcome_value_usd": 231.8
+        "avg_pnl_usd": -0.41,
+        "total_pnl_usd": -37.13,
+        "avg_outcome_value_usd": 2.68,
+        "total_outcome_value_usd": 241.3
       },
       "0.50\u20130.55": {
         "count": 125,
@@ -16424,18 +16424,18 @@
       "14:00-14:15": {
         "count": 71,
         "wins": 10,
-        "sold_wins": 25,
+        "sold_wins": 26,
         "sold_loses": 2,
-        "win_plus_sold_win": 38,
-        "settled": 68,
-        "win_rate_pct": 14.7,
-        "win_plus_sold_win_pct": 55.9,
+        "win_plus_sold_win": 39,
+        "settled": 69,
+        "win_rate_pct": 14.5,
+        "win_plus_sold_win_pct": 56.5,
         "avg_buy_usd": 4.59,
         "avg_buy_price": 0.483,
-        "avg_pnl_usd": 0.26,
-        "total_pnl_usd": 18.68,
-        "avg_outcome_value_usd": 3.57,
-        "total_outcome_value_usd": 242.75
+        "avg_pnl_usd": 0.33,
+        "total_pnl_usd": 23.38,
+        "avg_outcome_value_usd": 3.66,
+        "total_outcome_value_usd": 252.25
       },
       "14:15-14:30": {
         "count": 27,
@@ -16618,18 +16618,18 @@
       "unknown": {
         "count": 20,
         "wins": 0,
-        "sold_wins": 16,
+        "sold_wins": 17,
         "sold_loses": 1,
-        "win_plus_sold_win": 16,
-        "settled": 17,
+        "win_plus_sold_win": 17,
+        "settled": 18,
         "win_rate_pct": 0.0,
-        "win_plus_sold_win_pct": 94.1,
+        "win_plus_sold_win_pct": 94.4,
         "avg_buy_usd": 4.32,
         "avg_buy_price": 0.461,
-        "avg_pnl_usd": 3.22,
-        "total_pnl_usd": 64.34,
-        "avg_outcome_value_usd": 8.13,
-        "total_outcome_value_usd": 138.16
+        "avg_pnl_usd": 3.45,
+        "total_pnl_usd": 69.04,
+        "avg_outcome_value_usd": 8.2,
+        "total_outcome_value_usd": 147.66
       }
     },
     "summary_by_weekday": {
@@ -16652,18 +16652,18 @@
       "Monday": {
         "count": 79,
         "wins": 20,
-        "sold_wins": 5,
+        "sold_wins": 6,
         "sold_loses": 4,
-        "win_plus_sold_win": 33,
-        "settled": 76,
-        "win_rate_pct": 26.3,
-        "win_plus_sold_win_pct": 43.4,
+        "win_plus_sold_win": 34,
+        "settled": 77,
+        "win_rate_pct": 26.0,
+        "win_plus_sold_win_pct": 44.2,
         "avg_buy_usd": 4.62,
         "avg_buy_price": 0.47,
-        "avg_pnl_usd": -0.54,
-        "total_pnl_usd": -42.32,
-        "avg_outcome_value_usd": 1.62,
-        "total_outcome_value_usd": 123.39
+        "avg_pnl_usd": -0.48,
+        "total_pnl_usd": -37.62,
+        "avg_outcome_value_usd": 1.73,
+        "total_outcome_value_usd": 132.89
       },
       "Saturday": {
         "count": 78,
@@ -16814,18 +16814,18 @@
       "2026-W29": {
         "count": 19,
         "wins": 0,
-        "sold_wins": 5,
+        "sold_wins": 6,
         "sold_loses": 0,
-        "win_plus_sold_win": 5,
-        "settled": 16,
+        "win_plus_sold_win": 6,
+        "settled": 17,
         "win_rate_pct": 0.0,
-        "win_plus_sold_win_pct": 31.2,
+        "win_plus_sold_win_pct": 35.3,
         "avg_buy_usd": 4.58,
         "avg_buy_price": 0.459,
-        "avg_pnl_usd": -1.47,
-        "total_pnl_usd": -27.92,
-        "avg_outcome_value_usd": -0.15,
-        "total_outcome_value_usd": -2.32
+        "avg_pnl_usd": -1.22,
+        "total_pnl_usd": -23.22,
+        "avg_outcome_value_usd": 0.42,
+        "total_outcome_value_usd": 7.18
       }
     },
     "summary_by_month": {
@@ -16848,18 +16848,18 @@
       "2026-07": {
         "count": 324,
         "wins": 78,
-        "sold_wins": 53,
+        "sold_wins": 54,
         "sold_loses": 45,
-        "win_plus_sold_win": 154,
-        "settled": 321,
-        "win_rate_pct": 24.3,
-        "win_plus_sold_win_pct": 48.0,
+        "win_plus_sold_win": 155,
+        "settled": 322,
+        "win_rate_pct": 24.2,
+        "win_plus_sold_win_pct": 48.1,
         "avg_buy_usd": 5.31,
         "avg_buy_price": 0.482,
-        "avg_pnl_usd": -0.42,
-        "total_pnl_usd": -136.95,
-        "avg_outcome_value_usd": 2.97,
-        "total_outcome_value_usd": 953.17
+        "avg_pnl_usd": -0.41,
+        "total_pnl_usd": -132.25,
+        "avg_outcome_value_usd": 2.99,
+        "total_outcome_value_usd": 962.67
       }
     },
     "summary_by_result": {
@@ -16880,7 +16880,7 @@
         "total_outcome_value_usd": -895.55
       },
       "open": {
-        "count": 3,
+        "count": 2,
         "wins": 0,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -16888,28 +16888,28 @@
         "settled": 0,
         "win_rate_pct": 0.0,
         "win_plus_sold_win_pct": 0.0,
-        "avg_buy_usd": 4.22,
-        "avg_buy_price": 0.422,
+        "avg_buy_usd": 3.92,
+        "avg_buy_price": 0.392,
         "avg_pnl_usd": 0.0,
         "total_pnl_usd": 0.0,
         "avg_outcome_value_usd": 0.0,
         "total_outcome_value_usd": 0.0
       },
       "sold": {
-        "count": 113,
+        "count": 114,
         "wins": 0,
-        "sold_wins": 53,
+        "sold_wins": 54,
         "sold_loses": 45,
-        "win_plus_sold_win": 76,
-        "settled": 113,
+        "win_plus_sold_win": 77,
+        "settled": 114,
         "win_rate_pct": 0.0,
-        "win_plus_sold_win_pct": 67.3,
-        "avg_buy_usd": 5.39,
+        "win_plus_sold_win_pct": 67.5,
+        "avg_buy_usd": 5.38,
         "avg_buy_price": 0.482,
-        "avg_pnl_usd": 1.02,
-        "total_pnl_usd": 115.01,
-        "avg_outcome_value_usd": 6.41,
-        "total_outcome_value_usd": 723.93
+        "avg_pnl_usd": 1.05,
+        "total_pnl_usd": 119.71,
+        "avg_outcome_value_usd": 6.43,
+        "total_outcome_value_usd": 733.43
       },
       "win": {
         "count": 144,
@@ -16930,7 +16930,7 @@
     },
     "summary_by_sold_outcome": {
       "not_sold": {
-        "count": 339,
+        "count": 338,
         "wins": 144,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -16962,20 +16962,20 @@
         "total_outcome_value_usd": 53.84
       },
       "sold_win": {
-        "count": 53,
+        "count": 54,
         "wins": 0,
-        "sold_wins": 53,
+        "sold_wins": 54,
         "sold_loses": 0,
-        "win_plus_sold_win": 53,
-        "settled": 53,
+        "win_plus_sold_win": 54,
+        "settled": 54,
         "win_rate_pct": 0.0,
         "win_plus_sold_win_pct": 100.0,
-        "avg_buy_usd": 4.87,
+        "avg_buy_usd": 4.86,
         "avg_buy_price": 0.493,
-        "avg_pnl_usd": 4.42,
-        "total_pnl_usd": 234.52,
+        "avg_pnl_usd": 4.43,
+        "total_pnl_usd": 239.22,
         "avg_outcome_value_usd": 9.29,
-        "total_outcome_value_usd": 492.42
+        "total_outcome_value_usd": 501.92
       },
       "would_lose": {
         "count": 4,
@@ -17030,18 +17030,18 @@
       "14:00\u201316:00": {
         "count": 137,
         "wins": 16,
-        "sold_wins": 51,
+        "sold_wins": 52,
         "sold_loses": 2,
-        "win_plus_sold_win": 72,
-        "settled": 134,
+        "win_plus_sold_win": 73,
+        "settled": 135,
         "win_rate_pct": 11.9,
-        "win_plus_sold_win_pct": 53.7,
+        "win_plus_sold_win_pct": 54.1,
         "avg_buy_usd": 4.68,
         "avg_buy_price": 0.486,
-        "avg_pnl_usd": 0.14,
-        "total_pnl_usd": 18.87,
-        "avg_outcome_value_usd": 3.18,
-        "total_outcome_value_usd": 425.82
+        "avg_pnl_usd": 0.17,
+        "total_pnl_usd": 23.57,
+        "avg_outcome_value_usd": 3.22,
+        "total_outcome_value_usd": 435.32
       }
     },
     "summary_by_roi_band": {
@@ -17078,20 +17078,20 @@
         "total_outcome_value_usd": 13.33
       },
       "50\u2013100%": {
-        "count": 114,
+        "count": 115,
         "wins": 69,
-        "sold_wins": 35,
+        "sold_wins": 36,
         "sold_loses": 0,
-        "win_plus_sold_win": 114,
-        "settled": 114,
-        "win_rate_pct": 60.5,
+        "win_plus_sold_win": 115,
+        "settled": 115,
+        "win_rate_pct": 60.0,
         "win_plus_sold_win_pct": 100.0,
-        "avg_buy_usd": 5.57,
-        "avg_buy_price": 0.545,
-        "avg_pnl_usd": 4.45,
-        "total_pnl_usd": 507.84,
+        "avg_buy_usd": 5.56,
+        "avg_buy_price": 0.544,
+        "avg_pnl_usd": 4.46,
+        "total_pnl_usd": 512.54,
         "avg_outcome_value_usd": 10.02,
-        "total_outcome_value_usd": 1142.5
+        "total_outcome_value_usd": 1152.0
       },
       "<-50%": {
         "count": 236,
@@ -17126,7 +17126,7 @@
         "total_outcome_value_usd": 958.18
       },
       "unknown": {
-        "count": 3,
+        "count": 2,
         "wins": 0,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -17134,8 +17134,8 @@
         "settled": 0,
         "win_rate_pct": 0.0,
         "win_plus_sold_win_pct": 0.0,
-        "avg_buy_usd": 4.22,
-        "avg_buy_price": 0.422,
+        "avg_buy_usd": 3.92,
+        "avg_buy_price": 0.392,
         "avg_pnl_usd": 0.0,
         "total_pnl_usd": 0.0,
         "avg_outcome_value_usd": 0.0,
@@ -17594,18 +17594,18 @@
       "US West (UTC-8/-7)": {
         "count": 27,
         "wins": 8,
-        "sold_wins": 1,
+        "sold_wins": 2,
         "sold_loses": 4,
-        "win_plus_sold_win": 11,
-        "settled": 26,
-        "win_rate_pct": 30.8,
-        "win_plus_sold_win_pct": 42.3,
+        "win_plus_sold_win": 12,
+        "settled": 27,
+        "win_rate_pct": 29.6,
+        "win_plus_sold_win_pct": 44.4,
         "avg_buy_usd": 5.52,
         "avg_buy_price": 0.499,
-        "avg_pnl_usd": -0.86,
-        "total_pnl_usd": -23.18,
-        "avg_outcome_value_usd": 2.51,
-        "total_outcome_value_usd": 65.25
+        "avg_pnl_usd": -0.68,
+        "total_pnl_usd": -18.48,
+        "avg_outcome_value_usd": 2.77,
+        "total_outcome_value_usd": 74.75
       },
       "Unknown": {
         "count": 12,
@@ -17624,18 +17624,18 @@
         "total_outcome_value_usd": 57.82
       }
     },
-    "stop_loss_regret_rate_pct": 16.8,
+    "stop_loss_regret_rate_pct": 16.7,
     "sold_would_lose_rate_pct": 3.5,
     "loss_misselection": {
       "higher": 122,
       "lower": 70
     },
     "avg_pnl_by_result": {
-      "sold": 1.02,
+      "sold": 1.05,
       "loss": -4.97,
       "win": 5.11
     },
-    "avg_sell_value_pct": 127.17,
+    "avg_sell_value_pct": 127.79,
     "best_trades": [
       {
         "date": "2026-07-02",
