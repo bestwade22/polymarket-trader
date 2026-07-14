@@ -4454,5 +4454,21 @@
     "floor_price": 0.93,
     "current_mid": 0.295,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x00175b58c9f41a51383c796e437118a542286b284178c0e10087a0c8563a6cef",
+    "token_id": "50631377629168177387633746182791543312421772495870345944188868275204210213210",
+    "order_id": "0xd7be49d6e6a81e4efc2dc2603579e41c66880aeb8691dcd3081cb3eff5455973",
+    "sold_at": "2026-07-14T19:00:11.622585+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-july-14-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.53,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.495,
+    "reason": "tier1"
   }
 ]
