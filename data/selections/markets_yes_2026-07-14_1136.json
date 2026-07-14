@@ -1,0 +1,89 @@
+{
+  "run_at": "2026-07-14T11:36:07.944584+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "693932",
+      "city": "Moscow",
+      "market_id": "2889196",
+      "groupItemTitle": "25\u00b0C",
+      "yes_price": 0.595,
+      "yes_token_id": "53902353327088427606521843960650081699857439946275416181440319240822669898732",
+      "buy_price": 0.65,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.595,
+      "selection_price": 0.595,
+      "gamma_yes_price": 0.6,
+      "best_bid": 0.54,
+      "best_ask": 0.65,
+      "clob_buy_price": 0.65,
+      "last_trade_price": 0.54,
+      "midpoint": 0.595,
+      "outcomePrices": [
+        0.6,
+        0.4
+      ],
+      "order_status": "live",
+      "order_id": "0xfd4f35eba130bece567d6ea731999e79edec9208069f777181c957441486a082",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-14T12:01:07+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "693914",
+      "city": "Ankara",
+      "market_id": "2888995",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.805,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693918",
+      "city": "Tel Aviv",
+      "market_id": "2889040",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693933",
+      "city": "Istanbul",
+      "market_id": "2889205",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693936",
+      "city": "Helsinki",
+      "market_id": "2889237",
+      "group_item_title": "23\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2889237",
+      "held_group_item_title": "23\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "693938",
+      "city": "Jeddah",
+      "market_id": "2889265",
+      "group_item_title": "37\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2889265",
+      "held_group_item_title": "37\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
