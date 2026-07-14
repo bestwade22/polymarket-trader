@@ -1,0 +1,152 @@
+{
+  "run_at": "2026-07-14T12:06:56.070360+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "693917",
+      "city": "Munich",
+      "market_id": "2889029",
+      "groupItemTitle": "29\u00b0C",
+      "yes_price": 0.305,
+      "yes_token_id": "113787517036597306147021493192963242915627918627298340759587129405843381533973",
+      "buy_price": 0.31,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.305,
+      "selection_price": 0.305,
+      "gamma_yes_price": 0.305,
+      "best_bid": 0.3,
+      "best_ask": 0.31,
+      "clob_buy_price": 0.31,
+      "last_trade_price": 0.31,
+      "midpoint": 0.305,
+      "outcomePrices": [
+        0.305,
+        0.695
+      ],
+      "order_status": "live",
+      "order_id": "0xb1ea8ec7dbf897d1da7409f1a58c8f83c6d6750dc34efbd8c866c8568fe160c9",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-14T12:31:55+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "693914",
+      "city": "Ankara",
+      "market_id": "2888995",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.905,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693918",
+      "city": "Tel Aviv",
+      "market_id": "2889040",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693923",
+      "city": "Milan",
+      "market_id": "2889096",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693924",
+      "city": "Madrid",
+      "market_id": "2889106",
+      "group_item_title": "37\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.775,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693925",
+      "city": "Warsaw",
+      "market_id": "2889122",
+      "group_item_title": "27\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.676,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693932",
+      "city": "Moscow",
+      "market_id": "2889196",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.725,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693933",
+      "city": "Istanbul",
+      "market_id": "2889205",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.905,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693935",
+      "city": "Amsterdam",
+      "market_id": "2889228",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693939",
+      "city": "Cape Town",
+      "market_id": "2889273",
+      "group_item_title": "15\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.715,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "693936",
+      "city": "Helsinki",
+      "market_id": "2889237",
+      "group_item_title": "23\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2889237",
+      "held_group_item_title": "23\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "693938",
+      "city": "Jeddah",
+      "market_id": "2889264",
+      "group_item_title": "36\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2889265",
+      "held_group_item_title": "37\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "693905",
+      "city": "Paris",
+      "market_id": "2888966",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    }
+  ]
+}
