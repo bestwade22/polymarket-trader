@@ -1,0 +1,78 @@
+{
+  "run_at": "2026-07-14T21:06:03.056265+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "697073",
+      "city": "Seattle",
+      "market_id": "2901162",
+      "groupItemTitle": "84-85\u00b0F",
+      "yes_price": 0.42,
+      "yes_token_id": "17016898063580975705184031406311346444833379433466354080715340770207228351172",
+      "buy_price": 0.55,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.42,
+      "selection_price": 0.42,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.29,
+      "best_ask": 0.55,
+      "clob_buy_price": 0.55,
+      "last_trade_price": 0.56,
+      "midpoint": 0.42,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "order_status": "live",
+      "order_id": "0xd6beab959c91ec0b3659d9cead536c37a6d5a88fed07e64d62921831df530f08",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-14T21:31:02+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "697080",
+      "city": "Denver",
+      "market_id": "2901239",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697082",
+      "city": "Los Angeles",
+      "market_id": "2901260",
+      "group_item_title": "76-77\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697083",
+      "city": "San Francisco",
+      "market_id": "2901270",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697084",
+      "city": "Mexico City",
+      "market_id": "2901284",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2901284",
+      "held_group_item_title": "25\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
