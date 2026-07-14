@@ -4246,5 +4246,53 @@
     "floor_price": 0.95,
     "current_mid": 0.895,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x8ecd2f08358c4c9859e6a8ec1bedc4b07a2f17d3b3d978f1b88b7b6bc320bb9e",
+    "token_id": "112645971965777354564841642164073028617300810605916376429116679314946092218691",
+    "order_id": "0xdae789106b6ba2fb8be9469676162dc714629ad2b8dfe954617b4a96b30043a8",
+    "sold_at": "2026-07-14T12:00:12.191428+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-jeddah-on-july-14-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.5699,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.6,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x7e56c0d0c905b9ef3176fe2b4be05915b292836524fe7c8e0f102d885569e727",
+    "token_id": "53902353327088427606521843960650081699857439946275416181440319240822669898732",
+    "order_id": "0x30396ffde6237828add61d87221eaa31432751aa5741f7b41a655fa50c7df826",
+    "sold_at": "2026-07-14T12:00:13.099833+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-july-14-2026",
+    "price": 0.91,
+    "size": 9.9956,
+    "avg_buy_price": 0.59,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.595,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xc7ffe7caabfae1d896cd4c2c4c2bc6a4a64082067db266b188e64559854dc2ca",
+    "token_id": "89784395226219127950554271278825128326097774107748458756785515606171816157139",
+    "order_id": "0xef595030a89a97f91dd14fee47bf1b8ffb87f1f8d77c6fd1c606acb6c889c47a",
+    "sold_at": "2026-07-14T12:00:14.046369+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-helsinki-on-july-14-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.402,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.4655,
+    "reason": "tier1"
   }
 ]
