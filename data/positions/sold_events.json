@@ -4950,5 +4950,21 @@
     "floor_price": 0.91,
     "current_mid": 0.145,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xafe3824fcd11533774b1cf453198b05d7752d10a977fa1a83f6f3040e5d5f851",
+    "token_id": "15352397801402813782039445932327563704337176028930582889023235120145488758471",
+    "order_id": "0x949bf6085cbc3322065bae507a11f626a2b563c641fb712c0648bbb98054be76",
+    "sold_at": "2026-07-15T22:00:10.853431+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-san-francisco-on-july-15-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.46,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.775,
+    "reason": "tier1"
   }
 ]
