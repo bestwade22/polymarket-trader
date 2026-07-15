@@ -198,6 +198,12 @@
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "28547941001246016437709310380804205567220685950717114281403030712170554772939"
     },
+    "highest-temperature-in-austin-on-july-14-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on July 14?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "67744663290712951787973099982548168679397971514817187314929781281863818001939"
+    },
     "highest-temperature-in-austin-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on July 2?",
@@ -582,6 +588,12 @@
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "88504434198290365222731237156430119434171196681078153096413558678031678042124"
     },
+    "highest-temperature-in-chicago-on-july-14-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on July 14?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "15755425018611838462581548454099601626991313965835725574206128123553336363147"
+    },
     "highest-temperature-in-chicago-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on July 3?",
@@ -749,6 +761,12 @@
       "title": "Highest temperature in Dallas on July 13?",
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "95281710414480598913733681462595867423555623957589761765207375228608020581639"
+    },
+    "highest-temperature-in-dallas-on-july-14-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 14?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "90946091466680909455921315943559439733198462513016357935416602109460749332460"
     },
     "highest-temperature-in-dallas-on-july-2-2026": {
       "closed": true,
@@ -1043,6 +1061,12 @@
       "title": "Highest temperature in Houston on July 10?",
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "60626187264928837041232433743975987552014830388094407338281946660554811530195"
+    },
+    "highest-temperature-in-houston-on-july-14-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on July 14?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "30196216051167008566384698525382269104129700281378598807231729746489823210518"
     },
     "highest-temperature-in-houston-on-july-5-2026": {
       "closed": true,
@@ -1463,6 +1487,12 @@
       "title": "Highest temperature in Mexico City on July 11?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "33930648433833008351958720003740804715928166421458266199597185615073938073714"
+    },
+    "highest-temperature-in-mexico-city-on-july-14-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on July 14?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "6564431883024961921899144323092571960232087174200104963757937104287927638875"
     },
     "highest-temperature-in-mexico-city-on-july-2-2026": {
       "closed": true,
