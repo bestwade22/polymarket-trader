@@ -51,7 +51,12 @@ def test_compute_top_up_shares():
     assert compute_top_up_shares(0, 15, 5) == (False, 15, "no_position")
     assert compute_top_up_shares(10, 15, 5) == (False, 5, "partial_top_up")
     assert compute_top_up_shares(15, 15, 5) == (True, 0, "has_full_position")
+    # 10.3 + min(5) would exceed 15 — skip
     assert compute_top_up_shares(10.3, 15, 5) == (True, 0, "top_up_would_overshoot")
+    # 2.76 needs ~7.24; buy floor(needed)=7 (still >= min size 5), not ceil which overshoots
+    assert compute_top_up_shares(2.761902, 10, 5) == (False, 7, "partial_top_up")
+    # 6.0 + min(5) = 11 > 10 — skip
+    assert compute_top_up_shares(6.0, 10, 5) == (True, 0, "top_up_would_overshoot")
 
 
 def test_parse_conditional_balance():
@@ -207,6 +212,16 @@ def test_filter_selections_without_position_top_up_partial_position():
     assert skipped == []
     assert len(kept) == 1
     assert kept[0].share_count == 5
+
+
+def test_filter_selections_top_up_when_ceil_needed_would_overshoot():
+    """Fractional hold of 2.76: ceil(needed)=8 overshoots, floor=7 is allowed."""
+    checker = _FakeChecker({"token_yes_24": 2.761902})
+    selection = _toronto_selection()
+    kept, skipped = filter_selections_without_position([selection], checker)
+    assert skipped == []
+    assert len(kept) == 1
+    assert kept[0].share_count == 7
 
 
 def test_filter_selections_checks_selected_market_first_for_full_position():

@@ -24,15 +24,21 @@ def setup_app_logging() -> None:
 
 
 class TradeStepLogger:
-    def __init__(self, event_id: str):
+    def __init__(self, event_id: str, city: str = ""):
         self.event_id = event_id
+        self.city = city or ""
         self.steps: list[dict[str, Any]] = []
         self.logger = logging.getLogger(__name__)
 
     def log_step(self, step: str, **data: Any) -> None:
         entry = {"step": step, "at": datetime.now(timezone.utc).isoformat(), **data}
         self.steps.append(entry)
-        self.logger.info("event=%s step=%s %s", self.event_id, step, data)
+        if self.city:
+            self.logger.info(
+                "event=%s city=%s step=%s %s", self.event_id, self.city, step, data
+            )
+        else:
+            self.logger.info("event=%s step=%s %s", self.event_id, step, data)
 
     def save(self) -> Path:
         ensure_dirs()

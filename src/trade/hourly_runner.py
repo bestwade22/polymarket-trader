@@ -101,8 +101,9 @@ def run_hourly_trade(
     skipped_bought = []
     for event in tradable:
         event_id = str(event.get("id"))
-        step_log = TradeStepLogger(event_id)
-        step_log.log_step("load_events", tradable=True, city=event.get("city"))
+        city = event.get("city") or ""
+        step_log = TradeStepLogger(event_id, city=city)
+        step_log.log_step("load_events", tradable=True, city=city)
         event["_step_logger"] = step_log
         eligible.append(event)
 
@@ -161,7 +162,11 @@ def run_hourly_trade(
 
     results = []
     for sel in selections:
-        step_log = sel.event.get("_step_logger") if sel.event else TradeStepLogger(sel.event_id)
+        step_log = (
+            sel.event.get("_step_logger")
+            if sel.event
+            else TradeStepLogger(sel.event_id, city=sel.city or "")
+        )
         try:
             result = executor.buy_yes(sel)
             result["event_id"] = sel.event_id
