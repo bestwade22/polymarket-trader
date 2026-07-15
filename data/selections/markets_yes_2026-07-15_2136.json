@@ -1,0 +1,77 @@
+{
+  "run_at": "2026-07-15T21:36:00.310829+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "701162",
+      "city": "Seattle",
+      "market_id": "2915962",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.58,
+      "yes_token_id": "30068371569395665813946101369788645415452654007820779633026687400540368037382",
+      "buy_price": 0.64,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.58,
+      "selection_price": 0.58,
+      "gamma_yes_price": 0.615,
+      "best_bid": 0.54,
+      "best_ask": 0.64,
+      "clob_buy_price": 0.64,
+      "last_trade_price": 0.56,
+      "midpoint": 0.58,
+      "outcomePrices": [
+        0.615,
+        0.385
+      ],
+      "order_status": null,
+      "order_id": null,
+      "dry_run": true,
+      "order_type": null,
+      "expires_at": null,
+      "order_error": "PolyApiException[status_code=400, error_message={'error': 'not enough balance / allowance: the balance is not enough -> balance: 3944955, order amount: 5921800'}]"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "701169",
+      "city": "Denver",
+      "market_id": "2916041",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.951,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701171",
+      "city": "Los Angeles",
+      "market_id": "2916060",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.947,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701172",
+      "city": "San Francisco",
+      "market_id": "2916071",
+      "group_item_title": "72-73\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.625,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701173",
+      "city": "Mexico City",
+      "market_id": "2916084",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.895,
+      "yes_price_max": 0.6
+    }
+  ]
+}
