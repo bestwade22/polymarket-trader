@@ -1,7 +1,75 @@
 {
-  "synced_at": "2026-07-15T09:00:30.215585+00:00",
+  "synced_at": "2026-07-15T12:00:30.111664+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
+    {
+      "date": "2026-07-15",
+      "city": "Istanbul",
+      "bought_temp": "28\u00b0C",
+      "trade_window": "14:00\u201316:00",
+      "bought_at": "2026-07-15T11:25:25+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.5,
+      "sell_price": null,
+      "cost_basis_usd": 5.0,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-istanbul-on-july-15-2026",
+      "token_id": "74222642057909723984058501370240119965496022311193009829529425698906354827706",
+      "condition_id": "0x275da5b3ebb5915d352664453438bb70ad78c83b39a4d953deb001d86fea3fd5",
+      "transaction_hash": "0x512641543a6d7d01559ab454d4c8653cad9a46876f2c05ae6759e56532d9b365",
+      "bought_at_hk": "2026-07-15 19:25:25 HKT",
+      "bought_at_local": "14:25",
+      "sold_at_hk": "",
+      "price_drop_below_threshold_at_hk": "",
+      "share_count_target": 10,
+      "shares_over_target": false,
+      "outcome_value_usd": null
+    },
+    {
+      "date": "2026-07-15",
+      "city": "Moscow",
+      "bought_temp": "22\u00b0C",
+      "trade_window": "14:00\u201316:00",
+      "bought_at": "2026-07-15T11:06:31+00:00",
+      "sold_at": null,
+      "redeemed_at": null,
+      "shares": 10.0,
+      "result": "open",
+      "final_value_usd": null,
+      "winning_temp": null,
+      "win_temp_vs_bought": "unknown",
+      "price_drop_below_threshold_at": null,
+      "sold_but_would_have_won": false,
+      "buy_price": 0.538,
+      "sell_price": null,
+      "cost_basis_usd": 5.38,
+      "realized_pnl_usd": null,
+      "roi_pct": null,
+      "sell_value_pct": null,
+      "held_hours": null,
+      "event_slug": "highest-temperature-in-moscow-on-july-15-2026",
+      "token_id": "46291256615526869259536619989060550482474306698105029154904250095086721912817",
+      "condition_id": "0xde60f79794cfeb055e890c901c6cbb00bdd68769bda3061e793cc2d792ddbe3e",
+      "transaction_hash": "0xafa79dc6ef64ffb584c6dbea293cbf1798fa2cc6ca8662406d37afc56e500468",
+      "bought_at_hk": "2026-07-15 19:06:31 HKT",
+      "bought_at_local": "14:06",
+      "sold_at_hk": "",
+      "price_drop_below_threshold_at_hk": "",
+      "share_count_target": 10,
+      "shares_over_target": false,
+      "outcome_value_usd": null
+    },
     {
       "date": "2026-07-15",
       "city": "Lucknow",
@@ -16154,13 +16222,13 @@
     }
   ],
   "summary": {
-    "total_count": 475,
+    "total_count": 477,
     "win_count": 146,
     "loss_count": 205,
     "sold_count": 121,
-    "open_count": 3,
+    "open_count": 5,
     "win_pct": 30.9,
-    "total_cost_basis_usd": 2409.11,
+    "total_cost_basis_usd": 2419.49,
     "total_realized_pnl_usd": -122.32,
     "sold_but_would_have_won_count": 19,
     "avg_buy_usd": 5.07,
@@ -16448,7 +16516,7 @@
         "total_outcome_value_usd": 14.9
       },
       "Istanbul": {
-        "count": 4,
+        "count": 5,
         "wins": 2,
         "sold_wins": 1,
         "sold_loses": 0,
@@ -16456,9 +16524,9 @@
         "settled": 4,
         "win_rate_pct": 50.0,
         "win_plus_sold_win_pct": 75.0,
-        "avg_buy_usd": 5.32,
-        "avg_buy_price": 0.532,
-        "avg_pnl_usd": 2.17,
+        "avg_buy_usd": 5.26,
+        "avg_buy_price": 0.526,
+        "avg_pnl_usd": 1.74,
         "total_pnl_usd": 8.68,
         "avg_outcome_value_usd": 6.1,
         "total_outcome_value_usd": 24.38
@@ -16640,7 +16708,7 @@
         "total_outcome_value_usd": 20.51
       },
       "Moscow": {
-        "count": 13,
+        "count": 14,
         "wins": 2,
         "sold_wins": 3,
         "sold_loses": 3,
@@ -16648,9 +16716,9 @@
         "settled": 13,
         "win_rate_pct": 15.4,
         "win_plus_sold_win_pct": 46.2,
-        "avg_buy_usd": 4.88,
-        "avg_buy_price": 0.486,
-        "avg_pnl_usd": -0.93,
+        "avg_buy_usd": 4.92,
+        "avg_buy_price": 0.489,
+        "avg_pnl_usd": -0.87,
         "total_pnl_usd": -12.14,
         "avg_outcome_value_usd": 2.6,
         "total_outcome_value_usd": 33.84
@@ -17026,7 +17094,7 @@
         "total_outcome_value_usd": 222.84
       },
       "0.50\u20130.55": {
-        "count": 131,
+        "count": 133,
         "wins": 40,
         "sold_wins": 21,
         "sold_loses": 13,
@@ -17034,7 +17102,7 @@
         "settled": 130,
         "win_rate_pct": 30.8,
         "win_plus_sold_win_pct": 52.3,
-        "avg_buy_usd": 5.48,
+        "avg_buy_usd": 5.47,
         "avg_buy_price": 0.517,
         "avg_pnl_usd": -0.23,
         "total_pnl_usd": -30.67,
@@ -17204,7 +17272,7 @@
         "total_outcome_value_usd": 57.96
       },
       "14:00-14:15": {
-        "count": 85,
+        "count": 86,
         "wins": 12,
         "sold_wins": 30,
         "sold_loses": 2,
@@ -17213,14 +17281,14 @@
         "win_rate_pct": 14.5,
         "win_plus_sold_win_pct": 54.2,
         "avg_buy_usd": 4.59,
-        "avg_buy_price": 0.484,
+        "avg_buy_price": 0.485,
         "avg_pnl_usd": 0.14,
         "total_pnl_usd": 11.82,
         "avg_outcome_value_usd": 3.18,
         "total_outcome_value_usd": 264.2
       },
       "14:15-14:30": {
-        "count": 28,
+        "count": 29,
         "wins": 6,
         "sold_wins": 8,
         "sold_loses": 1,
@@ -17228,9 +17296,9 @@
         "settled": 28,
         "win_rate_pct": 21.4,
         "win_plus_sold_win_pct": 53.6,
-        "avg_buy_usd": 4.64,
-        "avg_buy_price": 0.466,
-        "avg_pnl_usd": 0.43,
+        "avg_buy_usd": 4.65,
+        "avg_buy_price": 0.467,
+        "avg_pnl_usd": 0.41,
         "total_pnl_usd": 11.95,
         "avg_outcome_value_usd": 3.7,
         "total_outcome_value_usd": 103.68
@@ -17398,7 +17466,7 @@
         "total_outcome_value_usd": 2062.07
       },
       "unknown": {
-        "count": 18,
+        "count": 20,
         "wins": 0,
         "sold_wins": 14,
         "sold_loses": 1,
@@ -17406,9 +17474,9 @@
         "settled": 15,
         "win_rate_pct": 0.0,
         "win_plus_sold_win_pct": 93.3,
-        "avg_buy_usd": 4.4,
-        "avg_buy_price": 0.472,
-        "avg_pnl_usd": 3.11,
+        "avg_buy_usd": 4.48,
+        "avg_buy_price": 0.477,
+        "avg_pnl_usd": 2.8,
         "total_pnl_usd": 55.94,
         "avg_outcome_value_usd": 7.97,
         "total_outcome_value_usd": 119.56
@@ -17512,7 +17580,7 @@
         "total_outcome_value_usd": 138.03
       },
       "Wednesday": {
-        "count": 60,
+        "count": 62,
         "wins": 24,
         "sold_wins": 10,
         "sold_loses": 6,
@@ -17520,9 +17588,9 @@
         "settled": 57,
         "win_rate_pct": 42.1,
         "win_plus_sold_win_pct": 61.4,
-        "avg_buy_usd": 4.76,
-        "avg_buy_price": 0.487,
-        "avg_pnl_usd": 0.98,
+        "avg_buy_usd": 4.78,
+        "avg_buy_price": 0.488,
+        "avg_pnl_usd": 0.95,
         "total_pnl_usd": 58.89,
         "avg_outcome_value_usd": 5.03,
         "total_outcome_value_usd": 286.75
@@ -17594,7 +17662,7 @@
         "total_outcome_value_usd": 465.82
       },
       "2026-W29": {
-        "count": 42,
+        "count": 44,
         "wins": 2,
         "sold_wins": 13,
         "sold_loses": 0,
@@ -17602,9 +17670,9 @@
         "settled": 39,
         "win_rate_pct": 5.1,
         "win_plus_sold_win_pct": 38.5,
-        "avg_buy_usd": 4.66,
-        "avg_buy_price": 0.484,
-        "avg_pnl_usd": -1.1,
+        "avg_buy_usd": 4.68,
+        "avg_buy_price": 0.485,
+        "avg_pnl_usd": -1.05,
         "total_pnl_usd": -46.22,
         "avg_outcome_value_usd": 0.6,
         "total_outcome_value_usd": 23.57
@@ -17628,7 +17696,7 @@
         "total_outcome_value_usd": 335.05
       },
       "2026-07": {
-        "count": 347,
+        "count": 349,
         "wins": 80,
         "sold_wins": 61,
         "sold_loses": 45,
@@ -17638,7 +17706,7 @@
         "win_plus_sold_win_pct": 47.7,
         "avg_buy_usd": 5.27,
         "avg_buy_price": 0.483,
-        "avg_pnl_usd": -0.45,
+        "avg_pnl_usd": -0.44,
         "total_pnl_usd": -155.25,
         "avg_outcome_value_usd": 2.85,
         "total_outcome_value_usd": 979.06
@@ -17662,7 +17730,7 @@
         "total_outcome_value_usd": -957.08
       },
       "open": {
-        "count": 3,
+        "count": 5,
         "wins": 0,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -17712,7 +17780,7 @@
     },
     "summary_by_sold_outcome": {
       "not_sold": {
-        "count": 354,
+        "count": 356,
         "wins": 146,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -17810,7 +17878,7 @@
         "total_outcome_value_usd": 862.39
       },
       "14:00\u201316:00": {
-        "count": 160,
+        "count": 162,
         "wins": 18,
         "sold_wins": 59,
         "sold_loses": 2,
@@ -17908,7 +17976,7 @@
         "total_outcome_value_usd": 996.82
       },
       "unknown": {
-        "count": 3,
+        "count": 5,
         "wins": 0,
         "sold_wins": 0,
         "sold_loses": 0,
@@ -18230,7 +18298,7 @@
         "total_outcome_value_usd": 69.8
       },
       "Russia (UTC+3)": {
-        "count": 13,
+        "count": 14,
         "wins": 2,
         "sold_wins": 3,
         "sold_loses": 3,
@@ -18238,9 +18306,9 @@
         "settled": 13,
         "win_rate_pct": 15.4,
         "win_plus_sold_win_pct": 46.2,
-        "avg_buy_usd": 4.88,
-        "avg_buy_price": 0.486,
-        "avg_pnl_usd": -0.93,
+        "avg_buy_usd": 4.92,
+        "avg_buy_price": 0.489,
+        "avg_pnl_usd": -0.87,
         "total_pnl_usd": -12.14,
         "avg_outcome_value_usd": 2.6,
         "total_outcome_value_usd": 33.84
@@ -18294,7 +18362,7 @@
         "total_outcome_value_usd": 30.0
       },
       "Turkey (UTC+3)": {
-        "count": 15,
+        "count": 16,
         "wins": 6,
         "sold_wins": 4,
         "sold_loses": 1,
@@ -18302,9 +18370,9 @@
         "settled": 15,
         "win_rate_pct": 40.0,
         "win_plus_sold_win_pct": 73.3,
-        "avg_buy_usd": 5.14,
-        "avg_buy_price": 0.522,
-        "avg_pnl_usd": 1.43,
+        "avg_buy_usd": 5.13,
+        "avg_buy_price": 0.521,
+        "avg_pnl_usd": 1.34,
         "total_pnl_usd": 21.43,
         "avg_outcome_value_usd": 5.13,
         "total_outcome_value_usd": 76.91
