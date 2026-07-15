@@ -4646,5 +4646,37 @@
     "floor_price": 0.91,
     "current_mid": 0.605,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xde60f79794cfeb055e890c901c6cbb00bdd68769bda3061e793cc2d792ddbe3e",
+    "token_id": "46291256615526869259536619989060550482474306698105029154904250095086721912817",
+    "order_id": "0x6caff08653b626812cf162729f36b5c674700955fd17c1504763e81230ff5b0b",
+    "sold_at": "2026-07-15T12:00:11.823919+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-july-15-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.538,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.2995,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x275da5b3ebb5915d352664453438bb70ad78c83b39a4d953deb001d86fea3fd5",
+    "token_id": "74222642057909723984058501370240119965496022311193009829529425698906354827706",
+    "order_id": "0x8014d417dddbfb949217aa7a55a7bdb474c89ea96f3fc6b2e732057cb7a9cd60",
+    "sold_at": "2026-07-15T12:00:16.566616+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-istanbul-on-july-15-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.175,
+    "reason": "tier1"
   }
 ]
