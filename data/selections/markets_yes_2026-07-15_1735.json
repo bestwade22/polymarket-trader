@@ -1,0 +1,29 @@
+{
+  "run_at": "2026-07-15T17:35:45.038176+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "701159",
+      "city": "Sao Paulo",
+      "market_id": "2915931",
+      "group_item_title": "21\u00b0C",
+      "reason": "top_up_would_overshoot",
+      "held_shares": 2.761902,
+      "held_market_id": "2915931",
+      "held_group_item_title": "21\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "701160",
+      "city": "Buenos Aires",
+      "market_id": "2915941",
+      "group_item_title": "18\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2915940",
+      "held_group_item_title": "17\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
