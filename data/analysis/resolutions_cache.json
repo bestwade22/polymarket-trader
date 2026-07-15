@@ -690,6 +690,12 @@
       "winning_temp": "41\u00b0C",
       "winning_token_id": "86037115108506183272260654260721883487458515570766905572170168922317835232555"
     },
+    "highest-temperature-in-chongqing-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 15?",
+      "winning_temp": "40\u00b0C",
+      "winning_token_id": "19514887057810791795496612021994813612666920697217689441206402900579190218528"
+    },
     "highest-temperature-in-chongqing-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chongqing on July 3?",
@@ -2231,6 +2237,12 @@
       "title": "Highest temperature in Seattle on June 30?",
       "winning_temp": "64-65\u00b0F",
       "winning_token_id": "76724239689214609737246812597165437851160950076349889953344662195366130287301"
+    },
+    "highest-temperature-in-seoul-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seoul on July 15?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "69408117713606384184176179699028608630091723794512510245971243573904223514187"
     },
     "highest-temperature-in-seoul-on-july-2-2026": {
       "closed": true,
