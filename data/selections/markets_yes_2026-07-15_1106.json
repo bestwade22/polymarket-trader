@@ -1,0 +1,108 @@
+{
+  "run_at": "2026-07-15T11:06:15.375974+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "697521",
+      "city": "Moscow",
+      "market_id": "2902236",
+      "groupItemTitle": "22\u00b0C",
+      "yes_price": 0.5385,
+      "yes_token_id": "46291256615526869259536619989060550482474306698105029154904250095086721912817",
+      "buy_price": 0.597,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.001",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.5385,
+      "selection_price": 0.5385,
+      "gamma_yes_price": 0.2635,
+      "best_bid": 0.48,
+      "best_ask": 0.597,
+      "clob_buy_price": 0.597,
+      "last_trade_price": 0.458,
+      "midpoint": 0.5385,
+      "outcomePrices": [
+        0.2635,
+        0.7365
+      ],
+      "order_status": "live",
+      "order_id": "0xbc44f5eace44bfd7c154bc24044631189f7db49ccf43d89cb256ed318f337668",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-15T11:31:13+00:00"
+    },
+    {
+      "event_id": "697522",
+      "city": "Istanbul",
+      "market_id": "2902249",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.505,
+      "yes_token_id": "74222642057909723984058501370240119965496022311193009829529425698906354827706",
+      "buy_price": 0.63,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.505,
+      "selection_price": 0.505,
+      "gamma_yes_price": 0.475,
+      "best_bid": 0.38,
+      "best_ask": 0.63,
+      "clob_buy_price": 0.63,
+      "last_trade_price": 0.66,
+      "midpoint": 0.505,
+      "outcomePrices": [
+        0.475,
+        0.525
+      ],
+      "order_status": "live",
+      "order_id": "0xf2c52155ae6a28ed769fec0ed76da38820050326d6256a9c22cb548e2add7fd1",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-15T11:31:14+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "697504",
+      "city": "Ankara",
+      "market_id": "2902050",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697507",
+      "city": "Tel Aviv",
+      "market_id": "2902083",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.967,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697525",
+      "city": "Helsinki",
+      "market_id": "2902282",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697527",
+      "city": "Jeddah",
+      "market_id": "2902309",
+      "group_item_title": "38\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.9985,
+      "yes_price_max": 0.6
+    }
+  ]
+}
