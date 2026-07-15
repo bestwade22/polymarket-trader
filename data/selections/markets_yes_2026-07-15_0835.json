@@ -1,0 +1,38 @@
+{
+  "run_at": "2026-07-15T08:35:41.534486+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "697683",
+      "city": "Lucknow",
+      "market_id": "2902696",
+      "groupItemTitle": "36\u00b0C or higher",
+      "yes_price": 0.485,
+      "yes_token_id": "21773897611441657296110064335120233772748074594272691872469819705070988195775",
+      "buy_price": 0.66,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.485,
+      "selection_price": 0.485,
+      "gamma_yes_price": 0.53,
+      "best_bid": 0.31,
+      "best_ask": 0.66,
+      "clob_buy_price": 0.66,
+      "last_trade_price": 0.71,
+      "midpoint": 0.485,
+      "outcomePrices": [
+        0.53,
+        0.47
+      ],
+      "order_status": "live",
+      "order_id": "0x502a23236f71b83a50d292c7fdbe449826f86a4aff3ed836a065bc2a2380a4e2",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-15T09:00:40+00:00"
+    }
+  ]
+}
