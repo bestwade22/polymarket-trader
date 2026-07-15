@@ -1,0 +1,34 @@
+{
+  "run_at": "2026-07-15T05:05:49.893988+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "697503",
+      "city": "Seoul",
+      "market_id": "2902042",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697508",
+      "city": "Tokyo",
+      "market_id": "2902097",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "697523",
+      "city": "Busan",
+      "market_id": "2902261",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.63,
+      "yes_price_max": 0.6
+    }
+  ]
+}
