@@ -4982,5 +4982,53 @@
     "floor_price": 0.91,
     "current_mid": 0.76,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x4ccf620a3af4ecccbe4d5a1a9e7c6ead7504795d1dcdabb3ae7004d3b315f91d",
+    "token_id": "115031478573264603628654827297115437834272069792650868551532444177433086712550",
+    "order_id": "0x13eb196a34ceee0f126a277ab6cfa99f5a05552176884fa19d6dbd035bb5bee7",
+    "sold_at": "2026-07-16T07:00:10.836585+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-beijing-on-july-16-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.915,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xf6b247b4f550e525d8f22863cf881a73a6f55e9745586bcd7c59138b8225b4b3",
+    "token_id": "20536480011654959861551156512068715497750243332318935059759610929348160157739",
+    "order_id": "0x590696e5cf8266a572a31f7d030c6f56b91a0896c24b0e3ba41bd17de2027411",
+    "sold_at": "2026-07-16T07:00:11.743744+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-guangzhou-on-july-16-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.43,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x1e139fb43a08d425f6488a283a4fa16402efde0b745ceb38c6242affb34cd0b0",
+    "token_id": "31493543933640535132036250257621943593008292589533523798934551188490413613054",
+    "order_id": "0xafed55973753a60c91f0dadad2d6f1e45fcff882450268bdd77bfd9088dc2eb7",
+    "sold_at": "2026-07-16T07:00:12.652304+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chengdu-on-july-16-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.43,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.365,
+    "reason": "tier1"
   }
 ]
