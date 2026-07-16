@@ -5046,5 +5046,21 @@
     "floor_price": 0.93,
     "current_mid": 0.815,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x4ccf620a3af4ecccbe4d5a1a9e7c6ead7504795d1dcdabb3ae7004d3b315f91d",
+    "token_id": "115031478573264603628654827297115437834272069792650868551532444177433086712550",
+    "order_id": "0x6edf2a76fa99d5e55a4cb9a891ac1d89acfb8ca5406e1f7c195631bed3f1fde4",
+    "sold_at": "2026-07-16T09:00:11.920145+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-beijing-on-july-16-2026",
+    "price": 0.999,
+    "size": 2.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier3",
+    "floor_price": 0.95,
+    "current_mid": 0.9995,
+    "reason": "tier3"
   }
 ]
