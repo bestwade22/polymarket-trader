@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-07-16T19:06:20.439081+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "704725",
+      "city": "Toronto",
+      "market_id": "2929416",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704727",
+      "city": "NYC",
+      "market_id": "2929435",
+      "group_item_title": "87\u00b0F or below",
+      "reason": "yes_price_max",
+      "selection_price": 0.6075,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704728",
+      "city": "Dallas",
+      "market_id": "2929452",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704729",
+      "city": "Atlanta",
+      "market_id": "2929463",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.92,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704730",
+      "city": "Miami",
+      "market_id": "2929472",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.805,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704731",
+      "city": "Chicago",
+      "market_id": "2929480",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.84,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704732",
+      "city": "Austin",
+      "market_id": "2929497",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.65,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704734",
+      "city": "Houston",
+      "market_id": "2929519",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "704738",
+      "city": "Panama City",
+      "market_id": "2929562",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.815,
+      "yes_price_max": 0.6
+    }
+  ]
+}
