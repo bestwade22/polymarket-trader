@@ -279,9 +279,19 @@ class TestSummary:
         assert summary.win_pct == 50.0
         assert summary.avg_buy_usd == 5.0
         assert summary.avg_buy_price == 0.5
+        assert summary.avg_spread == 0.0
         assert summary.avg_pnl_usd == 1.0
         assert summary.sold_lose_count == 1
         assert summary.win_plus_sold_win_count == 2
+
+    def test_summarize_avg_spread(self):
+        records = [
+            _sample_record(spread=0.10),
+            _sample_record(token_id="tok2", spread=0.20),
+            _sample_record(token_id="tok3", spread=None),
+        ]
+        summary = summarize_records(records)
+        assert summary.avg_spread == 0.15
 
     def test_win_summary_includes_sold_would_lose(self):
         records = [

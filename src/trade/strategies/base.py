@@ -22,6 +22,7 @@ class MarketSelection:
     forecast_temp_f: Optional[int] = None
     event: Optional[dict] = None
     market: Optional[dict] = None
+    on_edge: Optional[bool] = None
 
     def to_dict(self) -> dict[str, Any]:
         data = {
@@ -38,7 +39,15 @@ class MarketSelection:
             "order_min_size": self.order_min_size,
             "strategy": self.strategy,
             "forecast_temp_f": self.forecast_temp_f,
+            "on_edge": self.on_edge,
         }
+        if self.on_edge is None and self.event:
+            from src.analysis.edge import is_on_edge
+
+            data["on_edge"] = is_on_edge(
+                self.event.get("markets") or [],
+                self.group_item_title,
+            )
         if self.market:
             prices = market_price_snapshot(self.market)
             data["order_price"] = prices["order_price"]

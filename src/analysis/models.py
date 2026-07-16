@@ -38,6 +38,8 @@ class TradeRecord:
     share_count_target: int = 10
     shares_over_target: bool = False
     outcome_value_usd: Optional[float] = None
+    spread: Optional[float] = None
+    on_edge: Optional[bool] = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -56,6 +58,7 @@ class TradeSummary:
     sold_but_would_have_won_count: int = 0
     avg_buy_usd: float = 0.0
     avg_buy_price: float = 0.0
+    avg_spread: float = 0.0
     avg_pnl_usd: float = 0.0
     sold_win_count: int = 0
     sold_lose_count: int = 0
@@ -136,11 +139,16 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
     has_realized = False
     pnl_count = 0
     buy_price_total = 0.0
+    spread_total = 0.0
+    spread_count = 0
     outcome_total = 0.0
     outcome_count = 0
     for rec in records:
         summary.total_cost_basis_usd += rec.cost_basis_usd
         buy_price_total += rec.buy_price
+        if rec.spread is not None:
+            spread_total += float(rec.spread)
+            spread_count += 1
         if rec.result == "win":
             summary.win_count += 1
         elif rec.result == "loss":
@@ -176,6 +184,7 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
     summary.total_cost_basis_usd = round(summary.total_cost_basis_usd, 2)
     summary.avg_buy_usd = round(summary.total_cost_basis_usd / len(records), 2) if records else 0.0
     summary.avg_buy_price = round(buy_price_total / len(records), 3) if records else 0.0
+    summary.avg_spread = round(spread_total / spread_count, 4) if spread_count else 0.0
     summary.total_outcome_value_usd = round(outcome_total, 2)
     summary.avg_outcome_value_usd = (
         round(outcome_total / outcome_count, 2) if outcome_count else 0.0

@@ -54,13 +54,49 @@ def test_get_yes_price_prefers_outcome_prices_over_stale_last_trade():
     assert get_yes_price(runner_up) != runner_up["lastTradePrice"]
 
 
-def test_highest_yes_picks_highest_book_midpoint():
+def test_highest_yes_picks_when_clob_and_gamma_agree():
     strategy = HighestYesStrategy(yes_price_max=0.60, share_count=10)
     sel = strategy.select_market(_austin_event())
 
     assert sel is not None
     assert sel.group_item_title == "92-93°F"
     assert sel.yes_price == 0.44
+
+
+def test_highest_yes_skips_when_clob_and_gamma_disagree():
+    """Buenos Aires-style: wide mid on cooler bucket vs higher Gamma on warmer."""
+    event = {
+        "id": "704717",
+        "city": "Buenos Aires",
+        "markets": [
+            {
+                "id": "2929401",
+                "groupItemTitle": "22°C",
+                "outcomes": '["Yes", "No"]',
+                "outcomePrices": '["0.275", "0.725"]',
+                "bestBid": 0.28,
+                "bestAsk": 0.52,
+                "midpoint": 0.40,
+                "clobTokenIds": '["token_22_yes", "token_22_no"]',
+                "negRisk": True,
+                "orderMinSize": 5,
+            },
+            {
+                "id": "2929402",
+                "groupItemTitle": "23°C",
+                "outcomes": '["Yes", "No"]',
+                "outcomePrices": '["0.44", "0.56"]',
+                "bestBid": 0.42,
+                "bestAsk": 0.48,
+                "midpoint": 0.35,
+                "clobTokenIds": '["token_23_yes", "token_23_no"]',
+                "negRisk": True,
+                "orderMinSize": 5,
+            },
+        ],
+    }
+    strategy = HighestYesStrategy(yes_price_max=0.60, share_count=10)
+    assert strategy.select_market(event) is None
 
 
 def test_get_yes_price_falls_back_to_book_midpoint():
@@ -117,7 +153,8 @@ def test_parse_float_treats_blank_strings_as_missing():
 if __name__ == "__main__":
     test_parse_float_treats_blank_strings_as_missing()
     test_get_yes_price_prefers_outcome_prices_over_stale_last_trade()
-    test_highest_yes_picks_highest_book_midpoint()
+    test_highest_yes_picks_when_clob_and_gamma_agree()
+    test_highest_yes_skips_when_clob_and_gamma_disagree()
     test_get_yes_price_falls_back_to_book_midpoint()
     test_get_yes_price_ignores_empty_outcome_prices()
     test_get_order_price_midpoint_and_ask()

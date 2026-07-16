@@ -49,6 +49,11 @@ def _get_outcome_yes_price(market: dict) -> Optional[float]:
     return None
 
 
+def get_gamma_yes_price(market: dict) -> Optional[float]:
+    """Gamma outcomePrices Yes only — no CLOB midpoint fallback."""
+    return _get_outcome_yes_price(market)
+
+
 def _get_book_midpoint(market: dict) -> Optional[float]:
     midpoint = parse_float(market.get("midpoint"))
     if midpoint is not None:

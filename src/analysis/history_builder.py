@@ -12,6 +12,8 @@ from zoneinfo import ZoneInfo
 from config.settings import DATA_DIR, settings
 from src.analysis.models import TradeRecord, compute_outcome_value_parts
 from src.analysis.resolution import CachedResolution, fetch_resolved_event, resolve_winning_temp
+from src.analysis.spread_lookup import lookup_spread_for_buy
+from src.analysis.edge_lookup import lookup_on_edge_from_snapshots
 from src.api.clob_client import (
     ClobPriceClient,
     first_price_below_threshold,
@@ -382,13 +384,16 @@ def build_trade_record(
         cost_basis_usd=cost_basis,
         pnl=final_value,
     )
+    bought_at_iso = _iso_from_ts(bought_ts) or ""
+    spread = lookup_spread_for_buy(group.token_id, bought_at_iso)
+    on_edge = lookup_on_edge_from_snapshots(group.token_id, bought_at_iso)
 
     return TradeRecord(
         date=date_str,
         city=city,
         bought_temp=bought_temp,
         trade_window=_trade_window_label(),
-        bought_at=_iso_from_ts(bought_ts) or "",
+        bought_at=bought_at_iso,
         bought_at_hk=bought_at_hk,
         bought_at_local=bought_at_local,
         sold_at=_iso_from_ts(sold_ts),
@@ -416,6 +421,8 @@ def build_trade_record(
         condition_id=group.condition_id,
         transaction_hash=group.transaction_hash,
         outcome_value_usd=outcome_value,
+        spread=spread,
+        on_edge=on_edge,
     )
 
 

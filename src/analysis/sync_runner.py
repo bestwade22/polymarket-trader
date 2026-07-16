@@ -16,7 +16,15 @@ from config.settings import (
 )
 from src.analysis.history_builder import build_records_from_activity
 from src.analysis.models import TradeRecord, compute_outcome_value, summarize_records
+from src.analysis.spread_lookup import load_selection_spreads_by_token, lookup_spread_for_buy
+from src.analysis.edge_lookup import (
+    compute_on_edge_from_history,
+    load_event_markets_by_slug,
+    load_on_edge_snapshot_by_token,
+    lookup_on_edge_from_snapshots,
+)
 from src.analysis.strategy_insights import compute_insights
+from src.api.clob_client import ClobPriceClient
 from src.api.data_client import fetch_all_closed_positions, fetch_all_user_activity
 
 logger = logging.getLogger(__name__)
@@ -74,12 +82,82 @@ def _backfill_outcome_values(records: list[TradeRecord]) -> list[TradeRecord]:
     return records
 
 
+def _backfill_spreads(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Fill missing spread from local selection snapshots (ask − bid at order time)."""
+    missing = [rec for rec in records if rec.spread is None]
+    if not missing:
+        return records
+    index = load_selection_spreads_by_token()
+    filled = 0
+    for rec in missing:
+        spread = lookup_spread_for_buy(rec.token_id, rec.bought_at, index=index)
+        if spread is not None:
+            rec.spread = spread
+            filled += 1
+    if filled:
+        logger.info("Backfilled spread on %d/%d trade records", filled, len(missing))
+    return records
+
+
+def _backfill_on_edge(
+    records: list[TradeRecord],
+    *,
+    use_clob: bool = True,
+) -> list[TradeRecord]:
+    """Fill missing on_edge from selection snapshots, else CLOB prices near buy time."""
+    missing = [rec for rec in records if rec.on_edge is None]
+    if not missing:
+        return records
+
+    sel_index = load_on_edge_snapshot_by_token()
+    filled = 0
+    still_missing: list[TradeRecord] = []
+    for rec in missing:
+        on_edge = lookup_on_edge_from_snapshots(
+            rec.token_id, rec.bought_at, index=sel_index
+        )
+        if on_edge is not None:
+            rec.on_edge = on_edge
+            filled += 1
+        else:
+            still_missing.append(rec)
+
+    if still_missing and use_clob:
+        markets_by_slug = load_event_markets_by_slug()
+        clob = ClobPriceClient()
+        price_cache: dict[tuple[str, int], Optional[float]] = {}
+        for i, rec in enumerate(still_missing, start=1):
+            on_edge = compute_on_edge_from_history(
+                event_slug=rec.event_slug,
+                bought_temp=rec.bought_temp,
+                bought_at=rec.bought_at,
+                markets_by_slug=markets_by_slug,
+                clob=clob,
+                price_cache=price_cache,
+            )
+            if on_edge is not None:
+                rec.on_edge = on_edge
+                filled += 1
+            if i % 25 == 0:
+                logger.info("on_edge CLOB backfill progress %d/%d", i, len(still_missing))
+
+    if filled:
+        logger.info("Backfilled on_edge on %d/%d trade records", filled, len(missing))
+    return records
+
+
 def _merge_records(
     existing: dict[str, TradeRecord],
     fresh: list[TradeRecord],
 ) -> list[TradeRecord]:
     merged = dict(existing)
     for rec in fresh:
+        prior = merged.get(rec.token_id)
+        if prior is not None:
+            if rec.spread is None and prior.spread is not None:
+                rec.spread = prior.spread
+            if rec.on_edge is None and prior.on_edge is not None:
+                rec.on_edge = prior.on_edge
         merged[rec.token_id] = rec
     return sorted(merged.values(), key=lambda r: r.bought_at, reverse=True)
 
@@ -168,7 +246,11 @@ def run_sync_trade_history(
                     fetch_price_drop=fetch_price_drop,
                 )
 
-    all_records = _backfill_outcome_values(_merge_records(existing, fresh_records))
+    all_records = _backfill_on_edge(
+        _backfill_spreads(
+            _backfill_outcome_values(_merge_records(existing, fresh_records))
+        )
+    )
     summary = summarize_records(all_records)
     insights = compute_insights(all_records)
 

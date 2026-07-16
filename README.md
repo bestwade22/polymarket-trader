@@ -9,7 +9,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **4:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
 - **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **91¢ / 93¢ / 95¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
-  - `highest_yes` — buy the market with highest live book price if below `YES_PRICE_MAX` (default 0.60).
+  - `highest_yes` — buy only when **CLOB midpoint** and **Gamma Yes %** agree on the same top market, and that market's selection price is below `YES_PRICE_MAX` (default 0.60); skip if they disagree.
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
 - **Trade logging**: step-by-step JSON logs in `logs/trades/` and `logs/app.log`.
 - **Dry-run default**: no real orders until `DRY_RUN=false` or `--live`.
@@ -103,18 +103,18 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 
 | Field | Role |
 |-------|------|
-| `selection_price` / `yes_price` | **Market selection** — highest live book price per city (`SELECTION_PRICE_SOURCE`, default `midpoint`). |
+| `selection_price` / `yes_price` | **Market selection price** after agreement — live book via `SELECTION_PRICE_SOURCE` (default `midpoint`). |
 | `order_price` | **Order limit price** — `ORDER_PRICE_SOURCE` (default `midpoint`). |
-| `gamma_yes_price` | Gamma `outcomePrices` (Polymarket UI %); logged only, not used for selection/orders by default. |
-| `midpoint` | CLOB mid or (bid+ask)/2 — default for selection and orders. |
+| `gamma_yes_price` | Gamma `outcomePrices` (Polymarket UI %). Used with CLOB mid for `highest_yes` agreement. |
+| `midpoint` | CLOB mid or (bid+ask)/2 — default for selection price and orders. |
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default:** select by highest live `midpoint`, place limit buy at refreshed `midpoint`. `YES_PRICE_MAX` is checked before the position check and again after the final price refresh.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. Skip the city when the two leaders disagree. `YES_PRICE_MAX` is checked before the position check and again after the final price refresh.
 
-**Flow:** refresh all markets (Gamma + CLOB) → open-order filter → select highest `SELECTION_PRICE_SOURCE` → drop if selection price ≥ `YES_PRICE_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` → place order at `ORDER_PRICE_SOURCE`.
+**Flow:** refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` → place order at `ORDER_PRICE_SOURCE`.
 
-Example: Gamma shows 60% but book midpoint is 0.43 — selection and order use **0.43**, not 0.60.
+Example: Gamma shows 23°C highest (44%) but book midpoint peaks on 22°C (40¢ mid on a wide spread) — **skip**, do not buy.
 
 Selection snapshots in `data/selections/` include `order_price`, `order_status`, and `order_id` after the run.
 

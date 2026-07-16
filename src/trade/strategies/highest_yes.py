@@ -4,7 +4,9 @@ from typing import Optional  # noqa: F401 used in __init__
 from config.settings import settings
 from src.trade.strategies.base import BaseStrategy, MarketSelection
 from src.utils.market_parser import (
+    get_book_price,
     get_buy_price,
+    get_gamma_yes_price,
     get_order_min_size,
     get_selection_price,
     get_tick_size,
@@ -15,6 +17,21 @@ from src.utils.market_parser import (
 logger = logging.getLogger(__name__)
 
 
+def _best_market_by(markets: list[dict], price_fn) -> tuple[Optional[dict], Optional[float]]:
+    best_market = None
+    best_price = float("-inf")
+    for market in markets:
+        price = price_fn(market)
+        if price is None:
+            continue
+        if price > best_price:
+            best_price = price
+            best_market = market
+    if best_market is None:
+        return None, None
+    return best_market, best_price
+
+
 class HighestYesStrategy(BaseStrategy):
     name = "highest_yes"
 
@@ -23,20 +40,57 @@ class HighestYesStrategy(BaseStrategy):
         self.share_count = share_count if share_count is not None else settings.share_count
 
     def select_market(self, event: dict) -> Optional[MarketSelection]:
-        best_market = None
-        best_selection_price = float("-inf")
+        """Select only when CLOB midpoint and Gamma Yes agree on the same top market."""
+        markets = event.get("markets", [])
+        event_id = event.get("id")
+        city = event.get("city", "")
 
-        for market in event.get("markets", []):
-            selection_price = get_selection_price(market)
-            if selection_price is None:
-                continue
-            if selection_price > best_selection_price:
-                best_selection_price = selection_price
-                best_market = market
+        mid_market, mid_price = _best_market_by(
+            markets, lambda m: get_book_price(m, "midpoint")
+        )
+        gamma_market, gamma_price = _best_market_by(markets, get_gamma_yes_price)
 
-        if not best_market:
-            logger.info("event=%s no markets with live book price", event.get("id"))
+        if not mid_market:
+            logger.info("event=%s city=%s no markets with CLOB midpoint", event_id, city)
             return None
+        if not gamma_market:
+            logger.info("event=%s city=%s no markets with Gamma yes price", event_id, city)
+            return None
+
+        mid_id = str(mid_market.get("id", ""))
+        gamma_id = str(gamma_market.get("id", ""))
+        if mid_id != gamma_id:
+            logger.info(
+                "event=%s city=%s highest_yes disagree: "
+                "clob_mid=%s (%s %.3f) gamma=%s (%s %.3f); skip",
+                event_id,
+                city,
+                mid_id,
+                mid_market.get("groupItemTitle", ""),
+                mid_price,
+                gamma_id,
+                gamma_market.get("groupItemTitle", ""),
+                gamma_price,
+            )
+            step_log = event.get("_step_logger")
+            if step_log:
+                step_log.log_step(
+                    "select_market",
+                    skipped=True,
+                    reason="clob_gamma_disagree",
+                    clob_mid_market_id=mid_id,
+                    clob_mid_title=mid_market.get("groupItemTitle", ""),
+                    clob_mid_price=mid_price,
+                    gamma_market_id=gamma_id,
+                    gamma_title=gamma_market.get("groupItemTitle", ""),
+                    gamma_price=gamma_price,
+                )
+            return None
+
+        best_market = mid_market
+        selection_price = get_selection_price(best_market)
+        if selection_price is None:
+            selection_price = mid_price
 
         yes_token = get_yes_token_id(best_market)
         buy_price = get_buy_price(best_market)
@@ -48,7 +102,7 @@ class HighestYesStrategy(BaseStrategy):
             city=event.get("city", ""),
             market_id=str(best_market.get("id")),
             group_item_title=best_market.get("groupItemTitle", ""),
-            yes_price=best_selection_price,
+            yes_price=selection_price,
             yes_token_id=yes_token,
             buy_price=buy_price,
             share_count=max(self.share_count, get_order_min_size(best_market)),

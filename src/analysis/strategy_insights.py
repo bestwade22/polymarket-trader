@@ -175,6 +175,8 @@ def _group_metrics(
             "pnl_usd": 0.0,
             "buy_usd": 0.0,
             "buy_price": 0.0,
+            "spread": 0.0,
+            "spread_count": 0,
             "outcome_usd": 0.0,
             "outcome_count": 0,
             "cities": set(),
@@ -186,6 +188,9 @@ def _group_metrics(
         stats["count"] += 1
         stats["buy_usd"] += rec.cost_basis_usd
         stats["buy_price"] += rec.buy_price
+        if rec.spread is not None:
+            stats["spread"] += float(rec.spread)
+            stats["spread_count"] += 1
         if track_cities and rec.city:
             stats["cities"].add(rec.city)
         pnl = _record_pnl_value(rec)
@@ -235,6 +240,11 @@ def _group_metrics(
             "win_plus_sold_win_pct": round((win_plus_sold / settled) * 100, 1) if settled else 0.0,
             "avg_buy_usd": round(buy_usd / count, 2) if count else 0.0,
             "avg_buy_price": round(buy_price / count, 3) if count else 0.0,
+            "avg_spread": (
+                round(float(stats["spread"]) / int(stats["spread_count"]), 4)
+                if int(stats["spread_count"])
+                else 0.0
+            ),
             "avg_pnl_usd": round(pnl_usd / count, 2) if count else 0.0,
             "total_pnl_usd": round(pnl_usd, 2),
             "avg_outcome_value_usd": round(outcome_usd / outcome_count, 2) if outcome_count else 0.0,
