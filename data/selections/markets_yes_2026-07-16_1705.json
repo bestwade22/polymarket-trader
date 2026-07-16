@@ -1,0 +1,70 @@
+{
+  "run_at": "2026-07-16T17:05:50.149421+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "704716",
+      "city": "Sao Paulo",
+      "market_id": "2929389",
+      "groupItemTitle": "25\u00b0C",
+      "yes_price": 0.5,
+      "yes_token_id": "8015350523740625296068383566395733508072035720848690884425384210504789284046",
+      "buy_price": 0.54,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.5,
+      "selection_price": 0.5,
+      "gamma_yes_price": 0.5,
+      "best_bid": 0.46,
+      "best_ask": 0.54,
+      "clob_buy_price": 0.54,
+      "last_trade_price": 0.55,
+      "midpoint": 0.5,
+      "outcomePrices": [
+        0.5,
+        0.5
+      ],
+      "order_status": "live",
+      "order_id": "0x9a412965656d217e5f8b71270c8bf391784b33a4b1df162f67e0e79a9a4b9077",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-16T17:30:48+00:00"
+    },
+    {
+      "event_id": "704717",
+      "city": "Buenos Aires",
+      "market_id": "2929401",
+      "groupItemTitle": "22\u00b0C",
+      "yes_price": 0.4,
+      "yes_token_id": "205168512547858305078901032285499043342428271200522509473803650057885500406",
+      "buy_price": 0.52,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "order_price": 0.4,
+      "selection_price": 0.4,
+      "gamma_yes_price": 0.275,
+      "best_bid": 0.28,
+      "best_ask": 0.52,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.29,
+      "midpoint": 0.4,
+      "outcomePrices": [
+        0.275,
+        0.725
+      ],
+      "order_status": "live",
+      "order_id": "0x2993a42f2f313dd8c6fa5d8b4505ba33cba8c93a37e6734d1fd6e67b91543d3b",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-16T17:30:49+00:00"
+    }
+  ]
+}
