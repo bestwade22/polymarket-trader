@@ -529,6 +529,24 @@ function renderInsights(data) {
     ["By city", data.summary_by_city, { limit: null }],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
+    [
+      "By spread band",
+      data.summary_by_spread_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description: "Bid–ask spread at order time in 0.05 steps (0.00–0.05, 0.05–0.10, …)",
+      },
+    ],
+    [
+      "By edge",
+      data.summary_by_edge,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description: "On edge = all cooler temp buckets had Yes &lt; 1% at order time",
+      },
+    ],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
     ["By result", data.summary_by_result, { limit: null }],
     ["By win temp vs bought", data.summary_by_win_temp_vs_bought, { limit: null }],

@@ -312,12 +312,19 @@ class TestSummary:
         assert summary.win_plus_sold_win_count == 1
 
     def test_insights(self):
-        rec = _sample_record(event_slug="slug", transaction_hash=None)
+        rec = _sample_record(
+            event_slug="slug",
+            transaction_hash=None,
+            spread=0.12,
+            on_edge=True,
+        )
         insights = compute_insights([rec])
         assert "London" in insights["summary_by_city"]
         assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
         assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
         assert "2026-W27" in insights["summary_by_week"]
+        assert "0.10–0.15" in insights["summary_by_spread_band"]
+        assert "Yes" in insights["summary_by_edge"]
 
 
 class TestNoLocalBotFiles:

@@ -143,6 +143,23 @@ def _roi_band(rec: TradeRecord) -> str:
     return ">100%"
 
 
+def _spread_band(spread: float | None) -> str:
+    if spread is None:
+        return "unknown"
+    if spread < 0:
+        return "unknown"
+    idx = int(spread / 0.05)
+    lo = idx * 0.05
+    hi = lo + 0.05
+    return f"{lo:.2f}–{hi:.2f}"
+
+
+def _edge_label(on_edge: bool | None) -> str:
+    if on_edge is None:
+        return "unknown"
+    return "Yes" if on_edge else "No"
+
+
 def _sold_outcome_label(rec: TradeRecord) -> str:
     if rec.result != "sold":
         return "not_sold"
@@ -326,6 +343,12 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             records, lambda rec: rec.trade_window or "unknown"
         ),
         "summary_by_roi_band": _group_metrics(records, lambda rec: _roi_band(rec)),
+        "summary_by_spread_band": _group_metrics(
+            records, lambda rec: _spread_band(rec.spread)
+        ),
+        "summary_by_edge": _group_metrics(
+            records, lambda rec: _edge_label(rec.on_edge)
+        ),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: _timezone_group(rec.city)
         ),
