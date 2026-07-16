@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-07-16T13:06:15.745365+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "701547",
+      "city": "London",
+      "market_id": "2916971",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701558",
+      "city": "Milan",
+      "market_id": "2917093",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701559",
+      "city": "Madrid",
+      "market_id": "2917103",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701560",
+      "city": "Warsaw",
+      "market_id": "2917114",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.65,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701570",
+      "city": "Amsterdam",
+      "market_id": "2917220",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701723",
+      "city": "Cape Town",
+      "market_id": "2918851",
+      "group_item_title": "19\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "701548",
+      "city": "Paris",
+      "market_id": "2916981",
+      "group_item_title": "33\u00b0C",
+      "reason": "top_up_would_overshoot",
+      "held_shares": 6.44,
+      "held_market_id": "2916981",
+      "held_group_item_title": "33\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "701552",
+      "city": "Munich",
+      "market_id": "2917028",
+      "group_item_title": "31\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2917027",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
