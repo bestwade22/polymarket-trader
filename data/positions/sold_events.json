@@ -5030,5 +5030,21 @@
     "floor_price": 0.91,
     "current_mid": 0.365,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xcffc8a788823a4064e6b67fb57c0e279676784c2c152e8885bf94d3a867e0316",
+    "token_id": "64838737020103536137067783509341772529912785021122313617082605846917731212289",
+    "order_id": "0xc5f90c66b7c07b35cc5e97d2bae4e76c15c3fa7173e580d2beb2eabd5d792118",
+    "sold_at": "2026-07-16T08:00:11.324897+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-qingdao-on-july-16-2026",
+    "price": 0.93,
+    "size": 5.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.815,
+    "reason": "tier2"
   }
 ]
