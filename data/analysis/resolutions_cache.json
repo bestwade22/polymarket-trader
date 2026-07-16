@@ -378,6 +378,12 @@
       "winning_temp": "9\u00b0C",
       "winning_token_id": "30957891207705087903447084076361500526273160667657210420136794097574084511895"
     },
+    "highest-temperature-in-buenos-aires-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Buenos Aires on July 15?",
+      "winning_temp": "18\u00b0C",
+      "winning_token_id": "23428821352846346493288069845894605988147020737941368023446142196538125289740"
+    },
     "highest-temperature-in-buenos-aires-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Buenos Aires on July 2?",
@@ -2111,6 +2117,12 @@
       "title": "Highest temperature in Sao Paulo on July 11?",
       "winning_temp": "28\u00b0C",
       "winning_token_id": "105005132005076129642214567445236723744827751201531845312454485467033559926780"
+    },
+    "highest-temperature-in-sao-paulo-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on July 15?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "77861434147075674825408853020660789097636061245403505505080968880222256247231"
     },
     "highest-temperature-in-sao-paulo-on-july-3-2026": {
       "closed": true,
