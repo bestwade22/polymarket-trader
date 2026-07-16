@@ -4966,5 +4966,21 @@
     "floor_price": 0.91,
     "current_mid": 0.775,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x23bf984e91581f06c01862e0c9359f69c6aedbf97b32566e5120456253b1bb5a",
+    "token_id": "25546384848985565196609745182846646603930569543432722204587799477441025080481",
+    "order_id": "0x5f2e2946fb184b0697397710eac8774e0331e0cfc8c303362324b9723ee57784",
+    "sold_at": "2026-07-16T06:00:11.305622+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-busan-on-july-16-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.51,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.76,
+    "reason": "tier1"
   }
 ]
