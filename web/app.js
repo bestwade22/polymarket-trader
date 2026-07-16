@@ -346,6 +346,8 @@ function computeFilteredSummary(records) {
     sold_would_lose_count: 0,
     pnl_count: 0,
     buy_price_total: 0,
+    spread_total: 0,
+    spread_count: 0,
     outcome_total: 0,
     outcome_count: 0,
   };
@@ -359,6 +361,10 @@ function computeFilteredSummary(records) {
     } else if (r.result === "open") s.open_count++;
     s.total_cost_basis_usd += r.cost_basis_usd || 0;
     s.buy_price_total += r.buy_price || 0;
+    if (r.spread != null && Number.isFinite(r.spread)) {
+      s.spread_total += r.spread;
+      s.spread_count += 1;
+    }
     const pnl = recordPnl(r);
     if (pnl != null) {
       s.total_realized_pnl_usd += pnl;
@@ -381,6 +387,7 @@ function computeFilteredSummary(records) {
     : 0;
   s.avg_buy_usd = records.length ? s.total_cost_basis_usd / records.length : 0;
   s.avg_buy_price = records.length ? s.buy_price_total / records.length : 0;
+  s.avg_spread = s.spread_count ? s.spread_total / s.spread_count : 0;
   s.avg_pnl_usd = s.pnl_count ? s.total_realized_pnl_usd / s.pnl_count : 0;
   s.avg_bought_time_hk = avgHkMinutes(records);
   s.total_outcome_value_usd = s.outcome_total;
@@ -403,6 +410,7 @@ function renderSummary(records) {
       <div><span class="summary-label">Open</span><span class="summary-value">${fs.open_count}</span></div>
       <div><span class="summary-label">Win%</span><span class="summary-value">${fs.win_pct}%</span></div>
       <div><span class="summary-label">Avg buy price</span><span class="summary-value">${fs.avg_buy_price.toFixed(3)}</span></div>
+      <div><span class="summary-label">Avg spread</span><span class="summary-value">${fs.spread_count ? fs.avg_spread.toFixed(3) : "—"}</span></div>
       <div><span class="summary-label">Avg buy $</span><span class="summary-value">$${fs.avg_buy_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Avg P&amp;L</span><span class="summary-value">$${fs.avg_pnl_usd.toFixed(2)}</span></div>
       <div><span class="summary-label">Avg bought time</span><span class="summary-value">${fs.avg_bought_time_hk || "—"}</span></div>
@@ -421,6 +429,7 @@ const INSIGHT_COLUMNS = [
   { key: "win_rate_pct", label: "Win%", type: "number" },
   { key: "win_plus_sold_win_pct", label: "Win summary%", type: "number" },
   { key: "avg_buy_price", label: "Avg buy", type: "number" },
+  { key: "avg_spread", label: "Avg spread", type: "number" },
   { key: "avg_pnl_usd", label: "Avg P&amp;L", type: "number" },
   { key: "avg_outcome_value_usd", label: "Avg outcome", type: "number" },
 ];
@@ -490,7 +499,7 @@ function renderGroupTable(title, data, options = {}) {
                 if (col.key === "win_rate_pct" || col.key === "win_plus_sold_win_pct") {
                   return `<td>${Number(val).toFixed(1)}%</td>`;
                 }
-                if (col.key === "avg_buy_price") {
+                if (col.key === "avg_buy_price" || col.key === "avg_spread") {
                   return `<td>${Number(val).toFixed(3)}</td>`;
                 }
                 if (col.key.startsWith("avg_") || col.key.startsWith("total_")) {
@@ -597,6 +606,8 @@ function renderTable(records) {
       <td>$${(r.cost_basis_usd ?? 0).toFixed(2)}</td>
       <td class="${sharesCls}"${sharesTitle}>${r.shares}</td>
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
+      <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
+      <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
       <td>${resultBadge(r.result)}</td>
       <td>${fmtMoney(recordPnl(r))}</td>
       <td>${outcome != null ? fmtMoney(outcome) : "—"}</td>

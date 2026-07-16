@@ -102,7 +102,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": null
+      "outcome_value_usd": null,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-16",
@@ -136,7 +138,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 8.8164
+      "outcome_value_usd": 8.8164,
+      "spread": 0.145,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -170,7 +174,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": null
+      "outcome_value_usd": null,
+      "spread": 0.05,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -204,7 +210,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 6.118
+      "outcome_value_usd": 6.118,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-16",
@@ -238,7 +246,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": null
+      "outcome_value_usd": null,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-16",
@@ -272,7 +282,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": null
+      "outcome_value_usd": null,
+      "spread": 0.4,
+      "on_edge": false
     },
     {
       "date": "2026-07-16",
@@ -306,7 +318,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.502,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -340,7 +354,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 4.65
+      "outcome_value_usd": 4.65,
+      "spread": 0.15,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -374,7 +390,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -408,7 +426,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.278
+      "outcome_value_usd": 9.278,
+      "spread": 0.15,
+      "on_edge": true
     },
     {
       "date": "2026-07-16",
@@ -442,7 +462,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-16",
@@ -476,7 +498,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -510,7 +534,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -544,7 +570,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.22,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -578,7 +606,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -0.748
+      "outcome_value_usd": -0.748,
+      "spread": 0.19,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -612,7 +642,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.7936
+      "outcome_value_usd": -3.7936,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -646,7 +678,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -680,7 +714,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 2.7619
+      "outcome_value_usd": 2.7619,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -714,7 +750,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.7
+      "outcome_value_usd": -4.7,
+      "spread": 0.21,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -748,7 +786,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -782,7 +822,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.4935
+      "outcome_value_usd": 9.4935,
+      "spread": 0.01,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -816,7 +858,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.9
+      "outcome_value_usd": -5.9,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -850,7 +894,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.084,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -884,7 +930,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.3
+      "outcome_value_usd": -5.3,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -918,7 +966,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.25,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -952,7 +1002,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.38
+      "outcome_value_usd": -5.38,
+      "spread": 0.117,
+      "on_edge": true
     },
     {
       "date": "2026-07-15",
@@ -986,7 +1038,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": 0.35,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -1020,7 +1074,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-15",
@@ -1054,7 +1110,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": 0.04,
+      "on_edge": true
     },
     {
       "date": "2026-07-14",
@@ -1088,7 +1146,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.7
+      "outcome_value_usd": -5.7,
+      "spread": 0.03,
+      "on_edge": true
     },
     {
       "date": "2026-07-14",
@@ -1122,7 +1182,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.6985
+      "outcome_value_usd": -4.6985,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-14",
@@ -1156,7 +1218,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1190,7 +1254,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -2.85
+      "outcome_value_usd": -2.85,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1224,7 +1290,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2892
+      "outcome_value_usd": -5.2892,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1258,7 +1326,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.65
+      "outcome_value_usd": -4.65,
+      "spread": 0.049,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1292,7 +1362,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.3
+      "outcome_value_usd": -5.3,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1326,7 +1398,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.5
+      "outcome_value_usd": -4.5,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1360,7 +1434,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1394,7 +1470,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1428,7 +1506,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.0909
+      "outcome_value_usd": 9.0909,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1462,7 +1542,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.143,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1496,7 +1578,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.7
+      "outcome_value_usd": -5.7,
+      "spread": 0.23,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1530,7 +1614,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.8402
+      "outcome_value_usd": 9.8402,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1564,7 +1650,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.9
+      "outcome_value_usd": -4.9,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1598,7 +1686,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.7
+      "outcome_value_usd": -4.7,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1632,7 +1722,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1666,7 +1758,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": 0.05,
+      "on_edge": true
     },
     {
       "date": "2026-07-14",
@@ -1700,7 +1794,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-14",
@@ -1734,7 +1830,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 2.3
+      "outcome_value_usd": 2.3,
+      "spread": 0.016,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -1768,7 +1866,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1802,7 +1902,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.85
+      "outcome_value_usd": -4.85,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1836,7 +1938,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1870,7 +1974,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.38,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1904,7 +2010,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -2.9991
+      "outcome_value_usd": -2.9991,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1938,7 +2046,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.35
+      "outcome_value_usd": -5.35,
+      "spread": 0.072,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -1972,7 +2082,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -2006,7 +2118,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.9
+      "outcome_value_usd": -3.9,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2040,7 +2154,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": 0.07,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -2074,7 +2190,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.0
+      "outcome_value_usd": -3.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2108,7 +2226,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.9
+      "outcome_value_usd": -5.9,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2142,7 +2262,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.3
+      "outcome_value_usd": -3.3,
+      "spread": 0.098,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2176,7 +2298,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.04,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -2210,7 +2334,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.5758
+      "outcome_value_usd": -3.5758,
+      "spread": 0.182,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2244,7 +2370,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2278,7 +2406,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2985
+      "outcome_value_usd": -5.2985,
+      "spread": 0.22,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -2312,7 +2442,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-13",
@@ -2346,7 +2478,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.1,
+      "on_edge": true
     },
     {
       "date": "2026-07-13",
@@ -2380,7 +2514,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.1,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2414,7 +2550,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.33,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2448,7 +2586,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.6
+      "outcome_value_usd": 9.6,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2482,7 +2622,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2516,7 +2658,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2550,7 +2694,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.5
+      "outcome_value_usd": -5.5,
+      "spread": 0.04,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2584,7 +2730,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 3.14
+      "outcome_value_usd": 3.14,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2618,7 +2766,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 7.44
+      "outcome_value_usd": 7.44,
+      "spread": 0.18,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2652,7 +2802,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.2961
+      "outcome_value_usd": 9.2961,
+      "spread": 0.01,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2686,7 +2838,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.098,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2720,7 +2874,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.4915
+      "outcome_value_usd": 9.4915,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2754,7 +2910,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 6.1266
+      "outcome_value_usd": 6.1266,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2788,7 +2946,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2822,7 +2982,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.506,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2856,7 +3018,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.016
+      "outcome_value_usd": -5.016,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2890,7 +3054,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2924,7 +3090,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.32,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -2958,7 +3126,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.2,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -2992,7 +3162,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.291
+      "outcome_value_usd": 9.291,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-12",
@@ -3026,7 +3198,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -3060,7 +3234,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.26,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -3094,7 +3270,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.9
+      "outcome_value_usd": -3.9,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -3128,7 +3306,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-12",
@@ -3162,7 +3342,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": 0.16,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3196,7 +3378,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.6971
+      "outcome_value_usd": -5.6971,
+      "spread": 0.638,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3230,7 +3414,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.9
+      "outcome_value_usd": -5.9,
+      "spread": 0.18,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3264,7 +3450,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.3
+      "outcome_value_usd": -5.3,
+      "spread": 0.47,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3298,7 +3486,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.3
+      "outcome_value_usd": 9.3,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3332,7 +3522,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.19,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3366,7 +3558,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -1.4848
+      "outcome_value_usd": -1.4848,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3400,7 +3594,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.2
+      "outcome_value_usd": 9.2,
+      "spread": 0.21,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3434,7 +3630,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.8
+      "outcome_value_usd": -5.8,
+      "spread": 0.12,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3468,7 +3666,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.55
+      "outcome_value_usd": 9.55,
+      "spread": 0.181,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3502,7 +3702,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3536,7 +3738,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": 0.01,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3570,7 +3774,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3604,7 +3810,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": 0.05,
+      "on_edge": true
     },
     {
       "date": "2026-07-11",
@@ -3638,7 +3846,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.58
+      "outcome_value_usd": 9.58,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3672,7 +3882,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3706,7 +3918,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.7663
+      "outcome_value_usd": -3.7663,
+      "spread": 0.244,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3740,7 +3954,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-07-11",
@@ -3774,7 +3990,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -3.3
+      "outcome_value_usd": -3.3,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3808,7 +4026,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1765
+      "outcome_value_usd": 9.1765,
+      "spread": 0.139,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3842,7 +4062,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.115,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3876,7 +4098,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.5
+      "outcome_value_usd": -5.5,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3910,7 +4134,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.9
+      "outcome_value_usd": -4.9,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3944,7 +4170,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -3978,7 +4206,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4012,7 +4242,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4046,7 +4278,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.6
+      "outcome_value_usd": 9.6,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4080,7 +4314,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4114,7 +4350,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 1.5625
+      "outcome_value_usd": 1.5625,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4148,7 +4386,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4182,7 +4422,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4216,7 +4458,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 7.2
+      "outcome_value_usd": 7.2,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4250,7 +4494,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.0847
+      "outcome_value_usd": 9.0847,
+      "spread": 0.18,
+      "on_edge": true
     },
     {
       "date": "2026-07-10",
@@ -4284,7 +4530,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4318,7 +4566,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.5
+      "outcome_value_usd": -5.5,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-10",
@@ -4352,7 +4602,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.1
+      "outcome_value_usd": 9.1,
+      "spread": 0.248,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4386,7 +4638,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4420,7 +4674,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4454,7 +4710,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 5.0
+      "outcome_value_usd": 5.0,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4488,7 +4746,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4522,7 +4782,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4556,7 +4818,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-09",
@@ -4590,7 +4854,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.02,
+      "on_edge": true
     },
     {
       "date": "2026-07-09",
@@ -4624,7 +4890,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.92
+      "outcome_value_usd": 9.92,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4658,7 +4926,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.96
+      "outcome_value_usd": 9.96,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4692,7 +4962,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.96
+      "outcome_value_usd": 9.96,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4726,7 +4998,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.96
+      "outcome_value_usd": 9.96,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4760,7 +5034,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.98
+      "outcome_value_usd": 9.98,
+      "spread": 0.085,
+      "on_edge": true
     },
     {
       "date": "2026-07-09",
@@ -4794,7 +5070,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4828,7 +5106,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.0
+      "outcome_value_usd": 9.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4862,7 +5142,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.0
+      "outcome_value_usd": 9.0,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4896,7 +5178,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4930,7 +5214,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4964,7 +5250,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -4998,7 +5286,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.001,
+      "on_edge": false
     },
     {
       "date": "2026-07-09",
@@ -5032,7 +5322,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.02,
+      "on_edge": true
     },
     {
       "date": "2026-07-09",
@@ -5066,7 +5358,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5100,7 +5394,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5134,7 +5430,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5168,7 +5466,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.56
+      "outcome_value_usd": 9.56,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5202,7 +5502,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5236,7 +5538,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5270,7 +5574,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.9967
+      "outcome_value_usd": 9.9967,
+      "spread": 0.19,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5304,7 +5610,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5338,7 +5646,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.8
+      "outcome_value_usd": 9.8,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5372,7 +5682,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5406,7 +5718,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5440,7 +5754,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.5
+      "outcome_value_usd": 9.5,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5474,7 +5790,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 8.3118
+      "outcome_value_usd": 8.3118,
+      "spread": 0.012,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5508,7 +5826,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 5.2477
+      "outcome_value_usd": 5.2477,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5542,7 +5862,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": true,
-      "outcome_value_usd": 3.25
+      "outcome_value_usd": 3.25,
+      "spread": 0.01,
+      "on_edge": true
     },
     {
       "date": "2026-07-08",
@@ -5576,7 +5898,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.55
+      "outcome_value_usd": 9.55,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5610,7 +5934,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5644,7 +5970,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.93
+      "outcome_value_usd": 9.93,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5678,7 +6006,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.02,
+      "on_edge": true
     },
     {
       "date": "2026-07-08",
@@ -5712,7 +6042,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5746,7 +6078,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.91
+      "outcome_value_usd": 9.91,
+      "spread": 0.26,
+      "on_edge": false
     },
     {
       "date": "2026-07-08",
@@ -5780,7 +6114,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.95
+      "outcome_value_usd": 9.95,
+      "spread": 0.06,
+      "on_edge": true
     },
     {
       "date": "2026-07-08",
@@ -5814,7 +6150,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 0.0
+      "outcome_value_usd": 0.0,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -5848,7 +6186,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 1.7
+      "outcome_value_usd": 1.7,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -5882,7 +6222,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.4
+      "outcome_value_usd": -4.4,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -5916,7 +6258,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.1
+      "outcome_value_usd": -4.1,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -5950,7 +6294,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -5984,7 +6330,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6018,7 +6366,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.3
+      "outcome_value_usd": -5.3,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6052,7 +6402,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.01,
+      "on_edge": true
     },
     {
       "date": "2026-07-07",
@@ -6086,7 +6438,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6120,7 +6474,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 1.7
+      "outcome_value_usd": 1.7,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6154,7 +6510,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.98
+      "outcome_value_usd": 9.98,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6188,7 +6546,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -5.5
+      "outcome_value_usd": -5.5,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6222,7 +6582,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.19,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6256,7 +6618,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.935
+      "outcome_value_usd": 9.935,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6290,7 +6654,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6324,7 +6690,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": 0.08,
+      "on_edge": true
     },
     {
       "date": "2026-07-07",
@@ -6358,7 +6726,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": true,
-      "outcome_value_usd": 11.1022
+      "outcome_value_usd": 11.1022,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-07-07",
@@ -6392,7 +6762,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.7
+      "outcome_value_usd": -4.7,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6426,7 +6798,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -2.8
+      "outcome_value_usd": -2.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6460,7 +6834,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.95
+      "outcome_value_usd": -4.95,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6494,7 +6870,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6528,7 +6906,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.98
+      "outcome_value_usd": 9.98,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-07-07",
@@ -6562,7 +6942,9 @@
       "price_drop_below_threshold_at_hk": "",
       "share_count_target": 10,
       "shares_over_target": false,
-      "outcome_value_usd": 9.98
+      "outcome_value_usd": 9.98,
+      "spread": 0.072,
+      "on_edge": false
     },
     {
       "date": "2026-07-07",
@@ -6596,7 +6978,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.17
+      "outcome_value_usd": 1.17,
+      "spread": 0.022,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6630,7 +7014,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.9
+      "outcome_value_usd": -4.9,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6664,7 +7050,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9818
+      "outcome_value_usd": 9.9818,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6698,7 +7086,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.8
+      "outcome_value_usd": 1.8,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6732,7 +7122,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -6766,7 +7158,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.5
+      "outcome_value_usd": -5.5,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6800,7 +7194,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6834,7 +7230,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.4
+      "outcome_value_usd": -4.4,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -6868,7 +7266,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.0
+      "outcome_value_usd": -6.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6902,7 +7302,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6936,7 +7338,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -6970,7 +7374,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.7
+      "outcome_value_usd": -4.7,
+      "spread": 0.18,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7004,7 +7410,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7038,7 +7446,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.98
+      "outcome_value_usd": 9.98,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7072,7 +7482,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7106,7 +7518,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.31
+      "outcome_value_usd": 2.31,
+      "spread": 0.188,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7140,7 +7554,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.09,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7174,7 +7590,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.5959
+      "outcome_value_usd": -5.5959,
+      "spread": 0.14,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7208,7 +7626,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.19,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7242,7 +7662,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": 0.36,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7276,7 +7698,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.1
+      "outcome_value_usd": -4.1,
+      "spread": 0.26,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7310,7 +7734,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7344,7 +7770,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7378,7 +7806,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.9021
+      "outcome_value_usd": 0.9021,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7412,7 +7842,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.99
+      "outcome_value_usd": 9.99,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7446,7 +7878,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.54
+      "outcome_value_usd": -5.54,
+      "spread": 0.079,
+      "on_edge": true
     },
     {
       "date": "2026-07-06",
@@ -7480,7 +7914,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.4996
+      "outcome_value_usd": -4.4996,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-06",
@@ -7514,7 +7950,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.7
+      "outcome_value_usd": 1.7,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7548,7 +7986,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.8
+      "outcome_value_usd": -5.8,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7582,7 +8022,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.5
+      "outcome_value_usd": -3.5,
+      "spread": 0.33,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -7616,7 +8058,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.4984
+      "outcome_value_usd": -3.4984,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7650,7 +8094,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.57
+      "outcome_value_usd": 0.57,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7684,7 +8130,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.8
+      "outcome_value_usd": 0.8,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7718,7 +8166,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.2,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -7752,7 +8202,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7786,7 +8238,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7820,7 +8274,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 13.0594
+      "outcome_value_usd": 13.0594,
+      "spread": 0.33,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7854,7 +8310,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 4.284
+      "outcome_value_usd": 4.284,
+      "spread": 0.32,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7888,7 +8346,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.87
+      "outcome_value_usd": 0.87,
+      "spread": 0.124,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7922,7 +8382,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": 0.4,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -7956,7 +8418,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -7990,7 +8454,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.1041
+      "outcome_value_usd": 1.1041,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8024,7 +8490,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.9
+      "outcome_value_usd": -6.9,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8058,7 +8526,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.29
+      "outcome_value_usd": 2.29,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8092,7 +8562,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8126,7 +8598,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.2
+      "outcome_value_usd": -7.2,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8160,7 +8634,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.2034
+      "outcome_value_usd": 2.2034,
+      "spread": 0.193,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8194,7 +8670,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.2
+      "outcome_value_usd": 1.2,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8228,7 +8706,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.45
+      "outcome_value_usd": -6.45,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8262,7 +8742,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9911
+      "outcome_value_usd": 14.9911,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8296,7 +8778,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.9
+      "outcome_value_usd": 0.9,
+      "spread": 0.42,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8330,7 +8814,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.97
+      "outcome_value_usd": 14.97,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8364,7 +8850,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9934
+      "outcome_value_usd": 14.9934,
+      "spread": 0.088,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8398,7 +8886,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": 0.16,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -8432,7 +8922,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.3
+      "outcome_value_usd": -6.3,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8466,7 +8958,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.55
+      "outcome_value_usd": -8.55,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8500,7 +8994,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.785
+      "outcome_value_usd": -7.785,
+      "spread": 0.061,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -8534,7 +9030,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9803
+      "outcome_value_usd": 14.9803,
+      "spread": 0.16,
+      "on_edge": true
     },
     {
       "date": "2026-07-05",
@@ -8568,7 +9066,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.8
+      "outcome_value_usd": -7.8,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-05",
@@ -8602,7 +9102,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.985
+      "outcome_value_usd": 14.985,
+      "spread": 0.02,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -8636,7 +9138,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 11.0
+      "outcome_value_usd": 11.0,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8670,7 +9174,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.8022
+      "outcome_value_usd": 0.8022,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8704,7 +9210,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.38,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8738,7 +9246,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.7
+      "outcome_value_usd": -5.7,
+      "spread": 0.15,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -8772,7 +9282,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 3.3
+      "outcome_value_usd": 3.3,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8806,7 +9318,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9964
+      "outcome_value_usd": 14.9964,
+      "spread": 0.21,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -8840,7 +9354,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.75
+      "outcome_value_usd": 0.75,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8874,7 +9390,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 4.55
+      "outcome_value_usd": 4.55,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8908,7 +9426,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8942,7 +9462,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.65
+      "outcome_value_usd": -7.65,
+      "spread": 0.36,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -8976,7 +9498,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.9
+      "outcome_value_usd": -6.9,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9010,7 +9534,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 8.16
+      "outcome_value_usd": 8.16,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9044,7 +9570,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9078,7 +9606,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.7604
+      "outcome_value_usd": 2.7604,
+      "spread": 0.054,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9112,7 +9642,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.17
+      "outcome_value_usd": 1.17,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9146,7 +9678,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.288
+      "outcome_value_usd": -7.288,
+      "spread": 0.332,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -9180,7 +9714,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.65
+      "outcome_value_usd": 1.65,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9214,7 +9750,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.67
+      "outcome_value_usd": -8.67,
+      "spread": 0.192,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -9248,7 +9786,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9282,7 +9822,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.95
+      "outcome_value_usd": -7.95,
+      "spread": 0.19,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9316,7 +9858,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.466
+      "outcome_value_usd": 2.466,
+      "spread": 0.26,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9350,7 +9894,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.95
+      "outcome_value_usd": -7.95,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9384,7 +9930,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.737
+      "outcome_value_usd": 0.737,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9418,7 +9966,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.4401
+      "outcome_value_usd": 0.4401,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9452,7 +10002,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.08,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -9486,7 +10038,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.4
+      "outcome_value_usd": -8.4,
+      "spread": 0.07,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -9520,7 +10074,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.2819
+      "outcome_value_usd": 2.2819,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9554,7 +10110,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 7.29
+      "outcome_value_usd": 7.29,
+      "spread": 0.12,
+      "on_edge": true
     },
     {
       "date": "2026-07-04",
@@ -9588,7 +10146,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9622,7 +10182,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.25
+      "outcome_value_usd": -5.25,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9656,7 +10218,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.3487
+      "outcome_value_usd": -7.3487,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-04",
@@ -9690,7 +10254,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.02,
+      "on_edge": true
     },
     {
       "date": "2026-07-03",
@@ -9724,7 +10290,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9758,7 +10326,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 3.7522
+      "outcome_value_usd": 3.7522,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9792,7 +10362,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 6.1579
+      "outcome_value_usd": 6.1579,
+      "spread": 0.15,
+      "on_edge": true
     },
     {
       "date": "2026-07-03",
@@ -9826,7 +10398,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.4
+      "outcome_value_usd": -8.4,
+      "spread": 0.26,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9860,7 +10434,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.3
+      "outcome_value_usd": -6.3,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9894,7 +10470,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 12.14
+      "outcome_value_usd": 12.14,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9928,7 +10506,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9962,7 +10542,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.2775
+      "outcome_value_usd": -8.2775,
+      "spread": 0.16,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -9996,7 +10578,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.1403
+      "outcome_value_usd": -5.1403,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10030,7 +10614,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10064,7 +10650,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.095,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10098,7 +10686,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.1,
+      "on_edge": true
     },
     {
       "date": "2026-07-03",
@@ -10132,7 +10722,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.75
+      "outcome_value_usd": -6.75,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10166,7 +10758,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.1
+      "outcome_value_usd": 2.1,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10200,7 +10794,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -2.5878
+      "outcome_value_usd": -2.5878,
+      "spread": 0.13,
+      "on_edge": true
     },
     {
       "date": "2026-07-03",
@@ -10234,7 +10830,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 3.9
+      "outcome_value_usd": 3.9,
+      "spread": 0.02,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10268,7 +10866,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.2975
+      "outcome_value_usd": -6.2975,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10302,7 +10902,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.4
+      "outcome_value_usd": 2.4,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10336,7 +10938,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.7965
+      "outcome_value_usd": -7.7965,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10370,7 +10974,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.995
+      "outcome_value_usd": 1.995,
+      "spread": 0.25,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10404,7 +11010,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.9863
+      "outcome_value_usd": 0.9863,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10438,7 +11046,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 3.512
+      "outcome_value_usd": 3.512,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10472,7 +11082,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.072,
+      "on_edge": true
     },
     {
       "date": "2026-07-03",
@@ -10506,7 +11118,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.04
+      "outcome_value_usd": 9.04,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10540,7 +11154,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.55
+      "outcome_value_usd": -5.55,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10574,7 +11190,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.5
+      "outcome_value_usd": -4.5,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10608,7 +11226,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.25
+      "outcome_value_usd": -5.25,
+      "spread": 0.23,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10642,7 +11262,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9919
+      "outcome_value_usd": 14.9919,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10676,7 +11298,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10710,7 +11334,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0309
+      "outcome_value_usd": 10.0309,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10744,7 +11370,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 11.4277
+      "outcome_value_usd": 11.4277,
+      "spread": 0.22,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10778,7 +11406,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.0
+      "outcome_value_usd": -6.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-03",
@@ -10812,7 +11442,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.5
+      "outcome_value_usd": 1.5,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -10846,7 +11478,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 14.9874
+      "outcome_value_usd": 14.9874,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -10880,7 +11514,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -10914,7 +11550,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -7.95
+      "outcome_value_usd": -7.95,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -10948,7 +11586,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -10982,7 +11622,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.02
+      "outcome_value_usd": 10.02,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11016,7 +11658,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11050,7 +11694,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.25
+      "outcome_value_usd": -8.25,
+      "spread": 0.1,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11084,7 +11730,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 3.2995
+      "outcome_value_usd": 3.2995,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11118,7 +11766,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.95
+      "outcome_value_usd": 1.95,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11152,7 +11802,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.22
+      "outcome_value_usd": 2.22,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11186,7 +11838,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 15.0
+      "outcome_value_usd": 15.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11220,7 +11874,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -8.85
+      "outcome_value_usd": -8.85,
+      "spread": 0.09,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11254,7 +11910,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 8.16
+      "outcome_value_usd": 8.16,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11288,7 +11946,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11322,7 +11982,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.05
+      "outcome_value_usd": -4.05,
+      "spread": 0.061,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11356,7 +12018,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -2.76
+      "outcome_value_usd": -2.76,
+      "spread": 0.155,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11390,7 +12054,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.9
+      "outcome_value_usd": 0.9,
+      "spread": 0.15,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11424,7 +12090,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.4
+      "outcome_value_usd": 1.4,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11458,7 +12126,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6979
+      "outcome_value_usd": -4.6979,
+      "spread": 0.08,
+      "on_edge": true
     },
     {
       "date": "2026-07-02",
@@ -11492,7 +12162,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11526,7 +12198,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.0042
+      "outcome_value_usd": 1.0042,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11560,7 +12234,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.1,
+      "on_edge": true
     },
     {
       "date": "2026-07-02",
@@ -11594,7 +12270,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.007
+      "outcome_value_usd": 0.007,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11628,7 +12306,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.4
+      "outcome_value_usd": 0.4,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11662,7 +12342,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.5959
+      "outcome_value_usd": -5.5959,
+      "spread": 0.03,
+      "on_edge": true
     },
     {
       "date": "2026-07-02",
@@ -11696,7 +12378,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 7.5873
+      "outcome_value_usd": 7.5873,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11730,7 +12414,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.124,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11764,7 +12450,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": 0.23,
+      "on_edge": true
     },
     {
       "date": "2026-07-02",
@@ -11798,7 +12486,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.04,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11832,7 +12522,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.9
+      "outcome_value_usd": -3.9,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-02",
@@ -11866,7 +12558,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -11900,7 +12594,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.0
+      "outcome_value_usd": 1.0,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -11934,7 +12630,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -11968,7 +12666,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.15
+      "outcome_value_usd": -4.15,
+      "spread": 0.18,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12002,7 +12702,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12036,7 +12738,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12070,7 +12774,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.24,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12104,7 +12810,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12138,7 +12846,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12172,7 +12882,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.07,
+      "on_edge": true
     },
     {
       "date": "2026-07-01",
@@ -12206,7 +12918,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.4957
+      "outcome_value_usd": -5.4957,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12240,7 +12954,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.5
+      "outcome_value_usd": 2.5,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12274,7 +12990,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.014
+      "outcome_value_usd": 0.014,
+      "spread": 0.2,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12308,7 +13026,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.14,
+      "on_edge": true
     },
     {
       "date": "2026-07-01",
@@ -12342,7 +13062,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12376,7 +13098,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12410,7 +13134,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.4
+      "outcome_value_usd": 0.4,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12444,7 +13170,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.02
+      "outcome_value_usd": 0.02,
+      "spread": 0.16,
+      "on_edge": true
     },
     {
       "date": "2026-07-01",
@@ -12478,7 +13206,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.04,
+      "on_edge": true
     },
     {
       "date": "2026-07-01",
@@ -12512,7 +13242,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.56
+      "outcome_value_usd": 0.56,
+      "spread": 0.235,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12546,7 +13278,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.077,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12580,7 +13314,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12614,7 +13350,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": 0.21,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12648,7 +13386,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12682,7 +13422,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12716,7 +13458,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9944
+      "outcome_value_usd": 9.9944,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-07-01",
@@ -12750,7 +13494,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12784,7 +13530,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12818,7 +13566,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.72
+      "outcome_value_usd": -4.72,
+      "spread": 0.299,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12852,7 +13602,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.0
+      "outcome_value_usd": -3.0,
+      "spread": 0.14,
+      "on_edge": true
     },
     {
       "date": "2026-06-30",
@@ -12886,7 +13638,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.0
+      "outcome_value_usd": 9.0,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12920,7 +13674,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12954,7 +13710,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 6.0
+      "outcome_value_usd": 6.0,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -12988,7 +13746,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 0.056
+      "outcome_value_usd": 0.056,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -13022,7 +13782,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 8.9262
+      "outcome_value_usd": 8.9262,
+      "spread": 0.13,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -13056,7 +13818,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.12,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -13090,7 +13854,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-30",
@@ -13124,7 +13890,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.01,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13158,7 +13926,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.07,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13192,7 +13962,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13226,7 +13998,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13260,7 +14034,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.17,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13294,7 +14070,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9967
+      "outcome_value_usd": 9.9967,
+      "spread": 0.11,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13328,7 +14106,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.08,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13362,7 +14142,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.3
+      "outcome_value_usd": -5.3,
+      "spread": 0.14,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13396,7 +14178,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.8
+      "outcome_value_usd": -5.8,
+      "spread": 0.05,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13430,7 +14214,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": 0.03,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13464,7 +14250,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": 0.06,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13498,7 +14286,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-29",
@@ -13532,7 +14322,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13566,7 +14358,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13600,7 +14394,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13634,7 +14430,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13668,7 +14466,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.0
+      "outcome_value_usd": 1.0,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-29",
@@ -13702,7 +14502,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13736,7 +14538,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13770,7 +14574,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -6.0
+      "outcome_value_usd": -6.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13804,7 +14610,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.6
+      "outcome_value_usd": -3.6,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13838,7 +14646,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 5.9302
+      "outcome_value_usd": 5.9302,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-29",
@@ -13872,7 +14682,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13906,7 +14718,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-29",
@@ -13940,7 +14754,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -13974,7 +14790,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.8
+      "outcome_value_usd": -3.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14008,7 +14826,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.2
+      "outcome_value_usd": -4.2,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14042,7 +14862,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.5978
+      "outcome_value_usd": -4.5978,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14076,7 +14898,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.3
+      "outcome_value_usd": -3.3,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14110,7 +14934,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.5
+      "outcome_value_usd": -4.5,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14144,7 +14970,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9967
+      "outcome_value_usd": 9.9967,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14178,7 +15006,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14212,7 +15042,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-29",
@@ -14246,7 +15078,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14280,7 +15114,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14314,7 +15150,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14348,7 +15186,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14382,7 +15222,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9912
+      "outcome_value_usd": 9.9912,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14416,7 +15258,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14450,7 +15294,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14484,7 +15330,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14518,7 +15366,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14552,7 +15402,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-28",
@@ -14586,7 +15438,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14620,7 +15474,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14654,7 +15510,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -2.5
+      "outcome_value_usd": -2.5,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14688,7 +15546,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14722,7 +15582,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14756,7 +15618,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14790,7 +15654,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14824,7 +15690,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.8
+      "outcome_value_usd": -5.8,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-27",
@@ -14858,7 +15726,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14892,7 +15762,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14926,7 +15798,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14960,7 +15834,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.0
+      "outcome_value_usd": 9.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -14994,7 +15870,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 1.76
+      "outcome_value_usd": 1.76,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-27",
@@ -15028,7 +15906,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.9
+      "outcome_value_usd": -5.9,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15062,7 +15942,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15096,7 +15978,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.9
+      "outcome_value_usd": -5.9,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-27",
@@ -15130,7 +16014,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15164,7 +16050,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15198,7 +16086,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.1
+      "outcome_value_usd": -5.1,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15232,7 +16122,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-27",
@@ -15266,7 +16158,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15300,7 +16194,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15334,7 +16230,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.0998
+      "outcome_value_usd": -3.0998,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15368,7 +16266,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 9.9954
+      "outcome_value_usd": 9.9954,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15402,7 +16302,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15436,7 +16338,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -2.6
+      "outcome_value_usd": -2.6,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15470,7 +16374,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15504,7 +16410,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-27",
@@ -15538,7 +16446,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-26",
@@ -15572,7 +16482,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.3
+      "outcome_value_usd": -4.3,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-26",
@@ -15606,7 +16518,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-26",
@@ -15640,7 +16554,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.4
+      "outcome_value_usd": -5.4,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-26",
@@ -15674,7 +16590,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-26",
@@ -15708,7 +16626,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.3991
+      "outcome_value_usd": -4.3991,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-26",
@@ -15742,7 +16662,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.1
+      "outcome_value_usd": -4.1,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15776,7 +16698,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15810,7 +16734,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.0
+      "outcome_value_usd": -3.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15844,7 +16770,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.4
+      "outcome_value_usd": -3.4,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15878,7 +16806,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0959
+      "outcome_value_usd": -5.0959,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15912,7 +16842,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -15946,7 +16878,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-25",
@@ -15980,7 +16914,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16014,7 +16950,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16048,7 +16986,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.4
+      "outcome_value_usd": -4.4,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16082,7 +17022,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16116,7 +17058,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-25",
@@ -16150,7 +17094,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -1.7712
+      "outcome_value_usd": -1.7712,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16184,7 +17130,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 2.1277
+      "outcome_value_usd": 2.1277,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16218,7 +17166,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.8
+      "outcome_value_usd": -3.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16252,7 +17202,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.8
+      "outcome_value_usd": -4.8,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16286,7 +17238,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.9
+      "outcome_value_usd": -3.9,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16320,7 +17274,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.4
+      "outcome_value_usd": -4.4,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-25",
@@ -16354,7 +17310,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16388,7 +17346,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16422,7 +17382,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16456,7 +17418,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.1
+      "outcome_value_usd": -4.1,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-25",
@@ -16490,7 +17454,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": false
     },
     {
       "date": "2026-06-25",
@@ -16524,7 +17490,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": null,
+      "on_edge": true
     },
     {
       "date": "2026-06-24",
@@ -16558,7 +17526,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.9
+      "outcome_value_usd": -4.9,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16592,7 +17562,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.6
+      "outcome_value_usd": -5.6,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16626,7 +17598,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.0
+      "outcome_value_usd": -5.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16660,7 +17634,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16694,7 +17670,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -3.4
+      "outcome_value_usd": -3.4,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16728,7 +17706,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16762,7 +17742,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16796,7 +17778,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.4992
+      "outcome_value_usd": -4.4992,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-24",
@@ -16830,7 +17814,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0004
+      "outcome_value_usd": 10.0004,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -16864,7 +17850,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -16898,7 +17886,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -16932,7 +17922,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -5.2
+      "outcome_value_usd": -5.2,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -16966,7 +17958,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.55
+      "outcome_value_usd": -4.55,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -17000,7 +17994,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.6
+      "outcome_value_usd": -4.6,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-23",
@@ -17034,7 +18030,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-19",
@@ -17068,7 +18066,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": 10.0
+      "outcome_value_usd": 10.0,
+      "spread": null,
+      "on_edge": null
     },
     {
       "date": "2026-06-19",
@@ -17102,7 +18102,9 @@
       "price_drop_below_threshold_at_hk": null,
       "share_count_target": null,
       "shares_over_target": null,
-      "outcome_value_usd": -4.0
+      "outcome_value_usd": -4.0,
+      "spread": null,
+      "on_edge": null
     }
   ],
   "summary": {
@@ -17117,6 +18119,7 @@
     "sold_but_would_have_won_count": 19,
     "avg_buy_usd": 5.04,
     "avg_buy_price": 0.482,
+    "avg_spread": 0.109,
     "avg_pnl_usd": -0.3,
     "sold_win_count": 71,
     "sold_lose_count": 45,
@@ -17138,6 +18141,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.08,
         "avg_buy_price": 0.46,
+        "avg_spread": 0.1197,
         "avg_pnl_usd": -1.39,
         "total_pnl_usd": -16.73,
         "avg_outcome_value_usd": 0.46,
@@ -17154,6 +18158,7 @@
         "win_plus_sold_win_pct": 72.7,
         "avg_buy_usd": 5.07,
         "avg_buy_price": 0.518,
+        "avg_spread": 0.1114,
         "avg_pnl_usd": 1.16,
         "total_pnl_usd": 12.75,
         "avg_outcome_value_usd": 4.78,
@@ -17170,6 +18175,7 @@
         "win_plus_sold_win_pct": 38.5,
         "avg_buy_usd": 5.35,
         "avg_buy_price": 0.482,
+        "avg_spread": 0.129,
         "avg_pnl_usd": -2.11,
         "total_pnl_usd": -27.41,
         "avg_outcome_value_usd": 1.21,
@@ -17186,6 +18192,7 @@
         "win_plus_sold_win_pct": 52.9,
         "avg_buy_usd": 5.21,
         "avg_buy_price": 0.519,
+        "avg_spread": 0.1367,
         "avg_pnl_usd": -0.0,
         "total_pnl_usd": -0.04,
         "avg_outcome_value_usd": 3.43,
@@ -17202,6 +18209,7 @@
         "win_plus_sold_win_pct": 46.2,
         "avg_buy_usd": 5.0,
         "avg_buy_price": 0.462,
+        "avg_spread": 0.0599,
         "avg_pnl_usd": 0.47,
         "total_pnl_usd": 6.13,
         "avg_outcome_value_usd": 4.18,
@@ -17218,6 +18226,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.68,
         "avg_buy_price": 0.5,
+        "avg_spread": 0.1312,
         "avg_pnl_usd": -1.16,
         "total_pnl_usd": -15.09,
         "avg_outcome_value_usd": 0.71,
@@ -17234,6 +18243,7 @@
         "win_plus_sold_win_pct": 57.1,
         "avg_buy_usd": 5.29,
         "avg_buy_price": 0.494,
+        "avg_spread": 0.073,
         "avg_pnl_usd": 0.29,
         "total_pnl_usd": 2.05,
         "avg_outcome_value_usd": 3.15,
@@ -17250,6 +18260,7 @@
         "win_plus_sold_win_pct": 14.3,
         "avg_buy_usd": 5.34,
         "avg_buy_price": 0.471,
+        "avg_spread": 0.0856,
         "avg_pnl_usd": -3.91,
         "total_pnl_usd": -27.38,
         "avg_outcome_value_usd": -2.55,
@@ -17266,6 +18277,7 @@
         "win_plus_sold_win_pct": 23.5,
         "avg_buy_usd": 4.55,
         "avg_buy_price": 0.428,
+        "avg_spread": 0.1154,
         "avg_pnl_usd": -1.76,
         "total_pnl_usd": -29.89,
         "avg_outcome_value_usd": 0.55,
@@ -17282,6 +18294,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 4.78,
         "avg_buy_price": 0.471,
+        "avg_spread": 0.1075,
         "avg_pnl_usd": -0.14,
         "total_pnl_usd": -1.98,
         "avg_outcome_value_usd": 2.16,
@@ -17298,6 +18311,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 5.27,
         "avg_buy_price": 0.474,
+        "avg_spread": 0.1345,
         "avg_pnl_usd": -0.18,
         "total_pnl_usd": -2.58,
         "avg_outcome_value_usd": 2.73,
@@ -17314,6 +18328,7 @@
         "win_plus_sold_win_pct": 53.3,
         "avg_buy_usd": 4.71,
         "avg_buy_price": 0.495,
+        "avg_spread": 0.0788,
         "avg_pnl_usd": 0.72,
         "total_pnl_usd": 10.85,
         "avg_outcome_value_usd": 3.74,
@@ -17330,6 +18345,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 5.61,
         "avg_buy_price": 0.517,
+        "avg_spread": 0.1115,
         "avg_pnl_usd": 0.78,
         "total_pnl_usd": 9.34,
         "avg_outcome_value_usd": 4.86,
@@ -17346,6 +18362,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.76,
         "avg_buy_price": 0.423,
+        "avg_spread": 0.1461,
         "avg_pnl_usd": -0.48,
         "total_pnl_usd": -5.77,
         "avg_outcome_value_usd": 1.97,
@@ -17362,6 +18379,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.8,
         "avg_buy_price": 0.466,
+        "avg_spread": 0.1252,
         "avg_pnl_usd": -0.68,
         "total_pnl_usd": -8.17,
         "avg_outcome_value_usd": 2.11,
@@ -17378,6 +18396,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 4.96,
         "avg_buy_price": 0.526,
+        "avg_spread": 0.0414,
         "avg_pnl_usd": 0.41,
         "total_pnl_usd": 2.45,
         "avg_outcome_value_usd": 3.29,
@@ -17394,6 +18413,7 @@
         "win_plus_sold_win_pct": 33.3,
         "avg_buy_usd": 4.25,
         "avg_buy_price": 0.486,
+        "avg_spread": 0.0729,
         "avg_pnl_usd": -0.98,
         "total_pnl_usd": -8.78,
         "avg_outcome_value_usd": 1.57,
@@ -17410,6 +18430,7 @@
         "win_plus_sold_win_pct": 60.0,
         "avg_buy_usd": 5.26,
         "avg_buy_price": 0.526,
+        "avg_spread": 0.1367,
         "avg_pnl_usd": 0.74,
         "total_pnl_usd": 3.68,
         "avg_outcome_value_usd": 3.88,
@@ -17426,6 +18447,7 @@
         "win_plus_sold_win_pct": 37.5,
         "avg_buy_usd": 4.33,
         "avg_buy_price": 0.399,
+        "avg_spread": 0.1121,
         "avg_pnl_usd": -1.04,
         "total_pnl_usd": -8.36,
         "avg_outcome_value_usd": 1.42,
@@ -17442,6 +18464,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.23,
         "avg_buy_price": 0.488,
+        "avg_spread": 0.28,
         "avg_pnl_usd": -2.68,
         "total_pnl_usd": -16.09,
         "avg_outcome_value_usd": -0.7,
@@ -17458,6 +18481,7 @@
         "win_plus_sold_win_pct": 57.1,
         "avg_buy_usd": 4.15,
         "avg_buy_price": 0.477,
+        "avg_spread": 0.1308,
         "avg_pnl_usd": 0.14,
         "total_pnl_usd": 1.01,
         "avg_outcome_value_usd": 2.55,
@@ -17474,6 +18498,7 @@
         "win_plus_sold_win_pct": 56.2,
         "avg_buy_usd": 5.41,
         "avg_buy_price": 0.5,
+        "avg_spread": 0.0351,
         "avg_pnl_usd": -0.05,
         "total_pnl_usd": -0.85,
         "avg_outcome_value_usd": 3.02,
@@ -17490,6 +18515,7 @@
         "win_plus_sold_win_pct": 33.3,
         "avg_buy_usd": 5.62,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.2033,
         "avg_pnl_usd": -2.28,
         "total_pnl_usd": -6.85,
         "avg_outcome_value_usd": -0.48,
@@ -17506,6 +18532,7 @@
         "win_plus_sold_win_pct": 25.0,
         "avg_buy_usd": 5.16,
         "avg_buy_price": 0.483,
+        "avg_spread": 0.2253,
         "avg_pnl_usd": -2.81,
         "total_pnl_usd": -22.48,
         "avg_outcome_value_usd": -1.47,
@@ -17522,6 +18549,7 @@
         "win_plus_sold_win_pct": 80.0,
         "avg_buy_usd": 5.83,
         "avg_buy_price": 0.54,
+        "avg_spread": 0.03,
         "avg_pnl_usd": 2.93,
         "total_pnl_usd": 29.31,
         "avg_outcome_value_usd": 7.69,
@@ -17538,6 +18566,7 @@
         "win_plus_sold_win_pct": 20.0,
         "avg_buy_usd": 4.77,
         "avg_buy_price": 0.44,
+        "avg_spread": 0.15,
         "avg_pnl_usd": -2.77,
         "total_pnl_usd": -13.85,
         "avg_outcome_value_usd": -1.71,
@@ -17554,6 +18583,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 4.23,
         "avg_buy_price": 0.412,
+        "avg_spread": 0.1392,
         "avg_pnl_usd": 0.11,
         "total_pnl_usd": 1.53,
         "avg_outcome_value_usd": 1.68,
@@ -17570,6 +18600,7 @@
         "win_plus_sold_win_pct": 25.0,
         "avg_buy_usd": 5.68,
         "avg_buy_price": 0.496,
+        "avg_spread": 0.07,
         "avg_pnl_usd": -1.93,
         "total_pnl_usd": -7.7,
         "avg_outcome_value_usd": 0.21,
@@ -17586,6 +18617,7 @@
         "win_plus_sold_win_pct": 46.2,
         "avg_buy_usd": 5.49,
         "avg_buy_price": 0.505,
+        "avg_spread": 0.1003,
         "avg_pnl_usd": -0.9,
         "total_pnl_usd": -12.54,
         "avg_outcome_value_usd": 2.28,
@@ -17602,6 +18634,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 4.91,
         "avg_buy_price": 0.489,
+        "avg_spread": 0.1663,
         "avg_pnl_usd": -1.17,
         "total_pnl_usd": -17.52,
         "avg_outcome_value_usd": 2.03,
@@ -17618,6 +18651,7 @@
         "win_plus_sold_win_pct": 60.0,
         "avg_buy_usd": 5.13,
         "avg_buy_price": 0.465,
+        "avg_spread": 0.048,
         "avg_pnl_usd": 0.33,
         "total_pnl_usd": 5.28,
         "avg_outcome_value_usd": 3.86,
@@ -17634,6 +18668,7 @@
         "win_plus_sold_win_pct": 53.8,
         "avg_buy_usd": 5.35,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.0694,
         "avg_pnl_usd": 0.87,
         "total_pnl_usd": 11.36,
         "avg_outcome_value_usd": 4.04,
@@ -17650,6 +18685,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.5,
         "avg_buy_price": 0.45,
+        "avg_spread": 0.2,
         "avg_pnl_usd": 0.5,
         "total_pnl_usd": 1.0,
         "avg_outcome_value_usd": 2.5,
@@ -17666,6 +18702,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 5.3,
         "avg_buy_price": 0.508,
+        "avg_spread": 0.0293,
         "avg_pnl_usd": -0.67,
         "total_pnl_usd": -9.33,
         "avg_outcome_value_usd": 2.89,
@@ -17682,6 +18719,7 @@
         "win_plus_sold_win_pct": 71.4,
         "avg_buy_usd": 4.57,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.1486,
         "avg_pnl_usd": 1.33,
         "total_pnl_usd": 9.3,
         "avg_outcome_value_usd": 4.1,
@@ -17698,6 +18736,7 @@
         "win_plus_sold_win_pct": 55.6,
         "avg_buy_usd": 6.1,
         "avg_buy_price": 0.507,
+        "avg_spread": 0.206,
         "avg_pnl_usd": 0.32,
         "total_pnl_usd": 2.85,
         "avg_outcome_value_usd": 5.32,
@@ -17714,6 +18753,7 @@
         "win_plus_sold_win_pct": 56.2,
         "avg_buy_usd": 4.96,
         "avg_buy_price": 0.489,
+        "avg_spread": 0.1529,
         "avg_pnl_usd": 0.35,
         "total_pnl_usd": 5.89,
         "avg_outcome_value_usd": 3.1,
@@ -17730,6 +18770,7 @@
         "win_plus_sold_win_pct": 43.8,
         "avg_buy_usd": 5.12,
         "avg_buy_price": 0.497,
+        "avg_spread": 0.126,
         "avg_pnl_usd": -0.62,
         "total_pnl_usd": -9.98,
         "avg_outcome_value_usd": 2.34,
@@ -17746,6 +18787,7 @@
         "win_plus_sold_win_pct": 33.3,
         "avg_buy_usd": 5.57,
         "avg_buy_price": 0.482,
+        "avg_spread": 0.046,
         "avg_pnl_usd": -1.41,
         "total_pnl_usd": -8.46,
         "avg_outcome_value_usd": 0.68,
@@ -17762,6 +18804,7 @@
         "win_plus_sold_win_pct": 40.0,
         "avg_buy_usd": 6.26,
         "avg_buy_price": 0.525,
+        "avg_spread": 0.0622,
         "avg_pnl_usd": -0.26,
         "total_pnl_usd": -1.3,
         "avg_outcome_value_usd": 3.77,
@@ -17778,6 +18821,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.86,
         "avg_buy_price": 0.467,
+        "avg_spread": 0.0813,
         "avg_pnl_usd": -0.45,
         "total_pnl_usd": -5.46,
         "avg_outcome_value_usd": 2.21,
@@ -17794,6 +18838,7 @@
         "win_plus_sold_win_pct": 33.3,
         "avg_buy_usd": 5.79,
         "avg_buy_price": 0.462,
+        "avg_spread": 0.122,
         "avg_pnl_usd": -3.73,
         "total_pnl_usd": -22.36,
         "avg_outcome_value_usd": -0.23,
@@ -17810,6 +18855,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.7,
         "avg_buy_price": 0.47,
+        "avg_spread": 0.1,
         "avg_pnl_usd": 5.3,
         "total_pnl_usd": 15.9,
         "avg_outcome_value_usd": 10.0,
@@ -17826,6 +18872,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 5.63,
         "avg_buy_price": 0.563,
+        "avg_spread": 0.04,
         "avg_pnl_usd": 1.03,
         "total_pnl_usd": 3.1,
         "avg_outcome_value_usd": 4.97,
@@ -17842,6 +18889,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 5.88,
         "avg_buy_price": 0.502,
+        "avg_spread": 0.0664,
         "avg_pnl_usd": 0.15,
         "total_pnl_usd": 0.92,
         "avg_outcome_value_usd": 4.73,
@@ -17858,6 +18906,7 @@
         "win_plus_sold_win_pct": 47.1,
         "avg_buy_usd": 4.41,
         "avg_buy_price": 0.464,
+        "avg_spread": 0.1233,
         "avg_pnl_usd": 0.07,
         "total_pnl_usd": 1.19,
         "avg_outcome_value_usd": 2.62,
@@ -17874,6 +18923,7 @@
         "win_plus_sold_win_pct": 69.2,
         "avg_buy_usd": 5.25,
         "avg_buy_price": 0.496,
+        "avg_spread": 0.0903,
         "avg_pnl_usd": 1.83,
         "total_pnl_usd": 23.81,
         "avg_outcome_value_usd": 6.1,
@@ -17890,6 +18940,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 6.4,
         "avg_buy_price": 0.515,
+        "avg_spread": 0.0567,
         "avg_pnl_usd": -1.85,
         "total_pnl_usd": -7.4,
         "avg_outcome_value_usd": 3.15,
@@ -17906,6 +18957,7 @@
         "win_plus_sold_win_pct": 57.1,
         "avg_buy_usd": 5.03,
         "avg_buy_price": 0.471,
+        "avg_spread": 0.1309,
         "avg_pnl_usd": 0.55,
         "total_pnl_usd": 7.69,
         "avg_outcome_value_usd": 3.87,
@@ -17924,6 +18976,7 @@
         "win_plus_sold_win_pct": 26.9,
         "avg_buy_usd": 3.57,
         "avg_buy_price": 0.325,
+        "avg_spread": 0.1104,
         "avg_pnl_usd": -1.03,
         "total_pnl_usd": -26.68,
         "avg_outcome_value_usd": 0.47,
@@ -17940,6 +18993,7 @@
         "win_plus_sold_win_pct": 35.7,
         "avg_buy_usd": 3.85,
         "avg_buy_price": 0.377,
+        "avg_spread": 0.1021,
         "avg_pnl_usd": -1.07,
         "total_pnl_usd": -29.87,
         "avg_outcome_value_usd": 0.65,
@@ -17956,6 +19010,7 @@
         "win_plus_sold_win_pct": 48.2,
         "avg_buy_usd": 4.38,
         "avg_buy_price": 0.421,
+        "avg_spread": 0.1014,
         "avg_pnl_usd": 0.16,
         "total_pnl_usd": 13.81,
         "avg_outcome_value_usd": 2.59,
@@ -17972,6 +19027,7 @@
         "win_plus_sold_win_pct": 44.7,
         "avg_buy_usd": 5.0,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.12,
         "avg_pnl_usd": -0.59,
         "total_pnl_usd": -61.57,
         "avg_outcome_value_usd": 2.29,
@@ -17988,6 +19044,7 @@
         "win_plus_sold_win_pct": 51.1,
         "avg_buy_usd": 5.46,
         "avg_buy_price": 0.518,
+        "avg_spread": 0.1162,
         "avg_pnl_usd": -0.35,
         "total_pnl_usd": -48.75,
         "avg_outcome_value_usd": 3.01,
@@ -18004,6 +19061,7 @@
         "win_plus_sold_win_pct": 58.2,
         "avg_buy_usd": 5.85,
         "avg_buy_price": 0.571,
+        "avg_spread": 0.0991,
         "avg_pnl_usd": -0.05,
         "total_pnl_usd": -5.12,
         "avg_outcome_value_usd": 3.73,
@@ -18020,6 +19078,7 @@
         "win_plus_sold_win_pct": 37.5,
         "avg_buy_usd": 3.02,
         "avg_buy_price": 0.282,
+        "avg_spread": 0.0845,
         "avg_pnl_usd": 1.4,
         "total_pnl_usd": 11.23,
         "avg_outcome_value_usd": 3.41,
@@ -18038,6 +19097,7 @@
         "win_plus_sold_win_pct": 51.2,
         "avg_buy_usd": 4.5,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.0843,
         "avg_pnl_usd": 0.33,
         "total_pnl_usd": 13.56,
         "avg_outcome_value_usd": 2.74,
@@ -18054,6 +19114,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.59,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.0,
         "avg_pnl_usd": 0.41,
         "total_pnl_usd": 7.4,
         "avg_outcome_value_usd": 2.79,
@@ -18070,6 +19131,7 @@
         "win_plus_sold_win_pct": 48.2,
         "avg_buy_usd": 5.83,
         "avg_buy_price": 0.484,
+        "avg_spread": 0.1031,
         "avg_pnl_usd": -0.75,
         "total_pnl_usd": -62.54,
         "avg_outcome_value_usd": 2.64,
@@ -18086,6 +19148,7 @@
         "win_plus_sold_win_pct": 37.9,
         "avg_buy_usd": 5.27,
         "avg_buy_price": 0.465,
+        "avg_spread": 0.1038,
         "avg_pnl_usd": -1.97,
         "total_pnl_usd": -57.04,
         "avg_outcome_value_usd": 0.9,
@@ -18102,6 +19165,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.47,
         "avg_buy_price": 0.444,
+        "avg_spread": 0.1224,
         "avg_pnl_usd": -0.33,
         "total_pnl_usd": -7.94,
         "avg_outcome_value_usd": 1.99,
@@ -18118,6 +19182,7 @@
         "win_plus_sold_win_pct": 58.3,
         "avg_buy_usd": 5.25,
         "avg_buy_price": 0.465,
+        "avg_spread": 0.1203,
         "avg_pnl_usd": 1.02,
         "total_pnl_usd": 12.25,
         "avg_outcome_value_usd": 4.86,
@@ -18134,6 +19199,7 @@
         "win_plus_sold_win_pct": 45.8,
         "avg_buy_usd": 5.55,
         "avg_buy_price": 0.498,
+        "avg_spread": 0.1075,
         "avg_pnl_usd": -0.63,
         "total_pnl_usd": -45.03,
         "avg_outcome_value_usd": 2.78,
@@ -18150,6 +19216,7 @@
         "win_plus_sold_win_pct": 42.1,
         "avg_buy_usd": 4.75,
         "avg_buy_price": 0.464,
+        "avg_spread": 0.1758,
         "avg_pnl_usd": 0.11,
         "total_pnl_usd": 2.08,
         "avg_outcome_value_usd": 3.05,
@@ -18166,6 +19233,7 @@
         "win_plus_sold_win_pct": 50.5,
         "avg_buy_usd": 4.5,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.1069,
         "avg_pnl_usd": -0.17,
         "total_pnl_usd": -17.48,
         "avg_outcome_value_usd": 2.55,
@@ -18182,6 +19250,7 @@
         "win_plus_sold_win_pct": 51.7,
         "avg_buy_usd": 4.66,
         "avg_buy_price": 0.468,
+        "avg_spread": 0.1052,
         "avg_pnl_usd": 0.23,
         "total_pnl_usd": 6.95,
         "avg_outcome_value_usd": 3.4,
@@ -18198,6 +19267,7 @@
         "win_plus_sold_win_pct": 52.8,
         "avg_buy_usd": 5.03,
         "avg_buy_price": 0.503,
+        "avg_spread": 0.1166,
         "avg_pnl_usd": -0.08,
         "total_pnl_usd": -2.81,
         "avg_outcome_value_usd": 2.95,
@@ -18214,6 +19284,7 @@
         "win_plus_sold_win_pct": 40.0,
         "avg_buy_usd": 5.2,
         "avg_buy_price": 0.52,
+        "avg_spread": 0.068,
         "avg_pnl_usd": -1.3,
         "total_pnl_usd": -6.5,
         "avg_outcome_value_usd": 0.72,
@@ -18230,6 +19301,7 @@
         "win_plus_sold_win_pct": 54.5,
         "avg_buy_usd": 5.29,
         "avg_buy_price": 0.529,
+        "avg_spread": 0.1183,
         "avg_pnl_usd": 0.05,
         "total_pnl_usd": 0.66,
         "avg_outcome_value_usd": 3.52,
@@ -18246,6 +19318,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 3.38,
         "avg_buy_price": 0.48,
+        "avg_spread": 0.04,
         "avg_pnl_usd": -3.38,
         "total_pnl_usd": -6.75,
         "avg_outcome_value_usd": -3.38,
@@ -18262,6 +19335,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.63,
         "avg_buy_price": 0.56,
+        "avg_spread": 0.13,
         "avg_pnl_usd": 3.39,
         "total_pnl_usd": 10.17,
         "avg_outcome_value_usd": 8.02,
@@ -18278,6 +19352,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 5.3,
         "avg_buy_price": 0.53,
+        "avg_spread": 0.22,
         "avg_pnl_usd": -5.3,
         "total_pnl_usd": -5.3,
         "avg_outcome_value_usd": -5.3,
@@ -18294,6 +19369,7 @@
         "win_plus_sold_win_pct": 53.8,
         "avg_buy_usd": 5.35,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.0694,
         "avg_pnl_usd": 0.87,
         "total_pnl_usd": 11.36,
         "avg_outcome_value_usd": 4.04,
@@ -18312,6 +19388,7 @@
         "win_plus_sold_win_pct": 2.7,
         "avg_buy_usd": 5.12,
         "avg_buy_price": 0.481,
+        "avg_spread": 0.127,
         "avg_pnl_usd": -4.78,
         "total_pnl_usd": -702.38,
         "avg_outcome_value_usd": -4.12,
@@ -18328,6 +19405,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 5.07,
         "avg_buy_price": 0.459,
+        "avg_spread": 0.1056,
         "avg_pnl_usd": -4.72,
         "total_pnl_usd": -528.68,
         "avg_outcome_value_usd": -2.91,
@@ -18344,6 +19422,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 5.03,
         "avg_buy_price": 0.495,
+        "avg_spread": 0.0985,
         "avg_pnl_usd": 4.63,
         "total_pnl_usd": 1017.58,
         "avg_outcome_value_usd": 9.66,
@@ -18360,6 +19439,7 @@
         "win_plus_sold_win_pct": 94.4,
         "avg_buy_usd": 4.41,
         "avg_buy_price": 0.474,
+        "avg_spread": 0.1067,
         "avg_pnl_usd": 2.77,
         "total_pnl_usd": 66.52,
         "avg_outcome_value_usd": 7.99,
@@ -18378,6 +19458,7 @@
         "win_plus_sold_win_pct": 46.6,
         "avg_buy_usd": 5.64,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.1026,
         "avg_pnl_usd": -0.4,
         "total_pnl_usd": -22.96,
         "avg_outcome_value_usd": 3.01,
@@ -18394,6 +19475,7 @@
         "win_plus_sold_win_pct": 43.0,
         "avg_buy_usd": 4.62,
         "avg_buy_price": 0.47,
+        "avg_spread": 0.1044,
         "avg_pnl_usd": -0.58,
         "total_pnl_usd": -45.46,
         "avg_outcome_value_usd": 1.58,
@@ -18410,6 +19492,7 @@
         "win_plus_sold_win_pct": 46.2,
         "avg_buy_usd": 5.5,
         "avg_buy_price": 0.489,
+        "avg_spread": 0.1382,
         "avg_pnl_usd": -0.69,
         "total_pnl_usd": -53.83,
         "avg_outcome_value_usd": 2.46,
@@ -18426,6 +19509,7 @@
         "win_plus_sold_win_pct": 46.2,
         "avg_buy_usd": 5.6,
         "avg_buy_price": 0.494,
+        "avg_spread": 0.1436,
         "avg_pnl_usd": -0.82,
         "total_pnl_usd": -52.99,
         "avg_outcome_value_usd": 2.43,
@@ -18442,6 +19526,7 @@
         "win_plus_sold_win_pct": 53.0,
         "avg_buy_usd": 4.82,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.0991,
         "avg_pnl_usd": 0.13,
         "total_pnl_usd": 11.42,
         "avg_outcome_value_usd": 3.34,
@@ -18458,6 +19543,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.56,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.0813,
         "avg_pnl_usd": -0.11,
         "total_pnl_usd": -6.39,
         "avg_outcome_value_usd": 2.3,
@@ -18474,6 +19560,7 @@
         "win_plus_sold_win_pct": 54.1,
         "avg_buy_usd": 4.67,
         "avg_buy_price": 0.484,
+        "avg_spread": 0.0953,
         "avg_pnl_usd": 0.31,
         "total_pnl_usd": 23.24,
         "avg_outcome_value_usd": 3.66,
@@ -18492,6 +19579,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.45,
         "avg_buy_price": 0.445,
+        "avg_spread": 0.0,
         "avg_pnl_usd": 0.55,
         "total_pnl_usd": 1.1,
         "avg_outcome_value_usd": 3.0,
@@ -18508,6 +19596,7 @@
         "win_plus_sold_win_pct": 47.6,
         "avg_buy_usd": 4.61,
         "avg_buy_price": 0.48,
+        "avg_spread": 0.0,
         "avg_pnl_usd": -0.06,
         "total_pnl_usd": -5.08,
         "avg_outcome_value_usd": 2.19,
@@ -18524,6 +19613,7 @@
         "win_plus_sold_win_pct": 48.5,
         "avg_buy_usd": 5.65,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.1135,
         "avg_pnl_usd": -0.42,
         "total_pnl_usd": -82.34,
         "avg_outcome_value_usd": 3.23,
@@ -18540,6 +19630,7 @@
         "win_plus_sold_win_pct": 52.3,
         "avg_buy_usd": 4.69,
         "avg_buy_price": 0.486,
+        "avg_spread": 0.1014,
         "avg_pnl_usd": 0.07,
         "total_pnl_usd": 10.22,
         "avg_outcome_value_usd": 3.08,
@@ -18556,6 +19647,7 @@
         "win_plus_sold_win_pct": 40.6,
         "avg_buy_usd": 4.57,
         "avg_buy_price": 0.484,
+        "avg_spread": 0.1132,
         "avg_pnl_usd": -1.01,
         "total_pnl_usd": -70.87,
         "avg_outcome_value_usd": 0.71,
@@ -18574,6 +19666,7 @@
         "win_plus_sold_win_pct": 51.6,
         "avg_buy_usd": 4.54,
         "avg_buy_price": 0.477,
+        "avg_spread": 0.088,
         "avg_pnl_usd": 0.26,
         "total_pnl_usd": 32.93,
         "avg_outcome_value_usd": 2.62,
@@ -18590,6 +19683,7 @@
         "win_plus_sold_win_pct": 47.4,
         "avg_buy_usd": 5.21,
         "avg_buy_price": 0.483,
+        "avg_spread": 0.1102,
         "avg_pnl_usd": -0.48,
         "total_pnl_usd": -179.9,
         "avg_outcome_value_usd": 2.71,
@@ -18608,6 +19702,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 4.94,
         "avg_buy_price": 0.472,
+        "avg_spread": 0.1164,
         "avg_pnl_usd": -4.94,
         "total_pnl_usd": -1081.52,
         "avg_outcome_value_usd": -4.67,
@@ -18624,6 +19719,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 4.75,
         "avg_buy_price": 0.475,
+        "avg_spread": 0.09,
         "avg_pnl_usd": 0.0,
         "total_pnl_usd": 0.0,
         "avg_outcome_value_usd": 0.0,
@@ -18640,6 +19736,7 @@
         "win_plus_sold_win_pct": 71.8,
         "avg_buy_usd": 5.29,
         "avg_buy_price": 0.484,
+        "avg_spread": 0.1152,
         "avg_pnl_usd": 1.45,
         "total_pnl_usd": 189.71,
         "avg_outcome_value_usd": 6.74,
@@ -18656,6 +19753,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.97,
         "avg_buy_price": 0.495,
+        "avg_spread": 0.0905,
         "avg_pnl_usd": 5.07,
         "total_pnl_usd": 744.85,
         "avg_outcome_value_usd": 10.03,
@@ -18674,6 +19772,7 @@
         "win_plus_sold_win_pct": 40.2,
         "avg_buy_usd": 4.95,
         "avg_buy_price": 0.481,
+        "avg_spread": 0.106,
         "avg_pnl_usd": -0.91,
         "total_pnl_usd": -336.68,
         "avg_outcome_value_usd": 1.24,
@@ -18690,6 +19789,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 6.04,
         "avg_buy_price": 0.467,
+        "avg_spread": 0.1136,
         "avg_pnl_usd": -4.59,
         "total_pnl_usd": -169.67,
         "avg_outcome_value_usd": 1.46,
@@ -18706,6 +19806,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.82,
         "avg_buy_price": 0.494,
+        "avg_spread": 0.1108,
         "avg_pnl_usd": 4.36,
         "total_pnl_usd": 309.22,
         "avg_outcome_value_usd": 9.18,
@@ -18722,6 +19823,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 5.2,
         "avg_buy_price": 0.52,
+        "avg_spread": 0.2,
         "avg_pnl_usd": 4.02,
         "total_pnl_usd": 16.1,
         "avg_outcome_value_usd": 9.22,
@@ -18738,6 +19840,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 5.62,
         "avg_buy_price": 0.473,
+        "avg_spread": 0.1161,
         "avg_pnl_usd": 1.79,
         "total_pnl_usd": 34.06,
         "avg_outcome_value_usd": 7.41,
@@ -18756,6 +19859,7 @@
         "win_plus_sold_win_pct": 47.0,
         "avg_buy_usd": 5.27,
         "avg_buy_price": 0.478,
+        "avg_spread": 0.1131,
         "avg_pnl_usd": -0.39,
         "total_pnl_usd": -122.89,
         "avg_outcome_value_usd": 2.74,
@@ -18772,6 +19876,7 @@
         "win_plus_sold_win_pct": 51.1,
         "avg_buy_usd": 4.65,
         "avg_buy_price": 0.488,
+        "avg_spread": 0.1046,
         "avg_pnl_usd": -0.13,
         "total_pnl_usd": -24.08,
         "avg_outcome_value_usd": 2.6,
@@ -18790,6 +19895,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 5.1,
         "avg_buy_price": 0.34,
+        "avg_spread": 0.1,
         "avg_pnl_usd": -0.55,
         "total_pnl_usd": -0.55,
         "avg_outcome_value_usd": 4.55,
@@ -18806,6 +19912,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 3.32,
         "avg_buy_price": 0.513,
+        "avg_spread": 0.06,
         "avg_pnl_usd": 1.12,
         "total_pnl_usd": 3.37,
         "avg_outcome_value_usd": 4.44,
@@ -18822,6 +19929,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 5.47,
         "avg_buy_price": 0.543,
+        "avg_spread": 0.1115,
         "avg_pnl_usd": 4.35,
         "total_pnl_usd": 561.26,
         "avg_outcome_value_usd": 9.82,
@@ -18838,6 +19946,7 @@
         "win_plus_sold_win_pct": 2.7,
         "avg_buy_usd": 5.1,
         "avg_buy_price": 0.471,
+        "avg_spread": 0.1169,
         "avg_pnl_usd": -4.86,
         "total_pnl_usd": -1277.0,
         "avg_outcome_value_usd": -3.64,
@@ -18854,6 +19963,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.38,
         "avg_buy_price": 0.432,
+        "avg_spread": 0.0878,
         "avg_pnl_usd": 5.6,
         "total_pnl_usd": 565.95,
         "avg_outcome_value_usd": 9.99,
@@ -18870,6 +19980,7 @@
         "win_plus_sold_win_pct": 0.0,
         "avg_buy_usd": 4.75,
         "avg_buy_price": 0.475,
+        "avg_spread": 0.09,
         "avg_pnl_usd": 0.0,
         "total_pnl_usd": 0.0,
         "avg_outcome_value_usd": 0.0,
@@ -18888,6 +19999,7 @@
         "win_plus_sold_win_pct": 37.5,
         "avg_buy_usd": 4.33,
         "avg_buy_price": 0.399,
+        "avg_spread": 0.1121,
         "avg_pnl_usd": -1.04,
         "total_pnl_usd": -8.36,
         "avg_outcome_value_usd": 1.42,
@@ -18904,6 +20016,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.68,
         "avg_buy_price": 0.5,
+        "avg_spread": 0.1312,
         "avg_pnl_usd": -1.16,
         "total_pnl_usd": -15.09,
         "avg_outcome_value_usd": 0.71,
@@ -18920,6 +20033,7 @@
         "win_plus_sold_win_pct": 56.2,
         "avg_buy_usd": 4.96,
         "avg_buy_price": 0.489,
+        "avg_spread": 0.1529,
         "avg_pnl_usd": 0.35,
         "total_pnl_usd": 5.89,
         "avg_outcome_value_usd": 3.1,
@@ -18936,6 +20050,7 @@
         "win_plus_sold_win_pct": 47.1,
         "avg_buy_usd": 4.41,
         "avg_buy_price": 0.464,
+        "avg_spread": 0.1233,
         "avg_pnl_usd": 0.07,
         "total_pnl_usd": 1.19,
         "avg_outcome_value_usd": 2.62,
@@ -18952,6 +20067,7 @@
         "win_plus_sold_win_pct": 53.1,
         "avg_buy_usd": 5.16,
         "avg_buy_price": 0.493,
+        "avg_spread": 0.0647,
         "avg_pnl_usd": -0.06,
         "total_pnl_usd": -4.01,
         "avg_outcome_value_usd": 3.29,
@@ -18968,6 +20084,7 @@
         "win_plus_sold_win_pct": 44.7,
         "avg_buy_usd": 4.95,
         "avg_buy_price": 0.459,
+        "avg_spread": 0.1117,
         "avg_pnl_usd": -0.23,
         "total_pnl_usd": -21.87,
         "avg_outcome_value_usd": 2.7,
@@ -18984,6 +20101,7 @@
         "win_plus_sold_win_pct": 41.7,
         "avg_buy_usd": 4.8,
         "avg_buy_price": 0.466,
+        "avg_spread": 0.1252,
         "avg_pnl_usd": -0.68,
         "total_pnl_usd": -8.17,
         "avg_outcome_value_usd": 2.11,
@@ -19000,6 +20118,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 4.96,
         "avg_buy_price": 0.526,
+        "avg_spread": 0.0414,
         "avg_pnl_usd": 0.41,
         "total_pnl_usd": 2.45,
         "avg_outcome_value_usd": 3.29,
@@ -19016,6 +20135,7 @@
         "win_plus_sold_win_pct": 25.0,
         "avg_buy_usd": 5.16,
         "avg_buy_price": 0.483,
+        "avg_spread": 0.2253,
         "avg_pnl_usd": -2.81,
         "total_pnl_usd": -22.48,
         "avg_outcome_value_usd": -1.47,
@@ -19032,6 +20152,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 5.63,
         "avg_buy_price": 0.563,
+        "avg_spread": 0.04,
         "avg_pnl_usd": 1.03,
         "total_pnl_usd": 3.1,
         "avg_outcome_value_usd": 4.97,
@@ -19048,6 +20169,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 5.88,
         "avg_buy_price": 0.502,
+        "avg_spread": 0.0664,
         "avg_pnl_usd": 0.15,
         "total_pnl_usd": 0.92,
         "avg_outcome_value_usd": 4.73,
@@ -19064,6 +20186,7 @@
         "win_plus_sold_win_pct": 46.2,
         "avg_buy_usd": 5.42,
         "avg_buy_price": 0.488,
+        "avg_spread": 0.058,
         "avg_pnl_usd": -0.49,
         "total_pnl_usd": -6.41,
         "avg_outcome_value_usd": 2.01,
@@ -19080,6 +20203,7 @@
         "win_plus_sold_win_pct": 57.1,
         "avg_buy_usd": 4.15,
         "avg_buy_price": 0.477,
+        "avg_spread": 0.1308,
         "avg_pnl_usd": 0.14,
         "total_pnl_usd": 1.01,
         "avg_outcome_value_usd": 2.55,
@@ -19096,6 +20220,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 4.23,
         "avg_buy_price": 0.412,
+        "avg_spread": 0.1392,
         "avg_pnl_usd": 0.11,
         "total_pnl_usd": 1.53,
         "avg_outcome_value_usd": 1.68,
@@ -19112,6 +20237,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 6.4,
         "avg_buy_price": 0.515,
+        "avg_spread": 0.0567,
         "avg_pnl_usd": -1.85,
         "total_pnl_usd": -7.4,
         "avg_outcome_value_usd": 3.15,
@@ -19128,6 +20254,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.23,
         "avg_buy_price": 0.488,
+        "avg_spread": 0.28,
         "avg_pnl_usd": -2.68,
         "total_pnl_usd": -16.09,
         "avg_outcome_value_usd": -0.7,
@@ -19144,6 +20271,7 @@
         "win_plus_sold_win_pct": 50.0,
         "avg_buy_usd": 4.5,
         "avg_buy_price": 0.45,
+        "avg_spread": 0.2,
         "avg_pnl_usd": 0.5,
         "total_pnl_usd": 1.0,
         "avg_outcome_value_usd": 2.5,
@@ -19160,6 +20288,7 @@
         "win_plus_sold_win_pct": 20.0,
         "avg_buy_usd": 4.77,
         "avg_buy_price": 0.44,
+        "avg_spread": 0.15,
         "avg_pnl_usd": -2.77,
         "total_pnl_usd": -13.85,
         "avg_outcome_value_usd": -1.71,
@@ -19176,6 +20305,7 @@
         "win_plus_sold_win_pct": 69.2,
         "avg_buy_usd": 5.25,
         "avg_buy_price": 0.496,
+        "avg_spread": 0.0903,
         "avg_pnl_usd": 1.83,
         "total_pnl_usd": 23.81,
         "avg_outcome_value_usd": 6.1,
@@ -19192,6 +20322,7 @@
         "win_plus_sold_win_pct": 42.9,
         "avg_buy_usd": 4.91,
         "avg_buy_price": 0.489,
+        "avg_spread": 0.1663,
         "avg_pnl_usd": -1.17,
         "total_pnl_usd": -17.52,
         "avg_outcome_value_usd": 2.03,
@@ -19208,6 +20339,7 @@
         "win_plus_sold_win_pct": 33.3,
         "avg_buy_usd": 5.79,
         "avg_buy_price": 0.462,
+        "avg_spread": 0.122,
         "avg_pnl_usd": -3.73,
         "total_pnl_usd": -22.36,
         "avg_outcome_value_usd": -0.23,
@@ -19224,6 +20356,7 @@
         "win_plus_sold_win_pct": 14.3,
         "avg_buy_usd": 5.34,
         "avg_buy_price": 0.471,
+        "avg_spread": 0.0856,
         "avg_pnl_usd": -3.91,
         "total_pnl_usd": -27.38,
         "avg_outcome_value_usd": -2.55,
@@ -19240,6 +20373,7 @@
         "win_plus_sold_win_pct": 100.0,
         "avg_buy_usd": 4.7,
         "avg_buy_price": 0.47,
+        "avg_spread": 0.1,
         "avg_pnl_usd": 5.3,
         "total_pnl_usd": 15.9,
         "avg_outcome_value_usd": 10.0,
@@ -19256,6 +20390,7 @@
         "win_plus_sold_win_pct": 68.8,
         "avg_buy_usd": 5.13,
         "avg_buy_price": 0.521,
+        "avg_spread": 0.119,
         "avg_pnl_usd": 1.03,
         "total_pnl_usd": 16.43,
         "avg_outcome_value_usd": 4.49,
@@ -19272,6 +20407,7 @@
         "win_plus_sold_win_pct": 56.2,
         "avg_buy_usd": 5.41,
         "avg_buy_price": 0.5,
+        "avg_spread": 0.0351,
         "avg_pnl_usd": -0.05,
         "total_pnl_usd": -0.85,
         "avg_outcome_value_usd": 3.02,
@@ -19288,6 +20424,7 @@
         "win_plus_sold_win_pct": 47.3,
         "avg_buy_usd": 4.81,
         "avg_buy_price": 0.495,
+        "avg_spread": 0.1033,
         "avg_pnl_usd": 0.0,
         "total_pnl_usd": 0.04,
         "avg_outcome_value_usd": 2.89,
@@ -19304,6 +20441,7 @@
         "win_plus_sold_win_pct": 35.3,
         "avg_buy_usd": 5.42,
         "avg_buy_price": 0.486,
+        "avg_spread": 0.1192,
         "avg_pnl_usd": -2.07,
         "total_pnl_usd": -35.11,
         "avg_outcome_value_usd": 0.97,
@@ -19320,6 +20458,7 @@
         "win_plus_sold_win_pct": 66.7,
         "avg_buy_usd": 5.61,
         "avg_buy_price": 0.517,
+        "avg_spread": 0.1115,
         "avg_pnl_usd": 0.78,
         "total_pnl_usd": 9.34,
         "avg_outcome_value_usd": 4.86,
@@ -19336,6 +20475,7 @@
         "win_plus_sold_win_pct": 46.4,
         "avg_buy_usd": 5.49,
         "avg_buy_price": 0.498,
+        "avg_spread": 0.1623,
         "avg_pnl_usd": -0.5,
         "total_pnl_usd": -13.98,
         "avg_outcome_value_usd": 2.99,
@@ -19352,6 +20492,7 @@
         "win_plus_sold_win_pct": 53.8,
         "avg_buy_usd": 5.35,
         "avg_buy_price": 0.479,
+        "avg_spread": 0.0694,
         "avg_pnl_usd": 0.87,
         "total_pnl_usd": 11.36,
         "avg_outcome_value_usd": 4.04,
