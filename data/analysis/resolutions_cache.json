@@ -132,6 +132,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "873168367565140452040030250072803224948419546398633963346515518091132669622"
     },
+    "highest-temperature-in-atlanta-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on July 15?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "82320272294383238329340911039299023065631718574482463086069894445469631906648"
+    },
     "highest-temperature-in-atlanta-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on July 2?",
@@ -1086,6 +1092,12 @@
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "30196216051167008566384698525382269104129700281378598807231729746489823210518"
     },
+    "highest-temperature-in-houston-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on July 15?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "36185087678148114952899302572275124345718776925521337152978134963537142261187"
+    },
     "highest-temperature-in-houston-on-july-5-2026": {
       "closed": true,
       "title": "Highest temperature in Houston on July 5?",
@@ -1529,6 +1541,12 @@
       "title": "Highest temperature in Mexico City on July 14?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "6564431883024961921899144323092571960232087174200104963757937104287927638875"
+    },
+    "highest-temperature-in-mexico-city-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on July 15?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "36396263632286663518914387552475590878672938295407886868904705709418223549633"
     },
     "highest-temperature-in-mexico-city-on-july-2-2026": {
       "closed": true,
@@ -2069,6 +2087,12 @@
       "title": "Highest temperature in San Francisco on July 12?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "105549118675976649502794019969494546042724762479350670119853685189313526819492"
+    },
+    "highest-temperature-in-san-francisco-on-july-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on July 15?",
+      "winning_temp": "72-73\u00b0F",
+      "winning_token_id": "15352397801402813782039445932327563704337176028930582889023235120145488758471"
     },
     "highest-temperature-in-san-francisco-on-july-2-2026": {
       "closed": true,
