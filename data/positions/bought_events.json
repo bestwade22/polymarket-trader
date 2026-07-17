@@ -4885,5 +4885,14 @@
     "bought_at": "2026-07-17T12:36:51.038419+00:00",
     "price": 0.61,
     "size": 10
+  },
+  {
+    "event_id": "705197",
+    "market_id": "2930576",
+    "strategy": "highest_yes",
+    "order_id": "0x6038b11e84ee4e00067c81c8b854f25a7e704013a6a7352ce25310dffe92c00a",
+    "bought_at": "2026-07-17T13:36:24.201309+00:00",
+    "price": 0.59,
+    "size": 10
   }
 ]
