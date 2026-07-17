@@ -1,0 +1,72 @@
+{
+  "run_at": "2026-07-17T17:35:49.872679+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "708365",
+      "city": "Sao Paulo",
+      "market_id": "2941387",
+      "groupItemTitle": "25\u00b0C",
+      "yes_price": 0.575,
+      "yes_token_id": "53192372588153911498570989869691762427186033613436836867263520429609297728145",
+      "buy_price": 0.61,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.575,
+      "selection_price": 0.575,
+      "gamma_yes_price": 0.56,
+      "best_bid": 0.54,
+      "best_ask": 0.61,
+      "clob_buy_price": 0.61,
+      "last_trade_price": 0.6,
+      "midpoint": 0.575,
+      "outcomePrices": [
+        0.56,
+        0.44
+      ],
+      "order_status": "live",
+      "order_id": "0x00af3fb475458dd357492dfa87ca1ab0835dc3d48a9641cc6d31065bd8c8569a",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-17T18:00:48+00:00"
+    },
+    {
+      "event_id": "708366",
+      "city": "Buenos Aires",
+      "market_id": "2941400",
+      "groupItemTitle": "24\u00b0C",
+      "yes_price": 0.53,
+      "yes_token_id": "18277927075140817265332856103456216654441253202460019675396780592681642736931",
+      "buy_price": 0.67,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.53,
+      "selection_price": 0.53,
+      "gamma_yes_price": 0.55,
+      "best_bid": 0.39,
+      "best_ask": 0.67,
+      "clob_buy_price": 0.67,
+      "last_trade_price": 0.7,
+      "midpoint": 0.53,
+      "outcomePrices": [
+        0.55,
+        0.45
+      ],
+      "order_status": "live",
+      "order_id": "0x58031141a41586d4dc53eb469044f16fa5e99e8e7472b1fa8518599fc3d55748",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-17T18:00:49+00:00"
+    }
+  ]
+}
