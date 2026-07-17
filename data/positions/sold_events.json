@@ -5766,5 +5766,21 @@
     "floor_price": 0.95,
     "current_mid": 0.185,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x1383c0e04374e965b0961d1526a18d2a173f37c06ff835f2de056f604d052809",
+    "token_id": "53192372588153911498570989869691762427186033613436836867263520429609297728145",
+    "order_id": "0x56bc0ca2c6eba1d67cbecf72d4fc1eec93a0bf6065b78c4bd5ced693a1e3b40e",
+    "sold_at": "2026-07-17T18:00:10.698097+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-sao-paulo-on-july-17-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.5699,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.175,
+    "reason": "tier1"
   }
 ]
