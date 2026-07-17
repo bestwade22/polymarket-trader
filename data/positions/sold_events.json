@@ -5446,5 +5446,21 @@
     "floor_price": 0.91,
     "current_mid": 0.13,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x59a060879cb80f91f57bb62a6be7cdc6667c541eabce1ec578dc44340a344325",
+    "token_id": "44403768019472801098960493467320665289896388455028288092827145775825603279592",
+    "order_id": "0x09dc2ffe8eb250c7d5acd02d38315fc7f3c3a6d4bb9ac8a4e74134275fe2013e",
+    "sold_at": "2026-07-17T08:00:10.320792+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-wuhan-on-july-17-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.12,
+    "reason": "tier2"
   }
 ]
