@@ -1,0 +1,90 @@
+{
+  "run_at": "2026-07-17T11:36:09.660155+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "705218",
+      "city": "Istanbul",
+      "market_id": "2930806",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.5,
+      "yes_token_id": "15324231101575946115670202509882536653478009865805634967597491668687125087054",
+      "buy_price": 0.57,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.5,
+      "selection_price": 0.5,
+      "gamma_yes_price": 0.515,
+      "best_bid": 0.43,
+      "best_ask": 0.57,
+      "clob_buy_price": 0.57,
+      "last_trade_price": 0.56,
+      "midpoint": 0.5,
+      "outcomePrices": [
+        0.515,
+        0.485
+      ],
+      "order_status": "live",
+      "order_id": "0x73cdd9754cfc0def9325b1ed67e8af06c6adcf137b676b62a5aeb8c388765828",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-17T12:01:08+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "705203",
+      "city": "Tel Aviv",
+      "market_id": "2930640",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705217",
+      "city": "Moscow",
+      "market_id": "2930796",
+      "group_item_title": "21\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.6,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705223",
+      "city": "Jeddah",
+      "market_id": "2930865",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.77,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705200",
+      "city": "Ankara",
+      "market_id": "2930610",
+      "group_item_title": "30\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2930610",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "705221",
+      "city": "Helsinki",
+      "market_id": "2930841",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2930841",
+      "held_group_item_title": "25\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
