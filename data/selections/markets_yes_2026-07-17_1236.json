@@ -1,0 +1,137 @@
+{
+  "run_at": "2026-07-17T12:36:51.042849+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "705220",
+      "city": "Amsterdam",
+      "market_id": "2930826",
+      "groupItemTitle": "22\u00b0C",
+      "yes_price": 0.505,
+      "yes_token_id": "11467904007150020315614078049141820503525053293750862692843141762030522218878",
+      "buy_price": 0.61,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.505,
+      "selection_price": 0.505,
+      "gamma_yes_price": 0.64,
+      "best_bid": 0.37,
+      "best_ask": 0.61,
+      "clob_buy_price": 0.61,
+      "last_trade_price": 0.65,
+      "midpoint": 0.505,
+      "outcomePrices": [
+        0.64,
+        0.36
+      ],
+      "order_status": "live",
+      "order_id": "0xbfd1f2564ee4135469ac7712efcb1ef3ca3b61993ba67a4b80117fc649ba2b6d",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-17T13:01:50+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "705202",
+      "city": "Munich",
+      "market_id": "2930632",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.6015,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705203",
+      "city": "Tel Aviv",
+      "market_id": "2930640",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9805,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705209",
+      "city": "Madrid",
+      "market_id": "2930708",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705218",
+      "city": "Istanbul",
+      "market_id": "2930806",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.775,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705221",
+      "city": "Helsinki",
+      "market_id": "2930840",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705223",
+      "city": "Jeddah",
+      "market_id": "2930865",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705368",
+      "city": "Cape Town",
+      "market_id": "2931983",
+      "group_item_title": "19\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.62,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "705198",
+      "city": "Paris",
+      "market_id": "2930590",
+      "group_item_title": "27\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2930590",
+      "held_group_item_title": "27\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "705200",
+      "city": "Ankara",
+      "market_id": "2930609",
+      "group_item_title": "29\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2930610",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "705208",
+      "city": "Milan",
+      "market_id": "2930698",
+      "group_item_title": "32\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2930698",
+      "held_group_item_title": "32\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
