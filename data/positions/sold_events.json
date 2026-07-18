@@ -6230,5 +6230,21 @@
     "floor_price": 0.95,
     "current_mid": 0.885,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xa36c281533fe6ae05e386b3ee5773ce7603d1d9ce14d46cc2fe1a605364227f4",
+    "token_id": "78649760284537801660971706292783922893566918393547461722808722084864865103242",
+    "order_id": "0x7875c039e8e6aad2fdb0fa3062d068b449ac0b4129443a2260aa8ee2d333aedf",
+    "sold_at": "2026-07-18T21:00:10.963291+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-mexico-city-on-july-18-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.905,
+    "reason": "tier1"
   }
 ]
