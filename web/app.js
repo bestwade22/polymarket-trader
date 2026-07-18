@@ -444,6 +444,7 @@ const INSIGHT_COLUMNS = [
   { key: "avg_buy_price", label: "Avg buy", type: "number" },
   { key: "avg_spread", label: "Avg spread", type: "number" },
   { key: "avg_pnl_usd", label: "Avg P&amp;L", type: "number" },
+  { key: "total_pnl_usd", label: "Total P&amp;L", type: "number" },
   { key: "avg_outcome_value_usd", label: "Avg outcome", type: "number" },
 ];
 
@@ -732,6 +733,9 @@ function renderGroupTable(title, data, options = {}) {
                 }
                 if (col.key === "avg_buy_price" || col.key === "avg_spread") {
                   return `<td>${Number(val).toFixed(3)}</td>`;
+                }
+                if (col.key === "avg_pnl_usd" || col.key === "total_pnl_usd") {
+                  return `<td>${fmtMoney(val)}</td>`;
                 }
                 if (col.key.startsWith("avg_") || col.key.startsWith("total_")) {
                   return `<td>$${Number(val).toFixed(2)}</td>`;
