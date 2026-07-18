@@ -66,47 +66,39 @@ function recordPnl(r) {
 }
 
 function isSoldWin(r) {
-  // sold + P&L positive + vs bought same → win
+  // Sold + P&L ≥ 0 + win vs bought = same → win
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  return pnl != null && pnl > 0 && r.win_temp_vs_bought === "same";
+  if (pnl == null || pnl < 0) return false;
+  return r.win_temp_vs_bought === "same";
 }
 
 function isSoldLose(r) {
-  // sold + P&L negative + vs bought not same → lose
+  // Sold + P&L < 0 + win vs bought ≠ same → lose
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  return (
-    pnl != null &&
-    pnl < 0 &&
-    r.win_temp_vs_bought &&
-    r.win_temp_vs_bought !== "same" &&
-    r.win_temp_vs_bought !== "unknown"
-  );
+  if (pnl == null || pnl >= 0) return false;
+  return r.win_temp_vs_bought === "higher" || r.win_temp_vs_bought === "lower";
 }
 
 function isSoldWouldWin(r) {
-  // sold + P&L negative + vs bought same → lose (regret)
+  // Sold + P&L < 0 + win vs bought = same → lose (regret)
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  return pnl != null && pnl < 0 && r.win_temp_vs_bought === "same";
+  if (pnl == null || pnl >= 0) return false;
+  return r.win_temp_vs_bought === "same";
 }
 
 function isSoldWouldLose(r) {
-  // sold + P&L positive + vs bought not same → win
+  // Sold + P&L ≥ 0 + win vs bought ≠ same → win
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  return (
-    pnl != null &&
-    pnl > 0 &&
-    r.win_temp_vs_bought &&
-    r.win_temp_vs_bought !== "same" &&
-    r.win_temp_vs_bought !== "unknown"
-  );
+  if (pnl == null || pnl < 0) return false;
+  return r.win_temp_vs_bought === "higher" || r.win_temp_vs_bought === "lower";
 }
 
 function countsInWinSummary(r) {
-  // Win summary = result win + sold win + would lose
+  // Wins + sold win + would lose. Would win and sold lose count as losses.
   if (r.result === "win") return true;
   if (r.result !== "sold") return false;
   return isSoldWin(r) || isSoldWouldLose(r);
@@ -229,28 +221,29 @@ function vsBoughtLabel(r) {
 
 function soldOutcomeKey(r) {
   if (r.result !== "sold") return "";
-  if (isSoldWin(r)) return "sold_win";
-  if (isSoldLose(r)) return "sold_lose";
   if (isSoldWouldWin(r)) return "would_win";
   if (isSoldWouldLose(r)) return "would_lose";
+  if (isSoldWin(r)) return "sold_win";
+  if (isSoldLose(r)) return "sold_lose";
   return "sold";
 }
 
 function soldOutcomeLabel(r) {
   if (r.result !== "sold") return "—";
-  const key = soldOutcomeKey(r);
-  const bought = extractTempLabel(r.bought_temp);
-  const won = r.winning_temp || "?";
-  if (key === "would_win") {
+  if (isSoldWouldWin(r)) {
+    const bought = extractTempLabel(r.bought_temp);
+    const won = r.winning_temp || "?";
     return `<span class="regret-yes">Would win (${bought}=${won})</span>`;
   }
-  if (key === "would_lose") {
+  if (isSoldWouldLose(r)) {
+    const bought = extractTempLabel(r.bought_temp);
+    const won = r.winning_temp || "?";
     return `<span class="sold-win">Would lose (${bought}→${won})</span>`;
   }
-  if (key === "sold_win") {
+  if (isSoldWin(r)) {
     return `<span class="sold-win">Sold win</span>`;
   }
-  if (key === "sold_lose") {
+  if (isSoldLose(r)) {
     return `<span class="regret-no">Sold lose</span>`;
   }
   return `<span class="regret-no">Sold</span>`;
