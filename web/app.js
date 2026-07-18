@@ -66,29 +66,50 @@ function recordPnl(r) {
 }
 
 function isSoldWin(r) {
+  // sold + P&L positive + vs bought same → win
   if (r.result !== "sold") return false;
-  if (r.sold_but_would_have_won || isSoldWouldLose(r)) return false;
   const pnl = recordPnl(r);
-  return pnl != null && pnl >= 0;
+  return pnl != null && pnl > 0 && r.win_temp_vs_bought === "same";
 }
 
 function isSoldLose(r) {
+  // sold + P&L negative + vs bought not same → lose
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  return pnl != null && pnl < 0;
+  return (
+    pnl != null &&
+    pnl < 0 &&
+    r.win_temp_vs_bought &&
+    r.win_temp_vs_bought !== "same" &&
+    r.win_temp_vs_bought !== "unknown"
+  );
+}
+
+function isSoldWouldWin(r) {
+  // sold + P&L negative + vs bought same → lose (regret)
+  if (r.result !== "sold") return false;
+  const pnl = recordPnl(r);
+  return pnl != null && pnl < 0 && r.win_temp_vs_bought === "same";
 }
 
 function isSoldWouldLose(r) {
+  // sold + P&L positive + vs bought not same → win
   if (r.result !== "sold") return false;
   const pnl = recordPnl(r);
-  if (pnl == null || pnl < 0) return false;
-  return r.win_temp_vs_bought && r.win_temp_vs_bought !== "same" && r.win_temp_vs_bought !== "unknown";
+  return (
+    pnl != null &&
+    pnl > 0 &&
+    r.win_temp_vs_bought &&
+    r.win_temp_vs_bought !== "same" &&
+    r.win_temp_vs_bought !== "unknown"
+  );
 }
 
 function countsInWinSummary(r) {
+  // Win summary = result win + sold win + would lose
   if (r.result === "win") return true;
   if (r.result !== "sold") return false;
-  return isSoldWin(r) || r.sold_but_would_have_won || isSoldWouldLose(r);
+  return isSoldWin(r) || isSoldWouldLose(r);
 }
 
 function outcomeValue(r) {
@@ -208,29 +229,28 @@ function vsBoughtLabel(r) {
 
 function soldOutcomeKey(r) {
   if (r.result !== "sold") return "";
-  if (r.sold_but_would_have_won) return "would_win";
-  if (isSoldWouldLose(r)) return "would_lose";
   if (isSoldWin(r)) return "sold_win";
   if (isSoldLose(r)) return "sold_lose";
+  if (isSoldWouldWin(r)) return "would_win";
+  if (isSoldWouldLose(r)) return "would_lose";
   return "sold";
 }
 
 function soldOutcomeLabel(r) {
   if (r.result !== "sold") return "—";
-  if (r.sold_but_would_have_won) {
-    const bought = extractTempLabel(r.bought_temp);
-    const won = r.winning_temp || "?";
+  const key = soldOutcomeKey(r);
+  const bought = extractTempLabel(r.bought_temp);
+  const won = r.winning_temp || "?";
+  if (key === "would_win") {
     return `<span class="regret-yes">Would win (${bought}=${won})</span>`;
   }
-  if (isSoldWouldLose(r)) {
-    const bought = extractTempLabel(r.bought_temp);
-    const won = r.winning_temp || "?";
+  if (key === "would_lose") {
     return `<span class="sold-win">Would lose (${bought}→${won})</span>`;
   }
-  if (isSoldWin(r)) {
+  if (key === "sold_win") {
     return `<span class="sold-win">Sold win</span>`;
   }
-  if (isSoldLose(r)) {
+  if (key === "sold_lose") {
     return `<span class="regret-no">Sold lose</span>`;
   }
   return `<span class="regret-no">Sold</span>`;
@@ -370,7 +390,7 @@ function computeFilteredSummary(records) {
       s.total_realized_pnl_usd += pnl;
       s.pnl_count += 1;
     }
-    if (r.sold_but_would_have_won) s.sold_but_would_have_won_count++;
+    if (isSoldWouldWin(r)) s.sold_but_would_have_won_count++;
     if (isSoldWouldLose(r)) s.sold_would_lose_count++;
 
     const outcome = outcomeValue(r);
@@ -438,6 +458,214 @@ function insightColumnsFor(_title) {
   return INSIGHT_COLUMNS;
 }
 
+function localBuyTimeBand(localTime) {
+  if (!localTime || !String(localTime).includes(":")) return "unknown";
+  const [hour, minute] = String(localTime).split(":").map(Number);
+  const total = hour * 60 + minute;
+  const start = 12 * 60;
+  const end = 16 * 60;
+  if (total < start) return "before 12:00";
+  if (total >= end) return "after 16:00";
+  const bandStart = start + Math.floor((total - start) / 15) * 15;
+  const bandEnd = bandStart + 15;
+  const fmt = (m) =>
+    `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+  return `${fmt(bandStart)}-${fmt(bandEnd)}`;
+}
+
+function weekdayLabel(dateStr) {
+  if (!dateStr) return "Unknown";
+  const d = new Date(`${dateStr}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return "Unknown";
+  return d.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" });
+}
+
+function weekLabel(dateStr) {
+  if (!dateStr) return "Unknown";
+  const d = new Date(`${dateStr}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return "Unknown";
+  // ISO week
+  const tmp = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const dayNum = tmp.getUTCDay() || 7;
+  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1));
+  const week = Math.ceil(((tmp - yearStart) / 86400000 + 1) / 7);
+  return `${tmp.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
+}
+
+function monthLabel(dateStr) {
+  if (!dateStr) return "Unknown";
+  return dateStr.length >= 7 ? dateStr.slice(0, 7) : "Unknown";
+}
+
+function dayLabel(dateStr) {
+  if (!dateStr) return "Unknown";
+  return dateStr.length >= 10 ? dateStr.slice(0, 10) : dateStr;
+}
+
+function roiBand(r) {
+  if (r.roi_pct == null) return "unknown";
+  const roi = r.roi_pct;
+  if (roi < -50) return "<-50%";
+  if (roi < 0) return "-50–0%";
+  if (roi < 50) return "0–50%";
+  if (roi < 100) return "50–100%";
+  return ">100%";
+}
+
+function spreadBand(spread) {
+  if (spread == null || !Number.isFinite(spread) || spread < 0) return "unknown";
+  const idx = Math.floor(spread / 0.05);
+  const lo = idx * 0.05;
+  const hi = lo + 0.05;
+  return `${lo.toFixed(2)}–${hi.toFixed(2)}`;
+}
+
+function edgeLabel(onEdge) {
+  if (onEdge == null) return "unknown";
+  return onEdge ? "Yes" : "No";
+}
+
+function soldOutcomeInsightKey(r) {
+  if (r.result !== "sold") return "not_sold";
+  return soldOutcomeKey(r) || "sold";
+}
+
+function groupInsightMetrics(records, keyFn) {
+  const grouped = new Map();
+  for (const rec of records) {
+    const key = keyFn(rec);
+    if (!grouped.has(key)) {
+      grouped.set(key, {
+        count: 0,
+        wins: 0,
+        sold_wins: 0,
+        sold_loses: 0,
+        win_summary: 0,
+        settled: 0,
+        pnl_usd: 0,
+        buy_usd: 0,
+        buy_price: 0,
+        spread: 0,
+        spread_count: 0,
+        outcome_usd: 0,
+        outcome_count: 0,
+      });
+    }
+    const stats = grouped.get(key);
+    stats.count += 1;
+    stats.buy_usd += rec.cost_basis_usd || 0;
+    stats.buy_price += rec.buy_price || 0;
+    if (rec.spread != null && Number.isFinite(rec.spread)) {
+      stats.spread += rec.spread;
+      stats.spread_count += 1;
+    }
+    const pnl = recordPnl(rec);
+    if (pnl != null) stats.pnl_usd += pnl;
+    const outcome = outcomeValue(rec);
+    if (outcome != null) {
+      stats.outcome_usd += outcome;
+      stats.outcome_count += 1;
+    }
+    if (rec.result === "win" || rec.result === "loss" || rec.result === "sold") {
+      stats.settled += 1;
+    }
+    if (rec.result === "win") stats.wins += 1;
+    if (isSoldWin(rec)) stats.sold_wins += 1;
+    if (isSoldLose(rec)) stats.sold_loses += 1;
+    if (countsInWinSummary(rec)) stats.win_summary += 1;
+  }
+
+  const result = {};
+  for (const [key, stats] of grouped.entries()) {
+    const { count, settled, wins, win_summary } = stats;
+    result[key] = {
+      count,
+      wins,
+      sold_wins: stats.sold_wins,
+      sold_loses: stats.sold_loses,
+      win_plus_sold_win: win_summary,
+      settled,
+      win_rate_pct: settled ? Math.round((wins / settled) * 1000) / 10 : 0,
+      win_plus_sold_win_pct: settled ? Math.round((win_summary / settled) * 1000) / 10 : 0,
+      avg_buy_usd: count ? Math.round((stats.buy_usd / count) * 100) / 100 : 0,
+      avg_buy_price: count ? Math.round((stats.buy_price / count) * 1000) / 1000 : 0,
+      avg_spread: stats.spread_count
+        ? Math.round((stats.spread / stats.spread_count) * 10000) / 10000
+        : 0,
+      avg_pnl_usd: count ? Math.round((stats.pnl_usd / count) * 100) / 100 : 0,
+      total_pnl_usd: Math.round(stats.pnl_usd * 100) / 100,
+      avg_outcome_value_usd: stats.outcome_count
+        ? Math.round((stats.outcome_usd / stats.outcome_count) * 100) / 100
+        : 0,
+      total_outcome_value_usd: Math.round(stats.outcome_usd * 100) / 100,
+    };
+  }
+  return result;
+}
+
+function computeInsights(records) {
+  let soldCount = 0;
+  let soldRegret = 0;
+  let soldWouldLose = 0;
+  const sellValuePcts = [];
+  const pnlByResult = {};
+
+  for (const rec of records) {
+    if (rec.result === "sold") {
+      soldCount += 1;
+      if (isSoldWouldWin(rec)) soldRegret += 1;
+      if (isSoldWouldLose(rec)) soldWouldLose += 1;
+      if (rec.sell_value_pct != null) sellValuePcts.push(rec.sell_value_pct);
+    }
+    const pnl = recordPnl(rec);
+    if (pnl != null) {
+      if (!pnlByResult[rec.result]) pnlByResult[rec.result] = [];
+      pnlByResult[rec.result].push(pnl);
+    }
+  }
+
+  const avgPnlByResult = {};
+  for (const [result, vals] of Object.entries(pnlByResult)) {
+    avgPnlByResult[result] = vals.length
+      ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100
+      : 0;
+  }
+
+  return {
+    summary_by_city: groupInsightMetrics(records, (r) => r.city || "Unknown"),
+    summary_by_buy_price_band: groupInsightMetrics(records, (r) => buyPriceBand(r.buy_price)),
+    summary_by_local_buy_time_band: groupInsightMetrics(records, (r) =>
+      localBuyTimeBand(r.bought_at_local || fmtLocal(r.bought_at, r.city))
+    ),
+    summary_by_win_temp_vs_bought: groupInsightMetrics(
+      records,
+      (r) => r.win_temp_vs_bought || "unknown"
+    ),
+    summary_by_weekday: groupInsightMetrics(records, (r) => weekdayLabel(r.date)),
+    summary_by_day: groupInsightMetrics(records, (r) => dayLabel(r.date)),
+    summary_by_week: groupInsightMetrics(records, (r) => weekLabel(r.date)),
+    summary_by_month: groupInsightMetrics(records, (r) => monthLabel(r.date)),
+    summary_by_result: groupInsightMetrics(records, (r) => r.result || "unknown"),
+    summary_by_sold_outcome: groupInsightMetrics(records, (r) => soldOutcomeInsightKey(r)),
+    summary_by_trade_window: groupInsightMetrics(records, (r) => r.trade_window || "unknown"),
+    summary_by_roi_band: groupInsightMetrics(records, (r) => roiBand(r)),
+    summary_by_spread_band: groupInsightMetrics(records, (r) => spreadBand(r.spread)),
+    summary_by_edge: groupInsightMetrics(records, (r) => edgeLabel(r.on_edge)),
+    summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
+    stop_loss_regret_rate_pct: soldCount
+      ? Math.round((soldRegret / soldCount) * 1000) / 10
+      : 0,
+    sold_would_lose_rate_pct: soldCount
+      ? Math.round((soldWouldLose / soldCount) * 1000) / 10
+      : 0,
+    avg_pnl_by_result: avgPnlByResult,
+    avg_sell_value_pct: sellValuePcts.length
+      ? Math.round((sellValuePcts.reduce((a, b) => a + b, 0) / sellValuePcts.length) * 100) / 100
+      : null,
+  };
+}
+
 function sortInsightEntries(title, data, limit) {
   const state = insightSortState[title] || { key: "group", asc: true };
   if (title === "By local buy time" && !insightSortState[title]) {
@@ -449,6 +677,13 @@ function sortInsightEntries(title, data, limit) {
   let entries = Object.entries(data || {});
   if (title === "By local buy time" && state.groupSort === "time") {
     entries.sort((a, b) => localTimeBandSortKey(a[0]) - localTimeBandSortKey(b[0]));
+    if (limit) entries = entries.slice(0, limit);
+    return entries;
+  }
+
+  // Daily summary: newest days first by default (group desc).
+  if (title === "By day" && !insightSortState[title]) {
+    entries.sort((a, b) => String(b[0]).localeCompare(String(a[0])));
     if (limit) entries = entries.slice(0, limit);
     return entries;
   }
@@ -480,6 +715,9 @@ function renderGroupTable(title, data, options = {}) {
     insightSortState[title] = defaultSort || { key: "count", asc: false };
     if (title === "By local buy time") {
       insightSortState[title] = { key: "group", asc: true, groupSort: "time" };
+    }
+    if (title === "By day") {
+      insightSortState[title] = { key: "group", asc: false };
     }
   }
   const state = insightSortState[title];
@@ -526,6 +764,15 @@ function renderGroupTable(title, data, options = {}) {
 function renderInsights(data) {
   const container = document.getElementById("insights-content");
   const insightSections = [
+    [
+      "By day",
+      data.summary_by_day,
+      {
+        limit: 10,
+        defaultSort: { key: "group", asc: false },
+        description: "Last 10 days (newest first); respects active filters",
+      },
+    ],
     ["By city", data.summary_by_city, { limit: null }],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
@@ -641,6 +888,7 @@ function render() {
   const filtered = sortRecords(applyFilters(allRecords));
   renderSummary(filtered);
   renderTable(filtered);
+  renderInsights(computeInsights(filtered));
 }
 
 function populateCityFilter() {
@@ -705,8 +953,6 @@ function populateLocalTimeFilter() {
   sel.appendChild(after);
 }
 
-let insightsData = {};
-
 async function loadData() {
   const [dataResp, tzResp] = await Promise.all([
     fetch(DATA_URL),
@@ -717,13 +963,11 @@ async function loadData() {
 
   const data = await dataResp.json();
   allRecords = data.records || [];
-  insightsData = data.insights || {};
   document.getElementById("sync-meta").textContent =
     `Synced ${data.synced_at || "?"} · ${allRecords.length} trades · wallet ${(data.wallet || "").slice(0, 10)}…`;
   populateLocalTimeFilter();
   populateTimezoneFilter();
   populateCityFilter();
-  renderInsights(insightsData);
   render();
 }
 
