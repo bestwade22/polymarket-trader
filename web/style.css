@@ -170,8 +170,9 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
 
 .mini-table th:hover { color: #fff; }
 
-.sold-win { color: var(--win); font-weight: 600; }
-.shares-warn { color: var(--sold); font-weight: 600; }
+.mini-table tbody tr:hover {
+  background: rgba(96, 165, 250, 0.12);
+}
 
 .sold-win { color: var(--win); font-weight: 600; }
 .shares-warn { color: var(--sold); font-weight: 600; }
@@ -203,6 +204,11 @@ th {
 }
 
 th:hover { color: #fff; }
+
+.table-wrap tbody tr:hover,
+table tbody tr:hover {
+  background: rgba(96, 165, 250, 0.12);
+}
 
 .badge {
   display: inline-block;
