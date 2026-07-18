@@ -92,7 +92,7 @@ def test_filter_by_spread_max_skips_wide_spread():
     assert skipped[0]["spread"] == 0.24
 
 
-def test_filter_by_spread_max_allows_at_threshold():
+def test_filter_by_spread_max_skips_at_threshold():
     from src.trade.selector import filter_by_spread_max
     from src.trade.strategies.base import MarketSelection
 
@@ -110,6 +110,32 @@ def test_filter_by_spread_max_allows_at_threshold():
         order_min_size=5,
         strategy="highest_yes",
         market={"bestBid": 0.35, "bestAsk": 0.50},
+    )
+    kept, skipped = filter_by_spread_max([sel], spread_max=0.15)
+    assert kept == []
+    assert len(skipped) == 1
+    assert skipped[0]["reason"] == "spread_max"
+    assert skipped[0]["spread"] == 0.15
+
+
+def test_filter_by_spread_max_allows_below_threshold():
+    from src.trade.selector import filter_by_spread_max
+    from src.trade.strategies.base import MarketSelection
+
+    sel = MarketSelection(
+        event_id="1",
+        city="Test",
+        market_id="m1",
+        group_item_title="22°C",
+        yes_price=0.40,
+        yes_token_id="tok",
+        buy_price=0.48,
+        share_count=10,
+        neg_risk=True,
+        tick_size=0.01,
+        order_min_size=5,
+        strategy="highest_yes",
+        market={"bestBid": 0.36, "bestAsk": 0.50},
     )
     kept, skipped = filter_by_spread_max([sel], spread_max=0.15)
     assert kept == [sel]

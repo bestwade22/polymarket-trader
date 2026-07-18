@@ -72,16 +72,16 @@ def filter_by_spread_max(
     *,
     spread_max: Optional[float] = None,
 ) -> tuple[list[MarketSelection], list[dict]]:
-    """Drop selections whose live bid–ask spread is larger than SPREAD_MAX."""
+    """Drop selections whose live bid–ask spread is at or above SPREAD_MAX."""
     max_spread = settings.spread_max if spread_max is None else spread_max
     kept: list[MarketSelection] = []
     skipped: list[dict] = []
     for sel in selections:
         market = sel.market or {}
         spread = get_spread(market)
-        if spread is not None and spread > max_spread:
+        if spread is not None and spread >= max_spread:
             logger.info(
-                "event=%s city=%s market=%s spread %.3f > max %.3f; skip",
+                "event=%s city=%s market=%s spread %.3f >= max %.3f; skip",
                 sel.event_id,
                 sel.city,
                 sel.market_id,
