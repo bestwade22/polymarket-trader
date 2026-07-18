@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-07-18T11:36:14.278562+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "708977",
+      "city": "Ankara",
+      "market_id": "2943287",
+      "groupItemTitle": "29\u00b0C",
+      "yes_price": 0.475,
+      "yes_token_id": "16412609813169425681298875501768191811018956337918163359026807466990637811004",
+      "buy_price": 0.52,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.475,
+      "selection_price": 0.475,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.43,
+      "best_ask": 0.52,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.44,
+      "midpoint": 0.475,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "order_status": "live",
+      "order_id": "0xd2d93ac9e9b687e736fe73b6f444df657e08918a81aab7e9227176e615b27da6",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-18T12:01:13+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "708980",
+      "city": "Tel Aviv",
+      "market_id": "2943321",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708985",
+      "city": "Istanbul",
+      "market_id": "2943375",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.963,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708987",
+      "city": "Helsinki",
+      "market_id": "2943399",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.62,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708988",
+      "city": "Jeddah",
+      "market_id": "2943412",
+      "group_item_title": "39\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708984",
+      "city": "Moscow",
+      "market_id": "2943366",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2943367",
+      "held_group_item_title": "26\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
