@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-07-18T18:36:06.612279+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "711997",
+      "city": "Sao Paulo",
+      "market_id": "2954143",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "711998",
+      "city": "Buenos Aires",
+      "market_id": "2954156",
+      "group_item_title": "19\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712001",
+      "city": "NYC",
+      "market_id": "2954184",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9195,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712003",
+      "city": "Atlanta",
+      "market_id": "2954210",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.63,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712004",
+      "city": "Miami",
+      "market_id": "2954219",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.69,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "711999",
+      "city": "Toronto",
+      "market_id": "2954163",
+      "group_item_title": "27\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.25,
+      "spread_max": 0.15
+    }
+  ]
+}
