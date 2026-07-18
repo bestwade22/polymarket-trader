@@ -2022,6 +2022,12 @@
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "70263724805447642162341760468883688085256840861234573025535501219803721777674"
     },
+    "highest-temperature-in-nyc-on-july-17-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 17?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "48757701536034768014364062950870399413483974744561334339403144448302854105404"
+    },
     "highest-temperature-in-nyc-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on July 2?",
@@ -2303,6 +2309,12 @@
       "title": "Highest temperature in Sao Paulo on July 16?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "89240981222417601576997907007030703381368196179059920636610324633797532444718"
+    },
+    "highest-temperature-in-sao-paulo-on-july-17-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on July 17?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "64806466749727153349628308218534945430987032355494966657439927748289892238695"
     },
     "highest-temperature-in-sao-paulo-on-july-3-2026": {
       "closed": true,
@@ -2747,6 +2759,12 @@
       "title": "Highest temperature in Toronto on July 14?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "82513854512905441932274869612528397861950117088405148785157416620046274707096"
+    },
+    "highest-temperature-in-toronto-on-july-17-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 17?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "1086833835814572104340904140563406263583897601283792415689662709958229576019"
     },
     "highest-temperature-in-toronto-on-july-3-2026": {
       "closed": true,
