@@ -15,7 +15,12 @@ from config.settings import (
     settings,
 )
 from src.analysis.history_builder import build_records_from_activity
-from src.analysis.models import TradeRecord, compute_outcome_value, summarize_records
+from src.analysis.models import (
+    TradeRecord,
+    compute_outcome_value,
+    recompute_sold_but_would_have_won,
+    summarize_records,
+)
 from src.analysis.spread_lookup import load_selection_spreads_by_token, lookup_spread_for_buy
 from src.analysis.edge_lookup import (
     compute_on_edge_from_history,
@@ -79,6 +84,21 @@ def _backfill_outcome_values(records: list[TradeRecord]) -> list[TradeRecord]:
     for rec in records:
         if rec.outcome_value_usd is None:
             rec.outcome_value_usd = compute_outcome_value(rec)
+    return records
+
+
+def _backfill_sold_outcomes(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Align sold_but_would_have_won with P&L + win_temp_vs_bought rules."""
+    fixed = 0
+    for rec in records:
+        if rec.result != "sold":
+            continue
+        want = recompute_sold_but_would_have_won(rec)
+        if rec.sold_but_would_have_won != want:
+            rec.sold_but_would_have_won = want
+            fixed += 1
+    if fixed:
+        logger.info("Corrected sold_but_would_have_won on %d sold records", fixed)
     return records
 
 
@@ -248,7 +268,9 @@ def run_sync_trade_history(
 
     all_records = _backfill_on_edge(
         _backfill_spreads(
-            _backfill_outcome_values(_merge_records(existing, fresh_records))
+            _backfill_sold_outcomes(
+                _backfill_outcome_values(_merge_records(existing, fresh_records))
+            )
         )
     )
     summary = summarize_records(all_records)

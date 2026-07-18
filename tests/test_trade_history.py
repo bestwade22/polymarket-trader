@@ -281,8 +281,8 @@ class TestSummary:
         assert summary.avg_buy_price == 0.5
         assert summary.avg_spread == 0.0
         assert summary.avg_pnl_usd == 1.0
-        assert summary.sold_lose_count == 1
-        assert summary.win_plus_sold_win_count == 2
+        assert summary.sold_lose_count == 0
+        assert summary.win_plus_sold_win_count == 1
 
     def test_summarize_avg_spread(self):
         records = [
@@ -292,6 +292,49 @@ class TestSummary:
         ]
         summary = summarize_records(records)
         assert summary.avg_spread == 0.15
+
+    def test_win_summary_excludes_sold_would_win(self):
+        records = [
+            _sample_record(
+                result="sold",
+                sold_at="2026-07-05T18:00:00+00:00",
+                final_value_usd=-3.0,
+                realized_pnl_usd=-3.0,
+                roi_pct=-60.0,
+                winning_temp="28°C",
+                win_temp_vs_bought="same",
+                sold_but_would_have_won=True,
+                sell_price=0.2,
+                sell_value_pct=40.0,
+            ),
+        ]
+        summary = summarize_records(records)
+        assert summary.sold_lose_count == 0
+        assert summary.sold_but_would_have_won_count == 1
+        assert summary.win_plus_sold_win_count == 0
+
+    def test_sold_win_requires_same_and_positive_pnl(self):
+        from src.analysis.models import _is_sold_win, _is_sold_would_lose
+
+        sold_win = _sample_record(
+            result="sold",
+            realized_pnl_usd=2.0,
+            final_value_usd=2.0,
+            win_temp_vs_bought="same",
+            sold_but_would_have_won=False,
+        )
+        would_lose = _sample_record(
+            token_id="tok2",
+            result="sold",
+            realized_pnl_usd=2.0,
+            final_value_usd=2.0,
+            win_temp_vs_bought="higher",
+            sold_but_would_have_won=False,
+        )
+        assert _is_sold_win(sold_win)
+        assert not _is_sold_would_lose(sold_win)
+        assert not _is_sold_win(would_lose)
+        assert _is_sold_would_lose(would_lose)
 
     def test_win_summary_includes_sold_would_lose(self):
         records = [
@@ -323,6 +366,7 @@ class TestSummary:
         assert insights["summary_by_city"]["London"]["win_rate_pct"] == 100.0
         assert "13:00-13:15" in insights["summary_by_local_buy_time_band"]
         assert "2026-W27" in insights["summary_by_week"]
+        assert "2026-07-05" in insights["summary_by_day"]
         assert "0.10–0.15" in insights["summary_by_spread_band"]
         assert "Yes" in insights["summary_by_edge"]
 

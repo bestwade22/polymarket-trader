@@ -77,38 +77,67 @@ def _record_pnl_value(rec: TradeRecord) -> Optional[float]:
     return rec.final_value_usd
 
 
+def _win_temp_is_same(rec: TradeRecord) -> bool:
+    return rec.win_temp_vs_bought == "same"
+
+
+def _win_temp_is_not_same(rec: TradeRecord) -> bool:
+    """Final winner differs from bought bucket (higher/lower). Unknown is excluded."""
+    return rec.win_temp_vs_bought in ("higher", "lower")
+
+
 def _is_sold_win(rec: TradeRecord) -> bool:
-    if rec.result != "sold":
-        return False
-    if rec.sold_but_would_have_won or _is_sold_would_lose(rec):
-        return False
-    pnl = _record_pnl_value(rec)
-    return pnl is not None and pnl >= 0
-
-
-def _is_sold_lose(rec: TradeRecord) -> bool:
-    if rec.result != "sold":
-        return False
-    pnl = _record_pnl_value(rec)
-    return pnl is not None and pnl < 0
-
-
-def _is_sold_would_lose(rec: TradeRecord) -> bool:
-    """Sold with profit but bought temp did not match the final winner."""
+    """Sold + P&L ≥ 0 + win vs bought = same → counts as win."""
     if rec.result != "sold":
         return False
     pnl = _record_pnl_value(rec)
     if pnl is None or pnl < 0:
         return False
-    return rec.win_temp_vs_bought not in ("same", "unknown")
+    return _win_temp_is_same(rec)
+
+
+def _is_sold_lose(rec: TradeRecord) -> bool:
+    """Sold + P&L < 0 + win vs bought ≠ same → counts as lose."""
+    if rec.result != "sold":
+        return False
+    pnl = _record_pnl_value(rec)
+    if pnl is None or pnl >= 0:
+        return False
+    return _win_temp_is_not_same(rec)
+
+
+def _is_sold_would_win(rec: TradeRecord) -> bool:
+    """Sold + P&L < 0 + win vs bought = same → counts as lose (regret)."""
+    if rec.result != "sold":
+        return False
+    pnl = _record_pnl_value(rec)
+    if pnl is None or pnl >= 0:
+        return False
+    return _win_temp_is_same(rec)
+
+
+def _is_sold_would_lose(rec: TradeRecord) -> bool:
+    """Sold + P&L ≥ 0 + win vs bought ≠ same → counts as win."""
+    if rec.result != "sold":
+        return False
+    pnl = _record_pnl_value(rec)
+    if pnl is None or pnl < 0:
+        return False
+    return _win_temp_is_not_same(rec)
 
 
 def _counts_toward_win_summary(rec: TradeRecord) -> bool:
+    """True win, sold win, or would lose. Would win and sold lose count as losses."""
     if rec.result == "win":
         return True
     if rec.result != "sold":
         return False
-    return _is_sold_win(rec) or rec.sold_but_would_have_won or _is_sold_would_lose(rec)
+    return _is_sold_win(rec) or _is_sold_would_lose(rec)
+
+
+def recompute_sold_but_would_have_won(rec: TradeRecord) -> bool:
+    """Keep the stored flag aligned with would-win classification."""
+    return _is_sold_would_win(rec)
 
 
 def compute_outcome_value(rec: TradeRecord) -> Optional[float]:
@@ -161,7 +190,7 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
                 summary.sold_lose_count += 1
         elif rec.result == "open":
             summary.open_count += 1
-        if rec.sold_but_would_have_won:
+        if _is_sold_would_win(rec):
             summary.sold_but_would_have_won_count += 1
         pnl = _record_pnl_value(rec)
         if pnl is not None:

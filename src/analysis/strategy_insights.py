@@ -11,9 +11,11 @@ from typing import Any, Callable
 from config.settings import DATA_DIR
 from src.analysis.models import (
     TradeRecord,
+    _counts_toward_win_summary,
     _is_sold_lose,
     _is_sold_win,
     _is_sold_would_lose,
+    _is_sold_would_win,
     _record_pnl_value,
     compute_outcome_value,
 )
@@ -128,6 +130,12 @@ def _week_label(date_str: str) -> str:
         return "Unknown"
 
 
+def _day_label(date_str: str) -> str:
+    if not date_str:
+        return "Unknown"
+    return date_str[:10] if len(date_str) >= 10 else date_str
+
+
 def _roi_band(rec: TradeRecord) -> str:
     if rec.roi_pct is None:
         return "unknown"
@@ -163,7 +171,7 @@ def _edge_label(on_edge: bool | None) -> str:
 def _sold_outcome_label(rec: TradeRecord) -> str:
     if rec.result != "sold":
         return "not_sold"
-    if rec.sold_but_would_have_won:
+    if _is_sold_would_win(rec):
         return "would_win"
     if _is_sold_would_lose(rec):
         return "would_lose"
@@ -185,9 +193,9 @@ def _group_metrics(
             "count": 0,
             "wins": 0,
             "sold_wins": 0,
-            "sold_would_wins": 0,
             "sold_would_loses": 0,
             "sold_loses": 0,
+            "win_summary": 0,
             "settled": 0,
             "pnl_usd": 0.0,
             "buy_usd": 0.0,
@@ -225,12 +233,12 @@ def _group_metrics(
             stats["wins"] += 1
         if _is_sold_win(rec):
             stats["sold_wins"] += 1
-        if rec.sold_but_would_have_won:
-            stats["sold_would_wins"] += 1
         if _is_sold_would_lose(rec):
             stats["sold_would_loses"] += 1
         if _is_sold_lose(rec):
             stats["sold_loses"] += 1
+        if _counts_toward_win_summary(rec):
+            stats["win_summary"] += 1
 
     result: dict[str, dict[str, float | int]] = {}
     for key, stats in grouped.items():
@@ -238,9 +246,7 @@ def _group_metrics(
         settled = int(stats["settled"])
         wins = int(stats["wins"])
         sold_wins = int(stats["sold_wins"])
-        sold_would_wins = int(stats["sold_would_wins"])
-        sold_would_loses = int(stats["sold_would_loses"])
-        win_plus_sold = wins + sold_wins + sold_would_wins + sold_would_loses
+        win_plus_sold = int(stats["win_summary"])
         pnl_usd = float(stats["pnl_usd"])
         buy_usd = float(stats["buy_usd"])
         buy_price = float(stats["buy_price"])
@@ -292,7 +298,7 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
 
         if rec.result == "sold":
             sold_count += 1
-            if rec.sold_but_would_have_won:
+            if _is_sold_would_win(rec):
                 sold_regret += 1
             if _is_sold_would_lose(rec):
                 sold_would_lose += 1
@@ -335,6 +341,7 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             records, lambda rec: rec.win_temp_vs_bought or "unknown"
         ),
         "summary_by_weekday": _group_metrics(records, lambda rec: _weekday_label(rec.date)),
+        "summary_by_day": _group_metrics(records, lambda rec: _day_label(rec.date)),
         "summary_by_week": _group_metrics(records, lambda rec: _week_label(rec.date)),
         "summary_by_month": _group_metrics(records, lambda rec: _month_label(rec.date)),
         "summary_by_result": _group_metrics(records, lambda rec: rec.result or "unknown"),
