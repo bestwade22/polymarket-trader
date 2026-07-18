@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-18T13:36:14.500194+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "708976",
+      "city": "Paris",
+      "market_id": "2943277",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.76,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708979",
+      "city": "Munich",
+      "market_id": "2943312",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.953,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708981",
+      "city": "Milan",
+      "market_id": "2943333",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708982",
+      "city": "Madrid",
+      "market_id": "2943342",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708983",
+      "city": "Warsaw",
+      "market_id": "2943353",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708986",
+      "city": "Amsterdam",
+      "market_id": "2943385",
+      "group_item_title": "19\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9635,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708989",
+      "city": "Cape Town",
+      "market_id": "2943419",
+      "group_item_title": "16\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9195,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708975",
+      "city": "London",
+      "market_id": "2943263",
+      "group_item_title": "22\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "2943264",
+      "held_group_item_title": "23\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
