@@ -1,0 +1,226 @@
+{
+  "run_at": "2026-07-18T06:07:04.626861+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "708831",
+      "city": "Chengdu",
+      "market_id": "2942600",
+      "groupItemTitle": "35\u00b0C",
+      "yes_price": 0.44,
+      "yes_token_id": "37280777538013354957891955504274273847762684059450636205141329758689986947902",
+      "buy_price": 0.52,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.44,
+      "selection_price": 0.44,
+      "gamma_yes_price": 0.43,
+      "best_bid": 0.37,
+      "best_ask": 0.52,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.48,
+      "midpoint": 0.44,
+      "outcomePrices": [
+        0.43,
+        0.57
+      ],
+      "order_status": "live",
+      "order_id": "0x46e71d2772253e0405af880def5e32d96777768b26007d14468fc29d8b0f8581",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-18T06:32:02+00:00"
+    },
+    {
+      "event_id": "708832",
+      "city": "Shenzhen",
+      "market_id": "2942610",
+      "groupItemTitle": "29\u00b0C",
+      "yes_price": 0.525,
+      "yes_token_id": "63894712958816783278128964689797225965365055964292067202473434096289244958606",
+      "buy_price": 0.55,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.525,
+      "selection_price": 0.525,
+      "gamma_yes_price": 0.5,
+      "best_bid": 0.5,
+      "best_ask": 0.55,
+      "clob_buy_price": 0.55,
+      "last_trade_price": 0.53,
+      "midpoint": 0.525,
+      "outcomePrices": [
+        0.5,
+        0.5
+      ],
+      "order_status": "live",
+      "order_id": "0x083d1cf1eb1e595ccdba5984c70b9453e696b65451d5885c1db57f764f9888e3",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-18T06:32:03+00:00"
+    },
+    {
+      "event_id": "708836",
+      "city": "Qingdao",
+      "market_id": "2942655",
+      "groupItemTitle": "30\u00b0C",
+      "yes_price": 0.525,
+      "yes_token_id": "101686693048473849588316049250093468129722642713488460344448602733981288407088",
+      "buy_price": 0.64,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.525,
+      "selection_price": 0.525,
+      "gamma_yes_price": 0.535,
+      "best_bid": 0.41,
+      "best_ask": 0.64,
+      "clob_buy_price": 0.64,
+      "last_trade_price": 0.56,
+      "midpoint": 0.525,
+      "outcomePrices": [
+        0.535,
+        0.465
+      ],
+      "order_status": "live",
+      "order_id": "0xb5127475a5b9d8b41ca5a333346cb409ee68db54ab741fd4e707492f2b944992",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-18T06:32:04+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "708823",
+      "city": "Tokyo",
+      "market_id": "2942512",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708824",
+      "city": "Hong Kong",
+      "market_id": "2942523",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708825",
+      "city": "Shanghai",
+      "market_id": "2942535",
+      "group_item_title": "37\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.992,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708826",
+      "city": "Singapore",
+      "market_id": "2942548",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708827",
+      "city": "Taipei",
+      "market_id": "2942559",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.91,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708828",
+      "city": "Chongqing",
+      "market_id": "2942571",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.926,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708829",
+      "city": "Beijing",
+      "market_id": "2942576",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708830",
+      "city": "Wuhan",
+      "market_id": "2942588",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.625,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708833",
+      "city": "Busan",
+      "market_id": "2942622",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.73,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708834",
+      "city": "Kuala Lumpur",
+      "market_id": "2942636",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708835",
+      "city": "Guangzhou",
+      "market_id": "2942642",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.741,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708837",
+      "city": "Manila",
+      "market_id": "2942667",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "708821",
+      "city": "Seoul",
+      "market_id": "2942489",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2942489",
+      "held_group_item_title": "25\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
