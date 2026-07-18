@@ -55,6 +55,7 @@ class MarketSelection:
             data["gamma_yes_price"] = prices["yes_price"]
             data["best_bid"] = prices["best_bid"]
             data["best_ask"] = prices["best_ask"]
+            data["spread"] = prices["spread"]
             data["clob_buy_price"] = prices["clob_buy_price"]
             data["last_trade_price"] = prices["last_trade_price"]
             data["midpoint"] = prices["midpoint"]

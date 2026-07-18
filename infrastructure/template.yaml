@@ -19,6 +19,9 @@ Parameters:
   YesPriceMax:
     Type: String
     Default: '0.60'
+  SpreadMax:
+    Type: String
+    Default: '0.15'
   SelectionPriceSource:
     Type: String
     Default: midpoint
@@ -136,6 +139,7 @@ Resources:
           STRATEGY: !Ref Strategy
           SHARE_COUNT: !Ref ShareCount
           YES_PRICE_MAX: !Ref YesPriceMax
+          SPREAD_MAX: !Ref SpreadMax
           SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource
           ORDER_PRICE_SOURCE: !Ref OrderPriceSource
           ORDER_EXPIRY_MINUTES: !Ref OrderExpiryMinutes

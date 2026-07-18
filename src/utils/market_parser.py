@@ -254,6 +254,15 @@ def compare_temp_buckets(
     return "lower"
 
 
+def get_spread(market: dict) -> Optional[float]:
+    """CLOB bid–ask spread (ask − bid). None if either side missing or ask < bid."""
+    bid = parse_float(market.get("bestBid"))
+    ask = parse_float(market.get("bestAsk"))
+    if bid is None or ask is None or ask < bid:
+        return None
+    return round(ask - bid, 4)
+
+
 def market_price_snapshot(market: dict) -> dict:
     """All live price fields for a market, for logging and selection output."""
     best_bid = market.get("bestBid")
@@ -267,6 +276,7 @@ def market_price_snapshot(market: dict) -> dict:
         "order_price": get_order_price(market),
         "best_bid": parse_float(best_bid),
         "best_ask": parse_float(best_ask),
+        "spread": get_spread(market),
         "clob_buy_price": parse_float(clob_buy),
         "last_trade_price": parse_float(last_trade),
         "midpoint": parse_float(market.get("midpoint")),

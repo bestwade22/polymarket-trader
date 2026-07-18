@@ -219,6 +219,7 @@ class Settings:
     strategy: str = os.getenv("STRATEGY", "highest_yes")
     share_count: int = int(os.getenv("SHARE_COUNT", "10"))
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
+    spread_max: float = float(os.getenv("SPREAD_MAX", "0.15"))
     selection_price_source: str = _normalize_selection_price_source(
         os.getenv("SELECTION_PRICE_SOURCE", "midpoint")
     )

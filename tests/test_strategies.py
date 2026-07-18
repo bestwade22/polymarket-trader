@@ -51,6 +51,71 @@ def test_highest_yes_rejects_at_threshold_after_live_refresh():
     assert skipped[0]["reason"] == "yes_price_max"
 
 
+def test_filter_by_spread_max_skips_wide_spread():
+    from src.trade.selector import filter_by_spread_max
+    from src.trade.strategies.base import MarketSelection
+
+    wide = MarketSelection(
+        event_id="1",
+        city="Test",
+        market_id="m1",
+        group_item_title="22°C",
+        yes_price=0.40,
+        yes_token_id="tok",
+        buy_price=0.52,
+        share_count=10,
+        neg_risk=True,
+        tick_size=0.01,
+        order_min_size=5,
+        strategy="highest_yes",
+        market={"bestBid": 0.28, "bestAsk": 0.52},
+    )
+    ok = MarketSelection(
+        event_id="2",
+        city="Test",
+        market_id="m2",
+        group_item_title="23°C",
+        yes_price=0.44,
+        yes_token_id="tok2",
+        buy_price=0.48,
+        share_count=10,
+        neg_risk=True,
+        tick_size=0.01,
+        order_min_size=5,
+        strategy="highest_yes",
+        market={"bestBid": 0.42, "bestAsk": 0.48},
+    )
+    kept, skipped = filter_by_spread_max([wide, ok], spread_max=0.15)
+    assert [s.market_id for s in kept] == ["m2"]
+    assert len(skipped) == 1
+    assert skipped[0]["reason"] == "spread_max"
+    assert skipped[0]["spread"] == 0.24
+
+
+def test_filter_by_spread_max_allows_at_threshold():
+    from src.trade.selector import filter_by_spread_max
+    from src.trade.strategies.base import MarketSelection
+
+    sel = MarketSelection(
+        event_id="1",
+        city="Test",
+        market_id="m1",
+        group_item_title="22°C",
+        yes_price=0.40,
+        yes_token_id="tok",
+        buy_price=0.50,
+        share_count=10,
+        neg_risk=True,
+        tick_size=0.01,
+        order_min_size=5,
+        strategy="highest_yes",
+        market={"bestBid": 0.35, "bestAsk": 0.50},
+    )
+    kept, skipped = filter_by_spread_max([sel], spread_max=0.15)
+    assert kept == [sel]
+    assert skipped == []
+
+
 def test_match_temp_to_bucket():
     event = load_sample_event()
     market = match_temp_to_market(event["markets"], 46)
