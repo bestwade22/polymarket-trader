@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-07-19T08:35:36.666613+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "712620",
+      "city": "Lucknow",
+      "market_id": "2956539",
+      "group_item_title": "29\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.18,
+      "spread_max": 0.15
+    }
+  ]
+}
