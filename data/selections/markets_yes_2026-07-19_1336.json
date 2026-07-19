@@ -1,0 +1,79 @@
+{
+  "run_at": "2026-07-19T13:36:17.126814+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "712617",
+      "city": "London",
+      "market_id": "2956504",
+      "group_item_title": "22\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712618",
+      "city": "Paris",
+      "market_id": "2956515",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.75,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712623",
+      "city": "Milan",
+      "market_id": "2956571",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712624",
+      "city": "Madrid",
+      "market_id": "2956583",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.84,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712625",
+      "city": "Warsaw",
+      "market_id": "2956592",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.71,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712628",
+      "city": "Amsterdam",
+      "market_id": "2956627",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712631",
+      "city": "Cape Town",
+      "market_id": "2956657",
+      "group_item_title": "14\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.803,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "712621",
+      "city": "Munich",
+      "market_id": "2956548",
+      "group_item_title": "22\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.22,
+      "spread_max": 0.15
+    }
+  ]
+}
