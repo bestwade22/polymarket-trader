@@ -342,6 +342,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "107183801066140066539179849253716737087030714166299848948471849050768751831373"
     },
+    "highest-temperature-in-beijing-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 19?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "74991365488587980414962624211547614441596541191800886044801408882069272670394"
+    },
     "highest-temperature-in-beijing-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 2?",
@@ -479,6 +485,12 @@
       "title": "Highest temperature in Busan on July 16?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "114047450797617957576986949960225908695976186420396215161024436811771433921964"
+    },
+    "highest-temperature-in-busan-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Busan on July 19?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "83397766900469755894064178324261917242377961155696876506794834893772396608856"
     },
     "highest-temperature-in-busan-on-july-4-2026": {
       "closed": true,
@@ -2585,6 +2597,12 @@
       "title": "Highest temperature in Seoul on July 18?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "76812974900817507919039642106175690643719315528338017893246900106184405899592"
+    },
+    "highest-temperature-in-seoul-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seoul on July 19?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "4417708549038253574315457469510630241439094332702874814831302179548526943345"
     },
     "highest-temperature-in-seoul-on-july-2-2026": {
       "closed": true,
