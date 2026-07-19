@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-07-19T17:35:45.865658+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "715756",
+      "city": "Buenos Aires",
+      "market_id": "2967279",
+      "groupItemTitle": "12\u00b0C",
+      "yes_price": 0.455,
+      "yes_token_id": "73092216418911851759141376485047252104008825142336814913146212334796938859494",
+      "buy_price": 0.49,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.455,
+      "selection_price": 0.455,
+      "gamma_yes_price": 0.45,
+      "best_bid": 0.42,
+      "best_ask": 0.49,
+      "spread": 0.07,
+      "clob_buy_price": 0.49,
+      "last_trade_price": 0.47,
+      "midpoint": 0.455,
+      "outcomePrices": [
+        0.45,
+        0.55
+      ],
+      "order_status": "live",
+      "order_id": "0x3f2e2f4c88792dbb9cfe1bbae1892bd184e9f7d32778df1608947e573aa91532",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-19T18:00:45+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "715755",
+      "city": "Sao Paulo",
+      "market_id": "2967270",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.65,
+      "yes_price_max": 0.6
+    }
+  ]
+}
