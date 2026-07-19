@@ -6438,5 +6438,37 @@
     "floor_price": 0.93,
     "current_mid": 0.115,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xf39b9644fddd9fed4c7c70034ce735036abe80445482925640324887db0aa4ca",
+    "token_id": "112711918755695735407959730618012492422335383885750061810946781915556727891622",
+    "order_id": "0xc7cbe3ec4bf804e011931c6de910e8203506c35cba37aad40ae73420475273e1",
+    "sold_at": "2026-07-19T18:00:10.557619+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-sao-paulo-on-july-19-2026",
+    "price": 0.93,
+    "size": 9.9968,
+    "avg_buy_price": 0.59,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.65,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xdbdfb791f894f987185a4de05b97720fd896fd18a62686a5718f6e4e166cb607",
+    "token_id": "73092216418911851759141376485047252104008825142336814913146212334796938859494",
+    "order_id": "0x5b2eea86ca2426d95c1b5dbc7ea63fd7d1ad72e7b19ff9639372e0a7a3eed2c9",
+    "sold_at": "2026-07-19T18:00:11.673828+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-buenos-aires-on-july-19-2026",
+    "price": 0.93,
+    "size": 9.9936,
+    "avg_buy_price": 0.45,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.375,
+    "reason": "tier1"
   }
 ]
