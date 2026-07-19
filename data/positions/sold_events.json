@@ -6374,5 +6374,53 @@
     "floor_price": 0.91,
     "current_mid": 0.49,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x971fa43c5ed5e3d6e8bedf5ac4b08727308eb3ca974eef62414f8e1d359b468a",
+    "token_id": "78162908008294188156999769284493977596075336394963715790328858627651607279476",
+    "order_id": "0x7c0cf556d8ae194816001a2cbd92ce5eb5963d2b4fc8123fb40b075bf1ed0214",
+    "sold_at": "2026-07-19T13:00:10.019894+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-july-19-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier2",
+    "floor_price": 0.93,
+    "current_mid": 0.815,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xe4e348ca596d5b1ba637b37d2184a4f678be58465b5565a28db6ab116e33daf6",
+    "token_id": "44566578549107493571467571919450593694225020660369344198664501299781360419977",
+    "order_id": "0x2218a1fc4e749c9c6b43c66e3517ab90fdd01f1b8016da802122d2777dbed472",
+    "sold_at": "2026-07-19T13:00:10.941361+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-cape-town-on-july-19-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.543,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.6705,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xbf0a597d1969965a1ce38821a695ccc0eef0035d026eb8f48856be3368ca19af",
+    "token_id": "103092933996913598470035555285666067319630250307256346632908752103229254074081",
+    "order_id": "0xdf3c9c0c150d54ed96930f083419ca92a2e691a7ff7d8cfeb217ff60c23ed351",
+    "sold_at": "2026-07-19T13:00:11.849157+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-warsaw-on-july-19-2026",
+    "price": 0.91,
+    "size": 5.1118,
+    "avg_buy_price": 0.46,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.63,
+    "reason": "tier1"
   }
 ]
