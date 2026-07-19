@@ -6294,5 +6294,37 @@
     "floor_price": 0.91,
     "current_mid": 0.285,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x7555f572bcbacda1c33898b3ba3595710b0bea9db56758c9418f013b35f8d8f7",
+    "token_id": "98632559138729595404930582068354612843751010878729223172072946389035081171321",
+    "order_id": "0x8e06e6adaec629213f5c022bb3ce59cb8e67b783b94e2dfbc17109a1e85a555f",
+    "sold_at": "2026-07-19T07:00:10.470632+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chengdu-on-july-19-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.53,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.41,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xbe30f2934595fc69c437273b3699a60d04e3a82cb30aa5ac511d3cc83917523c",
+    "token_id": "74991365488587980414962624211547614441596541191800886044801408882069272670394",
+    "order_id": "0xd81463fc6200b44975f58d13559bb173764b04bf9c2a9ccc881dee329ff8a6df",
+    "sold_at": "2026-07-19T07:00:12.278683+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-beijing-on-july-19-2026",
+    "price": 0.91,
+    "size": 9.9967,
+    "avg_buy_price": 0.48,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.215,
+    "reason": "tier1"
   }
 ]
