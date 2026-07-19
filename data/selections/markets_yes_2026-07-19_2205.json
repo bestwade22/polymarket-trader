@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-07-19T22:05:46.965466+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "715767",
+      "city": "Los Angeles",
+      "market_id": "2967402",
+      "group_item_title": "76-77\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "715768",
+      "city": "San Francisco",
+      "market_id": "2967413",
+      "group_item_title": "64-65\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9025,
+      "yes_price_max": 0.6
+    }
+  ]
+}
