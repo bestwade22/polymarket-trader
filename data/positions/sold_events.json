@@ -6278,5 +6278,21 @@
     "floor_price": 0.95,
     "current_mid": 0.86,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x63be897f32e34d155cefd3fd8ec341790c6b65bde235c2cb7e1e3d34938963fc",
+    "token_id": "93492866785640217470055881929290841415944170174847505284444472121173781739793",
+    "order_id": "0xf0683bff75dcc2c077bcb83d6a40a2b10f49ad711ef12eab7189b563a899ff01",
+    "sold_at": "2026-07-19T06:00:11.552379+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seoul-on-july-19-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.285,
+    "reason": "tier1"
   }
 ]
