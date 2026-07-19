@@ -1,0 +1,87 @@
+{
+  "run_at": "2026-07-19T20:36:11.045910+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "715766",
+      "city": "Houston",
+      "market_id": "2967393",
+      "groupItemTitle": "94-95\u00b0F",
+      "yes_price": 0.465,
+      "yes_token_id": "102423388603353355646566370376012073803554514606716999952242956376999383786018",
+      "buy_price": 0.47,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.465,
+      "selection_price": 0.465,
+      "gamma_yes_price": 0.465,
+      "best_bid": 0.46,
+      "best_ask": 0.47,
+      "spread": 0.01,
+      "clob_buy_price": 0.47,
+      "last_trade_price": 0.47,
+      "midpoint": 0.465,
+      "outcomePrices": [
+        0.465,
+        0.535
+      ],
+      "order_status": "live",
+      "order_id": "0xd83417425e970103d78f9ec96e744ea16db1e0cac641a43bdbcaae4e56040008",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-19T21:01:10+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "715760",
+      "city": "Dallas",
+      "market_id": "2967324",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "715765",
+      "city": "Denver",
+      "market_id": "2967382",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "715769",
+      "city": "Mexico City",
+      "market_id": "2967427",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "715770",
+      "city": "Panama City",
+      "market_id": "2967437",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9825,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "715763",
+      "city": "Chicago",
+      "market_id": "2967358",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.32,
+      "spread_max": 0.15
+    }
+  ]
+}
