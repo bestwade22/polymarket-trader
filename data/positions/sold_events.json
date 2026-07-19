@@ -6342,5 +6342,37 @@
     "floor_price": 0.93,
     "current_mid": 0.285,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x16ec25b1ad99d4af867f5f0f641b668f24c270c0ffcbfad38184a252087e156c",
+    "token_id": "110893770459575400063064390475762088266999319512222471452984948994199196154626",
+    "order_id": "0x9275a45c61d5e36798c66a01525d8c3067410898266b048b21f5cef985a60896",
+    "sold_at": "2026-07-19T12:00:10.344234+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-tel-aviv-on-july-19-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.59,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.8165,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x971fa43c5ed5e3d6e8bedf5ac4b08727308eb3ca974eef62414f8e1d359b468a",
+    "token_id": "78162908008294188156999769284493977596075336394963715790328858627651607279476",
+    "order_id": "0xf93c46bcdde9348b5b12f2020fc46665e665cd3ab96668f058b32a5f0814c4bb",
+    "sold_at": "2026-07-19T12:00:11.251665+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-july-19-2026",
+    "price": 0.91,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier1",
+    "floor_price": 0.91,
+    "current_mid": 0.49,
+    "reason": "tier1"
   }
 ]
