@@ -2748,6 +2748,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "112252642589744505148616207758189805767657566672526494802653082607888251499328"
     },
+    "highest-temperature-in-shenzhen-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shenzhen on July 20?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "40434862550622184707973534370642496666659984932256600488785300914215153700255"
+    },
     "highest-temperature-in-shenzhen-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Shenzhen on July 3?",
@@ -3143,6 +3149,12 @@
       "title": "Highest temperature in Wuhan on July 2?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "115069942345779081739031531678254904446589786354266001970681851014577065542906"
+    },
+    "highest-temperature-in-wuhan-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Wuhan on July 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "45646932440703434066639723589990353722681670459601485809126796059660574150803"
     },
     "highest-temperature-in-wuhan-on-july-3-2026": {
       "closed": true,
