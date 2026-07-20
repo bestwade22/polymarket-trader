@@ -13,6 +13,10 @@ from config.settings import DATA_DIR, settings
 from src.analysis.models import TradeRecord, compute_outcome_value_parts
 from src.analysis.resolution import CachedResolution, fetch_resolved_event, resolve_winning_temp
 from src.analysis.spread_lookup import lookup_spread_for_buy
+from src.analysis.market_metrics_lookup import (
+    lookup_competitive_for_buy,
+    lookup_open_interest_for_buy,
+)
 from src.analysis.edge_lookup import lookup_on_edge_from_snapshots
 from src.api.clob_client import (
     ClobPriceClient,
@@ -387,6 +391,16 @@ def build_trade_record(
     bought_at_iso = _iso_from_ts(bought_ts) or ""
     spread = lookup_spread_for_buy(group.token_id, bought_at_iso)
     on_edge = lookup_on_edge_from_snapshots(group.token_id, bought_at_iso)
+    competitive = lookup_competitive_for_buy(
+        group.token_id,
+        bought_at_iso,
+        event_slug=group.event_slug,
+    )
+    open_interest = lookup_open_interest_for_buy(
+        group.event_slug,
+        bought_at_iso,
+        token_id=group.token_id,
+    )
 
     return TradeRecord(
         date=date_str,
@@ -423,6 +437,8 @@ def build_trade_record(
         outcome_value_usd=outcome_value,
         spread=spread,
         on_edge=on_edge,
+        competitive=competitive,
+        open_interest=open_interest,
     )
 
 

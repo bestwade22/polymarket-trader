@@ -168,6 +168,33 @@ def _edge_label(on_edge: bool | None) -> str:
     return "Yes" if on_edge else "No"
 
 
+def _competitive_band(score: float | None) -> str:
+    if score is None:
+        return "unknown"
+    if score >= 0.98:
+        return "0.98–1.00"
+    if score < 0.80:
+        return "<0.80"
+    idx = int((score - 0.80) / 0.02)
+    lo = 0.80 + idx * 0.02
+    hi = lo + 0.02
+    return f"{lo:.2f}–{hi:.2f}"
+
+
+def _open_interest_band(open_interest: float | None) -> str:
+    if open_interest is None:
+        return "unknown"
+    if open_interest < 0:
+        return "unknown"
+    step = 5000
+    idx = int(open_interest / step)
+    lo = idx * step
+    hi = lo + step
+    if lo >= 30000:
+        return "≥30000"
+    return f"{int(lo)}–{int(hi)}"
+
+
 def _sold_outcome_label(rec: TradeRecord) -> str:
     if rec.result != "sold":
         return "not_sold"
@@ -355,6 +382,12 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
         ),
         "summary_by_edge": _group_metrics(
             records, lambda rec: _edge_label(rec.on_edge)
+        ),
+        "summary_by_competitive_band": _group_metrics(
+            records, lambda rec: _competitive_band(rec.competitive)
+        ),
+        "summary_by_open_interest_band": _group_metrics(
+            records, lambda rec: _open_interest_band(rec.open_interest)
         ),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: _timezone_group(rec.city)

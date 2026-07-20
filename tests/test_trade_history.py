@@ -360,6 +360,8 @@ class TestSummary:
             transaction_hash=None,
             spread=0.12,
             on_edge=True,
+            competitive=0.975,
+            open_interest=11247.0,
         )
         insights = compute_insights([rec])
         assert "London" in insights["summary_by_city"]
@@ -369,6 +371,8 @@ class TestSummary:
         assert "2026-07-05" in insights["summary_by_day"]
         assert "0.10–0.15" in insights["summary_by_spread_band"]
         assert "Yes" in insights["summary_by_edge"]
+        assert "0.96–0.98" in insights["summary_by_competitive_band"]
+        assert "10000–15000" in insights["summary_by_open_interest_band"]
 
 
 class TestNoLocalBotFiles:

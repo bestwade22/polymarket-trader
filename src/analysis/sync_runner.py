@@ -22,6 +22,13 @@ from src.analysis.models import (
     summarize_records,
 )
 from src.analysis.spread_lookup import load_selection_spreads_by_token, lookup_spread_for_buy
+from src.analysis.market_metrics_lookup import (
+    load_competitive_snapshot_by_token,
+    load_event_metrics_index,
+    load_open_interest_snapshot_by_slug,
+    lookup_competitive_for_buy,
+    lookup_open_interest_for_buy,
+)
 from src.analysis.edge_lookup import (
     compute_on_edge_from_history,
     load_event_markets_by_slug,
@@ -119,6 +126,58 @@ def _backfill_spreads(records: list[TradeRecord]) -> list[TradeRecord]:
     return records
 
 
+def _backfill_market_metrics(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Fill missing competitive / open_interest from snapshots and event cache files."""
+    missing_competitive = [rec for rec in records if rec.competitive is None]
+    missing_oi = [rec for rec in records if rec.open_interest is None]
+    if not missing_competitive and not missing_oi:
+        return records
+
+    comp_index = load_competitive_snapshot_by_token()
+    oi_index = load_open_interest_snapshot_by_slug()
+    event_index = load_event_metrics_index()
+    filled_comp = 0
+    filled_oi = 0
+
+    for rec in records:
+        if rec.competitive is None:
+            competitive = lookup_competitive_for_buy(
+                rec.token_id,
+                rec.bought_at,
+                event_slug=rec.event_slug,
+                snapshot_index=comp_index,
+                event_index=event_index,
+            )
+            if competitive is not None:
+                rec.competitive = competitive
+                filled_comp += 1
+        if rec.open_interest is None:
+            open_interest = lookup_open_interest_for_buy(
+                rec.event_slug,
+                rec.bought_at,
+                token_id=rec.token_id,
+                snapshot_index=oi_index,
+                event_index=event_index,
+            )
+            if open_interest is not None:
+                rec.open_interest = open_interest
+                filled_oi += 1
+
+    if filled_comp:
+        logger.info(
+            "Backfilled competitive on %d/%d trade records",
+            filled_comp,
+            len(missing_competitive),
+        )
+    if filled_oi:
+        logger.info(
+            "Backfilled open_interest on %d/%d trade records",
+            filled_oi,
+            len(missing_oi),
+        )
+    return records
+
+
 def _backfill_on_edge(
     records: list[TradeRecord],
     *,
@@ -178,6 +237,10 @@ def _merge_records(
                 rec.spread = prior.spread
             if rec.on_edge is None and prior.on_edge is not None:
                 rec.on_edge = prior.on_edge
+            if rec.competitive is None and prior.competitive is not None:
+                rec.competitive = prior.competitive
+            if rec.open_interest is None and prior.open_interest is not None:
+                rec.open_interest = prior.open_interest
         merged[rec.token_id] = rec
     return sorted(merged.values(), key=lambda r: r.bought_at, reverse=True)
 
@@ -266,10 +329,12 @@ def run_sync_trade_history(
                     fetch_price_drop=fetch_price_drop,
                 )
 
-    all_records = _backfill_on_edge(
-        _backfill_spreads(
-            _backfill_sold_outcomes(
-                _backfill_outcome_values(_merge_records(existing, fresh_records))
+    all_records = _backfill_market_metrics(
+        _backfill_on_edge(
+            _backfill_spreads(
+                _backfill_sold_outcomes(
+                    _backfill_outcome_values(_merge_records(existing, fresh_records))
+                )
             )
         )
     )

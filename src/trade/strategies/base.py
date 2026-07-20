@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Any, Optional
 
-from src.utils.market_parser import market_price_snapshot
+from src.utils.market_parser import market_price_snapshot, parse_float
 
 
 @dataclass
@@ -60,6 +60,10 @@ class MarketSelection:
             data["last_trade_price"] = prices["last_trade_price"]
             data["midpoint"] = prices["midpoint"]
             data["outcomePrices"] = prices["outcomePrices"]
+            data["competitive"] = parse_float(self.market.get("competitive"))
+        if self.event:
+            data["event_slug"] = self.event.get("slug")
+            data["open_interest"] = parse_float(self.event.get("openInterest"))
         return data
 
 

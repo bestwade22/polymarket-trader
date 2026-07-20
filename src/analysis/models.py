@@ -40,6 +40,8 @@ class TradeRecord:
     outcome_value_usd: Optional[float] = None
     spread: Optional[float] = None
     on_edge: Optional[bool] = None
+    competitive: Optional[float] = None
+    open_interest: Optional[float] = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
