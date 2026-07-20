@@ -520,6 +520,43 @@ function edgeLabel(onEdge) {
   return onEdge ? "Yes" : "No";
 }
 
+function competitiveBand(score) {
+  if (score == null || !Number.isFinite(score)) return "unknown";
+  if (score >= 0.98) return "0.98–1.00";
+  if (score < 0.8) return "<0.80";
+  const idx = Math.floor((score - 0.8) / 0.02);
+  const lo = 0.8 + idx * 0.02;
+  const hi = lo + 0.02;
+  return `${lo.toFixed(2)}–${hi.toFixed(2)}`;
+}
+
+function competitiveBandSortKey(label) {
+  if (label === "unknown") return -2;
+  if (label === "<0.80") return -1;
+  if (label === "0.98–1.00") return 1.0;
+  const m = /^(\d\.\d+)–/.exec(label);
+  return m ? parseFloat(m[1]) : 0;
+}
+
+function openInterestBand(openInterest) {
+  if (openInterest == null || !Number.isFinite(openInterest) || openInterest < 0) {
+    return "unknown";
+  }
+  const step = 5000;
+  const idx = Math.floor(openInterest / step);
+  const lo = idx * step;
+  if (lo >= 30000) return "≥30000";
+  const hi = lo + step;
+  return `${lo}–${hi}`;
+}
+
+function openInterestBandSortKey(label) {
+  if (label === "unknown") return -1;
+  if (label.startsWith("≥")) return 30000;
+  const m = /^(\d+)–/.exec(label);
+  return m ? parseInt(m[1], 10) : 0;
+}
+
 function soldOutcomeInsightKey(r) {
   if (r.result !== "sold") return "not_sold";
   return soldOutcomeKey(r) || "sold";
@@ -646,6 +683,12 @@ function computeInsights(records) {
     summary_by_roi_band: groupInsightMetrics(records, (r) => roiBand(r)),
     summary_by_spread_band: groupInsightMetrics(records, (r) => spreadBand(r.spread)),
     summary_by_edge: groupInsightMetrics(records, (r) => edgeLabel(r.on_edge)),
+    summary_by_competitive_band: groupInsightMetrics(records, (r) =>
+      competitiveBand(r.competitive)
+    ),
+    summary_by_open_interest_band: groupInsightMetrics(records, (r) =>
+      openInterestBand(r.open_interest)
+    ),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
     stop_loss_regret_rate_pct: soldCount
       ? Math.round((soldRegret / soldCount) * 1000) / 10
@@ -682,6 +725,18 @@ function sortInsightEntries(title, data, limit) {
     return entries;
   }
 
+  if (
+    (title === "By competitive band" || title === "By open interest band") &&
+    state.key === "group" &&
+    state.asc
+  ) {
+    const sortKey =
+      title === "By competitive band" ? competitiveBandSortKey : openInterestBandSortKey;
+    entries.sort((a, b) => sortKey(a[0]) - sortKey(b[0]));
+    if (limit) entries = entries.slice(0, limit);
+    return entries;
+  }
+
   entries.sort((a, b) => {
     let av;
     let bv;
@@ -712,6 +767,9 @@ function renderGroupTable(title, data, options = {}) {
     }
     if (title === "By day") {
       insightSortState[title] = { key: "group", asc: false };
+    }
+    if (title === "By competitive band" || title === "By open interest band") {
+      insightSortState[title] = { key: "group", asc: true };
     }
   }
   const state = insightSortState[title];
@@ -789,6 +847,24 @@ function renderInsights(data) {
         limit: null,
         defaultSort: { key: "group", asc: true },
         description: "On edge = all cooler temp buckets had Yes &lt; 1% at order time",
+      },
+    ],
+    [
+      "By competitive band",
+      data.summary_by_competitive_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description: "Polymarket competitiveness score at order time (0.98–1.00, 0.96–0.98, …, &lt;0.80)",
+      },
+    ],
+    [
+      "By open interest band",
+      data.summary_by_open_interest_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description: "Event open interest (USD) at order time in $5k bands",
       },
     ],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
@@ -870,6 +946,8 @@ function renderTable(records) {
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
       <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
       <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
+      <td>${r.competitive != null ? Number(r.competitive).toFixed(3) : "—"}</td>
+      <td>${r.open_interest != null ? `$${Math.round(r.open_interest).toLocaleString()}` : "—"}</td>
       <td>${resultBadge(r.result)}</td>
       <td>${fmtMoney(recordPnl(r))}</td>
       <td>${outcome != null ? fmtMoney(outcome) : "—"}</td>

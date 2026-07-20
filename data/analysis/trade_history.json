@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-07-20T15:00:30.762424+00:00",
+  "synced_at": "2026-07-20T15:17:29.272350+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -36,7 +36,9 @@
       "shares_over_target": false,
       "outcome_value_usd": null,
       "spread": 0.04,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9765386587241522,
+      "open_interest": 11247.681258
     },
     {
       "date": "2026-07-20",
@@ -72,7 +74,9 @@
       "shares_over_target": false,
       "outcome_value_usd": null,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 6250.634345
     },
     {
       "date": "2026-07-20",
@@ -108,7 +112,9 @@
       "shares_over_target": false,
       "outcome_value_usd": null,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 10908.795392999999
     },
     {
       "date": "2026-07-20",
@@ -144,7 +150,9 @@
       "shares_over_target": false,
       "outcome_value_usd": null,
       "spread": 0.07,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9957927755234136,
+      "open_interest": 7718.897231000001
     },
     {
       "date": "2026-07-20",
@@ -180,7 +188,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 8771.309267
     },
     {
       "date": "2026-07-20",
@@ -216,7 +226,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 12589.261427
     },
     {
       "date": "2026-07-20",
@@ -252,7 +264,9 @@
       "shares_over_target": false,
       "outcome_value_usd": null,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 9445.516774
     },
     {
       "date": "2026-07-20",
@@ -288,7 +302,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 7749.078694999999
     },
     {
       "date": "2026-07-19",
@@ -324,7 +340,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.7,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 6378.356010999999
     },
     {
       "date": "2026-07-19",
@@ -360,7 +378,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.4,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 7185.964732
     },
     {
       "date": "2026-07-19",
@@ -396,7 +416,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0955,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 8777.263418999999
     },
     {
       "date": "2026-07-19",
@@ -432,7 +454,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 7819.411994999999
     },
     {
       "date": "2026-07-19",
@@ -468,7 +492,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.7,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9858044164037855,
+      "open_interest": 7419.099985999999
     },
     {
       "date": "2026-07-19",
@@ -504,7 +530,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 5636.330986999999
     },
     {
       "date": "2026-07-19",
@@ -540,7 +568,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5904,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9558173433056943,
+      "open_interest": 2757.3184170000004
     },
     {
       "date": "2026-07-19",
@@ -576,7 +606,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 8118.234807999999
     },
     {
       "date": "2026-07-19",
@@ -612,7 +644,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.4971,
       "spread": 0.07,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8824372917999515,
+      "open_interest": 6228.714425
     },
     {
       "date": "2026-07-19",
@@ -648,7 +682,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.2907,
       "spread": 0.08,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9996001599360256,
+      "open_interest": 5905.443608999999
     },
     {
       "date": "2026-07-19",
@@ -684,7 +720,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 4.7523,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 5936.538692000001
     },
     {
       "date": "2026-07-19",
@@ -720,7 +758,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.135,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8219018768334833,
+      "open_interest": 5281.150519000001
     },
     {
       "date": "2026-07-19",
@@ -756,7 +796,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 7752.912442999999
     },
     {
       "date": "2026-07-19",
@@ -792,7 +834,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.065,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8795848359574281,
+      "open_interest": 34124.945825999996
     },
     {
       "date": "2026-07-19",
@@ -828,7 +872,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0909,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9497578117580017,
+      "open_interest": 7797.551099
     },
     {
       "date": "2026-07-19",
@@ -864,7 +910,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.3,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 11175.824848999999
     },
     {
       "date": "2026-07-19",
@@ -900,7 +948,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 2.89,
       "spread": 0.119,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8454827442256171,
+      "open_interest": 6266.263305999999
     },
     {
       "date": "2026-07-19",
@@ -936,7 +986,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.4,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 26220.554053
     },
     {
       "date": "2026-07-18",
@@ -972,7 +1024,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 10631.72065
     },
     {
       "date": "2026-07-18",
@@ -1008,7 +1062,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 5583.239998
     },
     {
       "date": "2026-07-18",
@@ -1044,7 +1100,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 1.53,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 5073.084779
     },
     {
       "date": "2026-07-18",
@@ -1080,7 +1138,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 14160.421713
     },
     {
       "date": "2026-07-18",
@@ -1116,7 +1176,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.01,
       "spread": 0.061,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9327555534516736,
+      "open_interest": 19667.184025000002
     },
     {
       "date": "2026-07-18",
@@ -1152,7 +1214,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.9,
       "spread": 0.36,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9734965562559322,
+      "open_interest": 5397.484986
     },
     {
       "date": "2026-07-18",
@@ -1188,7 +1252,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.97,
       "spread": 0.178,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8337764507762355,
+      "open_interest": 13236.346144000001
     },
     {
       "date": "2026-07-18",
@@ -1224,7 +1290,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.2977,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 17655.985971000002
     },
     {
       "date": "2026-07-18",
@@ -1260,7 +1328,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.348,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9651578033008397,
+      "open_interest": 13758.70829
     },
     {
       "date": "2026-07-18",
@@ -1296,7 +1366,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.7,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 5376.607784999999
     },
     {
       "date": "2026-07-18",
@@ -1332,7 +1404,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.4,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8709094471902284,
+      "open_interest": 10331.513294
     },
     {
       "date": "2026-07-18",
@@ -1368,7 +1442,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8795848359574281,
+      "open_interest": 13578.803571
     },
     {
       "date": "2026-07-18",
@@ -1404,7 +1480,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.23,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9821012055292297,
+      "open_interest": 3926.4585700000002
     },
     {
       "date": "2026-07-18",
@@ -1440,7 +1518,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.07,
       "spread": 0.094,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8181215560917433,
+      "open_interest": 17079.811225
     },
     {
       "date": "2026-07-17",
@@ -1476,7 +1556,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.6,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9320533134495294,
+      "open_interest": 6120.648404000001
     },
     {
       "date": "2026-07-17",
@@ -1512,7 +1594,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.6,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 3513.1026709999996
     },
     {
       "date": "2026-07-17",
@@ -1548,7 +1632,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9320533134495294,
+      "open_interest": 8348.524525
     },
     {
       "date": "2026-07-17",
@@ -1584,7 +1670,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.7,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8767123287671234,
+      "open_interest": 8298.982332
     },
     {
       "date": "2026-07-17",
@@ -1620,7 +1708,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9975062344139651,
+      "open_interest": 4238.255394
     },
     {
       "date": "2026-07-17",
@@ -1656,7 +1746,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 6486.745747
     },
     {
       "date": "2026-07-17",
@@ -1692,7 +1784,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 15768.597102
     },
     {
       "date": "2026-07-17",
@@ -1728,7 +1822,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.7,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999750006249843,
+      "open_interest": 5678.391247999999
     },
     {
       "date": "2026-07-17",
@@ -1764,7 +1860,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.6,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 12188.473130999999
     },
     {
       "date": "2026-07-17",
@@ -1800,7 +1898,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.24,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9669075878072954,
+      "open_interest": 9605.684162
     },
     {
       "date": "2026-07-17",
@@ -1836,7 +1936,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.5,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 10224.189851999998
     },
     {
       "date": "2026-07-17",
@@ -1872,7 +1974,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9951238929246691,
+      "open_interest": 9777.474682
     },
     {
       "date": "2026-07-17",
@@ -1908,7 +2012,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.59,
       "spread": 0.059,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9248768757659137,
+      "open_interest": 11130.405919
     },
     {
       "date": "2026-07-17",
@@ -1944,7 +2050,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.14,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9993753903810119,
+      "open_interest": 5337.684821
     },
     {
       "date": "2026-07-17",
@@ -1980,7 +2088,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 6018.374444
     },
     {
       "date": "2026-07-17",
@@ -2016,7 +2126,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 10766.273363
     },
     {
       "date": "2026-07-17",
@@ -2052,7 +2164,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0915,
       "spread": 0.28,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8515666164597182,
+      "open_interest": 13776.175768000001
     },
     {
       "date": "2026-07-17",
@@ -2088,7 +2202,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.97,
       "spread": 0.209,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.814961221088996,
+      "open_interest": 18741.087018000002
     },
     {
       "date": "2026-07-17",
@@ -2124,7 +2240,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 6985.328078
     },
     {
       "date": "2026-07-16",
@@ -2160,7 +2278,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.31,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9538344143456696,
+      "open_interest": 9402.191315999999
     },
     {
       "date": "2026-07-16",
@@ -2196,7 +2316,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.1,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 7835.586527
     },
     {
       "date": "2026-07-16",
@@ -2232,7 +2354,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.18,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9779951100244499,
+      "open_interest": 15694.129445
     },
     {
       "date": "2026-07-16",
@@ -2268,7 +2392,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0957,
       "spread": 0.03,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9890952251428006,
+      "open_interest": 7772.774589000001
     },
     {
       "date": "2026-07-16",
@@ -2304,7 +2430,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.1,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 2615.886278
     },
     {
       "date": "2026-07-16",
@@ -2340,7 +2468,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.06,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9044657998869418,
+      "open_interest": 10697.785082999999
     },
     {
       "date": "2026-07-16",
@@ -2376,7 +2506,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.64,
       "spread": 0.069,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8162264179434318,
+      "open_interest": 9518.209362
     },
     {
       "date": "2026-07-16",
@@ -2412,7 +2544,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.08,
       "spread": 0.08,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.998402555910543,
+      "open_interest": 6028.692233999999
     },
     {
       "date": "2026-07-16",
@@ -2448,7 +2582,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.0,
       "spread": 0.24,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9558173433056943,
+      "open_interest": 8065.473470000001
     },
     {
       "date": "2026-07-16",
@@ -2484,7 +2620,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9964129135113591,
+      "open_interest": 11622.242772000001
     },
     {
       "date": "2026-07-16",
@@ -2520,7 +2658,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 8.8164,
       "spread": 0.145,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8337764507762355,
+      "open_interest": 7955.8316700000005
     },
     {
       "date": "2026-07-16",
@@ -2556,7 +2696,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.05,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9999750006249843,
+      "open_interest": 9314.033645
     },
     {
       "date": "2026-07-16",
@@ -2592,7 +2734,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 6.118,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 14249.968361
     },
     {
       "date": "2026-07-16",
@@ -2628,7 +2772,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.4,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.938945095185559,
+      "open_interest": 9620.458973
     },
     {
       "date": "2026-07-16",
@@ -2664,7 +2810,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.8,
       "spread": 0.4,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 5124.9722679999995
     },
     {
       "date": "2026-07-16",
@@ -2700,7 +2848,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.502,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8316008316008316,
+      "open_interest": 8034.199277
     },
     {
       "date": "2026-07-16",
@@ -2736,7 +2886,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 4.65,
       "spread": 0.15,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9366804046459348,
+      "open_interest": 6930.79979
     },
     {
       "date": "2026-07-16",
@@ -2772,7 +2924,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9794079478954972,
+      "open_interest": 10304.18949
     },
     {
       "date": "2026-07-16",
@@ -2808,7 +2962,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.278,
       "spread": 0.15,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9366804046459348,
+      "open_interest": 16229.900718
     },
     {
       "date": "2026-07-16",
@@ -2844,7 +3000,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.3,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8936350841134023,
+      "open_interest": 11192.895506000003
     },
     {
       "date": "2026-07-16",
@@ -2880,7 +3038,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.1,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 18624.718248
     },
     {
       "date": "2026-07-15",
@@ -2916,7 +3076,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 4606.853003
     },
     {
       "date": "2026-07-15",
@@ -2952,7 +3114,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.2,
       "spread": 0.22,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 5376.921442
     },
     {
       "date": "2026-07-15",
@@ -2988,7 +3152,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -0.748,
       "spread": 0.19,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 8115.591587000001
     },
     {
       "date": "2026-07-15",
@@ -3024,7 +3190,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.7936,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8590880780051975,
+      "open_interest": 11616.934459
     },
     {
       "date": "2026-07-15",
@@ -3060,7 +3228,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.8,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9869476177551876,
+      "open_interest": 5278.466992
     },
     {
       "date": "2026-07-15",
@@ -3096,7 +3266,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 2.7619,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 6402.9799699999985
     },
     {
       "date": "2026-07-15",
@@ -3132,7 +3304,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.7,
       "spread": 0.21,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9320533134495294,
+      "open_interest": 3053.642323
     },
     {
       "date": "2026-07-15",
@@ -3168,7 +3342,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 21989.028931999997
     },
     {
       "date": "2026-07-15",
@@ -3204,7 +3380,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.4935,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9765386587241522,
+      "open_interest": 7018.917563
     },
     {
       "date": "2026-07-15",
@@ -3240,7 +3418,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.9,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 15129.03365
     },
     {
       "date": "2026-07-15",
@@ -3276,7 +3456,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.084,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9115502301778275,
+      "open_interest": 14168.401564999998
     },
     {
       "date": "2026-07-15",
@@ -3312,7 +3494,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.3,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 10349.227227000001
     },
     {
       "date": "2026-07-15",
@@ -3348,7 +3532,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.25,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 3670.376217
     },
     {
       "date": "2026-07-15",
@@ -3384,7 +3570,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.38,
       "spread": 0.117,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.810839957220084,
+      "open_interest": 6677.744635000001
     },
     {
       "date": "2026-07-15",
@@ -3420,7 +3608,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.8,
       "spread": 0.35,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 10839.29979
     },
     {
       "date": "2026-07-15",
@@ -3456,7 +3646,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 13171.683610999999
     },
     {
       "date": "2026-07-15",
@@ -3492,7 +3684,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.6,
       "spread": 0.04,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9097318565352862,
+      "open_interest": 15207.189105000001
     },
     {
       "date": "2026-07-14",
@@ -3528,7 +3722,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.7,
       "spread": 0.03,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9869476177551876,
+      "open_interest": 5643.872503000001
     },
     {
       "date": "2026-07-14",
@@ -3564,7 +3760,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.6985,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8908685968819599,
+      "open_interest": 4291.6783590000005
     },
     {
       "date": "2026-07-14",
@@ -3600,7 +3798,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9411764705882353,
+      "open_interest": 10180.16009
     },
     {
       "date": "2026-07-14",
@@ -3636,7 +3836,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -2.85,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 2965.3167289999997
     },
     {
       "date": "2026-07-14",
@@ -3672,7 +3874,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2892,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 6345.710882
     },
     {
       "date": "2026-07-14",
@@ -3708,7 +3912,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.65,
       "spread": 0.049,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8196983346188936,
+      "open_interest": 5540.838268
     },
     {
       "date": "2026-07-14",
@@ -3744,7 +3950,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.3,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9919650828290844,
+      "open_interest": 7913.498284
     },
     {
       "date": "2026-07-14",
@@ -3780,7 +3988,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.5,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8824372917999515,
+      "open_interest": 11736.026490000002
     },
     {
       "date": "2026-07-14",
@@ -3816,7 +4026,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9391697410779462,
+      "open_interest": 10495.973756000001
     },
     {
       "date": "2026-07-14",
@@ -3852,7 +4064,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 15666.615613
     },
     {
       "date": "2026-07-14",
@@ -3888,7 +4102,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0909,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9807767752059631,
+      "open_interest": 4933.412459
     },
     {
       "date": "2026-07-14",
@@ -3924,7 +4140,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.143,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9234087819868801,
+      "open_interest": 6820.004392
     },
     {
       "date": "2026-07-14",
@@ -3960,7 +4178,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.7,
       "spread": 0.23,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 5230.312529000001
     },
     {
       "date": "2026-07-14",
@@ -3996,7 +4216,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.8402,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 6777.948011000001
     },
     {
       "date": "2026-07-14",
@@ -4032,7 +4254,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.9,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 10316.933571000001
     },
     {
       "date": "2026-07-14",
@@ -4068,7 +4292,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.7,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.934382956854867,
+      "open_interest": 9089.201947999998
     },
     {
       "date": "2026-07-14",
@@ -4104,7 +4330,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 13166.803686000001
     },
     {
       "date": "2026-07-14",
@@ -4140,7 +4368,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.4,
       "spread": 0.05,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9979790923380155,
+      "open_interest": 6600.359826
     },
     {
       "date": "2026-07-14",
@@ -4176,7 +4406,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 7759.760799000001
     },
     {
       "date": "2026-07-14",
@@ -4212,7 +4444,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 2.3,
       "spread": 0.016,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8041544225779221,
+      "open_interest": 22615.876195
     },
     {
       "date": "2026-07-13",
@@ -4248,7 +4482,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 2886.4566750000004
     },
     {
       "date": "2026-07-13",
@@ -4284,7 +4520,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.85,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.865033195648883,
+      "open_interest": 8061.490263000001
     },
     {
       "date": "2026-07-13",
@@ -4320,7 +4558,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9320533134495294,
+      "open_interest": 4340.86619
     },
     {
       "date": "2026-07-13",
@@ -4356,7 +4596,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.38,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9455370650529501,
+      "open_interest": 7205.330999999998
     },
     {
       "date": "2026-07-13",
@@ -4392,7 +4634,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -2.9991,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9651578033008397,
+      "open_interest": 4559.384091000001
     },
     {
       "date": "2026-07-13",
@@ -4428,7 +4672,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.35,
       "spread": 0.072,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8709094471902284,
+      "open_interest": 9349.842320000002
     },
     {
       "date": "2026-07-13",
@@ -4464,7 +4710,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9702850212249848,
+      "open_interest": 6046.555376000002
     },
     {
       "date": "2026-07-13",
@@ -4500,7 +4748,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.9,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 4426.015313
     },
     {
       "date": "2026-07-13",
@@ -4536,7 +4786,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.3,
       "spread": 0.07,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9750390015600624,
+      "open_interest": 4700.241325999999
     },
     {
       "date": "2026-07-13",
@@ -4572,7 +4824,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 10585.714046000001
     },
     {
       "date": "2026-07-13",
@@ -4608,7 +4862,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.9,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 7652.775594
     },
     {
       "date": "2026-07-13",
@@ -4644,7 +4900,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.3,
       "spread": 0.098,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8190679007289704,
+      "open_interest": 6977.440545
     },
     {
       "date": "2026-07-13",
@@ -4680,7 +4938,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.04,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9964129135113591,
+      "open_interest": 11575.16743
     },
     {
       "date": "2026-07-13",
@@ -4716,7 +4976,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.5758,
       "spread": 0.182,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8272331780065169,
+      "open_interest": 6711.4065869999995
     },
     {
       "date": "2026-07-13",
@@ -4752,7 +5014,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.2,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 8441.335902
     },
     {
       "date": "2026-07-13",
@@ -4788,7 +5052,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2985,
       "spread": 0.22,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9833808634083981,
+      "open_interest": 4824.963828999999
     },
     {
       "date": "2026-07-13",
@@ -4824,7 +5090,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 8554.062246
     },
     {
       "date": "2026-07-13",
@@ -4860,7 +5128,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.1,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9651578033008397,
+      "open_interest": 7081.969650999999
     },
     {
       "date": "2026-07-13",
@@ -4896,7 +5166,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.1,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8738203425375743,
+      "open_interest": 2820.995648
     },
     {
       "date": "2026-07-12",
@@ -4932,7 +5204,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.33,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8880797495615106,
+      "open_interest": 13510.896753999998
     },
     {
       "date": "2026-07-12",
@@ -4968,7 +5242,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.6,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9750390015600624,
+      "open_interest": 2857.679796
     },
     {
       "date": "2026-07-12",
@@ -5004,7 +5280,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9833808634083981,
+      "open_interest": 3887.1105150000003
     },
     {
       "date": "2026-07-12",
@@ -5040,7 +5318,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9433739770288437,
+      "open_interest": 4099.481389
     },
     {
       "date": "2026-07-12",
@@ -5076,7 +5356,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.5,
       "spread": 0.04,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9476651898884124,
+      "open_interest": 6601.433336999999
     },
     {
       "date": "2026-07-12",
@@ -5112,7 +5394,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 3.14,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 6188.506876999999
     },
     {
       "date": "2026-07-12",
@@ -5148,7 +5432,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 7.44,
       "spread": 0.18,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9071117561683599,
+      "open_interest": 2942.6465829999997
     },
     {
       "date": "2026-07-12",
@@ -5184,7 +5470,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.2961,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9880446596186148,
+      "open_interest": 7950.396088
     },
     {
       "date": "2026-07-12",
@@ -5220,7 +5508,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.098,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.846704024659408,
+      "open_interest": 13548.025528000002
     },
     {
       "date": "2026-07-12",
@@ -5256,7 +5546,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.4915,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 4831.068268000001
     },
     {
       "date": "2026-07-12",
@@ -5292,7 +5584,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 6.1266,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 9679.917907000003
     },
     {
       "date": "2026-07-12",
@@ -5328,7 +5622,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 5915.109411
     },
     {
       "date": "2026-07-12",
@@ -5364,7 +5660,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.506,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8590880780051975,
+      "open_interest": 5027.711759999999
     },
     {
       "date": "2026-07-12",
@@ -5400,7 +5698,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.016,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9997750506136119,
+      "open_interest": 4263.502203999999
     },
     {
       "date": "2026-07-12",
@@ -5436,7 +5736,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9538344143456696,
+      "open_interest": 5154.331648999999
     },
     {
       "date": "2026-07-12",
@@ -5472,7 +5774,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.32,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8852691218130312,
+      "open_interest": 10162.675067
     },
     {
       "date": "2026-07-12",
@@ -5508,7 +5812,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.2,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9017945711966814,
+      "open_interest": 5950.493694000001
     },
     {
       "date": "2026-07-12",
@@ -5544,7 +5850,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.291,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9433739770288437,
+      "open_interest": 9385.131454
     },
     {
       "date": "2026-07-12",
@@ -5580,7 +5888,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.1,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 9167.877965
     },
     {
       "date": "2026-07-12",
@@ -5616,7 +5926,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.2,
       "spread": 0.26,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 11190.393972000002
     },
     {
       "date": "2026-07-12",
@@ -5652,7 +5964,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.9,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 7130.54309
     },
     {
       "date": "2026-07-12",
@@ -5688,7 +6002,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 14175.464677999998
     },
     {
       "date": "2026-07-12",
@@ -5724,7 +6040,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.16,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9821012055292297,
+      "open_interest": 6408.740406000001
     },
     {
       "date": "2026-07-11",
@@ -5760,7 +6078,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.6971,
       "spread": 0.638,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.816542497770839,
+      "open_interest": 8334.92641
     },
     {
       "date": "2026-07-11",
@@ -5796,7 +6116,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.9,
       "spread": 0.18,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9702850212249848,
+      "open_interest": 3634.96911
     },
     {
       "date": "2026-07-11",
@@ -5832,7 +6154,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.3,
       "spread": 0.47,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.938945095185559,
+      "open_interest": 2263.919398
     },
     {
       "date": "2026-07-11",
@@ -5868,7 +6192,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.3,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 3091.2622859999997
     },
     {
       "date": "2026-07-11",
@@ -5904,7 +6230,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.19,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9044657998869418,
+      "open_interest": 8709.566919
     },
     {
       "date": "2026-07-11",
@@ -5940,7 +6268,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -1.4848,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 6365.9809989999985
     },
     {
       "date": "2026-07-11",
@@ -5976,7 +6306,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.2,
       "spread": 0.21,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 4690.039529999999
     },
     {
       "date": "2026-07-11",
@@ -6012,7 +6344,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.8,
       "spread": 0.12,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9518143961927424,
+      "open_interest": 5082.3779349999995
     },
     {
       "date": "2026-07-11",
@@ -6048,7 +6382,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.55,
       "spread": 0.181,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8470089994706194,
+      "open_interest": 4905.845795000001
     },
     {
       "date": "2026-07-11",
@@ -6084,7 +6420,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.4,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 13122.860945000002
     },
     {
       "date": "2026-07-11",
@@ -6120,7 +6458,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.1,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.938945095185559,
+      "open_interest": 17368.425686
     },
     {
       "date": "2026-07-11",
@@ -6156,7 +6496,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.6,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8990986535997662,
+      "open_interest": 6269.64715
     },
     {
       "date": "2026-07-11",
@@ -6192,7 +6534,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.05,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9928268261808434,
+      "open_interest": 7530.659740000001
     },
     {
       "date": "2026-07-11",
@@ -6228,7 +6572,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.58,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 7997.938364
     },
     {
       "date": "2026-07-11",
@@ -6264,7 +6610,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.99,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 25010.056094000003
     },
     {
       "date": "2026-07-11",
@@ -6300,7 +6648,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.7663,
       "spread": 0.244,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8200134113193421,
+      "open_interest": 8997.305011
     },
     {
       "date": "2026-07-11",
@@ -6336,7 +6686,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 9050.342706
     },
     {
       "date": "2026-07-11",
@@ -6372,7 +6724,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -3.3,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.938945095185559,
+      "open_interest": 11397.937742000002
     },
     {
       "date": "2026-07-10",
@@ -6408,7 +6762,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1765,
       "spread": 0.139,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8171743907352036,
+      "open_interest": 5494.970021
     },
     {
       "date": "2026-07-10",
@@ -6444,7 +6800,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.115,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9435918436864624,
+      "open_interest": 5173.104726
     },
     {
       "date": "2026-07-10",
@@ -6480,7 +6838,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.5,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9097318565352862,
+      "open_interest": 4861.648511000001
     },
     {
       "date": "2026-07-10",
@@ -6516,7 +6876,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.9,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 7533.275084
     },
     {
       "date": "2026-07-10",
@@ -6552,7 +6914,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.0,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 3245.846579
     },
     {
       "date": "2026-07-10",
@@ -6588,7 +6952,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.2,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 4998.2856090000005
     },
     {
       "date": "2026-07-10",
@@ -6624,7 +6990,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9996001599360256,
+      "open_interest": 13893.101874000002
     },
     {
       "date": "2026-07-10",
@@ -6660,7 +7028,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.6,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9366804046459348,
+      "open_interest": 12723.852756
     },
     {
       "date": "2026-07-10",
@@ -6696,7 +7066,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 11126.863925
     },
     {
       "date": "2026-07-10",
@@ -6732,7 +7104,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 1.5625,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9248768757659137,
+      "open_interest": 5756.847084999999
     },
     {
       "date": "2026-07-10",
@@ -6768,7 +7142,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 6487.419755000001
     },
     {
       "date": "2026-07-10",
@@ -6804,7 +7180,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.0,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 8185.23636
     },
     {
       "date": "2026-07-10",
@@ -6840,7 +7218,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 7.2,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 16734.842798
     },
     {
       "date": "2026-07-10",
@@ -6876,7 +7256,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0847,
       "spread": 0.18,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.934382956854867,
+      "open_interest": 10806.396282
     },
     {
       "date": "2026-07-10",
@@ -6912,7 +7294,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.2,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9224241306152569,
+      "open_interest": 9074.357121
     },
     {
       "date": "2026-07-10",
@@ -6948,7 +7332,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.5,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 10038.48715
     },
     {
       "date": "2026-07-10",
@@ -6984,7 +7370,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.1,
       "spread": 0.248,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9216825591622274,
+      "open_interest": 8969.517411999997
     },
     {
       "date": "2026-07-09",
@@ -7020,7 +7408,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.1,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 3583.741838
     },
     {
       "date": "2026-07-09",
@@ -7056,7 +7446,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.4,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 4586.5512530000005
     },
     {
       "date": "2026-07-09",
@@ -7092,7 +7484,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 5.0,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 5782.632578999999
     },
     {
       "date": "2026-07-09",
@@ -7128,7 +7522,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 6109.014915
     },
     {
       "date": "2026-07-09",
@@ -7164,7 +7560,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 4027.4899880000003
     },
     {
       "date": "2026-07-09",
@@ -7200,7 +7598,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9476651898884124,
+      "open_interest": 5709.929473
     },
     {
       "date": "2026-07-09",
@@ -7236,7 +7636,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.02,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9979790923380155,
+      "open_interest": 4256.509988000001
     },
     {
       "date": "2026-07-09",
@@ -7272,7 +7674,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.92,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 13362.737978000001
     },
     {
       "date": "2026-07-09",
@@ -7308,7 +7712,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.96,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 13803.984652
     },
     {
       "date": "2026-07-09",
@@ -7344,7 +7750,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.96,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 10096.651284
     },
     {
       "date": "2026-07-09",
@@ -7380,7 +7788,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.96,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 12100.521689000001
     },
     {
       "date": "2026-07-09",
@@ -7416,7 +7826,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.98,
       "spread": 0.085,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8427269295075778,
+      "open_interest": 8584.819663999999
     },
     {
       "date": "2026-07-09",
@@ -7452,7 +7864,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 9442.971418
     },
     {
       "date": "2026-07-09",
@@ -7488,7 +7902,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9577626664112633,
+      "open_interest": 7429.361456
     },
     {
       "date": "2026-07-09",
@@ -7524,7 +7940,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.0,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 12256.995636
     },
     {
       "date": "2026-07-09",
@@ -7560,7 +7978,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 7261.926206000001
     },
     {
       "date": "2026-07-09",
@@ -7596,7 +8016,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 9335.257864000001
     },
     {
       "date": "2026-07-09",
@@ -7632,7 +8054,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 12096.054423000001
     },
     {
       "date": "2026-07-09",
@@ -7668,7 +8092,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.001,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9642678495018954,
+      "open_interest": 13096.923255000002
     },
     {
       "date": "2026-07-09",
@@ -7704,7 +8130,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.02,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8187525445293923,
+      "open_interest": 7460.207353999999
     },
     {
       "date": "2026-07-09",
@@ -7740,7 +8168,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.865033195648883,
+      "open_interest": 23898.810789
     },
     {
       "date": "2026-07-08",
@@ -7776,7 +8206,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.934382956854867,
+      "open_interest": 4504.450113
     },
     {
       "date": "2026-07-08",
@@ -7812,7 +8244,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 6590.518990999999
     },
     {
       "date": "2026-07-08",
@@ -7848,7 +8282,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.56,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 2725.8582189999993
     },
     {
       "date": "2026-07-08",
@@ -7884,7 +8320,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 4981.795253
     },
     {
       "date": "2026-07-08",
@@ -7920,7 +8358,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 4048.7184349999998
     },
     {
       "date": "2026-07-08",
@@ -7956,7 +8396,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.9967,
       "spread": 0.19,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 3704.940663
     },
     {
       "date": "2026-07-08",
@@ -7992,7 +8434,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 13091.946656999999
     },
     {
       "date": "2026-07-08",
@@ -8028,7 +8472,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.8,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 6590.523429
     },
     {
       "date": "2026-07-08",
@@ -8064,7 +8510,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8590880780051975,
+      "open_interest": 7950.791418999998
     },
     {
       "date": "2026-07-08",
@@ -8100,7 +8548,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 9140.131839000001
     },
     {
       "date": "2026-07-08",
@@ -8136,7 +8586,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.5,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8911462613852289,
+      "open_interest": 15138.494223
     },
     {
       "date": "2026-07-08",
@@ -8172,7 +8624,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 8.3118,
       "spread": 0.012,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.806067918073675,
+      "open_interest": 4726.805931
     },
     {
       "date": "2026-07-08",
@@ -8208,7 +8662,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 5.2477,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 4931.327466
     },
     {
       "date": "2026-07-08",
@@ -8244,7 +8700,9 @@
       "shares_over_target": true,
       "outcome_value_usd": 3.25,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8936350841134023,
+      "open_interest": 9387.985347
     },
     {
       "date": "2026-07-08",
@@ -8280,7 +8738,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.55,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 9489.027039999999
     },
     {
       "date": "2026-07-08",
@@ -8316,7 +8776,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9366804046459348,
+      "open_interest": 10171.739205
     },
     {
       "date": "2026-07-08",
@@ -8352,7 +8814,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.93,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8709094471902284,
+      "open_interest": 10171.452572
     },
     {
       "date": "2026-07-08",
@@ -8388,7 +8852,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.02,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9433739770288437,
+      "open_interest": 8308.775534
     },
     {
       "date": "2026-07-08",
@@ -8424,7 +8890,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 9466.367587000002
     },
     {
       "date": "2026-07-08",
@@ -8460,7 +8928,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.91,
       "spread": 0.26,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 4971.894633
     },
     {
       "date": "2026-07-08",
@@ -8496,7 +8966,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.95,
       "spread": 0.06,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9734965562559322,
+      "open_interest": 17467.951683
     },
     {
       "date": "2026-07-08",
@@ -8532,7 +9004,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 0.0,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 13952.913081
     },
     {
       "date": "2026-07-07",
@@ -8568,7 +9042,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 1.7,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.934382956854867,
+      "open_interest": 4356.6600450000005
     },
     {
       "date": "2026-07-07",
@@ -8604,7 +9080,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.4,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9224241306152569,
+      "open_interest": 7482.159099
     },
     {
       "date": "2026-07-07",
@@ -8640,7 +9118,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.1,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 9251.369283999999
     },
     {
       "date": "2026-07-07",
@@ -8676,7 +9156,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 8874.626866999999
     },
     {
       "date": "2026-07-07",
@@ -8712,7 +9194,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 10.0,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 3943.2546440000006
     },
     {
       "date": "2026-07-07",
@@ -8748,7 +9232,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.3,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 10549.193299999999
     },
     {
       "date": "2026-07-07",
@@ -8784,7 +9270,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.2,
       "spread": 0.01,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9433739770288437,
+      "open_interest": 10315.791698
     },
     {
       "date": "2026-07-07",
@@ -8820,7 +9308,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.99,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 11041.088304999997
     },
     {
       "date": "2026-07-07",
@@ -8856,7 +9346,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 1.7,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 10200.513646000001
     },
     {
       "date": "2026-07-07",
@@ -8892,7 +9384,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.98,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9993753903810119,
+      "open_interest": 6125.982868
     },
     {
       "date": "2026-07-07",
@@ -8928,7 +9422,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -5.5,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 5078.258973
     },
     {
       "date": "2026-07-07",
@@ -8964,7 +9460,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.99,
       "spread": 0.19,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 12211.988349
     },
     {
       "date": "2026-07-07",
@@ -9000,7 +9498,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.935,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 8454.420284
     },
     {
       "date": "2026-07-07",
@@ -9036,7 +9536,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.6,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 13371.040642
     },
     {
       "date": "2026-07-07",
@@ -9072,7 +9574,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.6,
       "spread": 0.08,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.934382956854867,
+      "open_interest": 6150.663684000001
     },
     {
       "date": "2026-07-07",
@@ -9108,7 +9612,9 @@
       "shares_over_target": true,
       "outcome_value_usd": 11.1022,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9869476177551876,
+      "open_interest": 7411.985994000001
     },
     {
       "date": "2026-07-07",
@@ -9144,7 +9650,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.7,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8620689655172414,
+      "open_interest": 24834.337414
     },
     {
       "date": "2026-07-07",
@@ -9180,7 +9688,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -2.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9615384615384615,
+      "open_interest": 7693.824496999999
     },
     {
       "date": "2026-07-07",
@@ -9216,7 +9726,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.95,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8337764507762355,
+      "open_interest": 9632.411838000002
     },
     {
       "date": "2026-07-07",
@@ -9252,7 +9764,9 @@
       "shares_over_target": false,
       "outcome_value_usd": -4.3,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 8453.930666
     },
     {
       "date": "2026-07-07",
@@ -9288,7 +9802,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.98,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9097318565352862,
+      "open_interest": 7936.470668999999
     },
     {
       "date": "2026-07-07",
@@ -9324,7 +9840,9 @@
       "shares_over_target": false,
       "outcome_value_usd": 9.98,
       "spread": 0.072,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.865033195648883,
+      "open_interest": 7369.762456999999
     },
     {
       "date": "2026-07-07",
@@ -9360,7 +9878,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.17,
       "spread": 0.022,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8590880780051975,
+      "open_interest": 12441.345227999998
     },
     {
       "date": "2026-07-06",
@@ -9396,7 +9916,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.9,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9497578117580017,
+      "open_interest": 3411.4448239999997
     },
     {
       "date": "2026-07-06",
@@ -9432,7 +9954,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9818,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 3695.3212940000003
     },
     {
       "date": "2026-07-06",
@@ -9468,7 +9992,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.8,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 4434.550164000001
     },
     {
       "date": "2026-07-06",
@@ -9504,7 +10030,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.99,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9765386587241522,
+      "open_interest": 4717.227964
     },
     {
       "date": "2026-07-06",
@@ -9540,7 +10068,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.5,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 8306.195377
     },
     {
       "date": "2026-07-06",
@@ -9576,7 +10106,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.99,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8709094471902284,
+      "open_interest": 6687.123977999999
     },
     {
       "date": "2026-07-06",
@@ -9612,7 +10144,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.4,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9320533134495294,
+      "open_interest": 5228.670425
     },
     {
       "date": "2026-07-06",
@@ -9648,7 +10182,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 4716.591791
     },
     {
       "date": "2026-07-06",
@@ -9684,7 +10220,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9919650828290844,
+      "open_interest": 3337.31057
     },
     {
       "date": "2026-07-06",
@@ -9720,7 +10258,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.99,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 17773.957498999996
     },
     {
       "date": "2026-07-06",
@@ -9756,7 +10296,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.7,
       "spread": 0.18,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.865033195648883,
+      "open_interest": 8460.505134
     },
     {
       "date": "2026-07-06",
@@ -9792,7 +10334,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 18478.467495999997
     },
     {
       "date": "2026-07-06",
@@ -9828,7 +10372,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.98,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 11047.206853000002
     },
     {
       "date": "2026-07-06",
@@ -9864,7 +10410,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.3,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8408837688410519,
+      "open_interest": 8907.705969999999
     },
     {
       "date": "2026-07-06",
@@ -9900,7 +10448,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.31,
       "spread": 0.188,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9371359812422863,
+      "open_interest": 13157.654477999999
     },
     {
       "date": "2026-07-06",
@@ -9936,7 +10486,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.99,
       "spread": 0.09,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9928268261808434,
+      "open_interest": 4336.906345
     },
     {
       "date": "2026-07-06",
@@ -9972,7 +10524,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.5959,
       "spread": 0.14,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9944064636420137,
+      "open_interest": 6508.901784
     },
     {
       "date": "2026-07-06",
@@ -10008,7 +10562,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": 0.19,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 5496.404668999998
     },
     {
       "date": "2026-07-06",
@@ -10044,7 +10600,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.1,
       "spread": 0.36,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9869476177551876,
+      "open_interest": 5886.850007999999
     },
     {
       "date": "2026-07-06",
@@ -10080,7 +10638,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.1,
       "spread": 0.26,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 9760.203947
     },
     {
       "date": "2026-07-06",
@@ -10116,7 +10676,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.2,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9455370650529501,
+      "open_interest": 10313.693108
     },
     {
       "date": "2026-07-06",
@@ -10152,7 +10714,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.2,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 17509.361222
     },
     {
       "date": "2026-07-06",
@@ -10188,7 +10752,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.9021,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 12509.440568
     },
     {
       "date": "2026-07-06",
@@ -10224,7 +10790,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.99,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9719117504130625,
+      "open_interest": 15108.396438
     },
     {
       "date": "2026-07-06",
@@ -10260,7 +10828,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.54,
       "spread": 0.079,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.917683555638351,
+      "open_interest": 16689.701055000005
     },
     {
       "date": "2026-07-06",
@@ -10296,7 +10866,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.4996,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 19163.144874999998
     },
     {
       "date": "2026-07-06",
@@ -10332,7 +10904,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.7,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 20689.194445999998
     },
     {
       "date": "2026-07-05",
@@ -10368,7 +10942,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.8,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9807767752059631,
+      "open_interest": 4068.6130569999996
     },
     {
       "date": "2026-07-05",
@@ -10404,7 +10980,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.5,
       "spread": 0.33,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9880446596186148,
+      "open_interest": 5725.905003000001
     },
     {
       "date": "2026-07-05",
@@ -10440,7 +11018,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.4984,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 4157.110502
     },
     {
       "date": "2026-07-05",
@@ -10476,7 +11056,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.57,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9833808634083981,
+      "open_interest": 7843.245285999999
     },
     {
       "date": "2026-07-05",
@@ -10512,7 +11094,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.8,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9651578033008397,
+      "open_interest": 4008.546691
     },
     {
       "date": "2026-07-05",
@@ -10548,7 +11132,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": 0.2,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9224241306152569,
+      "open_interest": 1566.891451
     },
     {
       "date": "2026-07-05",
@@ -10584,7 +11170,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.6,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 3158.5941439999997
     },
     {
       "date": "2026-07-05",
@@ -10620,7 +11208,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9411764705882353,
+      "open_interest": 8243.318022
     },
     {
       "date": "2026-07-05",
@@ -10656,7 +11246,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 13.0594,
       "spread": 0.33,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 5440.4890829999995
     },
     {
       "date": "2026-07-05",
@@ -10692,7 +11284,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 4.284,
       "spread": 0.32,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 5453.2261149999995
     },
     {
       "date": "2026-07-05",
@@ -10728,7 +11322,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.87,
       "spread": 0.124,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8653286810379012,
+      "open_interest": 6869.476263999999
     },
     {
       "date": "2026-07-05",
@@ -10764,7 +11360,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": 0.4,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9433739770288437,
+      "open_interest": 3775.1084939999996
     },
     {
       "date": "2026-07-05",
@@ -10800,7 +11398,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9750390015600624,
+      "open_interest": 11830.178356
     },
     {
       "date": "2026-07-05",
@@ -10836,7 +11436,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.1041,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999750006249843,
+      "open_interest": 6390.5579849999995
     },
     {
       "date": "2026-07-05",
@@ -10872,7 +11474,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.9,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 4278.465658
     },
     {
       "date": "2026-07-05",
@@ -10908,7 +11512,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.29,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9991008092716555,
+      "open_interest": 12084.207851
     },
     {
       "date": "2026-07-05",
@@ -10944,7 +11550,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 4437.043530999999
     },
     {
       "date": "2026-07-05",
@@ -10980,7 +11588,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.2,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 12568.805106999998
     },
     {
       "date": "2026-07-05",
@@ -11016,7 +11626,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.2034,
       "spread": 0.193,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9712660647407108,
+      "open_interest": 5198.376891999999
     },
     {
       "date": "2026-07-05",
@@ -11052,7 +11664,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.2,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 5778.434820999999
     },
     {
       "date": "2026-07-05",
@@ -11088,7 +11702,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.45,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9123255177447313,
+      "open_interest": 7621.978440000001
     },
     {
       "date": "2026-07-05",
@@ -11124,7 +11740,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9911,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 8384.434799999999
     },
     {
       "date": "2026-07-05",
@@ -11160,7 +11778,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.9,
       "spread": 0.42,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9538344143456696,
+      "open_interest": 5480.176589
     },
     {
       "date": "2026-07-05",
@@ -11196,7 +11816,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.97,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8908685968819599,
+      "open_interest": 6304.789472999999
     },
     {
       "date": "2026-07-05",
@@ -11232,7 +11854,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9934,
       "spread": 0.088,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8584899505166393,
+      "open_interest": 16192.368890000002
     },
     {
       "date": "2026-07-05",
@@ -11268,7 +11892,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.4,
       "spread": 0.16,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9969841230278408,
+      "open_interest": 9231.679223
     },
     {
       "date": "2026-07-05",
@@ -11304,7 +11930,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.3,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 7340.589016
     },
     {
       "date": "2026-07-05",
@@ -11340,7 +11968,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.55,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 8949.255406999999
     },
     {
       "date": "2026-07-05",
@@ -11376,7 +12006,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.785,
       "spread": 0.061,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9635487113619978,
+      "open_interest": 19843.281099
     },
     {
       "date": "2026-07-05",
@@ -11412,7 +12044,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9803,
       "spread": 0.16,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9686168151879117,
+      "open_interest": 12223.860937000001
     },
     {
       "date": "2026-07-05",
@@ -11448,7 +12082,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.8,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.856091088091773,
+      "open_interest": 14267.272052999999
     },
     {
       "date": "2026-07-05",
@@ -11484,7 +12120,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.985,
       "spread": 0.02,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.91994204365125,
+      "open_interest": 17568.498158000002
     },
     {
       "date": "2026-07-04",
@@ -11520,7 +12158,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 11.0,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 3697.4762620000006
     },
     {
       "date": "2026-07-04",
@@ -11556,7 +12196,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.8022,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 5487.720303
     },
     {
       "date": "2026-07-04",
@@ -11592,7 +12234,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.38,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9807767752059631,
+      "open_interest": 4225.801834000001
     },
     {
       "date": "2026-07-04",
@@ -11628,7 +12272,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.7,
       "spread": 0.15,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9794079478954972,
+      "open_interest": 5018.040735999999
     },
     {
       "date": "2026-07-04",
@@ -11664,7 +12310,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 3.3,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 4656.550079999999
     },
     {
       "date": "2026-07-04",
@@ -11700,7 +12348,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9964,
       "spread": 0.21,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8439530762089628,
+      "open_interest": 9196.85531
     },
     {
       "date": "2026-07-04",
@@ -11736,7 +12386,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.75,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 6930.448308
     },
     {
       "date": "2026-07-04",
@@ -11772,7 +12424,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 4.55,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8963786303334529,
+      "open_interest": 6930.448308
     },
     {
       "date": "2026-07-04",
@@ -11808,7 +12462,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 8608.879297
     },
     {
       "date": "2026-07-04",
@@ -11844,7 +12500,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.65,
       "spread": 0.36,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9148921570869833,
+      "open_interest": 4071.503879
     },
     {
       "date": "2026-07-04",
@@ -11880,7 +12538,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.9,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9858044164037855,
+      "open_interest": 15818.918166
     },
     {
       "date": "2026-07-04",
@@ -11916,7 +12576,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 8.16,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 8055.431500000001
     },
     {
       "date": "2026-07-04",
@@ -11952,7 +12614,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 10110.491607
     },
     {
       "date": "2026-07-04",
@@ -11988,7 +12652,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.7604,
       "spread": 0.054,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8512637862170178,
+      "open_interest": 10299.799504999999
     },
     {
       "date": "2026-07-04",
@@ -12024,7 +12690,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.17,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9497578117580017,
+      "open_interest": 10014.895008000001
     },
     {
       "date": "2026-07-04",
@@ -12060,7 +12728,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.288,
       "spread": 0.332,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8530785472072341,
+      "open_interest": 4256.4219889999995
     },
     {
       "date": "2026-07-04",
@@ -12096,7 +12766,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.65,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8767123287671234,
+      "open_interest": 11883.43776
     },
     {
       "date": "2026-07-04",
@@ -12132,7 +12804,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.67,
       "spread": 0.192,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8203283938626311,
+      "open_interest": 6039.513635
     },
     {
       "date": "2026-07-04",
@@ -12168,7 +12842,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 15839.519283
     },
     {
       "date": "2026-07-04",
@@ -12204,7 +12880,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.95,
       "spread": 0.19,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 4239.156096
     },
     {
       "date": "2026-07-04",
@@ -12240,7 +12918,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.466,
       "spread": 0.26,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 4516.307251
     },
     {
       "date": "2026-07-04",
@@ -12276,7 +12956,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.95,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.938945095185559,
+      "open_interest": 6854.016692
     },
     {
       "date": "2026-07-04",
@@ -12312,7 +12994,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.737,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 6692.388389999999
     },
     {
       "date": "2026-07-04",
@@ -12348,7 +13032,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.4401,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9750390015600624,
+      "open_interest": 8930.343367
     },
     {
       "date": "2026-07-04",
@@ -12384,7 +13070,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.08,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9702850212249848,
+      "open_interest": 18774.154467
     },
     {
       "date": "2026-07-04",
@@ -12420,7 +13108,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.4,
       "spread": 0.07,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9987764987889834,
+      "open_interest": 9714.212977
     },
     {
       "date": "2026-07-04",
@@ -12456,7 +13146,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.2819,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9097318565352862,
+      "open_interest": 7165.4473880000005
     },
     {
       "date": "2026-07-04",
@@ -12492,7 +13184,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 7.29,
       "spread": 0.12,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9869476177551876,
+      "open_interest": 19318.205202
     },
     {
       "date": "2026-07-04",
@@ -12528,7 +13222,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8396524174852578,
+      "open_interest": 14759.545876999999
     },
     {
       "date": "2026-07-04",
@@ -12564,7 +13260,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.25,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 12536.126435999999
     },
     {
       "date": "2026-07-04",
@@ -12600,7 +13298,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.3487,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 13139.516846
     },
     {
       "date": "2026-07-04",
@@ -12636,7 +13336,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.02,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9596698735634942,
+      "open_interest": 23327.690313
     },
     {
       "date": "2026-07-03",
@@ -12672,7 +13374,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9869476177551876,
+      "open_interest": 4413.438888999999
     },
     {
       "date": "2026-07-03",
@@ -12708,7 +13412,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 3.7522,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9651578033008397,
+      "open_interest": 5079.574439999999
     },
     {
       "date": "2026-07-03",
@@ -12744,7 +13450,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 6.1579,
       "spread": 0.15,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9821012055292297,
+      "open_interest": 3279.1919829999997
     },
     {
       "date": "2026-07-03",
@@ -12780,7 +13488,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.4,
       "spread": 0.26,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 4961.651725000001
     },
     {
       "date": "2026-07-03",
@@ -12816,7 +13526,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.3,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 6772.783683
     },
     {
       "date": "2026-07-03",
@@ -12852,7 +13564,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 12.14,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999000099990001,
+      "open_interest": 4265.470974
     },
     {
       "date": "2026-07-03",
@@ -12888,7 +13602,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9734965562559322,
+      "open_interest": 6963.824194
     },
     {
       "date": "2026-07-03",
@@ -12924,7 +13640,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.2775,
       "spread": 0.16,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 5747.555427
     },
     {
       "date": "2026-07-03",
@@ -12960,7 +13678,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.1403,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 3910.877465
     },
     {
       "date": "2026-07-03",
@@ -12996,7 +13716,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9975062344139651,
+      "open_interest": 4543.253124
     },
     {
       "date": "2026-07-03",
@@ -13032,7 +13754,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.095,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8219018768334833,
+      "open_interest": 5587.864931
     },
     {
       "date": "2026-07-03",
@@ -13068,7 +13792,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.1,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9999750006249843,
+      "open_interest": 6449.436246
     },
     {
       "date": "2026-07-03",
@@ -13104,7 +13830,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.75,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 10827.294171000001
     },
     {
       "date": "2026-07-03",
@@ -13140,7 +13868,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.1,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 7206.415319
     },
     {
       "date": "2026-07-03",
@@ -13176,7 +13906,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -2.5878,
       "spread": 0.13,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9944064636420137,
+      "open_interest": 5161.523585000001
     },
     {
       "date": "2026-07-03",
@@ -13212,7 +13944,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 3.9,
       "spread": 0.02,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 11325.948007999998
     },
     {
       "date": "2026-07-03",
@@ -13248,7 +13982,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.2975,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9964129135113591,
+      "open_interest": 7272.628535
     },
     {
       "date": "2026-07-03",
@@ -13284,7 +14020,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.4,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9936406995230525,
+      "open_interest": 11681.713174999999
     },
     {
       "date": "2026-07-03",
@@ -13320,7 +14058,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.7965,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 6022.813038
     },
     {
       "date": "2026-07-03",
@@ -13356,7 +14096,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.995,
       "spread": 0.25,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9997750506136119,
+      "open_interest": 6243.635800999999
     },
     {
       "date": "2026-07-03",
@@ -13392,7 +14134,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.9863,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9880446596186148,
+      "open_interest": 18128.077386
     },
     {
       "date": "2026-07-03",
@@ -13428,7 +14172,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 3.512,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 14086.629361
     },
     {
       "date": "2026-07-03",
@@ -13464,7 +14210,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.072,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8253549026081215,
+      "open_interest": 17751.096349000003
     },
     {
       "date": "2026-07-03",
@@ -13500,7 +14248,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.04,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.91994204365125,
+      "open_interest": 9440.948984
     },
     {
       "date": "2026-07-03",
@@ -13536,7 +14286,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.55,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 9032.214335
     },
     {
       "date": "2026-07-03",
@@ -13572,7 +14324,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.5,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 8843.821772
     },
     {
       "date": "2026-07-03",
@@ -13608,7 +14362,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.25,
       "spread": 0.23,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9097318565352862,
+      "open_interest": 17161.986735000002
     },
     {
       "date": "2026-07-03",
@@ -13644,7 +14400,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9919,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 17679.364888
     },
     {
       "date": "2026-07-03",
@@ -13680,7 +14438,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9997750506136119,
+      "open_interest": 13726.302214000001
     },
     {
       "date": "2026-07-03",
@@ -13716,7 +14476,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0309,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 3477.5767939999996
     },
     {
       "date": "2026-07-03",
@@ -13752,7 +14514,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 11.4277,
       "spread": 0.22,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 7403.115602000001
     },
     {
       "date": "2026-07-03",
@@ -13788,7 +14552,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 14594.633789000001
     },
     {
       "date": "2026-07-03",
@@ -13824,7 +14590,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.5,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 10706.961201
     },
     {
       "date": "2026-07-02",
@@ -13860,7 +14628,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 14.9874,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9596698735634942,
+      "open_interest": 5873.519198
     },
     {
       "date": "2026-07-02",
@@ -13896,7 +14666,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 9354.896166
     },
     {
       "date": "2026-07-02",
@@ -13932,7 +14704,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -7.95,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 12408.570259000002
     },
     {
       "date": "2026-07-02",
@@ -13968,7 +14742,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8880797495615106,
+      "open_interest": 4934.880188000001
     },
     {
       "date": "2026-07-02",
@@ -14004,7 +14780,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.02,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 6883.231623000001
     },
     {
       "date": "2026-07-02",
@@ -14040,7 +14818,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 11674.882114
     },
     {
       "date": "2026-07-02",
@@ -14076,7 +14856,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.25,
       "spread": 0.1,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 10672.137375
     },
     {
       "date": "2026-07-02",
@@ -14112,7 +14894,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 3.2995,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 9379.707214999999
     },
     {
       "date": "2026-07-02",
@@ -14148,7 +14932,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.95,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 5611.919823
     },
     {
       "date": "2026-07-02",
@@ -14184,7 +14970,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.22,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 7017.763078000001
     },
     {
       "date": "2026-07-02",
@@ -14220,7 +15008,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 15.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 8312.063143
     },
     {
       "date": "2026-07-02",
@@ -14256,7 +15046,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -8.85,
       "spread": 0.09,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.938945095185559,
+      "open_interest": 12619.671350000002
     },
     {
       "date": "2026-07-02",
@@ -14292,7 +15084,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 8.16,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999750006249843,
+      "open_interest": 9292.846177
     },
     {
       "date": "2026-07-02",
@@ -14328,7 +15122,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 11133.497399
     },
     {
       "date": "2026-07-02",
@@ -14364,7 +15160,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.05,
       "spread": 0.061,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9760932793781505,
+      "open_interest": 17045.742557999998
     },
     {
       "date": "2026-07-02",
@@ -14400,7 +15198,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -2.76,
       "spread": 0.155,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8209580744920938,
+      "open_interest": 7505.7089000000005
     },
     {
       "date": "2026-07-02",
@@ -14436,7 +15236,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.9,
       "spread": 0.15,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8530785472072341,
+      "open_interest": 4254.368567
     },
     {
       "date": "2026-07-02",
@@ -14472,7 +15274,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.4,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 12314.098113
     },
     {
       "date": "2026-07-02",
@@ -14508,7 +15312,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6979,
       "spread": 0.08,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9794079478954972,
+      "open_interest": 8544.124344
     },
     {
       "date": "2026-07-02",
@@ -14544,7 +15350,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.2,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 13802.575981
     },
     {
       "date": "2026-07-02",
@@ -14580,7 +15388,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.0042,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 8804.918119
     },
     {
       "date": "2026-07-02",
@@ -14616,7 +15426,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.1,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9476651898884124,
+      "open_interest": 25236.10234
     },
     {
       "date": "2026-07-02",
@@ -14652,7 +15464,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.007,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8824372917999515,
+      "open_interest": 12616.335864
     },
     {
       "date": "2026-07-02",
@@ -14688,7 +15502,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.4,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9433739770288437,
+      "open_interest": 9961.46521
     },
     {
       "date": "2026-07-02",
@@ -14724,7 +15540,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.5959,
       "spread": 0.03,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9518143961927424,
+      "open_interest": 18484.026039
     },
     {
       "date": "2026-07-02",
@@ -14760,7 +15578,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 7.5873,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 4995.618976
     },
     {
       "date": "2026-07-02",
@@ -14796,7 +15616,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.124,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8463989111924406,
+      "open_interest": 8199.628471000002
     },
     {
       "date": "2026-07-02",
@@ -14832,7 +15654,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": 0.23,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8990986535997662,
+      "open_interest": 9471.289174000001
     },
     {
       "date": "2026-07-02",
@@ -14868,7 +15692,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.04,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 24580.614579999998
     },
     {
       "date": "2026-07-02",
@@ -14904,7 +15730,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.9,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 12336.783701
     },
     {
       "date": "2026-07-02",
@@ -14940,7 +15768,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9964129135113591,
+      "open_interest": 36326.822667
     },
     {
       "date": "2026-07-01",
@@ -14976,7 +15806,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.0,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 5987.985078
     },
     {
       "date": "2026-07-01",
@@ -15012,7 +15844,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 9750.666301000001
     },
     {
       "date": "2026-07-01",
@@ -15048,7 +15882,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.15,
       "spread": 0.18,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8411912866882951,
+      "open_interest": 3007.8580899999993
     },
     {
       "date": "2026-07-01",
@@ -15084,7 +15920,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 8955.677904
     },
     {
       "date": "2026-07-01",
@@ -15120,7 +15958,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 7040.851687
     },
     {
       "date": "2026-07-01",
@@ -15156,7 +15996,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.24,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 4325.100089
     },
     {
       "date": "2026-07-01",
@@ -15192,7 +16034,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 3538.1941079999997
     },
     {
       "date": "2026-07-01",
@@ -15228,7 +16072,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 4943.8116230000005
     },
     {
       "date": "2026-07-01",
@@ -15264,7 +16110,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.07,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9910557221079755,
+      "open_interest": 5170.932898
     },
     {
       "date": "2026-07-01",
@@ -15300,7 +16148,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.4957,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9248768757659137,
+      "open_interest": 5201.190676
     },
     {
       "date": "2026-07-01",
@@ -15336,7 +16186,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.5,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 10760.698964000001
     },
     {
       "date": "2026-07-01",
@@ -15372,7 +16224,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.014,
       "spread": 0.2,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 5663.692977
     },
     {
       "date": "2026-07-01",
@@ -15408,7 +16262,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.14,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9957927755234136,
+      "open_interest": 19998.344699
     },
     {
       "date": "2026-07-01",
@@ -15444,7 +16300,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 14676.740345999997
     },
     {
       "date": "2026-07-01",
@@ -15480,7 +16338,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 10925.344657000001
     },
     {
       "date": "2026-07-01",
@@ -15516,7 +16376,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.4,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9455370650529501,
+      "open_interest": 6848.208174
     },
     {
       "date": "2026-07-01",
@@ -15552,7 +16414,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.02,
       "spread": 0.16,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9669075878072954,
+      "open_interest": 6364.587327000001
     },
     {
       "date": "2026-07-01",
@@ -15588,7 +16452,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.04,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9944064636420137,
+      "open_interest": 4370.921335999999
     },
     {
       "date": "2026-07-01",
@@ -15624,7 +16490,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.56,
       "spread": 0.235,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8325339273185393,
+      "open_interest": 13363.873673000002
     },
     {
       "date": "2026-07-01",
@@ -15660,7 +16528,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.077,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9179356361890617,
+      "open_interest": 13693.416589999999
     },
     {
       "date": "2026-07-01",
@@ -15696,7 +16566,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 8995.173827999999
     },
     {
       "date": "2026-07-01",
@@ -15732,7 +16604,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": 0.21,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9455370650529501,
+      "open_interest": 22198.318424999998
     },
     {
       "date": "2026-07-01",
@@ -15768,7 +16642,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9433739770288437,
+      "open_interest": 15209.822119000002
     },
     {
       "date": "2026-07-01",
@@ -15804,7 +16680,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 9802.223189
     },
     {
       "date": "2026-07-01",
@@ -15840,7 +16718,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9944,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 9825.456917999998
     },
     {
       "date": "2026-07-01",
@@ -15876,7 +16756,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 19778.814481999998
     },
     {
       "date": "2026-06-30",
@@ -15912,7 +16794,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.2,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9174311926605505,
+      "open_interest": 7787.054378
     },
     {
       "date": "2026-06-30",
@@ -15948,7 +16832,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.72,
       "spread": 0.299,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.865033195648883,
+      "open_interest": 5778.541279
     },
     {
       "date": "2026-06-30",
@@ -15984,7 +16870,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.0,
       "spread": 0.14,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8795848359574281,
+      "open_interest": 3710.235991
     },
     {
       "date": "2026-06-30",
@@ -16020,7 +16908,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.0,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9993753903810119,
+      "open_interest": 4399.4888280000005
     },
     {
       "date": "2026-06-30",
@@ -16056,7 +16946,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 10178.65163
     },
     {
       "date": "2026-06-30",
@@ -16092,7 +16984,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 6.0,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9538344143456696,
+      "open_interest": 6929.802576
     },
     {
       "date": "2026-06-30",
@@ -16128,7 +17022,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 0.056,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999000099990001,
+      "open_interest": 4394.441252
     },
     {
       "date": "2026-06-30",
@@ -16164,7 +17060,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 8.9262,
       "spread": 0.13,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 10404.249443
     },
     {
       "date": "2026-06-30",
@@ -16200,7 +17098,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.12,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 6177.106636
     },
     {
       "date": "2026-06-30",
@@ -16236,7 +17136,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8679802100512108,
+      "open_interest": 7239.314977
     },
     {
       "date": "2026-06-30",
@@ -16272,7 +17174,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.01,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 4276.642612000001
     },
     {
       "date": "2026-06-29",
@@ -16308,7 +17212,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.07,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9433739770288437,
+      "open_interest": 5324.072536999999
     },
     {
       "date": "2026-06-29",
@@ -16344,7 +17250,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 10276.253389
     },
     {
       "date": "2026-06-29",
@@ -16380,7 +17288,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9858044164037855,
+      "open_interest": 17063.990367
     },
     {
       "date": "2026-06-29",
@@ -16416,7 +17326,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.17,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 6542.389708000001
     },
     {
       "date": "2026-06-29",
@@ -16452,7 +17364,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9967,
       "spread": 0.11,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 7045.986669
     },
     {
       "date": "2026-06-29",
@@ -16488,7 +17402,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.08,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9991008092716555,
+      "open_interest": 6348.516194000001
     },
     {
       "date": "2026-06-29",
@@ -16524,7 +17440,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.3,
       "spread": 0.14,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 7911.845381000001
     },
     {
       "date": "2026-06-29",
@@ -16560,7 +17478,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.8,
       "spread": 0.05,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 12167.910576
     },
     {
       "date": "2026-06-29",
@@ -16596,7 +17516,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": 0.03,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9993753903810119,
+      "open_interest": 8232.34948
     },
     {
       "date": "2026-06-29",
@@ -16632,7 +17554,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.3,
       "spread": 0.06,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 7739.487111
     },
     {
       "date": "2026-06-29",
@@ -16668,7 +17592,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8872388218444409,
+      "open_interest": 10651.682274000003
     },
     {
       "date": "2026-06-29",
@@ -16704,7 +17630,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 9684.949438000001
     },
     {
       "date": "2026-06-29",
@@ -16740,7 +17668,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9571830485753646,
+      "open_interest": 26455.890674
     },
     {
       "date": "2026-06-29",
@@ -16776,7 +17706,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9577626664112633,
+      "open_interest": 13276.271289
     },
     {
       "date": "2026-06-29",
@@ -16812,7 +17744,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9993753903810119,
+      "open_interest": 9344.601106
     },
     {
       "date": "2026-06-29",
@@ -16848,7 +17782,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.0,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9969841230278408,
+      "open_interest": 6355.177836
     },
     {
       "date": "2026-06-29",
@@ -16884,7 +17820,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 5154.274538999999
     },
     {
       "date": "2026-06-29",
@@ -16920,7 +17858,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9919650828290844,
+      "open_interest": 4129.28815
     },
     {
       "date": "2026-06-29",
@@ -16956,7 +17896,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -6.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9833808634083981,
+      "open_interest": 7629.981049000001
     },
     {
       "date": "2026-06-29",
@@ -16992,7 +17934,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.6,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.886677122067731,
+      "open_interest": 11389.905087
     },
     {
       "date": "2026-06-29",
@@ -17028,7 +17972,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 5.9302,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9997750506136119,
+      "open_interest": 3764.373911
     },
     {
       "date": "2026-06-29",
@@ -17064,7 +18010,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 4709.1163289999995
     },
     {
       "date": "2026-06-29",
@@ -17100,7 +18048,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8181215560917433,
+      "open_interest": 8173.480748000001
     },
     {
       "date": "2026-06-29",
@@ -17136,7 +18086,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 5450.925654
     },
     {
       "date": "2026-06-29",
@@ -17172,7 +18124,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9779951100244499,
+      "open_interest": 29277.222368999996
     },
     {
       "date": "2026-06-29",
@@ -17208,7 +18162,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.2,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9411764705882353,
+      "open_interest": 7566.94475
     },
     {
       "date": "2026-06-29",
@@ -17244,7 +18200,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.5978,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9669075878072954,
+      "open_interest": 3800.8580679999995
     },
     {
       "date": "2026-06-29",
@@ -17280,7 +18238,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.3,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 20979.51204
     },
     {
       "date": "2026-06-29",
@@ -17316,7 +18276,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.5,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 9623.799829
     },
     {
       "date": "2026-06-29",
@@ -17352,7 +18314,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9967,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 7908.799657
     },
     {
       "date": "2026-06-29",
@@ -17388,7 +18352,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.934382956854867,
+      "open_interest": 13956.564723999998
     },
     {
       "date": "2026-06-29",
@@ -17424,7 +18390,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 15046.23737
     },
     {
       "date": "2026-06-29",
@@ -17460,7 +18428,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.6,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8590880780051975,
+      "open_interest": 10009.728249
     },
     {
       "date": "2026-06-28",
@@ -17496,7 +18466,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.6,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9633679342983069,
+      "open_interest": 4406.1785199999995
     },
     {
       "date": "2026-06-28",
@@ -17532,7 +18504,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 2579.242557
     },
     {
       "date": "2026-06-28",
@@ -17568,7 +18542,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9068483144297024,
+      "open_interest": 3440.6449359999997
     },
     {
       "date": "2026-06-28",
@@ -17604,7 +18580,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9912,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 2722.4531530000004
     },
     {
       "date": "2026-06-28",
@@ -17640,7 +18618,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9686168151879117,
+      "open_interest": 6143.0950809999995
     },
     {
       "date": "2026-06-28",
@@ -17676,7 +18656,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.1,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 3848.9166900000005
     },
     {
       "date": "2026-06-28",
@@ -17712,7 +18694,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.4,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9750390015600624,
+      "open_interest": 9263.983876999999
     },
     {
       "date": "2026-06-28",
@@ -17748,7 +18732,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9928268261808434,
+      "open_interest": 6598.324742
     },
     {
       "date": "2026-06-28",
@@ -17784,7 +18770,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 5494.690539
     },
     {
       "date": "2026-06-28",
@@ -17820,7 +18808,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8824372917999515,
+      "open_interest": 6058.612486999999
     },
     {
       "date": "2026-06-27",
@@ -17856,7 +18846,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9794079478954972,
+      "open_interest": 14368.618213999998
     },
     {
       "date": "2026-06-27",
@@ -17892,7 +18884,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -2.5,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9993753903810119,
+      "open_interest": 14957.032511
     },
     {
       "date": "2026-06-27",
@@ -17928,7 +18922,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9910557221079755,
+      "open_interest": 17536.873676999996
     },
     {
       "date": "2026-06-27",
@@ -17964,7 +18960,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9951238929246691,
+      "open_interest": 31793.478988999996
     },
     {
       "date": "2026-06-27",
@@ -18000,7 +18998,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9936406995230525,
+      "open_interest": 9139.893987
     },
     {
       "date": "2026-06-27",
@@ -18036,7 +19036,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.934382956854867,
+      "open_interest": 9359.385137000001
     },
     {
       "date": "2026-06-27",
@@ -18072,7 +19074,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.8,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8003199679231757,
+      "open_interest": 25624.014278
     },
     {
       "date": "2026-06-27",
@@ -18108,7 +19112,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.2,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8250414944306605,
+      "open_interest": 24914.324091000002
     },
     {
       "date": "2026-06-27",
@@ -18144,7 +19150,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8025579125789717,
+      "open_interest": 12914.191919
     },
     {
       "date": "2026-06-27",
@@ -18180,7 +19188,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 34656.381987
     },
     {
       "date": "2026-06-27",
@@ -18216,7 +19226,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 20505.666755000002
     },
     {
       "date": "2026-06-27",
@@ -18252,7 +19264,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 1.76,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8003199679231757,
+      "open_interest": 43793.049086
     },
     {
       "date": "2026-06-27",
@@ -18288,7 +19302,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.9,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 37033.941421
     },
     {
       "date": "2026-06-27",
@@ -18324,7 +19340,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 24692.121291
     },
     {
       "date": "2026-06-27",
@@ -18360,7 +19378,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.9,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.8003199679231757,
+      "open_interest": 22255.653281000006
     },
     {
       "date": "2026-06-27",
@@ -18396,7 +19416,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 88920.399429
     },
     {
       "date": "2026-06-27",
@@ -18432,7 +19454,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 21210.65056
     },
     {
       "date": "2026-06-27",
@@ -18468,7 +19492,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.1,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 8599.006406
     },
     {
       "date": "2026-06-27",
@@ -18504,7 +19530,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8003199679231757,
+      "open_interest": 14544.187115
     },
     {
       "date": "2026-06-27",
@@ -18540,7 +19568,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18576,7 +19606,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18612,7 +19644,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.0998,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18648,7 +19682,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 9.9954,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18684,7 +19720,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18720,7 +19758,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -2.6,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18756,7 +19796,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18792,7 +19834,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-27",
@@ -18828,7 +19872,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-26",
@@ -18864,7 +19910,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.3,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9148921570869833,
+      "open_interest": 9981.342169
     },
     {
       "date": "2026-06-26",
@@ -18900,7 +19948,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 9491.722362999999
     },
     {
       "date": "2026-06-26",
@@ -18936,7 +19986,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.4,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9900990099009901,
+      "open_interest": 19315.034576
     },
     {
       "date": "2026-06-26",
@@ -18972,7 +20024,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9957927755234136,
+      "open_interest": 12012.489905
     },
     {
       "date": "2026-06-26",
@@ -19008,7 +20062,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.3991,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9846153846153846,
+      "open_interest": 23986.345216
     },
     {
       "date": "2026-06-26",
@@ -19044,7 +20100,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.1,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 21956.907846000002
     },
     {
       "date": "2026-06-25",
@@ -19080,7 +20138,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9719117504130625,
+      "open_interest": 12930.033410999999
     },
     {
       "date": "2026-06-25",
@@ -19116,7 +20176,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9476651898884124,
+      "open_interest": 19161.324404
     },
     {
       "date": "2026-06-25",
@@ -19152,7 +20214,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.4,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9558173433056943,
+      "open_interest": 68147.78648400001
     },
     {
       "date": "2026-06-25",
@@ -19188,7 +20252,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0959,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9979790923380155,
+      "open_interest": 8190.843498000001
     },
     {
       "date": "2026-06-25",
@@ -19224,7 +20290,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9411764705882353,
+      "open_interest": 6879.3089899999995
     },
     {
       "date": "2026-06-25",
@@ -19260,7 +20328,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9224241306152569,
+      "open_interest": 29202.841395000003
     },
     {
       "date": "2026-06-25",
@@ -19296,7 +20366,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9969841230278408,
+      "open_interest": 19634.306624999997
     },
     {
       "date": "2026-06-25",
@@ -19332,7 +20404,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9999750006249843,
+      "open_interest": 14360.954875
     },
     {
       "date": "2026-06-25",
@@ -19368,7 +20442,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.4,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9518143961927424,
+      "open_interest": 22827.014474000003
     },
     {
       "date": "2026-06-25",
@@ -19404,7 +20480,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 8871.483954
     },
     {
       "date": "2026-06-25",
@@ -19440,7 +20518,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9997750506136119,
+      "open_interest": 9628.815928
     },
     {
       "date": "2026-06-25",
@@ -19476,7 +20556,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -1.7712,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9821012055292297,
+      "open_interest": 6674.203844
     },
     {
       "date": "2026-06-25",
@@ -19512,7 +20594,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 2.1277,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9987764987889834,
+      "open_interest": 9684.298143999999
     },
     {
       "date": "2026-06-25",
@@ -19548,7 +20632,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9944064636420137,
+      "open_interest": 5027.161164
     },
     {
       "date": "2026-06-25",
@@ -19584,7 +20670,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.8,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9890952251428006,
+      "open_interest": 13034.717349
     },
     {
       "date": "2026-06-25",
@@ -19620,7 +20708,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.9,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9765386587241522,
+      "open_interest": 17361.747197999997
     },
     {
       "date": "2026-06-25",
@@ -19656,7 +20746,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.4,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9558173433056943,
+      "open_interest": 8523.593759999998
     },
     {
       "date": "2026-06-25",
@@ -19692,7 +20784,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9702850212249848,
+      "open_interest": 17479.386043
     },
     {
       "date": "2026-06-25",
@@ -19728,7 +20822,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 13310.162107000002
     },
     {
       "date": "2026-06-25",
@@ -19764,7 +20860,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.8035160254240507,
+      "open_interest": 33436.385274
     },
     {
       "date": "2026-06-25",
@@ -19800,7 +20898,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.1,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9497578117580017,
+      "open_interest": 12858.717810999999
     },
     {
       "date": "2026-06-25",
@@ -19836,7 +20936,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": false
+      "on_edge": false,
+      "competitive": 0.9296920395119117,
+      "open_interest": 32046.980177999994
     },
     {
       "date": "2026-06-25",
@@ -19872,7 +20974,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.6,
       "spread": null,
-      "on_edge": true
+      "on_edge": true,
+      "competitive": 0.9123255177447313,
+      "open_interest": 55509.129501
     },
     {
       "date": "2026-06-24",
@@ -19908,7 +21012,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.9,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -19944,7 +21050,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.6,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -19980,7 +21088,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20016,7 +21126,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20052,7 +21164,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -3.4,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20088,7 +21202,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20124,7 +21240,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20160,7 +21278,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.4992,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-24",
@@ -20196,7 +21316,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0004,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20232,7 +21354,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20268,7 +21392,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20304,7 +21430,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -5.2,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20340,7 +21468,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.55,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20376,7 +21506,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.6,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-23",
@@ -20412,7 +21544,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-19",
@@ -20448,7 +21582,9 @@
       "shares_over_target": null,
       "outcome_value_usd": 10.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     },
     {
       "date": "2026-06-19",
@@ -20484,7 +21620,9 @@
       "shares_over_target": null,
       "outcome_value_usd": -4.0,
       "spread": null,
-      "on_edge": null
+      "on_edge": null,
+      "competitive": null,
+      "open_interest": null
     }
   ],
   "summary": {
@@ -23170,6 +24308,333 @@
         "total_pnl_usd": 4.81,
         "avg_outcome_value_usd": 2.27,
         "total_outcome_value_usd": 59.15
+      }
+    },
+    "summary_by_competitive_band": {
+      "0.80\u20130.82": {
+        "count": 25,
+        "wins": 12,
+        "sold_wins": 0,
+        "sold_loses": 0,
+        "win_plus_sold_win": 12,
+        "settled": 25,
+        "win_rate_pct": 48.0,
+        "win_plus_sold_win_pct": 48.0,
+        "avg_buy_usd": 4.7,
+        "avg_buy_price": 0.513,
+        "avg_spread": 0.1328,
+        "avg_pnl_usd": 0.1,
+        "total_pnl_usd": 2.47,
+        "avg_outcome_value_usd": 2.47,
+        "total_outcome_value_usd": 61.64
+      },
+      "0.82\u20130.84": {
+        "count": 14,
+        "wins": 3,
+        "sold_wins": 1,
+        "sold_loses": 1,
+        "win_plus_sold_win": 4,
+        "settled": 14,
+        "win_rate_pct": 21.4,
+        "win_plus_sold_win_pct": 28.6,
+        "avg_buy_usd": 5.31,
+        "avg_buy_price": 0.462,
+        "avg_spread": 0.1804,
+        "avg_pnl_usd": -0.12,
+        "total_pnl_usd": -1.61,
+        "avg_outcome_value_usd": 2.78,
+        "total_outcome_value_usd": 38.88
+      },
+      "0.84\u20130.86": {
+        "count": 19,
+        "wins": 5,
+        "sold_wins": 4,
+        "sold_loses": 1,
+        "win_plus_sold_win": 9,
+        "settled": 19,
+        "win_rate_pct": 26.3,
+        "win_plus_sold_win_pct": 47.4,
+        "avg_buy_usd": 5.39,
+        "avg_buy_price": 0.489,
+        "avg_spread": 0.1594,
+        "avg_pnl_usd": -0.37,
+        "total_pnl_usd": -7.06,
+        "avg_outcome_value_usd": 3.29,
+        "total_outcome_value_usd": 62.5
+      },
+      "0.86\u20130.88": {
+        "count": 18,
+        "wins": 1,
+        "sold_wins": 3,
+        "sold_loses": 2,
+        "win_plus_sold_win": 4,
+        "settled": 18,
+        "win_rate_pct": 5.6,
+        "win_plus_sold_win_pct": 22.2,
+        "avg_buy_usd": 4.65,
+        "avg_buy_price": 0.457,
+        "avg_spread": 0.0945,
+        "avg_pnl_usd": -0.74,
+        "total_pnl_usd": -13.39,
+        "avg_outcome_value_usd": 1.86,
+        "total_outcome_value_usd": 33.4
+      },
+      "0.88\u20130.90": {
+        "count": 17,
+        "wins": 2,
+        "sold_wins": 1,
+        "sold_loses": 1,
+        "win_plus_sold_win": 4,
+        "settled": 17,
+        "win_rate_pct": 11.8,
+        "win_plus_sold_win_pct": 23.5,
+        "avg_buy_usd": 4.48,
+        "avg_buy_price": 0.434,
+        "avg_spread": 0.1243,
+        "avg_pnl_usd": -0.03,
+        "total_pnl_usd": -0.47,
+        "avg_outcome_value_usd": 2.38,
+        "total_outcome_value_usd": 40.48
+      },
+      "0.90\u20130.92": {
+        "count": 28,
+        "wins": 4,
+        "sold_wins": 6,
+        "sold_loses": 2,
+        "win_plus_sold_win": 10,
+        "settled": 28,
+        "win_rate_pct": 14.3,
+        "win_plus_sold_win_pct": 35.7,
+        "avg_buy_usd": 5.18,
+        "avg_buy_price": 0.49,
+        "avg_spread": 0.1075,
+        "avg_pnl_usd": -0.65,
+        "total_pnl_usd": -18.21,
+        "avg_outcome_value_usd": 2.03,
+        "total_outcome_value_usd": 56.79
+      },
+      "0.92\u20130.94": {
+        "count": 45,
+        "wins": 9,
+        "sold_wins": 11,
+        "sold_loses": 1,
+        "win_plus_sold_win": 20,
+        "settled": 45,
+        "win_rate_pct": 20.0,
+        "win_plus_sold_win_pct": 44.4,
+        "avg_buy_usd": 4.7,
+        "avg_buy_price": 0.473,
+        "avg_spread": 0.1075,
+        "avg_pnl_usd": -0.39,
+        "total_pnl_usd": -17.39,
+        "avg_outcome_value_usd": 2.09,
+        "total_outcome_value_usd": 94.01
+      },
+      "0.94\u20130.96": {
+        "count": 70,
+        "wins": 17,
+        "sold_wins": 9,
+        "sold_loses": 3,
+        "win_plus_sold_win": 28,
+        "settled": 69,
+        "win_rate_pct": 24.6,
+        "win_plus_sold_win_pct": 40.6,
+        "avg_buy_usd": 4.73,
+        "avg_buy_price": 0.462,
+        "avg_spread": 0.1154,
+        "avg_pnl_usd": -0.31,
+        "total_pnl_usd": -21.64,
+        "avg_outcome_value_usd": 2.5,
+        "total_outcome_value_usd": 172.66
+      },
+      "0.96\u20130.98": {
+        "count": 119,
+        "wins": 28,
+        "sold_wins": 21,
+        "sold_loses": 16,
+        "win_plus_sold_win": 50,
+        "settled": 118,
+        "win_rate_pct": 23.7,
+        "win_plus_sold_win_pct": 42.4,
+        "avg_buy_usd": 5.23,
+        "avg_buy_price": 0.483,
+        "avg_spread": 0.1072,
+        "avg_pnl_usd": -0.41,
+        "total_pnl_usd": -49.06,
+        "avg_outcome_value_usd": 2.89,
+        "total_outcome_value_usd": 341.56
+      },
+      "0.98\u20131.00": {
+        "count": 188,
+        "wins": 58,
+        "sold_wins": 26,
+        "sold_loses": 9,
+        "win_plus_sold_win": 85,
+        "settled": 185,
+        "win_rate_pct": 31.4,
+        "win_plus_sold_win_pct": 45.9,
+        "avg_buy_usd": 5.2,
+        "avg_buy_price": 0.506,
+        "avg_spread": 0.0907,
+        "avg_pnl_usd": -0.23,
+        "total_pnl_usd": -43.25,
+        "avg_outcome_value_usd": 2.84,
+        "total_outcome_value_usd": 525.29
+      },
+      "unknown": {
+        "count": 26,
+        "wins": 12,
+        "sold_wins": 0,
+        "sold_loses": 0,
+        "win_plus_sold_win": 12,
+        "settled": 26,
+        "win_rate_pct": 46.2,
+        "win_plus_sold_win_pct": 46.2,
+        "avg_buy_usd": 4.43,
+        "avg_buy_price": 0.443,
+        "avg_spread": 0.0,
+        "avg_pnl_usd": 0.18,
+        "total_pnl_usd": 4.81,
+        "avg_outcome_value_usd": 2.27,
+        "total_outcome_value_usd": 59.15
+      }
+    },
+    "summary_by_open_interest_band": {
+      "0\u20135000": {
+        "count": 96,
+        "wins": 29,
+        "sold_wins": 13,
+        "sold_loses": 4,
+        "win_plus_sold_win": 44,
+        "settled": 96,
+        "win_rate_pct": 30.2,
+        "win_plus_sold_win_pct": 45.8,
+        "avg_buy_usd": 4.94,
+        "avg_buy_price": 0.488,
+        "avg_spread": 0.1194,
+        "avg_pnl_usd": 0.06,
+        "total_pnl_usd": 5.46,
+        "avg_outcome_value_usd": 2.95,
+        "total_outcome_value_usd": 283.47
+      },
+      "10000\u201315000": {
+        "count": 118,
+        "wins": 23,
+        "sold_wins": 24,
+        "sold_loses": 11,
+        "win_plus_sold_win": 48,
+        "settled": 116,
+        "win_rate_pct": 19.8,
+        "win_plus_sold_win_pct": 41.4,
+        "avg_buy_usd": 5.22,
+        "avg_buy_price": 0.484,
+        "avg_spread": 0.0842,
+        "avg_pnl_usd": -0.39,
+        "total_pnl_usd": -46.27,
+        "avg_outcome_value_usd": 2.81,
+        "total_outcome_value_usd": 326.32
+      },
+      "15000\u201320000": {
+        "count": 45,
+        "wins": 13,
+        "sold_wins": 9,
+        "sold_loses": 1,
+        "win_plus_sold_win": 22,
+        "settled": 45,
+        "win_rate_pct": 28.9,
+        "win_plus_sold_win_pct": 48.9,
+        "avg_buy_usd": 5.29,
+        "avg_buy_price": 0.483,
+        "avg_spread": 0.0733,
+        "avg_pnl_usd": 0.52,
+        "total_pnl_usd": 23.45,
+        "avg_outcome_value_usd": 3.56,
+        "total_outcome_value_usd": 160.28
+      },
+      "20000\u201325000": {
+        "count": 17,
+        "wins": 6,
+        "sold_wins": 1,
+        "sold_loses": 0,
+        "win_plus_sold_win": 7,
+        "settled": 17,
+        "win_rate_pct": 35.3,
+        "win_plus_sold_win_pct": 41.2,
+        "avg_buy_usd": 4.81,
+        "avg_buy_price": 0.496,
+        "avg_spread": 0.0737,
+        "avg_pnl_usd": -0.86,
+        "total_pnl_usd": -14.7,
+        "avg_outcome_value_usd": 1.79,
+        "total_outcome_value_usd": 30.5
+      },
+      "25000\u201330000": {
+        "count": 7,
+        "wins": 2,
+        "sold_wins": 0,
+        "sold_loses": 0,
+        "win_plus_sold_win": 2,
+        "settled": 7,
+        "win_rate_pct": 28.6,
+        "win_plus_sold_win_pct": 28.6,
+        "avg_buy_usd": 4.99,
+        "avg_buy_price": 0.499,
+        "avg_spread": 0.0567,
+        "avg_pnl_usd": -0.7,
+        "total_pnl_usd": -4.92,
+        "avg_outcome_value_usd": 1.46,
+        "total_outcome_value_usd": 10.19
+      },
+      "5000\u201310000": {
+        "count": 249,
+        "wins": 59,
+        "sold_wins": 35,
+        "sold_loses": 20,
+        "win_plus_sold_win": 96,
+        "settled": 246,
+        "win_rate_pct": 24.0,
+        "win_plus_sold_win_pct": 39.0,
+        "avg_buy_usd": 4.99,
+        "avg_buy_price": 0.484,
+        "avg_spread": 0.1217,
+        "avg_pnl_usd": -0.6,
+        "total_pnl_usd": -150.33,
+        "avg_outcome_value_usd": 2.28,
+        "total_outcome_value_usd": 560.49
+      },
+      "unknown": {
+        "count": 26,
+        "wins": 12,
+        "sold_wins": 0,
+        "sold_loses": 0,
+        "win_plus_sold_win": 12,
+        "settled": 26,
+        "win_rate_pct": 46.2,
+        "win_plus_sold_win_pct": 46.2,
+        "avg_buy_usd": 4.43,
+        "avg_buy_price": 0.443,
+        "avg_spread": 0.0,
+        "avg_pnl_usd": 0.18,
+        "total_pnl_usd": 4.81,
+        "avg_outcome_value_usd": 2.27,
+        "total_outcome_value_usd": 59.15
+      },
+      "\u226530000": {
+        "count": 11,
+        "wins": 7,
+        "sold_wins": 0,
+        "sold_loses": 0,
+        "win_plus_sold_win": 7,
+        "settled": 11,
+        "win_rate_pct": 63.6,
+        "win_plus_sold_win_pct": 63.6,
+        "avg_buy_usd": 4.83,
+        "avg_buy_price": 0.528,
+        "avg_spread": 0.0725,
+        "avg_pnl_usd": 1.61,
+        "total_pnl_usd": 17.69,
+        "avg_outcome_value_usd": 5.09,
+        "total_outcome_value_usd": 55.96
       }
     },
     "summary_by_city_timezone": {
