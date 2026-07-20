@@ -1,0 +1,147 @@
+{
+  "run_at": "2026-07-20T19:06:22.593240+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "719615",
+      "city": "Chicago",
+      "market_id": "2979220",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.42,
+      "yes_token_id": "63003915326857248953920970815299228928799205438169122327015322017816581354896",
+      "buy_price": 0.45,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.42,
+      "selection_price": 0.42,
+      "gamma_yes_price": 0.415,
+      "best_bid": 0.39,
+      "best_ask": 0.45,
+      "spread": 0.06,
+      "clob_buy_price": 0.45,
+      "last_trade_price": 0.42,
+      "midpoint": 0.42,
+      "outcomePrices": [
+        0.415,
+        0.585
+      ],
+      "competitive": 0.9928268261808434,
+      "event_slug": "highest-temperature-in-chicago-on-july-20-2026",
+      "open_interest": 25996.838623,
+      "order_status": "live",
+      "order_id": "0x65f9ab5f7410bb351f54a358157f8ea4fe948b2bf27ee8f5380c668a779cb8e9",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-20T19:31:21+00:00"
+    },
+    {
+      "event_id": "719618",
+      "city": "Houston",
+      "market_id": "2979258",
+      "groupItemTitle": "96-97\u00b0F",
+      "yes_price": 0.565,
+      "yes_token_id": "48182237776160368558907315468644460433379477732557432304278045899952408293155",
+      "buy_price": 0.62,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.565,
+      "selection_price": 0.565,
+      "gamma_yes_price": 0.565,
+      "best_bid": 0.51,
+      "best_ask": 0.62,
+      "spread": 0.11,
+      "clob_buy_price": 0.62,
+      "last_trade_price": 0.58,
+      "midpoint": 0.565,
+      "outcomePrices": [
+        0.565,
+        0.435
+      ],
+      "competitive": 0.9957927755234136,
+      "event_slug": "highest-temperature-in-houston-on-july-20-2026",
+      "open_interest": 11299.558478,
+      "order_status": "live",
+      "order_id": "0xbcb72491d7f97a3578bdd1e8ef55c7bbff8958656a869540d96d985c4698b36c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-20T19:31:22+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "719611",
+      "city": "NYC",
+      "market_id": "2979180",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.64,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719612",
+      "city": "Dallas",
+      "market_id": "2979188",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719613",
+      "city": "Atlanta",
+      "market_id": "2979202",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.685,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719614",
+      "city": "Miami",
+      "market_id": "2979213",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719616",
+      "city": "Austin",
+      "market_id": "2979235",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.685,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719622",
+      "city": "Panama City",
+      "market_id": "2979300",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719609",
+      "city": "Toronto",
+      "market_id": "2979155",
+      "group_item_title": "27\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2979155",
+      "held_group_item_title": "27\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
