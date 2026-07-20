@@ -438,6 +438,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "105316854983835390827668716675249383869345514054806429685931514782849603063036"
     },
+    "highest-temperature-in-buenos-aires-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Buenos Aires on July 19?",
+      "winning_temp": "13\u00b0C",
+      "winning_token_id": "26862811081734583666902173308656090661405170944909978592847114613643485130725"
+    },
     "highest-temperature-in-buenos-aires-on-july-2-2026": {
       "closed": true,
       "title": "Highest temperature in Buenos Aires on July 2?",
@@ -1776,6 +1782,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "22069278011713705251948470227035691729559193436627744683695880401007176416730"
     },
+    "highest-temperature-in-miami-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on July 19?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "109440858725784710320096113383430166837015285826521558074648021600980387447430"
+    },
     "highest-temperature-in-miami-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on July 3?",
@@ -2105,6 +2117,12 @@
       "title": "Highest temperature in NYC on July 17?",
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "48757701536034768014364062950870399413483974744561334339403144448302854105404"
+    },
+    "highest-temperature-in-nyc-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 19?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "65410162339794344016721136563388221743593723774993444924030109637244376678749"
     },
     "highest-temperature-in-nyc-on-july-2-2026": {
       "closed": true,
@@ -2885,6 +2903,12 @@
       "title": "Highest temperature in Toronto on July 17?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "1086833835814572104340904140563406263583897601283792415689662709958229576019"
+    },
+    "highest-temperature-in-toronto-on-july-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 19?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "94351439167229315916600098485597904443598546713865421765005747568286632672120"
     },
     "highest-temperature-in-toronto-on-july-3-2026": {
       "closed": true,
