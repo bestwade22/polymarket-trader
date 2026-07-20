@@ -1,0 +1,150 @@
+{
+  "run_at": "2026-07-20T12:36:41.876408+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "716241",
+      "city": "Moscow",
+      "market_id": "2968920",
+      "groupItemTitle": "27\u00b0C",
+      "yes_price": 0.42,
+      "yes_token_id": "84567678258892688847309498322864514015319261412715379844554222768685931389601",
+      "buy_price": 0.44,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.42,
+      "selection_price": 0.42,
+      "gamma_yes_price": 0.56,
+      "best_bid": 0.4,
+      "best_ask": 0.44,
+      "spread": 0.04,
+      "clob_buy_price": 0.44,
+      "last_trade_price": 0.6,
+      "midpoint": 0.42,
+      "outcomePrices": [
+        0.56,
+        0.44
+      ],
+      "order_status": "live",
+      "order_id": "0x7d588f0e89a2862fef8d62a3c86a22555cf236faa730351521df0d5e8903b2ea",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-20T13:01:41+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "716222",
+      "city": "Paris",
+      "market_id": "2968705",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716224",
+      "city": "Ankara",
+      "market_id": "2968730",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716227",
+      "city": "Tel Aviv",
+      "market_id": "2968760",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716232",
+      "city": "Milan",
+      "market_id": "2968825",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.725,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716233",
+      "city": "Madrid",
+      "market_id": "2968832",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716234",
+      "city": "Warsaw",
+      "market_id": "2968844",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716242",
+      "city": "Istanbul",
+      "market_id": "2968932",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716244",
+      "city": "Amsterdam",
+      "market_id": "2968953",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716245",
+      "city": "Helsinki",
+      "market_id": "2968965",
+      "group_item_title": "21\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716247",
+      "city": "Jeddah",
+      "market_id": "2968993",
+      "group_item_title": "40\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716394",
+      "city": "Cape Town",
+      "market_id": "2969799",
+      "group_item_title": "17\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "716226",
+      "city": "Munich",
+      "market_id": "2968753",
+      "group_item_title": "23\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.15
+    }
+  ]
+}
