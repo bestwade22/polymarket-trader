@@ -6854,5 +6854,21 @@
     "floor_price": 0.95,
     "current_mid": 0.51,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x6e14f0a849effaf099c5fc95febff1abad26c73d8dc0d7792c2cd0788e3354ca",
+    "token_id": "16472945368837389260971428203039321205279008303910667433324076612754630433564",
+    "order_id": "0x249cc1435771a607b71e9b3641aeaedb85ba10d9f480e0947837f960ae3df700",
+    "sold_at": "2026-07-20T12:00:10.537873+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-helsinki-on-july-20-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.41,
+    "reason": "tier1"
   }
 ]
