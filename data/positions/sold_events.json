@@ -6742,5 +6742,37 @@
     "floor_price": 0.97,
     "current_mid": 0.295,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xb58e5ebc2b614cd13a5e7885b5bebaecf04e8b0349f2016fdc3326cbfc5dd85c",
+    "token_id": "64993442312317548217422865409789744549451677669476079611584376566256879113884",
+    "order_id": "0x7ca36665081576d4482978aa04b10872844e2ed8b1bd1fdcc9b2145cf0a3febe",
+    "sold_at": "2026-07-20T00:00:11.553090+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seattle-on-july-19-2026",
+    "price": 0.97,
+    "size": 10.0,
+    "avg_buy_price": 0.48,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.925,
+    "reason": "tier3"
+  },
+  {
+    "market_id": "0x676e1eeaf312ec837069395683677255641cf2b4e2e0ed6d7705ec8023bebc5b",
+    "token_id": "77990771661537105378040523002826632877511004815174153322008853183250979767093",
+    "order_id": "0x3a4f55460c04f66d615360df4ac88f04b98f2f368e475b9d4f693e396298779c",
+    "sold_at": "2026-07-20T00:00:12.670680+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-san-francisco-on-july-19-2026",
+    "price": 0.97,
+    "size": 9.9912,
+    "avg_buy_price": 0.51,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.2265,
+    "reason": "tier3"
   }
 ]
