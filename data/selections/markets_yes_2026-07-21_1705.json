@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-07-21T17:05:46.711102+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "723575",
+      "city": "Sao Paulo",
+      "market_id": "2995340",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    }
+  ]
+}
