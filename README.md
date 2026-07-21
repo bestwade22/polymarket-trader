@@ -187,7 +187,9 @@ Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp
 
 **Dashboard:** https://bestwade22.github.io/polymarket-trader/web/
 
-Local preview: `python3 -m http.server 8080` from repo root → http://localhost:8080/web/
+**Simulator:** https://bestwade22.github.io/polymarket-trader/web/simulator.html
+
+Local preview: `python3 -m http.server 8080` from repo root → http://localhost:8080/web/ (simulator: http://localhost:8080/web/simulator.html)
 
 **GitHub Pages setup (one-time, if the URL 404s):** Settings → Pages → Build and deployment → **Source: Deploy from a branch** → branch **gh-pages** → folder **/ (root)**. The workflow pushes site files to `gh-pages` on each run (no PAT required).
 
@@ -217,7 +219,9 @@ python -m src.main simulate-trades --strategy highest_yes --yes-price-max 0.55 -
 
 **Output:** `data/analysis/sim_trade_history.json`
 
-**Dashboard:** `web/simulator.html` (nav link from History). Local: http://localhost:8080/web/simulator.html
+**Dashboard:** https://bestwade22.github.io/polymarket-trader/web/simulator.html (also linked from History). Local: http://localhost:8080/web/simulator.html
+
+GitHub Pages deploys `web/` plus `sim_trade_history.json` / `trade_history.json` / `resolutions_cache.json` on each push to `main` that touches those paths.
 
 **Assumptions / limits:**
 - Fills are 100% at historical Yes % (optimistic vs live book).

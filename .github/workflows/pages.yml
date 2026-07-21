@@ -29,10 +29,12 @@ jobs:
           mkdir -p _site/web _site/data/analysis
           cp -r web/. _site/web/
           cp data/analysis/trade_history.json _site/data/analysis/
+          cp data/analysis/sim_trade_history.json _site/data/analysis/
+          cp data/analysis/resolutions_cache.json _site/data/analysis/
           printf '%s\n' \
             '<!DOCTYPE html>' \
             '<meta http-equiv="refresh" content="0; url=web/">' \
-            '<a href="web/">Trade history dashboard</a>' \
+            '<p><a href="web/">Trade history</a> · <a href="web/simulator.html">Simulator</a></p>' \
             > _site/index.html
 
       - name: Deploy to gh-pages branch
@@ -44,5 +46,6 @@ jobs:
 
       - name: Pages URL
         run: |
-          echo "::notice title=Dashboard URL::https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/web/"
+          echo "::notice title=History dashboard::https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/web/"
+          echo "::notice title=Simulator dashboard::https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/web/simulator.html"
           echo "::notice title=One-time setup (if site 404)::Settings → Pages → Build and deployment → Source: Deploy from branch → gh-pages / (root)"
