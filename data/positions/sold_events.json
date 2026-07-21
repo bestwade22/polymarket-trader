@@ -7462,5 +7462,37 @@
     "floor_price": 0.95,
     "current_mid": 0.18,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x3b23502531a42b20f5449b04c285626b157c77bc6d9d7ff8ab19dfe794cb10b7",
+    "token_id": "109784962467496394905030081474449736158371906184869892162701778315828959045297",
+    "order_id": "0x9cbe123653c069c2253bb7f98246753b1aeab452029fbfc8b49e72b1be3baca3",
+    "sold_at": "2026-07-21T20:00:10.608031+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-miami-on-july-21-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.865,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xe7198833d34a939bea36023dda1526840332d415b0fbba7e677ddea5aabef73a",
+    "token_id": "656170848660278655144928509619156314427173951577376819157341759506429194763",
+    "order_id": "0x960e3b7fe863deb9264569f7861a4954cf7365a92eac80067f50bc1b152382da",
+    "sold_at": "2026-07-21T20:00:11.558633+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-july-21-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.51,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.395,
+    "reason": "tier1"
   }
 ]
