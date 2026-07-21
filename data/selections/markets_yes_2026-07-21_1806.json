@@ -1,0 +1,90 @@
+{
+  "run_at": "2026-07-21T18:06:07.041431+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "723576",
+      "city": "Buenos Aires",
+      "market_id": "2995362",
+      "groupItemTitle": "12\u00b0C",
+      "yes_price": 0.495,
+      "yes_token_id": "84227963105452855761679611340561783285342303549873086870909043376676123907602",
+      "buy_price": 0.54,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.495,
+      "selection_price": 0.495,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.45,
+      "best_ask": 0.54,
+      "spread": 0.09,
+      "clob_buy_price": 0.54,
+      "last_trade_price": 0.53,
+      "midpoint": 0.495,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "competitive": 0.9999750006249843,
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-21-2026",
+      "open_interest": 11765.899156,
+      "order_status": "live",
+      "order_id": "0x9c37bb8f7593cc889a86446dbe97e4afce02e5ab0dcb3389d4f8f0a227978e63",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-21T18:31:06+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "723575",
+      "city": "Sao Paulo",
+      "market_id": "2995340",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.986,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723593",
+      "city": "NYC",
+      "market_id": "2995398",
+      "group_item_title": "82-83\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.86,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723596",
+      "city": "Miami",
+      "market_id": "2995430",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.76,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723591",
+      "city": "Toronto",
+      "market_id": "2995371",
+      "group_item_title": "24\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.426,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "723595",
+      "city": "Atlanta",
+      "market_id": "2995420",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.3,
+      "spread_max": 0.15
+    }
+  ]
+}
