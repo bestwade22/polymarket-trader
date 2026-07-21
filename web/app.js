@@ -86,6 +86,10 @@ function countsInWinSummary(r) {
   return U.countsInWinSummary(r);
 }
 
+function countsInWinSummaryDenom(r) {
+  return U.countsInWinSummaryDenom(r);
+}
+
 function outcomeValue(r) {
   if (r.outcome_value_usd != null) return Number(r.outcome_value_usd);
   if (r.would_win_value_usd != null) return Number(r.would_win_value_usd);
@@ -360,8 +364,9 @@ function computeFilteredSummary(records) {
       s.outcome_count += 1;
     }
   }
-  const settled = s.win_count + s.loss_count + s.sold_count;
-  s.win_pct = settled ? Math.round((s.win_count / settled) * 1000) / 10 : 0;
+  const settledClassic = s.win_count + s.loss_count + s.sold_count;
+  const settled = records.filter(countsInWinSummaryDenom).length;
+  s.win_pct = settledClassic ? Math.round((s.win_count / settledClassic) * 1000) / 10 : 0;
   s.win_plus_sold_win_count = records.filter(countsInWinSummary).length;
   s.win_plus_sold_win_pct = settled
     ? Math.round((s.win_plus_sold_win_count / settled) * 1000) / 10
@@ -569,7 +574,7 @@ function groupInsightMetrics(records, keyFn) {
       stats.outcome_usd += outcome;
       stats.outcome_count += 1;
     }
-    if (rec.result === "win" || rec.result === "loss" || rec.result === "sold") {
+    if (countsInWinSummaryDenom(rec)) {
       stats.settled += 1;
     }
     if (rec.result === "win") stats.wins += 1;
