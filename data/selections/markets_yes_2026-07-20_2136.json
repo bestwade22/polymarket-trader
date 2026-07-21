@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-20T21:36:00.267411+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "719610",
+      "city": "Seattle",
+      "market_id": "2979168",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.355,
+      "yes_token_id": "69653186697593582231470540203474138046708915298030758005400536189806830745453",
+      "buy_price": 0.43,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.355,
+      "selection_price": 0.355,
+      "gamma_yes_price": 0.37,
+      "best_bid": 0.29,
+      "best_ask": 0.43,
+      "spread": 0.14,
+      "clob_buy_price": 0.43,
+      "last_trade_price": 0.4,
+      "midpoint": 0.355,
+      "outcomePrices": [
+        0.37,
+        0.63
+      ],
+      "competitive": 0.9833808634083981,
+      "event_slug": "highest-temperature-in-seattle-on-july-20-2026",
+      "open_interest": 20748.430194999997,
+      "order_status": "live",
+      "order_id": "0x91dc4ae79285a3a4bb8ec1bcfddc2844ef8eda61bc32b970a5a9a521e68c5e6c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-20T22:00:59+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "719617",
+      "city": "Denver",
+      "market_id": "2979246",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719619",
+      "city": "Los Angeles",
+      "market_id": "2979267",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.971,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719620",
+      "city": "San Francisco",
+      "market_id": "2979276",
+      "group_item_title": "68-69\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.87,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "719621",
+      "city": "Mexico City",
+      "market_id": "2979291",
+      "group_item_title": "27\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.88,
+      "yes_price_max": 0.6
+    }
+  ]
+}
