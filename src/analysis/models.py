@@ -138,6 +138,15 @@ def _is_pnl_inferred_win(rec: TradeRecord) -> bool:
     return pnl is not None and pnl >= 0
 
 
+def _is_unknown_pnl_inferred_lose(rec: TradeRecord) -> bool:
+    """Sold + unknown win vs bought + unknown/null P&L → lose. Opens ignored."""
+    if rec.result == "open":
+        return False
+    if rec.win_temp_vs_bought != "unknown":
+        return False
+    return _record_pnl_value(rec) is None
+
+
 def _counts_toward_win_summary(rec: TradeRecord) -> bool:
     """True win, sold win, would lose, or sold unknown+pnl+. Would win and sold lose count as losses."""
     if rec.result == "win":
@@ -145,6 +154,11 @@ def _counts_toward_win_summary(rec: TradeRecord) -> bool:
     if rec.result != "sold":
         return False
     return _is_sold_win(rec) or _is_sold_would_lose(rec) or _is_pnl_inferred_win(rec)
+
+
+def _counts_toward_win_summary_denom(rec: TradeRecord) -> bool:
+    """Denominator for win summary %: same as classic settled (ignores opens)."""
+    return rec.result in ("win", "loss", "sold")
 
 
 def recompute_sold_but_would_have_won(rec: TradeRecord) -> bool:
@@ -217,10 +231,13 @@ def summarize_records(records: list[TradeRecord]) -> TradeSummary:
             outcome_count += 1
 
     settled = summary.win_count + summary.loss_count + summary.sold_count
+    win_summary_denom = sum(1 for rec in records if _counts_toward_win_summary_denom(rec))
     summary.win_pct = round((summary.win_count / settled) * 100, 1) if settled else 0.0
     summary.win_plus_sold_win_count = sum(1 for rec in records if _counts_toward_win_summary(rec))
     summary.win_plus_sold_win_pct = (
-        round((summary.win_plus_sold_win_count / settled) * 100, 1) if settled else 0.0
+        round((summary.win_plus_sold_win_count / win_summary_denom) * 100, 1)
+        if win_summary_denom
+        else 0.0
     )
     summary.total_cost_basis_usd = round(summary.total_cost_basis_usd, 2)
     summary.avg_buy_usd = round(summary.total_cost_basis_usd / len(records), 2) if records else 0.0

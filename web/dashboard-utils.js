@@ -104,6 +104,14 @@ window.DashUtils = (function () {
     return pnl != null && pnl >= 0;
   }
 
+  function isUnknownPnlInferredLose(r) {
+    // Sold + unknown win vs bought + unknown/null P&L → lose in win summary.
+    // Opens are ignored (not in win-summary denom).
+    if (r.result === "open") return false;
+    if (effectiveVs(r) !== "unknown") return false;
+    return recordPnl(r) == null;
+  }
+
   function countsInWinSummary(r) {
     if (r.result === "win") return true;
     if (r.result !== "sold") return false;
@@ -111,21 +119,28 @@ window.DashUtils = (function () {
     return false;
   }
 
+  function countsInWinSummaryDenom(r) {
+    // Same as classic settled: ignore opens.
+    return r.result === "win" || r.result === "loss" || r.result === "sold";
+  }
+
   function computeWinSummaryParts(records) {
     let wins = 0;
     let soldWins = 0;
     let wouldLose = 0;
     let pnlInferred = 0;
+    let unknownLose = 0;
     for (const r of records) {
       if (r.result === "win") wins += 1;
       else if (r.result === "sold") {
         if (isSoldWin(r)) soldWins += 1;
         else if (isSoldWouldLose(r)) wouldLose += 1;
         else if (isPnlInferredWin(r)) pnlInferred += 1;
+        else if (isUnknownPnlInferredLose(r)) unknownLose += 1;
       }
     }
     const total = wins + soldWins + wouldLose + pnlInferred;
-    return { wins, soldWins, wouldLose, pnlInferred, total };
+    return { wins, soldWins, wouldLose, pnlInferred, unknownLose, total };
   }
 
   function winSummaryBreakdownLabel(parts) {
@@ -134,7 +149,11 @@ window.DashUtils = (function () {
     if (parts.soldWins) bits.push(`sold win ${parts.soldWins}`);
     if (parts.wouldLose) bits.push(`would lose ${parts.wouldLose}`);
     if (parts.pnlInferred) bits.push(`pnl+ ${parts.pnlInferred}`);
-    return bits.length ? bits.join(" + ") : "—";
+    const winBits = bits.length ? bits.join(" + ") : "0";
+    const loseNote = parts.unknownLose
+      ? ` · unknown/no-P&L as lose ${parts.unknownLose}`
+      : "";
+    return `${winBits}${loseNote}`;
   }
 
   function vsBoughtLabel(r) {
@@ -145,11 +164,13 @@ window.DashUtils = (function () {
       higher: `higher (${bought}→${won})`,
       lower: `lower (${bought}→${won})`,
       same: `same (${bought})`,
-      unknown: r._resolution_enriched ? "unknown" : "unknown",
+      unknown: "unknown",
     };
     let label = map[vs] || vs;
     if (vs === "unknown" && isPnlInferredWin(r)) {
       label += " (pnl+→win)";
+    } else if (isUnknownPnlInferredLose(r)) {
+      label += " (→lose)";
     }
     return label;
   }
@@ -219,7 +240,9 @@ window.DashUtils = (function () {
     isSoldWouldWin,
     isSoldWouldLose,
     isPnlInferredWin,
+    isUnknownPnlInferredLose,
     countsInWinSummary,
+    countsInWinSummaryDenom,
     computeWinSummaryParts,
     winSummaryBreakdownLabel,
     vsBoughtLabel,

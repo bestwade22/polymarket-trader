@@ -12,6 +12,7 @@ from config.settings import DATA_DIR
 from src.analysis.models import (
     TradeRecord,
     _counts_toward_win_summary,
+    _counts_toward_win_summary_denom,
     _is_sold_lose,
     _is_sold_win,
     _is_sold_would_lose,
@@ -224,6 +225,7 @@ def _group_metrics(
             "sold_loses": 0,
             "win_summary": 0,
             "settled": 0,
+            "win_summary_denom": 0,
             "pnl_usd": 0.0,
             "buy_usd": 0.0,
             "buy_price": 0.0,
@@ -256,6 +258,8 @@ def _group_metrics(
             stats["outcome_count"] += 1
         if rec.result in ("win", "loss", "sold"):
             stats["settled"] += 1
+        if _counts_toward_win_summary_denom(rec):
+            stats["win_summary_denom"] += 1
         if rec.result == "win":
             stats["wins"] += 1
         if _is_sold_win(rec):
@@ -271,6 +275,7 @@ def _group_metrics(
     for key, stats in grouped.items():
         count = int(stats["count"])
         settled = int(stats["settled"])
+        win_summary_denom = int(stats["win_summary_denom"])
         wins = int(stats["wins"])
         sold_wins = int(stats["sold_wins"])
         win_plus_sold = int(stats["win_summary"])
@@ -287,7 +292,9 @@ def _group_metrics(
             "win_plus_sold_win": win_plus_sold,
             "settled": settled,
             "win_rate_pct": round((wins / settled) * 100, 1) if settled else 0.0,
-            "win_plus_sold_win_pct": round((win_plus_sold / settled) * 100, 1) if settled else 0.0,
+            "win_plus_sold_win_pct": (
+                round((win_plus_sold / win_summary_denom) * 100, 1) if win_summary_denom else 0.0
+            ),
             "avg_buy_usd": round(buy_usd / count, 2) if count else 0.0,
             "avg_buy_price": round(buy_price / count, 3) if count else 0.0,
             "avg_spread": (

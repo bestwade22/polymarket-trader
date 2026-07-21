@@ -372,6 +372,31 @@ class TestSummary:
         summary = summarize_records([rec])
         assert summary.win_plus_sold_win_count == 1
 
+    def test_win_summary_ignores_opens(self):
+        from src.analysis.models import (
+            _counts_toward_win_summary,
+            _counts_toward_win_summary_denom,
+            _is_unknown_pnl_inferred_lose,
+        )
+
+        open_unknown = _sample_record(
+            result="open",
+            final_value_usd=None,
+            realized_pnl_usd=None,
+            winning_temp=None,
+            win_temp_vs_bought="unknown",
+            sold_at=None,
+        )
+        win = _sample_record(token_id="tok2", result="win", realized_pnl_usd=5.0)
+        assert not _is_unknown_pnl_inferred_lose(open_unknown)
+        assert not _counts_toward_win_summary(open_unknown)
+        assert not _counts_toward_win_summary_denom(open_unknown)
+        summary = summarize_records([open_unknown, win])
+        assert summary.win_plus_sold_win_count == 1
+        assert summary.win_plus_sold_win_pct == 100.0
+        assert summary.win_pct == 100.0
+        assert summary.open_count == 1
+
     def test_insights(self):
         rec = _sample_record(
             event_slug="slug",
