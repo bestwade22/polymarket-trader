@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-07-21T19:36:19.093969+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "723591",
+      "city": "Toronto",
+      "market_id": "2995371",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.7695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723593",
+      "city": "NYC",
+      "market_id": "2995398",
+      "group_item_title": "82-83\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.91,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723596",
+      "city": "Miami",
+      "market_id": "2995429",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723604",
+      "city": "Panama City",
+      "market_id": "2995520",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.865,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "723594",
+      "city": "Dallas",
+      "market_id": "2995407",
+      "group_item_title": "106-107\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "723595",
+      "city": "Atlanta",
+      "market_id": "2995420",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.33,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "723597",
+      "city": "Chicago",
+      "market_id": "2995439",
+      "group_item_title": "84-85\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.21,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "723598",
+      "city": "Austin",
+      "market_id": "2995453",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.47,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "723600",
+      "city": "Houston",
+      "market_id": "2995476",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.15
+    }
+  ]
+}
