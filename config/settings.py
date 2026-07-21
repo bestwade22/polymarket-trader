@@ -12,6 +12,9 @@ POSITIONS_DIR = DATA_DIR / "positions"
 ANALYSIS_DIR = DATA_DIR / "analysis"
 RESOLUTIONS_CACHE_FILE = ANALYSIS_DIR / "resolutions_cache.json"
 TRADE_HISTORY_FILE = ANALYSIS_DIR / "trade_history.json"
+SIM_TRADE_HISTORY_FILE = ANALYSIS_DIR / "sim_trade_history.json"
+SIMULATION_DIR = DATA_DIR / "simulation"
+SIM_PRICE_CACHE_DIR = SIMULATION_DIR / "price_cache"
 SYNC_STATE_FILE = ANALYSIS_DIR / "sync_state.json"
 LOGS_DIR = PROJECT_ROOT / "logs"
 TRADES_LOG_DIR = LOGS_DIR / "trades"
@@ -282,6 +285,8 @@ def ensure_dirs() -> None:
         SELECTIONS_DIR,
         POSITIONS_DIR,
         ANALYSIS_DIR,
+        SIMULATION_DIR,
+        SIM_PRICE_CACHE_DIR,
         LOGS_DIR,
         TRADES_LOG_DIR,
     ):

@@ -128,13 +128,23 @@ def _is_sold_would_lose(rec: TradeRecord) -> bool:
     return _win_temp_is_not_same(rec)
 
 
+def _is_pnl_inferred_win(rec: TradeRecord) -> bool:
+    """Sold + unknown win vs bought + P&L ≥ 0 counts toward win summary."""
+    if rec.result != "sold":
+        return False
+    if rec.win_temp_vs_bought != "unknown":
+        return False
+    pnl = _record_pnl_value(rec)
+    return pnl is not None and pnl >= 0
+
+
 def _counts_toward_win_summary(rec: TradeRecord) -> bool:
-    """True win, sold win, or would lose. Would win and sold lose count as losses."""
+    """True win, sold win, would lose, or sold unknown+pnl+. Would win and sold lose count as losses."""
     if rec.result == "win":
         return True
     if rec.result != "sold":
         return False
-    return _is_sold_win(rec) or _is_sold_would_lose(rec)
+    return _is_sold_win(rec) or _is_sold_would_lose(rec) or _is_pnl_inferred_win(rec)
 
 
 def recompute_sold_but_would_have_won(rec: TradeRecord) -> bool:

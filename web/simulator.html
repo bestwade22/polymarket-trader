@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Temp Market Trade History</title>
+  <title>Trade Strategy Simulator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="sim-dashboard">
   <header>
     <nav class="dash-nav">
-      <a href="index.html" class="active">History</a>
-      <a href="simulator.html">Simulator</a>
+      <a href="index.html">History</a>
+      <a href="simulator.html" class="active">Simulator</a>
     </nav>
-    <h1>Temperature Market Trade History</h1>
+    <h1>Trade Strategy Simulator</h1>
     <p id="sync-meta">Loading…</p>
   </header>
 
@@ -102,21 +102,19 @@
           <th data-sort="date">Date</th>
           <th data-sort="city">City</th>
           <th data-sort="bought_temp">Bought temp</th>
-          <th data-sort="trade_window">Trade window</th>
-          <th data-sort="bought_at_hk">Bought (HKT)</th>
-          <th data-sort="sold_at_hk">Sold (HKT)</th>
-          <th data-sort="bought_at_local">Bought (local)</th>
+          <th data-sort="local_times">Local times</th>
           <th data-sort="cost_basis_usd">Bought value</th>
           <th data-sort="shares">Shares</th>
           <th data-sort="buy_price">Buy $</th>
+          <th data-sort="gamma_proxy">Proxy</th>
           <th data-sort="spread">Spread</th>
-          <th data-sort="on_edge">Edge</th>
           <th data-sort="competitive">Competitive</th>
           <th data-sort="open_interest">Open interest</th>
           <th data-sort="result">Result</th>
           <th data-sort="final_value_usd">P&amp;L</th>
           <th data-sort="outcome_value_usd">Outcome value</th>
           <th data-sort="win_temp_vs_bought">Win vs bought</th>
+          <th data-sort="real_bought">Real bought</th>
           <th data-sort="sold_outcome">Sold outcome</th>
           <th data-sort="sell_value_pct">Sell %</th>
         </tr>
@@ -126,6 +124,6 @@
   </div>
 
   <script src="dashboard-utils.js"></script>
-  <script src="app.js"></script>
+  <script src="simulator.js"></script>
 </body>
 </html>

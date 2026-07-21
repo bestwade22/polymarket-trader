@@ -30,6 +30,37 @@ header {
 header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
 #sync-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
 
+.dash-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.dash-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.dash-nav a:hover { color: var(--text); }
+
+.dash-nav a.active {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom: 2px solid var(--open);
+  padding-bottom: 0.1rem;
+}
+
+.badge-proxy {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: #334155;
+  color: #fbbf24;
+  white-space: nowrap;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -232,3 +263,29 @@ table tbody tr:hover {
 
 a.event-link { color: var(--open); text-decoration: none; }
 a.event-link:hover { text-decoration: underline; }
+
+/* Simulator dashboard — light theme */
+body.sim-dashboard {
+  --bg: #eef1f6;
+  --surface: #ffffff;
+  --border: #d8dee9;
+  --text: #1e293b;
+  --muted: #64748b;
+  --win: #059669;
+  --loss: #dc2626;
+  --sold: #d97706;
+  --open: #2563eb;
+}
+
+body.sim-dashboard .insight-card {
+  background: #f8fafc;
+}
+
+body.sim-dashboard .badge-proxy {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+body.sim-dashboard .real-same { color: var(--win); font-weight: 600; }
+body.sim-dashboard .real-not { color: var(--muted); }
+body.sim-dashboard .real-other { color: var(--sold); font-weight: 600; }

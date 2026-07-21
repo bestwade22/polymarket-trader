@@ -9,3 +9,4 @@ data/events_*.json
 data/selections/*.json
 data/positions/bought_events.json
 data/stop_loss/
+data/simulation/

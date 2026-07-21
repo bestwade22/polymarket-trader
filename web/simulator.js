@@ -1,6 +1,7 @@
-/** Trade history dashboard — loads data/analysis/trade_history.json */
+/** Trade strategy simulator — loads data/analysis/sim_trade_history.json */
 
-const DATA_URL = new URL("../data/analysis/trade_history.json", window.location.href).href;
+const DATA_URL = new URL("../data/analysis/sim_trade_history.json", window.location.href).href;
+const REAL_TRADE_URL = new URL("../data/analysis/trade_history.json", window.location.href).href;
 const RESOLUTIONS_URL = new URL("../data/analysis/resolutions_cache.json", window.location.href).href;
 const TZ_URL = new URL("city_timezones.json", window.location.href).href;
 const U = window.DashUtils;
@@ -43,6 +44,7 @@ const TZ_LABELS = {
 
 let allRecords = [];
 let cityTimezones = {};
+let realTradesByEvent = {};
 let sortKey = "bought_at";
 let sortAsc = false;
 const insightSortState = {};
@@ -187,6 +189,13 @@ function vsBoughtLabel(r) {
   return U.vsBoughtLabel(r);
 }
 
+function realBoughtCell(r) {
+  const label = U.realBoughtLabel(r, realTradesByEvent);
+  if (label === "same") return '<span class="real-same">same</span>';
+  if (label === "not") return '<span class="real-not">not</span>';
+  return `<span class="real-other">${label}</span>`;
+}
+
 function soldOutcomeKey(r) {
   if (r.result !== "sold") return "";
   if (isSoldWouldWin(r)) return "would_win";
@@ -264,6 +273,14 @@ function sortRecords(records) {
     if (sortKey === "bought_at_local") {
       av = cityLocalMinutes(a.bought_at, a.city, a.bought_at_local) ?? "";
       bv = cityLocalMinutes(b.bought_at, b.city, b.bought_at_local) ?? "";
+    }
+    if (sortKey === "local_times") {
+      av = U.fmtBuySoldLocalTimes(a, cityTimezones);
+      bv = U.fmtBuySoldLocalTimes(b, cityTimezones);
+    }
+    if (sortKey === "real_bought") {
+      av = U.realBoughtLabel(a, realTradesByEvent);
+      bv = U.realBoughtLabel(b, realTradesByEvent);
     }
     if (sortKey === "sold_outcome") {
       av = soldOutcomeKey(a);
@@ -895,9 +912,7 @@ function renderTable(records) {
   body.innerHTML = records
     .map((r) => {
       const temp = extractTempLabel(r.bought_temp);
-      const hk = fmtHk(r.bought_at, r.bought_at_hk);
-      const soldHk = fmtHk(r.sold_at, r.sold_at_hk);
-      const local = fmtLocal(r.bought_at, r.city, r.bought_at_local);
+      const localTimes = U.fmtBuySoldLocalTimes(r, cityTimezones);
       const sharesCls = r.shares_over_target ? "shares-warn" : "";
       const sharesTitle = r.shares_over_target
         ? ` title="Over target ${r.share_count_target ?? 10}"`
@@ -908,21 +923,19 @@ function renderTable(records) {
       <td>${r.date}</td>
       <td>${r.city}</td>
       <td><a class="event-link" href="https://polymarket.com/event/${r.event_slug}" target="_blank" rel="noopener">${temp}</a></td>
-      <td>${r.trade_window || "—"}</td>
-      <td>${hk}</td>
-      <td>${soldHk}</td>
-      <td>${local}</td>
+      <td>${localTimes}</td>
       <td>$${(r.cost_basis_usd ?? 0).toFixed(2)}</td>
       <td class="${sharesCls}"${sharesTitle}>${r.shares}</td>
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
+      <td>${r.gamma_proxy ? '<span class="badge badge-proxy" title="Gamma Yes % proxied from history series">Gamma≈%</span>' : "—"}</td>
       <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
-      <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
       <td>${r.competitive != null ? Number(r.competitive).toFixed(3) : "—"}</td>
       <td>${r.open_interest != null ? `$${Math.round(r.open_interest).toLocaleString()}` : "—"}</td>
       <td>${resultBadge(r.result)}</td>
       <td>${fmtMoney(recordPnl(r))}</td>
       <td>${outcome != null ? fmtMoney(outcome) : "—"}</td>
       <td>${vsBoughtLabel(r)}</td>
+      <td>${realBoughtCell(r)}</td>
       <td>${soldOutcomeLabel(r)}</td>
       <td>${r.sell_value_pct != null ? r.sell_value_pct.toFixed(1) + "%" : "—"}</td>
     </tr>`;
@@ -1000,10 +1013,11 @@ function populateLocalTimeFilter() {
 }
 
 async function loadData() {
-  const [dataResp, tzResp, resResp] = await Promise.all([
+  const [dataResp, tzResp, resResp, realResp] = await Promise.all([
     fetch(DATA_URL),
     fetch(TZ_URL).catch(() => null),
     fetch(RESOLUTIONS_URL).catch(() => null),
+    fetch(REAL_TRADE_URL).catch(() => null),
   ]);
   if (!dataResp.ok) throw new Error(`Failed to load ${DATA_URL}: ${dataResp.status}`);
   if (tzResp?.ok) cityTimezones = await tzResp.json();
@@ -1015,8 +1029,24 @@ async function loadData() {
     records = U.enrichRecordsWithResolutions(records, resolutions);
   }
   allRecords = records;
+
+  if (realResp?.ok) {
+    const realData = await realResp.json();
+    realTradesByEvent = U.buildRealTradeIndex(realData.records || []);
+  } else {
+    realTradesByEvent = {};
+  }
+  const params = data.params || {};
+  const paramBits = [
+    params.strategy && `strategy=${params.strategy}`,
+    params.from_date && params.to_date && `${params.from_date}→${params.to_date}`,
+    params.sample_grid,
+    params.yes_price_max != null && `YES_PRICE_MAX=${params.yes_price_max}`,
+  ].filter(Boolean);
   document.getElementById("sync-meta").textContent =
-    `Synced ${data.synced_at || "?"} · ${allRecords.length} trades · wallet ${(data.wallet || "").slice(0, 10)}…`;
+    `Simulated ${data.synced_at || "?"} · ${allRecords.length} trades` +
+    (paramBits.length ? ` · ${paramBits.join(" · ")}` : "") +
+    (data.events_scanned != null ? ` · scanned ${data.events_scanned} events` : "");
   populateLocalTimeFilter();
   populateTimezoneFilter();
   populateCityFilter();

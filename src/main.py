@@ -15,6 +15,7 @@ from apscheduler.triggers.cron import CronTrigger
 from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
 from src.analysis.sync_runner import run_sync_trade_history
+from src.simulation.runner import run_simulate_trades
 from src.trade.hourly_runner import run_hourly_trade
 from src.trade.sell_win_runner import run_sell_win_check
 from src.trade.stop_loss_runner import run_stop_loss_check
@@ -62,6 +63,21 @@ def cmd_sync_trade_history(args: argparse.Namespace) -> None:
         fetch_price_drop=not args.skip_price_drop,
     )
     logging.info("Trade history sync complete: %s", result)
+
+
+def cmd_simulate_trades(args: argparse.Namespace) -> None:
+    from_date = parse_event_date(args.from_date) if args.from_date else None
+    to_date = parse_event_date(args.to_date) if args.to_date else None
+    result = run_simulate_trades(
+        from_date=from_date,
+        to_date=to_date,
+        strategy_name=args.strategy,
+        yes_price_max=args.yes_price_max,
+        spread_max=args.spread_max,
+        share_count=args.share_count,
+        fetch_if_missing=not args.no_fetch,
+    )
+    logging.info("Simulate trades complete: %s", result)
 
 
 def cmd_run_scheduler(_args: argparse.Namespace) -> None:
@@ -168,6 +184,57 @@ def main() -> None:
         help="Skip CLOB price-history lookups for loss/sold rows",
     )
 
+    sim_parser = sub.add_parser(
+        "simulate-trades",
+        help="Replay strategies on historical weather events (writes sim_trade_history.json)",
+    )
+    sim_parser.add_argument(
+        "--from",
+        dest="from_date",
+        metavar="YYYY-MM-DD",
+        default=None,
+        help="Start date inclusive (default: 7 days ending yesterday)",
+    )
+    sim_parser.add_argument(
+        "--to",
+        dest="to_date",
+        metavar="YYYY-MM-DD",
+        default=None,
+        help="End date inclusive (default: yesterday)",
+    )
+    sim_parser.add_argument(
+        "--strategy",
+        choices=["highest_yes", "forecast_match"],
+        default=None,
+        help="Override STRATEGY env var (default: highest_yes)",
+    )
+    sim_parser.add_argument(
+        "--yes-price-max",
+        type=float,
+        default=None,
+        metavar="P",
+        help="Skip buys at or above this Yes %% (default: YES_PRICE_MAX)",
+    )
+    sim_parser.add_argument(
+        "--spread-max",
+        type=float,
+        default=None,
+        metavar="S",
+        help="Skip when markets_yes_* spread >= this (default: SPREAD_MAX)",
+    )
+    sim_parser.add_argument(
+        "--share-count",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Simulated share size (default: SHARE_COUNT)",
+    )
+    sim_parser.add_argument(
+        "--no-fetch",
+        action="store_true",
+        help="Do not fetch missing events_*.json files",
+    )
+
     args = parser.parse_args()
 
     if args.command == "trade-hourly":
@@ -194,6 +261,7 @@ def main() -> None:
         "check-stop-loss": cmd_check_stop_loss,
         "check-sell-win": cmd_check_sell_win,
         "sync-trade-history": cmd_sync_trade_history,
+        "simulate-trades": cmd_simulate_trades,
         "run-scheduler": cmd_run_scheduler,
     }
     commands[args.command](args)

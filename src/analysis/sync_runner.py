@@ -35,9 +35,11 @@ from src.analysis.edge_lookup import (
     load_on_edge_snapshot_by_token,
     lookup_on_edge_from_snapshots,
 )
+from src.analysis.resolution import fetch_resolved_event
 from src.analysis.strategy_insights import compute_insights
 from src.api.clob_client import ClobPriceClient
 from src.api.data_client import fetch_all_closed_positions, fetch_all_user_activity
+from src.utils.market_parser import compare_temp_buckets
 
 logger = logging.getLogger(__name__)
 
@@ -91,6 +93,38 @@ def _backfill_outcome_values(records: list[TradeRecord]) -> list[TradeRecord]:
     for rec in records:
         if rec.outcome_value_usd is None:
             rec.outcome_value_usd = compute_outcome_value(rec)
+    return records
+
+
+def _backfill_resolutions(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Fill missing winning_temp / win_temp_vs_bought from resolution cache or Gamma."""
+    missing = [
+        rec
+        for rec in records
+        if rec.win_temp_vs_bought == "unknown" or not rec.winning_temp
+    ]
+    if not missing:
+        return records
+
+    filled = 0
+    for rec in missing:
+        resolution = fetch_resolved_event(rec.event_slug)
+        if not resolution or not resolution.winning_temp:
+            continue
+        rec.winning_temp = resolution.winning_temp
+        rec.win_temp_vs_bought = compare_temp_buckets(
+            rec.bought_temp, rec.winning_temp
+        )
+        if rec.result == "sold":
+            rec.sold_but_would_have_won = recompute_sold_but_would_have_won(rec)
+        filled += 1
+
+    if filled:
+        logger.info(
+            "Backfilled resolution on %d/%d trade records",
+            filled,
+            len(missing),
+        )
     return records
 
 
@@ -333,7 +367,9 @@ def run_sync_trade_history(
         _backfill_on_edge(
             _backfill_spreads(
                 _backfill_sold_outcomes(
-                    _backfill_outcome_values(_merge_records(existing, fresh_records))
+                    _backfill_resolutions(
+                        _backfill_outcome_values(_merge_records(existing, fresh_records))
+                    )
                 )
             )
         )

@@ -354,6 +354,24 @@ class TestSummary:
         assert summary.sold_win_count == 0
         assert summary.win_plus_sold_win_count == 1
 
+    def test_win_summary_includes_unknown_vs_positive_pnl(self):
+        from src.analysis.models import _is_pnl_inferred_win
+
+        rec = _sample_record(
+            result="sold",
+            sold_at="2026-07-05T18:00:00+00:00",
+            final_value_usd=2.0,
+            realized_pnl_usd=2.0,
+            roi_pct=40.0,
+            winning_temp=None,
+            win_temp_vs_bought="unknown",
+            sell_price=0.7,
+            sell_value_pct=140.0,
+        )
+        assert _is_pnl_inferred_win(rec)
+        summary = summarize_records([rec])
+        assert summary.win_plus_sold_win_count == 1
+
     def test_insights(self):
         rec = _sample_record(
             event_slug="slug",

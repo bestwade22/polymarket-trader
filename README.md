@@ -13,6 +13,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
 - **Trade logging**: step-by-step JSON logs in `logs/trades/` and `logs/app.log`.
 - **Dry-run default**: no real orders until `DRY_RUN=false` or `--live`.
+- **Strategy simulator** (`simulate-trades`): replay `highest_yes` (or other strategies) on historical weather events using CLOB Yes-% history; optional sell-win tiers; dashboard at `web/simulator.html`.
 
 ## Setup
 
@@ -58,6 +59,10 @@ python -m src.main check-sell-win --live
 # Sync wallet trade history from Data API activity (no local bot audit files)
 python -m src.main sync-trade-history --init-days 7
 python -m src.main sync-trade-history
+
+# Simulate strategies on historical weather events (writes sim_trade_history.json)
+python -m src.main simulate-trades
+python -m src.main simulate-trades --from 2026-07-13 --to 2026-07-19 --strategy highest_yes
 
 # Run built-in scheduler (daily fetch + hourly trade)
 python -m src.main run-scheduler
@@ -195,6 +200,32 @@ Local preview: `python3 -m http.server 8080` from repo root → http://localhost
 | `final_value_usd` | Realized P&L (from closed-positions when available) |
 
 Scheduled on AWS: `sync-trade-history` Lambda every **3 hours UTC** commits `data/analysis/*` to git.
+
+## Strategy simulator
+
+Offline replay of trade strategies on past highest-temperature events (no Lambda, no live orders).
+
+```bash
+# Default: last 7 days ending yesterday, STRATEGY=highest_yes
+python -m src.main simulate-trades
+
+python -m src.main simulate-trades --from 2026-07-13 --to 2026-07-19
+python -m src.main simulate-trades --strategy highest_yes --yes-price-max 0.55 --spread-max 0.15
+```
+
+**Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:05 / :35** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
+
+**Output:** `data/analysis/sim_trade_history.json`
+
+**Dashboard:** `web/simulator.html` (nav link from History). Local: http://localhost:8080/web/simulator.html
+
+**Assumptions / limits:**
+- Fills are 100% at historical Yes % (optimistic vs live book).
+- Bid/ask/`SPREAD_MAX` only when a local `markets_yes_*` snapshot exists near the sample time; otherwise spread is ignored.
+- When Gamma snapshot is missing, both CLOB mid and Gamma are set from the same history series (`gamma_proxy` badge on the simulator page).
+- Price history is fetched for selection in memory; **disk cache only for bought tokens** under `data/simulation/price_cache/` (gitignored).
+- One simulated buy max per event; wallet open-order / position checks are skipped.
+- Parameter sweeps are out of scope for v1 (single-run CLI only).
 
 
 ## Cron
