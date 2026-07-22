@@ -1,0 +1,109 @@
+{
+  "run_at": "2026-07-22T18:06:11.561479+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "727263",
+      "city": "Sao Paulo",
+      "market_id": "3008976",
+      "groupItemTitle": "23\u00b0C",
+      "yes_price": 0.5395,
+      "yes_token_id": "20044516980327282643766655108803210847968740819964036704546012261294203321719",
+      "buy_price": 0.578,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.001",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.5395,
+      "selection_price": 0.5395,
+      "gamma_yes_price": 0.375,
+      "best_bid": 0.501,
+      "best_ask": 0.578,
+      "spread": 0.077,
+      "clob_buy_price": 0.578,
+      "last_trade_price": 0.579,
+      "midpoint": 0.5395,
+      "outcomePrices": [
+        0.375,
+        0.625
+      ],
+      "competitive": 0.5828923076923077,
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-22-2026",
+      "open_interest": 32305.255425000003,
+      "order_status": "live",
+      "order_id": "0xaabe1b2a2749b60cc0e3350f6722eb9aeeaedb2eb6f54de2ae0f90d55bb7ce15",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T18:31:10+00:00"
+    },
+    {
+      "event_id": "727265",
+      "city": "Toronto",
+      "market_id": "3009008",
+      "groupItemTitle": "22\u00b0C",
+      "yes_price": 0.485,
+      "yes_token_id": "6627619062264619470926286988379614188939368789277148479012301906704463770630",
+      "buy_price": 0.49,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.485,
+      "selection_price": 0.485,
+      "gamma_yes_price": 0.48,
+      "best_bid": 0.48,
+      "best_ask": 0.49,
+      "spread": 0.01,
+      "clob_buy_price": 0.49,
+      "last_trade_price": 0.45,
+      "midpoint": 0.485,
+      "outcomePrices": [
+        0.48,
+        0.52
+      ],
+      "competitive": 0.9996001599360256,
+      "event_slug": "highest-temperature-in-toronto-on-july-22-2026",
+      "open_interest": 16243.241266999998,
+      "order_status": "live",
+      "order_id": "0x44d85e553915c5888f257d5eff96b67a5a19047b676fbe18f50ab20dd99ff6ef",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T18:31:11+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "727264",
+      "city": "Buenos Aires",
+      "market_id": "3008991",
+      "group_item_title": "14\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.72,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727274",
+      "city": "NYC",
+      "market_id": "3009033",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727276",
+      "city": "Atlanta",
+      "market_id": "3009051",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.15
+    }
+  ]
+}
