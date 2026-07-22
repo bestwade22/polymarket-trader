@@ -1,0 +1,128 @@
+{
+  "run_at": "2026-07-22T12:36:47.517171+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "724032",
+      "city": "Warsaw",
+      "market_id": "2996661",
+      "groupItemTitle": "23\u00b0C",
+      "yes_price": 0.505,
+      "yes_token_id": "12892337425681030193223944822574940432494147283232137065415193091335781312892",
+      "buy_price": 0.53,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.505,
+      "selection_price": 0.505,
+      "gamma_yes_price": 0.495,
+      "best_bid": 0.48,
+      "best_ask": 0.53,
+      "spread": 0.05,
+      "clob_buy_price": 0.53,
+      "last_trade_price": 0.4,
+      "midpoint": 0.505,
+      "outcomePrices": [
+        0.495,
+        0.505
+      ],
+      "competitive": 0.9999750006249843,
+      "event_slug": "highest-temperature-in-warsaw-on-july-22-2026",
+      "open_interest": 9145.658052,
+      "order_status": "live",
+      "order_id": "0x4bd011cbd9dca6cdc269aa2f0bd2cccf09c6aff2284aa1927650b0fb6ccb219a",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T13:01:46+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "724021",
+      "city": "Ankara",
+      "market_id": "2996538",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724025",
+      "city": "Tel Aviv",
+      "market_id": "2996583",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.984,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724030",
+      "city": "Milan",
+      "market_id": "2996638",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.64,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724031",
+      "city": "Madrid",
+      "market_id": "2996649",
+      "group_item_title": "39\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724046",
+      "city": "Istanbul",
+      "market_id": "2996746",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724051",
+      "city": "Jeddah",
+      "market_id": "2996801",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724206",
+      "city": "Moscow",
+      "market_id": "2997432",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.75,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724052",
+      "city": "Cape Town",
+      "market_id": "2996810",
+      "group_item_title": "16\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.21,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "724024",
+      "city": "Munich",
+      "market_id": "2996574",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2996574",
+      "held_group_item_title": "25\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
