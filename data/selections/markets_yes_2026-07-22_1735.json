@@ -1,0 +1,54 @@
+{
+  "run_at": "2026-07-22T17:35:47.680685+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "727264",
+      "city": "Buenos Aires",
+      "market_id": "3008991",
+      "groupItemTitle": "14\u00b0C",
+      "yes_price": 0.545,
+      "yes_token_id": "71214231885167977617198690013798290444147677150600653825983670522556896933569",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.545,
+      "selection_price": 0.545,
+      "gamma_yes_price": 0.54,
+      "best_bid": 0.53,
+      "best_ask": 0.56,
+      "spread": 0.03,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.71,
+      "midpoint": 0.545,
+      "outcomePrices": [
+        0.54,
+        0.46
+      ],
+      "competitive": 0.998402555910543,
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-22-2026",
+      "open_interest": 10167.952373999999,
+      "order_status": "live",
+      "order_id": "0x3ce2c14e9c3687dfad5db2e242eb673c95d29d54923c1b6689073e74b68c863c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T18:00:47+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "727263",
+      "city": "Sao Paulo",
+      "market_id": "3008977",
+      "group_item_title": "24\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.347,
+      "spread_max": 0.15
+    }
+  ]
+}
