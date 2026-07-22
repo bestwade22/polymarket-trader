@@ -1,0 +1,136 @@
+{
+  "run_at": "2026-07-22T19:06:30.698586+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "727279",
+      "city": "Austin",
+      "market_id": "3009087",
+      "groupItemTitle": "104-105\u00b0F",
+      "yes_price": 0.505,
+      "yes_token_id": "70118974783014261064864972768761598236899201681484957623599645490295235549439",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.505,
+      "selection_price": 0.505,
+      "gamma_yes_price": 0.515,
+      "best_bid": 0.45,
+      "best_ask": 0.56,
+      "spread": 0.11,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.44,
+      "midpoint": 0.505,
+      "outcomePrices": [
+        0.515,
+        0.485
+      ],
+      "competitive": 0.9997750506136119,
+      "event_slug": "highest-temperature-in-austin-on-july-22-2026",
+      "open_interest": 13083.443316,
+      "order_status": "live",
+      "order_id": "0xbf604b70f8fb68d9fc80d29801f0af4157c9854cbb84d3cffeea55760e87b78e",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T19:31:29+00:00"
+    },
+    {
+      "event_id": "727281",
+      "city": "Houston",
+      "market_id": "3009111",
+      "groupItemTitle": "102-103\u00b0F",
+      "yes_price": 0.465,
+      "yes_token_id": "84882383550543443102978776981694280318953213014955010616594684301042475202223",
+      "buy_price": 0.48,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.465,
+      "selection_price": 0.465,
+      "gamma_yes_price": 0.465,
+      "best_bid": 0.45,
+      "best_ask": 0.48,
+      "spread": 0.03,
+      "clob_buy_price": 0.48,
+      "last_trade_price": 0.45,
+      "midpoint": 0.465,
+      "outcomePrices": [
+        0.465,
+        0.535
+      ],
+      "competitive": 0.9987764987889834,
+      "event_slug": "highest-temperature-in-houston-on-july-22-2026",
+      "open_interest": 17732.168266,
+      "order_status": "live",
+      "order_id": "0x57e8e3944b3c2c0707196a18f27897d0421d01bbc3ddc48df33026480b248aaa",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-22T19:31:30+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "727274",
+      "city": "NYC",
+      "market_id": "3009032",
+      "group_item_title": "86-87\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.79,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727277",
+      "city": "Miami",
+      "market_id": "3009065",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727285",
+      "city": "Panama City",
+      "market_id": "3009152",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727276",
+      "city": "Atlanta",
+      "market_id": "3009051",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.3,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "727278",
+      "city": "Chicago",
+      "market_id": "3009075",
+      "group_item_title": "72-73\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.22,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "727265",
+      "city": "Toronto",
+      "market_id": "3009009",
+      "group_item_title": "23\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.15,
+      "spread_max": 0.15
+    }
+  ]
+}
