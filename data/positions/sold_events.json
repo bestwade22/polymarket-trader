@@ -7670,5 +7670,53 @@
     "floor_price": 0.93,
     "current_mid": 0.58,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x45067ac590233974b171d3c4e4adcc37a40d916cc63511bfdb5e7125a0a4633f",
+    "token_id": "101396469814737724761387088101238290809047889106184538103234566581794251855507",
+    "order_id": "0xbe6008cfe745dd8e00e527a8caeea8dc92597bf6dfb4ff60eb51e03bcafd3f1f",
+    "sold_at": "2026-07-22T07:00:10.730385+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chengdu-on-july-22-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.4,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.525,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xedb1b619e70101ec9ec81dcf9e78e77b315561ba3f571d5dbf92944eba34d549",
+    "token_id": "12535010769898165392114823307343774240183761346172053034552164450393169955499",
+    "order_id": "0x962f21c7d50cb3abbb8614b3192130df77a6a12e039d31f44c615039e12bf498",
+    "sold_at": "2026-07-22T07:00:11.657999+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seoul-on-july-22-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.45,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.6,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x639cffa3b171aa4c68f548990ba607f48e047127cbb9fde52a2357cffc956a50",
+    "token_id": "110670200876539708619214063001950732542185130734617244587591567227162260857204",
+    "order_id": "0x50f6387220e43fd58e213bedb85b28d437fdf3e890ca3129e824e51391d5ffa9",
+    "sold_at": "2026-07-22T07:00:12.581402+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-shenzhen-on-july-22-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.51,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.125,
+    "reason": "tier1"
   }
 ]
