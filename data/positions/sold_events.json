@@ -7894,5 +7894,21 @@
     "floor_price": 0.97,
     "current_mid": 0.11,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xfe8d9c056c0ba4e3dd092c566db24b8dec3b76f3864fc60325274b4b717d8e47",
+    "token_id": "15183882332276376227823078359266795082223549457874288348646549104378950429807",
+    "order_id": "0xa59694ca3ed4eecaeebcca7bb4789a0990dd31f6267d789ad39ae593203d169d",
+    "sold_at": "2026-07-22T16:00:10.948324+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-london-on-july-22-2026",
+    "price": 0.97,
+    "size": 10.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.355,
+    "reason": "tier3"
   }
 ]
