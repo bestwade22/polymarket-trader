@@ -1,0 +1,27 @@
+{
+  "run_at": "2026-07-22T05:35:48.648996+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "724026",
+      "city": "Tokyo",
+      "market_id": "2996594",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.685,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724020",
+      "city": "Seoul",
+      "market_id": "2996529",
+      "group_item_title": "27\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2996529",
+      "held_group_item_title": "27\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
