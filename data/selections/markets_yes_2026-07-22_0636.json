@@ -1,0 +1,153 @@
+{
+  "run_at": "2026-07-22T06:36:55.512997+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "724020",
+      "city": "Seoul",
+      "market_id": "2996529",
+      "group_item_title": "27\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.79,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724026",
+      "city": "Tokyo",
+      "market_id": "2996594",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724027",
+      "city": "Hong Kong",
+      "market_id": "2996607",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724028",
+      "city": "Shanghai",
+      "market_id": "2996618",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.969,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724029",
+      "city": "Singapore",
+      "market_id": "2996627",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724033",
+      "city": "Taipei",
+      "market_id": "2996673",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724034",
+      "city": "Chongqing",
+      "market_id": "2996682",
+      "group_item_title": "40\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724035",
+      "city": "Beijing",
+      "market_id": "2996696",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724043",
+      "city": "Wuhan",
+      "market_id": "2996710",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724045",
+      "city": "Shenzhen",
+      "market_id": "2996735",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.775,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724047",
+      "city": "Busan",
+      "market_id": "2996757",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9815,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724050",
+      "city": "Kuala Lumpur",
+      "market_id": "2996788",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.74,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724053",
+      "city": "Guangzhou",
+      "market_id": "2996824",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.974,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724054",
+      "city": "Qingdao",
+      "market_id": "2996834",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724056",
+      "city": "Manila",
+      "market_id": "2996880",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "724044",
+      "city": "Chengdu",
+      "market_id": "2996722",
+      "group_item_title": "39\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "2996722",
+      "held_group_item_title": "39\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
