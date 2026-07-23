@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-07-23T17:35:43.302206+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "731098",
+      "city": "Sao Paulo",
+      "market_id": "3023869",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731099",
+      "city": "Buenos Aires",
+      "market_id": "3023880",
+      "group_item_title": "16\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.347,
+      "spread_max": 0.15
+    }
+  ]
+}
