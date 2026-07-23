@@ -1,0 +1,72 @@
+{
+  "run_at": "2026-07-23T20:36:09.567450+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "731113",
+      "city": "Chicago",
+      "market_id": "3023962",
+      "group_item_title": "76-77\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.71,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731114",
+      "city": "Austin",
+      "market_id": "3023971",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.69,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731116",
+      "city": "Houston",
+      "market_id": "3023992",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731120",
+      "city": "Panama City",
+      "market_id": "3024040",
+      "group_item_title": "29\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731115",
+      "city": "Denver",
+      "market_id": "3023984",
+      "group_item_title": "84-85\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.29,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "731119",
+      "city": "Mexico City",
+      "market_id": "3024026",
+      "group_item_title": "27\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.32,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "731110",
+      "city": "Dallas",
+      "market_id": "3023928",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3023928",
+      "held_group_item_title": "98-99\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
