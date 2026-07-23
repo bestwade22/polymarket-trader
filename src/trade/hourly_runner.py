@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 from config.settings import DATA_DIR, SELECTIONS_DIR, ensure_dirs, events_file_for_date, parse_event_date, settings
+from src.trade.city_skip import filter_events_by_skip_cities, resolve_skip_cities
 from src.trade.executor import TradeExecutor
 from src.trade.open_order_checker import LiveOpenOrderChecker, filter_events_without_open_orders
 from src.trade.position_checker import LivePositionChecker, filter_selections_without_position
@@ -106,6 +107,16 @@ def run_hourly_trade(
         step_log.log_step("load_events", tradable=True, city=city)
         event["_step_logger"] = step_log
         eligible.append(event)
+
+    skip_cities = resolve_skip_cities()
+    eligible, skipped_city_perf = filter_events_by_skip_cities(eligible, skip_cities)
+    skipped_bought.extend(skipped_city_perf)
+    step_logger_global.log_step(
+        "filter_city_win_summary",
+        count=len(eligible),
+        skipped=len(skipped_city_perf),
+        skip_cities=skip_cities,
+    )
 
     eligible = refresh_events_markets(eligible)
 

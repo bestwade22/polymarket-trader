@@ -535,7 +535,7 @@ function openInterestBand(openInterest) {
   if (openInterest == null || !Number.isFinite(openInterest) || openInterest < 0) {
     return "unknown";
   }
-  const step = 5000;
+  const step = 2000;
   const idx = Math.floor(openInterest / step);
   const lo = idx * step;
   if (lo >= 30000) return "≥30000";
@@ -567,6 +567,7 @@ function groupInsightMetrics(records, keyFn) {
         sold_loses: 0,
         win_summary: 0,
         settled: 0,
+        win_summary_denom: 0,
         pnl_usd: 0,
         buy_usd: 0,
         buy_price: 0,
@@ -591,8 +592,11 @@ function groupInsightMetrics(records, keyFn) {
       stats.outcome_usd += outcome;
       stats.outcome_count += 1;
     }
-    if (countsInWinSummaryDenom(rec)) {
+    if (rec.result === "win" || rec.result === "loss" || rec.result === "sold") {
       stats.settled += 1;
+    }
+    if (countsInWinSummaryDenom(rec)) {
+      stats.win_summary_denom += 1;
     }
     if (rec.result === "win") stats.wins += 1;
     if (isSoldWin(rec)) stats.sold_wins += 1;
@@ -603,6 +607,7 @@ function groupInsightMetrics(records, keyFn) {
   const result = {};
   for (const [key, stats] of grouped.entries()) {
     const { count, settled, wins, win_summary } = stats;
+    const winSummaryDenom = stats.win_summary_denom;
     result[key] = {
       count,
       wins,
@@ -611,7 +616,9 @@ function groupInsightMetrics(records, keyFn) {
       win_plus_sold_win: win_summary,
       settled,
       win_rate_pct: settled ? Math.round((wins / settled) * 1000) / 10 : 0,
-      win_plus_sold_win_pct: settled ? Math.round((win_summary / settled) * 1000) / 10 : 0,
+      win_plus_sold_win_pct: winSummaryDenom
+        ? Math.round((win_summary / winSummaryDenom) * 1000) / 10
+        : 0,
       avg_buy_usd: count ? Math.round((stats.buy_usd / count) * 100) / 100 : 0,
       avg_buy_price: count ? Math.round((stats.buy_price / count) * 1000) / 1000 : 0,
       avg_spread: stats.spread_count
@@ -857,7 +864,7 @@ function renderInsights(data) {
       {
         limit: null,
         defaultSort: { key: "group", asc: true },
-        description: "Event open interest (USD) at order time in $5k bands",
+        description: "Event open interest (USD) at order time in $2k bands",
       },
     ],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],

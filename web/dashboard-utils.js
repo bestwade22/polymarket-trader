@@ -112,7 +112,13 @@ window.DashUtils = (function () {
     return recordPnl(r) == null;
   }
 
+  function hasMeaningfulShares(r) {
+    const shares = Number(r?.shares);
+    return Number.isFinite(shares) && shares >= 1;
+  }
+
   function countsInWinSummary(r) {
+    if (!hasMeaningfulShares(r)) return false;
     if (r.result === "win") return true;
     if (r.result !== "sold") return false;
     if (isSoldWin(r) || isSoldWouldLose(r) || isPnlInferredWin(r)) return true;
@@ -120,7 +126,8 @@ window.DashUtils = (function () {
   }
 
   function countsInWinSummaryDenom(r) {
-    // Same as classic settled: ignore opens.
+    // Settled with ≥1 share; ignore opens and dust positions.
+    if (!hasMeaningfulShares(r)) return false;
     return r.result === "win" || r.result === "loss" || r.result === "sold";
   }
 
@@ -131,6 +138,7 @@ window.DashUtils = (function () {
     let pnlInferred = 0;
     let unknownLose = 0;
     for (const r of records) {
+      if (!hasMeaningfulShares(r)) continue;
       if (r.result === "win") wins += 1;
       else if (r.result === "sold") {
         if (isSoldWin(r)) soldWins += 1;
@@ -241,6 +249,7 @@ window.DashUtils = (function () {
     isSoldWouldLose,
     isPnlInferredWin,
     isUnknownPnlInferredLose,
+    hasMeaningfulShares,
     countsInWinSummary,
     countsInWinSummaryDenom,
     computeWinSummaryParts,

@@ -147,8 +147,18 @@ def _is_unknown_pnl_inferred_lose(rec: TradeRecord) -> bool:
     return _record_pnl_value(rec) is None
 
 
+def _has_meaningful_shares(rec: TradeRecord) -> bool:
+    """Dust / fractional fills under 1 share are ignored in win summary."""
+    try:
+        return float(rec.shares or 0) >= 1.0
+    except (TypeError, ValueError):
+        return False
+
+
 def _counts_toward_win_summary(rec: TradeRecord) -> bool:
     """True win, sold win, would lose, or sold unknown+pnl+. Would win and sold lose count as losses."""
+    if not _has_meaningful_shares(rec):
+        return False
     if rec.result == "win":
         return True
     if rec.result != "sold":
@@ -157,7 +167,9 @@ def _counts_toward_win_summary(rec: TradeRecord) -> bool:
 
 
 def _counts_toward_win_summary_denom(rec: TradeRecord) -> bool:
-    """Denominator for win summary %: same as classic settled (ignores opens)."""
+    """Denominator for win summary %: settled wins/losses/sold with ≥1 share (ignores opens)."""
+    if not _has_meaningful_shares(rec):
+        return False
     return rec.result in ("win", "loss", "sold")
 
 

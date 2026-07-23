@@ -30,8 +30,8 @@ def test_competitive_band_labels():
 def test_open_interest_band_labels():
     from src.analysis import strategy_insights as si
 
-    assert si._open_interest_band(11247.68) == "10000–15000"
-    assert si._open_interest_band(4500) == "0–5000"
+    assert si._open_interest_band(11247.68) == "10000–12000"
+    assert si._open_interest_band(4500) == "4000–6000"
     assert si._open_interest_band(32000) == "≥30000"
     assert si._open_interest_band(None) == "unknown"
 
@@ -117,4 +117,4 @@ def test_insights_include_competitive_and_open_interest_bands():
     rec = _sample_record(competitive=0.975, open_interest=11247.68)
     insights = compute_insights([rec])
     assert "0.96–0.98" in insights["summary_by_competitive_band"]
-    assert "10000–15000" in insights["summary_by_open_interest_band"]
+    assert "10000–12000" in insights["summary_by_open_interest_band"]

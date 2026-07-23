@@ -76,6 +76,7 @@ def cmd_simulate_trades(args: argparse.Namespace) -> None:
         spread_max=args.spread_max,
         share_count=args.share_count,
         fetch_if_missing=not args.no_fetch,
+        force=args.force,
     )
     logging.info("Simulate trades complete: %s", result)
 
@@ -233,6 +234,11 @@ def main() -> None:
         "--no-fetch",
         action="store_true",
         help="Do not fetch missing events_*.json files",
+    )
+    sim_parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-simulate even when strategy/process already completed for those dates",
     )
 
     args = parser.parse_args()

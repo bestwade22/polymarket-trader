@@ -117,7 +117,9 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 
 **Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. Skip the city when the two leaders disagree. `YES_PRICE_MAX` and `SPREAD_MAX` are checked before the position check and again after the final price refresh.
 
-**Flow:** refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
+**Flow:** city win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
+
+Cities are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded).
 
 Example: Gamma shows 23°C highest (44%) but book midpoint peaks on 22°C (40¢ mid on a wide spread) — **skip**, do not buy.
 
@@ -135,6 +137,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SPREAD_MAX` | `0.15` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
+| `CITY_SKIP_ENABLED` | `true` | Skip cities with the worst historical win summary % |
+| `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary cities to skip |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
 | `ORDER_EXPIRY_MINUTES` | `25` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
@@ -213,9 +217,12 @@ python -m src.main simulate-trades
 
 python -m src.main simulate-trades --from 2026-07-13 --to 2026-07-19
 python -m src.main simulate-trades --strategy highest_yes --yes-price-max 0.55 --spread-max 0.15
+python -m src.main simulate-trades --force  # redo even if dates already simulated
 ```
 
 **Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:05 / :35** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
+
+**Idempotency:** `sim_trade_history.json` stores `process_version`, `completed_dates`, and `simulated_events`. Re-running the same strategy/process skips already-completed dates; only new dates (or `--force` / bumped process version / changed strategy params) are simulated.
 
 **Output:** `data/analysis/sim_trade_history.json`
 

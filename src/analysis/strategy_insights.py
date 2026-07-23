@@ -187,7 +187,7 @@ def _open_interest_band(open_interest: float | None) -> str:
         return "unknown"
     if open_interest < 0:
         return "unknown"
-    step = 5000
+    step = 2000
     idx = int(open_interest / step)
     lo = idx * step
     hi = lo + step

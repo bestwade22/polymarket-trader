@@ -273,6 +273,8 @@ class Settings:
         "SELL_WIN_EVENT_SLUG_MARKER", "highest-temperature-in-"
     )
     sell_win_sell_shares: Optional[int] = _parse_optional_int("SELL_WIN_SELL_SHARES")
+    city_skip_enabled: bool = _env_bool("CITY_SKIP_ENABLED", True)
+    city_skip_bottom_n: int = int(os.getenv("CITY_SKIP_BOTTOM_N", "7"))
     data_api_base: str = os.getenv("DATA_API_BASE", "https://data-api.polymarket.com")
 
 

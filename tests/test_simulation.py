@@ -325,3 +325,135 @@ def test_lookup_enrichment_near():
     hit = lookup_enrichment_near("tok", at, index=idx)
     assert hit is not None
     assert hit.spread == pytest.approx(0.05)
+
+
+def test_simulate_trades_skips_completed_dates(tmp_path, monkeypatch):
+    from src.simulation import runner as sim_runner
+
+    out = tmp_path / "sim_trade_history.json"
+    prior = {
+        "process_version": sim_runner.SIM_PROCESS_VERSION,
+        "params": {
+            "from_date": "2026-07-17",
+            "to_date": "2026-07-17",
+            "strategy": "highest_yes",
+            "yes_price_max": 0.6,
+            "spread_max": 0.15,
+            "share_count": 10,
+            "trade_window": "14:00–16:00",
+            "sample_grid": ":05 / :35 city local",
+            "fill_model": "100% at historical Yes %",
+            "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
+        },
+        "completed_dates": {
+            "2026-07-17": {"status": "complete", "events": 1, "buys": 0},
+        },
+        "simulated_events": {
+            "highest-temperature-in-london-on-july-17-2026": {
+                "status": "no_buy",
+                "date": "2026-07-17",
+            }
+        },
+        "records": [],
+    }
+    out.write_text(json.dumps(prior))
+
+    calls = {"load": 0}
+
+    def fake_load(day, fetch_if_missing=True):
+        calls["load"] += 1
+        return [
+            {
+                "id": "e1",
+                "slug": "highest-temperature-in-london-on-july-17-2026",
+                "city": "London",
+                "event_date": day.isoformat(),
+                "timezone": "Europe/London",
+                "markets": [],
+            }
+        ]
+
+    monkeypatch.setattr(sim_runner, "load_events_for_date", fake_load)
+    monkeypatch.setattr(sim_runner, "load_enrichment_by_token", lambda: {})
+    monkeypatch.setattr(sim_runner, "trading_window_label", lambda: "14:00–16:00")
+
+    result = sim_runner.run_simulate_trades(
+        from_date=date(2026, 7, 17),
+        to_date=date(2026, 7, 17),
+        strategy_name="highest_yes",
+        yes_price_max=0.6,
+        spread_max=0.15,
+        share_count=10,
+        fetch_if_missing=False,
+        output_path=out,
+        clob=MagicMock(),
+    )
+    assert calls["load"] == 0
+    assert result["dates_skipped"] == 1
+    assert result["events_scanned"] == 0
+
+
+def test_simulate_trades_resims_when_process_version_changes(tmp_path, monkeypatch):
+    from src.simulation import runner as sim_runner
+
+    out = tmp_path / "sim_trade_history.json"
+    prior = {
+        "process_version": "0-old",
+        "params": {
+            "from_date": "2026-07-17",
+            "to_date": "2026-07-17",
+            "strategy": "highest_yes",
+            "yes_price_max": 0.6,
+            "spread_max": 0.15,
+            "share_count": 10,
+            "trade_window": "14:00–16:00",
+            "sample_grid": ":05 / :35 city local",
+            "fill_model": "100% at historical Yes %",
+            "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
+        },
+        "completed_dates": {"2026-07-17": {"status": "complete"}},
+        "simulated_events": {},
+        "records": [],
+    }
+    out.write_text(json.dumps(prior))
+
+    calls = {"buy": 0}
+
+    def fake_load(day, fetch_if_missing=True):
+        return [
+            {
+                "id": "e1",
+                "slug": "highest-temperature-in-london-on-july-17-2026",
+                "city": "London",
+                "event_date": day.isoformat(),
+                "timezone": "Europe/London",
+                "markets": [],
+            }
+        ]
+
+    def fake_buy(*_a, **_k):
+        calls["buy"] += 1
+        return None
+
+    monkeypatch.setattr(sim_runner, "load_events_for_date", fake_load)
+    monkeypatch.setattr(sim_runner, "try_buy_event", fake_buy)
+    monkeypatch.setattr(sim_runner, "load_enrichment_by_token", lambda: {})
+    monkeypatch.setattr(sim_runner, "trading_window_label", lambda: "14:00–16:00")
+
+    result = sim_runner.run_simulate_trades(
+        from_date=date(2026, 7, 17),
+        to_date=date(2026, 7, 17),
+        strategy_name="highest_yes",
+        yes_price_max=0.6,
+        spread_max=0.15,
+        share_count=10,
+        fetch_if_missing=False,
+        output_path=out,
+        clob=MagicMock(),
+    )
+    assert calls["buy"] == 1
+    assert result["dates_skipped"] == 0
+    data = json.loads(out.read_text())
+    assert data["process_version"] == sim_runner.SIM_PROCESS_VERSION
+    assert "highest-temperature-in-london-on-july-17-2026" in data["simulated_events"]
+    assert data["simulated_events"]["highest-temperature-in-london-on-july-17-2026"]["status"] == "no_buy"

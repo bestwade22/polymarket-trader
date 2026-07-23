@@ -397,6 +397,29 @@ class TestSummary:
         assert summary.win_pct == 100.0
         assert summary.open_count == 1
 
+    def test_win_summary_ignores_shares_under_one(self):
+        from src.analysis.models import (
+            _counts_toward_win_summary,
+            _counts_toward_win_summary_denom,
+        )
+
+        dust = _sample_record(
+            shares=0.4,
+            result="win",
+            realized_pnl_usd=0.2,
+            final_value_usd=0.2,
+            cost_basis_usd=0.2,
+        )
+        win = _sample_record(token_id="tok2", result="win", realized_pnl_usd=5.0)
+        assert not _counts_toward_win_summary(dust)
+        assert not _counts_toward_win_summary_denom(dust)
+        summary = summarize_records([dust, win])
+        assert summary.win_plus_sold_win_count == 1
+        assert summary.win_plus_sold_win_pct == 100.0
+        # Classic win% still counts the dust win among settled.
+        assert summary.win_count == 2
+        assert summary.win_pct == 100.0
+
     def test_insights(self):
         rec = _sample_record(
             event_slug="slug",
@@ -415,7 +438,7 @@ class TestSummary:
         assert "0.10–0.15" in insights["summary_by_spread_band"]
         assert "Yes" in insights["summary_by_edge"]
         assert "0.96–0.98" in insights["summary_by_competitive_band"]
-        assert "10000–15000" in insights["summary_by_open_interest_band"]
+        assert "10000–12000" in insights["summary_by_open_interest_band"]
 
 
 class TestNoLocalBotFiles:
