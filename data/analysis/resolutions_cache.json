@@ -432,6 +432,12 @@
       "winning_temp": "34\u00b0C",
       "winning_token_id": "80004434619106904539250409021947220678603332135302604062478080973140820376985"
     },
+    "highest-temperature-in-beijing-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 23?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "45207246772729247798722074500757080282820221990843379570571379101468161012626"
+    },
     "highest-temperature-in-beijing-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 3?",
@@ -2009,6 +2015,12 @@
       "title": "Highest temperature in Manila on July 2?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "107245143443059175226592191571600799227023118053000020100584423547888692908733"
+    },
+    "highest-temperature-in-manila-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on July 23?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "59379489228171306097593345009344735976754920090228821331760425248752282738655"
     },
     "highest-temperature-in-manila-on-july-3-2026": {
       "closed": true,
