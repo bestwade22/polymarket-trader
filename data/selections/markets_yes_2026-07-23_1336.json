@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-23T13:36:18.016666+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "727795",
+      "city": "London",
+      "market_id": "3010416",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.715,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727796",
+      "city": "Paris",
+      "market_id": "3010426",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.65,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727800",
+      "city": "Munich",
+      "market_id": "3010470",
+      "group_item_title": "22\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727807",
+      "city": "Madrid",
+      "market_id": "3010547",
+      "group_item_title": "38\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.775,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727808",
+      "city": "Warsaw",
+      "market_id": "3010559",
+      "group_item_title": "19\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9685,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727818",
+      "city": "Amsterdam",
+      "market_id": "3010668",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727986",
+      "city": "Cape Town",
+      "market_id": "3012675",
+      "group_item_title": "15\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9805,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "727806",
+      "city": "Milan",
+      "market_id": "3010533",
+      "group_item_title": "30\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3010533",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
