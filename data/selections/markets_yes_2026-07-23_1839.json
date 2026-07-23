@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-07-23T18:39:02.750922+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "731109",
+      "city": "NYC",
+      "market_id": "3023918",
+      "groupItemTitle": "80-81\u00b0F",
+      "yes_price": 0.575,
+      "yes_token_id": "27495671098349607748632948677584576031742513291457217876356741850165095675769",
+      "buy_price": 0.6,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.575,
+      "selection_price": 0.575,
+      "gamma_yes_price": 0.565,
+      "best_bid": 0.55,
+      "best_ask": 0.6,
+      "spread": 0.05,
+      "clob_buy_price": 0.6,
+      "last_trade_price": 0.53,
+      "midpoint": 0.575,
+      "outcomePrices": [
+        0.565,
+        0.435
+      ],
+      "competitive": 0.9957927755234136,
+      "event_slug": "highest-temperature-in-nyc-on-july-23-2026",
+      "open_interest": 31075.612593,
+      "order_status": "live",
+      "order_id": "0xb9a12d132a891172f088bda0121a2cd0b316c26c9b7cd2ffeaac38303bf8ad7c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-23T19:04:01+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "731099",
+      "city": "Buenos Aires",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731098",
+      "city": "Sao Paulo",
+      "market_id": "3023869",
+      "group_item_title": "24\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.994,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731100",
+      "city": "Toronto",
+      "market_id": "3023891",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.68,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731112",
+      "city": "Miami",
+      "market_id": "3023953",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.9585,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731111",
+      "city": "Atlanta",
+      "market_id": "3023939",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.15
+    }
+  ]
+}
