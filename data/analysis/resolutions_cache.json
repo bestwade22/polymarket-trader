@@ -48,6 +48,12 @@
       "winning_temp": "22\u00b0C",
       "winning_token_id": "56336545392085053078899390838659884310364034848329785149814715482624611701049"
     },
+    "highest-temperature-in-amsterdam-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Amsterdam on July 22?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "28255389377630673292694465497661496552056514073895575135033023033349264378592"
+    },
     "highest-temperature-in-amsterdam-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Amsterdam on July 4?",
@@ -210,6 +216,18 @@
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "85697762697832008925223460681307400169058088359450095330560260174034351383113"
     },
+    "highest-temperature-in-atlanta-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on July 21?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "88125198214589639491982977518656894714350973767282990453781020332068265044639"
+    },
+    "highest-temperature-in-atlanta-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on July 22?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "6317396178226150110716330081817668800905113060382591321408674346077555994563"
+    },
     "highest-temperature-in-atlanta-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on July 3?",
@@ -317,6 +335,12 @@
       "title": "Highest temperature in Austin on July 2?",
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "53201296331720477665081783142073555858909123355321418420935264282759864242356"
+    },
+    "highest-temperature-in-austin-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on July 21?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "11693485312480073821349160209943308599685259447810533874370054776765147769610"
     },
     "highest-temperature-in-austin-on-july-22-2026": {
       "closed": true,
@@ -431,6 +455,12 @@
       "title": "Highest temperature in Beijing on July 2?",
       "winning_temp": "34\u00b0C",
       "winning_token_id": "80004434619106904539250409021947220678603332135302604062478080973140820376985"
+    },
+    "highest-temperature-in-beijing-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 23?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "45207246772729247798722074500757080282820221990843379570571379101468161012626"
     },
     "highest-temperature-in-beijing-on-july-3-2026": {
       "closed": true,
@@ -612,6 +642,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "83397766900469755894064178324261917242377961155696876506794834893772396608856"
     },
+    "highest-temperature-in-busan-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Busan on July 22?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "92810427783531695503074031504579907153171181093093337037086991332776189374958"
+    },
     "highest-temperature-in-busan-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Busan on July 4?",
@@ -677,6 +713,12 @@
       "title": "Highest temperature in Cape Town on July 21?",
       "winning_temp": "18\u00b0C",
       "winning_token_id": "104010692777362278447640514601726505752323722648912271825657572722940301517261"
+    },
+    "highest-temperature-in-cape-town-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Cape Town on July 22?",
+      "winning_temp": "16\u00b0C",
+      "winning_token_id": "105623165195792894101412492145067092519816598344657708868870414680512376985191"
     },
     "highest-temperature-in-cape-town-on-july-3-2026": {
       "closed": true,
@@ -780,6 +822,12 @@
       "winning_temp": "39\u00b0C",
       "winning_token_id": "101396469814737724761387088101238290809047889106184538103234566581794251855507"
     },
+    "highest-temperature-in-chengdu-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 23?",
+      "winning_temp": "37\u00b0C",
+      "winning_token_id": "26826628166782414512001114740582464776923861408129881685672093367424420576140"
+    },
     "highest-temperature-in-chengdu-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chengdu on July 3?",
@@ -875,6 +923,18 @@
       "title": "Highest temperature in Chicago on July 20?",
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "63003915326857248953920970815299228928799205438169122327015322017816581354896"
+    },
+    "highest-temperature-in-chicago-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on July 21?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "47433134361318208970257341159058701079724767245126890053587596684110241029200"
+    },
+    "highest-temperature-in-chicago-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on July 22?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "45865201283197036257156615236937456489556255828379640390714495194473781975838"
     },
     "highest-temperature-in-chicago-on-july-3-2026": {
       "closed": true,
@@ -990,6 +1050,12 @@
       "winning_temp": "39\u00b0C",
       "winning_token_id": "52216036421929643568065880766580897638762068597943106484740571078238557488284"
     },
+    "highest-temperature-in-chongqing-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 22?",
+      "winning_temp": "40\u00b0C",
+      "winning_token_id": "58162264843010834056448911123379717858877480770127830608760725394131522253014"
+    },
     "highest-temperature-in-chongqing-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chongqing on July 3?",
@@ -1097,6 +1163,18 @@
       "title": "Highest temperature in Dallas on July 2?",
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "3500299320920734994160207722290869903074778824022796235589363002371655882144"
+    },
+    "highest-temperature-in-dallas-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 21?",
+      "winning_temp": "106-107\u00b0F",
+      "winning_token_id": "23356577384922539969618083149163730500993058082341101419447691257857369435907"
+    },
+    "highest-temperature-in-dallas-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 22?",
+      "winning_temp": "108-109\u00b0F",
+      "winning_token_id": "28149051516774139945056565066509570692506156873968159785315883116793167020566"
     },
     "highest-temperature-in-dallas-on-july-5-2026": {
       "closed": true,
@@ -1704,11 +1782,23 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "49417548177159912388260256595896593298632855079458295836286274326306310402732"
     },
+    "highest-temperature-in-kuala-lumpur-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Kuala Lumpur on July 21?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "355599902299882366513078890278538896769124502536724710734750972765726733032"
+    },
     "highest-temperature-in-kuala-lumpur-on-july-22-2026": {
       "closed": true,
       "title": "Highest temperature in Kuala Lumpur on July 22?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "14700603120194122263541397964497619480725733586042228567847106132891897057460"
+    },
+    "highest-temperature-in-kuala-lumpur-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Kuala Lumpur on July 23?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "40557820665498036796870682142192453396726674164788439467854225795296090439226"
     },
     "highest-temperature-in-kuala-lumpur-on-july-3-2026": {
       "closed": true,
@@ -1920,6 +2010,12 @@
       "winning_temp": "34\u00b0C",
       "winning_token_id": "33401645986132555978951939230461175121960269149153734095709713778325177473973"
     },
+    "highest-temperature-in-lucknow-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Lucknow on July 22?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "73408714044099746938693241978568442320557368254521733584822701337820342039295"
+    },
     "highest-temperature-in-lucknow-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Lucknow on July 4?",
@@ -2010,6 +2106,18 @@
       "winning_temp": "35\u00b0C",
       "winning_token_id": "107245143443059175226592191571600799227023118053000020100584423547888692908733"
     },
+    "highest-temperature-in-manila-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on July 21?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "13404235137296027264231713531091833301195666993538983017017545173427618332195"
+    },
+    "highest-temperature-in-manila-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on July 23?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "59379489228171306097593345009344735976754920090228821331760425248752282738655"
+    },
     "highest-temperature-in-manila-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Manila on July 3?",
@@ -2093,6 +2201,12 @@
       "title": "Highest temperature in Mexico City on July 21?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "66122763397212536861260309019680284872642148951939142932232645632831613413282"
+    },
+    "highest-temperature-in-mexico-city-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on July 22?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "39669156035066400281355734114475043932623594019260707795792389930298570695971"
     },
     "highest-temperature-in-mexico-city-on-july-3-2026": {
       "closed": true,
@@ -2592,6 +2706,12 @@
       "winning_temp": "102-103\u00b0F",
       "winning_token_id": "109699570542494222096544290892824494093382322155415866177531023898634146662935"
     },
+    "highest-temperature-in-nyc-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 22?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "15130655568756620692100175887933233554727074030980708222941799759380940784273"
+    },
     "highest-temperature-in-nyc-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on July 3?",
@@ -2862,6 +2982,12 @@
       "winning_temp": "70-71\u00b0F",
       "winning_token_id": "40485727760726732677652374575398445032472080350996645995979847715605943854798"
     },
+    "highest-temperature-in-san-francisco-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on July 21?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "80481499233080680012843522428888015321915370039858865373180654698808290379949"
+    },
     "highest-temperature-in-san-francisco-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on July 3?",
@@ -3083,6 +3209,12 @@
       "title": "Highest temperature in Seattle on July 21?",
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "72885804058817711253213612708641327390331377169365460103752352764584923724835"
+    },
+    "highest-temperature-in-seattle-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on July 22?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "61027064482239744881787314413334845306474777463241247185971176027540130880820"
     },
     "highest-temperature-in-seattle-on-july-3-2026": {
       "closed": true,
@@ -3497,6 +3629,18 @@
       "title": "Highest temperature in Toronto on July 20?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "5005758989786501233019728205564960563838714034752579624508843596956288165670"
+    },
+    "highest-temperature-in-toronto-on-july-21-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 21?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "31754361058107219205007024361121177158626863004705533917355077284428060582241"
+    },
+    "highest-temperature-in-toronto-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 22?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "6627619062264619470926286988379614188939368789277148479012301906704463770630"
     },
     "highest-temperature-in-toronto-on-july-3-2026": {
       "closed": true,
