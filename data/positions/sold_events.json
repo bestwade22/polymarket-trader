@@ -8150,5 +8150,37 @@
     "floor_price": 0.95,
     "current_mid": 0.25,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xff2dc04870472207747ef8e5183ef4e48e43c73743f7d130a364333a87556a3c",
+    "token_id": "29877118238035170105060115789807159978512181999783426888041529080999290402983",
+    "order_id": "0x090f79c6a2ae1f1d3508c992ee84701f7b7946c8f2592977d64ee521d1d3da0d",
+    "sold_at": "2026-07-23T15:00:11.308793+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-july-23-2026",
+    "price": 0.97,
+    "size": 7.32,
+    "avg_buy_price": 0.51,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.76,
+    "reason": "tier3"
+  },
+  {
+    "market_id": "0x35c7ea432bb5ed043d18c65bb8d69ac4eeecd315f7ec80274b6c7893b8140d39",
+    "token_id": "99510688161386034385090781877351631820146691473333631400374482072065150006799",
+    "order_id": "0xdda3bab9bdc00a6f819acf9dcc55604798fd876bc78a8ea6ef5d3d8b9f226fe6",
+    "sold_at": "2026-07-23T15:00:12.293251+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-munich-on-july-23-2026",
+    "price": 0.97,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.145,
+    "reason": "tier3"
   }
 ]
