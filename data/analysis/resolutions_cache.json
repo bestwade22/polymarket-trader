@@ -1536,6 +1536,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "15324231101575946115670202509882536653478009865805634967597491668687125087054"
     },
+    "highest-temperature-in-istanbul-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Istanbul on July 22?",
+      "winning_temp": "34\u00b0C or higher",
+      "winning_token_id": "6353759282947788783936658392092604348995504453796548929249667617325493246392"
+    },
     "highest-temperature-in-istanbul-on-july-6-2026": {
       "closed": true,
       "title": "Highest temperature in Istanbul on July 6?",
@@ -1763,6 +1769,12 @@
       "title": "Highest temperature in London on July 21?",
       "winning_temp": "22\u00b0C",
       "winning_token_id": "75599058683624158916659005066350004378068735293099244358207310377981097537276"
+    },
+    "highest-temperature-in-london-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on July 22?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "64505137173642697296443583524565462261047703488702627532501108513693920162695"
     },
     "highest-temperature-in-london-on-july-3-2026": {
       "closed": true,
@@ -2316,6 +2328,12 @@
       "winning_temp": "26\u00b0C",
       "winning_token_id": "57272408897203351857507822148262104332906177603082311457773793855982136540017"
     },
+    "highest-temperature-in-moscow-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on July 22?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "112097394547268762126750952499333515147578400656108990853784826582229332887695"
+    },
     "highest-temperature-in-moscow-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Moscow on July 3?",
@@ -2423,6 +2441,12 @@
       "title": "Highest temperature in Munich on July 21?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "46466121510319011478392073510098844277704520231186604663603116904059432614353"
+    },
+    "highest-temperature-in-munich-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on July 22?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "94691292098352451606299372690125414730520480620433754707703497554723742250570"
     },
     "highest-temperature-in-munich-on-july-3-2026": {
       "closed": true,
@@ -3551,6 +3575,12 @@
       "title": "Highest temperature in Warsaw on July 21?",
       "winning_temp": "17\u00b0C",
       "winning_token_id": "101153881561550009403270717208418901712540550387784749812550871308625494612191"
+    },
+    "highest-temperature-in-warsaw-on-july-22-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on July 22?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "110218278642168322020199830061849282453617731414883687104149272565347244936879"
     },
     "highest-temperature-in-warsaw-on-july-3-2026": {
       "closed": true,
