@@ -21,7 +21,7 @@ from src.api.clob_client import ClobPriceClient
 from src.simulation.buy_pass import history_window_ts, try_buy_event
 from src.simulation.event_loader import date_range, default_sim_date_range, load_events_for_date
 from src.simulation.price_at_time import PriceHistoryStore
-from src.simulation.resolve import build_sim_record
+from src.simulation.resolve import build_sim_record, conclude_open_sim_records
 from src.simulation.sell_pass import try_sell_win
 from src.simulation.snapshot_enrichment import load_enrichment_by_token
 from src.utils.time_window import trading_window_label
@@ -345,6 +345,9 @@ def run_simulate_trades(
             "simulated_at": now_iso,
         }
 
+    # Always re-check open / unknown outcomes (even when dates were skipped).
+    conclude_stats = conclude_open_sim_records(records)
+
     trade_records = [_dict_to_trade_record(r) for r in records]
     summary = summarize_records(trade_records)
     insights = compute_insights(trade_records)
@@ -370,6 +373,9 @@ def run_simulate_trades(
         "dates_skipped": dates_skipped,
         "buy_count": sum(1 for e in simulated_events.values() if e.get("status") == "bought"),
         "buy_count_new": buys_new,
+        "open_concluded": conclude_stats.get("open_concluded", 0),
+        "sold_enriched": conclude_stats.get("sold_enriched", 0),
+        "still_open": conclude_stats.get("still_open", 0),
         "completed_dates": completed_dates,
         "simulated_events": simulated_events,
         "records": records,
@@ -395,6 +401,8 @@ def run_simulate_trades(
         "events_skipped_cached": events_skipped_cached,
         "dates_skipped": dates_skipped,
         "buy_count_new": buys_new,
+        "open_concluded": conclude_stats.get("open_concluded", 0),
+        "still_open": conclude_stats.get("still_open", 0),
         "output": str(out),
         "from_date": start.isoformat(),
         "to_date": end.isoformat(),

@@ -222,7 +222,7 @@ python -m src.main simulate-trades --force  # redo even if dates already simulat
 
 **Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:05 / :35** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
 
-**Idempotency:** `sim_trade_history.json` stores `process_version`, `completed_dates`, and `simulated_events`. Re-running the same strategy/process skips already-completed dates; only new dates (or `--force` / bumped process version / changed strategy params) are simulated.
+**Idempotency:** `sim_trade_history.json` stores `process_version`, `completed_dates`, and `simulated_events`. Re-running the same strategy/process skips already-completed dates; only new dates (or `--force` / bumped process version / changed strategy params) are simulated. Each run still **concludes open** sim records from `resolutions_cache.json` / Gamma once markets resolve.
 
 **Output:** `data/analysis/sim_trade_history.json`
 

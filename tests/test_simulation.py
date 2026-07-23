@@ -290,6 +290,70 @@ def test_build_sim_record_sold(monkeypatch):
     assert row["realized_pnl_usd"] == pytest.approx(4.6)
 
 
+def test_conclude_open_sim_records_from_cache(monkeypatch):
+    from src.analysis.resolution import CachedResolution
+    from src.simulation.resolve import conclude_open_sim_records
+
+    records = [
+        {
+            "date": "2026-07-20",
+            "city": "Munich",
+            "bought_temp": "23°C",
+            "event_slug": "highest-temperature-in-munich-on-july-20-2026",
+            "token_id": "tok-win",
+            "shares": 10,
+            "buy_price": 0.4,
+            "cost_basis_usd": 4.0,
+            "result": "open",
+            "winning_temp": None,
+            "win_temp_vs_bought": "unknown",
+            "final_value_usd": None,
+            "realized_pnl_usd": None,
+            "roi_pct": None,
+            "outcome_value_usd": None,
+        },
+        {
+            "date": "2026-07-20",
+            "city": "London",
+            "bought_temp": "28°C",
+            "event_slug": "highest-temperature-in-london-on-july-20-2026",
+            "token_id": "tok-open",
+            "shares": 10,
+            "buy_price": 0.5,
+            "cost_basis_usd": 5.0,
+            "result": "open",
+            "winning_temp": None,
+            "win_temp_vs_bought": "unknown",
+            "final_value_usd": None,
+            "realized_pnl_usd": None,
+            "roi_pct": None,
+            "outcome_value_usd": None,
+        },
+    ]
+
+    def fake_fetch(slug):
+        if "munich" in slug:
+            return CachedResolution(
+                closed=True,
+                title="Munich",
+                winning_temp="23°C",
+                winning_token_id="tok-win",
+            )
+        return None
+
+    monkeypatch.setattr(
+        "src.simulation.resolve._fetch_resolution_for_conclude", fake_fetch
+    )
+    stats = conclude_open_sim_records(records)
+    assert stats["open_concluded"] == 1
+    assert stats["still_open"] == 1
+    assert records[0]["result"] == "win"
+    assert records[0]["winning_temp"] == "23°C"
+    assert records[0]["win_temp_vs_bought"] == "same"
+    assert records[0]["realized_pnl_usd"] == pytest.approx(6.0)
+    assert records[1]["result"] == "open"
+
+
 def test_price_store_persists_only_bought(tmp_path):
     clob = MagicMock()
     clob.get_prices_history.return_value = [{"t": 1, "p": 0.4}]
