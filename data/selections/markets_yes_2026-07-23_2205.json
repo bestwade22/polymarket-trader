@@ -1,0 +1,63 @@
+{
+  "run_at": "2026-07-23T22:05:52.052242+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "731108",
+      "city": "Seattle",
+      "market_id": "3023906",
+      "groupItemTitle": "76-77\u00b0F",
+      "yes_price": 0.535,
+      "yes_token_id": "10948024692863118703480588990124806795268411796534001261389435451540641986688",
+      "buy_price": 0.59,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.535,
+      "selection_price": 0.535,
+      "gamma_yes_price": 0.53,
+      "best_bid": 0.48,
+      "best_ask": 0.59,
+      "spread": 0.11,
+      "clob_buy_price": 0.59,
+      "last_trade_price": 0.59,
+      "midpoint": 0.535,
+      "outcomePrices": [
+        0.53,
+        0.47
+      ],
+      "competitive": 0.9991008092716555,
+      "event_slug": "highest-temperature-in-seattle-on-july-23-2026",
+      "open_interest": 38058.095241,
+      "order_status": "live",
+      "order_id": "0x405dbb6235d1c9cdfe8030ba06f109ca20853c44427d8a12cbcf025f154c9332",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-23T22:30:51+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "731117",
+      "city": "Los Angeles",
+      "market_id": "3024006",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731118",
+      "city": "San Francisco",
+      "market_id": "3024018",
+      "group_item_title": "68-69\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.68,
+      "yes_price_max": 0.6
+    }
+  ]
+}
