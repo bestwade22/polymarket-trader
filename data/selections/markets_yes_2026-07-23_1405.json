@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-07-23T14:05:37.310709+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "727795",
+      "city": "London",
+      "market_id": "3010416",
+      "group_item_title": "26\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.805,
+      "yes_price_max": 0.6
+    }
+  ]
+}
