@@ -462,12 +462,6 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "45207246772729247798722074500757080282820221990843379570571379101468161012626"
     },
-    "highest-temperature-in-beijing-on-july-23-2026": {
-      "closed": true,
-      "title": "Highest temperature in Beijing on July 23?",
-      "winning_temp": "28\u00b0C",
-      "winning_token_id": "45207246772729247798722074500757080282820221990843379570571379101468161012626"
-    },
     "highest-temperature-in-beijing-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 3?",
@@ -713,6 +707,12 @@
       "title": "Highest temperature in Cape Town on July 19?",
       "winning_temp": "14\u00b0C",
       "winning_token_id": "44566578549107493571467571919450593694225020660369344198664501299781360419977"
+    },
+    "highest-temperature-in-cape-town-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Cape Town on July 20?",
+      "winning_temp": "16\u00b0C",
+      "winning_token_id": "111197678103199714697792764511048291691518533027902251365345863576391387342887"
     },
     "highest-temperature-in-cape-town-on-july-21-2026": {
       "closed": true,
@@ -1049,6 +1049,12 @@
       "title": "Highest temperature in Chongqing on July 19?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "18008819995252462258729251964968414737867085874983751636326005617396590795037"
+    },
+    "highest-temperature-in-chongqing-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 20?",
+      "winning_temp": "38\u00b0C",
+      "winning_token_id": "49010694882893480728925148790808454547982026997508778078238744791713191814158"
     },
     "highest-temperature-in-chongqing-on-july-21-2026": {
       "closed": true,
@@ -1698,6 +1704,12 @@
       "winning_temp": "36\u00b0C",
       "winning_token_id": "15872572107325101374256853918048053381019658794561578465018121741898170254581"
     },
+    "highest-temperature-in-jeddah-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jeddah on July 20?",
+      "winning_temp": "40\u00b0C or higher",
+      "winning_token_id": "24069361792295281028597583515827329378419954450484321088225031003480992512127"
+    },
     "highest-temperature-in-jeddah-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Jeddah on July 3?",
@@ -1889,6 +1901,12 @@
       "title": "Highest temperature in London on July 19?",
       "winning_temp": "21\u00b0C",
       "winning_token_id": "103131903754037862426842579177627287437296699149072330852724003613655724297929"
+    },
+    "highest-temperature-in-london-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on July 20?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "60367906046867022200301264749493766580936857558008192801562909927720871427029"
     },
     "highest-temperature-in-london-on-july-21-2026": {
       "closed": true,
@@ -2712,6 +2730,12 @@
       "winning_temp": "102-103\u00b0F",
       "winning_token_id": "109699570542494222096544290892824494093382322155415866177531023898634146662935"
     },
+    "highest-temperature-in-nyc-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 20?",
+      "winning_temp": "82-83\u00b0F",
+      "winning_token_id": "17750026989324637430239624516804711284957008010968484738128557533693057790497"
+    },
     "highest-temperature-in-nyc-on-july-22-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on July 22?",
@@ -2831,6 +2855,12 @@
       "title": "Highest temperature in Paris on July 2?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "41784885432702606548543681729329761860938178629443631029805489366504036611718"
+    },
+    "highest-temperature-in-paris-on-july-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on July 20?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "61972748272226410307092137015287269979947163158916050746899605071953166326086"
     },
     "highest-temperature-in-paris-on-july-21-2026": {
       "closed": true,
