@@ -1,0 +1,125 @@
+{
+  "run_at": "2026-07-24T13:06:17.623843+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "731540",
+      "city": "London",
+      "market_id": "3024931",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.545,
+      "yes_token_id": "33017153533711151893556637180117236961100709596117537759507622195794329389018",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.545,
+      "selection_price": 0.545,
+      "gamma_yes_price": 0.525,
+      "best_bid": 0.53,
+      "best_ask": 0.56,
+      "spread": 0.03,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.53,
+      "midpoint": 0.545,
+      "outcomePrices": [
+        0.525,
+        0.475
+      ],
+      "competitive": 0.9993753903810119,
+      "event_slug": "highest-temperature-in-london-on-july-24-2026",
+      "open_interest": 36116.205341,
+      "order_status": "live",
+      "order_id": "0xcf126087e33d35066dd6a8e7d68bc4cd686e16a0ac2e3326f5f7034f0918c3ab",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T13:31:16+00:00"
+    },
+    {
+      "event_id": "731564",
+      "city": "Amsterdam",
+      "market_id": "3025196",
+      "groupItemTitle": "23\u00b0C",
+      "yes_price": 0.56,
+      "yes_token_id": "24175998890642224742427840042094088178878499405262680678622519705231225686403",
+      "buy_price": 0.57,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.56,
+      "selection_price": 0.56,
+      "gamma_yes_price": 0.56,
+      "best_bid": 0.55,
+      "best_ask": 0.57,
+      "spread": 0.02,
+      "clob_buy_price": 0.57,
+      "last_trade_price": 0.69,
+      "midpoint": 0.56,
+      "outcomePrices": [
+        0.56,
+        0.44
+      ],
+      "competitive": 0.9964129135113591,
+      "event_slug": "highest-temperature-in-amsterdam-on-july-24-2026",
+      "open_interest": 11415.197176,
+      "order_status": "live",
+      "order_id": "0x4b59fa28f53e1177ab3e42187e9953f91953bf725d5596128d4ac82eb391f49e",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T13:31:17+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "731568",
+      "city": "Cape Town",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731541",
+      "city": "Paris",
+      "market_id": "3024942",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731552",
+      "city": "Milan",
+      "market_id": "3025061",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731553",
+      "city": "Madrid",
+      "market_id": "3025073",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.77,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731546",
+      "city": "Munich",
+      "market_id": "3024998",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3024997",
+      "held_group_item_title": "24\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
