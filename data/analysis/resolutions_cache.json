@@ -1194,6 +1194,12 @@
       "winning_temp": "108-109\u00b0F",
       "winning_token_id": "28149051516774139945056565066509570692506156873968159785315883116793167020566"
     },
+    "highest-temperature-in-dallas-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 23?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "62698026108088253608698731733885102688253338328941772998554245672662563890492"
+    },
     "highest-temperature-in-dallas-on-july-5-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on July 5?",
@@ -1313,6 +1319,12 @@
       "title": "Highest temperature in Denver on July 21?",
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "39229476530475790188423446673653027013444482488419404544092861283603180375689"
+    },
+    "highest-temperature-in-denver-on-july-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on July 23?",
+      "winning_temp": "84-85\u00b0F",
+      "winning_token_id": "69475956240043881316444107161080362687988030531453042477230101075431677004922"
     },
     "highest-temperature-in-denver-on-july-3-2026": {
       "closed": true,
