@@ -1,0 +1,12 @@
+{
+  "run_at": "2026-07-24T08:35:31.072875+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "731545",
+      "city": "Lucknow",
+      "reason": "low_win_summary_city"
+    }
+  ]
+}
