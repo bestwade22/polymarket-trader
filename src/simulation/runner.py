@@ -29,7 +29,7 @@ from src.utils.time_window import trading_window_label
 logger = logging.getLogger(__name__)
 
 # Bump when buy/sell/resolve/sample logic changes so prior sims are invalidated.
-SIM_PROCESS_VERSION = "1"
+SIM_PROCESS_VERSION = "2"
 
 
 def _dict_to_trade_record(row: dict[str, Any]) -> TradeRecord:
@@ -61,7 +61,7 @@ def _strategy_fingerprint(
         "spread_max": spread_max,
         "share_count": share_count,
         "trade_window": trading_window_label(),
-        "sample_grid": ":05 / :35 city local",
+        "sample_grid": ":15 / :45 city local",
         "fill_model": "100% at historical Yes %",
         "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
     }

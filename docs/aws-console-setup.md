@@ -169,7 +169,7 @@ Outputs:
 | Function | Timeout | Schedule |
 |----------|---------|----------|
 | `polymarket-trader-fetch-daily` | 5 min | 00:01 HKT daily |
-| `polymarket-trader-trade-hourly` | 15 min | :05 and :35 UTC each hour (events-based gate inside handler) |
+| `polymarket-trader-trade-hourly` | 15 min | :15 and :45 UTC each hour (events-based gate inside handler) |
 | `polymarket-trader-stop-loss-check` | 15 min | Disabled by default (manual invoke only) |
 | `polymarket-trader-sell-win-check` | 15 min | Enabled by default (hourly) |
 
@@ -192,7 +192,7 @@ Check **Monitor** → **Logs** → CloudWatch log group `/aws/lambda/polymarket-
 | Schedule | Expression | Timezone |
 |----------|------------|----------|
 | `polymarket-trader-fetch-daily` | `cron(1 0 * * ? *)` | Asia/Hong_Kong |
-| `polymarket-trader-trade-hourly` | `cron(5,35 * * * ? *)` | UTC |
+| `polymarket-trader-trade-hourly` | `cron(15,45 * * * ? *)` | UTC |
 | `polymarket-trader-stop-loss-check` | `cron(0/15 * * * ? *)` | UTC (disabled state) |
 | `polymarket-trader-sell-win-check` | `cron(0 * * * ? *)` | UTC (enabled by default) |
 

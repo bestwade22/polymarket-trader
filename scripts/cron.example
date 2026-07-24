@@ -4,5 +4,5 @@
 # Daily fetch at 06:00 UTC
 0 6 * * * cd /path/to/polymarket-trader && .venv/bin/python -m src.main fetch-daily >> logs/cron.log 2>&1
 
-# Trade check at :05 and :35 each hour (aligns with 14:00 / 15:00 / 16:00 local slots)
-5,35 * * * * cd /path/to/polymarket-trader && .venv/bin/python -m src.main trade-hourly >> logs/cron.log 2>&1
+# Trade check at :15 and :45 each hour (aligns with 14:00 / 15:00 / 16:00 local slots)
+15,45 * * * * cd /path/to/polymarket-trader && .venv/bin/python -m src.main trade-hourly >> logs/cron.log 2>&1

@@ -90,7 +90,7 @@ By default, the bot trades cities inside **`TRADING_WINDOW_START_HOUR`–`TRADIN
 - Run during a city's trading window → tradable.
 - Run outside the window → `Found 0 tradable events` (expected).
 - Past event dates → all windows have passed; use `--all-cities` for a manual run.
-- `run-scheduler` and AWS Lambda call `trade-hourly` at **:05 and :35 UTC** each hour; the gate skips when no event is in its local window.
+- `run-scheduler` and AWS Lambda call `trade-hourly` at **:15 and :45 UTC** each hour; the gate skips when no event is in its local window.
 
 Cities are skipped when:
 1. You have an **open buy order** on any market for that city (checked first — one API call), or
@@ -220,7 +220,7 @@ python -m src.main simulate-trades --strategy highest_yes --yes-price-max 0.55 -
 python -m src.main simulate-trades --force  # redo even if dates already simulated
 ```
 
-**Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:05 / :35** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
+**Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:15 / :45** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
 
 **Idempotency:** `sim_trade_history.json` stores `process_version`, `completed_dates`, and `simulated_events`. Re-running the same strategy/process skips already-completed dates; only new dates (or `--force` / bumped process version / changed strategy params) are simulated. Each run still **concludes open** sim records from `resolutions_cache.json` / Gamma once markets resolve.
 
@@ -250,7 +250,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | Job | Schedule | What it does |
 |-----|----------|--------------|
 | `fetch-daily` | **00:01 HKT** daily | Fetches that day's events and commits `data/events_YYYY-MM-DD.json` |
-| `trade-hourly` | **:05 and :35 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
+| `trade-hourly` | **:15 and :45 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Disabled (manual only)** | Stop-loss code and Lambda remain available, but the scheduler is disabled by default |
 | `sell-win-check` | **Hourly (UTC)** | Sell-win scheduler; disable with `SELL_WIN_SCHEDULE_ENABLED=false` |
 | `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |

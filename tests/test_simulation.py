@@ -23,7 +23,7 @@ def test_sample_local_minutes_default_window():
     pairs = sample_local_minutes_in_window(
         start_hour=14, start_minute=0, end_hour=16, end_minute=0
     )
-    assert pairs == [(14, 5), (14, 35), (15, 5), (15, 35)]
+    assert pairs == [(14, 15), (14, 45), (15, 15), (15, 45)]
 
 
 def test_sample_times_utc_for_event_new_york():
@@ -36,7 +36,7 @@ def test_sample_times_utc_for_event_new_york():
     locals_ = [
         s.astimezone(ZoneInfo("America/New_York")).strftime("%H:%M") for s in samples
     ]
-    assert locals_ == ["14:05", "14:35", "15:05", "15:35"]
+    assert locals_ == ["14:15", "14:45", "15:15", "15:45"]
 
 
 def test_default_sim_date_range():
@@ -405,7 +405,7 @@ def test_simulate_trades_skips_completed_dates(tmp_path, monkeypatch):
             "spread_max": 0.15,
             "share_count": 10,
             "trade_window": "14:00–16:00",
-            "sample_grid": ":05 / :35 city local",
+            "sample_grid": ":15 / :45 city local",
             "fill_model": "100% at historical Yes %",
             "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
         },
@@ -471,7 +471,7 @@ def test_simulate_trades_resims_when_process_version_changes(tmp_path, monkeypat
             "spread_max": 0.15,
             "share_count": 10,
             "trade_window": "14:00–16:00",
-            "sample_grid": ":05 / :35 city local",
+            "sample_grid": ":15 / :45 city local",
             "fill_model": "100% at historical Yes %",
             "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
         },

@@ -14,11 +14,11 @@ def sample_local_minutes_in_window(
     start_minute: int,
     end_hour: int,
     end_minute: int,
-    sample_minutes: tuple[int, ...] = (5, 35),
+    sample_minutes: tuple[int, ...] = (15, 45),
 ) -> list[tuple[int, int]]:
-    """Return [(hour, minute), ...] for :05/:35 samples inside the local window.
+    """Return [(hour, minute), ...] for :15/:45 samples inside the local window.
 
-    Default window 14:00–16:00 → 14:05, 14:35, 15:05, 15:35.
+    Default window 14:00–16:00 → 14:15, 14:45, 15:15, 15:45.
     """
     start_total = start_hour * 60 + start_minute
     end_total = end_hour * 60 + end_minute
@@ -36,9 +36,9 @@ def sample_local_minutes_in_window(
 def sample_times_utc_for_event(
     event: dict,
     *,
-    sample_minutes: tuple[int, ...] = (5, 35),
+    sample_minutes: tuple[int, ...] = (15, 45),
 ) -> list[datetime]:
-    """UTC datetimes for city-local :05/:35 samples inside the trading window."""
+    """UTC datetimes for city-local :15/:45 samples inside the trading window."""
     from config.settings import settings
 
     event_date = event.get("event_date")
