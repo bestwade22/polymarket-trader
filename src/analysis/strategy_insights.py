@@ -98,7 +98,8 @@ def _city_tz_map() -> dict[str, str]:
     return json.loads(path.read_text())
 
 
-def _timezone_group(city: str) -> str:
+def timezone_group(city: str) -> str:
+    """Dashboard 'By city timezone' label for a city (e.g. US East (UTC-5/-4))."""
     tz = _city_tz_map().get(city)
     if not tz:
         return "Unknown"
@@ -397,7 +398,7 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             records, lambda rec: _open_interest_band(rec.open_interest)
         ),
         "summary_by_city_timezone": _group_metrics(
-            records, lambda rec: _timezone_group(rec.city)
+            records, lambda rec: timezone_group(rec.city)
         ),
         "stop_loss_regret_rate_pct": round((sold_regret / sold_count) * 100, 1)
         if sold_count

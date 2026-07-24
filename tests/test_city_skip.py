@@ -1,11 +1,12 @@
-"""Tests for skipping lowest win-summary cities before orders."""
+"""Tests for skipping lowest win-summary city timezones before orders."""
 
 from __future__ import annotations
 
 from src.analysis.models import TradeRecord
+from src.analysis.strategy_insights import timezone_group
 from src.trade.city_skip import (
-    filter_events_by_skip_cities,
-    lowest_win_summary_cities,
+    filter_events_by_skip_timezones,
+    lowest_win_summary_timezones,
 )
 
 
@@ -43,7 +44,19 @@ def _rec(city: str, *, result: str = "win", shares: float = 10, **extra) -> Trad
     return TradeRecord(**base)
 
 
-def test_lowest_win_summary_cities_picks_worst():
+def test_lowest_win_summary_timezones_picks_worst(monkeypatch):
+    # Force known timezone labels so the test does not depend on city_timezones.json.
+    mapping = {
+        "Alpha": "Good Zone",
+        "Beta": "Bad Zone A",
+        "Gamma": "Mid Zone",
+        "Delta": "Bad Zone B",
+        "Dust": "Good Zone",
+    }
+    monkeypatch.setattr(
+        "src.trade.city_skip.timezone_group",
+        lambda city: mapping.get(city, "Unknown"),
+    )
     records = [
         _rec("Alpha", result="win"),
         _rec("Alpha", result="win", token_id="tok-a2"),
@@ -54,18 +67,35 @@ def test_lowest_win_summary_cities_picks_worst():
         _rec("Delta", result="loss"),
         _rec("Dust", result="win", shares=0.2),  # ignored in win summary
     ]
-    bottom = lowest_win_summary_cities(records, bottom_n=2)
-    # Both at 0%; lower denom sorts first (Delta=1, Beta=2).
-    assert bottom == ["Delta", "Beta"]
+    bottom = lowest_win_summary_timezones(records, bottom_n=2)
+    # Both at 0%; lower denom sorts first (Bad Zone B=1, Bad Zone A=2).
+    assert bottom == ["Bad Zone B", "Bad Zone A"]
 
 
-def test_filter_events_by_skip_cities():
+def test_filter_events_by_skip_timezones(monkeypatch):
+    mapping = {
+        "London": "UK (UTC+0/+1)",
+        "Paris": "Central EU (UTC+1/+2)",
+        "Berlin": "Central EU (UTC+1/+2)",
+    }
+    monkeypatch.setattr(
+        "src.trade.city_skip.timezone_group",
+        lambda city: mapping.get(city, "Unknown"),
+    )
     events = [
         {"id": "1", "city": "London"},
         {"id": "2", "city": "Paris"},
         {"id": "3", "city": "Berlin"},
     ]
-    kept, skipped = filter_events_by_skip_cities(events, ["Paris", "Berlin"])
+    kept, skipped = filter_events_by_skip_timezones(
+        events, ["Central EU (UTC+1/+2)"]
+    )
     assert [e["city"] for e in kept] == ["London"]
     assert {s["city"] for s in skipped} == {"Paris", "Berlin"}
-    assert all(s["reason"] == "low_win_summary_city" for s in skipped)
+    assert all(s["reason"] == "low_win_summary_timezone" for s in skipped)
+    assert all(s["timezone"] == "Central EU (UTC+1/+2)" for s in skipped)
+
+
+def test_timezone_group_uses_shared_labels():
+    # Sanity: public helper exists and returns a string for any city.
+    assert isinstance(timezone_group("London"), str)

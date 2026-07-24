@@ -117,9 +117,9 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 
 **Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. Skip the city when the two leaders disagree. `YES_PRICE_MAX` and `SPREAD_MAX` are checked before the position check and again after the final price refresh.
 
-**Flow:** city win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
+**Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
 
-Cities are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded).
+City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped.
 
 Example: Gamma shows 23°C highest (44%) but book midpoint peaks on 22°C (40¢ mid on a wide spread) — **skip**, do not buy.
 
@@ -137,8 +137,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `SPREAD_MAX` | `0.15` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
-| `CITY_SKIP_ENABLED` | `true` | Skip cities with the worst historical win summary % |
-| `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary cities to skip |
+| `CITY_SKIP_ENABLED` | `true` | Skip markets in the worst city-timezone win summary groups |
+| `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary city timezones to skip |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
 | `ORDER_PRICE_SOURCE` | `midpoint` | Order limit price: `midpoint`, `buy_price`, `yes_price`, `best_bid`, `best_ask` |
 | `ORDER_EXPIRY_MINUTES` | `25` | Minutes until unfilled orders expire (`GTD`). Set `ORDER_EXPIRY_HOURS=0` for no expiry (`GTC`). |
