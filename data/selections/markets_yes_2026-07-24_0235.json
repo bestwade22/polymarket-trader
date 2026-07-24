@@ -1,0 +1,12 @@
+{
+  "run_at": "2026-07-24T02:35:31.042246+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "731544",
+      "city": "Wellington",
+      "reason": "low_win_summary_city"
+    }
+  ]
+}
