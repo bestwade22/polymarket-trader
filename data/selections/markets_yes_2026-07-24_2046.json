@@ -1,0 +1,52 @@
+{
+  "run_at": "2026-07-24T20:46:09.936754+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "735880",
+      "city": "Dallas",
+      "market_id": "3048546",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735883",
+      "city": "Chicago",
+      "market_id": "3048578",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735885",
+      "city": "Denver",
+      "market_id": "3048606",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735890",
+      "city": "Panama City",
+      "market_id": "3048659",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9805,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735886",
+      "city": "Houston",
+      "market_id": "3048616",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.29,
+      "spread_max": 0.15
+    }
+  ]
+}
