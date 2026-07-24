@@ -1,0 +1,79 @@
+{
+  "run_at": "2026-07-24T13:36:12.205659+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "731568",
+      "city": "Cape Town",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731540",
+      "city": "London",
+      "market_id": "3024931",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.665,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731541",
+      "city": "Paris",
+      "market_id": "3024942",
+      "group_item_title": "28\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.62,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731552",
+      "city": "Milan",
+      "market_id": "3025061",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731553",
+      "city": "Madrid",
+      "market_id": "3025073",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731554",
+      "city": "Warsaw",
+      "market_id": "3025087",
+      "group_item_title": "20\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.85,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731546",
+      "city": "Munich",
+      "market_id": "3024998",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3024997",
+      "held_group_item_title": "24\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "731564",
+      "city": "Amsterdam",
+      "market_id": "3025197",
+      "group_item_title": "24\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3025196",
+      "held_group_item_title": "23\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
