@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-07-24T11:06:08.774067+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "731543",
+      "city": "Ankara",
+      "market_id": "3024964",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.445,
+      "yes_token_id": "108404545242238064706211715472632473897760488141716313051507746294099965257394",
+      "buy_price": 0.45,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.445,
+      "selection_price": 0.445,
+      "gamma_yes_price": 0.49,
+      "best_bid": 0.44,
+      "best_ask": 0.45,
+      "spread": 0.01,
+      "clob_buy_price": 0.45,
+      "last_trade_price": 0.62,
+      "midpoint": 0.445,
+      "outcomePrices": [
+        0.49,
+        0.51
+      ],
+      "competitive": 0.9999000099990001,
+      "event_slug": "highest-temperature-in-ankara-on-july-24-2026",
+      "open_interest": 21505.062954,
+      "order_status": "live",
+      "order_id": "0xf0615ca70cf91644e36ff4455c11aebc90e5beadff18298831f739000fc84593",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T11:31:08+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "731547",
+      "city": "Tel Aviv",
+      "market_id": "3025009",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731562",
+      "city": "Istanbul",
+      "market_id": "3025173",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.715,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731567",
+      "city": "Jeddah",
+      "market_id": "3025233",
+      "group_item_title": "40\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.83,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731565",
+      "city": "Helsinki",
+      "market_id": "3025209",
+      "group_item_title": "21\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.4,
+      "spread_max": 0.15
+    }
+  ]
+}
