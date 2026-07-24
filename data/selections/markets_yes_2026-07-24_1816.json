@@ -1,0 +1,78 @@
+{
+  "run_at": "2026-07-24T18:16:00.437686+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "735879",
+      "city": "NYC",
+      "market_id": "3048535",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.49,
+      "yes_token_id": "1822465682365076906814721233662121676675510060871899225490558602020476731668",
+      "buy_price": 0.51,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.49,
+      "selection_price": 0.49,
+      "gamma_yes_price": 0.475,
+      "best_bid": 0.47,
+      "best_ask": 0.51,
+      "spread": 0.04,
+      "clob_buy_price": 0.51,
+      "last_trade_price": 0.47,
+      "midpoint": 0.49,
+      "outcomePrices": [
+        0.475,
+        0.525
+      ],
+      "competitive": 0.9993753903810119,
+      "event_slug": "highest-temperature-in-nyc-on-july-24-2026",
+      "open_interest": 30118.535139,
+      "order_status": "live",
+      "order_id": "0x1d580259b53f1377d9cc1921aa7190d9d616ed26ce68cad4587ded79472eae29",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T18:40:59+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "735869",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "735868",
+      "city": "Sao Paulo",
+      "market_id": "3048485",
+      "group_item_title": "17\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735881",
+      "city": "Atlanta",
+      "market_id": "3048561",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735882",
+      "city": "Miami",
+      "market_id": "3048572",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    }
+  ]
+}
