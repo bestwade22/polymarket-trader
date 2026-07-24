@@ -1,0 +1,152 @@
+{
+  "run_at": "2026-07-24T06:36:57.300489+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "731549",
+      "city": "Hong Kong",
+      "market_id": "3025034",
+      "groupItemTitle": "34\u00b0C",
+      "yes_price": 0.495,
+      "yes_token_id": "52671860651529266437164542365041966490166276209042212057347353521599447095850",
+      "buy_price": 0.53,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.495,
+      "selection_price": 0.495,
+      "gamma_yes_price": 0.545,
+      "best_bid": 0.46,
+      "best_ask": 0.53,
+      "spread": 0.07,
+      "clob_buy_price": 0.53,
+      "last_trade_price": 0.57,
+      "midpoint": 0.495,
+      "outcomePrices": [
+        0.545,
+        0.455
+      ],
+      "competitive": 0.9979790923380155,
+      "event_slug": "highest-temperature-in-hong-kong-on-july-24-2026",
+      "open_interest": 58842.939916,
+      "order_status": "live",
+      "order_id": "0x8aee5589a1b7dfc6dd40e145398835e86dec7d66cb02c4ca5a4646e094bd404c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T07:01:56+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "731551",
+      "city": "Singapore",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731559",
+      "city": "Chengdu",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731572",
+      "city": "Manila",
+      "reason": "low_win_summary_city"
+    },
+    {
+      "event_id": "731542",
+      "city": "Seoul",
+      "market_id": "3024958",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731548",
+      "city": "Tokyo",
+      "market_id": "3025022",
+      "group_item_title": "34\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731555",
+      "city": "Taipei",
+      "market_id": "3025099",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731556",
+      "city": "Chongqing",
+      "market_id": "3025108",
+      "group_item_title": "40\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.8,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731557",
+      "city": "Beijing",
+      "market_id": "3025122",
+      "group_item_title": "32\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731560",
+      "city": "Shenzhen",
+      "market_id": "3025155",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.705,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731563",
+      "city": "Busan",
+      "market_id": "3025185",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731569",
+      "city": "Guangzhou",
+      "market_id": "3025254",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731570",
+      "city": "Qingdao",
+      "market_id": "3025264",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.88,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "731566",
+      "city": "Kuala Lumpur",
+      "market_id": "3025220",
+      "group_item_title": "32\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3025220",
+      "held_group_item_title": "32\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
