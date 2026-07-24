@@ -8310,5 +8310,53 @@
     "floor_price": 0.95,
     "current_mid": 0.25,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x38b5471f565bb1befca7ee77034e80c9b0619fa6e4a6bf7fb8b3ff8850a6e8e4",
+    "token_id": "30103473536586986640292656178147569257606898417107102671445109717182895303431",
+    "order_id": "0xd7eace7b0594ea1c72d16688e405bea1c63d6c31483f3685e152cf847f4990c9",
+    "sold_at": "2026-07-24T07:00:11.174467+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-guangzhou-on-july-24-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.41,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.435,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x74f3d0202bf7a80bc7ec2f1eb9faaa9fa9acf597a5d30f35deaa5e3ee486993c",
+    "token_id": "37618953047528511968277435813943034887653695032836316564480816305552967395735",
+    "order_id": "0x481d6c6849fc4cadb18d28c7ce6a8604379d51b2ca939ba403d329bddfc02f8a",
+    "sold_at": "2026-07-24T07:00:12.373566+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-kuala-lumpur-on-july-24-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.44,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.41,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x493d742a4dce403e7f81c7c6f6410e688fa4f929703ec928e481a78741514f61",
+    "token_id": "52671860651529266437164542365041966490166276209042212057347353521599447095850",
+    "order_id": "0xbf9f6dc137c7b545940ce602db868e7bf908aa354701b347637bcd4a75b98027",
+    "sold_at": "2026-07-24T07:00:13.273451+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-hong-kong-on-july-24-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.49,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.33,
+    "reason": "tier1"
   }
 ]
