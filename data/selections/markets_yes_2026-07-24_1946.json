@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-07-24T19:46:18.799581+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "735870",
+      "city": "Toronto",
+      "market_id": "3048507",
+      "group_item_title": "25\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735879",
+      "city": "NYC",
+      "market_id": "3048534",
+      "group_item_title": "80-81\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.84,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735881",
+      "city": "Atlanta",
+      "market_id": "3048561",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735882",
+      "city": "Miami",
+      "market_id": "3048572",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735883",
+      "city": "Chicago",
+      "market_id": "3048578",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.67,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735890",
+      "city": "Panama City",
+      "market_id": "3048659",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.775,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735880",
+      "city": "Dallas",
+      "market_id": "3048546",
+      "group_item_title": "96-97\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.22,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "735884",
+      "city": "Austin",
+      "market_id": "3048591",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.34,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "735886",
+      "city": "Houston",
+      "market_id": "3048616",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.15
+    }
+  ]
+}
