@@ -1,0 +1,109 @@
+{
+  "run_at": "2026-07-24T21:16:04.491073+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "735878",
+      "city": "Seattle",
+      "market_id": "3048525",
+      "groupItemTitle": "80-81\u00b0F",
+      "yes_price": 0.52,
+      "yes_token_id": "29201317007301626478870816492736884626579579442537715083690741657410901482260",
+      "buy_price": 0.53,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.52,
+      "selection_price": 0.52,
+      "gamma_yes_price": 0.54,
+      "best_bid": 0.51,
+      "best_ask": 0.53,
+      "spread": 0.02,
+      "clob_buy_price": 0.53,
+      "last_trade_price": 0.59,
+      "midpoint": 0.52,
+      "outcomePrices": [
+        0.54,
+        0.46
+      ],
+      "competitive": 0.998402555910543,
+      "event_slug": "highest-temperature-in-seattle-on-july-24-2026",
+      "open_interest": 21715.842452999997,
+      "order_status": "live",
+      "order_id": "0xd5584943117accb862daa59f4f2f8a513a70bea2ddf51de19274f5086e24f6db",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T21:41:02+00:00"
+    },
+    {
+      "event_id": "735885",
+      "city": "Denver",
+      "market_id": "3048606",
+      "groupItemTitle": "96-97\u00b0F",
+      "yes_price": 0.57,
+      "yes_token_id": "89935381574208943798846096044548548394341982080372247341989491988954209196306",
+      "buy_price": 0.58,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.57,
+      "selection_price": 0.57,
+      "gamma_yes_price": 0.545,
+      "best_bid": 0.56,
+      "best_ask": 0.58,
+      "spread": 0.02,
+      "clob_buy_price": 0.58,
+      "last_trade_price": 0.63,
+      "midpoint": 0.57,
+      "outcomePrices": [
+        0.545,
+        0.455
+      ],
+      "competitive": 0.9979790923380155,
+      "event_slug": "highest-temperature-in-denver-on-july-24-2026",
+      "open_interest": 15873.272106999999,
+      "order_status": "live",
+      "order_id": "0x57d96a1bf97d2d30065cc85b4006a22b3582d21b1ea5afb40a9bf0b60486752b",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T21:41:04+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "735887",
+      "city": "Los Angeles",
+      "market_id": "3048623",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735888",
+      "city": "San Francisco",
+      "market_id": "3048636",
+      "group_item_title": "68-69\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.32,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "735889",
+      "city": "Mexico City",
+      "market_id": "3048645",
+      "group_item_title": "27\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.19,
+      "spread_max": 0.15
+    }
+  ]
+}
