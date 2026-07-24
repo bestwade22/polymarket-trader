@@ -1,0 +1,136 @@
+{
+  "run_at": "2026-07-24T19:16:25.058845+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "735870",
+      "city": "Toronto",
+      "market_id": "3048507",
+      "groupItemTitle": "25\u00b0C",
+      "yes_price": 0.53,
+      "yes_token_id": "23824326818055960587585437832221284343164484058211825548394697544177116558767",
+      "buy_price": 0.56,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.53,
+      "selection_price": 0.53,
+      "gamma_yes_price": 0.535,
+      "best_bid": 0.5,
+      "best_ask": 0.56,
+      "spread": 0.06,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.51,
+      "midpoint": 0.53,
+      "outcomePrices": [
+        0.535,
+        0.465
+      ],
+      "competitive": 0.9987764987889834,
+      "event_slug": "highest-temperature-in-toronto-on-july-24-2026",
+      "open_interest": 15805.567713999999,
+      "order_status": "live",
+      "order_id": "0x2ecb3b3132adf4a94b09f476268c52c49d99f289bf3a6ffe59f3aff2b90126d7",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T19:41:23+00:00"
+    },
+    {
+      "event_id": "735879",
+      "city": "NYC",
+      "market_id": "3048535",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.51,
+      "yes_token_id": "1822465682365076906814721233662121676675510060871899225490558602020476731668",
+      "buy_price": 0.53,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.51,
+      "selection_price": 0.51,
+      "gamma_yes_price": 0.51,
+      "best_bid": 0.49,
+      "best_ask": 0.53,
+      "spread": 0.04,
+      "clob_buy_price": 0.53,
+      "last_trade_price": 0.47,
+      "midpoint": 0.51,
+      "outcomePrices": [
+        0.51,
+        0.49
+      ],
+      "competitive": 0.9999000099990001,
+      "event_slug": "highest-temperature-in-nyc-on-july-24-2026",
+      "open_interest": 31453.771935,
+      "order_status": "live",
+      "order_id": "0x3faa140175fa80039d612034dd1ca76f8c7cd26dc6aa3e1f367c3958b5f5ea6a",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-24T19:41:24+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "735881",
+      "city": "Atlanta",
+      "market_id": "3048561",
+      "group_item_title": "88-89\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735882",
+      "city": "Miami",
+      "market_id": "3048572",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735883",
+      "city": "Chicago",
+      "market_id": "3048578",
+      "group_item_title": "78-79\u00b0F",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735890",
+      "city": "Panama City",
+      "market_id": "3048659",
+      "group_item_title": "30\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.74,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "735884",
+      "city": "Austin",
+      "market_id": "3048591",
+      "group_item_title": "94-95\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.19,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "735886",
+      "city": "Houston",
+      "market_id": "3048615",
+      "group_item_title": "92-93\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.29,
+      "spread_max": 0.15
+    }
+  ]
+}
