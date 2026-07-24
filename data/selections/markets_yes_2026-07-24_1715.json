@@ -1,0 +1,22 @@
+{
+  "run_at": "2026-07-24T17:15:42.904801+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "735869",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "735868",
+      "city": "Sao Paulo",
+      "market_id": "3048485",
+      "group_item_title": "17\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    }
+  ]
+}
