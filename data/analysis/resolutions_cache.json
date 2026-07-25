@@ -510,6 +510,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "45207246772729247798722074500757080282820221990843379570571379101468161012626"
     },
+    "highest-temperature-in-beijing-on-july-25-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on July 25?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "84413403807708757207631187696562409940149803640254301120797614730988471443125"
+    },
     "highest-temperature-in-beijing-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 3?",
@@ -1163,6 +1169,12 @@
       "title": "Highest temperature in Chongqing on July 22?",
       "winning_temp": "40\u00b0C",
       "winning_token_id": "58162264843010834056448911123379717858877480770127830608760725394131522253014"
+    },
+    "highest-temperature-in-chongqing-on-july-25-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on July 25?",
+      "winning_temp": "39\u00b0C",
+      "winning_token_id": "69381776092589273102631805987862298787032805979301949409095010015401045704204"
     },
     "highest-temperature-in-chongqing-on-july-3-2026": {
       "closed": true,
