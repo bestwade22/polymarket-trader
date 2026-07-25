@@ -1,0 +1,13 @@
+{
+  "run_at": "2026-07-25T02:45:30.892904+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "736351",
+      "city": "Wellington",
+      "timezone": "NZ (UTC+12/+13)",
+      "reason": "low_win_summary_timezone"
+    }
+  ]
+}
