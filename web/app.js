@@ -43,6 +43,8 @@ const TZ_LABELS = {
 
 let allRecords = [];
 let cityTimezones = {};
+let filterSweepData = null;
+let skippedAnalysisData = null;
 let sortKey = "bought_at";
 let sortAsc = false;
 const insightSortState = {};
@@ -928,6 +930,7 @@ function renderTable(records) {
       <td class="${sharesCls}"${sharesTitle}>${r.shares}</td>
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
       <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
+      <td>${r.yes_gap != null ? Number(r.yes_gap).toFixed(3) : "—"}</td>
       <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
       <td>${r.competitive != null ? Number(r.competitive).toFixed(3) : "—"}</td>
       <td>${r.open_interest != null ? `$${Math.round(r.open_interest).toLocaleString()}` : "—"}</td>
@@ -942,11 +945,160 @@ function renderTable(records) {
     .join("");
 }
 
+function renderFilterSweep(data) {
+  const container = document.getElementById("filter-sweep-content");
+  if (!container) return;
+  if (!data || !Array.isArray(data.stacks)) {
+    container.innerHTML = `<p class="muted">No filter_sweep in trade_history.json — run <code>python -m src.main enrich-trade-history</code>.</p>`;
+    return;
+  }
+  const rec = data.recommended;
+  const train = data.train_dates || {};
+  const oos = data.oos_dates || {};
+  const highlight = rec
+    ? `<div class="insight-card insight-highlights">
+        <h3>Recommended (loosest ≥${data.target_win_summary_pct ?? 60}% OOS)</h3>
+        <div class="summary-grid">
+          <div><span class="summary-label">Stack</span><span class="summary-value">${rec.stack}</span></div>
+          <div><span class="summary-label">All win summary</span><span class="summary-value">${rec.win_summary_pct}%</span></div>
+          <div><span class="summary-label">All P&amp;L</span><span class="summary-value">$${Number(rec.pnl_usd).toFixed(2)}</span></div>
+          <div><span class="summary-label">All n / denom</span><span class="summary-value">${rec.n} / ${rec.denom}</span></div>
+          <div><span class="summary-label">OOS win summary</span><span class="summary-value">${rec.oos_win_summary_pct}%</span></div>
+          <div><span class="summary-label">OOS P&amp;L</span><span class="summary-value">$${Number(rec.oos_pnl_usd).toFixed(2)}</span></div>
+          <div><span class="summary-label">OOS denom</span><span class="summary-value">${rec.oos_denom}</span></div>
+        </div>
+        <p class="insight-desc">Train ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days) · OOS ${oos.from || "?"}→${oos.to || "?"} (${oos.n || 0} days)</p>
+      </div>`
+    : `<p class="muted">No stack cleared ≥${data.target_win_summary_pct ?? 60}% OOS with enough trades.</p>`;
+
+  const rows = data.stacks
+    .slice(0, 40)
+    .map((r) => {
+      const pass = r.oos_pass_60 ? "pass" : "";
+      return `<tr class="${pass}">
+        <td>${r.stack}</td>
+        <td>${r.win_summary_pct}%</td>
+        <td>$${Number(r.pnl_usd).toFixed(1)}</td>
+        <td>${r.denom}</td>
+        <td>${r.oos_win_summary_pct}%</td>
+        <td>$${Number(r.oos_pnl_usd).toFixed(1)}</td>
+        <td>${r.oos_denom}</td>
+        <td>${r.oos_pass_60 ? "yes" : ""}</td>
+      </tr>`;
+    })
+    .join("");
+
+  container.innerHTML = `${highlight}
+    <div class="table-wrap" style="padding:0">
+      <table class="insight-table">
+        <thead>
+          <tr>
+            <th>Stack</th>
+            <th>Win summary%</th>
+            <th>P&amp;L</th>
+            <th>n (denom)</th>
+            <th>OOS win%</th>
+            <th>OOS P&amp;L</th>
+            <th>OOS denom</th>
+            <th>≥60% OOS</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+
+function renderSkippedAnalysis(data) {
+  const container = document.getElementById("skipped-content");
+  if (!container) return;
+  if (!data || !Array.isArray(data.by_reason)) {
+    container.innerHTML = `<p class="muted">No skipped_analysis in trade_history.json — run <code>python -m src.main enrich-trade-history</code>.</p>`;
+    return;
+  }
+  const header = `
+    <div class="insight-card insight-highlights">
+      <h3>Skip overview</h3>
+      <div class="summary-grid">
+        <div><span class="summary-label">Total skips</span><span class="summary-value">${data.total_skips ?? 0}</span></div>
+        <div><span class="summary-label">Resolved (had temp + outcome)</span><span class="summary-value">${data.resolved_skips ?? 0}</span></div>
+        <div><span class="summary-label">Would-have-won %</span><span class="summary-value">${data.would_have_won_pct != null ? `${data.would_have_won_pct}%` : "—"}</span></div>
+      </div>
+      <p class="insight-desc">Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
+    </div>`;
+
+  const reasonRows = data.by_reason
+    .map((r) => {
+      const tag = r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : "";
+      return `<tr class="${tag}">
+        <td>${r.reason}</td>
+        <td>${r.count}</td>
+        <td>${r.with_temp}</td>
+        <td>${r.resolved}</td>
+        <td>${r.would_have_won}</td>
+        <td>${r.would_have_lost}</td>
+        <td>${r.would_have_won_pct != null ? `${r.would_have_won_pct}%` : "—"}</td>
+        <td>${r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : ""}</td>
+      </tr>`;
+    })
+    .join("");
+
+  const sampleRows = (data.samples || [])
+    .slice(0, 25)
+    .map((s) => {
+      const whw =
+        s.would_have_won === true ? "won" : s.would_have_won === false ? "lost" : "—";
+      return `<tr>
+        <td>${(s.run_at || "").slice(0, 16)}</td>
+        <td>${s.city || "—"}</td>
+        <td>${s.reason || ""}</td>
+        <td>${s.temp || "—"}</td>
+        <td>${whw}</td>
+      </tr>`;
+    })
+    .join("");
+
+  container.innerHTML = `${header}
+    <div class="table-wrap" style="padding:0">
+      <table class="insight-table">
+        <thead>
+          <tr>
+            <th>Reason</th>
+            <th>Count</th>
+            <th>With temp</th>
+            <th>Resolved</th>
+            <th>Would win</th>
+            <th>Would lose</th>
+            <th>Would-win%</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>${reasonRows}</tbody>
+      </table>
+    </div>
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Sample skips with temp</h3>
+    <div class="table-wrap" style="padding:0">
+      <table class="insight-table">
+        <thead>
+          <tr>
+            <th>Run at</th>
+            <th>City</th>
+            <th>Reason</th>
+            <th>Temp</th>
+            <th>Would have</th>
+          </tr>
+        </thead>
+        <tbody>${sampleRows || `<tr><td colspan="5">No skipped rows with a temp bucket</td></tr>`}</tbody>
+      </table>
+    </div>`;
+}
+
 function render() {
   const filtered = sortRecords(applyFilters(allRecords));
   renderSummary(filtered);
   renderTable(filtered);
   renderInsights(computeInsights(filtered));
+  renderFilterSweep(filterSweepData);
+  renderSkippedAnalysis(skippedAnalysisData);
 }
 
 function populateCityFilter() {
@@ -1027,6 +1179,8 @@ async function loadData() {
     records = U.enrichRecordsWithResolutions(records, resolutions);
   }
   allRecords = records;
+  filterSweepData = data.filter_sweep || null;
+  skippedAnalysisData = data.skipped_analysis || null;
   document.getElementById("sync-meta").textContent =
     `Synced ${data.synced_at || "?"} · ${allRecords.length} trades · wallet ${(data.wallet || "").slice(0, 10)}…`;
   populateLocalTimeFilter();

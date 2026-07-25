@@ -173,6 +173,33 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   grid-column: 1 / -1;
 }
 
+.insight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.insight-table th,
+.insight-table td {
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.insight-table tr.pass td:last-child,
+.insight-table tr.helpful td:last-child {
+  color: var(--win);
+}
+
+.insight-table tr.costly td:last-child {
+  color: var(--sold);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .mini-table-wrap {
   overflow-x: auto;
   max-width: 100%;
