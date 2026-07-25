@@ -1,0 +1,63 @@
+{
+  "run_at": "2026-07-25T18:45:56.217434+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741263",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "741260",
+      "city": "Sao Paulo",
+      "market_id": "3074081",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741264",
+      "city": "Toronto",
+      "market_id": "3074102",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-toronto-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.69,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741266",
+      "city": "NYC",
+      "market_id": "3074122",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741268",
+      "city": "Atlanta",
+      "market_id": "3074150",
+      "group_item_title": "88-89\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741269",
+      "city": "Miami",
+      "market_id": "3074160",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.6
+    }
+  ]
+}
