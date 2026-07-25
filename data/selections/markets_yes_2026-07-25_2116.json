@@ -1,0 +1,87 @@
+{
+  "run_at": "2026-07-25T21:16:02.534403+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "741265",
+      "city": "Seattle",
+      "market_id": "3074113",
+      "groupItemTitle": "70-71\u00b0F",
+      "yes_price": 0.59,
+      "yes_token_id": "4199772402580501598266833415650306120349086353484382528843971979444825447546",
+      "buy_price": 0.64,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.59,
+      "selection_price": 0.59,
+      "gamma_yes_price": 0.585,
+      "best_bid": 0.54,
+      "best_ask": 0.64,
+      "spread": 0.1,
+      "clob_buy_price": 0.64,
+      "last_trade_price": 0.61,
+      "midpoint": 0.59,
+      "outcomePrices": [
+        0.585,
+        0.415
+      ],
+      "competitive": 0.9928268261808434,
+      "event_slug": "highest-temperature-in-seattle-on-july-25-2026",
+      "open_interest": 17829.214534000002,
+      "runner_up_yes": 0.185,
+      "yes_gap": 0.4,
+      "top_yes": 0.585,
+      "order_status": "live",
+      "order_id": "0xbd8c8e8901fda2c0dc202cbca19f3e3c79c7adf299efe9ef2a2803168b5a6952",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-25T21:41:01+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "741272",
+      "city": "Denver",
+      "market_id": "3074192",
+      "group_item_title": "100-101\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741274",
+      "city": "Los Angeles",
+      "market_id": "3074212",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741275",
+      "city": "San Francisco",
+      "market_id": "3074225",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.725,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741276",
+      "city": "Mexico City",
+      "market_id": "3074233",
+      "group_item_title": "26\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.18,
+      "spread_max": 0.15
+    }
+  ]
+}
