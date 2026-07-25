@@ -1,0 +1,156 @@
+{
+  "run_at": "2026-07-25T06:46:51.345354+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "736365",
+      "city": "Chengdu",
+      "market_id": "3050360",
+      "groupItemTitle": "39\u00b0C",
+      "yes_price": 0.555,
+      "yes_token_id": "74833567513133745725662460801038695610636807678832682145822034980946780351411",
+      "buy_price": 0.58,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.555,
+      "selection_price": 0.555,
+      "gamma_yes_price": 0.44,
+      "best_bid": 0.53,
+      "best_ask": 0.58,
+      "spread": 0.05,
+      "clob_buy_price": 0.58,
+      "last_trade_price": 0.6,
+      "midpoint": 0.555,
+      "outcomePrices": [
+        0.44,
+        0.56
+      ],
+      "competitive": 0.7772020725388601,
+      "event_slug": "highest-temperature-in-chengdu-on-july-25-2026",
+      "open_interest": 26341.236222,
+      "order_status": "live",
+      "order_id": "0x0377dcdbb8ffc8fe05226d15f72b8b6f31c1ad0986b3ecf4e5623ba6f87e80cd",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-25T07:11:50+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "736357",
+      "city": "Singapore",
+      "timezone": "Singapore (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "736376",
+      "city": "Manila",
+      "timezone": "Philippines (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "736349",
+      "city": "Seoul",
+      "market_id": "3050187",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736354",
+      "city": "Tokyo",
+      "market_id": "3050243",
+      "group_item_title": "36\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736356",
+      "city": "Shanghai",
+      "market_id": "3050261",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736361",
+      "city": "Taipei",
+      "market_id": "3050319",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736364",
+      "city": "Wuhan",
+      "market_id": "3050349",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736369",
+      "city": "Busan",
+      "market_id": "3050403",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736374",
+      "city": "Guangzhou",
+      "market_id": "3050459",
+      "group_item_title": "37\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736375",
+      "city": "Qingdao",
+      "market_id": "3050471",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736362",
+      "city": "Chongqing",
+      "market_id": "3050327",
+      "group_item_title": "40\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.27,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "736366",
+      "city": "Shenzhen",
+      "market_id": "3050372",
+      "group_item_title": "36\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.309,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "736372",
+      "city": "Kuala Lumpur",
+      "market_id": "3050437",
+      "group_item_title": "29\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.51,
+      "spread_max": 0.15
+    }
+  ]
+}
