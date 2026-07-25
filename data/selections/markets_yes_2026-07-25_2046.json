@@ -1,0 +1,75 @@
+{
+  "run_at": "2026-07-25T20:46:08.004517+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741267",
+      "city": "Dallas",
+      "market_id": "3074133",
+      "group_item_title": "98-99\u00b0F",
+      "event_slug": "highest-temperature-in-dallas-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741270",
+      "city": "Chicago",
+      "market_id": "3074164",
+      "group_item_title": "79\u00b0F or below",
+      "event_slug": "highest-temperature-in-chicago-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741271",
+      "city": "Austin",
+      "market_id": "3074180",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741273",
+      "city": "Houston",
+      "market_id": "3074202",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-houston-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.91,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741277",
+      "city": "Panama City",
+      "market_id": "3074247",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741272",
+      "city": "Denver",
+      "market_id": "3074192",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.73,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "741276",
+      "city": "Mexico City",
+      "market_id": "3074234",
+      "group_item_title": "27\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.26,
+      "spread_max": 0.15
+    }
+  ]
+}
