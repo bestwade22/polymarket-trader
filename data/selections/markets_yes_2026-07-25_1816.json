@@ -1,0 +1,94 @@
+{
+  "run_at": "2026-07-25T18:16:02.007387+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "741264",
+      "city": "Toronto",
+      "market_id": "3074102",
+      "groupItemTitle": "26\u00b0C",
+      "yes_price": 0.51,
+      "yes_token_id": "101407926076194820183353323541292938383183123722320048788260025286876427368687",
+      "buy_price": 0.54,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.51,
+      "selection_price": 0.51,
+      "gamma_yes_price": 0.325,
+      "best_bid": 0.48,
+      "best_ask": 0.54,
+      "spread": 0.06,
+      "clob_buy_price": 0.54,
+      "last_trade_price": 0.45,
+      "midpoint": 0.51,
+      "outcomePrices": [
+        0.325,
+        0.675
+      ],
+      "competitive": 0.7277137659187386,
+      "event_slug": "highest-temperature-in-toronto-on-july-25-2026",
+      "open_interest": 11659.205227999999,
+      "runner_up_yes": 0.245,
+      "yes_gap": 0.08,
+      "top_yes": 0.325,
+      "order_status": "live",
+      "order_id": "0xc4b9175ef2cf9367bb171ac17957d8f82878965bdd41c648328a60de46fe2a70",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-25T18:41:01+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "741263",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "741260",
+      "city": "Sao Paulo",
+      "market_id": "3074081",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741266",
+      "city": "NYC",
+      "market_id": "3074122",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741268",
+      "city": "Atlanta",
+      "market_id": "3074150",
+      "group_item_title": "88-89\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741269",
+      "city": "Miami",
+      "market_id": "3074160",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-july-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    }
+  ]
+}
