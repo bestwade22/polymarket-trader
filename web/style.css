@@ -186,6 +186,31 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   border-bottom: 1px solid var(--border);
 }
 
+.insight-table th.insight-sort {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.insight-table th.insight-sort:hover {
+  color: var(--text);
+}
+
+.glossary-list {
+  margin: 0.25rem 0 0.5rem;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.glossary-list li {
+  margin-bottom: 0.4rem;
+}
+
+.glossary-list strong {
+  color: var(--text);
+}
+
 .insight-table tr.pass td:last-child,
 .insight-table tr.helpful td:last-child {
   color: var(--win);

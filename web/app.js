@@ -45,6 +45,7 @@ let allRecords = [];
 let cityTimezones = {};
 let filterSweepData = null;
 let skippedAnalysisData = null;
+let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
 const insightSortState = {};
@@ -955,9 +956,27 @@ function renderFilterSweep(data) {
   const rec = data.recommended;
   const train = data.train_dates || {};
   const oos = data.oos_dates || {};
+  const target = data.target_win_summary_pct ?? 60;
+
+  const glossary = `
+    <div class="insight-card" style="margin-bottom:1rem">
+      <h3>What these numbers mean</h3>
+      <ul class="glossary-list">
+        <li><strong>OOS</strong> = <em>out-of-sample</em>: trades on later dates held out of the “fit” window. A stack “passes ≥${target}% OOS” if win summary on that later period is still ≥${target}% (so it isn’t just overfitting the past).</li>
+        <li><strong>Train</strong> = earlier dates used to rank timezone skips / judge the stack historically (about first 70% of distinct trade days).</li>
+        <li><strong>denom</strong> = win-summary denominator: settled trades with ≥1 share (wins + losses + sold). Opens and dust (&lt;1 share) are excluded. <strong>n</strong> is all matching rows including opens.</li>
+        <li><strong>Win summary%</strong> = win-summary wins ÷ denom (same rules as the main dashboard).</li>
+      </ul>
+      <p class="insight-desc">
+        Example split: <strong>Train</strong> ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days)
+        · <strong>OOS</strong> ${oos.from || "?"}→${oos.to || "?"} (${oos.n || 0} days).
+        Filters are scored on train+all, then checked on OOS so a “good” stack still works on unseen days.
+      </p>
+    </div>`;
+
   const highlight = rec
     ? `<div class="insight-card insight-highlights">
-        <h3>Recommended (loosest ≥${data.target_win_summary_pct ?? 60}% OOS)</h3>
+        <h3>Recommended (loosest ≥${target}% OOS)</h3>
         <div class="summary-grid">
           <div><span class="summary-label">Stack</span><span class="summary-value">${rec.stack}</span></div>
           <div><span class="summary-label">All win summary</span><span class="summary-value">${rec.win_summary_pct}%</span></div>
@@ -967,11 +986,43 @@ function renderFilterSweep(data) {
           <div><span class="summary-label">OOS P&amp;L</span><span class="summary-value">$${Number(rec.oos_pnl_usd).toFixed(2)}</span></div>
           <div><span class="summary-label">OOS denom</span><span class="summary-value">${rec.oos_denom}</span></div>
         </div>
-        <p class="insight-desc">Train ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days) · OOS ${oos.from || "?"}→${oos.to || "?"} (${oos.n || 0} days)</p>
+        <p class="insight-desc">Loosest = most OOS denom among stacks that still clear ≥${target}% win summary on the OOS dates.</p>
       </div>`
-    : `<p class="muted">No stack cleared ≥${data.target_win_summary_pct ?? 60}% OOS with enough trades.</p>`;
+    : `<p class="muted">No stack cleared ≥${target}% OOS with enough trades.</p>`;
 
-  const rows = data.stacks
+  const columns = [
+    { key: "stack", label: "Stack" },
+    { key: "win_summary_pct", label: "Win summary%" },
+    { key: "pnl_usd", label: "P&amp;L" },
+    { key: "denom", label: "denom" },
+    { key: "n", label: "n" },
+    { key: "oos_win_summary_pct", label: "OOS win%" },
+    { key: "oos_pnl_usd", label: "OOS P&amp;L" },
+    { key: "oos_denom", label: "OOS denom" },
+    { key: "oos_pass_60", label: `≥${target}% OOS` },
+  ];
+
+  const sorted = [...data.stacks].sort((a, b) => {
+    const key = filterSweepSort.key;
+    let av = a[key];
+    let bv = b[key];
+    if (key === "stack") {
+      av = String(av || "");
+      bv = String(bv || "");
+      const cmp = av.localeCompare(bv);
+      return filterSweepSort.asc ? cmp : -cmp;
+    }
+    if (typeof av === "boolean") av = av ? 1 : 0;
+    if (typeof bv === "boolean") bv = bv ? 1 : 0;
+    av = Number(av);
+    bv = Number(bv);
+    if (!Number.isFinite(av)) av = filterSweepSort.asc ? Infinity : -Infinity;
+    if (!Number.isFinite(bv)) bv = filterSweepSort.asc ? Infinity : -Infinity;
+    if (av === bv) return String(a.stack || "").localeCompare(String(b.stack || ""));
+    return filterSweepSort.asc ? av - bv : bv - av;
+  });
+
+  const rows = sorted
     .slice(0, 40)
     .map((r) => {
       const pass = r.oos_pass_60 ? "pass" : "";
@@ -980,6 +1031,7 @@ function renderFilterSweep(data) {
         <td>${r.win_summary_pct}%</td>
         <td>$${Number(r.pnl_usd).toFixed(1)}</td>
         <td>${r.denom}</td>
+        <td>${r.n}</td>
         <td>${r.oos_win_summary_pct}%</td>
         <td>$${Number(r.oos_pnl_usd).toFixed(1)}</td>
         <td>${r.oos_denom}</td>
@@ -988,24 +1040,33 @@ function renderFilterSweep(data) {
     })
     .join("");
 
-  container.innerHTML = `${highlight}
+  const head = columns
+    .map((col) => {
+      const mark =
+        filterSweepSort.key === col.key ? (filterSweepSort.asc ? " ▲" : " ▼") : "";
+      return `<th class="insight-sort" data-sweep-key="${col.key}">${col.label}${mark}</th>`;
+    })
+    .join("");
+
+  container.innerHTML = `${glossary}${highlight}
     <div class="table-wrap" style="padding:0">
       <table class="insight-table">
-        <thead>
-          <tr>
-            <th>Stack</th>
-            <th>Win summary%</th>
-            <th>P&amp;L</th>
-            <th>n (denom)</th>
-            <th>OOS win%</th>
-            <th>OOS P&amp;L</th>
-            <th>OOS denom</th>
-            <th>≥60% OOS</th>
-          </tr>
-        </thead>
+        <thead><tr>${head}</tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
+
+  container.querySelectorAll("th[data-sweep-key]").forEach((th) => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.sweepKey;
+      if (filterSweepSort.key === key) filterSweepSort.asc = !filterSweepSort.asc;
+      else {
+        filterSweepSort.key = key;
+        filterSweepSort.asc = key === "stack";
+      }
+      renderFilterSweep(filterSweepData);
+    });
+  });
 }
 
 function renderSkippedAnalysis(data) {
