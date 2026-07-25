@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-07-25T18:00:31.336766+00:00",
+  "synced_at": "2026-07-25T21:00:31.029751+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -33042,19 +33042,19 @@
     ]
   },
   "skipped_analysis": {
-    "total_skips": 3474,
+    "total_skips": 3515,
     "resolved_skips": 0,
     "would_have_won_total": 0,
     "would_have_won_pct": null,
     "by_reason": [
       {
         "reason": "yes_price_max",
-        "count": 2812,
-        "with_temp": 2812,
+        "count": 2846,
+        "with_temp": 2846,
         "resolved": 0,
         "would_have_won": 0,
         "would_have_lost": 0,
-        "unknown_outcome": 2812,
+        "unknown_outcome": 2846,
         "would_have_won_pct": null,
         "filter_costly": false,
         "filter_helpful": false
@@ -33073,12 +33073,12 @@
       },
       {
         "reason": "spread_max",
-        "count": 147,
-        "with_temp": 147,
+        "count": 152,
+        "with_temp": 152,
         "resolved": 0,
         "would_have_won": 0,
         "would_have_lost": 0,
-        "unknown_outcome": 147,
+        "unknown_outcome": 152,
         "would_have_won_pct": null,
         "filter_costly": false,
         "filter_helpful": false
@@ -33109,7 +33109,7 @@
       },
       {
         "reason": "low_win_summary_timezone",
-        "count": 30,
+        "count": 32,
         "with_temp": 0,
         "resolved": 0,
         "would_have_won": 0,
