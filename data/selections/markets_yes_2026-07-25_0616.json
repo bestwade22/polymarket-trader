@@ -1,0 +1,202 @@
+{
+  "run_at": "2026-07-25T06:16:56.584399+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "736362",
+      "city": "Chongqing",
+      "market_id": "3050327",
+      "groupItemTitle": "40\u00b0C",
+      "yes_price": 0.575,
+      "yes_token_id": "36843147996068636055341055106412481519692200422835359303750071927566663673934",
+      "buy_price": 0.61,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.575,
+      "selection_price": 0.575,
+      "gamma_yes_price": 0.58,
+      "best_bid": 0.54,
+      "best_ask": 0.61,
+      "spread": 0.07,
+      "clob_buy_price": 0.61,
+      "last_trade_price": 0.7,
+      "midpoint": 0.575,
+      "outcomePrices": [
+        0.58,
+        0.42
+      ],
+      "competitive": 0.9936406995230525,
+      "event_slug": "highest-temperature-in-chongqing-on-july-25-2026",
+      "open_interest": 27421.884133999996,
+      "order_status": "live",
+      "order_id": "0x37f1065abef34dd46117260b5b70470d900d4426b52c5115cab2fb4ed32675bd",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-25T06:41:55+00:00"
+    },
+    {
+      "event_id": "736363",
+      "city": "Beijing",
+      "market_id": "3050338",
+      "groupItemTitle": "32\u00b0C",
+      "yes_price": 0.55,
+      "yes_token_id": "115423000368866749390623418398353272572813593908507586372737926837388090492842",
+      "buy_price": 0.57,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.55,
+      "selection_price": 0.55,
+      "gamma_yes_price": 0.53,
+      "best_bid": 0.53,
+      "best_ask": 0.57,
+      "spread": 0.04,
+      "clob_buy_price": 0.57,
+      "last_trade_price": 0.53,
+      "midpoint": 0.55,
+      "outcomePrices": [
+        0.53,
+        0.47
+      ],
+      "competitive": 0.9991008092716555,
+      "event_slug": "highest-temperature-in-beijing-on-july-25-2026",
+      "open_interest": 24383.982443999997,
+      "order_status": "live",
+      "order_id": "0x918cdd9eb063c21bdcf1591d8d0b9d861bdb581770f5eedd2d01182399f347a2",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-25T06:41:56+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "736357",
+      "city": "Singapore",
+      "timezone": "Singapore (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "736376",
+      "city": "Manila",
+      "timezone": "Philippines (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "736349",
+      "city": "Seoul",
+      "market_id": "3050187",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736354",
+      "city": "Tokyo",
+      "market_id": "3050243",
+      "group_item_title": "36\u00b0C or higher",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736355",
+      "city": "Hong Kong",
+      "market_id": "3050248",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736356",
+      "city": "Shanghai",
+      "market_id": "3050261",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736361",
+      "city": "Taipei",
+      "market_id": "3050319",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.92,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736364",
+      "city": "Wuhan",
+      "market_id": "3050349",
+      "group_item_title": "36\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.7,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736369",
+      "city": "Busan",
+      "market_id": "3050403",
+      "group_item_title": "35\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736374",
+      "city": "Guangzhou",
+      "market_id": "3050459",
+      "group_item_title": "37\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736375",
+      "city": "Qingdao",
+      "market_id": "3050471",
+      "group_item_title": "31\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736365",
+      "city": "Chengdu",
+      "market_id": "3050360",
+      "group_item_title": "39\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "736366",
+      "city": "Shenzhen",
+      "market_id": "3050372",
+      "group_item_title": "36\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.25,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "736372",
+      "city": "Kuala Lumpur",
+      "market_id": "3050438",
+      "group_item_title": "30\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.27,
+      "spread_max": 0.15
+    }
+  ]
+}
