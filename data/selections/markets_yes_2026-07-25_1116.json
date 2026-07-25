@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-07-25T11:16:08.110239+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "736353",
+      "city": "Tel Aviv",
+      "market_id": "3050224",
+      "group_item_title": "33\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.625,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736367",
+      "city": "Moscow",
+      "market_id": "3050382",
+      "group_item_title": "23\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736368",
+      "city": "Istanbul",
+      "market_id": "3050392",
+      "group_item_title": "23\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736373",
+      "city": "Jeddah",
+      "market_id": "3050449",
+      "group_item_title": "40\u00b0C",
+      "reason": "yes_price_max",
+      "selection_price": 0.615,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "736350",
+      "city": "Ankara",
+      "market_id": "3050191",
+      "group_item_title": "18\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.166,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "736371",
+      "city": "Helsinki",
+      "market_id": "3050424",
+      "group_item_title": "19\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.29,
+      "spread_max": 0.15
+    }
+  ]
+}
