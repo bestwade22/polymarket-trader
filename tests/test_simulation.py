@@ -9,14 +9,19 @@ from zoneinfo import ZoneInfo
 
 import pytest
 
-from src.simulation.buy_pass import SimulatedBuy, try_buy_event
+from src.simulation.buy_pass import BuySimResult, SimulatedBuy, try_buy_event
 from src.simulation.event_loader import date_range, default_sim_date_range
-from src.simulation.price_at_time import PriceHistoryStore
+from src.simulation.price_at_time import FRESH_PRICE_MAX_DELTA_SECONDS, PriceHistoryStore
 from src.simulation.resolve import _pnl, build_sim_record
 from src.simulation.sample_times import sample_local_minutes_in_window, sample_times_utc_for_event
 from src.simulation.sell_pass import SimulatedSell, try_sell_win
 from src.simulation.snapshot_enrichment import SnapshotEnrichment, lookup_enrichment_near
 from src.trade.strategies.base import MarketSelection
+
+
+def _ready_event(e, at, store, **k):
+    """Mock build_event_at_time: prices ready, pass event through, gamma_proxy=True."""
+    return e, True, True
 
 
 def test_sample_local_minutes_default_window():
@@ -89,7 +94,7 @@ def test_buy_pass_selects_highest_yes(monkeypatch):
 
     from src.simulation import buy_pass as bp
 
-    monkeypatch.setattr(bp, "build_event_at_time", lambda e, at, store, **k: (e, True))
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
     monkeypatch.setattr(
         bp,
         "sample_times_utc_for_event",
@@ -97,10 +102,11 @@ def test_buy_pass_selects_highest_yes(monkeypatch):
     )
 
     store = FakeStore()
-    buy = try_buy_event(event, store, strategy_name="highest_yes", yes_price_max=0.60)
-    assert buy is not None
-    assert buy.selection.group_item_title == "24°C"
-    assert buy.buy_price == pytest.approx(0.45)
+    result = try_buy_event(event, store, strategy_name="highest_yes", yes_price_max=0.60)
+    assert result.status == "bought"
+    assert result.buy is not None
+    assert result.buy.selection.group_item_title == "24°C"
+    assert result.buy.buy_price == pytest.approx(0.45)
     assert store.bought == "t2"
 
 
@@ -117,14 +123,15 @@ def test_buy_pass_skips_yes_price_max(monkeypatch):
     }
     from src.simulation import buy_pass as bp
 
-    monkeypatch.setattr(bp, "build_event_at_time", lambda e, at, store, **k: (e, True))
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
     monkeypatch.setattr(
         bp,
         "sample_times_utc_for_event",
         lambda e: [datetime(2026, 7, 15, 12, 5, tzinfo=timezone.utc)],
     )
-    buy = try_buy_event(event, MagicMock(), strategy_name="highest_yes", yes_price_max=0.60)
-    assert buy is None
+    result = try_buy_event(event, MagicMock(), strategy_name="highest_yes", yes_price_max=0.60)
+    assert result.status == "no_buy"
+    assert result.buy is None
 
 
 def test_buy_pass_skips_wide_spread_from_snapshot(monkeypatch):
@@ -140,16 +147,17 @@ def test_buy_pass_skips_wide_spread_from_snapshot(monkeypatch):
     }
     from src.simulation import buy_pass as bp
 
-    monkeypatch.setattr(bp, "build_event_at_time", lambda e, at, store, **k: (e, True))
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
     monkeypatch.setattr(
         bp,
         "sample_times_utc_for_event",
         lambda e: [datetime(2026, 7, 15, 12, 5, tzinfo=timezone.utc)],
     )
-    buy = try_buy_event(
+    result = try_buy_event(
         event, MagicMock(), strategy_name="highest_yes", yes_price_max=0.60, spread_max=0.15
     )
-    assert buy is None
+    assert result.status == "no_buy"
+    assert result.buy is None
 
 
 def test_buy_pass_allows_missing_spread(monkeypatch):
@@ -165,18 +173,93 @@ def test_buy_pass_allows_missing_spread(monkeypatch):
     }
     from src.simulation import buy_pass as bp
 
-    monkeypatch.setattr(bp, "build_event_at_time", lambda e, at, store, **k: (e, True))
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
     monkeypatch.setattr(
         bp,
         "sample_times_utc_for_event",
         lambda e: [datetime(2026, 7, 15, 12, 5, tzinfo=timezone.utc)],
     )
     store = MagicMock()
-    buy = try_buy_event(
+    result = try_buy_event(
         event, store, strategy_name="highest_yes", yes_price_max=0.60, spread_max=0.15
     )
-    assert buy is not None
-    assert buy.spread is None
+    assert result.status == "bought"
+    assert result.buy is not None
+    assert result.buy.spread is None
+
+
+def test_buy_pass_pending_when_prices_not_ready(monkeypatch):
+    event = {
+        "id": "e1",
+        "city": "Munich",
+        "slug": "highest-temperature-in-munich-on-july-15-2026",
+        "event_date": "2026-07-15",
+        "timezone": "Europe/Berlin",
+        "markets": [_market(0.40, "m2", "24°C", "t2")],
+    }
+    from src.simulation import buy_pass as bp
+
+    monkeypatch.setattr(
+        bp,
+        "build_event_at_time",
+        lambda e, at, store, **k: (e, False, False),
+    )
+    monkeypatch.setattr(
+        bp,
+        "sample_times_utc_for_event",
+        lambda e: [datetime(2026, 7, 15, 12, 15, tzinfo=timezone.utc)],
+    )
+    result = try_buy_event(
+        event,
+        MagicMock(),
+        strategy_name="highest_yes",
+        now=datetime(2026, 7, 15, 13, 0, tzinfo=timezone.utc),
+    )
+    assert result.status == "pending"
+    assert result.buy is None
+
+
+def test_buy_pass_pending_when_sample_still_future(monkeypatch):
+    event = {
+        "id": "e1",
+        "city": "Munich",
+        "slug": "highest-temperature-in-munich-on-july-15-2026",
+        "event_date": "2026-07-15",
+        "timezone": "Europe/Berlin",
+        "markets": [_market(0.40, "m2", "24°C", "t2")],
+    }
+    from src.simulation import buy_pass as bp
+
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
+    monkeypatch.setattr(
+        bp,
+        "sample_times_utc_for_event",
+        lambda e: [datetime(2026, 7, 15, 17, 15, tzinfo=timezone.utc)],
+    )
+    result = try_buy_event(
+        event,
+        MagicMock(),
+        strategy_name="highest_yes",
+        now=datetime(2026, 7, 15, 12, 0, tzinfo=timezone.utc),
+    )
+    assert result.status == "pending"
+
+
+def test_price_near_rejects_stale_snapshot():
+    store = PriceHistoryStore(clob=MagicMock())
+    target = 1_000_000
+    store._session["tok"] = [
+        {"t": target - FRESH_PRICE_MAX_DELTA_SECONDS - 1, "p": 0.33},
+    ]
+    assert (
+        store.price_near("tok", target, start_ts=0, end_ts=target + 100) is None
+    )
+    store._session["tok"] = [
+        {"t": target - 60, "p": 0.41},
+    ]
+    assert store.price_near("tok", target, start_ts=0, end_ts=target + 100) == pytest.approx(
+        0.41
+    )
 
 
 def test_sell_win_fires_when_price_hits_floor():
@@ -408,6 +491,7 @@ def test_simulate_trades_skips_completed_dates(tmp_path, monkeypatch):
             "sample_grid": ":15 / :45 city local",
             "fill_model": "100% at historical Yes %",
             "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
+            "price_freshness": "CLOB point within 5m of sample; else pending",
         },
         "completed_dates": {
             "2026-07-17": {"status": "complete", "events": 1, "buys": 0},
@@ -497,7 +581,7 @@ def test_simulate_trades_resims_when_process_version_changes(tmp_path, monkeypat
 
     def fake_buy(*_a, **_k):
         calls["buy"] += 1
-        return None
+        return BuySimResult(status="no_buy")
 
     monkeypatch.setattr(sim_runner, "load_events_for_date", fake_load)
     monkeypatch.setattr(sim_runner, "try_buy_event", fake_buy)
@@ -521,3 +605,75 @@ def test_simulate_trades_resims_when_process_version_changes(tmp_path, monkeypat
     assert data["process_version"] == sim_runner.SIM_PROCESS_VERSION
     assert "highest-temperature-in-london-on-july-17-2026" in data["simulated_events"]
     assert data["simulated_events"]["highest-temperature-in-london-on-july-17-2026"]["status"] == "no_buy"
+
+
+def test_simulate_trades_retries_pending_events(tmp_path, monkeypatch):
+    from src.simulation import runner as sim_runner
+
+    out = tmp_path / "sim_trade_history.json"
+    prior = {
+        "process_version": sim_runner.SIM_PROCESS_VERSION,
+        "params": {
+            "from_date": "2026-07-17",
+            "to_date": "2026-07-17",
+            "strategy": "highest_yes",
+            "yes_price_max": 0.6,
+            "spread_max": 0.15,
+            "share_count": 10,
+            "trade_window": "14:00–16:00",
+            "sample_grid": ":15 / :45 city local",
+            "fill_model": "100% at historical Yes %",
+            "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
+            "price_freshness": "CLOB point within 5m of sample; else pending",
+        },
+        "completed_dates": {},
+        "simulated_events": {
+            "highest-temperature-in-london-on-july-17-2026": {
+                "status": "pending",
+                "date": "2026-07-17",
+                "reason": "prices_not_fresh",
+            }
+        },
+        "records": [],
+    }
+    out.write_text(json.dumps(prior))
+    calls = {"buy": 0}
+
+    def fake_load(day, fetch_if_missing=True):
+        return [
+            {
+                "id": "e1",
+                "slug": "highest-temperature-in-london-on-july-17-2026",
+                "city": "London",
+                "event_date": day.isoformat(),
+                "timezone": "Europe/London",
+                "markets": [],
+            }
+        ]
+
+    def fake_buy(*_a, **_k):
+        calls["buy"] += 1
+        return BuySimResult(status="no_buy")
+
+    monkeypatch.setattr(sim_runner, "load_events_for_date", fake_load)
+    monkeypatch.setattr(sim_runner, "try_buy_event", fake_buy)
+    monkeypatch.setattr(sim_runner, "load_enrichment_by_token", lambda: {})
+    monkeypatch.setattr(sim_runner, "trading_window_label", lambda: "14:00–16:00")
+
+    result = sim_runner.run_simulate_trades(
+        from_date=date(2026, 7, 17),
+        to_date=date(2026, 7, 17),
+        strategy_name="highest_yes",
+        yes_price_max=0.6,
+        spread_max=0.15,
+        share_count=10,
+        fetch_if_missing=False,
+        output_path=out,
+        clob=MagicMock(),
+    )
+    assert calls["buy"] == 1
+    assert result["dates_skipped"] == 0
+    data = json.loads(out.read_text())
+    assert data["simulated_events"]["highest-temperature-in-london-on-july-17-2026"]["status"] == "no_buy"
+    assert "2026-07-17" in data["completed_dates"]
+

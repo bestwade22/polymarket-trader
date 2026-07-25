@@ -25,10 +25,13 @@ def build_event_at_time(
     history_start_ts: int,
     history_end_ts: int,
     enrichment_index: Optional[dict[str, list[SnapshotEnrichment]]] = None,
-) -> tuple[dict, bool]:
-    """Return (event_copy with markets priced at `at`, any_gamma_proxy).
+) -> tuple[dict, bool, bool]:
+    """Return (event_copy, any_gamma_proxy, prices_ready).
 
-    Midpoint / buy price come from CLOB prices-history.
+    Midpoint / buy price come from CLOB prices-history (must be fresh near `at`).
+    `prices_ready` is False when any yes-token market lacks a fresh price — caller
+    should skip this sample and retry on a later simulate-trades run.
+
     Gamma outcomePrices come from nearest markets_yes_* when available; else
     proxied from the same history % (gamma_proxy=True).
     Spread / bid / ask attached only when snapshot enrichment has them.
@@ -36,6 +39,8 @@ def build_event_at_time(
     target_ts = int(at.timestamp())
     markets_out: list[dict] = []
     any_proxy = False
+    token_markets = 0
+    priced_markets = 0
 
     for market in event.get("markets") or []:
         if not isinstance(market, dict):
@@ -43,6 +48,7 @@ def build_event_at_time(
         token_id = get_yes_token_id(market)
         if not token_id:
             continue
+        token_markets += 1
         pct = store.price_near(
             token_id,
             target_ts,
@@ -50,8 +56,10 @@ def build_event_at_time(
             end_ts=history_end_ts,
         )
         if pct is None:
+            # Stale / missing snapshot — do not use old points; mark sample not ready.
             continue
 
+        priced_markets += 1
         enriched = dict(market)
         enriched["midpoint"] = pct
         enriched["clobBuyPrice"] = pct
@@ -88,6 +96,7 @@ def build_event_at_time(
 
         markets_out.append(enriched)
 
+    prices_ready = token_markets > 0 and priced_markets == token_markets
     event_copy = dict(event)
-    event_copy["markets"] = markets_out
-    return event_copy, any_proxy
+    event_copy["markets"] = markets_out if prices_ready else []
+    return event_copy, any_proxy, prices_ready

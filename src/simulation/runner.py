@@ -29,7 +29,7 @@ from src.utils.time_window import trading_window_label
 logger = logging.getLogger(__name__)
 
 # Bump when buy/sell/resolve/sample logic changes so prior sims are invalidated.
-SIM_PROCESS_VERSION = "2"
+SIM_PROCESS_VERSION = "3"
 
 
 def _dict_to_trade_record(row: dict[str, Any]) -> TradeRecord:
@@ -64,6 +64,7 @@ def _strategy_fingerprint(
         "sample_grid": ":15 / :45 city local",
         "fill_model": "100% at historical Yes %",
         "spread_rule": "SPREAD_MAX only when markets_yes_* spread exists",
+        "price_freshness": "CLOB point within 5m of sample; else pending",
     }
 
 
@@ -82,6 +83,7 @@ def _prior_fingerprint(data: dict[str, Any]) -> dict[str, Any]:
         "sample_grid": params.get("sample_grid"),
         "fill_model": params.get("fill_model"),
         "spread_rule": params.get("spread_rule"),
+        "price_freshness": params.get("price_freshness"),
     }
 
 
@@ -101,6 +103,17 @@ def _backfill_completed_dates(
     """Treat prior from→to as completed when fingerprint matched but dates unset."""
     if completed_dates:
         return
+    simulated_events = (
+        data.get("simulated_events")
+        if isinstance(data.get("simulated_events"), dict)
+        else {}
+    )
+    # Dates with pending markets must be re-run; do not invent completed_dates.
+    if any(
+        isinstance(meta, dict) and meta.get("status") == "pending"
+        for meta in simulated_events.values()
+    ):
+        return
     params = data.get("params") if isinstance(data.get("params"), dict) else {}
     start = _parse_iso_date(params.get("from_date"))
     end = _parse_iso_date(params.get("to_date"))
@@ -111,6 +124,20 @@ def _backfill_completed_dates(
             "status": "backfilled",
             "from_prior_range": True,
         }
+
+
+def _clear_completed_dates_with_pending(
+    simulated_events: dict[str, Any],
+    completed_dates: dict[str, Any],
+) -> None:
+    """Ensure dates that still have pending events are not treated as complete."""
+    pending_dates = {
+        str(meta.get("date"))
+        for meta in simulated_events.values()
+        if isinstance(meta, dict) and meta.get("status") == "pending" and meta.get("date")
+    }
+    for day_key in pending_dates:
+        completed_dates.pop(day_key, None)
 
 
 def _backfill_simulated_events_from_records(
@@ -174,6 +201,7 @@ def _load_reusable_prior(
     )
     _backfill_completed_dates(data, completed_dates)
     _backfill_simulated_events_from_records(records, simulated_events)
+    _clear_completed_dates_with_pending(simulated_events, completed_dates)
     logger.info(
         "Reusing prior sim: %d records, %d events, %d completed dates%s",
         len(records),
@@ -257,6 +285,7 @@ def run_simulate_trades(
     events_skipped_cached = 0
     dates_skipped = 0
     buys_new = 0
+    pending_new = 0
     now = datetime.now(timezone.utc)
     now_iso = now.isoformat()
 
@@ -283,15 +312,23 @@ def run_simulate_trades(
         events = load_events_for_date(day, fetch_if_missing=fetch_if_missing)
         day_buys = 0
         day_new = 0
+        day_pending = 0
         for event in events:
             events_scanned += 1
             key = _event_key(event)
-            if key and key in simulated_events and not force:
+            prior = simulated_events.get(key) if key else None
+            # Final outcomes are cached; pending waits for fresh CLOB snapshots.
+            if (
+                key
+                and prior
+                and not force
+                and prior.get("status") in ("bought", "no_buy")
+            ):
                 events_skipped_cached += 1
                 continue
 
             day_new += 1
-            buy = try_buy_event(
+            result = try_buy_event(
                 event,
                 store,
                 strategy_name=strategy,
@@ -299,8 +336,23 @@ def run_simulate_trades(
                 spread_max=sm,
                 share_count=shares,
                 enrichment_index=enrichment_index,
+                now=now,
             )
-            if buy is None:
+            if result.status == "pending":
+                pending_new += 1
+                day_pending += 1
+                if key:
+                    simulated_events[key] = {
+                        "status": "pending",
+                        "event_id": event.get("id"),
+                        "date": day_key,
+                        "city": event.get("city"),
+                        "simulated_at": now_iso,
+                        "reason": "prices_not_fresh",
+                    }
+                continue
+
+            if result.status != "bought" or result.buy is None:
                 if key:
                     simulated_events[key] = {
                         "status": "no_buy",
@@ -311,6 +363,7 @@ def run_simulate_trades(
                     }
                 continue
 
+            buy = result.buy
             buys_new += 1
             day_buys += 1
 
@@ -337,13 +390,22 @@ def run_simulate_trades(
                     "token_id": buy.selection.yes_token_id,
                 }
 
-        completed_dates[day_key] = {
-            "status": "complete",
-            "events": len(events),
-            "buys": day_buys,
-            "newly_simulated": day_new,
-            "simulated_at": now_iso,
-        }
+        if day_pending:
+            # Leave date incomplete so the next run retries pending markets.
+            completed_dates.pop(day_key, None)
+            logger.info(
+                "date=%s has %d pending event(s); not marking complete",
+                day_key,
+                day_pending,
+            )
+        else:
+            completed_dates[day_key] = {
+                "status": "complete",
+                "events": len(events),
+                "buys": day_buys,
+                "newly_simulated": day_new,
+                "simulated_at": now_iso,
+            }
 
     # Always re-check open / unknown outcomes (even when dates were skipped).
     conclude_stats = conclude_open_sim_records(records)
@@ -373,6 +435,10 @@ def run_simulate_trades(
         "dates_skipped": dates_skipped,
         "buy_count": sum(1 for e in simulated_events.values() if e.get("status") == "bought"),
         "buy_count_new": buys_new,
+        "pending_count": sum(
+            1 for e in simulated_events.values() if e.get("status") == "pending"
+        ),
+        "pending_count_new": pending_new,
         "open_concluded": conclude_stats.get("open_concluded", 0),
         "sold_enriched": conclude_stats.get("sold_enriched", 0),
         "still_open": conclude_stats.get("still_open", 0),
@@ -387,13 +453,14 @@ def run_simulate_trades(
     out.write_text(json.dumps(payload, indent=2))
     logger.info(
         "Wrote %d simulated trades to %s (scanned %d new events, skipped %d cached, "
-        "%d dates cached, %d new buys)",
+        "%d dates cached, %d new buys, %d pending)",
         len(records),
         out,
         events_scanned,
         events_skipped_cached,
         dates_skipped,
         buys_new,
+        pending_new,
     )
     return {
         "record_count": len(records),
@@ -401,6 +468,7 @@ def run_simulate_trades(
         "events_skipped_cached": events_skipped_cached,
         "dates_skipped": dates_skipped,
         "buy_count_new": buys_new,
+        "pending_count_new": pending_new,
         "open_concluded": conclude_stats.get("open_concluded", 0),
         "still_open": conclude_stats.get("still_open", 0),
         "output": str(out),

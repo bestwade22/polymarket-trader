@@ -13,6 +13,9 @@ from src.utils.market_parser import parse_float
 
 logger = logging.getLogger(__name__)
 
+# Reject CLOB history points farther than this from the sample time (no stale snaps).
+FRESH_PRICE_MAX_DELTA_SECONDS = 5 * 60
+
 
 class PriceHistoryStore:
     """Fetch /prices-history; keep session cache; persist only when mark_bought()."""
@@ -42,7 +45,7 @@ class PriceHistoryStore:
             return self._session[token_id]
 
         disk = self._load_disk(token_id)
-        if disk is not None:
+        if disk is not None and self._history_covers_end(disk, end_ts):
             self._session[token_id] = disk
             return disk
 
@@ -62,8 +65,9 @@ class PriceHistoryStore:
         *,
         start_ts: int,
         end_ts: int,
-        max_delta_seconds: int = 3600,
+        max_delta_seconds: int = FRESH_PRICE_MAX_DELTA_SECONDS,
     ) -> Optional[float]:
+        """Nearest Yes-% within max_delta of target; None if snapshot not fresh enough."""
         history = self.get_history(token_id, start_ts=start_ts, end_ts=end_ts)
         best: Optional[tuple[float, float]] = None
         for point in history:
@@ -97,6 +101,20 @@ class PriceHistoryStore:
             logger.debug("Saved price cache for bought token %s (%d points)", token_id, len(history))
         except OSError as exc:
             logger.warning("Failed to write price cache for %s: %s", token_id, exc)
+
+    @staticmethod
+    def _history_covers_end(history: list[dict[str, Any]], end_ts: int) -> bool:
+        """True if disk history reaches near the requested end (else re-fetch)."""
+        last_t = 0
+        for point in history:
+            t = point.get("t")
+            if t is None:
+                continue
+            try:
+                last_t = max(last_t, int(t))
+            except (TypeError, ValueError):
+                continue
+        return last_t >= end_ts - FRESH_PRICE_MAX_DELTA_SECONDS
 
     def _load_disk(self, token_id: str) -> Optional[list[dict[str, Any]]]:
         path = self.cache_dir / f"{token_id}.json"
