@@ -384,6 +384,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "89342613540191248582667685901533506136600479014947714400226435602053204526808"
     },
+    "highest-temperature-in-austin-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on July 24?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "4328643086567297983802444438328200454763931249785507139174836171205225238554"
+    },
     "highest-temperature-in-austin-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on July 3?",
@@ -624,6 +630,12 @@
       "winning_temp": "16\u00b0C",
       "winning_token_id": "108564552050703982264248698336310472759792837061873745389228063647674016188082"
     },
+    "highest-temperature-in-buenos-aires-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Buenos Aires on July 24?",
+      "winning_temp": "17\u00b0C",
+      "winning_token_id": "61344600790450518470021460754196011722671885147176006862184504136235270957139"
+    },
     "highest-temperature-in-buenos-aires-on-july-6-2026": {
       "closed": true,
       "title": "Highest temperature in Buenos Aires on July 6?",
@@ -786,6 +798,12 @@
       "winning_temp": "15\u00b0C",
       "winning_token_id": "20595578910237291405727824600860769447618093968759605423834700848712169937217"
     },
+    "highest-temperature-in-cape-town-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Cape Town on July 24?",
+      "winning_temp": "18\u00b0C",
+      "winning_token_id": "90277168982973217795950691813608350515644284607840283205914913360004124630271"
+    },
     "highest-temperature-in-cape-town-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Cape Town on July 3?",
@@ -899,6 +917,12 @@
       "title": "Highest temperature in Chengdu on July 23?",
       "winning_temp": "37\u00b0C",
       "winning_token_id": "26826628166782414512001114740582464776923861408129881685672093367424420576140"
+    },
+    "highest-temperature-in-chengdu-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on July 24?",
+      "winning_temp": "39\u00b0C",
+      "winning_token_id": "59714301872305308139177217126845272162051347136773599516040900898365461284421"
     },
     "highest-temperature-in-chengdu-on-july-3-2026": {
       "closed": true,
@@ -1608,6 +1632,12 @@
       "winning_temp": "20\u00b0C",
       "winning_token_id": "68031365312558890654751749476879438140732384973884858031460547924716368428788"
     },
+    "highest-temperature-in-helsinki-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on July 24?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "53407412181161490640416266894880625361846164060090418346952880037227942283598"
+    },
     "highest-temperature-in-helsinki-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on July 3?",
@@ -1739,6 +1769,12 @@
       "title": "Highest temperature in Houston on July 22?",
       "winning_temp": "102-103\u00b0F",
       "winning_token_id": "84882383550543443102978776981694280318953213014955010616594684301042475202223"
+    },
+    "highest-temperature-in-houston-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on July 24?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "99022943330388346000637515621095040277725543590889111720815490673773153902354"
     },
     "highest-temperature-in-houston-on-july-5-2026": {
       "closed": true,
@@ -2406,6 +2442,12 @@
       "winning_temp": "26\u00b0C",
       "winning_token_id": "6556918215137759647176498551253264560805496291663299310774148168542473451282"
     },
+    "highest-temperature-in-mexico-city-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on July 24?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "49654848082029282561584633922845746595098102053816484420414859646094766994175"
+    },
     "highest-temperature-in-mexico-city-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Mexico City on July 3?",
@@ -2699,6 +2741,12 @@
       "title": "Highest temperature in Moscow on July 23?",
       "winning_temp": "22\u00b0C",
       "winning_token_id": "39487339457574160003819652221594010970384309811606492997575963947112911744563"
+    },
+    "highest-temperature-in-moscow-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on July 24?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "67365279022311533125495261611651302903748806862918096106693568631971216115755"
     },
     "highest-temperature-in-moscow-on-july-3-2026": {
       "closed": true,
@@ -3257,6 +3305,12 @@
       "title": "Highest temperature in San Francisco on July 23?",
       "winning_temp": "68-69\u00b0F",
       "winning_token_id": "55612041614086223163908676332974294724594681613660607501109482336692656717267"
+    },
+    "highest-temperature-in-san-francisco-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on July 24?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "30534757837507683065491111461255797277694137682718427484196110472510432075123"
     },
     "highest-temperature-in-san-francisco-on-july-3-2026": {
       "closed": true,
@@ -4085,6 +4139,12 @@
       "title": "Highest temperature in Warsaw on July 22?",
       "winning_temp": "22\u00b0C",
       "winning_token_id": "110218278642168322020199830061849282453617731414883687104149272565347244936879"
+    },
+    "highest-temperature-in-warsaw-on-july-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on July 24?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "14001855271574036403717550473605932609364175218976329153180730174892617113940"
     },
     "highest-temperature-in-warsaw-on-july-3-2026": {
       "closed": true,
