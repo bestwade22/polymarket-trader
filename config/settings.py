@@ -222,7 +222,11 @@ class Settings:
     strategy: str = os.getenv("STRATEGY", "highest_yes")
     share_count: int = int(os.getenv("SHARE_COUNT", "10"))
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
+    # Min selection price; 0 disables (optional filter; not enabled by default).
+    yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0"))
     spread_max: float = float(os.getenv("SPREAD_MAX", "0.15"))
+    # Skip cool-edge buckets when enabled (optional; off by default).
+    skip_on_edge: bool = _env_bool("SKIP_ON_EDGE", False)
     selection_price_source: str = _normalize_selection_price_source(
         os.getenv("SELECTION_PRICE_SOURCE", "midpoint")
     )

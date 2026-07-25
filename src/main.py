@@ -14,7 +14,7 @@ from apscheduler.triggers.cron import CronTrigger
 
 from config.settings import ensure_dirs, parse_event_date, settings
 from src.fetch.daily_events import run_daily_fetch
-from src.analysis.sync_runner import run_sync_trade_history
+from src.analysis.sync_runner import run_enrich_trade_history, run_sync_trade_history
 from src.simulation.runner import run_simulate_trades
 from src.trade.hourly_runner import run_hourly_trade
 from src.trade.sell_win_runner import run_sell_win_check
@@ -63,6 +63,11 @@ def cmd_sync_trade_history(args: argparse.Namespace) -> None:
         fetch_price_drop=not args.skip_price_drop,
     )
     logging.info("Trade history sync complete: %s", result)
+
+
+def cmd_enrich_trade_history(_args: argparse.Namespace) -> None:
+    result = run_enrich_trade_history()
+    logging.info("Trade history enrich complete: %s", result)
 
 
 def cmd_simulate_trades(args: argparse.Namespace) -> None:
@@ -185,6 +190,11 @@ def main() -> None:
         help="Skip CLOB price-history lookups for loss/sold rows",
     )
 
+    sub.add_parser(
+        "enrich-trade-history",
+        help="Backfill selection fields, filter-sweep, and skipped analysis on trade_history.json",
+    )
+
     sim_parser = sub.add_parser(
         "simulate-trades",
         help="Replay strategies on historical weather events (writes sim_trade_history.json)",
@@ -267,6 +277,7 @@ def main() -> None:
         "check-stop-loss": cmd_check_stop_loss,
         "check-sell-win": cmd_check_sell_win,
         "sync-trade-history": cmd_sync_trade_history,
+        "enrich-trade-history": cmd_enrich_trade_history,
         "simulate-trades": cmd_simulate_trades,
         "run-scheduler": cmd_run_scheduler,
     }

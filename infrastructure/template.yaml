@@ -19,9 +19,15 @@ Parameters:
   YesPriceMax:
     Type: String
     Default: '0.60'
+  YesPriceMin:
+    Type: String
+    Default: '0'
   SpreadMax:
     Type: String
     Default: '0.15'
+  SkipOnEdge:
+    Type: String
+    Default: 'false'
   SelectionPriceSource:
     Type: String
     Default: midpoint
@@ -139,7 +145,9 @@ Resources:
           STRATEGY: !Ref Strategy
           SHARE_COUNT: !Ref ShareCount
           YES_PRICE_MAX: !Ref YesPriceMax
+          YES_PRICE_MIN: !Ref YesPriceMin
           SPREAD_MAX: !Ref SpreadMax
+          SKIP_ON_EDGE: !Ref SkipOnEdge
           SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource
           ORDER_PRICE_SOURCE: !Ref OrderPriceSource
           ORDER_EXPIRY_MINUTES: !Ref OrderExpiryMinutes

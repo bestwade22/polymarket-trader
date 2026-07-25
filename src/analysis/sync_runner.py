@@ -35,6 +35,9 @@ from src.analysis.edge_lookup import (
     load_on_edge_snapshot_by_token,
     lookup_on_edge_from_snapshots,
 )
+from src.analysis.selection_enrichment import backfill_records_from_selections
+from src.analysis.filter_sweep import compute_filter_sweep
+from src.analysis.skipped_analysis import compute_skipped_analysis
 from src.analysis.resolution import fetch_resolved_event
 from src.analysis.strategy_insights import compute_insights
 from src.api.clob_client import ClobPriceClient
@@ -275,6 +278,17 @@ def _merge_records(
                 rec.competitive = prior.competitive
             if rec.open_interest is None and prior.open_interest is not None:
                 rec.open_interest = prior.open_interest
+            for field in (
+                "best_bid",
+                "best_ask",
+                "midpoint",
+                "gamma_yes_price",
+                "clob_buy_price",
+                "runner_up_yes",
+                "yes_gap",
+            ):
+                if getattr(rec, field, None) is None and getattr(prior, field, None) is not None:
+                    setattr(rec, field, getattr(prior, field))
         merged[rec.token_id] = rec
     return sorted(merged.values(), key=lambda r: r.bought_at, reverse=True)
 
@@ -374,8 +388,12 @@ def run_sync_trade_history(
             )
         )
     )
+    # Unified selection/event enrichment for remaining gaps + high-value fields
+    backfill_records_from_selections(all_records)
     summary = summarize_records(all_records)
     insights = compute_insights(all_records)
+    filter_sweep = compute_filter_sweep(all_records)
+    skipped_analysis = compute_skipped_analysis()
 
     payload = {
         "synced_at": now.isoformat(),
@@ -383,6 +401,8 @@ def run_sync_trade_history(
         "records": [r.to_dict() for r in all_records],
         "summary": summary.to_dict(),
         "insights": insights,
+        "filter_sweep": filter_sweep,
+        "skipped_analysis": skipped_analysis,
     }
     TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))
 
@@ -406,4 +426,56 @@ def run_sync_trade_history(
         "activity_rows": len(activity),
         "path": str(TRADE_HISTORY_FILE),
         "summary": summary.to_dict(),
+    }
+
+
+def run_enrich_trade_history() -> dict[str, Any]:
+    """Offline: backfill enrichment fields + filter_sweep + skipped_analysis on existing ledger."""
+    ensure_dirs()
+    if not TRADE_HISTORY_FILE.exists():
+        return {"status": "error", "reason": "missing_trade_history"}
+
+    try:
+        data = json.loads(TRADE_HISTORY_FILE.read_text())
+    except (json.JSONDecodeError, OSError) as exc:
+        return {"status": "error", "reason": str(exc)}
+
+    records = [_record_from_dict(row) for row in data.get("records") or [] if isinstance(row, dict)]
+    fill_counts = backfill_records_from_selections(records)
+    summary = summarize_records(records)
+    insights = compute_insights(records)
+    filter_sweep = compute_filter_sweep(records)
+    skipped_analysis = compute_skipped_analysis()
+    now = datetime.now(timezone.utc)
+
+    payload = {
+        "synced_at": data.get("synced_at") or now.isoformat(),
+        "enriched_at": now.isoformat(),
+        "wallet": data.get("wallet"),
+        "records": [r.to_dict() for r in records],
+        "summary": summary.to_dict(),
+        "insights": insights,
+        "filter_sweep": filter_sweep,
+        "skipped_analysis": skipped_analysis,
+    }
+    TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))
+
+    missing_spread = sum(1 for r in records if r.spread is None)
+    missing_edge = sum(1 for r in records if r.on_edge is None)
+    recommended = (filter_sweep or {}).get("recommended")
+    logger.info(
+        "Enriched %d records; still missing spread=%d on_edge=%d; recommended=%s",
+        len(records),
+        missing_spread,
+        missing_edge,
+        recommended.get("stack") if recommended else None,
+    )
+    return {
+        "status": "ok",
+        "record_count": len(records),
+        "fill_counts": fill_counts,
+        "missing_spread": missing_spread,
+        "missing_on_edge": missing_edge,
+        "recommended_stack": recommended,
+        "path": str(TRADE_HISTORY_FILE),
     }

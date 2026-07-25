@@ -161,6 +161,10 @@ def test_buy_pass_skips_wide_spread_from_snapshot(monkeypatch):
 
 
 def test_buy_pass_allows_missing_spread(monkeypatch):
+    from config import settings as settings_mod
+
+    monkeypatch.setattr(settings_mod.settings, "yes_price_min", 0.0)
+    monkeypatch.setattr(settings_mod.settings, "skip_on_edge", False)
     event = {
         "id": "e1",
         "city": "Munich",

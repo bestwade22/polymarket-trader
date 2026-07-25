@@ -85,6 +85,17 @@ class HighestYesStrategy(BaseStrategy):
                     gamma_title=gamma_market.get("groupItemTitle", ""),
                     gamma_price=gamma_price,
                 )
+            event["_last_skip"] = {
+                "event_id": str(event_id or ""),
+                "city": city,
+                "event_slug": event.get("slug"),
+                "reason": "clob_gamma_disagree",
+                "group_item_title": mid_market.get("groupItemTitle", ""),
+                "market_id": mid_id,
+                "clob_mid_price": mid_price,
+                "gamma_title": gamma_market.get("groupItemTitle", ""),
+                "gamma_price": gamma_price,
+            }
             return None
 
         best_market = mid_market
@@ -118,9 +129,10 @@ class HighestYesStrategy(BaseStrategy):
         self,
         selections: list[MarketSelection],
     ) -> tuple[list[MarketSelection], list[dict]]:
-        """Drop selections whose live selection price is at or above YES_PRICE_MAX."""
+        """Drop selections outside YES_PRICE_MIN..YES_PRICE_MAX (min 0 = disabled)."""
         kept: list[MarketSelection] = []
         skipped: list[dict] = []
+        yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
         for sel in selections:
             if sel.yes_price is None or sel.yes_price >= self.yes_price_max:
                 logger.info(
@@ -144,9 +156,39 @@ class HighestYesStrategy(BaseStrategy):
                         "city": sel.city,
                         "market_id": sel.market_id,
                         "group_item_title": sel.group_item_title,
+                        "event_slug": (sel.event or {}).get("slug") if sel.event else None,
                         "reason": "yes_price_max",
                         "selection_price": sel.yes_price,
                         "yes_price_max": self.yes_price_max,
+                    }
+                )
+                continue
+            if yes_min > 0 and sel.yes_price < yes_min:
+                logger.info(
+                    "event=%s live selection %.3f < min %.3f; skip",
+                    sel.event_id,
+                    sel.yes_price,
+                    yes_min,
+                )
+                step_log = sel.event.get("_step_logger") if sel.event else None
+                if step_log:
+                    step_log.log_step(
+                        "filter_yes_price_min",
+                        skipped=True,
+                        selection_price=sel.yes_price,
+                        yes_price_min=yes_min,
+                        market_id=sel.market_id,
+                    )
+                skipped.append(
+                    {
+                        "event_id": sel.event_id,
+                        "city": sel.city,
+                        "market_id": sel.market_id,
+                        "group_item_title": sel.group_item_title,
+                        "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                        "reason": "yes_price_min",
+                        "selection_price": sel.yes_price,
+                        "yes_price_min": yes_min,
                     }
                 )
                 continue

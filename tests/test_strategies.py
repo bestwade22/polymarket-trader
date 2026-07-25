@@ -51,6 +51,50 @@ def test_highest_yes_rejects_at_threshold_after_live_refresh():
     assert skipped[0]["reason"] == "yes_price_max"
 
 
+def test_highest_yes_rejects_below_min_after_live_refresh(monkeypatch):
+    from config import settings as settings_mod
+
+    monkeypatch.setattr(settings_mod.settings, "yes_price_min", 0.45)
+    event = load_sample_event()
+    strategy = HighestYesStrategy(yes_price_max=0.60, share_count=10)
+    sel = strategy.select_market(event)
+    assert sel is not None
+    sel.yes_price = 0.40
+    filtered, skipped = strategy.filter_by_yes_price_max([sel])
+    assert filtered == []
+    assert skipped[0]["reason"] == "yes_price_min"
+
+
+def test_filter_by_on_edge_skips(monkeypatch):
+    from config import settings as settings_mod
+    from src.trade.selector import filter_by_on_edge
+    from src.trade.strategies.base import MarketSelection
+
+    monkeypatch.setattr(settings_mod.settings, "skip_on_edge", True)
+    cooler = {"id": "c1", "groupItemTitle": "21°C", "outcomePrices": ["0.005", "0.995"], "outcomes": ["Yes", "No"]}
+    hot = {"id": "m1", "groupItemTitle": "22°C", "outcomePrices": ["0.50", "0.50"], "outcomes": ["Yes", "No"]}
+    sel = MarketSelection(
+        event_id="1",
+        city="Test",
+        market_id="m1",
+        group_item_title="22°C",
+        yes_price=0.50,
+        yes_token_id="tok",
+        buy_price=0.50,
+        share_count=10,
+        neg_risk=True,
+        tick_size="0.01",
+        order_min_size=5,
+        strategy="highest_yes",
+        on_edge=True,
+        event={"markets": [cooler, hot]},
+        market=hot,
+    )
+    kept, skipped = filter_by_on_edge([sel])
+    assert kept == []
+    assert skipped[0]["reason"] == "on_edge"
+
+
 def test_filter_by_spread_max_skips_wide_spread():
     from src.trade.selector import filter_by_spread_max
     from src.trade.strategies.base import MarketSelection

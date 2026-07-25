@@ -12,7 +12,7 @@ from src.simulation.market_snapshot import build_event_at_time
 from src.simulation.price_at_time import PriceHistoryStore
 from src.simulation.sample_times import format_sample_time_local, sample_times_utc_for_event
 from src.simulation.snapshot_enrichment import SnapshotEnrichment
-from src.trade.selector import filter_by_spread_max, get_strategy
+from src.trade.selector import filter_by_on_edge, filter_by_spread_max, get_strategy
 from src.trade.strategies.base import MarketSelection
 from src.trade.strategies.highest_yes import HighestYesStrategy
 from src.utils.market_parser import get_spread
@@ -154,6 +154,11 @@ def try_buy_event(
             if not kept:
                 continue
             selection = kept[0]
+
+        kept, _skipped = filter_by_on_edge([selection])
+        if not kept:
+            continue
+        selection = kept[0]
 
         buy_price = selection.buy_price
         if buy_price is None:

@@ -57,14 +57,76 @@ def filter_tradable_events(events: list[dict], *, all_cities: bool = False) -> l
 def select_markets_for_events(
     events: list[dict],
     strategy_name: Optional[str] = None,
-) -> list[MarketSelection]:
+) -> tuple[list[MarketSelection], list[dict]]:
     strategy = get_strategy(strategy_name)
     selections: list[MarketSelection] = []
+    skipped: list[dict] = []
     for event in events:
+        event.pop("_last_skip", None)
         selection = strategy.select_market(event)
         if selection:
             selections.append(selection)
-    return selections
+        else:
+            skip = event.pop("_last_skip", None)
+            if skip:
+                skipped.append(skip)
+    return selections, skipped
+
+
+def filter_by_on_edge(
+    selections: list[MarketSelection],
+    *,
+    enabled: Optional[bool] = None,
+) -> tuple[list[MarketSelection], list[dict]]:
+    """Drop selections on the cool edge when SKIP_ON_EDGE is enabled.
+
+    Only skips when cooler buckets exist and all are <1% Yes (vacuous edge
+    with no cooler markets is allowed).
+    """
+    from src.analysis.edge import cooler_markets, is_on_edge
+
+    do_skip = settings.skip_on_edge if enabled is None else enabled
+    if not do_skip:
+        return selections, []
+
+    kept: list[MarketSelection] = []
+    skipped: list[dict] = []
+    for sel in selections:
+        markets = (sel.event or {}).get("markets") or []
+        cooler = cooler_markets(markets, sel.group_item_title) if markets else None
+        on_edge = sel.on_edge
+        if on_edge is None and markets:
+            on_edge = is_on_edge(markets, sel.group_item_title)
+            sel.on_edge = on_edge
+        # Require real cooler ladder — vacuous edge (no cooler buckets) is fine.
+        if on_edge is True and cooler:
+            logger.info(
+                "event=%s city=%s market=%s on_edge=True; skip",
+                sel.event_id,
+                sel.city,
+                sel.market_id,
+            )
+            step_log = sel.event.get("_step_logger") if sel.event else None
+            if step_log:
+                step_log.log_step(
+                    "filter_on_edge",
+                    skipped=True,
+                    market_id=sel.market_id,
+                )
+            skipped.append(
+                {
+                    "event_id": sel.event_id,
+                    "city": sel.city,
+                    "market_id": sel.market_id,
+                    "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                    "reason": "on_edge",
+                    "on_edge": True,
+                }
+            )
+            continue
+        kept.append(sel)
+    return kept, skipped
 
 
 def filter_by_spread_max(
@@ -117,7 +179,7 @@ def filter_selections_after_live_refresh(
     selections: list[MarketSelection],
     strategy_name: Optional[str] = None,
 ) -> tuple[list[MarketSelection], list[dict]]:
-    """Apply post-refresh guards: YES_PRICE_MAX (strategy) then SPREAD_MAX (all strategies)."""
+    """Apply post-refresh guards: YES_PRICE min/max, SPREAD_MAX, optional on-edge skip."""
     strategy = get_strategy(strategy_name)
     kept = selections
     skipped_all: list[dict] = []
@@ -125,5 +187,7 @@ def filter_selections_after_live_refresh(
         kept, skipped = strategy.filter_by_yes_price_max(kept)
         skipped_all.extend(skipped)
     kept, skipped = filter_by_spread_max(kept)
+    skipped_all.extend(skipped)
+    kept, skipped = filter_by_on_edge(kept)
     skipped_all.extend(skipped)
     return kept, skipped_all

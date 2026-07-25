@@ -134,7 +134,8 @@ def run_hourly_trade(
                 markets=len(event.get("markets", [])),
             )
 
-    selections = select_markets_for_events(eligible, strategy_name=strategy)
+    selections, skipped_select = select_markets_for_events(eligible, strategy_name=strategy)
+    skipped_bought.extend(skipped_select)
     selections, skipped_price_max = filter_selections_after_live_refresh(
         selections, strategy_name=strategy
     )

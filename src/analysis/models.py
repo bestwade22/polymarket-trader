@@ -42,6 +42,13 @@ class TradeRecord:
     on_edge: Optional[bool] = None
     competitive: Optional[float] = None
     open_interest: Optional[float] = None
+    best_bid: Optional[float] = None
+    best_ask: Optional[float] = None
+    midpoint: Optional[float] = None
+    gamma_yes_price: Optional[float] = None
+    clob_buy_price: Optional[float] = None
+    runner_up_yes: Optional[float] = None
+    yes_gap: Optional[float] = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

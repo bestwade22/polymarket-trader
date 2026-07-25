@@ -121,6 +121,8 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 
 City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped.
 
+Optional filters (`YES_PRICE_MIN`, `SKIP_ON_EDGE`) exist in code but are **off by default**. Use the history dashboard **Filter sweep** section (`enrich-trade-history`) to research stacks before enabling them.
+
 Example: Gamma shows 23°C highest (44%) but book midpoint peaks on 22°C (40¢ mid on a wide spread) — **skip**, do not buy.
 
 Selection snapshots in `data/selections/` include `order_price`, `order_status`, and `order_id` after the run.
@@ -136,7 +138,9 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
 | `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
+| `YES_PRICE_MIN` | `0` | Optional min selection price; `0` disables |
 | `SPREAD_MAX` | `0.15` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
+| `SKIP_ON_EDGE` | `false` | Optional: skip when all cooler temp buckets had Yes &lt; 1% at select time |
 | `CITY_SKIP_ENABLED` | `true` | Skip markets in the worst city-timezone win summary groups |
 | `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary city timezones to skip |
 | `SELECTION_PRICE_SOURCE` | `midpoint` | Rank markets by live book: `midpoint`, `buy_price`, `best_bid`, `best_ask`, `yes_price` |
@@ -185,11 +189,19 @@ python -m src.main sync-trade-history
 
 # Skip slow CLOB price-history lookups
 python -m src.main sync-trade-history --skip-price-drop
+
+# Offline: backfill selection fields (spread, mid, gamma, yes_gap, …), filter-sweep, skipped analysis
+python -m src.main enrich-trade-history
 ```
 
-Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp, result, P&L, winning temp comparison, sell regret flags) plus summary and strategy insights.
+Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp, result, P&L, winning temp comparison, sell regret flags) plus summary, strategy insights, **filter_sweep**, and **skipped_analysis**.
 
 **Dashboard:** https://bestwade22.github.io/polymarket-trader/web/
+
+History dashboard sections:
+- **Strategy insights** — win summary by city, spread, edge, OI, timezone, …
+- **Filter sweep (≥60% OOS)** — candidate stacks with train/OOS win summary, P&L, n; recommended = loosest stack that clears ≥60% OOS
+- **Skipped / not-bought** — `skipped_bought` reasons from `markets_yes_*` with would-have-won when resolution is known
 
 **Simulator:** https://bestwade22.github.io/polymarket-trader/web/simulator.html
 
