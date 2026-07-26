@@ -1,0 +1,17 @@
+{
+  "run_at": "2026-07-26T14:15:38.337971+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741816",
+      "city": "London",
+      "market_id": "3076550",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    }
+  ]
+}
