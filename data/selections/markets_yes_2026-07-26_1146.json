@@ -1,0 +1,68 @@
+{
+  "run_at": "2026-07-26T11:46:06.833287+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741822",
+      "city": "Tel Aviv",
+      "market_id": "3076616",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741836",
+      "city": "Moscow",
+      "market_id": "3076767",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741837",
+      "city": "Istanbul",
+      "market_id": "3076783",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741840",
+      "city": "Helsinki",
+      "market_id": "3076817",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.635,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741842",
+      "city": "Jeddah",
+      "market_id": "3076840",
+      "group_item_title": "40\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741819",
+      "city": "Ankara",
+      "market_id": "3076585",
+      "group_item_title": "23\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3076585",
+      "held_group_item_title": "23\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
