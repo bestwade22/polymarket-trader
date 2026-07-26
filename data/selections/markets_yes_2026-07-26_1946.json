@@ -1,0 +1,128 @@
+{
+  "run_at": "2026-07-26T19:46:18.584417+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "745861",
+      "city": "Chicago",
+      "market_id": "3094838",
+      "groupItemTitle": "92-93\u00b0F",
+      "yes_price": 0.48,
+      "yes_token_id": "12141851907043179397222023639581165717480068842167689894412610895376848043455",
+      "buy_price": 0.55,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.48,
+      "selection_price": 0.48,
+      "gamma_yes_price": 0.48,
+      "best_bid": 0.41,
+      "best_ask": 0.55,
+      "spread": 0.14,
+      "clob_buy_price": 0.55,
+      "last_trade_price": 0.36,
+      "midpoint": 0.48,
+      "outcomePrices": [
+        0.48,
+        0.52
+      ],
+      "competitive": 0.9996001599360256,
+      "event_slug": "highest-temperature-in-chicago-on-july-26-2026",
+      "open_interest": 23450.215005,
+      "runner_up_yes": 0.425,
+      "yes_gap": 0.055,
+      "top_yes": 0.48,
+      "order_status": "live",
+      "order_id": "0xca4087301d2e2695556bbac41cdfbc50c5a518221b72c2d6e49a0fc7b553e621",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-26T20:11:17+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "745855",
+      "city": "Toronto",
+      "event_slug": "highest-temperature-in-toronto-on-july-26-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "27\u00b0C",
+      "market_id": "3094770",
+      "clob_mid_price": 0.505,
+      "gamma_title": "28\u00b0C",
+      "gamma_price": 0.375
+    },
+    {
+      "event_id": "745864",
+      "city": "Houston",
+      "event_slug": "highest-temperature-in-houston-on-july-26-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "94-95\u00b0F",
+      "market_id": "3094873",
+      "clob_mid_price": 0.46,
+      "gamma_title": "92-93\u00b0F",
+      "gamma_price": 0.445
+    },
+    {
+      "event_id": "745857",
+      "city": "NYC",
+      "market_id": "3094793",
+      "group_item_title": "82-83\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745860",
+      "city": "Miami",
+      "market_id": "3094831",
+      "group_item_title": "94-95\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.999,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745862",
+      "city": "Austin",
+      "market_id": "3094849",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745868",
+      "city": "Panama City",
+      "market_id": "3094917",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.87,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745858",
+      "city": "Dallas",
+      "market_id": "3094803",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.16,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "745859",
+      "city": "Atlanta",
+      "market_id": "3094818",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.38,
+      "spread_max": 0.15
+    }
+  ]
+}
