@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-07-26T03:00:30.774806+00:00",
+  "synced_at": "2026-07-26T06:00:30.688636+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -33025,19 +33025,19 @@
     ]
   },
   "skipped_analysis": {
-    "total_skips": 3532,
+    "total_skips": 3540,
     "resolved_skips": 0,
     "would_have_won_total": 0,
     "would_have_won_pct": null,
     "by_reason": [
       {
         "reason": "yes_price_max",
-        "count": 2859,
-        "with_temp": 2859,
+        "count": 2865,
+        "with_temp": 2865,
         "resolved": 0,
         "would_have_won": 0,
         "would_have_lost": 0,
-        "unknown_outcome": 2859,
+        "unknown_outcome": 2865,
         "would_have_won_pct": null,
         "filter_costly": false,
         "filter_helpful": false
@@ -33092,7 +33092,7 @@
       },
       {
         "reason": "low_win_summary_timezone",
-        "count": 34,
+        "count": 36,
         "with_temp": 0,
         "resolved": 0,
         "would_have_won": 0,
