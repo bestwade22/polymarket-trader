@@ -1,0 +1,136 @@
+{
+  "run_at": "2026-07-26T12:46:35.266641+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741986",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "741819",
+      "city": "Ankara",
+      "market_id": "3076586",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741822",
+      "city": "Tel Aviv",
+      "market_id": "3076616",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741827",
+      "city": "Milan",
+      "market_id": "3076671",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741828",
+      "city": "Madrid",
+      "market_id": "3076682",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.74,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741836",
+      "city": "Moscow",
+      "market_id": "3076767",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9835,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741837",
+      "city": "Istanbul",
+      "market_id": "3076783",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.78,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741839",
+      "city": "Amsterdam",
+      "market_id": "3076802",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.77,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741840",
+      "city": "Helsinki",
+      "market_id": "3076817",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741842",
+      "city": "Jeddah",
+      "market_id": "3076840",
+      "group_item_title": "40\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741817",
+      "city": "Paris",
+      "market_id": "3076562",
+      "group_item_title": "24\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3076562",
+      "held_group_item_title": "24\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "741821",
+      "city": "Munich",
+      "market_id": "3076603",
+      "group_item_title": "24\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3076605",
+      "held_group_item_title": "26\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "741829",
+      "city": "Warsaw",
+      "market_id": "3076694",
+      "group_item_title": "30\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3076694",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
