@@ -1,0 +1,92 @@
+{
+  "run_at": "2026-07-26T18:15:59.893181+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "745857",
+      "city": "NYC",
+      "market_id": "3094793",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.545,
+      "yes_token_id": "115565386219782395127257415473768221817374622786464044010815255505596611035875",
+      "buy_price": 0.55,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.545,
+      "selection_price": 0.545,
+      "gamma_yes_price": 0.56,
+      "best_bid": 0.54,
+      "best_ask": 0.55,
+      "spread": 0.01,
+      "clob_buy_price": 0.55,
+      "last_trade_price": 0.56,
+      "midpoint": 0.545,
+      "outcomePrices": [
+        0.56,
+        0.44
+      ],
+      "competitive": 0.9964129135113591,
+      "event_slug": "highest-temperature-in-nyc-on-july-26-2026",
+      "open_interest": 21334.887408,
+      "runner_up_yes": 0.46,
+      "yes_gap": 0.1,
+      "top_yes": 0.56,
+      "order_status": "live",
+      "order_id": "0x51212d6c696f77680875fb6b97e9e6d5858acd4b6ccd6e2fb1fc5a5ce8a5a40d",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-26T18:40:59+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "745854",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "745853",
+      "city": "Sao Paulo",
+      "market_id": "3094755",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745860",
+      "city": "Miami",
+      "market_id": "3094831",
+      "group_item_title": "94-95\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745855",
+      "city": "Toronto",
+      "market_id": "3094770",
+      "group_item_title": "27\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.19,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "745859",
+      "city": "Atlanta",
+      "market_id": "3094818",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.31,
+      "spread_max": 0.15
+    }
+  ]
+}
