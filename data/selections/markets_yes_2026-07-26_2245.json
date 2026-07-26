@@ -1,0 +1,37 @@
+{
+  "run_at": "2026-07-26T22:45:46.946155+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "745856",
+      "city": "Seattle",
+      "market_id": "3094784",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745865",
+      "city": "Los Angeles",
+      "market_id": "3094881",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745866",
+      "city": "San Francisco",
+      "market_id": "3094895",
+      "group_item_title": "68-69\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    }
+  ]
+}
