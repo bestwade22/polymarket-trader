@@ -1,0 +1,13 @@
+{
+  "run_at": "2026-07-26T10:45:31.260385+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741987",
+      "city": "Karachi",
+      "timezone": "Pakistan (UTC+5)",
+      "reason": "low_win_summary_timezone"
+    }
+  ]
+}
