@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-26T20:16:07.011417+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "745862",
+      "city": "Austin",
+      "market_id": "3094849",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745864",
+      "city": "Houston",
+      "market_id": "3094873",
+      "group_item_title": "94-95\u00b0F",
+      "event_slug": "highest-temperature-in-houston-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.83,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745867",
+      "city": "Mexico City",
+      "market_id": "3094905",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-mexico-city-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745868",
+      "city": "Panama City",
+      "market_id": "3094917",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "745858",
+      "city": "Dallas",
+      "market_id": "3094803",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.38,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "745863",
+      "city": "Denver",
+      "market_id": "3094862",
+      "group_item_title": "100-101\u00b0F",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.15
+    },
+    {
+      "event_id": "745861",
+      "city": "Chicago",
+      "market_id": "3094837",
+      "group_item_title": "90-91\u00b0F",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3094838",
+      "held_group_item_title": "92-93\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
