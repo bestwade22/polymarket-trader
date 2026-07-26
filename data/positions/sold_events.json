@@ -8886,5 +8886,21 @@
     "floor_price": 0.97,
     "current_mid": 0.88,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x789f8393a06c1a9e7c306378e77d1c8bc80fa5a785f99da1732f39829548dc3e",
+    "token_id": "57332810424285666518782144193210364290512234281981356151720580724719113606755",
+    "order_id": "0x0560104292a2aa7bc259882b54f3d925ed8614cff54dbb9ea9024f4c0490ced1",
+    "sold_at": "2026-07-26T07:00:11.467376+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-kuala-lumpur-on-july-26-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.485,
+    "reason": "tier1"
   }
 ]
