@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-07-26T13:46:07.368080+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "741986",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "741829",
+      "city": "Warsaw",
+      "event_slug": "highest-temperature-in-warsaw-on-july-26-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "28\u00b0C",
+      "market_id": "3076692",
+      "clob_mid_price": 0.4345,
+      "gamma_title": "29\u00b0C",
+      "gamma_price": 0.32
+    },
+    {
+      "event_id": "741816",
+      "city": "London",
+      "market_id": "3076550",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.98,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741827",
+      "city": "Milan",
+      "market_id": "3076672",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.635,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741828",
+      "city": "Madrid",
+      "market_id": "3076682",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.7,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741839",
+      "city": "Amsterdam",
+      "market_id": "3076802",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.825,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "741817",
+      "city": "Paris",
+      "market_id": "3076563",
+      "group_item_title": "25\u00b0C",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3076562",
+      "held_group_item_title": "24\u00b0C",
+      "target_share_count": 10
+    },
+    {
+      "event_id": "741821",
+      "city": "Munich",
+      "market_id": "3076605",
+      "group_item_title": "26\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3076605",
+      "held_group_item_title": "26\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
