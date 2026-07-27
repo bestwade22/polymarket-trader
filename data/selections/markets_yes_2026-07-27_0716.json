@@ -1,0 +1,128 @@
+{
+  "run_at": "2026-07-27T07:16:34.076799+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "746391",
+      "city": "Singapore",
+      "timezone": "Singapore (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "746410",
+      "city": "Manila",
+      "timezone": "Philippines (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "746389",
+      "city": "Hong Kong",
+      "market_id": "3096526",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.76,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746390",
+      "city": "Shanghai",
+      "market_id": "3096540",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-shanghai-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746395",
+      "city": "Taipei",
+      "market_id": "3096595",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-taipei-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.979,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746396",
+      "city": "Chongqing",
+      "market_id": "3096606",
+      "group_item_title": "39\u00b0C",
+      "event_slug": "highest-temperature-in-chongqing-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.61,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746397",
+      "city": "Beijing",
+      "market_id": "3096617",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-beijing-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746398",
+      "city": "Wuhan",
+      "market_id": "3096628",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-wuhan-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746400",
+      "city": "Shenzhen",
+      "market_id": "3096648",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-shenzhen-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8745,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746406",
+      "city": "Kuala Lumpur",
+      "market_id": "3096717",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746408",
+      "city": "Guangzhou",
+      "market_id": "3096737",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746409",
+      "city": "Qingdao",
+      "market_id": "3096749",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-qingdao-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746399",
+      "city": "Chengdu",
+      "market_id": "3096635",
+      "group_item_title": "29\u00b0C",
+      "reason": "spread_max",
+      "spread": 0.22,
+      "spread_max": 0.15
+    }
+  ]
+}
