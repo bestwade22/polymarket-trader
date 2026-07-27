@@ -1,0 +1,74 @@
+{
+  "run_at": "2026-07-27T20:16:03.367389+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750590",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "750584",
+      "city": "Chicago",
+      "market_id": "3108625",
+      "group_item_title": "84-85\u00b0F",
+      "event_slug": "highest-temperature-in-chicago-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750591",
+      "city": "Panama City",
+      "market_id": "3108707",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750585",
+      "city": "Austin",
+      "market_id": "3108640",
+      "group_item_title": "98-99\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-27-2026",
+      "reason": "spread_max",
+      "spread": 0.13,
+      "spread_max": 0.05
+    },
+    {
+      "event_id": "750586",
+      "city": "Denver",
+      "market_id": "3108649",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-july-27-2026",
+      "reason": "spread_max",
+      "spread": 0.34,
+      "spread_max": 0.05
+    },
+    {
+      "event_id": "750587",
+      "city": "Houston",
+      "market_id": "3108660",
+      "group_item_title": "94-95\u00b0F",
+      "event_slug": "highest-temperature-in-houston-on-july-27-2026",
+      "reason": "spread_max",
+      "spread": 0.07,
+      "spread_max": 0.05
+    },
+    {
+      "event_id": "750581",
+      "city": "Dallas",
+      "market_id": "3108592",
+      "group_item_title": "98-99\u00b0F",
+      "reason": "has_full_position_other_market",
+      "held_shares": 10.0,
+      "held_market_id": "3108593",
+      "held_group_item_title": "100-101\u00b0F",
+      "target_share_count": 10
+    }
+  ]
+}
