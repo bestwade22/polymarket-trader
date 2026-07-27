@@ -1062,6 +1062,12 @@
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "50181941241754861900327028798500612396207377632054958259946239078995176456846"
     },
+    "highest-temperature-in-chicago-on-july-26-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on July 26?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "13217715762575958875379581513667402710555904227707273766201519139953714516501"
+    },
     "highest-temperature-in-chicago-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on July 3?",
@@ -1331,6 +1337,12 @@
       "title": "Highest temperature in Dallas on July 24?",
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "58589367708730732336545517427833041727487374300180537758740062379494853114687"
+    },
+    "highest-temperature-in-dallas-on-july-26-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 26?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "3880214381478715113321639035544631930402532421774801508366721242966232572051"
     },
     "highest-temperature-in-dallas-on-july-5-2026": {
       "closed": true,
@@ -2507,6 +2519,12 @@
       "title": "Highest temperature in Mexico City on July 24?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "49654848082029282561584633922845746595098102053816484420414859646094766994175"
+    },
+    "highest-temperature-in-mexico-city-on-july-26-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on July 26?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "112229023884642324804510927601112188388956232115754369484125887963319316389497"
     },
     "highest-temperature-in-mexico-city-on-july-3-2026": {
       "closed": true,
