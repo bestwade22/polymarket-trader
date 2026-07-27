@@ -1,0 +1,19 @@
+{
+  "run_at": "2026-07-27T09:45:31.510418+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "746569",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "746571",
+      "city": "Karachi",
+      "timezone": "Pakistan (UTC+5)",
+      "reason": "low_win_summary_timezone"
+    }
+  ]
+}
