@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-07-27T17:45:38.109715+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750567",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "750563",
+      "city": "Sao Paulo",
+      "market_id": "3108507",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6
+    }
+  ]
+}
