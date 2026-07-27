@@ -9174,5 +9174,53 @@
     "floor_price": 0.93,
     "current_mid": 0.33,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x2642e76d1fd554efe43d434279aaee8743bf10a2d95a8e8ba787dbdf2fc818be",
+    "token_id": "68745501363567786493388946832468124148045263736403976686053114696783578548643",
+    "order_id": "0xa6ed8509df31b7a57a190804be7d5ec31d12ad381fb7ea672f051fc15ba2e1d1",
+    "sold_at": "2026-07-27T13:00:11.393287+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-july-27-2026",
+    "price": 0.93,
+    "size": 8.2899,
+    "avg_buy_price": 0.58,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.645,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xe9c61029ad7a9d976318c9bb9af3bd7df556d801e768830030c612ba8da6c78e",
+    "token_id": "65735862177986594107045757149609135668733783286282726341017451334686999174455",
+    "order_id": "0xfba4c58527e2cf84472c6fd1e7eb34867dcfc0447687473359dd54c187b9201e",
+    "sold_at": "2026-07-27T13:00:12.368603+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-istanbul-on-july-27-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.43,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.435,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x4bf3b55e7b031d6394bdcd677d4822a4f7202293fbbebe9b96f9e675a412c108",
+    "token_id": "48954711012259739352435260124720988858713991585429445631043610715208701689679",
+    "order_id": "0x5d1ae7fe73541bd47fb8136a78db49819d53bfc3f441137ee134d330b1a8c7fe",
+    "sold_at": "2026-07-27T13:00:13.419623+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-amsterdam-on-july-27-2026",
+    "price": 0.93,
+    "size": 9.9953,
+    "avg_buy_price": 0.48,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.42,
+    "reason": "tier1"
   }
 ]
