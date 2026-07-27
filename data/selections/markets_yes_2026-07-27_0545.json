@@ -1,0 +1,37 @@
+{
+  "run_at": "2026-07-27T05:45:48.551496+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "746383",
+      "city": "Seoul",
+      "market_id": "3096465",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-seoul-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.994,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746388",
+      "city": "Tokyo",
+      "market_id": "3096517",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-tokyo-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "746403",
+      "city": "Busan",
+      "market_id": "3096682",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-busan-on-july-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.6
+    }
+  ]
+}
