@@ -529,6 +529,22 @@ function openInterestBand(openInterest) {
   return `${lo}–${hi}`;
 }
 
+function yesGapBand(gap) {
+  if (gap == null || !Number.isFinite(gap) || gap < 0) return "unknown";
+  if (gap >= 0.3) return "≥0.30";
+  const idx = Math.floor(gap / 0.05);
+  const lo = idx * 0.05;
+  const hi = lo + 0.05;
+  return `${lo.toFixed(2)}–${hi.toFixed(2)}`;
+}
+
+function yesGapBandSortKey(label) {
+  if (label === "unknown") return -1;
+  if (label.startsWith("≥")) return 0.3;
+  const m = /^(\d\.\d+)–/.exec(label);
+  return m ? parseFloat(m[1]) : 0;
+}
+
 function openInterestBandSortKey(label) {
   if (label === "unknown") return -1;
   if (label.startsWith("≥")) return 30000;
@@ -675,6 +691,8 @@ function computeInsights(records) {
     summary_by_open_interest_band: groupInsightMetrics(records, (r) =>
       openInterestBand(r.open_interest)
     ),
+    summary_by_yes_gap_band: groupInsightMetrics(records, (r) => yesGapBand(r.yes_gap)),
+    summary_by_loss_autopsy: groupInsightMetrics(records, (r) => r.loss_autopsy || "n/a"),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
     stop_loss_regret_rate_pct: soldCount
       ? Math.round((soldRegret / soldCount) * 1000) / 10
@@ -712,12 +730,18 @@ function sortInsightEntries(title, data, limit) {
   }
 
   if (
-    (title === "By competitive band" || title === "By open interest band") &&
+    (title === "By competitive band" ||
+      title === "By open interest band" ||
+      title === "By yes gap band") &&
     state.key === "group" &&
     state.asc
   ) {
     const sortKey =
-      title === "By competitive band" ? competitiveBandSortKey : openInterestBandSortKey;
+      title === "By competitive band"
+        ? competitiveBandSortKey
+        : title === "By yes gap band"
+          ? yesGapBandSortKey
+          : openInterestBandSortKey;
     entries.sort((a, b) => sortKey(a[0]) - sortKey(b[0]));
     if (limit) entries = entries.slice(0, limit);
     return entries;
@@ -754,7 +778,7 @@ function renderGroupTable(title, data, options = {}) {
     if (title === "By day") {
       insightSortState[title] = { key: "group", asc: false };
     }
-    if (title === "By competitive band" || title === "By open interest band") {
+    if (title === "By competitive band" || title === "By open interest band" || title === "By yes gap band") {
       insightSortState[title] = { key: "group", asc: true };
     }
   }
@@ -797,6 +821,113 @@ function renderGroupTable(title, data, options = {}) {
         <table class="mini-table">
           <thead><tr>${header}</tr></thead>
           <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </section>`;
+}
+
+function median(vals) {
+  if (!vals.length) return null;
+  const sorted = [...vals].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+function mean(vals) {
+  if (!vals.length) return null;
+  return vals.reduce((a, b) => a + b, 0) / vals.length;
+}
+
+function localHour(r) {
+  const local = r.bought_at_local || fmtLocal(r.bought_at, r.city);
+  if (!local || !local.includes(":")) return null;
+  const h = parseInt(local.split(":")[0], 10);
+  return Number.isFinite(h) ? h : null;
+}
+
+function computeWinLossFingerprint(records) {
+  const wins = records.filter((r) => countsInWinSummary(r));
+  const losses = records.filter(
+    (r) => countsInWinSummaryDenom(r) && !countsInWinSummary(r)
+  );
+  const fields = [
+    { key: "yes_gap", label: "Yes gap", pick: (r) => r.yes_gap },
+    { key: "buy_price", label: "Buy $", pick: (r) => r.buy_price },
+    { key: "spread", label: "Spread", pick: (r) => r.spread },
+    { key: "open_interest", label: "Open interest", pick: (r) => r.open_interest },
+    {
+      key: "on_edge",
+      label: "On edge rate",
+      pick: (r) => (r.on_edge == null ? null : r.on_edge ? 1 : 0),
+    },
+    { key: "local_hour", label: "Local buy hour", pick: (r) => localHour(r) },
+    {
+      key: "minutes_into_window",
+      label: "Min into window",
+      pick: (r) => r.minutes_into_window,
+    },
+  ];
+  return {
+    win_n: wins.length,
+    loss_n: losses.length,
+    rows: fields.map((f) => {
+      const wv = wins.map(f.pick).filter((v) => v != null && Number.isFinite(v));
+      const lv = losses.map(f.pick).filter((v) => v != null && Number.isFinite(v));
+      return {
+        label: f.label,
+        win_mean: mean(wv),
+        win_median: median(wv),
+        loss_mean: mean(lv),
+        loss_median: median(lv),
+        win_n: wv.length,
+        loss_n: lv.length,
+      };
+    }),
+  };
+}
+
+function fmtFinger(v, label) {
+  if (v == null || !Number.isFinite(v)) return "—";
+  if (label === "Open interest") return `$${Math.round(v).toLocaleString()}`;
+  if (label === "On edge rate") return `${(v * 100).toFixed(0)}%`;
+  if (label === "Local buy hour" || label === "Min into window") return v.toFixed(1);
+  return v.toFixed(3);
+}
+
+function renderWinLossFingerprint(records) {
+  const container = document.getElementById("fingerprint-panel");
+  if (!container) return;
+  const fp = computeWinLossFingerprint(records);
+  const rows = fp.rows
+    .map(
+      (r) => `
+      <tr>
+        <td>${r.label}</td>
+        <td>${fmtFinger(r.win_mean, r.label)}</td>
+        <td>${fmtFinger(r.win_median, r.label)}</td>
+        <td>${fmtFinger(r.loss_mean, r.label)}</td>
+        <td>${fmtFinger(r.loss_median, r.label)}</td>
+      </tr>`
+    )
+    .join("");
+  container.innerHTML = `
+    <section class="insight-card fingerprint-card">
+      <h3>Win vs loss fingerprint
+        <span class="insight-desc">Mean/median on the current filtered set (win summary wins vs losses)</span>
+      </h3>
+      <p class="muted">Wins n=${fp.win_n} · Losses n=${fp.loss_n}</p>
+      <div class="mini-table-wrap">
+        <table class="mini-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Win mean</th>
+              <th>Win median</th>
+              <th>Loss mean</th>
+              <th>Loss median</th>
+            </tr>
+          </thead>
+          <tbody>${rows || `<tr><td colspan="5">No settled trades in filter</td></tr>`}</tbody>
         </table>
       </div>
     </section>`;
@@ -851,6 +982,25 @@ function renderInsights(data) {
         limit: null,
         defaultSort: { key: "group", asc: true },
         description: "Event open interest (USD) at order time in $2k bands",
+      },
+    ],
+    [
+      "By yes gap band",
+      data.summary_by_yes_gap_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          "Top Yes% − 2nd Yes% (0.05 bands). Larger gap = clearer highest-yes leader",
+      },
+    ],
+    [
+      "By loss autopsy",
+      data.summary_by_loss_autopsy,
+      {
+        limit: null,
+        description:
+          "Loss tags: wrong_bucket / sold_too_early / never_led / gap_collapsed (n/a = win or open)",
       },
     ],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
@@ -932,6 +1082,9 @@ function renderTable(records) {
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
       <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
       <td>${r.yes_gap != null ? Number(r.yes_gap).toFixed(3) : "—"}</td>
+      <td>${r.minutes_into_window != null ? Number(r.minutes_into_window).toFixed(0) : "—"}</td>
+      <td>${r.city_streak || "—"}</td>
+      <td>${r.loss_autopsy || "—"}</td>
       <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
       <td>${r.competitive != null ? Number(r.competitive).toFixed(3) : "—"}</td>
       <td>${r.open_interest != null ? `$${Math.round(r.open_interest).toLocaleString()}` : "—"}</td>
@@ -1081,9 +1234,13 @@ function renderSkippedAnalysis(data) {
       <h3>Skip overview</h3>
       <div class="summary-grid">
         <div><span class="summary-label">Total skips</span><span class="summary-value">${data.total_skips ?? 0}</span></div>
-        <div><span class="summary-label">Resolved (had temp + outcome)</span><span class="summary-value">${data.resolved_skips ?? 0}</span></div>
+        <div><span class="summary-label">With event slug</span><span class="summary-value">${data.with_slug ?? "—"}</span></div>
+        <div><span class="summary-label">Resolved outcomes</span><span class="summary-value">${data.resolved_skips ?? 0}</span></div>
+        <div><span class="summary-label">Would-have-won</span><span class="summary-value">${data.would_have_won_total ?? 0}</span></div>
         <div><span class="summary-label">Would-have-won %</span><span class="summary-value">${data.would_have_won_pct != null ? `${data.would_have_won_pct}%` : "—"}</span></div>
+        <div><span class="summary-label">Resolutions fetched</span><span class="summary-value">${data.resolutions_fetched ?? 0}</span></div>
       </div>
+      <p class="muted">Joins skips → event_slug (row / event_id / city+date reconstruct) → resolutions_cache + trade_history winners.</p>
       <p class="insight-desc">Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
     </div>`;
 
@@ -1157,6 +1314,7 @@ function render() {
   const filtered = sortRecords(applyFilters(allRecords));
   renderSummary(filtered);
   renderTable(filtered);
+  renderWinLossFingerprint(filtered);
   renderInsights(computeInsights(filtered));
   renderFilterSweep(filterSweepData);
   renderSkippedAnalysis(skippedAnalysisData);

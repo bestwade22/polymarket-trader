@@ -92,6 +92,18 @@
 
   <details id="insights-panel" class="insights">
     <summary>Strategy insights</summary>
+    <div class="glossary-block" style="padding:12px 16px 0">
+      <p class="muted" style="margin:0 0 8px">
+        <strong>Yes gap</strong> = top market Yes% − runner-up Yes% at buy time (how clearly “highest yes” led).
+        Larger gap usually means a stronger leader; tiny gap means a close race.
+      </p>
+      <p class="muted" style="margin:0">
+        <strong>Shipped stack</strong> = live trade filters:
+        skip bottom-7 city timezones (refreshed daily from surviving trades) +
+        spread &lt; 0.05 + buy ≥ 0.45. Insight tables below use the <em>current page filters</em>, not only the shipped stack.
+      </p>
+    </div>
+    <div id="fingerprint-panel" class="fingerprint-panel"></div>
     <div id="insights-content"></div>
   </details>
 
@@ -121,6 +133,9 @@
           <th data-sort="buy_price">Buy $</th>
           <th data-sort="spread">Spread</th>
           <th data-sort="yes_gap">Yes gap</th>
+          <th data-sort="minutes_into_window">Min into window</th>
+          <th data-sort="city_streak">City streak</th>
+          <th data-sort="loss_autopsy">Loss autopsy</th>
           <th data-sort="on_edge">Edge</th>
           <th data-sort="competitive">Competitive</th>
           <th data-sort="open_interest">Open interest</th>

@@ -211,6 +211,14 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   color: var(--text);
 }
 
+.fingerprint-panel {
+  padding: 0 16px 8px;
+}
+
+.fingerprint-card {
+  margin-bottom: 0.75rem;
+}
+
 .insight-table tr.pass td:last-child,
 .insight-table tr.helpful td:last-child {
   color: var(--win);
