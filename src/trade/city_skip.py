@@ -1,14 +1,21 @@
-"""Skip markets whose city timezone is among the worst win-summary groups."""
+"""Skip markets whose city timezone is among the worst win-summary groups.
+
+The denylist is NOT a hard-coded city list. Each trade-hourly / enrich run
+recomputes bottom-N timezone groups from current trade_history.json, ranking
+only "surviving" trades that match the live filter stack when fields exist.
+A daily denylist JSON is written so the skip set refreshes at least once/day.
+"""
 
 from __future__ import annotations
 
 import json
 import logging
 from dataclasses import fields
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
-from config.settings import TRADE_HISTORY_FILE, settings
+from config.settings import TRADE_HISTORY_FILE, TIMEZONE_SKIP_DENYLIST_FILE, settings
 from src.analysis.models import (
     TradeRecord,
     _counts_toward_win_summary,
@@ -54,6 +61,30 @@ def load_trade_records(path: Optional[Path] = None) -> list[TradeRecord]:
     return records
 
 
+def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Trades that would pass the live shipped stack when filter fields exist.
+
+    Uses current YES_PRICE_MIN / YES_PRICE_MAX / SPREAD_MAX. Missing spread is
+    allowed (same as live). Missing buy_price drops the row from ranking.
+    """
+    yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
+    yes_max = float(getattr(settings, "yes_price_max", 0.60) or 0.60)
+    spread_max = float(getattr(settings, "spread_max", 0.15) or 0.15)
+    kept: list[TradeRecord] = []
+    for rec in records:
+        buy = rec.buy_price
+        if buy is None:
+            continue
+        if buy >= yes_max:
+            continue
+        if yes_min > 0 and buy < yes_min:
+            continue
+        if rec.spread is not None and float(rec.spread) >= spread_max:
+            continue
+        kept.append(rec)
+    return kept
+
+
 def timezone_win_summary_stats(
     records: list[TradeRecord],
 ) -> dict[str, dict[str, float | int]]:
@@ -95,32 +126,111 @@ def lowest_win_summary_timezones(
     return [tz for tz, _pct, _denom in ranked[:n]]
 
 
+def _today_utc() -> str:
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+def load_timezone_skip_denylist(
+    path: Optional[Path] = None,
+) -> Optional[dict[str, Any]]:
+    denylist_path = path or TIMEZONE_SKIP_DENYLIST_FILE
+    if not denylist_path.exists():
+        return None
+    try:
+        data = json.loads(denylist_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def refresh_timezone_skip_denylist(
+    *,
+    history_path: Optional[Path] = None,
+    denylist_path: Optional[Path] = None,
+    bottom_n: Optional[int] = None,
+    force: bool = False,
+) -> dict[str, Any]:
+    """Recompute bottom-N from surviving trades and write daily denylist JSON."""
+    out_path = denylist_path or TIMEZONE_SKIP_DENYLIST_FILE
+    today = _today_utc()
+    existing = load_timezone_skip_denylist(out_path)
+    if (
+        not force
+        and existing
+        and existing.get("date") == today
+        and isinstance(existing.get("timezones"), list)
+    ):
+        return existing
+
+    records = load_trade_records(history_path)
+    surviving = surviving_records_for_skip(records)
+    # Fall back to all records if filters wipe the sample (cold start / missing fields).
+    rank_pool = surviving if len(surviving) >= 20 else records
+    timezones = lowest_win_summary_timezones(rank_pool, bottom_n=bottom_n)
+    stats = timezone_win_summary_stats(rank_pool)
+    detail = {
+        tz: {
+            "win_plus_sold_win_pct": stats.get(tz, {}).get("win_plus_sold_win_pct"),
+            "win_summary_denom": stats.get(tz, {}).get("win_summary_denom"),
+        }
+        for tz in timezones
+    }
+    payload = {
+        "date": today,
+        "refreshed_at": datetime.now(timezone.utc).isoformat(),
+        "bottom_n": settings.city_skip_bottom_n if bottom_n is None else bottom_n,
+        "rank_pool": "surviving" if rank_pool is surviving else "all",
+        "rank_pool_n": len(rank_pool),
+        "surviving_n": len(surviving),
+        "all_n": len(records),
+        "yes_price_min": float(getattr(settings, "yes_price_min", 0) or 0),
+        "yes_price_max": float(getattr(settings, "yes_price_max", 0.6) or 0.6),
+        "spread_max": float(getattr(settings, "spread_max", 0.15) or 0.15),
+        "timezones": timezones,
+        "detail": detail,
+    }
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(payload, indent=2))
+    logger.info(
+        "Timezone skip denylist refreshed (%s): bottom %d from %s n=%d → %s",
+        today,
+        len(timezones),
+        payload["rank_pool"],
+        payload["rank_pool_n"],
+        timezones,
+    )
+    return payload
+
+
 def resolve_skip_timezones(
     *,
     history_path: Optional[Path] = None,
     bottom_n: Optional[int] = None,
     enabled: Optional[bool] = None,
+    force_refresh: bool = False,
 ) -> list[str]:
-    """Load trade history and return city-timezone groups to skip for ordering."""
+    """Return city-timezone groups to skip; refreshes daily denylist as needed."""
     if enabled is None:
         enabled = settings.city_skip_enabled
     if not enabled:
         return []
-    records = load_trade_records(history_path)
-    if not records:
-        logger.info("Timezone skip: no trade history; not skipping any timezones")
-        return []
-    timezones = lowest_win_summary_timezones(records, bottom_n=bottom_n)
+    payload = refresh_timezone_skip_denylist(
+        history_path=history_path,
+        bottom_n=bottom_n,
+        force=force_refresh,
+    )
+    timezones = [str(tz) for tz in (payload.get("timezones") or [])]
     if timezones:
-        stats = timezone_win_summary_stats(records)
-        detail = ", ".join(
-            f"{tz}={stats[tz]['win_plus_sold_win_pct']}% ({stats[tz]['win_summary_denom']})"
-            for tz in timezones
-        )
+        detail = payload.get("detail") or {}
         logger.info(
-            "Timezone skip: bottom %d by city-timezone win summary%% → %s",
+            "Timezone skip: bottom %d by city-timezone win summary%% (%s pool) → %s",
             len(timezones),
-            detail,
+            payload.get("rank_pool"),
+            ", ".join(
+                f"{tz}={detail.get(tz, {}).get('win_plus_sold_win_pct')}%"
+                f" ({detail.get(tz, {}).get('win_summary_denom')})"
+                for tz in timezones
+            ),
         )
     return timezones
 
@@ -208,4 +318,3 @@ def filter_selections_by_skip_timezones(
             continue
         kept.append(sel)
     return kept, skipped
-

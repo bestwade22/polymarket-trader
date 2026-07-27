@@ -170,8 +170,67 @@ def test_skipped_analysis_by_reason(tmp_path: Path):
     analysis = compute_skipped_analysis(
         selections_dir=tmp_path,
         resolutions={"highest-temperature-in-london-on-july-20-2026": "28°C"},
+        fetch_missing_resolutions=False,
     )
     assert analysis["total_skips"] == 2
     by = {r["reason"]: r for r in analysis["by_reason"]}
     assert by["spread_max"]["would_have_won"] == 1
     assert by["low_win_summary_timezone"]["count"] == 1
+    assert analysis["with_slug"] >= 1
+
+
+def test_skipped_slug_reconstruct_from_city_date(tmp_path: Path):
+    (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-07-20T14:00:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "reason": "spread_max",
+                        "group_item_title": "28°C",
+                        "market_id": "1",
+                    }
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={"highest-temperature-in-london-on-july-20-2026": "28°C"},
+        fetch_missing_resolutions=False,
+    )
+    assert analysis["resolved_skips"] == 1
+    assert analysis["would_have_won_total"] == 1
+
+
+def test_pattern_enrichment_minutes_and_autopsy():
+    from src.analysis.pattern_enrichment import apply_pattern_enrichment
+
+    win = _rec(
+        result="win",
+        bought_at_local="14:20",
+        trade_window="14:00–16:00",
+        yes_gap=0.18,
+        token_id="w1",
+    )
+    loss = _rec(
+        result="loss",
+        bought_at_local="14:05",
+        trade_window="14:00–16:00",
+        yes_gap=0.02,
+        win_temp_vs_bought="higher",
+        winning_temp="30°C",
+        realized_pnl_usd=-5.0,
+        final_value_usd=-5.0,
+        token_id="l1",
+        city="London",
+        date="2026-07-02",
+        bought_at="2026-07-02T13:05:00+00:00",
+    )
+    apply_pattern_enrichment([win, loss])
+    assert win.minutes_into_window == 20.0
+    assert loss.minutes_into_window == 5.0
+    assert loss.loss_autopsy in ("wrong_bucket", "never_led")
+    assert win.yes_gap_at_fill == 0.18
+    assert loss.city_streak is None or isinstance(loss.city_streak, str)

@@ -197,6 +197,23 @@ def _open_interest_band(open_interest: float | None) -> str:
     return f"{int(lo)}–{int(hi)}"
 
 
+def _yes_gap_band(gap: float | None) -> str:
+    if gap is None:
+        return "unknown"
+    if gap < 0:
+        return "unknown"
+    if gap >= 0.30:
+        return "≥0.30"
+    idx = int(gap / 0.05)
+    lo = idx * 0.05
+    hi = lo + 0.05
+    return f"{lo:.2f}–{hi:.2f}"
+
+
+def _loss_autopsy_label(tag: str | None) -> str:
+    return tag or "n/a"
+
+
 def _sold_outcome_label(rec: TradeRecord) -> str:
     if rec.result != "sold":
         return "not_sold"
@@ -396,6 +413,12 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
         ),
         "summary_by_open_interest_band": _group_metrics(
             records, lambda rec: _open_interest_band(rec.open_interest)
+        ),
+        "summary_by_yes_gap_band": _group_metrics(
+            records, lambda rec: _yes_gap_band(rec.yes_gap)
+        ),
+        "summary_by_loss_autopsy": _group_metrics(
+            records, lambda rec: _loss_autopsy_label(rec.loss_autopsy)
         ),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: timezone_group(rec.city)

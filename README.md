@@ -119,7 +119,7 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 
 **Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
 
-City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped.
+City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Ranking uses **surviving** trades that match the live stack (`YES_PRICE_MIN` / `YES_PRICE_MAX` / `SPREAD_MAX`) when those fields exist — not a hard-coded city list. Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped. The denylist is rewritten at least daily to `data/analysis/timezone_skip_denylist.json` (also on sync/enrich).
 
 `SKIP_ON_EDGE` remains optional and is **off by default**. Use the history dashboard **Filter sweep** section (`enrich-trade-history`) to research stricter stacks before enabling extra filters.
 

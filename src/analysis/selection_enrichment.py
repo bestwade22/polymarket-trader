@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from config.settings import DATA_DIR, SELECTIONS_DIR
+from src.analysis.pattern_enrichment import apply_pattern_enrichment, apply_selection_pattern_fields
 from src.analysis.runner_up import runner_up_yes_and_gap
 from src.analysis.spread_lookup import compute_spread
 from src.utils.market_parser import get_yes_token_id, parse_float
@@ -68,6 +69,12 @@ def _row_enrichment(row: dict[str, Any]) -> dict[str, Any]:
         "open_interest": parse_float(row.get("open_interest")),
         "runner_up_yes": parse_float(row.get("runner_up_yes")),
         "yes_gap": parse_float(row.get("yes_gap")),
+        "forecast_temp_f": parse_float(row.get("forecast_temp_f")),
+        "forecast_temp_c": parse_float(row.get("forecast_temp_c")),
+        "liquidity": parse_float(row.get("liquidity") or row.get("liquidityNum")),
+        "book_depth_near_touch": parse_float(
+            row.get("book_depth_near_touch") or row.get("liquidity") or row.get("liquidityNum")
+        ),
         "event_slug": row.get("event_slug"),
         "groupItemTitle": row.get("groupItemTitle") or row.get("group_item_title"),
     }
@@ -223,6 +230,7 @@ def apply_enrichment_to_record(rec: Any, enrichment: dict[str, Any]) -> list[str
         if current is None:
             setattr(rec, field, enrichment[field])
             filled.append(field)
+    filled.extend(apply_selection_pattern_fields(rec, enrichment))
     return filled
 
 
@@ -242,12 +250,21 @@ def backfill_records_from_selections(
         rec
         for rec in records
         if any(getattr(rec, f, None) is None for f in ENRICH_FIELDS)
+        or any(
+            getattr(rec, f, None) is None
+            for f in (
+                "yes_gap_at_select",
+                "book_depth_near_touch",
+                "forecast_delta_c",
+                "minutes_into_window",
+                "loss_autopsy",
+                "city_streak",
+            )
+        )
     ]
-    if not needs_any:
-        return counts
 
-    sel_index = load_selection_enrichment_by_token(selections_dir)
-    event_index = load_event_market_index(data_dir) if use_event_fallback else {}
+    sel_index = load_selection_enrichment_by_token(selections_dir) if needs_any else {}
+    event_index = load_event_market_index(data_dir) if use_event_fallback and needs_any else {}
 
     for rec in needs_any:
         token_id = str(getattr(rec, "token_id", "") or "")
@@ -256,12 +273,12 @@ def backfill_records_from_selections(
         )
         if enrichment:
             for field in apply_enrichment_to_record(rec, enrichment):
-                counts[field] += 1
+                counts[field] = counts.get(field, 0) + 1
 
         still_missing = any(getattr(rec, f, None) is None for f in ENRICH_FIELDS)
         if still_missing and token_id and token_id in event_index:
             for field in apply_enrichment_to_record(rec, event_index[token_id]):
-                counts[field] += 1
+                counts[field] = counts.get(field, 0) + 1
 
         # Runner-up from event markets when still missing (even if other fields filled)
         if getattr(rec, "yes_gap", None) is None or getattr(rec, "runner_up_yes", None) is None:
@@ -277,8 +294,12 @@ def backfill_records_from_selections(
                     )
                     patch = {"runner_up_yes": runner, "yes_gap": gap}
                     for field in apply_enrichment_to_record(rec, patch):
-                        counts[field] += 1
+                        counts[field] = counts.get(field, 0) + 1
                     break
+
+    pattern_counts = apply_pattern_enrichment(records)
+    for field, n in pattern_counts.items():
+        counts[field] = counts.get(field, 0) + n
 
     filled_total = sum(counts.values())
     if filled_total:

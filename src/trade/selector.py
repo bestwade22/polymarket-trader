@@ -165,6 +165,7 @@ def filter_by_spread_max(
                     "city": sel.city,
                     "market_id": sel.market_id,
                     "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
                     "reason": "spread_max",
                     "spread": spread,
                     "spread_max": max_spread,

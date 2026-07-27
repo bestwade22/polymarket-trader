@@ -40,6 +40,7 @@ from src.analysis.filter_sweep import compute_filter_sweep
 from src.analysis.skipped_analysis import compute_skipped_analysis
 from src.analysis.resolution import fetch_resolved_event
 from src.analysis.strategy_insights import compute_insights
+from src.trade.city_skip import refresh_timezone_skip_denylist
 from src.api.clob_client import ClobPriceClient
 from src.api.data_client import fetch_all_closed_positions, fetch_all_user_activity
 from src.utils.market_parser import compare_temp_buckets
@@ -278,17 +279,26 @@ def _merge_records(
                 rec.competitive = prior.competitive
             if rec.open_interest is None and prior.open_interest is not None:
                 rec.open_interest = prior.open_interest
-            for field in (
-                "best_bid",
-                "best_ask",
-                "midpoint",
-                "gamma_yes_price",
-                "clob_buy_price",
-                "runner_up_yes",
-                "yes_gap",
-            ):
-                if getattr(rec, field, None) is None and getattr(prior, field, None) is not None:
-                    setattr(rec, field, getattr(prior, field))
+                for field in (
+                    "best_bid",
+                    "best_ask",
+                    "midpoint",
+                    "gamma_yes_price",
+                    "clob_buy_price",
+                    "runner_up_yes",
+                    "yes_gap",
+                    "yes_gap_at_select",
+                    "yes_gap_at_fill",
+                    "minutes_into_window",
+                    "forecast_delta_c",
+                    "book_depth_near_touch",
+                    "price_change_30m",
+                    "price_change_90m",
+                    "city_streak",
+                    "loss_autopsy",
+                ):
+                    if getattr(rec, field, None) is None and getattr(prior, field, None) is not None:
+                        setattr(rec, field, getattr(prior, field))
         merged[rec.token_id] = rec
     return sorted(merged.values(), key=lambda r: r.bought_at, reverse=True)
 
@@ -393,7 +403,8 @@ def run_sync_trade_history(
     summary = summarize_records(all_records)
     insights = compute_insights(all_records)
     filter_sweep = compute_filter_sweep(all_records)
-    skipped_analysis = compute_skipped_analysis()
+    skipped_analysis = compute_skipped_analysis(fetch_missing_resolutions=True)
+    refresh_timezone_skip_denylist(force=True)
 
     payload = {
         "synced_at": now.isoformat(),
@@ -445,7 +456,8 @@ def run_enrich_trade_history() -> dict[str, Any]:
     summary = summarize_records(records)
     insights = compute_insights(records)
     filter_sweep = compute_filter_sweep(records)
-    skipped_analysis = compute_skipped_analysis()
+    skipped_analysis = compute_skipped_analysis(fetch_missing_resolutions=True)
+    denylist = refresh_timezone_skip_denylist(force=True)
     now = datetime.now(timezone.utc)
 
     payload = {
@@ -457,6 +469,7 @@ def run_enrich_trade_history() -> dict[str, Any]:
         "insights": insights,
         "filter_sweep": filter_sweep,
         "skipped_analysis": skipped_analysis,
+        "timezone_skip_denylist": denylist,
     }
     TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))
 

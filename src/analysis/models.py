@@ -49,6 +49,16 @@ class TradeRecord:
     clob_buy_price: Optional[float] = None
     runner_up_yes: Optional[float] = None
     yes_gap: Optional[float] = None
+    # Pattern / autopsy enrichment (optional; filled offline or at select time)
+    yes_gap_at_select: Optional[float] = None
+    yes_gap_at_fill: Optional[float] = None
+    minutes_into_window: Optional[float] = None
+    forecast_delta_c: Optional[float] = None
+    book_depth_near_touch: Optional[float] = None
+    price_change_30m: Optional[float] = None
+    price_change_90m: Optional[float] = None
+    city_streak: Optional[str] = None
+    loss_autopsy: Optional[str] = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 from src.analysis.models import TradeRecord
 from src.analysis.strategy_insights import timezone_group
 from src.trade.city_skip import (
@@ -94,6 +96,60 @@ def test_filter_events_by_skip_timezones(monkeypatch):
     assert {s["city"] for s in skipped} == {"Paris", "Berlin"}
     assert all(s["reason"] == "low_win_summary_timezone" for s in skipped)
     assert all(s["timezone"] == "Central EU (UTC+1/+2)" for s in skipped)
+
+
+def test_surviving_records_respect_live_stack(monkeypatch):
+    from src.trade.city_skip import surviving_records_for_skip
+
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
+    monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    records = [
+        _rec("Alpha", buy_price=0.50, spread=0.02, token_id="a"),
+        _rec("Beta", buy_price=0.40, spread=0.02, token_id="b"),  # below min
+        _rec("Gamma", buy_price=0.50, spread=0.12, token_id="c"),  # wide spread
+        _rec("Delta", buy_price=0.52, spread=None, token_id="d"),  # missing spread ok
+    ]
+    kept = surviving_records_for_skip(records)
+    assert {r.city for r in kept} == {"Alpha", "Delta"}
+
+
+def test_refresh_timezone_skip_denylist_writes_daily_file(tmp_path, monkeypatch):
+    from src.trade import city_skip as cs
+
+    monkeypatch.setattr(
+        cs,
+        "timezone_group",
+        lambda city: {"Alpha": "Good", "Beta": "Bad"}.get(city, "Unknown"),
+    )
+    monkeypatch.setattr(cs.settings, "yes_price_min", 0.0)
+    monkeypatch.setattr(cs.settings, "spread_max", 0.15)
+    monkeypatch.setattr(cs.settings, "city_skip_bottom_n", 1)
+    history = tmp_path / "trade_history.json"
+    denylist = tmp_path / "denylist.json"
+    history.write_text(
+        json.dumps(
+            {
+                "records": [
+                    _rec("Alpha", result="win", token_id="a1").to_dict(),
+                    _rec("Alpha", result="win", token_id="a2").to_dict(),
+                    _rec("Beta", result="loss", token_id="b1").to_dict(),
+                    _rec("Beta", result="loss", token_id="b2").to_dict(),
+                ]
+            }
+        )
+    )
+    payload = cs.refresh_timezone_skip_denylist(
+        history_path=history, denylist_path=denylist, force=True
+    )
+    assert denylist.exists()
+    assert payload["timezones"] == ["Bad"]
+    assert payload["date"]
+    # Second call without force reuses same-day file
+    again = cs.refresh_timezone_skip_denylist(
+        history_path=history, denylist_path=denylist, force=False
+    )
+    assert again["timezones"] == ["Bad"]
 
 
 def test_timezone_group_uses_shared_labels():
