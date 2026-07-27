@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-07-27T14:15:38.093570+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "746380",
+      "city": "London",
+      "market_id": "3096425",
+      "group_item_title": "26\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "3096425",
+      "held_group_item_title": "26\u00b0C",
+      "target_share_count": 10
+    }
+  ]
+}
