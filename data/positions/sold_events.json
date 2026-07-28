@@ -9510,5 +9510,21 @@
     "floor_price": 0.93,
     "current_mid": 0.895,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xfffd306f10d4d3529713f0dc376977262a0e66d5a11b74acca5f277bfcead06c",
+    "token_id": "93634677462133826795082152938421552851495396719936914084199463007179292755471",
+    "order_id": "0xe2578e4e503cdab1005f70ad60e429d3b67def1be2fc0775cd0e0f3b176b3bc5",
+    "sold_at": "2026-07-28T13:00:12.181867+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-warsaw-on-july-28-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.475,
+    "reason": "tier1"
   }
 ]
