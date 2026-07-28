@@ -1,14 +1,51 @@
 {
   "date": "2026-07-28",
-  "refreshed_at": "2026-07-28T07:03:10.049975+00:00",
+  "refreshed_at": "2026-07-28T09:00:59.977574+00:00",
   "bottom_n": 7,
-  "rank_pool": "all",
-  "rank_pool_n": 0,
-  "surviving_n": 0,
-  "all_n": 0,
+  "rank_pool": "surviving",
+  "rank_pool_n": 201,
+  "surviving_n": 201,
+  "all_n": 660,
   "yes_price_min": 0.45,
   "yes_price_max": 0.6,
   "spread_max": 0.05,
-  "timezones": [],
-  "detail": {}
+  "timezones": [
+    "India (UTC+5:30)",
+    "Malaysia (UTC+8)",
+    "South Africa (UTC+2)",
+    "Japan (UTC+9)",
+    "NZ (UTC+12/+13)",
+    "China (UTC+8)",
+    "Mexico (UTC-6)"
+  ],
+  "detail": {
+    "India (UTC+5:30)": {
+      "win_plus_sold_win_pct": 0.0,
+      "win_summary_denom": 1
+    },
+    "Malaysia (UTC+8)": {
+      "win_plus_sold_win_pct": 0.0,
+      "win_summary_denom": 1
+    },
+    "South Africa (UTC+2)": {
+      "win_plus_sold_win_pct": 0.0,
+      "win_summary_denom": 3
+    },
+    "Japan (UTC+9)": {
+      "win_plus_sold_win_pct": 33.3,
+      "win_summary_denom": 3
+    },
+    "NZ (UTC+12/+13)": {
+      "win_plus_sold_win_pct": 33.3,
+      "win_summary_denom": 3
+    },
+    "China (UTC+8)": {
+      "win_plus_sold_win_pct": 38.9,
+      "win_summary_denom": 18
+    },
+    "Mexico (UTC-6)": {
+      "win_plus_sold_win_pct": 40.0,
+      "win_summary_denom": 5
+    }
+  }
 }
