@@ -1,0 +1,17 @@
+{
+  "run_at": "2026-07-28T10:45:40.167555+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750639",
+      "city": "Karachi",
+      "market_id": "3109092",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    }
+  ]
+}
