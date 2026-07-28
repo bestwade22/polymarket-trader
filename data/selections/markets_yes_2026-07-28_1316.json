@@ -1,0 +1,114 @@
+{
+  "run_at": "2026-07-28T13:16:21.799247+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "750594",
+      "city": "London",
+      "market_id": "3108737",
+      "groupItemTitle": "30\u00b0C",
+      "yes_price": 0.47,
+      "yes_token_id": "48768459330485843124761506152817865220999773964362062073217071113198338250395",
+      "buy_price": 0.48,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": false,
+      "order_price": 0.47,
+      "selection_price": 0.47,
+      "gamma_yes_price": 0.415,
+      "best_bid": 0.46,
+      "best_ask": 0.48,
+      "spread": 0.02,
+      "clob_buy_price": 0.48,
+      "last_trade_price": 0.41,
+      "midpoint": 0.47,
+      "outcomePrices": [
+        0.415,
+        0.585
+      ],
+      "competitive": 0.9928268261808434,
+      "event_slug": "highest-temperature-in-london-on-july-28-2026",
+      "open_interest": 32755.468711,
+      "runner_up_yes": 0.325,
+      "yes_gap": 0.09,
+      "top_yes": 0.415,
+      "order_status": "live",
+      "order_id": "0xde79c4ac2a2479f1d36490d14d3137b841b2a862862f5c01f203a00a7840b620",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-28T13:41:21+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "750636",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "750595",
+      "city": "Paris",
+      "market_id": "3108749",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-paris-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.605,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750600",
+      "city": "Munich",
+      "market_id": "3108803",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-munich-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.7,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750606",
+      "city": "Milan",
+      "market_id": "3108870",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750607",
+      "city": "Madrid",
+      "market_id": "3108881",
+      "group_item_title": "38\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750632",
+      "city": "Amsterdam",
+      "market_id": "3109016",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750608",
+      "city": "Warsaw",
+      "market_id": "3108892",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-july-28-2026",
+      "reason": "spread_max",
+      "spread": 0.09,
+      "spread_max": 0.05
+    }
+  ]
+}
