@@ -9494,5 +9494,21 @@
     "floor_price": 0.97,
     "current_mid": 0.94,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xd2a2c0f5d2c4bdd4d46554b5ce0c6cec2dc5d0d643229afe227d9cc48ee48f77",
+    "token_id": "55118172596064806444880063710940948778766310200380470826197859907468913565246",
+    "order_id": "0xe0b398c78d89c225c09ad6aba41eaebee1b3665320e91ad93acfb0337ec6c93d",
+    "sold_at": "2026-07-28T07:00:15.758726+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-hong-kong-on-july-28-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.59,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.895,
+    "reason": "tier1"
   }
 ]
