@@ -139,6 +139,52 @@ def test_commit_and_push_reapplies_on_conflict(tmp_path, monkeypatch):
     assert (verify / shared).read_text() == '{"v": "local"}\n'
 
 
+def test_commit_and_push_with_unstaged_extra_file(tmp_path, monkeypatch):
+    """Unstaged tracked edits (e.g. denylist) must not block rebase."""
+    bare, workspace = _init_bare_and_clone(tmp_path)
+    monkeypatch.setattr(git_sync, "WORKSPACE", workspace)
+    monkeypatch.setattr(git_sync, "PUSH_MAX_ATTEMPTS", 3)
+
+    target = "data/analysis/trade_history.json"
+    extra = "data/analysis/timezone_skip_denylist.json"
+    (workspace / "data" / "analysis").mkdir(parents=True)
+    (workspace / target).write_text('{"v": 1}\n')
+    (workspace / extra).write_text('{"timezones": []}\n')
+    _git(workspace, "add", target, extra)
+    _git(workspace, "commit", "-m", "seed")
+    _git(workspace, "push", "origin", "main")
+
+    other = _clone_other(tmp_path, bare)
+    (other / "data" / "analysis" / "remote.txt").write_text("remote\n")
+    _git(other, "add", "data/analysis/remote.txt")
+    _git(other, "commit", "-m", "remote")
+    _git(other, "push", "origin", "main")
+
+    (workspace / target).write_text('{"v": "local"}\n')
+    # Simulate sync writing denylist but only staging trade_history (old bug).
+    (workspace / extra).write_text('{"timezones": ["America/Bogota"]}\n')
+
+    def configure_local(_pat: str, _repo: str) -> str:
+        _git(workspace, "remote", "set-url", "origin", str(bare))
+        return str(bare)
+
+    monkeypatch.setattr(git_sync, "_configure_remote", configure_local)
+
+    committed = git_sync.commit_and_push(
+        [target],
+        "chore(data): sync history only",
+        github_pat="github_pat_dummy",
+        git_repo="owner/repo",
+        branch="main",
+    )
+    assert committed is True
+
+    verify = tmp_path / "verify3"
+    _git(tmp_path, "clone", "-b", "main", str(bare), str(verify))
+    assert (verify / target).read_text() == '{"v": "local"}\n'
+    assert (verify / "data" / "analysis" / "remote.txt").exists()
+
+
 def test_run_never_raises_with_raw_pat_in_message(tmp_path):
     with pytest.raises(RuntimeError) as excinfo:
         git_sync._run(

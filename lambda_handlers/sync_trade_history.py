@@ -15,6 +15,8 @@ ANALYSIS_PATHS = [
     "data/analysis/trade_history.json",
     "data/analysis/sync_state.json",
     "data/analysis/resolutions_cache.json",
+  # Written by refresh_timezone_skip_denylist during sync (not embedded in trade_history).
+    "data/analysis/timezone_skip_denylist.json",
 ]
 
 

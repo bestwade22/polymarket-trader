@@ -147,7 +147,14 @@ def clone_or_update(github_pat: str, git_repo: str, branch: str) -> Path:
     return WORKSPACE
 
 
+def _sync_worktree_to_head() -> None:
+    """Drop unstaged/untracked files so rebase can run (target paths are already committed)."""
+    _run(["git", "reset", "--hard", "HEAD"], cwd=WORKSPACE)
+    _run(["git", "clean", "-fd"], cwd=WORKSPACE)
+
+
 def _rebase_onto_origin(branch: str) -> None:
+    _sync_worktree_to_head()
     result = _run(
         ["git", "rebase", f"origin/{branch}"],
         cwd=WORKSPACE,
@@ -186,6 +193,7 @@ def _reapply_paths_on_origin(paths: list[str], message: str, branch: str) -> Non
         logger.info("Remote already has the same content for %s", list(snapshots))
         return
     _run(["git", "commit", "-m", message], cwd=WORKSPACE)
+    _sync_worktree_to_head()
 
 
 def commit_and_push(
@@ -216,6 +224,7 @@ def commit_and_push(
         return False
 
     _run(["git", "commit", "-m", message], cwd=WORKSPACE)
+    _sync_worktree_to_head()
 
     last_error: Optional[Exception] = None
     for attempt in range(1, PUSH_MAX_ATTEMPTS + 1):
