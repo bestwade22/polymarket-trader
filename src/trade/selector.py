@@ -122,6 +122,7 @@ def filter_by_on_edge(
                     "event_slug": (sel.event or {}).get("slug") if sel.event else None,
                     "reason": "on_edge",
                     "on_edge": True,
+                    "selection_price": sel.yes_price,
                 }
             )
             continue
@@ -169,6 +170,7 @@ def filter_by_spread_max(
                     "reason": "spread_max",
                     "spread": spread,
                     "spread_max": max_spread,
+                    "selection_price": sel.yes_price,
                 }
             )
             continue

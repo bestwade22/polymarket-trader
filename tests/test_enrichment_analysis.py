@@ -202,11 +202,82 @@ def test_skipped_analysis_by_reason(tmp_path: Path):
     assert by["low_win_summary_timezone"]["count"] == 1
     assert analysis["with_slug"] >= 1
     bands = {r["reason"]: r for r in analysis["yes_price_max_by_buy_band"]}
-    assert "0.70–0.80" in bands
-    assert "0.60–0.70" in bands
-    assert bands["0.70–0.80"]["count"] == 1
-    assert bands["0.60–0.70"]["count"] == 1
+    assert "0.70–0.75" in bands
+    assert "0.65–0.70" in bands
+    assert bands["0.70–0.75"]["count"] == 1
+    assert bands["0.65–0.70"]["count"] == 1
     assert analysis["total_pnl_if_bought"] == round(4.5 - 7.2, 2)
+
+def test_skipped_price_backfill_and_005_bands(tmp_path: Path, monkeypatch):
+    from src.analysis import skipped_analysis as sa
+
+    selections = tmp_path / "selections"
+    selections.mkdir()
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (selections / "markets_yes_2026-07-20_1400.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-07-20T14:00:00+00:00",
+                "skipped_bought": [
+                    {
+                        "event_id": "100",
+                        "city": "London",
+                        "market_id": "m1",
+                        "reason": "spread_max",
+                        "group_item_title": "28°C",
+                        "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "spread": 0.08,
+                    },
+                    {
+                        "event_id": "101",
+                        "city": "Paris",
+                        "market_id": "m2",
+                        "reason": "yes_price_max",
+                        "group_item_title": "31°C",
+                        "event_slug": "highest-temperature-in-paris-on-july-20-2026",
+                        "selection_price": 0.63,
+                    },
+                ],
+            }
+        )
+    )
+    (data_dir / "events_2026-07-20.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "100",
+                    "slug": "highest-temperature-in-london-on-july-20-2026",
+                    "markets": [
+                        {
+                            "id": "m1",
+                            "groupItemTitle": "28°C",
+                            "outcomePrices": '["0.52","0.48"]',
+                        }
+                    ],
+                }
+            ]
+        )
+    )
+    monkeypatch.setattr(sa, "SELECTIONS_DIR", selections)
+    monkeypatch.setattr(sa, "DATA_DIR", data_dir)
+
+    analysis = sa.compute_skipped_analysis(
+        selections_dir=selections,
+        resolutions={
+            "highest-temperature-in-london-on-july-20-2026": "28°C",
+            "highest-temperature-in-paris-on-july-20-2026": "30°C",
+        },
+        fetch_missing_resolutions=False,
+    )
+    by = {r["reason"]: r for r in analysis["by_reason"]}
+    assert by["spread_max"]["avg_price"] == 0.52
+    assert by["spread_max"]["total_pnl_if_bought"] == 4.8  # 10*(1-0.52)
+    assert by["yes_price_max"]["avg_price"] == 0.63
+    bands = {r["reason"]: r for r in analysis["yes_price_max_by_buy_band"]}
+    assert "0.60–0.65" in bands
+    assert bands["0.60–0.65"]["count"] == 1
+
 
 def test_skipped_slug_reconstruct_from_city_date(tmp_path: Path):
     (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(

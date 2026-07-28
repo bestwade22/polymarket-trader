@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 def _row_selection_price(row: dict[str, Any]) -> Optional[float]:
-    for key in ("selection_price", "buy_price", "yes_price", "clob_mid_price", "gamma_price"):
+    for key in ("selection_price", "buy_price", "yes_price", "clob_mid_price", "gamma_price", "midpoint"):
         raw = row.get(key)
         if raw is None:
             continue
@@ -30,14 +30,40 @@ def _row_selection_price(row: dict[str, Any]) -> Optional[float]:
     return None
 
 
+def _parse_price(raw: Any) -> Optional[float]:
+    if raw is None:
+        return None
+    if isinstance(raw, str):
+        text = raw.strip()
+        if text.startswith("["):
+            try:
+                parsed = json.loads(text)
+            except json.JSONDecodeError:
+                parsed = None
+            if isinstance(parsed, list) and parsed:
+                return _parse_price(parsed[0])
+        try:
+            price = float(text)
+        except ValueError:
+            return None
+    else:
+        try:
+            price = float(raw)
+        except (TypeError, ValueError):
+            return None
+    if 0.0 < price <= 1.0:
+        return price
+    return None
+
+
 def _buy_price_band(price: float) -> str:
-    """0.1-wide buy-$ bands, e.g. 0.60–0.70."""
+    """0.05-wide buy-$ bands, e.g. 0.60–0.65."""
     if price < 0:
         return "<0.00"
     if price >= 1.0:
         return "1.00+"
-    lo = int(price * 10) / 10.0
-    hi = lo + 0.1
+    lo = int(price * 20) / 20.0
+    hi = round(lo + 0.05, 2)
     return f"{lo:.2f}–{hi:.2f}"
 
 
@@ -48,6 +74,119 @@ def _pnl_if_bought(price: float, would_have_won: Optional[bool], shares: float) 
     if would_have_won:
         return round(shares * (1.0 - price), 4)
     return round(-shares * price, 4)
+
+
+def _run_at_ts(value: Any) -> Optional[float]:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00")).timestamp()
+    except ValueError:
+        return None
+
+
+def _build_price_indexes(
+    rows: list[dict[str, Any]],
+    *,
+    data_dir: Optional[Path] = None,
+) -> tuple[dict[str, list[tuple[float, float]]], dict[str, float], dict[str, float]]:
+    """market_id -> [(ts, price)], market_id -> event price, event_id -> top-yes price."""
+    by_market_snap: dict[str, list[tuple[float, float]]] = {}
+    for row in rows:
+        mid = str(row.get("market_id") or "")
+        price = _row_selection_price(row)
+        if not mid or price is None:
+            continue
+        ts = _run_at_ts(row.get("_run_at")) or 0.0
+        by_market_snap.setdefault(mid, []).append((ts, price))
+
+    # Also index selection rows (bought) that carry prices.
+    root = SELECTIONS_DIR
+    if root.exists():
+        for path in root.glob("markets_yes_*.json"):
+            try:
+                payload = json.loads(path.read_text())
+            except (json.JSONDecodeError, OSError):
+                continue
+            ts = _run_at_ts(payload.get("run_at")) or 0.0
+            for key in ("selections", "skipped_bought"):
+                for row in payload.get(key) or []:
+                    if not isinstance(row, dict):
+                        continue
+                    mid = str(row.get("market_id") or "")
+                    price = _row_selection_price(row)
+                    if not mid or price is None:
+                        continue
+                    by_market_snap.setdefault(mid, []).append((ts, price))
+
+    for mid, points in by_market_snap.items():
+        points.sort(key=lambda item: item[0])
+
+    by_market_event: dict[str, float] = {}
+    by_event_top: dict[str, float] = {}
+    root_data = data_dir or DATA_DIR
+    for path in root_data.glob("events_*.json"):
+        try:
+            events = json.loads(path.read_text())
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(events, list):
+            continue
+        for event in events:
+            if not isinstance(event, dict):
+                continue
+            eid = str(event.get("id") or "")
+            best: Optional[float] = None
+            for market in event.get("markets") or []:
+                if not isinstance(market, dict):
+                    continue
+                mid = str(market.get("id") or "")
+                price = (
+                    _parse_price(market.get("outcomePrices"))
+                    or _parse_price(market.get("lastTradePrice"))
+                    or _parse_price(market.get("midpoint"))
+                    or _parse_price(market.get("bestBid"))
+                )
+                if mid and price is not None:
+                    by_market_event[mid] = price
+                if price is not None and (best is None or price > best):
+                    best = price
+            if eid and best is not None:
+                by_event_top[eid] = best
+
+    return by_market_snap, by_market_event, by_event_top
+
+
+def _lookup_skip_price(
+    row: dict[str, Any],
+    *,
+    by_market_snap: dict[str, list[tuple[float, float]]],
+    by_market_event: dict[str, float],
+    by_event_top: dict[str, float],
+) -> tuple[Optional[float], Optional[str]]:
+    """Resolve a buy price for a skip row. Returns (price, source)."""
+    direct = _row_selection_price(row)
+    if direct is not None:
+        return direct, "direct"
+
+    mid = str(row.get("market_id") or "")
+    ts = _run_at_ts(row.get("_run_at"))
+    if mid and mid in by_market_snap:
+        points = by_market_snap[mid]
+        if ts is None:
+            return points[-1][1], "selection_snapshot"
+        # Nearest snapshot by time.
+        best = min(points, key=lambda item: abs(item[0] - ts))
+        return best[1], "selection_snapshot"
+
+    if mid and mid in by_market_event:
+        return by_market_event[mid], "events_market"
+
+    eid = str(row.get("event_id") or "")
+    if eid and eid in by_event_top:
+        return by_event_top[eid], "events_top_yes"
+
+    return None, None
 
 
 def _empty_reason_stats(reason: str) -> dict[str, Any]:
@@ -317,11 +456,13 @@ def compute_skipped_analysis(
             )
 
     shares = float(getattr(settings, "share_count", 10) or 10)
+    by_market_snap, by_market_event, by_event_top = _build_price_indexes(rows)
     by_reason: dict[str, dict[str, Any]] = {}
     yes_price_max_bands: dict[str, dict[str, Any]] = {}
     samples: list[dict[str, Any]] = []
     slug_hits = 0
     price_hits = 0
+    price_sources: dict[str, int] = {}
     total_pnl_sum = 0.0
     total_pnl_n = 0
 
@@ -336,11 +477,18 @@ def compute_skipped_analysis(
         if slug:
             stats["with_slug"] += 1
             slug_hits += 1
-        price = _row_selection_price(row)
+        price, price_source = _lookup_skip_price(
+            row,
+            by_market_snap=by_market_snap,
+            by_market_event=by_market_event,
+            by_event_top=by_event_top,
+        )
         if price is not None:
             stats["with_price"] += 1
             stats["_price_sum"] += price
             price_hits += 1
+            if price_source:
+                price_sources[price_source] = price_sources.get(price_source, 0) + 1
         whw = _would_have_won(row, res_map, id_index=id_index)
         if whw is True:
             stats["resolved"] += 1
@@ -388,6 +536,7 @@ def compute_skipped_analysis(
                     "reason": reason,
                     "temp": extract_temp_label(title),
                     "selection_price": price,
+                    "price_source": price_source,
                     "pnl_if_bought": pnl,
                     "event_slug": slug,
                     "would_have_won": whw,
@@ -408,6 +557,7 @@ def compute_skipped_analysis(
         "total_skips": total,
         "with_slug": slug_hits,
         "with_price": price_hits,
+        "price_sources": price_sources,
         "share_count_assumed": shares,
         "resolved_skips": resolved_total,
         "would_have_won_total": won_total,

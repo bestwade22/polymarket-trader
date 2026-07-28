@@ -227,6 +227,7 @@ def _append_position_skip(
             "held_market_id": held_market_id,
             "held_group_item_title": held_group_item_title,
             "target_share_count": target_share_count,
+            "selection_price": getattr(sel, "yes_price", None),
         }
     )
 
