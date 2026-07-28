@@ -1249,7 +1249,7 @@ function renderSkippedAnalysis(data) {
         <div><span class="summary-label">Resolutions fetched</span><span class="summary-value">${data.resolutions_fetched ?? 0}</span></div>
       </div>
       <p class="muted">Joins skips → event_slug (row / event_id / city+date reconstruct) → resolutions_cache + trade_history winners.</p>
-      <p class="insight-desc">P&amp;L if bought assumes ${shares} shares held to resolution: win = shares×(1−price), loss = −shares×price. Avg price uses selection_price when logged. Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
+      <p class="insight-desc">P&amp;L if bought assumes ${shares} shares held to resolution: win = shares×(1−price), loss = −shares×price. Avg price uses logged selection_price when present, else nearest selection snapshot / events file Yes %. Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
     </div>`;
 
   const reasonRows = data.by_reason
@@ -1286,8 +1286,8 @@ function renderSkippedAnalysis(data) {
     .join("");
 
   const bandSection = `
-    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">yes_price_max by buy $ (0.1 band)</h3>
-    <p class="muted" style="margin:0 0 0.5rem">Skipped because selection price ≥ YES_PRICE_MAX, grouped by buy price band.</p>
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">yes_price_max by buy $ (0.05 band)</h3>
+    <p class="muted" style="margin:0 0 0.5rem">Skipped because selection price ≥ YES_PRICE_MAX, grouped by buy price in 0.05 bands.</p>
     <div class="table-wrap" style="padding:0">
       <table class="insight-table">
         <thead>
