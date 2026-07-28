@@ -1,0 +1,137 @@
+{
+  "run_at": "2026-07-28T07:46:53.796593+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750603",
+      "city": "Hong Kong",
+      "market_id": "3108837",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750604",
+      "city": "Shanghai",
+      "market_id": "3108848",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-shanghai-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750605",
+      "city": "Singapore",
+      "market_id": "3108860",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-singapore-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750609",
+      "city": "Taipei",
+      "market_id": "3108905",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-taipei-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.988,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750611",
+      "city": "Beijing",
+      "market_id": "3108925",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-beijing-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750612",
+      "city": "Wuhan",
+      "market_id": "3108939",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-wuhan-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.84,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750613",
+      "city": "Chengdu",
+      "market_id": "3108949",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-chengdu-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.865,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750634",
+      "city": "Kuala Lumpur",
+      "market_id": "3109036",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.87,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750637",
+      "city": "Guangzhou",
+      "market_id": "3109070",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-guangzhou-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750638",
+      "city": "Qingdao",
+      "market_id": "3109085",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-qingdao-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750640",
+      "city": "Manila",
+      "market_id": "3109103",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-manila-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9895,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "750614",
+      "city": "Shenzhen",
+      "market_id": "3108958",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-shenzhen-on-july-28-2026",
+      "reason": "spread_max",
+      "spread": 0.07,
+      "spread_max": 0.05
+    },
+    {
+      "event_id": "750610",
+      "city": "Chongqing",
+      "market_id": "3108910",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-chongqing-on-july-28-2026",
+      "reason": "yes_price_min",
+      "selection_price": 0.285,
+      "yes_price_min": 0.45
+    }
+  ]
+}
