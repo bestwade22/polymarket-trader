@@ -2304,6 +2304,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "107952578464983297897087155194904154830622434918375003962691203471037687208304"
     },
+    "highest-temperature-in-denver-on-july-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on July 27?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "87156432715390090704496328648499782589525829832388112674599590583813122075341"
+    },
     "highest-temperature-in-denver-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in Denver on July 3?",
@@ -4025,6 +4031,12 @@
       "title": "Highest temperature in Los Angeles on July 26?",
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "75021176122994459346858215979915855474228191174623207391601601747154489429043"
+    },
+    "highest-temperature-in-los-angeles-on-july-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on July 27?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "75711670808512386812710771081955953534512270240749123552223261491343599550498"
     },
     "highest-temperature-in-los-angeles-on-july-3-2026": {
       "closed": true,
@@ -6276,6 +6288,12 @@
       "winning_temp": "68-69\u00b0F",
       "winning_token_id": "62472299953955431518134808404692328024609136331030326491237520336265777866691"
     },
+    "highest-temperature-in-san-francisco-on-july-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on July 27?",
+      "winning_temp": "68-69\u00b0F",
+      "winning_token_id": "54565907603645527000201073466251703483288555421494626612593383374111286735381"
+    },
     "highest-temperature-in-san-francisco-on-july-3-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on July 3?",
@@ -6641,6 +6659,12 @@
       "title": "Highest temperature in Seattle on July 26?",
       "winning_temp": "72-73\u00b0F",
       "winning_token_id": "52789476393700065947335287952356763155325144695197427934193807178541883245163"
+    },
+    "highest-temperature-in-seattle-on-july-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on July 27?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "27069691807551337758970925814741832811362942250848318514709928457661982585151"
     },
     "highest-temperature-in-seattle-on-july-3-2026": {
       "closed": true,
