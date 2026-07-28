@@ -1082,12 +1082,7 @@ function renderTable(records) {
       <td>${r.buy_price?.toFixed(2) ?? "—"}</td>
       <td>${r.spread != null ? Number(r.spread).toFixed(3) : "—"}</td>
       <td>${r.yes_gap != null ? Number(r.yes_gap).toFixed(3) : "—"}</td>
-      <td>${r.minutes_into_window != null ? Number(r.minutes_into_window).toFixed(0) : "—"}</td>
-      <td>${r.city_streak || "—"}</td>
-      <td>${r.loss_autopsy || "—"}</td>
       <td>${r.on_edge == null ? "—" : r.on_edge ? "Yes" : "No"}</td>
-      <td>${r.competitive != null ? Number(r.competitive).toFixed(3) : "—"}</td>
-      <td>${r.open_interest != null ? `$${Math.round(r.open_interest).toLocaleString()}` : "—"}</td>
       <td>${resultBadge(r.result)}</td>
       <td>${fmtMoney(recordPnl(r))}</td>
       <td>${outcome != null ? fmtMoney(outcome) : "—"}</td>
@@ -1229,19 +1224,32 @@ function renderSkippedAnalysis(data) {
     container.innerHTML = `<p class="muted">No skipped_analysis in trade_history.json — run <code>python -m src.main enrich-trade-history</code>.</p>`;
     return;
   }
+  const shares = data.share_count_assumed ?? 10;
+  const fmtPnl = (v) => {
+    if (v == null || !Number.isFinite(Number(v))) return "—";
+    const n = Number(v);
+    const sign = n > 0 ? "+" : "";
+    return `${sign}$${n.toFixed(2)}`;
+  };
+  const fmtPrice = (v) =>
+    v != null && Number.isFinite(Number(v)) ? Number(v).toFixed(3) : "—";
+
   const header = `
     <div class="insight-card insight-highlights">
       <h3>Skip overview</h3>
       <div class="summary-grid">
         <div><span class="summary-label">Total skips</span><span class="summary-value">${data.total_skips ?? 0}</span></div>
         <div><span class="summary-label">With event slug</span><span class="summary-value">${data.with_slug ?? "—"}</span></div>
+        <div><span class="summary-label">With price</span><span class="summary-value">${data.with_price ?? "—"}</span></div>
         <div><span class="summary-label">Resolved outcomes</span><span class="summary-value">${data.resolved_skips ?? 0}</span></div>
         <div><span class="summary-label">Would-have-won</span><span class="summary-value">${data.would_have_won_total ?? 0}</span></div>
         <div><span class="summary-label">Would-have-won %</span><span class="summary-value">${data.would_have_won_pct != null ? `${data.would_have_won_pct}%` : "—"}</span></div>
+        <div><span class="summary-label">Total P&amp;L if bought</span><span class="summary-value">${fmtPnl(data.total_pnl_if_bought)}</span></div>
+        <div><span class="summary-label">P&amp;L sample n</span><span class="summary-value">${data.pnl_n ?? 0}</span></div>
         <div><span class="summary-label">Resolutions fetched</span><span class="summary-value">${data.resolutions_fetched ?? 0}</span></div>
       </div>
       <p class="muted">Joins skips → event_slug (row / event_id / city+date reconstruct) → resolutions_cache + trade_history winners.</p>
-      <p class="insight-desc">Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
+      <p class="insight-desc">P&amp;L if bought assumes ${shares} shares held to resolution: win = shares×(1−price), loss = −shares×price. Avg price uses selection_price when logged. Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
     </div>`;
 
   const reasonRows = data.by_reason
@@ -1255,10 +1263,48 @@ function renderSkippedAnalysis(data) {
         <td>${r.would_have_won}</td>
         <td>${r.would_have_lost}</td>
         <td>${r.would_have_won_pct != null ? `${r.would_have_won_pct}%` : "—"}</td>
+        <td>${fmtPrice(r.avg_price)}</td>
+        <td>${fmtPnl(r.total_pnl_if_bought)}</td>
         <td>${r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : ""}</td>
       </tr>`;
     })
     .join("");
+
+  const bandRows = (data.yes_price_max_by_buy_band || [])
+    .map(
+      (r) => `<tr>
+        <td>${r.reason}</td>
+        <td>${r.count}</td>
+        <td>${r.resolved}</td>
+        <td>${r.would_have_won}</td>
+        <td>${r.would_have_lost}</td>
+        <td>${r.would_have_won_pct != null ? `${r.would_have_won_pct}%` : "—"}</td>
+        <td>${fmtPrice(r.avg_price)}</td>
+        <td>${fmtPnl(r.total_pnl_if_bought)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const bandSection = `
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">yes_price_max by buy $ (0.1 band)</h3>
+    <p class="muted" style="margin:0 0 0.5rem">Skipped because selection price ≥ YES_PRICE_MAX, grouped by buy price band.</p>
+    <div class="table-wrap" style="padding:0">
+      <table class="insight-table">
+        <thead>
+          <tr>
+            <th>Buy $ band</th>
+            <th>Count</th>
+            <th>Resolved</th>
+            <th>Would win</th>
+            <th>Would lose</th>
+            <th>Would-win%</th>
+            <th>Avg price</th>
+            <th>Total P&amp;L if bought</th>
+          </tr>
+        </thead>
+        <tbody>${bandRows || `<tr><td colspan="8">No yes_price_max skips with price</td></tr>`}</tbody>
+      </table>
+    </div>`;
 
   const sampleRows = (data.samples || [])
     .slice(0, 25)
@@ -1270,7 +1316,9 @@ function renderSkippedAnalysis(data) {
         <td>${s.city || "—"}</td>
         <td>${s.reason || ""}</td>
         <td>${s.temp || "—"}</td>
+        <td>${fmtPrice(s.selection_price)}</td>
         <td>${whw}</td>
+        <td>${fmtPnl(s.pnl_if_bought)}</td>
       </tr>`;
     })
     .join("");
@@ -1287,12 +1335,15 @@ function renderSkippedAnalysis(data) {
             <th>Would win</th>
             <th>Would lose</th>
             <th>Would-win%</th>
+            <th>Avg price</th>
+            <th>Total P&amp;L if bought</th>
             <th>Note</th>
           </tr>
         </thead>
         <tbody>${reasonRows}</tbody>
       </table>
     </div>
+    ${bandSection}
     <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Sample skips with temp</h3>
     <div class="table-wrap" style="padding:0">
       <table class="insight-table">
@@ -1302,10 +1353,12 @@ function renderSkippedAnalysis(data) {
             <th>City</th>
             <th>Reason</th>
             <th>Temp</th>
+            <th>Price</th>
             <th>Would have</th>
+            <th>P&amp;L if bought</th>
           </tr>
         </thead>
-        <tbody>${sampleRows || `<tr><td colspan="5">No skipped rows with a temp bucket</td></tr>`}</tbody>
+        <tbody>${sampleRows || `<tr><td colspan="7">No skipped rows with a temp bucket</td></tr>`}</tbody>
       </table>
     </div>`;
 }
