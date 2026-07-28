@@ -9526,5 +9526,37 @@
     "floor_price": 0.93,
     "current_mid": 0.475,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x2156baf644d1d0618c486967111601ad204706b46d6fc756ce2dc42bd28670f5",
+    "token_id": "48768459330485843124761506152817865220999773964362062073217071113198338250395",
+    "order_id": "0xcd601c0b5139dce80ae58a3247d2dd42c38cde53ba1e8874104d57b53ba07eb2",
+    "sold_at": "2026-07-28T14:00:11.489777+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-london-on-july-28-2026",
+    "price": 0.93,
+    "size": 10.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.515,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xfffd306f10d4d3529713f0dc376977262a0e66d5a11b74acca5f277bfcead06c",
+    "token_id": "93634677462133826795082152938421552851495396719936914084199463007179292755471",
+    "order_id": "0x4730200b32097ca8ce442bcefca755bc7fa04eb356fd03448678abd255c6c678",
+    "sold_at": "2026-07-28T14:00:12.527757+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-warsaw-on-july-28-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.285,
+    "reason": "tier2"
   }
 ]
