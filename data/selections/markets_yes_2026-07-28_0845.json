@@ -1,0 +1,17 @@
+{
+  "run_at": "2026-07-28T08:45:38.561293+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750599",
+      "city": "Lucknow",
+      "market_id": "3108795",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-lucknow-on-july-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.815,
+      "yes_price_max": 0.6
+    }
+  ]
+}
