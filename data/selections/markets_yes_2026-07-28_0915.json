@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-07-28T09:15:40.063090+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "750599",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "750639",
+      "city": "Karachi",
+      "market_id": "3109092",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-july-28-2026",
+      "reason": "spread_max",
+      "spread": 0.27,
+      "spread_max": 0.05
+    }
+  ]
+}
