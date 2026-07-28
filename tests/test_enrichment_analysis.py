@@ -161,23 +161,52 @@ def test_skipped_analysis_by_reason(tmp_path: Path):
                         "reason": "spread_max",
                         "group_item_title": "28°C",
                         "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "selection_price": 0.55,
+                    },
+                    {
+                        "city": "Paris",
+                        "reason": "yes_price_max",
+                        "group_item_title": "31°C",
+                        "event_slug": "highest-temperature-in-paris-on-july-20-2026",
+                        "selection_price": 0.72,
+                        "yes_price_max": 0.6,
+                    },
+                    {
+                        "city": "Berlin",
+                        "reason": "yes_price_max",
+                        "group_item_title": "30°C",
+                        "event_slug": "highest-temperature-in-berlin-on-july-20-2026",
+                        "selection_price": 0.65,
+                        "yes_price_max": 0.6,
                     },
                 ],
             }
         )
     )
-    # Resolution: London 28°C won → would have won
+    # London 28°C won → would have won; Paris 31°C lost; Berlin unresolved
     analysis = compute_skipped_analysis(
         selections_dir=tmp_path,
-        resolutions={"highest-temperature-in-london-on-july-20-2026": "28°C"},
+        resolutions={
+            "highest-temperature-in-london-on-july-20-2026": "28°C",
+            "highest-temperature-in-paris-on-july-20-2026": "30°C",
+        },
         fetch_missing_resolutions=False,
     )
-    assert analysis["total_skips"] == 2
+    assert analysis["total_skips"] == 4
     by = {r["reason"]: r for r in analysis["by_reason"]}
     assert by["spread_max"]["would_have_won"] == 1
+    assert by["spread_max"]["avg_price"] == 0.55
+    assert by["spread_max"]["total_pnl_if_bought"] == 4.5  # 10 * (1 - 0.55)
+    assert by["yes_price_max"]["avg_price"] == 0.685
+    assert by["yes_price_max"]["total_pnl_if_bought"] == -7.2  # 10 * -0.72
     assert by["low_win_summary_timezone"]["count"] == 1
     assert analysis["with_slug"] >= 1
-
+    bands = {r["reason"]: r for r in analysis["yes_price_max_by_buy_band"]}
+    assert "0.70–0.80" in bands
+    assert "0.60–0.70" in bands
+    assert bands["0.70–0.80"]["count"] == 1
+    assert bands["0.60–0.70"]["count"] == 1
+    assert analysis["total_pnl_if_bought"] == round(4.5 - 7.2, 2)
 
 def test_skipped_slug_reconstruct_from_city_date(tmp_path: Path):
     (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(

@@ -9,11 +9,92 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-from config.settings import DATA_DIR, RESOLUTIONS_CACHE_FILE, SELECTIONS_DIR, TRADE_HISTORY_FILE
+from config.settings import DATA_DIR, RESOLUTIONS_CACHE_FILE, SELECTIONS_DIR, TRADE_HISTORY_FILE, settings
 from src.analysis.resolution import fetch_resolved_event
 from src.utils.market_parser import compare_temp_buckets, extract_temp_label
 
 logger = logging.getLogger(__name__)
+
+
+def _row_selection_price(row: dict[str, Any]) -> Optional[float]:
+    for key in ("selection_price", "buy_price", "yes_price", "clob_mid_price", "gamma_price"):
+        raw = row.get(key)
+        if raw is None:
+            continue
+        try:
+            price = float(raw)
+        except (TypeError, ValueError):
+            continue
+        if 0.0 < price <= 1.0:
+            return price
+    return None
+
+
+def _buy_price_band(price: float) -> str:
+    """0.1-wide buy-$ bands, e.g. 0.60–0.70."""
+    if price < 0:
+        return "<0.00"
+    if price >= 1.0:
+        return "1.00+"
+    lo = int(price * 10) / 10.0
+    hi = lo + 0.1
+    return f"{lo:.2f}–{hi:.2f}"
+
+
+def _pnl_if_bought(price: float, would_have_won: Optional[bool], shares: float) -> Optional[float]:
+    """Binary-market P&L if we had bought `shares` at `price` and held to resolution."""
+    if would_have_won is None or shares <= 0:
+        return None
+    if would_have_won:
+        return round(shares * (1.0 - price), 4)
+    return round(-shares * price, 4)
+
+
+def _empty_reason_stats(reason: str) -> dict[str, Any]:
+    return {
+        "reason": reason,
+        "count": 0,
+        "with_temp": 0,
+        "with_slug": 0,
+        "with_price": 0,
+        "resolved": 0,
+        "would_have_won": 0,
+        "would_have_lost": 0,
+        "unknown_outcome": 0,
+        "_price_sum": 0.0,
+        "_pnl_sum": 0.0,
+        "_pnl_n": 0,
+    }
+
+
+def _finalize_stats(stats: dict[str, Any]) -> dict[str, Any]:
+    resolved = int(stats["resolved"])
+    won = int(stats["would_have_won"])
+    whw_pct = round(100.0 * won / resolved, 1) if resolved else None
+    with_price = int(stats["with_price"])
+    avg_price = (
+        round(float(stats["_price_sum"]) / with_price, 4) if with_price else None
+    )
+    pnl_n = int(stats["_pnl_n"])
+    total_pnl = round(float(stats["_pnl_sum"]), 2) if pnl_n else None
+    out = {
+        k: v
+        for k, v in stats.items()
+        if not str(k).startswith("_")
+    }
+    out.update(
+        {
+            "avg_price": avg_price,
+            "total_pnl_if_bought": total_pnl,
+            "pnl_n": pnl_n,
+            "would_have_won_pct": whw_pct,
+            "filter_costly": bool(whw_pct is not None and whw_pct >= 50 and resolved >= 5),
+            "filter_helpful": bool(
+                whw_pct is not None and whw_pct < 40 and resolved >= 5
+            ),
+        }
+    )
+    return out
 
 
 def _load_resolution_map(cache_path: Optional[Path] = None) -> dict[str, str]:
@@ -235,25 +316,18 @@ def compute_skipped_analysis(
                 min(len(pending_slugs), max_fetches),
             )
 
+    shares = float(getattr(settings, "share_count", 10) or 10)
     by_reason: dict[str, dict[str, Any]] = {}
+    yes_price_max_bands: dict[str, dict[str, Any]] = {}
     samples: list[dict[str, Any]] = []
     slug_hits = 0
+    price_hits = 0
+    total_pnl_sum = 0.0
+    total_pnl_n = 0
 
     for row in rows:
         reason = str(row.get("reason") or "unknown")
-        stats = by_reason.setdefault(
-            reason,
-            {
-                "reason": reason,
-                "count": 0,
-                "with_temp": 0,
-                "with_slug": 0,
-                "resolved": 0,
-                "would_have_won": 0,
-                "would_have_lost": 0,
-                "unknown_outcome": 0,
-            },
-        )
+        stats = by_reason.setdefault(reason, _empty_reason_stats(reason))
         stats["count"] += 1
         title = _bought_title(row)
         if title:
@@ -262,6 +336,11 @@ def compute_skipped_analysis(
         if slug:
             stats["with_slug"] += 1
             slug_hits += 1
+        price = _row_selection_price(row)
+        if price is not None:
+            stats["with_price"] += 1
+            stats["_price_sum"] += price
+            price_hits += 1
         whw = _would_have_won(row, res_map, id_index=id_index)
         if whw is True:
             stats["resolved"] += 1
@@ -272,6 +351,35 @@ def compute_skipped_analysis(
         elif title:
             stats["unknown_outcome"] += 1
 
+        pnl = _pnl_if_bought(price, whw, shares) if price is not None else None
+        if pnl is not None:
+            stats["_pnl_sum"] += pnl
+            stats["_pnl_n"] += 1
+            total_pnl_sum += pnl
+            total_pnl_n += 1
+
+        if reason == "yes_price_max" and price is not None:
+            band = _buy_price_band(price)
+            band_stats = yes_price_max_bands.setdefault(band, _empty_reason_stats(band))
+            band_stats["count"] += 1
+            band_stats["with_price"] += 1
+            band_stats["_price_sum"] += price
+            if title:
+                band_stats["with_temp"] += 1
+            if slug:
+                band_stats["with_slug"] += 1
+            if whw is True:
+                band_stats["resolved"] += 1
+                band_stats["would_have_won"] += 1
+            elif whw is False:
+                band_stats["resolved"] += 1
+                band_stats["would_have_lost"] += 1
+            elif title:
+                band_stats["unknown_outcome"] += 1
+            if pnl is not None:
+                band_stats["_pnl_sum"] += pnl
+                band_stats["_pnl_n"] += 1
+
         if len(samples) < 40 and title:
             samples.append(
                 {
@@ -279,28 +387,19 @@ def compute_skipped_analysis(
                     "city": row.get("city"),
                     "reason": reason,
                     "temp": extract_temp_label(title),
+                    "selection_price": price,
+                    "pnl_if_bought": pnl,
                     "event_slug": slug,
                     "would_have_won": whw,
                     "timezone": row.get("timezone"),
                 }
             )
 
-    reason_rows = []
-    for reason, stats in by_reason.items():
-        resolved = int(stats["resolved"])
-        won = int(stats["would_have_won"])
-        whw_pct = round(100.0 * won / resolved, 1) if resolved else None
-        reason_rows.append(
-            {
-                **stats,
-                "would_have_won_pct": whw_pct,
-                "filter_costly": bool(whw_pct is not None and whw_pct >= 50 and resolved >= 5),
-                "filter_helpful": bool(
-                    whw_pct is not None and whw_pct < 40 and resolved >= 5
-                ),
-            }
-        )
+    reason_rows = [_finalize_stats(stats) for stats in by_reason.values()]
     reason_rows.sort(key=lambda r: (-int(r["count"]), r["reason"]))
+
+    band_rows = [_finalize_stats(stats) for stats in yes_price_max_bands.values()]
+    band_rows.sort(key=lambda r: r["reason"])
 
     total = len(rows)
     resolved_total = sum(int(r["resolved"]) for r in reason_rows)
@@ -308,12 +407,17 @@ def compute_skipped_analysis(
     return {
         "total_skips": total,
         "with_slug": slug_hits,
+        "with_price": price_hits,
+        "share_count_assumed": shares,
         "resolved_skips": resolved_total,
         "would_have_won_total": won_total,
         "would_have_won_pct": round(100.0 * won_total / resolved_total, 1)
         if resolved_total
         else None,
+        "total_pnl_if_bought": round(total_pnl_sum, 2) if total_pnl_n else None,
+        "pnl_n": total_pnl_n,
         "resolutions_fetched": fetched,
         "by_reason": reason_rows,
+        "yes_price_max_by_buy_band": band_rows,
         "samples": samples,
     }
