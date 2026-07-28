@@ -1,0 +1,27 @@
+{
+  "run_at": "2026-07-28T17:15:44.622305+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "753884",
+      "city": "Sao Paulo",
+      "market_id": "3122445",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-28-2026",
+      "reason": "spread_max",
+      "spread": 0.05,
+      "spread_max": 0.05
+    },
+    {
+      "event_id": "753885",
+      "city": "Buenos Aires",
+      "market_id": "3122455",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-28-2026",
+      "reason": "spread_max",
+      "spread": 0.14,
+      "spread_max": 0.05
+    }
+  ]
+}
