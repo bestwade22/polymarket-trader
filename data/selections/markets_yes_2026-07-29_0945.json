@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-07-29T09:45:38.783481+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "754870",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "754896",
+      "city": "Karachi",
+      "market_id": "3125076",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.6
+    }
+  ]
+}
