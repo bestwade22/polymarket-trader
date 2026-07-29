@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-29T20:16:01.697171+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "758590",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "758584",
+      "city": "Chicago",
+      "event_slug": "highest-temperature-in-chicago-on-july-29-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "78-79\u00b0F",
+      "market_id": "3141999",
+      "clob_mid_price": 0.525,
+      "gamma_title": "80-81\u00b0F",
+      "gamma_price": 0.635
+    },
+    {
+      "event_id": "758586",
+      "city": "Denver",
+      "market_id": "3142025",
+      "group_item_title": "90-91\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758591",
+      "city": "Panama City",
+      "market_id": "3142078",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758738",
+      "city": "Dallas",
+      "market_id": "3142440",
+      "group_item_title": "98-99\u00b0F",
+      "event_slug": "highest-temperature-in-dallas-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.685,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758585",
+      "city": "Austin",
+      "market_id": "3142009",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-29-2026",
+      "reason": "spread_max",
+      "spread": 0.06,
+      "spread_max": 0.05,
+      "selection_price": 0.59
+    },
+    {
+      "event_id": "758587",
+      "city": "Houston",
+      "market_id": "3142033",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-houston-on-july-29-2026",
+      "reason": "spread_max",
+      "spread": 0.09,
+      "spread_max": 0.05,
+      "selection_price": 0.545
+    }
+  ]
+}
