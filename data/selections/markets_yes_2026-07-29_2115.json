@@ -1,0 +1,54 @@
+{
+  "run_at": "2026-07-29T21:15:54.973789+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "758590",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "758586",
+      "city": "Denver",
+      "market_id": "3142025",
+      "group_item_title": "90-91\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758588",
+      "city": "Los Angeles",
+      "market_id": "3142046",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758589",
+      "city": "San Francisco",
+      "market_id": "3142055",
+      "group_item_title": "68-69\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758737",
+      "city": "Seattle",
+      "market_id": "3142432",
+      "group_item_title": "74-75\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-july-29-2026",
+      "reason": "spread_max",
+      "spread": 0.07,
+      "spread_max": 0.05,
+      "selection_price": 0.575
+    }
+  ]
+}
