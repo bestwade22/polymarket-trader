@@ -1,0 +1,67 @@
+{
+  "run_at": "2026-07-29T18:16:04.550175+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "758574",
+      "city": "NYC",
+      "market_id": "3141964",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758580",
+      "city": "Atlanta",
+      "market_id": "3141981",
+      "group_item_title": "90-91\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-july-29-2026",
+      "reason": "yes_price_min",
+      "selection_price": 0.355,
+      "yes_price_min": 0.45
+    },
+    {
+      "event_id": "758727",
+      "city": "Sao Paulo",
+      "market_id": "3142391",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758728",
+      "city": "Buenos Aires",
+      "market_id": "3142404",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-buenos-aires-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.955,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758736",
+      "city": "Toronto",
+      "market_id": "3142423",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-toronto-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.91,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "758583",
+      "city": "Miami",
+      "market_id": "3141989",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-july-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.62,
+      "yes_price_max": 0.6
+    }
+  ]
+}
