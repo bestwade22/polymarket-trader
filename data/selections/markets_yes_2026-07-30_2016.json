@@ -1,0 +1,76 @@
+{
+  "run_at": "2026-07-30T20:16:03.443569+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "766076",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766073",
+      "city": "Houston",
+      "event_slug": "highest-temperature-in-houston-on-july-30-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "94-95\u00b0F",
+      "market_id": "3194911",
+      "clob_mid_price": 0.485,
+      "gamma_title": "96-97\u00b0F",
+      "gamma_price": 0.48
+    },
+    {
+      "event_id": "766070",
+      "city": "Chicago",
+      "market_id": "3194877",
+      "group_item_title": "86-87\u00b0F",
+      "event_slug": "highest-temperature-in-chicago-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.765,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766071",
+      "city": "Austin",
+      "market_id": "3194889",
+      "group_item_title": "98-99\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.68,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766077",
+      "city": "Panama City",
+      "market_id": "3194957",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766067",
+      "city": "Dallas",
+      "market_id": "3194843",
+      "group_item_title": "100-101\u00b0F",
+      "event_slug": "highest-temperature-in-dallas-on-july-30-2026",
+      "reason": "spread_max",
+      "spread": 0.05,
+      "spread_max": 0.05,
+      "selection_price": 0.515
+    },
+    {
+      "event_id": "766072",
+      "city": "Denver",
+      "market_id": "3194903",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-july-30-2026",
+      "reason": "spread_max",
+      "spread": 0.05,
+      "spread_max": 0.05,
+      "selection_price": 0.545
+    }
+  ]
+}
