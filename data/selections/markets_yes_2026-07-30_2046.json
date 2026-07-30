@@ -1,0 +1,105 @@
+{
+  "run_at": "2026-07-30T20:46:07.816932+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "766072",
+      "city": "Denver",
+      "market_id": "3194903",
+      "groupItemTitle": "92-93\u00b0F",
+      "yes_price": 0.54,
+      "yes_token_id": "95304612786336841590048662669646325268550487597210749319138655548701569660013",
+      "buy_price": 0.56,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": null,
+      "on_edge": true,
+      "order_price": 0.54,
+      "selection_price": 0.54,
+      "gamma_yes_price": 0.54,
+      "best_bid": 0.52,
+      "best_ask": 0.56,
+      "spread": 0.04,
+      "clob_buy_price": 0.56,
+      "last_trade_price": 0.52,
+      "midpoint": 0.54,
+      "outcomePrices": [
+        0.54,
+        0.46
+      ],
+      "competitive": 0.998402555910543,
+      "event_slug": "highest-temperature-in-denver-on-july-30-2026",
+      "open_interest": 16390.494754,
+      "runner_up_yes": 0.415,
+      "yes_gap": 0.125,
+      "top_yes": 0.54,
+      "order_status": "live",
+      "order_id": "0x15b4bd2390a860c60e4a53190425bfc9b409d36e64e4710b007868f529986603",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-30T21:11:07+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "766076",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766070",
+      "city": "Chicago",
+      "market_id": "3194877",
+      "group_item_title": "86-87\u00b0F",
+      "event_slug": "highest-temperature-in-chicago-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.77,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766071",
+      "city": "Austin",
+      "market_id": "3194889",
+      "group_item_title": "98-99\u00b0F",
+      "event_slug": "highest-temperature-in-austin-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.81,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766073",
+      "city": "Houston",
+      "market_id": "3194912",
+      "group_item_title": "96-97\u00b0F",
+      "event_slug": "highest-temperature-in-houston-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.65,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766077",
+      "city": "Panama City",
+      "market_id": "3194957",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9945,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766067",
+      "city": "Dallas",
+      "market_id": "3194843",
+      "group_item_title": "100-101\u00b0F",
+      "event_slug": "highest-temperature-in-dallas-on-july-30-2026",
+      "reason": "spread_max",
+      "spread": 0.07,
+      "spread_max": 0.05,
+      "selection_price": 0.555
+    }
+  ]
+}
