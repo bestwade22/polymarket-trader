@@ -9734,5 +9734,21 @@
     "floor_price": 0.97,
     "current_mid": 0.915,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x828666ac8260ef442bf0287bb3f76aa413c6f6d7dc1b43beef84da18ec5e2632",
+    "token_id": "37536674330970962846567274126790469772897754790553242791234535539470378228089",
+    "order_id": "0x6d36f2aed91eefa9c7cd3c411fb124f9f9b85d2b6901f78e679992fcf1a5b9ea",
+    "sold_at": "2026-07-30T12:00:11.475337+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-july-30-2026",
+    "price": 0.93,
+    "size": 12.19,
+    "avg_buy_price": 0.49,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.445,
+    "reason": "tier1"
   }
 ]
