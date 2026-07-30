@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-07-30T13:46:13.642176+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "759796",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "759775",
+      "city": "London",
+      "market_id": "3148689",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "759786",
+      "city": "Munich",
+      "market_id": "3148742",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-munich-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "759788",
+      "city": "Milan",
+      "market_id": "3148759",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.785,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "759789",
+      "city": "Madrid",
+      "market_id": "3148774",
+      "group_item_title": "39\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.825,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "759793",
+      "city": "Amsterdam",
+      "market_id": "3148816",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-30-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "759790",
+      "city": "Warsaw",
+      "market_id": "3148785",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-july-30-2026",
+      "reason": "spread_max",
+      "spread": 0.05,
+      "spread_max": 0.05,
+      "selection_price": 0.495
+    },
+    {
+      "event_id": "759776",
+      "city": "Paris",
+      "market_id": "3148699",
+      "group_item_title": "30\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 15.0,
+      "held_market_id": "3148699",
+      "held_group_item_title": "30\u00b0C",
+      "target_share_count": 15,
+      "selection_price": 0.495
+    }
+  ]
+}
