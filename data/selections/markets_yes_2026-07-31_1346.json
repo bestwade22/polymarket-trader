@@ -1,0 +1,84 @@
+{
+  "run_at": "2026-07-31T13:46:08.696797+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "766625",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766620",
+      "city": "Amsterdam",
+      "market_id": "3196706",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766776",
+      "city": "Paris",
+      "market_id": "3198327",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-paris-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.785,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766779",
+      "city": "Munich",
+      "market_id": "3198376",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-munich-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766781",
+      "city": "Milan",
+      "market_id": "3198395",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.83,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766782",
+      "city": "Madrid",
+      "market_id": "3198408",
+      "group_item_title": "38\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766783",
+      "city": "Warsaw",
+      "market_id": "3198417",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.699,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766775",
+      "city": "London",
+      "market_id": "3198276",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-july-31-2026",
+      "reason": "spread_max",
+      "spread": 0.07,
+      "spread_max": 0.05,
+      "selection_price": 0.585
+    }
+  ]
+}
