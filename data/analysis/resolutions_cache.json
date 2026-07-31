@@ -2274,6 +2274,12 @@
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "17202423639679953424329073369493793156366317222776725472478285637393301477234"
     },
+    "highest-temperature-in-dallas-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on July 30?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "71485334933696059735924649037478783343927258061909146394159218352648823110979"
+    },
     "highest-temperature-in-dallas-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on July 4?",
@@ -4373,6 +4379,12 @@
       "title": "Highest temperature in Los Angeles on July 3?",
       "winning_temp": "72-73\u00b0F",
       "winning_token_id": "73398607861418609830826709549383689559635874131370994122170196135376775704271"
+    },
+    "highest-temperature-in-los-angeles-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on July 30?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "13032414533220483558557660536236548906308600521205117373135829256090748677398"
     },
     "highest-temperature-in-los-angeles-on-july-4-2026": {
       "closed": true,
