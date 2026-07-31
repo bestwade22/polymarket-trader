@@ -528,6 +528,12 @@
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "9339564621869265619915529010235008397606383356248130559011849281174141997663"
     },
+    "highest-temperature-in-atlanta-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on July 30?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "18703408286634711465388416324099265773712473563406538553010662197190420151081"
+    },
     "highest-temperature-in-atlanta-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on July 4?",
@@ -5208,6 +5214,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "96205941686381853979235807608693803039590240005308145725055159613741624846822"
     },
+    "highest-temperature-in-miami-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on July 30?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "47640704727393446912368458933611076400365317596059843325331145958227909321181"
+    },
     "highest-temperature-in-miami-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on July 4?",
@@ -5994,6 +6006,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "61043565334908828251031467567853205855184971711920349975485629836315236778487"
     },
+    "highest-temperature-in-nyc-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on July 30?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "78061721372585406645813437437275445383192238548758809884036388180416434364250"
+    },
     "highest-temperature-in-nyc-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on July 4?",
@@ -6197,6 +6215,12 @@
       "title": "Highest temperature in Panama City on July 3?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "102542125608715068629456274515268154488330725104444429896193509837224742435503"
+    },
+    "highest-temperature-in-panama-city-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on July 30?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "92095370110880036815259898852546764114306708025335666240264863891937537776814"
     },
     "highest-temperature-in-panama-city-on-july-4-2026": {
       "closed": true,
@@ -6935,6 +6959,12 @@
       "title": "Highest temperature in Sao Paulo on July 3?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "12110915364748600265825347919425142289593929286842870916237761338386507882349"
+    },
+    "highest-temperature-in-sao-paulo-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on July 30?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "78281091618656686039459378581205052372446269786031260967559924921324368830393"
     },
     "highest-temperature-in-sao-paulo-on-july-4-2026": {
       "closed": true,
@@ -8585,6 +8615,12 @@
       "title": "Highest temperature in Toronto on July 3?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "2251274432580716322431158530676083226358777568450680226004574141749597696928"
+    },
+    "highest-temperature-in-toronto-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on July 30?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "106587336652497773056964629789425368448762009694317088548444486901932619750527"
     },
     "highest-temperature-in-toronto-on-july-4-2026": {
       "closed": true,
