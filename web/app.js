@@ -1156,6 +1156,9 @@ function renderFilterSweep(data) {
         <li><strong>Train</strong> = earlier dates used to rank timezone skips / judge the stack historically (about first 70% of distinct trade days).</li>
         <li><strong>denom</strong> = win-summary denominator: settled trades with ≥1 share (wins + losses + sold). Opens and dust (&lt;1 share) are excluded. <strong>n</strong> is all matching rows including opens.</li>
         <li><strong>Win summary%</strong> = win-summary wins ÷ denom (same rules as the main dashboard).</li>
+        <li><strong>skip_bottom7_tz</strong> = bottom 7 timezones by win summary on <em>all</em> train trades (legacy research skip).</li>
+        <li><strong>skip_bottom7_tz_surviving</strong> = bottom 7 on the <em>surviving</em> train pool (buy/spread stack), same ranking as live Lambda timezone skip.</li>
+        <li><strong>spread_live / buy_live</strong> = live rules: missing spread allowed; buy in [YES_PRICE_MIN, YES_PRICE_MAX). The shipped mirror is <code>skip_bottom7_tz_surviving + spread_live + buy_live</code>.</li>
       </ul>
       <p class="insight-desc">
         Example split: <strong>Train</strong> ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days)
