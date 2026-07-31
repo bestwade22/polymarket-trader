@@ -330,6 +330,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "80735364956285653651239766628284748347508658374021618200095011866151846238354"
     },
+    "highest-temperature-in-ankara-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Ankara on July 30?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "270250332683932585192023298270018538282098461569183434588115823537375494483"
+    },
     "highest-temperature-in-ankara-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Ankara on July 4?",
@@ -2832,6 +2838,12 @@
       "winning_temp": "19\u00b0C",
       "winning_token_id": "35180607576232921666385320538930415110137080546876052948557282532803720361980"
     },
+    "highest-temperature-in-helsinki-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on July 30?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "81611031309970140342161038928538126339023424516029402578471070907511384656463"
+    },
     "highest-temperature-in-helsinki-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on July 4?",
@@ -3378,6 +3390,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "53515092152448635851323117614887402045382963512818383816853416646628207006655"
     },
+    "highest-temperature-in-istanbul-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Istanbul on July 30?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "57424135091606529028079303704610412019055449331674556804261120757348160916459"
+    },
     "highest-temperature-in-istanbul-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Istanbul on July 4?",
@@ -3563,6 +3581,12 @@
       "title": "Highest temperature in Jeddah on July 3?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "58605506313107721804711373085629263582710985229822931468044686306277203078197"
+    },
+    "highest-temperature-in-jeddah-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jeddah on July 30?",
+      "winning_temp": "42\u00b0C or higher",
+      "winning_token_id": "94293669415974569546112448215904410023714361059190026534618954753016984503154"
     },
     "highest-temperature-in-jeddah-on-july-4-2026": {
       "closed": true,
@@ -4097,6 +4121,12 @@
       "title": "Highest temperature in London on July 3?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "55999130300201133335876685587034826047539603481005581570405683937634801971546"
+    },
+    "highest-temperature-in-london-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on July 30?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "26191070400927045983103486817450553965846336063851315846955792419948562706785"
     },
     "highest-temperature-in-london-on-july-4-2026": {
       "closed": true,
@@ -5364,6 +5394,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "41508635218871543013791296401211266301968842270138866507432695168735588799290"
     },
+    "highest-temperature-in-milan-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on July 30?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "16450179201486224967352430622845409718133983240028212495933478982639925861330"
+    },
     "highest-temperature-in-milan-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Milan on July 4?",
@@ -5549,6 +5585,12 @@
       "title": "Highest temperature in Moscow on July 3?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "63497174887607763841133162742860571800236727079191951089902743182932764949270"
+    },
+    "highest-temperature-in-moscow-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on July 30?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "37536674330970962846567274126790469772897754790553242791234535539470378228089"
     },
     "highest-temperature-in-moscow-on-july-4-2026": {
       "closed": true,
@@ -5741,6 +5783,12 @@
       "title": "Highest temperature in Munich on July 3?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "78800603147539373435745377864252116591817136316202015996901784339366273155032"
+    },
+    "highest-temperature-in-munich-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on July 30?",
+      "winning_temp": "37\u00b0C",
+      "winning_token_id": "64348822390836004211645999339949884324851428984893055909654243985114050894646"
     },
     "highest-temperature-in-munich-on-july-4-2026": {
       "closed": true,
@@ -6329,6 +6377,12 @@
       "title": "Highest temperature in Paris on July 3?",
       "winning_temp": "28\u00b0C",
       "winning_token_id": "95670237489599397174963156265596593692075741414020638486278210718227798975664"
+    },
+    "highest-temperature-in-paris-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on July 30?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "37437614117831685866108780232145219806366624724632489785051870098486827981733"
     },
     "highest-temperature-in-paris-on-july-4-2026": {
       "closed": true,
@@ -8160,6 +8214,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "62653305942940767004485732606960979228372420391313220246950846073045039532454"
     },
+    "highest-temperature-in-tel-aviv-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tel Aviv on July 30?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "57270828895517515530278937278980485147690349419535155917321618807131191021047"
+    },
     "highest-temperature-in-tel-aviv-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Tel Aviv on July 4?",
@@ -8729,6 +8789,12 @@
       "title": "Highest temperature in Warsaw on July 3?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "2927770646063143590440601230437317936006432620340300850719975486576564656899"
+    },
+    "highest-temperature-in-warsaw-on-july-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on July 30?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "11589793462423629066096540546630926180109760296805036952899339847109367328725"
     },
     "highest-temperature-in-warsaw-on-july-4-2026": {
       "closed": true,
