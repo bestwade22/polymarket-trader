@@ -9878,5 +9878,37 @@
     "floor_price": 0.93,
     "current_mid": 0.435,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x5ffe422c018fc2ca9a7a2401bf7ce0a9e0bf33dcbb1f86943be49011108bbf7d",
+    "token_id": "100411050178326612285002801284556648212810242733293797482600034958218623356473",
+    "order_id": "0x821375d8ab7ce08fb419f31cf3299751d059b0e36daa59acca0b48ef1f967988",
+    "sold_at": "2026-07-31T13:00:11.778409+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-warsaw-on-july-31-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.565,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x1bad48492d2c3cf9bbf8e6978b727128535c4015f86d3071c7ae80a565d5040b",
+    "token_id": "27784007431437916498341499829998989924681239971147299678283306038918184223188",
+    "order_id": "0x0eae7146130959527029c59b3261c3a17290634356efa4802c18a774f826ac3b",
+    "sold_at": "2026-07-31T13:00:12.705305+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-july-31-2026",
+    "price": 0.95,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.42,
+    "reason": "tier2"
   }
 ]
