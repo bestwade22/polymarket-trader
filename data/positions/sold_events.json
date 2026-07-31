@@ -9846,5 +9846,37 @@
     "floor_price": 0.93,
     "current_mid": 0.135,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x1bad48492d2c3cf9bbf8e6978b727128535c4015f86d3071c7ae80a565d5040b",
+    "token_id": "27784007431437916498341499829998989924681239971147299678283306038918184223188",
+    "order_id": "0x13f274039fd411da40229a93cbc1fdb7aa5f1f99de181153761d4b82288995c9",
+    "sold_at": "2026-07-31T12:00:12.812232+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-july-31-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.44,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x2ffe0c2a01ca112ea32a64c2ac7f3c0d0e6cd348edfcdddd7b711e86a3d26ca1",
+    "token_id": "19814706970004549056553540972241770537131088300159235750375123505522491276138",
+    "order_id": "0xb2b458da1eb655df5bd0e1be7d6e9c974f869d4126a14e0d35d6c0292aee3842",
+    "sold_at": "2026-07-31T12:00:13.729742+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-tel-aviv-on-july-31-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.435,
+    "reason": "tier1"
   }
 ]
