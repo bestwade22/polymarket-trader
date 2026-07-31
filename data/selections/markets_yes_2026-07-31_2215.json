@@ -1,0 +1,69 @@
+{
+  "run_at": "2026-07-31T22:15:53.721411+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "770654",
+      "city": "Seattle",
+      "market_id": "3215495",
+      "groupItemTitle": "82-83\u00b0F",
+      "yes_price": 0.595,
+      "yes_token_id": "35601328744491294281119116094182035864215010369497650674933286785790497053706",
+      "buy_price": 0.6,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "on_edge": false,
+      "order_price": 0.595,
+      "selection_price": 0.595,
+      "gamma_yes_price": 0.52,
+      "best_bid": 0.59,
+      "best_ask": 0.6,
+      "spread": 0.01,
+      "clob_buy_price": 0.6,
+      "last_trade_price": 0.57,
+      "midpoint": 0.595,
+      "outcomePrices": [
+        0.52,
+        0.48
+      ],
+      "competitive": 0.9996001599360256,
+      "event_slug": "highest-temperature-in-seattle-on-july-31-2026",
+      "open_interest": 9324.628419,
+      "runner_up_yes": 0.35,
+      "yes_gap": 0.17,
+      "top_yes": 0.52,
+      "order_status": "live",
+      "order_id": "0xdc18f9c591c2cf2c26593d432cffa8c0217d2d812db22b52bf61631274952521",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-07-31T22:40:53+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "770663",
+      "city": "Los Angeles",
+      "market_id": "3215593",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "770664",
+      "city": "San Francisco",
+      "market_id": "3215605",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.6
+    }
+  ]
+}
