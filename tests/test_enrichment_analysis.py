@@ -141,6 +141,152 @@ def test_filter_sweep_recommended_shape():
     assert "stacks" in sweep
     assert isinstance(sweep["stacks"], list)
     assert sweep["stacks"]
+    names = {row["stack"] for row in sweep["stacks"]}
+    assert "skip_bottom7_tz_surviving" in names
+    assert "skip_bottom7_tz_surviving + spread_live + buy_live" in names
+
+
+def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
+    """Surviving-ranked bottom-7 can differ from all-train ranking."""
+    from src.analysis.filter_sweep import (
+        _bottom_tz_set,
+        _bottom_tz_set_surviving,
+        _pred_from_name_parts,
+    )
+    from src.trade.city_skip import lowest_win_summary_timezones, surviving_records_for_skip
+
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
+    monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_min", 0.45)
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_max", 0.60)
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.spread_max", 0.05)
+    mapping = {
+        "GoodCity": "Good TZ",
+        "BadSurv": "Bad Surv TZ",
+        "BadAll": "Bad All TZ",
+    }
+    monkeypatch.setattr(
+        "src.analysis.filter_sweep.timezone_group",
+        lambda city: mapping.get(city, "Unknown"),
+    )
+    monkeypatch.setattr(
+        "src.trade.city_skip.timezone_group",
+        lambda city: mapping.get(city, "Unknown"),
+    )
+
+    records = []
+    # Surviving winners for Good TZ
+    for i in range(12):
+        records.append(
+            _rec(
+                date="2026-07-01",
+                city="GoodCity",
+                token_id=f"g{i}",
+                buy_price=0.50,
+                spread=0.02,
+                result="win",
+                win_temp_vs_bought="same",
+                realized_pnl_usd=2.0,
+                final_value_usd=2.0,
+            )
+        )
+    # Surviving-only losers for Bad Surv (0% in surviving pool)
+    for i in range(5):
+        records.append(
+            _rec(
+                date="2026-07-02",
+                city="BadSurv",
+                token_id=f"bs{i}",
+                buy_price=0.50,
+                spread=0.02,
+                result="loss",
+                win_temp_vs_bought="higher",
+                realized_pnl_usd=-3.0,
+                final_value_usd=-3.0,
+            )
+        )
+    # Cheap winners for Bad Surv so all-records win% looks decent
+    for i in range(10):
+        records.append(
+            _rec(
+                date="2026-07-02",
+                city="BadSurv",
+                token_id=f"bsw{i}",
+                buy_price=0.30,
+                spread=0.02,
+                result="win",
+                win_temp_vs_bought="same",
+                realized_pnl_usd=2.0,
+                final_value_usd=2.0,
+            )
+        )
+    # Many cheap losers for Bad All → worst on all-records ranking
+    for i in range(20):
+        records.append(
+            _rec(
+                date="2026-07-01",
+                city="BadAll",
+                token_id=f"ba{i}",
+                buy_price=0.30,
+                spread=0.02,
+                result="loss",
+                win_temp_vs_bought="higher",
+                realized_pnl_usd=-3.0,
+                final_value_usd=-3.0,
+            )
+        )
+    # Surviving winners for Bad All → fine under surviving ranking
+    for i in range(8):
+        records.append(
+            _rec(
+                date="2026-07-02",
+                city="BadAll",
+                token_id=f"baw{i}",
+                buy_price=0.50,
+                spread=0.02,
+                result="win",
+                win_temp_vs_bought="same",
+                realized_pnl_usd=2.0,
+                final_value_usd=2.0,
+            )
+        )
+
+    worst_all = lowest_win_summary_timezones(records, bottom_n=1)
+    surviving = surviving_records_for_skip(records)
+    worst_surv = lowest_win_summary_timezones(surviving, bottom_n=1)
+    assert worst_all == ["Bad All TZ"]
+    assert worst_surv == ["Bad Surv TZ"]
+    assert _bottom_tz_set(records, 1) == {"Bad All TZ"}
+    assert _bottom_tz_set_surviving(records, 1) == {"Bad Surv TZ"}
+
+    # Live stack allows missing spread; strict spread<0.05 does not
+    missing = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="miss",
+        buy_price=0.50,
+        spread=None,
+        result="win",
+    )
+    assert _pred_from_name_parts(
+        "skip_bottom7_tz_surviving + spread_live + buy_live", missing, set()
+    )
+    assert not _pred_from_name_parts(
+        "skip_bottom7_tz_surviving + spread<0.05 + buy>=0.45", missing, set()
+    )
+    # YES_PRICE_MAX: buy at 0.60 fails buy_live
+    high = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="hi",
+        buy_price=0.60,
+        spread=0.02,
+        result="win",
+    )
+    assert not _pred_from_name_parts(
+        "skip_bottom7_tz_surviving + spread_live + buy_live", high, set()
+    )
 
 
 def test_skipped_analysis_by_reason(tmp_path: Path):

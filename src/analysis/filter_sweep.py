@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Callable, Optional
 
+from config.settings import settings
 from src.analysis.models import (
     TradeRecord,
     _counts_toward_win_summary,
@@ -13,10 +14,16 @@ from src.analysis.models import (
     _record_pnl_value,
 )
 from src.analysis.strategy_insights import timezone_group
-from src.trade.city_skip import lowest_win_summary_timezones
+from src.trade.city_skip import lowest_win_summary_timezones, surviving_records_for_skip
 
 
 Predicate = Callable[[TradeRecord], bool]
+
+# Substring-safe: check surviving variant before plain skip_bottom7_tz.
+SKIP_TZ_SURVIVING = "skip_bottom7_tz_surviving"
+SKIP_TZ_ALL = "skip_bottom7_tz"
+SPREAD_LIVE = "spread_live"
+BUY_LIVE = "buy_live"
 
 
 @dataclass(frozen=True)
@@ -35,6 +42,28 @@ def _buy(rec: TradeRecord) -> float:
 
 def _oi(rec: TradeRecord) -> float:
     return float(rec.open_interest or 0.0)
+
+
+def _spread_ok_live(rec: TradeRecord) -> bool:
+    """Match live: missing spread allowed; otherwise require spread < SPREAD_MAX."""
+    if rec.spread is None:
+        return True
+    spread_max = float(getattr(settings, "spread_max", 0.05) or 0.05)
+    return float(rec.spread) < spread_max
+
+
+def _buy_ok_live(rec: TradeRecord) -> bool:
+    """Match live: YES_PRICE_MIN <= buy < YES_PRICE_MAX."""
+    buy = rec.buy_price
+    if buy is None:
+        return False
+    yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
+    yes_max = float(getattr(settings, "yes_price_max", 0.60) or 0.60)
+    if float(buy) >= yes_max:
+        return False
+    if yes_min > 0 and float(buy) < yes_min:
+        return False
+    return True
 
 
 def _metrics(records: list[TradeRecord]) -> dict[str, Any]:
@@ -84,19 +113,44 @@ def _split_oos(
 
 
 def _bottom_tz_set(records: list[TradeRecord], n: int = 7) -> set[str]:
+    """Bottom-N from all provided records (legacy research skip)."""
     return set(lowest_win_summary_timezones(records, bottom_n=n))
+
+
+def _bottom_tz_set_surviving(records: list[TradeRecord], n: int = 7) -> set[str]:
+    """Bottom-N from surviving pool — same ranking as live timezone skip."""
+    surviving = surviving_records_for_skip(records)
+    # Fall back to all when filters wipe the sample (cold start / missing fields).
+    pool = surviving if len(surviving) >= 20 else records
+    return set(lowest_win_summary_timezones(pool, bottom_n=n))
+
+
+def _bottom_tz_for_stack(name: str, train: list[TradeRecord]) -> set[str]:
+    """Train-scoped bottom-7; surviving variant matches live denylist ranking."""
+    if SKIP_TZ_SURVIVING in name:
+        return _bottom_tz_set_surviving(train, 7)
+    if SKIP_TZ_ALL in name:
+        return _bottom_tz_set(train, 7)
+    return set()
 
 
 def build_filter_catalog(records: list[TradeRecord]) -> list[FilterDef]:
     """Named predicates; skip-bottom-7 TZ is computed from the provided records."""
     bottom7 = _bottom_tz_set(records, 7)
+    bottom7_surv = _bottom_tz_set_surviving(records, 7)
 
     def skip7(r: TradeRecord) -> bool:
         return timezone_group(r.city or "") not in bottom7
 
+    def skip7_surv(r: TradeRecord) -> bool:
+        return timezone_group(r.city or "") not in bottom7_surv
+
     catalog: list[FilterDef] = [
         FilterDef("all", lambda _r: True),
-        FilterDef("skip_bottom7_tz", skip7),
+        FilterDef(SKIP_TZ_ALL, skip7),
+        FilterDef(SKIP_TZ_SURVIVING, skip7_surv),
+        FilterDef(SPREAD_LIVE, _spread_ok_live),
+        FilterDef(BUY_LIVE, _buy_ok_live),
         FilterDef("spread<0.10", lambda r: _spread(r) < 0.10),
         FilterDef("spread<0.08", lambda r: _spread(r) < 0.08),
         FilterDef("spread<0.05", lambda r: _spread(r) < 0.05),
@@ -125,6 +179,11 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
     stacks: list[FilterDef] = list(cat.values())
 
     combos: list[list[str]] = [
+        # Live-mirrored stack: bottom-7 from surviving pool + live buy/spread rules.
+        [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE],
+        [SKIP_TZ_SURVIVING, "spread<0.05", "buy>=0.45"],
+        [SKIP_TZ_SURVIVING, SPREAD_LIVE],
+        [SKIP_TZ_SURVIVING, BUY_LIVE],
         ["skip_bottom7_tz", "spread<0.08"],
         ["skip_bottom7_tz", "spread<0.05"],
         ["skip_bottom7_tz", "buy>=0.45"],
@@ -135,6 +194,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
         ["spread<0.08", "buy>=0.50"],
         ["spread<0.05", "buy>=0.45"],
         ["spread<0.05", "buy>=0.50"],
+        [SPREAD_LIVE, BUY_LIVE],
         ["skip_bottom7_tz", "spread<0.08", "buy>=0.45"],
         ["skip_bottom7_tz", "spread<0.08", "buy>=0.45", "not_on_edge"],
         ["skip_bottom7_tz", "spread<0.05", "buy>=0.45"],
@@ -167,25 +227,20 @@ def evaluate_stack(
     if train is None or test is None:
         train, test = _split_oos(records)
 
-    # Bottom-7 TZ for skip filters should be derived from train only for OOS honesty
-    # when the filter name includes skip_bottom7_tz. Rebuild train-scoped skip if needed.
-    pred = filt.pred
-    if "skip_bottom7_tz" in filt.name:
-        bottom7 = _bottom_tz_set(train, 7)
+    # Bottom-7 TZ for skip filters should be derived from train only for OOS honesty.
+    name = " + ".join(p.strip() for p in filt.name.split("+"))
+    bottom7 = _bottom_tz_for_stack(name, train)
 
-        def pred(r: TradeRecord, _inner=filt.pred, _b7=bottom7) -> bool:
-            # Re-apply other clauses via filtering: for skip stacks, replace timezone check
-            if timezone_group(r.city or "") in _b7:
-                return False
-            # If stack is only skip, done; else need remaining predicates from catalog on train
-            # Simpler: apply original pred but with train bottom7 — rebuild from name parts
-            return _pred_from_name_parts(filt.name, r, _b7)
+    def pred(r: TradeRecord, _name=name, _b7=bottom7) -> bool:
+        if _name == "all":
+            return True
+        return _pred_from_name_parts(_name, r, _b7)
 
     all_m = _metrics([r for r in records if pred(r)])
     train_m = _metrics([r for r in train if pred(r)])
     test_m = _metrics([r for r in test if pred(r)])
     return {
-        "stack": filt.name,
+        "stack": name,
         "n": all_m["n"],
         "denom": all_m["denom"],
         "win_summary_pct": all_m["win_summary_pct"],
@@ -203,8 +258,14 @@ def evaluate_stack(
 def _pred_from_name_parts(name: str, r: TradeRecord, bottom7: set[str]) -> bool:
     parts = [p.strip() for p in name.split("+")]
     for part in parts:
-        if part == "skip_bottom7_tz":
+        if part == SKIP_TZ_SURVIVING or part == SKIP_TZ_ALL:
             if timezone_group(r.city or "") in bottom7:
+                return False
+        elif part == SPREAD_LIVE:
+            if not _spread_ok_live(r):
+                return False
+        elif part == BUY_LIVE:
+            if not _buy_ok_live(r):
                 return False
         elif part == "spread<0.10":
             if not (_spread(r) < 0.10):
@@ -257,17 +318,9 @@ def compute_filter_sweep(
     train, test = _split_oos(records)
     rows: list[dict[str, Any]] = []
     for filt in candidate_stacks(records):
-        # Always evaluate with train-scoped bottom7 via name parser for consistency
-        bottom7 = _bottom_tz_set(train, 7)
-
-        def pred(r: TradeRecord, _name=filt.name, _b7=bottom7) -> bool:
-            if _name == "all":
-                return True
-            return _pred_from_name_parts(_name, r, _b7)
-
-        # For non-skip filters that don't use name parser pieces correctly when name
-        # has spaces around +, normalize
+        # Train-scoped bottom7; surviving vs all-records ranking depends on stack name.
         name = " + ".join(p.strip() for p in filt.name.split("+"))
+        bottom7 = _bottom_tz_for_stack(name, train)
 
         def pred2(r: TradeRecord, _name=name, _b7=bottom7) -> bool:
             if _name == "all":
