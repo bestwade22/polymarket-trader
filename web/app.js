@@ -126,6 +126,26 @@ function extractTempLabel(text) {
   return U.extractTempLabel(text);
 }
 
+function fmtForecastTemp(r) {
+  if (r.forecast_temp_c != null && Number.isFinite(Number(r.forecast_temp_c))) {
+    return `${Math.round(Number(r.forecast_temp_c))}°C`;
+  }
+  if (r.forecast_temp_f != null && Number.isFinite(Number(r.forecast_temp_f))) {
+    const c = Math.round(((Number(r.forecast_temp_f) - 32) * 5) / 9);
+    return `${c}°C`;
+  }
+  return "—";
+}
+
+function fmtForecastDelta(r) {
+  if (r.forecast_delta_c == null || !Number.isFinite(Number(r.forecast_delta_c))) {
+    return "—";
+  }
+  const v = Number(r.forecast_delta_c);
+  const sign = v > 0 ? "+" : "";
+  return `${sign}${v.toFixed(1)}°C`;
+}
+
 function fmtHk(iso, fallback) {
   if (fallback) return fallback;
   if (!iso) return "—";
@@ -1115,6 +1135,8 @@ function renderTable(records) {
       <td>${r.date}</td>
       <td>${r.city}</td>
       <td><a class="event-link" href="https://polymarket.com/event/${r.event_slug}" target="_blank" rel="noopener">${temp}</a></td>
+      <td>${fmtForecastTemp(r)}</td>
+      <td>${fmtForecastDelta(r)}</td>
       <td>${r.trade_window || "—"}</td>
       <td>${hk}</td>
       <td>${soldHk}</td>

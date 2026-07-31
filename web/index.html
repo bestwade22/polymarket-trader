@@ -96,6 +96,8 @@
       <p class="muted" style="margin:0 0 8px">
         <strong>Yes gap</strong> = top market Yes% − runner-up Yes% at buy time (how clearly “highest yes” led).
         Larger gap usually means a stronger leader; tiny gap means a close race.
+        <strong>Forecast</strong> = Open-Meteo daily max at the city resolution station at trade time;
+        <strong>Δ forecast</strong> = forecast °C − bought bucket midpoint °C.
       </p>
       <p class="muted" style="margin:0">
         <strong>Shipped stack</strong> = live trade filters:
@@ -125,6 +127,8 @@
           <th data-sort="date">Date</th>
           <th data-sort="city">City</th>
           <th data-sort="bought_temp">Bought temp</th>
+          <th data-sort="forecast_temp_c">Forecast</th>
+          <th data-sort="forecast_delta_c">Δ forecast</th>
           <th data-sort="trade_window">Trade window</th>
           <th data-sort="bought_at_hk">Bought (HKT)</th>
           <th data-sort="sold_at_hk">Sold (HKT)</th>
