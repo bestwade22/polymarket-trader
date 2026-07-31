@@ -404,7 +404,7 @@ def run_sync_trade_history(
     insights = compute_insights(all_records)
     filter_sweep = compute_filter_sweep(all_records)
     skipped_analysis = compute_skipped_analysis(fetch_missing_resolutions=True)
-    refresh_timezone_skip_denylist(force=True)
+    denylist = refresh_timezone_skip_denylist(force=True)
 
     payload = {
         "synced_at": now.isoformat(),
@@ -414,6 +414,7 @@ def run_sync_trade_history(
         "insights": insights,
         "filter_sweep": filter_sweep,
         "skipped_analysis": skipped_analysis,
+        "timezone_skip_denylist": denylist,
     }
     TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))
 

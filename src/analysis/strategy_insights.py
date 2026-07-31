@@ -332,6 +332,13 @@ def _group_metrics(
     return dict(sorted(result.items()))
 
 
+def _surviving_records_for_insights(records: list[TradeRecord]) -> list[TradeRecord]:
+    """Lazy import avoids circular import with city_skip → timezone_group."""
+    from src.trade.city_skip import surviving_records_for_skip
+
+    return surviving_records_for_skip(records)
+
+
 def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
     loss_vs_bought: dict[str, int] = defaultdict(int)
     pnl_by_result: dict[str, list[float]] = defaultdict(list)
@@ -422,6 +429,11 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
         ),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: timezone_group(rec.city)
+        ),
+        # Same pool Lambda uses for daily timezone skip (buy/spread stack survivors).
+        "summary_by_city_timezone_surviving": _group_metrics(
+            _surviving_records_for_insights(records),
+            lambda rec: timezone_group(rec.city),
         ),
         "stop_loss_regret_rate_pct": round((sold_regret / sold_count) * 100, 1)
         if sold_count

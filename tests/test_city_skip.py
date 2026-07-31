@@ -114,6 +114,31 @@ def test_surviving_records_respect_live_stack(monkeypatch):
     assert {r.city for r in kept} == {"Alpha", "Delta"}
 
 
+def test_insights_include_surviving_timezone_summary(monkeypatch):
+    from src.analysis.strategy_insights import compute_insights
+
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
+    monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    monkeypatch.setattr(
+        "src.analysis.strategy_insights.timezone_group",
+        lambda city: {"Alpha": "Good", "Beta": "Bad"}.get(city, "Unknown"),
+    )
+    records = [
+        _rec("Alpha", buy_price=0.50, spread=0.02, result="win", token_id="a1"),
+        _rec("Alpha", buy_price=0.50, spread=0.02, result="win", token_id="a2"),
+        _rec("Beta", buy_price=0.50, spread=0.02, result="loss", token_id="b1"),
+        _rec("Beta", buy_price=0.40, spread=0.02, result="loss", token_id="b2"),  # filtered out
+    ]
+    insights = compute_insights(records)
+    surviving = insights["summary_by_city_timezone_surviving"]
+    assert "Good" in surviving
+    assert "Bad" in surviving
+    assert surviving["Good"]["count"] == 2
+    assert surviving["Bad"]["count"] == 1
+    assert surviving["Bad"]["win_plus_sold_win_pct"] == 0.0
+
+
 def test_refresh_timezone_skip_denylist_writes_daily_file(tmp_path, monkeypatch):
     from src.trade import city_skip as cs
 

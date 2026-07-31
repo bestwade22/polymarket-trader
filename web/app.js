@@ -45,10 +45,30 @@ let allRecords = [];
 let cityTimezones = {};
 let filterSweepData = null;
 let skippedAnalysisData = null;
+/** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
+let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.6, spread_max: 0.05, bottom_n: 7 };
 let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
 const insightSortState = {};
+
+const SURVIVING_TZ_TITLE = "By city timezone (surviving pool — used for skip)";
+
+function survivingRecordsForSkip(records) {
+  const yesMin = Number(skipStackFilters.yes_price_min) || 0;
+  const yesMax = Number(skipStackFilters.yes_price_max) || 0.6;
+  const spreadMax = Number(skipStackFilters.spread_max) || 0.15;
+  return (records || []).filter((rec) => {
+    const buy = rec.buy_price;
+    if (buy == null || !Number.isFinite(buy)) return false;
+    if (buy >= yesMax) return false;
+    if (yesMin > 0 && buy < yesMin) return false;
+    if (rec.spread != null && Number.isFinite(rec.spread) && rec.spread >= spreadMax) {
+      return false;
+    }
+    return true;
+  });
+}
 
 function timezoneGroup(city) {
   const tz = cityTimezones[city];
@@ -637,7 +657,7 @@ function groupInsightMetrics(records, keyFn) {
   return result;
 }
 
-function computeInsights(records) {
+function computeInsights(records, { skipPoolRecords = null } = {}) {
   let soldCount = 0;
   let soldRegret = 0;
   let soldWouldLose = 0;
@@ -664,6 +684,9 @@ function computeInsights(records) {
       ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100
       : 0;
   }
+
+  // Match Lambda: rank from all history + live buy/spread stack (ignore page filters).
+  const surviving = survivingRecordsForSkip(skipPoolRecords || records);
 
   return {
     summary_by_city: groupInsightMetrics(records, (r) => r.city || "Unknown"),
@@ -694,6 +717,10 @@ function computeInsights(records) {
     summary_by_yes_gap_band: groupInsightMetrics(records, (r) => yesGapBand(r.yes_gap)),
     summary_by_loss_autopsy: groupInsightMetrics(records, (r) => r.loss_autopsy || "n/a"),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
+    summary_by_city_timezone_surviving: groupInsightMetrics(surviving, (r) =>
+      timezoneGroup(r.city)
+    ),
+    surviving_pool_n: surviving.length,
     stop_loss_regret_rate_pct: soldCount
       ? Math.round((soldRegret / soldCount) * 1000) / 10
       : 0,
@@ -780,6 +807,10 @@ function renderGroupTable(title, data, options = {}) {
     }
     if (title === "By competitive band" || title === "By open interest band" || title === "By yes gap band") {
       insightSortState[title] = { key: "group", asc: true };
+    }
+    if (title === SURVIVING_TZ_TITLE) {
+      // Worst win summary first — same order as Lambda timezone-skip log.
+      insightSortState[title] = { key: "win_plus_sold_win_pct", asc: true };
     }
   }
   const state = insightSortState[title];
@@ -1019,6 +1050,17 @@ function renderInsights(data) {
       },
     ],
     ["By city timezone", data.summary_by_city_timezone, { limit: null }],
+    [
+      SURVIVING_TZ_TITLE,
+      data.summary_by_city_timezone_surviving,
+      {
+        limit: null,
+        description:
+          `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, spread &lt; ${skipStackFilters.spread_max} when known). ` +
+          `n=${data.surviving_pool_n ?? "—"} · bottom ${skipStackFilters.bottom_n ?? 7} by Win summary% are skipped on trade-hourly. ` +
+          `Uses full history (not page filters), same as Lambda.`,
+      },
+    ],
   ];
   const cards = insightSections
     .map(([title, stats, opts]) => renderGroupTable(title, stats, opts))
@@ -1368,7 +1410,7 @@ function render() {
   renderSummary(filtered);
   renderTable(filtered);
   renderWinLossFingerprint(filtered);
-  renderInsights(computeInsights(filtered));
+  renderInsights(computeInsights(filtered, { skipPoolRecords: allRecords }));
   renderFilterSweep(filterSweepData);
   renderSkippedAnalysis(skippedAnalysisData);
 }
@@ -1453,6 +1495,15 @@ async function loadData() {
   allRecords = records;
   filterSweepData = data.filter_sweep || null;
   skippedAnalysisData = data.skipped_analysis || null;
+  const denylist = data.timezone_skip_denylist || null;
+  if (denylist) {
+    skipStackFilters = {
+      yes_price_min: denylist.yes_price_min ?? 0.45,
+      yes_price_max: denylist.yes_price_max ?? 0.6,
+      spread_max: denylist.spread_max ?? 0.05,
+      bottom_n: denylist.bottom_n ?? 7,
+    };
+  }
   document.getElementById("sync-meta").textContent =
     `Synced ${data.synced_at || "?"} · ${allRecords.length} trades · wallet ${(data.wallet || "").slice(0, 10)}…`;
   populateLocalTimeFilter();
