@@ -35,14 +35,15 @@ class ForecastMatchStrategy(BaseStrategy):
         if not resolution_source and event.get("markets"):
             resolution_source = event["markets"][0].get("resolutionSource")
 
-        forecast_f = self.weather_client.fetch_forecast_max_temp_f(
+        forecast = self.weather_client.fetch_forecast_max_temp(
             city=city,
             event_date=event_date,
             resolution_source=resolution_source,
         )
-        if forecast_f is None:
+        if forecast is None:
             logger.warning("event=%s no forecast for %s on %s", event.get("id"), city, event_date)
             return None
+        forecast_f = forecast.temp_f
 
         market = match_temp_to_market(event.get("markets", []), forecast_f)
         if not market:
@@ -73,6 +74,7 @@ class ForecastMatchStrategy(BaseStrategy):
             order_min_size=get_order_min_size(market),
             strategy=self.name,
             forecast_temp_f=forecast_f,
+            forecast_temp_c=forecast.temp_c,
             event=event,
             market=market,
         )

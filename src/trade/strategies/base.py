@@ -20,6 +20,7 @@ class MarketSelection:
     order_min_size: int
     strategy: str
     forecast_temp_f: Optional[int] = None
+    forecast_temp_c: Optional[int] = None
     event: Optional[dict] = None
     market: Optional[dict] = None
     on_edge: Optional[bool] = None
@@ -39,6 +40,7 @@ class MarketSelection:
             "order_min_size": self.order_min_size,
             "strategy": self.strategy,
             "forecast_temp_f": self.forecast_temp_f,
+            "forecast_temp_c": self.forecast_temp_c,
             "on_edge": self.on_edge,
         }
         if self.on_edge is None and self.event:

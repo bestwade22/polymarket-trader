@@ -201,13 +201,17 @@ def test_trading_window():
 
 
 def test_forecast_match_with_mock():
+    from src.api.weather_client import ForecastMaxTemp
+
     event = load_sample_event()
     strategy = ForecastMatchStrategy(share_count=10)
-    with patch.object(strategy.weather_client, "fetch_forecast_max_temp_f", return_value=46):
+    fake = ForecastMaxTemp(temp_f=46, temp_c=8, source="open_meteo")
+    with patch.object(strategy.weather_client, "fetch_forecast_max_temp", return_value=fake):
         sel = strategy.select_market(event)
     assert sel is not None
     assert sel.group_item_title == "46-47°F"
     assert sel.forecast_temp_f == 46
+    assert sel.forecast_temp_c == 8
 
 
 if __name__ == "__main__":

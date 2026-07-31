@@ -22,6 +22,8 @@ PATTERN_FIELDS = (
     "yes_gap_at_select",
     "yes_gap_at_fill",
     "minutes_into_window",
+    "forecast_temp_f",
+    "forecast_temp_c",
     "forecast_delta_c",
     "book_depth_near_touch",
     "price_change_30m",
@@ -239,11 +241,27 @@ def apply_selection_pattern_fields(
                 filled.append("book_depth_near_touch")
             except (TypeError, ValueError):
                 pass
+    if rec.forecast_temp_c is None and enrichment.get("forecast_temp_c") is not None:
+        try:
+            rec.forecast_temp_c = float(enrichment["forecast_temp_c"])
+            filled.append("forecast_temp_c")
+        except (TypeError, ValueError):
+            pass
+    if rec.forecast_temp_f is None and enrichment.get("forecast_temp_f") is not None:
+        try:
+            rec.forecast_temp_f = float(enrichment["forecast_temp_f"])
+            filled.append("forecast_temp_f")
+        except (TypeError, ValueError):
+            pass
     if rec.forecast_delta_c is None:
         delta = forecast_delta_c(
             rec.bought_temp,
-            forecast_temp_f=enrichment.get("forecast_temp_f"),
-            forecast_temp_c=enrichment.get("forecast_temp_c"),
+            forecast_temp_f=enrichment.get("forecast_temp_f")
+            if enrichment.get("forecast_temp_f") is not None
+            else rec.forecast_temp_f,
+            forecast_temp_c=enrichment.get("forecast_temp_c")
+            if enrichment.get("forecast_temp_c") is not None
+            else rec.forecast_temp_c,
         )
         if delta is not None:
             rec.forecast_delta_c = delta

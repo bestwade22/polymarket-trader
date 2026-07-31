@@ -290,6 +290,8 @@ def _merge_records(
                     "yes_gap_at_select",
                     "yes_gap_at_fill",
                     "minutes_into_window",
+                    "forecast_temp_f",
+                    "forecast_temp_c",
                     "forecast_delta_c",
                     "book_depth_near_touch",
                     "price_change_30m",

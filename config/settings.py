@@ -22,6 +22,7 @@ TRADES_LOG_DIR = LOGS_DIR / "trades"
 BOUGHT_EVENTS_FILE = POSITIONS_DIR / "bought_events.json"
 SOLD_EVENTS_FILE = POSITIONS_DIR / "sold_events.json"
 CITY_COORDS_FILE = DATA_DIR / "city_coords.json"
+CITY_RESOLUTION_SOURCES_FILE = DATA_DIR / "city_resolution_sources.json"
 
 load_dotenv(PROJECT_ROOT / ".env")
 

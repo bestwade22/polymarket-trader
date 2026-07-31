@@ -147,4 +147,16 @@ def run_daily_fetch(target_date: Optional[date] = None) -> list[dict]:
     target = target_date or parse_event_date()
     events = fetch_highest_temp_events_today(target_date=target)
     save_events(events, target_date=target)
+    try:
+        from src.api.city_resolution_map import (
+            load_resolution_map,
+            save_resolution_map,
+            upsert_events_into_map,
+        )
+
+        mapping = upsert_events_into_map(events, mapping=load_resolution_map())
+        save_resolution_map(mapping)
+        logger.info("Upserted city resolution map (%d cities)", len(mapping))
+    except Exception as exc:
+        logger.warning("Could not update city resolution map: %s", exc)
     return events

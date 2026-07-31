@@ -70,6 +70,16 @@ def cmd_enrich_trade_history(_args: argparse.Namespace) -> None:
     logging.info("Trade history enrich complete: %s", result)
 
 
+def cmd_build_city_resolution_map(args: argparse.Namespace) -> None:
+    from src.api.city_resolution_map import build_city_resolution_map
+
+    mapping = build_city_resolution_map(
+        geocode_missing=not args.no_geocode,
+        limit_files=args.limit_files,
+    )
+    logging.info("Built city resolution map: %d cities", len(mapping))
+
+
 def cmd_simulate_trades(args: argparse.Namespace) -> None:
     from_date = parse_event_date(args.from_date) if args.from_date else None
     to_date = parse_event_date(args.to_date) if args.to_date else None
@@ -195,6 +205,23 @@ def main() -> None:
         help="Backfill selection fields, filter-sweep, and skipped analysis on trade_history.json",
     )
 
+    map_parser = sub.add_parser(
+        "build-city-resolution-map",
+        help="Build data/city_resolution_sources.json from events_*.json",
+    )
+    map_parser.add_argument(
+        "--no-geocode",
+        action="store_true",
+        help="Do not call Open-Meteo geocoding for cities missing lat/lon",
+    )
+    map_parser.add_argument(
+        "--limit-files",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Only scan the N most recent events_*.json files",
+    )
+
     sim_parser = sub.add_parser(
         "simulate-trades",
         help="Replay strategies on historical weather events (writes sim_trade_history.json)",
@@ -278,6 +305,7 @@ def main() -> None:
         "check-sell-win": cmd_check_sell_win,
         "sync-trade-history": cmd_sync_trade_history,
         "enrich-trade-history": cmd_enrich_trade_history,
+        "build-city-resolution-map": cmd_build_city_resolution_map,
         "simulate-trades": cmd_simulate_trades,
         "run-scheduler": cmd_run_scheduler,
     }

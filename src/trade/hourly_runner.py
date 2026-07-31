@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 from config.settings import DATA_DIR, SELECTIONS_DIR, ensure_dirs, events_file_for_date, parse_event_date, settings
+from src.api.weather_client import WeatherClient
 from src.trade.city_skip import filter_events_by_skip_timezones, resolve_skip_timezones
 from src.trade.executor import TradeExecutor
 from src.trade.open_order_checker import LiveOpenOrderChecker, filter_events_without_open_orders
@@ -12,10 +13,55 @@ from src.trade.position_checker import LivePositionChecker, filter_selections_wi
 from src.trade.position_tracker import PositionTracker
 from src.trade.price_refresher import refresh_events_markets, refresh_selection_prices
 from src.trade.selector import filter_tradable_events, filter_selections_after_live_refresh, select_markets_for_events
+from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import market_price_snapshot
 from src.utils.trade_logger import TradeStepLogger
 
 logger = logging.getLogger(__name__)
+
+
+def attach_forecasts_to_selections(
+    selections: list[MarketSelection],
+    *,
+    weather_client: Optional[WeatherClient] = None,
+) -> list[MarketSelection]:
+    """Fetch Open-Meteo daily max for each selection (analysis only; does not change pick)."""
+    if not selections:
+        return selections
+    client = weather_client or WeatherClient()
+    for sel in selections:
+        if sel.forecast_temp_f is not None and sel.forecast_temp_c is not None:
+            continue
+        event = sel.event or {}
+        event_date = (
+            event.get("event_date")
+            or (event.get("endDateIso") or "")[:10]
+            or ""
+        )
+        if not event_date:
+            logger.warning("event=%s missing event_date for forecast", sel.event_id)
+            continue
+        resolution_source = event.get("resolutionSource")
+        if not resolution_source and event.get("markets"):
+            markets = event.get("markets") or []
+            if markets and isinstance(markets[0], dict):
+                resolution_source = markets[0].get("resolutionSource")
+        try:
+            forecast = client.fetch_forecast_max_temp(
+                city=sel.city or "",
+                event_date=event_date,
+                resolution_source=resolution_source,
+            )
+        except Exception as exc:
+            logger.warning("Forecast fetch failed event=%s city=%s: %s", sel.event_id, sel.city, exc)
+            continue
+        if forecast is None:
+            continue
+        if sel.forecast_temp_f is None:
+            sel.forecast_temp_f = forecast.temp_f
+        if sel.forecast_temp_c is None:
+            sel.forecast_temp_c = forecast.temp_c
+    return selections
 
 
 def load_events(path: Optional[Path] = None, target_date: Optional[date] = None) -> list[dict]:
@@ -152,6 +198,9 @@ def run_hourly_trade(
         selections, strategy_name=strategy
     )
     skipped_bought.extend(skipped_price_max_late)
+
+    selections = attach_forecasts_to_selections(selections)
+
     for sel in selections:
         step_log = sel.event.get("_step_logger") if sel.event else None
         if step_log:
@@ -163,6 +212,7 @@ def run_hourly_trade(
                 buy_price=sel.buy_price,
                 group_item_title=sel.group_item_title,
                 forecast_temp_f=sel.forecast_temp_f,
+                forecast_temp_c=sel.forecast_temp_c,
                 price_snapshot=(
                     {"market_id": sel.market_id, **market_price_snapshot(sel.market)}
                     if sel.market

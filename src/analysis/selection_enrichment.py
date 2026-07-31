@@ -29,6 +29,8 @@ ENRICH_FIELDS = (
     "open_interest",
     "runner_up_yes",
     "yes_gap",
+    "forecast_temp_f",
+    "forecast_temp_c",
 )
 
 

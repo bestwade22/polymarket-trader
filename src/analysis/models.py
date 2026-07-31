@@ -53,6 +53,8 @@ class TradeRecord:
     yes_gap_at_select: Optional[float] = None
     yes_gap_at_fill: Optional[float] = None
     minutes_into_window: Optional[float] = None
+    forecast_temp_f: Optional[float] = None
+    forecast_temp_c: Optional[float] = None
     forecast_delta_c: Optional[float] = None
     book_depth_near_touch: Optional[float] = None
     price_change_30m: Optional[float] = None
