@@ -1,0 +1,127 @@
+{
+  "run_at": "2026-07-31T06:16:06.221931+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "766609",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766611",
+      "city": "Shanghai",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766614",
+      "city": "Chongqing",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766615",
+      "city": "Beijing",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766616",
+      "city": "Wuhan",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766617",
+      "city": "Chengdu",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766618",
+      "city": "Shenzhen",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766623",
+      "city": "Kuala Lumpur",
+      "timezone": "Malaysia (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766626",
+      "city": "Guangzhou",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766627",
+      "city": "Qingdao",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "766606",
+      "city": "Seoul",
+      "market_id": "3196552",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-seoul-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766610",
+      "city": "Hong Kong",
+      "market_id": "3196587",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-hong-kong-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766612",
+      "city": "Singapore",
+      "market_id": "3196612",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-singapore-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766613",
+      "city": "Taipei",
+      "market_id": "3196626",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-taipei-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766619",
+      "city": "Busan",
+      "market_id": "3196687",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-busan-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "766629",
+      "city": "Manila",
+      "market_id": "3196795",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-manila-on-july-31-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6
+    }
+  ]
+}
