@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-08-01T22:45:51.982864+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "774907",
+      "city": "Los Angeles",
+      "market_id": "3234531",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9955,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 94,
+      "forecast_temp_c": 34,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 76,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 8.44
+    },
+    {
+      "event_id": "774908",
+      "city": "San Francisco",
+      "market_id": "3234546",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.695,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 76,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 2.78
+    },
+    {
+      "event_id": "774898",
+      "city": "Seattle",
+      "market_id": "3234435",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-august-1-2026",
+      "reason": "spread_max",
+      "spread": 0.34,
+      "spread_max": 0.05,
+      "selection_price": 0.55,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 71,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": -0.22
+    }
+  ]
+}
