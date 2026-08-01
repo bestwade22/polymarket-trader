@@ -1,0 +1,82 @@
+{
+  "run_at": "2026-08-01T21:45:57.548819+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "774909",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 80,
+      "forecast_wu_temp_c": 27
+    },
+    {
+      "event_id": "774898",
+      "city": "Seattle",
+      "market_id": "3234435",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.68,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 71,
+      "forecast_temp_c": 22,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 71,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": -0.22
+    },
+    {
+      "event_id": "774905",
+      "city": "Denver",
+      "market_id": "3234514",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-august-1-2026",
+      "reason": "yes_price_min",
+      "selection_price": 0.445,
+      "yes_price_min": 0.45,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 92,
+      "forecast_wu_temp_c": 33,
+      "forecast_delta_c": 1.67
+    },
+    {
+      "event_id": "774907",
+      "city": "Los Angeles",
+      "market_id": "3234531",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 9.44
+    },
+    {
+      "event_id": "774908",
+      "city": "San Francisco",
+      "market_id": "3234546",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 76,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 2.78
+    }
+  ]
+}
