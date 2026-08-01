@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-01T00:00:31.589047+00:00",
+  "synced_at": "2026-08-01T03:00:31.515945+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -43318,13 +43318,13 @@
     ]
   },
   "skipped_analysis": {
-    "total_skips": 4628,
-    "with_slug": 4628,
-    "with_price": 4628,
+    "total_skips": 4630,
+    "with_slug": 4630,
+    "with_price": 4630,
     "price_sources": {
       "events_market": 192,
       "direct": 3651,
-      "events_top_yes": 323,
+      "events_top_yes": 325,
       "selection_snapshot": 462
     },
     "share_count_assumed": 10.0,
@@ -43333,7 +43333,7 @@
     "would_have_won_pct": 78.7,
     "total_pnl_if_bought": 293.53,
     "pnl_n": 4233,
-    "resolutions_fetched": 8,
+    "resolutions_fetched": 0,
     "by_reason": [
       {
         "reason": "yes_price_max",
@@ -43354,15 +43354,15 @@
       },
       {
         "reason": "low_win_summary_timezone",
-        "count": 280,
+        "count": 282,
         "with_temp": 0,
-        "with_slug": 280,
-        "with_price": 280,
+        "with_slug": 282,
+        "with_price": 282,
         "resolved": 0,
         "would_have_won": 0,
         "would_have_lost": 0,
         "unknown_outcome": 0,
-        "avg_price": 0.4192,
+        "avg_price": 0.4231,
         "total_pnl_if_bought": null,
         "pnl_n": 0,
         "would_have_won_pct": null,
@@ -44163,12 +44163,12 @@
   },
   "timezone_skip_denylist": {
     "date": "2026-08-01",
-    "refreshed_at": "2026-08-01T00:00:53.429969+00:00",
+    "refreshed_at": "2026-08-01T03:00:51.911129+00:00",
     "bottom_n": 7,
     "rank_pool": "surviving",
-    "rank_pool_n": 217,
-    "surviving_n": 217,
-    "all_n": 678,
+    "rank_pool_n": 218,
+    "surviving_n": 218,
+    "all_n": 679,
     "yes_price_min": 0.45,
     "yes_price_max": 0.6,
     "spread_max": 0.05,
