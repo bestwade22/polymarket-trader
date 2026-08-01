@@ -1,0 +1,24 @@
+{
+  "run_at": "2026-08-01T05:15:38.100398+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "771083",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "771098",
+      "city": "Busan",
+      "event_slug": "highest-temperature-in-busan-on-august-1-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "40\u00b0C",
+      "market_id": "3216788",
+      "clob_mid_price": 0.545,
+      "gamma_title": "39\u00b0C",
+      "gamma_price": 0.445
+    }
+  ]
+}
