@@ -10022,5 +10022,21 @@
     "floor_price": 0.95,
     "current_mid": 0.575,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x1bc5f05ec4af187bfa90a4c825a25c66fccf4348dd654c13ba24236a04b78130",
+    "token_id": "111169167995312771522151549685003478251394557848457129779410473905643176470933",
+    "order_id": "0xec99848eb1d8d90add5375bc027a32c715e038b2baa6cfdee2d58f67666963bf",
+    "sold_at": "2026-08-01T12:00:12.121115+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-tel-aviv-on-august-1-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.5699,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.47,
+    "reason": "tier1"
   }
 ]
