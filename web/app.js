@@ -126,13 +126,42 @@ function extractTempLabel(text) {
   return U.extractTempLabel(text);
 }
 
-function fmtForecastTemp(r) {
-  if (r.forecast_temp_c != null && Number.isFinite(Number(r.forecast_temp_c))) {
-    return `${Math.round(Number(r.forecast_temp_c))}°C`;
-  }
-  if (r.forecast_temp_f != null && Number.isFinite(Number(r.forecast_temp_f))) {
-    const c = Math.round(((Number(r.forecast_temp_f) - 32) * 5) / 9);
-    return `${c}°C`;
+function tempUnitFromLabel(text) {
+  const t = String(text || "");
+  if (/°\s*F\b/i.test(t) || /\dF\b/.test(t) || /°F/.test(t)) return "F";
+  if (/°\s*C\b/i.test(t) || /\dC\b/.test(t) || /°C/.test(t)) return "C";
+  return null;
+}
+
+function recordTempUnit(r) {
+  return (
+    tempUnitFromLabel(r.bought_temp) ||
+    tempUnitFromLabel(r.temp) ||
+    tempUnitFromLabel(r.group_item_title) ||
+    "C"
+  );
+}
+
+function fmtForecastTemp(r, { wu = false } = {}) {
+  const unit = recordTempUnit(r);
+  const cKey = wu ? "forecast_wu_temp_c" : "forecast_temp_c";
+  const fKey = wu ? "forecast_wu_temp_f" : "forecast_temp_f";
+  const c = r[cKey];
+  const f = r[fKey];
+  if (unit === "F") {
+    if (f != null && Number.isFinite(Number(f))) {
+      return `${Math.round(Number(f))}°F`;
+    }
+    if (c != null && Number.isFinite(Number(c))) {
+      return `${Math.round((Number(c) * 9) / 5 + 32)}°F`;
+    }
+  } else {
+    if (c != null && Number.isFinite(Number(c))) {
+      return `${Math.round(Number(c))}°C`;
+    }
+    if (f != null && Number.isFinite(Number(f))) {
+      return `${Math.round(((Number(f) - 32) * 5) / 9)}°C`;
+    }
   }
   return "—";
 }
@@ -141,9 +170,11 @@ function fmtForecastDelta(r) {
   if (r.forecast_delta_c == null || !Number.isFinite(Number(r.forecast_delta_c))) {
     return "—";
   }
-  const v = Number(r.forecast_delta_c);
+  const unit = recordTempUnit(r);
+  let v = Number(r.forecast_delta_c);
+  if (unit === "F") v = (v * 9) / 5;
   const sign = v > 0 ? "+" : "";
-  return `${sign}${v.toFixed(1)}°C`;
+  return `${sign}${v.toFixed(1)}°${unit}`;
 }
 
 function fmtHk(iso, fallback) {
@@ -1373,16 +1404,39 @@ function renderSkippedAnalysis(data) {
       </table>
     </div>`;
 
-  const sampleRows = (data.samples || [])
-    .slice(0, 25)
+  const fc = data.forecast_compare || {};
+  const forecastSection = `
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Forecast compare (skipped)</h3>
+    <div class="insight-card">
+      <div class="summary-grid">
+        <div><span class="summary-label">With Open-Meteo / primary</span><span class="summary-value">${fc.with_forecast ?? 0}</span></div>
+        <div><span class="summary-label">With WU scrape</span><span class="summary-value">${fc.with_wu ?? 0}</span></div>
+        <div><span class="summary-label">OM↔WU pairs</span><span class="summary-value">${fc.om_wu_pairs ?? 0}</span></div>
+        <div><span class="summary-label">Avg |OM−WU|</span><span class="summary-value">${fc.om_wu_avg_abs_diff_c != null ? `${fc.om_wu_avg_abs_diff_c}°C` : "—"}</span></div>
+        <div><span class="summary-label">Agree ≤1°C</span><span class="summary-value">${fc.om_wu_agree_within_1c_pct != null ? `${fc.om_wu_agree_within_1c_pct}%` : "—"}</span></div>
+        <div><span class="summary-label">Avg |Δ| would-win</span><span class="summary-value">${fc.avg_abs_delta_would_win_c != null ? `${fc.avg_abs_delta_would_win_c}°C` : "—"}</span></div>
+        <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
+      </div>
+      <p class="muted" style="margin:0.5rem 0 0">Primary forecast is Open-Meteo; WU is scraped from the resolution page for compare. Δ = forecast − skipped bucket (native market units on the table below).</p>
+    </div>`;
+
+  const recent = (data.recent_skips || data.samples || []).slice(0, 15);
+  const recentRows = recent
     .map((s) => {
       const whw =
         s.would_have_won === true ? "won" : s.would_have_won === false ? "lost" : "—";
+      const rowForFmt = {
+        ...s,
+        bought_temp: s.temp || "",
+      };
       return `<tr>
         <td>${(s.run_at || "").slice(0, 16)}</td>
         <td>${s.city || "—"}</td>
         <td>${s.reason || ""}</td>
         <td>${s.temp || "—"}</td>
+        <td>${fmtForecastTemp(rowForFmt)}</td>
+        <td>${fmtForecastTemp(rowForFmt, { wu: true })}</td>
+        <td>${fmtForecastDelta(rowForFmt)}</td>
         <td>${fmtPrice(s.selection_price)}</td>
         <td>${whw}</td>
         <td>${fmtPnl(s.pnl_if_bought)}</td>
@@ -1411,7 +1465,8 @@ function renderSkippedAnalysis(data) {
       </table>
     </div>
     ${bandSection}
-    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Sample skips with temp</h3>
+    ${forecastSection}
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Last 15 skipped trades</h3>
     <div class="table-wrap" style="padding:0">
       <table class="insight-table">
         <thead>
@@ -1420,12 +1475,15 @@ function renderSkippedAnalysis(data) {
             <th>City</th>
             <th>Reason</th>
             <th>Temp</th>
+            <th>Forecast</th>
+            <th>WU forecast</th>
+            <th>Δ forecast</th>
             <th>Price</th>
             <th>Would have</th>
             <th>P&amp;L if bought</th>
           </tr>
         </thead>
-        <tbody>${sampleRows || `<tr><td colspan="7">No skipped rows with a temp bucket</td></tr>`}</tbody>
+        <tbody>${recentRows || `<tr><td colspan="10">No skipped rows</td></tr>`}</tbody>
       </table>
     </div>`;
 }
