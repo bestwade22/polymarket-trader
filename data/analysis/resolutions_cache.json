@@ -1902,6 +1902,12 @@
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "90297456201732971532104918204666932301106431697224143116416458189849259985245"
     },
+    "highest-temperature-in-chicago-on-july-31-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on July 31?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "82822463419288588200531827262432504724436616200567071000031374742365706764608"
+    },
     "highest-temperature-in-chicago-on-july-4-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on July 4?",
@@ -7349,6 +7355,12 @@
       "title": "Highest temperature in Seattle on July 30?",
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "97166056483550657458409086261840337766216829756469969048517993345083860115714"
+    },
+    "highest-temperature-in-seattle-on-july-31-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on July 31?",
+      "winning_temp": "82-83\u00b0F",
+      "winning_token_id": "35601328744491294281119116094182035864215010369497650674933286785790497053706"
     },
     "highest-temperature-in-seattle-on-july-4-2026": {
       "closed": true,
