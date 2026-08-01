@@ -1,0 +1,17 @@
+{
+  "run_at": "2026-08-01T14:45:37.701876+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "771068",
+      "city": "London",
+      "market_id": "3216538",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.875,
+      "yes_price_max": 0.6
+    }
+  ]
+}
