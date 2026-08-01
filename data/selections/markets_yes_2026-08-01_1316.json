@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-08-01T13:16:08.539120+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "771245",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "771077",
+      "city": "Paris",
+      "event_slug": "highest-temperature-in-paris-on-august-1-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "29\u00b0C",
+      "market_id": "3216557",
+      "clob_mid_price": 0.485,
+      "gamma_title": "28\u00b0C",
+      "gamma_price": 0.595
+    },
+    {
+      "event_id": "771081",
+      "city": "Munich",
+      "event_slug": "highest-temperature-in-munich-on-august-1-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "29\u00b0C",
+      "market_id": "3216600",
+      "clob_mid_price": 0.5,
+      "gamma_title": "30\u00b0C",
+      "gamma_price": 0.55
+    },
+    {
+      "event_id": "771068",
+      "city": "London",
+      "market_id": "3216538",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "771087",
+      "city": "Milan",
+      "market_id": "3216666",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.715,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "771088",
+      "city": "Madrid",
+      "market_id": "3216679",
+      "group_item_title": "39\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.675,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "771089",
+      "city": "Warsaw",
+      "market_id": "3216688",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "771099",
+      "city": "Amsterdam",
+      "market_id": "3216799",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    }
+  ]
+}
