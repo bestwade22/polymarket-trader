@@ -75,6 +75,9 @@ class ForecastMatchStrategy(BaseStrategy):
             strategy=self.name,
             forecast_temp_f=forecast_f,
             forecast_temp_c=forecast.temp_c,
+            forecast_source=forecast.source,
+            forecast_wu_temp_f=forecast.wu_temp_f,
+            forecast_wu_temp_c=forecast.wu_temp_c,
             event=event,
             market=market,
         )

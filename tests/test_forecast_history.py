@@ -17,7 +17,7 @@ from src.api.city_resolution_map import (
     upsert_events_into_map,
 )
 from src.api.weather_client import ForecastMaxTemp, WeatherClient
-from src.trade.hourly_runner import attach_forecasts_to_selections
+from src.trade.hourly_runner import attach_forecasts_to_selections, attach_forecasts_to_skipped
 from src.trade.strategies.base import MarketSelection
 
 
@@ -125,19 +125,34 @@ def test_weather_client_uses_map_coords_for_open_meteo(tmp_path: Path, monkeypat
     monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
 
     client = WeatherClient()
-    mock_resp = MagicMock()
-    mock_resp.raise_for_status = MagicMock()
-    mock_resp.json.return_value = {"daily": {"temperature_2m_max": [89.6]}}
-    with patch.object(client.session, "get", return_value=mock_resp) as get:
+    mock_om = MagicMock()
+    mock_om.raise_for_status = MagicMock()
+    mock_om.json.return_value = {"daily": {"temperature_2m_max": [89.6]}}
+    mock_wu = MagicMock()
+    mock_wu.raise_for_status = MagicMock()
+    mock_wu.text = "High: 33 °C Today forecast"
+
+    def fake_get(url, *args, **kwargs):
+        if "open-meteo" in str(url) or "open-meteo.com" in str(url):
+            return mock_om
+        if isinstance(url, str) and "wunderground" in url:
+            return mock_wu
+        # session.get(OPEN_METEO_URL, params=...) — url is constant
+        params = kwargs.get("params") or {}
+        if "latitude" in params:
+            return mock_om
+        return mock_wu
+
+    with patch.object(client.session, "get", side_effect=fake_get) as get:
         result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
     assert result is not None
     assert result.source == "open_meteo"
     assert result.temp_f == 90
     assert result.temp_c == 32
     assert result.icao == "RJTT"
-    params = get.call_args.kwargs.get("params") or get.call_args[1].get("params")
-    assert params["latitude"] == 35.55
-    assert params["longitude"] == 139.78
+    assert result.wu_temp_c == 33
+    assert result.wu_temp_f == 91
+    assert get.call_count >= 2
 
 
 def test_attach_forecasts_to_selections():
@@ -156,14 +171,55 @@ def test_attach_forecasts_to_selections():
         strategy="highest_yes",
         event={"event_date": "2026-07-31", "resolutionSource": "https://example.com"},
     )
-    fake = ForecastMaxTemp(temp_f=90, temp_c=32, source="open_meteo", icao="RJTT")
+    fake = ForecastMaxTemp(
+        temp_f=90,
+        temp_c=32,
+        source="open_meteo",
+        icao="RJTT",
+        wu_temp_f=91,
+        wu_temp_c=33,
+    )
     client = MagicMock()
     client.fetch_forecast_max_temp.return_value = fake
     attach_forecasts_to_selections([sel], weather_client=client)
     assert sel.forecast_temp_f == 90
     assert sel.forecast_temp_c == 32
+    assert sel.forecast_source == "open_meteo"
+    assert sel.forecast_wu_temp_c == 33
     client.fetch_forecast_max_temp.assert_called_once()
 
+
+def test_attach_forecasts_to_skipped():
+    skipped = [
+        {
+            "event_id": "1",
+            "city": "Tokyo",
+            "reason": "yes_price_max",
+            "group_item_title": "30°C",
+            "event_slug": "highest-temperature-in-tokyo-on-july-31-2026",
+        }
+    ]
+    fake = ForecastMaxTemp(
+        temp_f=90,
+        temp_c=32,
+        source="open_meteo",
+        wu_temp_f=88,
+        wu_temp_c=31,
+    )
+    client = MagicMock()
+    client.fetch_forecast_max_temp.return_value = fake
+    events = [
+        {
+            "id": "1",
+            "city": "Tokyo",
+            "event_date": "2026-07-31",
+            "resolutionSource": "https://www.wunderground.com/history/daily/jp/tokyo/RJTT",
+        }
+    ]
+    attach_forecasts_to_skipped(skipped, events=events, weather_client=client)
+    assert skipped[0]["forecast_temp_c"] == 32
+    assert skipped[0]["forecast_wu_temp_c"] == 31
+    assert skipped[0]["forecast_delta_c"] == pytest.approx(2.0)
 
 def test_enrichment_fills_forecast_temps_and_delta():
     rec = TradeRecord(

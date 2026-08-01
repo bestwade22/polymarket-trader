@@ -1,4 +1,4 @@
-"""Weather forecast client — Open-Meteo primary, resolution-map station coords."""
+"""Weather forecast client — Open-Meteo primary, WU scrape also recorded for compare."""
 
 from __future__ import annotations
 
@@ -19,15 +19,23 @@ OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
 
 @dataclass
 class ForecastMaxTemp:
+    """Primary forecast (Open-Meteo when available) plus optional WU scrape for compare."""
+
     temp_f: int
     temp_c: int
     source: str
     icao: Optional[str] = None
     resolution_source: Optional[str] = None
+    wu_temp_f: Optional[int] = None
+    wu_temp_c: Optional[int] = None
 
 
 def _f_to_c(temp_f: float) -> int:
     return int(round((float(temp_f) - 32.0) * 5.0 / 9.0))
+
+
+def _c_to_f(temp_c: float) -> int:
+    return int(round(float(temp_c) * 9.0 / 5.0 + 32.0))
 
 
 class WeatherClient:
@@ -55,17 +63,27 @@ class WeatherClient:
             return str(entry["resolution_source"])
         return fallback
 
+    def get_city_units(self, city: str) -> str:
+        entry = get_city_entry(city, self._resolution_map)
+        units = str((entry or {}).get("units") or "C").upper()
+        return "F" if units.startswith("F") else "C"
+
     def fetch_forecast_max_temp(
         self,
         city: str,
         event_date: str,
         resolution_source: Optional[str] = None,
     ) -> Optional[ForecastMaxTemp]:
-        """Predicted daily max for event_date (YYYY-MM-DD). Open-Meteo first."""
+        """Predicted daily max for event_date (YYYY-MM-DD).
+
+        Always attempts Open-Meteo and Wunderground scrape when possible so both
+        can be stored for analysis compare. Primary fields prefer Open-Meteo.
+        """
         entry = get_city_entry(city, self._resolution_map)
         mapped_source = (entry or {}).get("resolution_source") if entry else None
         icao = (entry or {}).get("icao") if entry else None
         source_url = mapped_source or resolution_source
+        map_units = self.get_city_units(city)
 
         coords = None
         if entry and entry.get("latitude") is not None and entry.get("longitude") is not None:
@@ -73,42 +91,61 @@ class WeatherClient:
         if coords is None:
             coords = self.get_coords_for_city(city)
 
+        om_f: Optional[int] = None
         if coords:
-            temp_f = self._fetch_open_meteo_max_f(coords[0], coords[1], event_date)
-            if temp_f is not None:
-                result = ForecastMaxTemp(
-                    temp_f=temp_f,
-                    temp_c=_f_to_c(temp_f),
-                    source="open_meteo",
-                    icao=icao,
-                    resolution_source=source_url,
-                )
+            om_f = self._fetch_open_meteo_max_f(coords[0], coords[1], event_date)
+            if om_f is not None:
                 logger.info(
                     "forecast_source=open_meteo city=%s icao=%s date=%s temp_f=%s temp_c=%s",
                     city,
                     icao,
                     event_date,
-                    result.temp_f,
-                    result.temp_c,
+                    om_f,
+                    _f_to_c(om_f),
                 )
-                return result
 
-        # Optional last-resort: scrape Wunderground page (often history, not forecast).
-        wu = self._fetch_wunderground_forecast(source_url, event_date)
+        wu_f: Optional[int] = None
+        wu_c: Optional[int] = None
+        wu = self._fetch_wunderground_forecast(source_url, event_date, default_unit=map_units)
         if wu is not None:
+            wu_temp, wu_unit = wu
+            if wu_unit == "C":
+                wu_c = int(wu_temp)
+                wu_f = _c_to_f(wu_temp)
+            else:
+                wu_f = int(wu_temp)
+                wu_c = _f_to_c(wu_temp)
             logger.info(
-                "forecast_source=wunderground_scrape city=%s icao=%s date=%s temp_f=%s",
+                "forecast_source=wunderground_scrape city=%s icao=%s date=%s "
+                "temp_f=%s temp_c=%s raw_unit=%s",
                 city,
                 icao,
                 event_date,
-                wu,
+                wu_f,
+                wu_c,
+                wu_unit,
             )
+
+        if om_f is not None:
             return ForecastMaxTemp(
-                temp_f=wu,
-                temp_c=_f_to_c(wu),
+                temp_f=om_f,
+                temp_c=_f_to_c(om_f),
+                source="open_meteo",
+                icao=icao,
+                resolution_source=source_url,
+                wu_temp_f=wu_f,
+                wu_temp_c=wu_c,
+            )
+
+        if wu_f is not None and wu_c is not None:
+            return ForecastMaxTemp(
+                temp_f=wu_f,
+                temp_c=wu_c,
                 source="wunderground_scrape",
                 icao=icao,
                 resolution_source=source_url,
+                wu_temp_f=wu_f,
+                wu_temp_c=wu_c,
             )
 
         logger.warning(
@@ -156,11 +193,17 @@ class WeatherClient:
             return None
 
     def _fetch_wunderground_forecast(
-        self, resolution_source: Optional[str], event_date: str
-    ) -> Optional[int]:
+        self,
+        resolution_source: Optional[str],
+        event_date: str,
+        *,
+        default_unit: str = "F",
+    ) -> Optional[tuple[int, str]]:
+        """Scrape a High temp from the WU page. Returns (temp, unit) or None."""
         del event_date  # history pages are not date-parameterized in this scrape
         if not resolution_source or "wunderground.com" not in resolution_source:
             return None
+        unit_default = "F" if str(default_unit).upper().startswith("F") else "C"
         try:
             resp = self.session.get(
                 resolution_source,
@@ -169,21 +212,33 @@ class WeatherClient:
             )
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "html.parser")
+            page_text = soup.get_text(" ", strip=True)
 
             high_patterns = [
+                re.compile(r"High[:\s]+(-?\d+)\s*°?\s*([FC])\b", re.IGNORECASE),
+                re.compile(r"max[^0-9]*(-?\d+)\s*°?\s*([FC])\b", re.IGNORECASE),
                 re.compile(r"High[:\s]+(-?\d+)", re.IGNORECASE),
-                re.compile(r"max[^0-9]*(-?\d+)\s*°?F", re.IGNORECASE),
+                re.compile(r"max[^0-9]*(-?\d+)\s*°?", re.IGNORECASE),
             ]
             for pattern in high_patterns:
-                match = pattern.search(soup.get_text(" ", strip=True))
-                if match:
-                    return int(match.group(1))
+                match = pattern.search(page_text)
+                if not match:
+                    continue
+                temp = int(match.group(1))
+                if match.lastindex and match.lastindex >= 2 and match.group(2):
+                    unit = match.group(2).upper()
+                else:
+                    unit = unit_default
+                return temp, unit
 
             for elem in soup.select("[class*='high'], [class*='temp']"):
                 text = elem.get_text(strip=True)
+                unit_match = re.search(r"(-?\d+)\s*°?\s*([FC])\b", text, re.IGNORECASE)
+                if unit_match:
+                    return int(unit_match.group(1)), unit_match.group(2).upper()
                 num_match = re.search(r"(-?\d+)", text)
                 if num_match:
-                    return int(num_match.group(1))
+                    return int(num_match.group(1)), unit_default
         except Exception as exc:
             logger.warning("Wunderground fetch failed for %s: %s", resolution_source, exc)
         return None

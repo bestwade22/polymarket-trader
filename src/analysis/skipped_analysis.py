@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from config.settings import DATA_DIR, RESOLUTIONS_CACHE_FILE, SELECTIONS_DIR, TRADE_HISTORY_FILE, settings
+from src.analysis.pattern_enrichment import forecast_delta_c
 from src.analysis.resolution import fetch_resolved_event
 from src.utils.market_parser import compare_temp_buckets, extract_temp_label
 
@@ -459,12 +460,21 @@ def compute_skipped_analysis(
     by_market_snap, by_market_event, by_event_top = _build_price_indexes(rows)
     by_reason: dict[str, dict[str, Any]] = {}
     yes_price_max_bands: dict[str, dict[str, Any]] = {}
-    samples: list[dict[str, Any]] = []
+    recent_rows: list[dict[str, Any]] = []
     slug_hits = 0
     price_hits = 0
     price_sources: dict[str, int] = {}
     total_pnl_sum = 0.0
     total_pnl_n = 0
+    forecast_n = 0
+    wu_n = 0
+    om_wu_diff_sum = 0.0
+    om_wu_diff_n = 0
+    om_wu_agree_1c = 0
+    delta_win_sum = 0.0
+    delta_win_n = 0
+    delta_lose_sum = 0.0
+    delta_lose_n = 0
 
     for row in rows:
         reason = str(row.get("reason") or "unknown")
@@ -506,6 +516,46 @@ def compute_skipped_analysis(
             total_pnl_sum += pnl
             total_pnl_n += 1
 
+        fc = row.get("forecast_temp_c")
+        ff = row.get("forecast_temp_f")
+        wu_c = row.get("forecast_wu_temp_c")
+        wu_f = row.get("forecast_wu_temp_f")
+        delta = row.get("forecast_delta_c")
+        if delta is None and title and (fc is not None or ff is not None):
+            try:
+                delta = forecast_delta_c(
+                    str(title),
+                    forecast_temp_f=float(ff) if ff is not None else None,
+                    forecast_temp_c=float(fc) if fc is not None else None,
+                )
+            except (TypeError, ValueError):
+                delta = None
+        if fc is not None or ff is not None:
+            forecast_n += 1
+        if wu_c is not None or wu_f is not None:
+            wu_n += 1
+        if fc is not None and wu_c is not None:
+            try:
+                diff = abs(float(fc) - float(wu_c))
+                om_wu_diff_sum += diff
+                om_wu_diff_n += 1
+                if diff <= 1.0:
+                    om_wu_agree_1c += 1
+            except (TypeError, ValueError):
+                pass
+        if delta is not None:
+            try:
+                dabs = abs(float(delta))
+            except (TypeError, ValueError):
+                dabs = None
+            if dabs is not None:
+                if whw is True:
+                    delta_win_sum += dabs
+                    delta_win_n += 1
+                elif whw is False:
+                    delta_lose_sum += dabs
+                    delta_lose_n += 1
+
         if reason == "yes_price_max" and price is not None:
             band = _buy_price_band(price)
             band_stats = yes_price_max_bands.setdefault(band, _empty_reason_stats(band))
@@ -528,27 +578,38 @@ def compute_skipped_analysis(
                 band_stats["_pnl_sum"] += pnl
                 band_stats["_pnl_n"] += 1
 
-        if len(samples) < 40 and title:
-            samples.append(
-                {
-                    "run_at": row.get("_run_at"),
-                    "city": row.get("city"),
-                    "reason": reason,
-                    "temp": extract_temp_label(title),
-                    "selection_price": price,
-                    "price_source": price_source,
-                    "pnl_if_bought": pnl,
-                    "event_slug": slug,
-                    "would_have_won": whw,
-                    "timezone": row.get("timezone"),
-                }
-            )
+        recent_rows.append(
+            {
+                "run_at": row.get("_run_at"),
+                "city": row.get("city"),
+                "reason": reason,
+                "temp": extract_temp_label(title) if title else None,
+                "selection_price": price,
+                "price_source": price_source,
+                "pnl_if_bought": pnl,
+                "event_slug": slug,
+                "would_have_won": whw,
+                "timezone": row.get("timezone"),
+                "forecast_temp_c": fc,
+                "forecast_temp_f": ff,
+                "forecast_wu_temp_c": wu_c,
+                "forecast_wu_temp_f": wu_f,
+                "forecast_source": row.get("forecast_source"),
+                "forecast_delta_c": delta,
+            }
+        )
 
     reason_rows = [_finalize_stats(stats) for stats in by_reason.values()]
     reason_rows.sort(key=lambda r: (-int(r["count"]), r["reason"]))
 
     band_rows = [_finalize_stats(stats) for stats in yes_price_max_bands.values()]
     band_rows.sort(key=lambda r: r["reason"])
+
+    recent_rows.sort(
+        key=lambda r: _run_at_ts(r.get("run_at")) or 0.0,
+        reverse=True,
+    )
+    recent_skips = recent_rows[:15]
 
     total = len(rows)
     resolved_total = sum(int(r["resolved"]) for r in reason_rows)
@@ -569,5 +630,27 @@ def compute_skipped_analysis(
         "resolutions_fetched": fetched,
         "by_reason": reason_rows,
         "yes_price_max_by_buy_band": band_rows,
-        "samples": samples,
+        "recent_skips": recent_skips,
+        # Keep samples alias for older dashboard payloads.
+        "samples": recent_skips,
+        "forecast_compare": {
+            "with_forecast": forecast_n,
+            "with_wu": wu_n,
+            "om_wu_pairs": om_wu_diff_n,
+            "om_wu_avg_abs_diff_c": round(om_wu_diff_sum / om_wu_diff_n, 2)
+            if om_wu_diff_n
+            else None,
+            "om_wu_agree_within_1c": om_wu_agree_1c,
+            "om_wu_agree_within_1c_pct": round(100.0 * om_wu_agree_1c / om_wu_diff_n, 1)
+            if om_wu_diff_n
+            else None,
+            "avg_abs_delta_would_win_c": round(delta_win_sum / delta_win_n, 2)
+            if delta_win_n
+            else None,
+            "avg_abs_delta_would_lose_c": round(delta_lose_sum / delta_lose_n, 2)
+            if delta_lose_n
+            else None,
+            "delta_would_win_n": delta_win_n,
+            "delta_would_lose_n": delta_lose_n,
+        },
     }

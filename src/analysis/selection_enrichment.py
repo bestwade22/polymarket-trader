@@ -31,6 +31,9 @@ ENRICH_FIELDS = (
     "yes_gap",
     "forecast_temp_f",
     "forecast_temp_c",
+    "forecast_source",
+    "forecast_wu_temp_f",
+    "forecast_wu_temp_c",
 )
 
 
@@ -73,6 +76,9 @@ def _row_enrichment(row: dict[str, Any]) -> dict[str, Any]:
         "yes_gap": parse_float(row.get("yes_gap")),
         "forecast_temp_f": parse_float(row.get("forecast_temp_f")),
         "forecast_temp_c": parse_float(row.get("forecast_temp_c")),
+        "forecast_source": row.get("forecast_source") if isinstance(row.get("forecast_source"), str) else None,
+        "forecast_wu_temp_f": parse_float(row.get("forecast_wu_temp_f")),
+        "forecast_wu_temp_c": parse_float(row.get("forecast_wu_temp_c")),
         "liquidity": parse_float(row.get("liquidity") or row.get("liquidityNum")),
         "book_depth_near_touch": parse_float(
             row.get("book_depth_near_touch") or row.get("liquidity") or row.get("liquidityNum")

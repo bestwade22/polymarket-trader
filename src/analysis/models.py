@@ -56,6 +56,9 @@ class TradeRecord:
     forecast_temp_f: Optional[float] = None
     forecast_temp_c: Optional[float] = None
     forecast_delta_c: Optional[float] = None
+    forecast_source: Optional[str] = None
+    forecast_wu_temp_f: Optional[float] = None
+    forecast_wu_temp_c: Optional[float] = None
     book_depth_near_touch: Optional[float] = None
     price_change_30m: Optional[float] = None
     price_change_90m: Optional[float] = None

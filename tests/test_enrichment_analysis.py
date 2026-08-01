@@ -353,6 +353,10 @@ def test_skipped_analysis_by_reason(tmp_path: Path):
     assert bands["0.70–0.75"]["count"] == 1
     assert bands["0.65–0.70"]["count"] == 1
     assert analysis["total_pnl_if_bought"] == round(4.5 - 7.2, 2)
+    assert "recent_skips" in analysis
+    assert len(analysis["recent_skips"]) == 4
+    assert "forecast_compare" in analysis
+
 
 def test_skipped_price_backfill_and_005_bands(tmp_path: Path, monkeypatch):
     from src.analysis import skipped_analysis as sa

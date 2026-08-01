@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 from config.settings import DATA_DIR, SELECTIONS_DIR, ensure_dirs, events_file_for_date, parse_event_date, settings
-from src.api.weather_client import WeatherClient
+from src.api.weather_client import ForecastMaxTemp, WeatherClient
 from src.trade.city_skip import filter_events_by_skip_timezones, resolve_skip_timezones
 from src.trade.executor import TradeExecutor
 from src.trade.open_order_checker import LiveOpenOrderChecker, filter_events_without_open_orders
@@ -25,12 +25,17 @@ def attach_forecasts_to_selections(
     *,
     weather_client: Optional[WeatherClient] = None,
 ) -> list[MarketSelection]:
-    """Fetch Open-Meteo daily max for each selection (analysis only; does not change pick)."""
+    """Fetch daily max forecast for each selection (analysis only; does not change pick).
+
+    Records Open-Meteo as primary plus WU scrape when available for compare.
+    """
     if not selections:
         return selections
     client = weather_client or WeatherClient()
     for sel in selections:
-        if sel.forecast_temp_f is not None and sel.forecast_temp_c is not None:
+        need_primary = sel.forecast_temp_f is None or sel.forecast_temp_c is None
+        need_wu = sel.forecast_wu_temp_f is None and sel.forecast_wu_temp_c is None
+        if not need_primary and not need_wu:
             continue
         event = sel.event or {}
         event_date = (
@@ -61,7 +66,109 @@ def attach_forecasts_to_selections(
             sel.forecast_temp_f = forecast.temp_f
         if sel.forecast_temp_c is None:
             sel.forecast_temp_c = forecast.temp_c
+        if sel.forecast_source is None:
+            sel.forecast_source = forecast.source
+        if sel.forecast_wu_temp_f is None and forecast.wu_temp_f is not None:
+            sel.forecast_wu_temp_f = forecast.wu_temp_f
+        if sel.forecast_wu_temp_c is None and forecast.wu_temp_c is not None:
+            sel.forecast_wu_temp_c = forecast.wu_temp_c
     return selections
+
+
+def _event_date_for_skip(
+    row: dict,
+    *,
+    events_by_id: dict[str, dict],
+    default_date: Optional[str] = None,
+) -> Optional[str]:
+    event_id = str(row.get("event_id") or "")
+    event = events_by_id.get(event_id) if event_id else None
+    if event:
+        event_date = event.get("event_date") or (event.get("endDateIso") or "")[:10]
+        if event_date:
+            return str(event_date)
+    slug = row.get("event_slug") or row.get("slug")
+    if slug:
+        from src.utils.city_parser import parse_date_from_slug
+
+        parsed = parse_date_from_slug(str(slug))
+        if parsed:
+            return parsed.isoformat()
+    return default_date
+
+
+def attach_forecasts_to_skipped(
+    skipped: list[dict],
+    *,
+    events: Optional[list[dict]] = None,
+    weather_client: Optional[WeatherClient] = None,
+    default_event_date: Optional[str] = None,
+) -> list[dict]:
+    """Attach Open-Meteo + WU forecast fields onto skipped_bought rows (analysis only)."""
+    if not skipped:
+        return skipped
+    client = weather_client or WeatherClient()
+    events_by_id = {str(e.get("id")): e for e in (events or []) if e.get("id") is not None}
+    # Cache by (city, date) to avoid repeat HTTP for same city in one run.
+    cache: dict[tuple[str, str], Optional[ForecastMaxTemp]] = {}
+    for row in skipped:
+        if not isinstance(row, dict):
+            continue
+        if row.get("forecast_temp_c") is not None or row.get("forecast_temp_f") is not None:
+            continue
+        city = str(row.get("city") or "")
+        if not city:
+            continue
+        event_date = _event_date_for_skip(
+            row, events_by_id=events_by_id, default_date=default_event_date
+        )
+        if not event_date:
+            logger.warning("skip city=%s missing event_date for forecast", city)
+            continue
+        event_id = str(row.get("event_id") or "")
+        event = events_by_id.get(event_id) if event_id else None
+        resolution_source = None
+        if event:
+            resolution_source = event.get("resolutionSource")
+            if not resolution_source and event.get("markets"):
+                markets = event.get("markets") or []
+                if markets and isinstance(markets[0], dict):
+                    resolution_source = markets[0].get("resolutionSource")
+        cache_key = (city.lower(), event_date)
+        if cache_key in cache:
+            forecast = cache[cache_key]
+        else:
+            try:
+                forecast = client.fetch_forecast_max_temp(
+                    city=city,
+                    event_date=event_date,
+                    resolution_source=resolution_source,
+                )
+            except Exception as exc:
+                logger.warning("Forecast fetch failed skip city=%s: %s", city, exc)
+                forecast = None
+            cache[cache_key] = forecast
+        if forecast is None:
+            continue
+        row["forecast_temp_f"] = forecast.temp_f
+        row["forecast_temp_c"] = forecast.temp_c
+        row["forecast_source"] = forecast.source
+        if forecast.wu_temp_f is not None:
+            row["forecast_wu_temp_f"] = forecast.wu_temp_f
+        if forecast.wu_temp_c is not None:
+            row["forecast_wu_temp_c"] = forecast.wu_temp_c
+        title = row.get("group_item_title") or row.get("groupItemTitle")
+        if title:
+            from src.analysis.pattern_enrichment import forecast_delta_c
+
+            delta = forecast_delta_c(
+                str(title),
+                forecast_temp_f=forecast.temp_f,
+                forecast_temp_c=forecast.temp_c,
+            )
+            if delta is not None:
+                row["forecast_delta_c"] = delta
+    return skipped
 
 
 def load_events(path: Optional[Path] = None, target_date: Optional[date] = None) -> list[dict]:
@@ -200,6 +307,11 @@ def run_hourly_trade(
     skipped_bought.extend(skipped_price_max_late)
 
     selections = attach_forecasts_to_selections(selections)
+    skipped_bought = attach_forecasts_to_skipped(
+        skipped_bought,
+        events=events,
+        default_event_date=trade_date.isoformat(),
+    )
 
     for sel in selections:
         step_log = sel.event.get("_step_logger") if sel.event else None
@@ -213,6 +325,9 @@ def run_hourly_trade(
                 group_item_title=sel.group_item_title,
                 forecast_temp_f=sel.forecast_temp_f,
                 forecast_temp_c=sel.forecast_temp_c,
+                forecast_source=sel.forecast_source,
+                forecast_wu_temp_f=sel.forecast_wu_temp_f,
+                forecast_wu_temp_c=sel.forecast_wu_temp_c,
                 price_snapshot=(
                     {"market_id": sel.market_id, **market_price_snapshot(sel.market)}
                     if sel.market

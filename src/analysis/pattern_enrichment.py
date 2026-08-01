@@ -25,6 +25,9 @@ PATTERN_FIELDS = (
     "forecast_temp_f",
     "forecast_temp_c",
     "forecast_delta_c",
+    "forecast_source",
+    "forecast_wu_temp_f",
+    "forecast_wu_temp_c",
     "book_depth_near_touch",
     "price_change_30m",
     "price_change_90m",
@@ -251,6 +254,21 @@ def apply_selection_pattern_fields(
         try:
             rec.forecast_temp_f = float(enrichment["forecast_temp_f"])
             filled.append("forecast_temp_f")
+        except (TypeError, ValueError):
+            pass
+    if rec.forecast_source is None and enrichment.get("forecast_source"):
+        rec.forecast_source = str(enrichment["forecast_source"])
+        filled.append("forecast_source")
+    if rec.forecast_wu_temp_c is None and enrichment.get("forecast_wu_temp_c") is not None:
+        try:
+            rec.forecast_wu_temp_c = float(enrichment["forecast_wu_temp_c"])
+            filled.append("forecast_wu_temp_c")
+        except (TypeError, ValueError):
+            pass
+    if rec.forecast_wu_temp_f is None and enrichment.get("forecast_wu_temp_f") is not None:
+        try:
+            rec.forecast_wu_temp_f = float(enrichment["forecast_wu_temp_f"])
+            filled.append("forecast_wu_temp_f")
         except (TypeError, ValueError):
             pass
     if rec.forecast_delta_c is None:
