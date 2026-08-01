@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-08-01T05:45:38.751490+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "771083",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone"
+    },
+    {
+      "event_id": "771098",
+      "city": "Busan",
+      "market_id": "3216787",
+      "group_item_title": "39\u00b0C",
+      "event_slug": "highest-temperature-in-busan-on-august-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.6
+    }
+  ]
+}
