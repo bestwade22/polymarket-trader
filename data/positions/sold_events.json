@@ -10102,5 +10102,37 @@
     "floor_price": 0.93,
     "current_mid": 0.51,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x251c56259f7f5a9c7bdf2bd3c6248c4bb90fbf7ab06ced172ecc4f5d1933894c",
+    "token_id": "51877735798631002768489723563471073748362708302889115476331212045773458177916",
+    "order_id": "0x1601c99812d32387b33d97ee3be37cdfb207a5f9683c2a5db80019334a96a840",
+    "sold_at": "2026-08-02T14:00:13.423683+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-august-2-2026",
+    "price": 0.97,
+    "size": 15.0,
+    "avg_buy_price": 0.59,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.825,
+    "reason": "tier3"
+  },
+  {
+    "market_id": "0x14ceb845f1f41d90c7d624350150baf531e48c481e9d11b1b0b2cbfc0d508983",
+    "token_id": "23514419753775538972884939126535044652976710819439797486161373150761538381802",
+    "order_id": "0x584b22b7b21f3515e9d9a9f4740012c4d2cc95a40c093feaea51db7ee6f0870b",
+    "sold_at": "2026-08-02T14:00:14.366594+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-august-2-2026",
+    "price": 0.95,
+    "size": 15.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.59,
+    "reason": "tier2"
   }
 ]
