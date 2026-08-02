@@ -382,17 +382,39 @@ def _local_slot_for_skip(row: dict[str, Any], tz_map: dict[str, str]) -> str:
 
 
 def _market_dedupe_key(row: dict[str, Any]) -> Optional[str]:
+    """Identity for one event market (same city/day/temp across hourly re-skips)."""
     mid = row.get("market_id")
     if mid is not None and str(mid):
         return f"market:{mid}"
     eid = row.get("event_id")
     title = _bought_title(row)
-    if eid is not None and title:
-        return f"event:{eid}:{title}"
+    temp = extract_temp_label(str(title)) if title else ""
+    if eid is not None and temp:
+        return f"event:{eid}:{temp}"
     slug = row.get("_resolved_event_slug") or row.get("event_slug")
-    if slug and title:
-        return f"slug:{slug}:{title}"
+    if slug and temp:
+        return f"slug:{slug}:{temp}"
+    city = str(row.get("city") or "")
+    event_date = _date_from_selection_meta(row)
+    if city and event_date and temp:
+        return f"citydate:{city.lower()}:{event_date}:{temp}"
     return None
+
+
+def _first_yes_price_max_skip_ids(rows: list[dict[str, Any]]) -> set[int]:
+    """Earliest yes_price_max skip per market — later re-skips of same market excluded."""
+    chronological = sorted(rows, key=lambda r: _run_at_ts(r.get("_run_at")) or 0.0)
+    first_ids: set[int] = set()
+    seen: set[str] = set()
+    for row in chronological:
+        if str(row.get("reason") or "") != "yes_price_max":
+            continue
+        key = _market_dedupe_key(row)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        first_ids.add(id(row))
+    return first_ids
 
 
 def _parse_float_opt(raw: Any) -> Optional[float]:
@@ -651,16 +673,9 @@ def compute_skipped_analysis(
     fc_by_price: dict[str, dict[str, Any]] = {}
     fc_by_spread: dict[str, dict[str, Any]] = {}
 
-    # Chronological for first-skip dedupe (assume bought at first skip opportunity).
-    chronological = sorted(rows, key=lambda r: _run_at_ts(r.get("_run_at")) or 0.0)
-    first_skip_row_ids: set[int] = set()
-    seen_markets: set[str] = set()
-    for row in chronological:
-        key = _market_dedupe_key(row)
-        if not key or key in seen_markets:
-            continue
-        seen_markets.add(key)
-        first_skip_row_ids.add(id(row))
+    # Earliest yes_price_max skip per market only (e.g. London 27°C at 14:15 counts;
+    # same market again at 14:45 does not). Other skip reasons do not consume the slot.
+    first_ypm_skip_ids = _first_yes_price_max_skip_ids(rows)
 
     for row in rows:
         reason = str(row.get("reason") or "unknown")
@@ -743,6 +758,7 @@ def compute_skipped_analysis(
                     delta_lose_n += 1
 
         winning = res_map.get(slug or "") if slug else None
+        # Forecast vs actual event result (winning temp) — needs forecast + resolution.
         om_match = forecast_matches_winning_temp(
             winning, forecast_temp_c=fc, forecast_temp_f=ff
         )
@@ -754,6 +770,8 @@ def compute_skipped_analysis(
         spread_band = _spread_band(spread_raw)
         price_band = _buy_price_band(price) if price is not None else "unknown"
 
+        # Every skip row contributes to forecast-compare groups (would-win vs event
+        # result whenever resolved; OM/WU match when that skip also has a forecast).
         _bump_forecast_group(
             fc_overall, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
         )
@@ -768,7 +786,7 @@ def compute_skipped_analysis(
                 gstats, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
             )
 
-        is_first_skip = id(row) in first_skip_row_ids
+        is_first_ypm_skip = id(row) in first_ypm_skip_ids
 
         if reason == "yes_price_max" and price is not None:
             band = _buy_price_band(price)
@@ -792,7 +810,7 @@ def compute_skipped_analysis(
                 band_stats["_pnl_sum"] += pnl
                 band_stats["_pnl_n"] += 1
 
-            if is_first_skip:
+            if is_first_ypm_skip:
                 first_stats = yes_price_max_first_bands.setdefault(
                     band, _empty_reason_stats(band)
                 )
@@ -838,7 +856,7 @@ def compute_skipped_analysis(
                 "wu_match_win": wu_match,
                 "local_slot": local_slot,
                 "spread": spread_raw,
-                "first_skip": is_first_skip,
+                "first_skip": is_first_ypm_skip,
             }
         )
 
