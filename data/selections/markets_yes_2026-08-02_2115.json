@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-08-02T21:15:58.553248+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "779405",
+      "city": "Mexico City",
+      "timezone": "Mexico (UTC-6)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 80,
+      "forecast_temp_c": 27,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 81,
+      "forecast_wu_temp_c": 27
+    },
+    {
+      "event_id": "779394",
+      "city": "Seattle",
+      "market_id": "3252379",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-august-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 69,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": -1.11
+    },
+    {
+      "event_id": "779403",
+      "city": "Los Angeles",
+      "market_id": "3252479",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-august-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 92,
+      "forecast_temp_c": 33,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 7.44
+    },
+    {
+      "event_id": "779404",
+      "city": "San Francisco",
+      "market_id": "3252495",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-august-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.665,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 80,
+      "forecast_temp_c": 27,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 79,
+      "forecast_wu_temp_c": 26,
+      "forecast_delta_c": 1.44
+    },
+    {
+      "event_id": "779401",
+      "city": "Denver",
+      "market_id": "3252461",
+      "group_item_title": "100-101\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-august-2-2026",
+      "reason": "spread_max",
+      "spread": 0.31,
+      "spread_max": 0.05,
+      "selection_price": 0.535,
+      "forecast_temp_f": 102,
+      "forecast_temp_c": 39,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 99,
+      "forecast_wu_temp_c": 37,
+      "forecast_delta_c": 1.22
+    }
+  ]
+}
