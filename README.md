@@ -217,7 +217,7 @@ Local preview: `python3 -m http.server 8080` from repo root → http://localhost
 | `sell_value_pct` | Sell price as % of buy price (stop-loss timing analysis) |
 | `final_value_usd` | Realized P&L (from closed-positions when available) |
 
-Scheduled on AWS: `sync-trade-history` Lambda every **3 hours UTC** commits `data/analysis/*` to git.
+Scheduled on AWS: `sync-trade-history` Lambda every **1 hour UTC** commits `data/analysis/*` to git.
 
 ## Strategy simulator
 
@@ -267,7 +267,7 @@ Fetch and trade run on **AWS Lambda in ap-east-1** (Hong Kong), avoiding Polymar
 | `trade-hourly` | **:15 and :45 UTC** each hour | Fetches events JSON from GitHub, skips when no event is in its local trading window; otherwise runs trade and commits `data/selections/*.json` |
 | `stop-loss-check` | **Disabled (manual only)** | Stop-loss code and Lambda remain available, but the scheduler is disabled by default |
 | `sell-win-check` | **Hourly (UTC)** | Sell-win scheduler; disable with `SELL_WIN_SCHEDULE_ENABLED=false` |
-| `sync-trade-history` | **Every 3 hours UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
+| `sync-trade-history` | **Every 1 hour UTC** | Syncs wallet activity to `data/analysis/trade_history.json` |
 
 ```mermaid
 flowchart LR

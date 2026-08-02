@@ -287,17 +287,49 @@ def market_price_snapshot(market: dict) -> dict:
 def match_temp_to_market(markets: List[dict], temp_f: int) -> Optional[dict]:
     """Map integer Fahrenheit to the matching temperature bucket market."""
     for market in markets:
-        bucket = parse_temperature_bucket(market.get("groupItemTitle", ""))
-        if not bucket:
-            continue
-        low, high, unit = bucket
-        temp = temp_f if unit == "F" else round((temp_f - 32) * 5 / 9)
+        title = market.get("groupItemTitle", "")
+        if temp_matches_bucket(float(temp_f), title, temp_is_f=True):
+            return market
+    return None
 
-        title = market.get("groupItemTitle", "").lower()
-        if "or below" in title and temp <= low:
-            return market
-        if "or higher" in title and temp >= low:
-            return market
-        if high is not None and low <= temp <= high:
-            return market
+
+def temp_matches_bucket(
+    temp: float,
+    bucket_title: str,
+    *,
+    temp_is_f: bool,
+) -> Optional[bool]:
+    """True if `temp` falls in the bucket label; None if bucket unparsable."""
+    bucket = parse_temperature_bucket(bucket_title or "")
+    if not bucket:
+        return None
+    low, high, unit = bucket
+    if unit == "F":
+        value = float(temp) if temp_is_f else float(temp) * 9.0 / 5.0 + 32.0
+    else:
+        value = float(temp) if not temp_is_f else (float(temp) - 32.0) * 5.0 / 9.0
+    value_i = int(round(value))
+    title = (bucket_title or "").lower()
+    if "or below" in title:
+        return value_i <= low
+    if "or higher" in title:
+        return value_i >= low
+    if high is not None:
+        return low <= value_i <= high
+    return value_i == low
+
+
+def forecast_matches_winning_temp(
+    winning_temp: Optional[str],
+    *,
+    forecast_temp_c: Optional[float] = None,
+    forecast_temp_f: Optional[float] = None,
+) -> Optional[bool]:
+    """Whether Open-Meteo/WU forecast falls in the event's winning temp bucket."""
+    if not winning_temp:
+        return None
+    if forecast_temp_c is not None:
+        return temp_matches_bucket(float(forecast_temp_c), winning_temp, temp_is_f=False)
+    if forecast_temp_f is not None:
+        return temp_matches_bucket(float(forecast_temp_f), winning_temp, temp_is_f=True)
     return None

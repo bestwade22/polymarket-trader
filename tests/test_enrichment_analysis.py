@@ -356,6 +356,106 @@ def test_skipped_analysis_by_reason(tmp_path: Path):
     assert "recent_skips" in analysis
     assert len(analysis["recent_skips"]) == 4
     assert "forecast_compare" in analysis
+    assert "overall" in analysis["forecast_compare"]
+    assert "by_local_slot" in analysis["forecast_compare"]
+    assert "by_reason" in analysis["forecast_compare"]
+    assert "yes_price_max_by_buy_band_first_skip" in analysis
+
+
+def test_yes_price_max_first_skip_dedupes_market(tmp_path: Path):
+    """Repeated yes_price_max skips of same market count once in first-skip table."""
+    (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-07-20T14:00:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "Paris",
+                        "market_id": "m-paris",
+                        "reason": "yes_price_max",
+                        "group_item_title": "31°C",
+                        "event_slug": "highest-temperature-in-paris-on-july-20-2026",
+                        "selection_price": 0.72,
+                    }
+                ],
+            }
+        )
+    )
+    (tmp_path / "markets_yes_2026-07-20_1430.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-07-20T14:30:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "Paris",
+                        "market_id": "m-paris",
+                        "reason": "yes_price_max",
+                        "group_item_title": "31°C",
+                        "event_slug": "highest-temperature-in-paris-on-july-20-2026",
+                        "selection_price": 0.78,
+                    },
+                    {
+                        "city": "Berlin",
+                        "market_id": "m-berlin",
+                        "reason": "yes_price_max",
+                        "group_item_title": "30°C",
+                        "event_slug": "highest-temperature-in-berlin-on-july-20-2026",
+                        "selection_price": 0.65,
+                    },
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={
+            "highest-temperature-in-paris-on-july-20-2026": "30°C",
+            "highest-temperature-in-berlin-on-july-20-2026": "30°C",
+        },
+        fetch_missing_resolutions=False,
+    )
+    all_bands = {r["reason"]: r for r in analysis["yes_price_max_by_buy_band"]}
+    first_bands = {r["reason"]: r for r in analysis["yes_price_max_by_buy_band_first_skip"]}
+    # All skips: Paris twice (0.70–0.75 and 0.75–0.80) + Berlin once
+    assert sum(r["count"] for r in all_bands.values()) == 3
+    # First skip only: Paris once at 0.72 + Berlin once at 0.65
+    assert sum(r["count"] for r in first_bands.values()) == 2
+    assert first_bands["0.70–0.75"]["count"] == 1
+    assert first_bands["0.65–0.70"]["count"] == 1
+    assert "0.75–0.80" not in first_bands
+
+
+def test_forecast_match_overall_vs_winning(tmp_path: Path):
+    (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-07-20T14:00:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "reason": "spread_max",
+                        "group_item_title": "28°C",
+                        "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "selection_price": 0.55,
+                        "spread": 0.08,
+                        "forecast_temp_c": 28,
+                        "forecast_temp_f": 82,
+                        "forecast_wu_temp_c": 30,
+                        "forecast_wu_temp_f": 86,
+                    }
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={"highest-temperature-in-london-on-july-20-2026": "28°C"},
+        fetch_missing_resolutions=False,
+    )
+    overall = analysis["forecast_compare"]["overall"]
+    assert overall["om_match_pct"] == 100.0
+    assert overall["wu_match_pct"] == 0.0
+    assert overall["would_have_won_pct"] == 100.0
 
 
 def test_skipped_price_backfill_and_005_bands(tmp_path: Path, monkeypatch):

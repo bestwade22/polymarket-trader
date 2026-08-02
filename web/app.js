@@ -51,6 +51,7 @@ let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
 const insightSortState = {};
+const skippedSortState = {};
 
 const SURVIVING_TZ_TITLE = "By city timezone (surviving pool — used for skip)";
 
@@ -175,6 +176,62 @@ function fmtForecastDelta(r) {
   if (unit === "F") v = (v * 9) / 5;
   const sign = v > 0 ? "+" : "";
   return `${sign}${v.toFixed(1)}°${unit}`;
+}
+
+function parseTempBucket(label) {
+  const t = String(label || "").trim();
+  if (!t) return null;
+  const unit = /°?\s*F\b/i.test(t) || /°F/.test(t) ? "F" : "C";
+  let m = t.match(/(\d+)[°]?[FC]?\s+or\s+below/i);
+  if (m) return { low: Number(m[1]), high: null, unit, kind: "below" };
+  m = t.match(/(\d+)[°]?[FC]?\s+or\s+higher/i);
+  if (m) return { low: Number(m[1]), high: null, unit, kind: "higher" };
+  m = t.match(/(\d+)\s*-\s*(\d+)[°]?[FC]?/i);
+  if (m) return { low: Number(m[1]), high: Number(m[2]), unit, kind: "range" };
+  m = t.match(/(\d+)[°]?[FC]?\s*$/i);
+  if (m) return { low: Number(m[1]), high: Number(m[1]), unit, kind: "single" };
+  return null;
+}
+
+function forecastMatchesWinning(r, { wu = false } = {}) {
+  const win = r.winning_temp;
+  if (!win) return null;
+  const bucket = parseTempBucket(win);
+  if (!bucket) return null;
+  const cKey = wu ? "forecast_wu_temp_c" : "forecast_temp_c";
+  const fKey = wu ? "forecast_wu_temp_f" : "forecast_temp_f";
+  let value = null;
+  if (bucket.unit === "F") {
+    if (r[fKey] != null && Number.isFinite(Number(r[fKey]))) value = Math.round(Number(r[fKey]));
+    else if (r[cKey] != null && Number.isFinite(Number(r[cKey])))
+      value = Math.round((Number(r[cKey]) * 9) / 5 + 32);
+  } else {
+    if (r[cKey] != null && Number.isFinite(Number(r[cKey]))) value = Math.round(Number(r[cKey]));
+    else if (r[fKey] != null && Number.isFinite(Number(r[fKey])))
+      value = Math.round(((Number(r[fKey]) - 32) * 5) / 9);
+  }
+  if (value == null) return null;
+  if (bucket.kind === "below") return value <= bucket.low;
+  if (bucket.kind === "higher") return value >= bucket.low;
+  if (bucket.high != null) return value >= bucket.low && value <= bucket.high;
+  return value === bucket.low;
+}
+
+function fmtForecastVsWin(r, { wu = false } = {}) {
+  const match = forecastMatchesWinning(r, { wu });
+  if (match === true) return '<span class="pnl-pos">match</span>';
+  if (match === false) {
+    const win = r.winning_temp ? extractTempLabel(r.winning_temp) : "?";
+    return `<span class="pnl-neg">miss→${win}</span>`;
+  }
+  return "—";
+}
+
+function forecastVsWinSortValue(r, { wu = false } = {}) {
+  const match = forecastMatchesWinning(r, { wu });
+  if (match === true) return 2;
+  if (match === false) return 1;
+  return 0;
 }
 
 function fmtHk(iso, fallback) {
@@ -350,6 +407,18 @@ function sortRecords(records) {
     if (sortKey === "outcome_value_usd") {
       av = outcomeValue(a) ?? "";
       bv = outcomeValue(b) ?? "";
+    }
+    if (sortKey === "forecast_wu_temp_c") {
+      av = a.forecast_wu_temp_c ?? a.forecast_wu_temp_f ?? "";
+      bv = b.forecast_wu_temp_c ?? b.forecast_wu_temp_f ?? "";
+    }
+    if (sortKey === "forecast_vs_win") {
+      av = forecastVsWinSortValue(a);
+      bv = forecastVsWinSortValue(b);
+    }
+    if (sortKey === "forecast_wu_vs_win") {
+      av = forecastVsWinSortValue(a, { wu: true });
+      bv = forecastVsWinSortValue(b, { wu: true });
     }
     if (av == null) av = "";
     if (bv == null) bv = "";
@@ -866,16 +935,12 @@ function renderGroupTable(title, data, options = {}) {
   }
   const state = insightSortState[title];
   const entries = sortInsightEntries(title, data, limit);
-  const header = columns.map(
-    (col) =>
-      `<th class="insight-sort" data-insight="${title}" data-key="${col.key}">${col.label}${state.key === col.key ? (state.asc ? " ▲" : " ▼") : ""}</th>`
-  ).join("");
   const rows = entries.length
     ? entries
         .map(
           ([key, stats]) => `
             <tr>
-              <td>${key}</td>
+              <td class="sticky-city">${key}</td>
               ${columns.slice(1).map((col) => {
                 const val = stats[col.key] ?? 0;
                 if (col.key === "win_rate_pct" || col.key === "win_plus_sold_win_pct") {
@@ -896,6 +961,10 @@ function renderGroupTable(title, data, options = {}) {
         )
         .join("")
     : `<tr><td colspan="${columns.length}">No data</td></tr>`;
+  const header = columns.map(
+    (col, idx) =>
+      `<th class="insight-sort${idx === 0 ? " sticky-city" : ""}" data-insight="${title}" data-key="${col.key}">${col.label}${state.key === col.key ? (state.asc ? " ▲" : " ▼") : ""}</th>`
+  ).join("");
   return `
     <section class="insight-card" data-insight-title="${title}">
       <h3>${title}${description ? `<span class="insight-desc">${description}</span>` : ""}</h3>
@@ -1164,10 +1233,12 @@ function renderTable(records) {
       return `
     <tr>
       <td>${r.date}</td>
-      <td>${r.city}</td>
+      <td class="sticky-city">${r.city}</td>
       <td><a class="event-link" href="https://polymarket.com/event/${r.event_slug}" target="_blank" rel="noopener">${temp}</a></td>
       <td>${fmtForecastTemp(r)}</td>
+      <td>${fmtForecastTemp(r, { wu: true })}</td>
       <td>${fmtForecastDelta(r)}</td>
+      <td>${fmtForecastVsWin(r)}</td>
       <td>${r.trade_window || "—"}</td>
       <td>${hk}</td>
       <td>${soldHk}</td>
@@ -1315,6 +1386,104 @@ function renderFilterSweep(data) {
   });
 }
 
+function skippedSortMark(tableId, key) {
+  const state = skippedSortState[tableId];
+  if (!state || state.key !== key) return "";
+  return state.asc ? " ▲" : " ▼";
+}
+
+function sortSkippedRows(rows, tableId, defaultKey = "count") {
+  if (!skippedSortState[tableId]) {
+    skippedSortState[tableId] = { key: defaultKey, asc: defaultKey === "group" || defaultKey === "reason" };
+  }
+  const state = skippedSortState[tableId];
+  return [...rows].sort((a, b) => {
+    let av = a[state.key];
+    let bv = b[state.key];
+    if (av == null) av = "";
+    if (bv == null) bv = "";
+    if (typeof av === "number" && typeof bv === "number") {
+      return state.asc ? av - bv : bv - av;
+    }
+    if (typeof av === "boolean") av = av ? 1 : 0;
+    if (typeof bv === "boolean") bv = bv ? 1 : 0;
+    const cmp = String(av).localeCompare(String(bv), undefined, { numeric: true });
+    return state.asc ? cmp : -cmp;
+  });
+}
+
+function bindSkippedSortHeaders(container) {
+  container.querySelectorAll("th[data-skipped-sort]").forEach((th) => {
+    th.addEventListener("click", () => {
+      const tableId = th.dataset.skippedTable;
+      const key = th.dataset.skippedSort;
+      const state = skippedSortState[tableId] || { key, asc: false };
+      if (state.key === key) state.asc = !state.asc;
+      else {
+        state.key = key;
+        state.asc = key === "group" || key === "reason" || key === "run_at" || key === "city";
+      }
+      skippedSortState[tableId] = state;
+      renderSkippedAnalysis(skippedAnalysisData);
+    });
+  });
+}
+
+function renderSkippedSortableTable({
+  tableId,
+  title,
+  description,
+  columns,
+  rows,
+  emptyText,
+  defaultSortKey = "count",
+  stickyCity = false,
+  cityColKey = "city",
+}) {
+  const sorted = sortSkippedRows(rows || [], tableId, defaultSortKey);
+  const head = columns
+    .map((col) => {
+      const sticky =
+        stickyCity && col.key === cityColKey
+          ? ' class="insight-sort sticky-city"'
+          : ' class="insight-sort"';
+      return `<th${sticky} data-skipped-table="${tableId}" data-skipped-sort="${col.key}">${col.label}${skippedSortMark(tableId, col.key)}</th>`;
+    })
+    .join("");
+  const body = sorted.length
+    ? sorted
+        .map((r) => {
+          const cells = columns
+            .map((col) => {
+              const sticky =
+                stickyCity && col.key === cityColKey ? ' class="sticky-city"' : "";
+              const raw = r[col.key];
+              let text = raw;
+              if (col.fmt) text = col.fmt(raw, r);
+              else if (raw == null || raw === "") text = "—";
+              return `<td${sticky}>${text}</td>`;
+            })
+            .join("");
+          const tag = r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : "";
+          return `<tr class="${tag}">${cells}</tr>`;
+        })
+        .join("")
+    : `<tr><td colspan="${columns.length}">${emptyText || "No data"}</td></tr>`;
+  return `
+    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">${title}</h3>
+    ${description ? `<p class="muted" style="margin:0 0 0.5rem">${description}</p>` : ""}
+    <div class="table-wrap" style="padding:0">
+      <table class="insight-table">
+        <thead><tr>${head}</tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>`;
+}
+
+function fmtPctCell(v) {
+  return v != null && Number.isFinite(Number(v)) ? `${Number(v)}%` : "—";
+}
+
 function renderSkippedAnalysis(data) {
   const container = document.getElementById("skipped-content");
   if (!container) return;
@@ -1331,6 +1500,9 @@ function renderSkippedAnalysis(data) {
   };
   const fmtPrice = (v) =>
     v != null && Number.isFinite(Number(v)) ? Number(v).toFixed(3) : "—";
+
+  const fc = data.forecast_compare || {};
+  const overall = fc.overall || {};
 
   const header = `
     <div class="insight-card insight-highlights">
@@ -1350,142 +1522,169 @@ function renderSkippedAnalysis(data) {
       <p class="insight-desc">P&amp;L if bought assumes ${shares} shares held to resolution: win = shares×(1−price), loss = −shares×price. Avg price uses logged selection_price when present, else nearest selection snapshot / events file Yes %. Costly = skip reason often would have won (≥50% among resolved). Helpful = usually would have lost (&lt;40%).</p>
     </div>`;
 
-  const reasonRows = data.by_reason
-    .map((r) => {
-      const tag = r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : "";
-      return `<tr class="${tag}">
-        <td>${r.reason}</td>
-        <td>${r.count}</td>
-        <td>${r.with_temp}</td>
-        <td>${r.resolved}</td>
-        <td>${r.would_have_won}</td>
-        <td>${r.would_have_lost}</td>
-        <td>${r.would_have_won_pct != null ? `${r.would_have_won_pct}%` : "—"}</td>
-        <td>${fmtPrice(r.avg_price)}</td>
-        <td>${fmtPnl(r.total_pnl_if_bought)}</td>
-        <td>${r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : ""}</td>
-      </tr>`;
-    })
-    .join("");
+  const reasonSection = renderSkippedSortableTable({
+    tableId: "skip-by-reason",
+    title: "By skip reason",
+    description: null,
+    defaultSortKey: "count",
+    columns: [
+      { key: "reason", label: "Reason" },
+      { key: "count", label: "Count" },
+      { key: "with_temp", label: "With temp" },
+      { key: "resolved", label: "Resolved" },
+      { key: "would_have_won", label: "Would win" },
+      { key: "would_have_lost", label: "Would lose" },
+      { key: "would_have_won_pct", label: "Would-win%", fmt: fmtPctCell },
+      { key: "avg_price", label: "Avg price", fmt: (v) => fmtPrice(v) },
+      { key: "total_pnl_if_bought", label: "Total P&L if bought", fmt: (v) => fmtPnl(v) },
+      {
+        key: "note",
+        label: "Note",
+        fmt: (_v, r) => (r.filter_costly ? "costly" : r.filter_helpful ? "helpful" : ""),
+      },
+    ],
+    rows: (data.by_reason || []).map((r) => ({ ...r, note: r.filter_costly ? 1 : r.filter_helpful ? 0 : -1 })),
+    emptyText: "No skip reasons",
+  });
 
-  const bandRows = (data.yes_price_max_by_buy_band || [])
-    .map(
-      (r) => `<tr>
-        <td>${r.reason}</td>
-        <td>${r.count}</td>
-        <td>${r.resolved}</td>
-        <td>${r.would_have_won}</td>
-        <td>${r.would_have_lost}</td>
-        <td>${r.would_have_won_pct != null ? `${r.would_have_won_pct}%` : "—"}</td>
-        <td>${fmtPrice(r.avg_price)}</td>
-        <td>${fmtPnl(r.total_pnl_if_bought)}</td>
-      </tr>`
-    )
-    .join("");
+  const bandCols = [
+    { key: "reason", label: "Buy $ band" },
+    { key: "count", label: "Count" },
+    { key: "resolved", label: "Resolved" },
+    { key: "would_have_won", label: "Would win" },
+    { key: "would_have_lost", label: "Would lose" },
+    { key: "would_have_won_pct", label: "Would-win%", fmt: fmtPctCell },
+    { key: "avg_price", label: "Avg price", fmt: (v) => fmtPrice(v) },
+    { key: "total_pnl_if_bought", label: "Total P&L if bought", fmt: (v) => fmtPnl(v) },
+  ];
 
-  const bandSection = `
-    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">yes_price_max by buy $ (0.05 band)</h3>
-    <p class="muted" style="margin:0 0 0.5rem">Skipped because selection price ≥ YES_PRICE_MAX, grouped by buy price in 0.05 bands.</p>
-    <div class="table-wrap" style="padding:0">
-      <table class="insight-table">
-        <thead>
-          <tr>
-            <th>Buy $ band</th>
-            <th>Count</th>
-            <th>Resolved</th>
-            <th>Would win</th>
-            <th>Would lose</th>
-            <th>Would-win%</th>
-            <th>Avg price</th>
-            <th>Total P&amp;L if bought</th>
-          </tr>
-        </thead>
-        <tbody>${bandRows || `<tr><td colspan="8">No yes_price_max skips with price</td></tr>`}</tbody>
-      </table>
-    </div>`;
+  const bandSection = renderSkippedSortableTable({
+    tableId: "skip-ypm-all",
+    title: "yes_price_max by buy $ (0.05 band) — all skips",
+    description:
+      "Includes repeated skips of the same market across hourly runs (same market can appear many times).",
+    defaultSortKey: "reason",
+    columns: bandCols,
+    rows: data.yes_price_max_by_buy_band || [],
+    emptyText: "No yes_price_max skips with price",
+  });
 
-  const fc = data.forecast_compare || {};
+  const firstBandSection = renderSkippedSortableTable({
+    tableId: "skip-ypm-first",
+    title: "yes_price_max by buy $ (0.05 band) — first skip only",
+    description:
+      "One row per market (earliest skip). Assumes you would have bought at the first skip opportunity — no repeat-market inflation.",
+    defaultSortKey: "reason",
+    columns: bandCols,
+    rows: data.yes_price_max_by_buy_band_first_skip || [],
+    emptyText: "No first-skip yes_price_max rows",
+  });
+
+  const fcCols = [
+    { key: "group", label: "Group" },
+    { key: "count", label: "Count" },
+    { key: "resolved", label: "Resolved" },
+    { key: "would_have_won_pct", label: "Would-win% (result)", fmt: fmtPctCell },
+    { key: "om_match_pct", label: "OM match win%", fmt: fmtPctCell },
+    { key: "om_match_resolved", label: "OM n" },
+    { key: "wu_match_pct", label: "WU match win%", fmt: fmtPctCell },
+    { key: "wu_match_resolved", label: "WU n" },
+    { key: "avg_price", label: "Avg price", fmt: (v) => fmtPrice(v) },
+    { key: "total_pnl_if_bought", label: "P&L if bought", fmt: (v) => fmtPnl(v) },
+  ];
+
   const forecastSection = `
     <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Forecast compare (skipped)</h3>
     <div class="insight-card">
       <div class="summary-grid">
         <div><span class="summary-label">With Open-Meteo / primary</span><span class="summary-value">${fc.with_forecast ?? 0}</span></div>
         <div><span class="summary-label">With WU scrape</span><span class="summary-value">${fc.with_wu ?? 0}</span></div>
-        <div><span class="summary-label">OM↔WU pairs</span><span class="summary-value">${fc.om_wu_pairs ?? 0}</span></div>
-        <div><span class="summary-label">Avg |OM−WU|</span><span class="summary-value">${fc.om_wu_avg_abs_diff_c != null ? `${fc.om_wu_avg_abs_diff_c}°C` : "—"}</span></div>
-        <div><span class="summary-label">Agree ≤1°C</span><span class="summary-value">${fc.om_wu_agree_within_1c_pct != null ? `${fc.om_wu_agree_within_1c_pct}%` : "—"}</span></div>
+        <div><span class="summary-label">Would-win% (result)</span><span class="summary-value">${fmtPctCell(overall.would_have_won_pct)}</span></div>
+        <div><span class="summary-label">OM match win%</span><span class="summary-value">${fmtPctCell(overall.om_match_pct)}</span></div>
+        <div><span class="summary-label">WU match win%</span><span class="summary-value">${fmtPctCell(overall.wu_match_pct)}</span></div>
+        <div><span class="summary-label">OM↔WU agree ≤1°C</span><span class="summary-value">${fc.om_wu_agree_within_1c_pct != null ? `${fc.om_wu_agree_within_1c_pct}%` : "—"}</span></div>
         <div><span class="summary-label">Avg |Δ| would-win</span><span class="summary-value">${fc.avg_abs_delta_would_win_c != null ? `${fc.avg_abs_delta_would_win_c}°C` : "—"}</span></div>
         <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
       </div>
-      <p class="muted" style="margin:0.5rem 0 0">Primary forecast is Open-Meteo; WU is scraped from the resolution page for compare. Δ = forecast − skipped bucket (native market units on the table below).</p>
-    </div>`;
+      <p class="muted" style="margin:0.5rem 0 0">
+        <strong>Would-win%</strong> = skipped market bucket == eventual winner.
+        <strong>OM / WU match win%</strong> = Open-Meteo or WU forecast falls in the eventual winning temp bucket
+        (independent of which bucket was skipped). Group tables below show both result% and forecast-match%.
+      </p>
+    </div>
+    ${renderSkippedSortableTable({
+      tableId: "fc-slot",
+      title: "Forecast match by local time slot",
+      description: "Skip run_at converted to city local time (15-min bands in the trade window).",
+      defaultSortKey: "group",
+      columns: fcCols,
+      rows: fc.by_local_slot || [],
+    })}
+    ${renderSkippedSortableTable({
+      tableId: "fc-reason",
+      title: "Forecast match by skip reason",
+      defaultSortKey: "count",
+      columns: fcCols,
+      rows: fc.by_reason || [],
+    })}
+    ${renderSkippedSortableTable({
+      tableId: "fc-price",
+      title: "Forecast match by buy $ band",
+      defaultSortKey: "group",
+      columns: fcCols,
+      rows: fc.by_price_band || [],
+    })}
+    ${renderSkippedSortableTable({
+      tableId: "fc-spread",
+      title: "Forecast match by spread band",
+      defaultSortKey: "group",
+      columns: fcCols,
+      rows: fc.by_spread_band || [],
+    })}`;
 
-  const recent = (data.recent_skips || data.samples || []).slice(0, 15);
-  const recentRows = recent
-    .map((s) => {
-      const whw =
-        s.would_have_won === true ? "won" : s.would_have_won === false ? "lost" : "—";
-      const rowForFmt = {
-        ...s,
-        bought_temp: s.temp || "",
-      };
-      return `<tr>
-        <td>${(s.run_at || "").slice(0, 16)}</td>
-        <td>${s.city || "—"}</td>
-        <td>${s.reason || ""}</td>
-        <td>${s.temp || "—"}</td>
-        <td>${fmtForecastTemp(rowForFmt)}</td>
-        <td>${fmtForecastTemp(rowForFmt, { wu: true })}</td>
-        <td>${fmtForecastDelta(rowForFmt)}</td>
-        <td>${fmtPrice(s.selection_price)}</td>
-        <td>${whw}</td>
-        <td>${fmtPnl(s.pnl_if_bought)}</td>
-      </tr>`;
-    })
-    .join("");
+  const recent = (data.recent_skips || data.samples || []).slice(0, 15).map((s) => {
+    const rowForFmt = { ...s, bought_temp: s.temp || "" };
+    return {
+      ...s,
+      run_at_short: (s.run_at || "").slice(0, 16),
+      forecast_fmt: fmtForecastTemp(rowForFmt),
+      wu_fmt: fmtForecastTemp(rowForFmt, { wu: true }),
+      delta_fmt: fmtForecastDelta(rowForFmt),
+      whw_label:
+        s.would_have_won === true ? "won" : s.would_have_won === false ? "lost" : "—",
+      om_vs_win: fmtForecastVsWin({ ...rowForFmt, winning_temp: s.winning_temp }),
+    };
+  });
+
+  const recentSection = renderSkippedSortableTable({
+    tableId: "skip-recent",
+    title: "Last 15 skipped trades",
+    defaultSortKey: "run_at",
+    stickyCity: true,
+    columns: [
+      { key: "run_at", label: "Run at", fmt: (_v, r) => r.run_at_short || "—" },
+      { key: "city", label: "City" },
+      { key: "reason", label: "Reason" },
+      { key: "temp", label: "Temp" },
+      { key: "forecast_fmt", label: "Forecast", fmt: (_v, r) => r.forecast_fmt },
+      { key: "wu_fmt", label: "WU forecast", fmt: (_v, r) => r.wu_fmt },
+      { key: "delta_fmt", label: "Δ forecast", fmt: (_v, r) => r.delta_fmt },
+      { key: "om_vs_win", label: "Forecast vs win", fmt: (_v, r) => r.om_vs_win },
+      { key: "selection_price", label: "Price", fmt: (v) => fmtPrice(v) },
+      { key: "whw_label", label: "Would have", fmt: (_v, r) => r.whw_label },
+      { key: "pnl_if_bought", label: "P&L if bought", fmt: (v) => fmtPnl(v) },
+    ],
+    rows: recent,
+    emptyText: "No skipped rows",
+  });
 
   container.innerHTML = `${header}
-    <div class="table-wrap" style="padding:0">
-      <table class="insight-table">
-        <thead>
-          <tr>
-            <th>Reason</th>
-            <th>Count</th>
-            <th>With temp</th>
-            <th>Resolved</th>
-            <th>Would win</th>
-            <th>Would lose</th>
-            <th>Would-win%</th>
-            <th>Avg price</th>
-            <th>Total P&amp;L if bought</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>${reasonRows}</tbody>
-      </table>
-    </div>
+    ${reasonSection}
     ${bandSection}
+    ${firstBandSection}
     ${forecastSection}
-    <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Last 15 skipped trades</h3>
-    <div class="table-wrap" style="padding:0">
-      <table class="insight-table">
-        <thead>
-          <tr>
-            <th>Run at</th>
-            <th>City</th>
-            <th>Reason</th>
-            <th>Temp</th>
-            <th>Forecast</th>
-            <th>WU forecast</th>
-            <th>Δ forecast</th>
-            <th>Price</th>
-            <th>Would have</th>
-            <th>P&amp;L if bought</th>
-          </tr>
-        </thead>
-        <tbody>${recentRows || `<tr><td colspan="10">No skipped rows</td></tr>`}</tbody>
-      </table>
-    </div>`;
+    ${recentSection}`;
+  bindSkippedSortHeaders(container);
 }
 
 function render() {

@@ -12,7 +12,11 @@ from typing import Any, Optional
 from config.settings import DATA_DIR, RESOLUTIONS_CACHE_FILE, SELECTIONS_DIR, TRADE_HISTORY_FILE, settings
 from src.analysis.pattern_enrichment import forecast_delta_c
 from src.analysis.resolution import fetch_resolved_event
-from src.utils.market_parser import compare_temp_buckets, extract_temp_label
+from src.utils.market_parser import (
+    compare_temp_buckets,
+    extract_temp_label,
+    forecast_matches_winning_temp,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -235,6 +239,169 @@ def _finalize_stats(stats: dict[str, Any]) -> dict[str, Any]:
         }
     )
     return out
+
+
+def _empty_forecast_group(group: str) -> dict[str, Any]:
+    return {
+        "group": group,
+        "count": 0,
+        "resolved": 0,
+        "would_have_won": 0,
+        "would_have_lost": 0,
+        "om_match_resolved": 0,
+        "om_match": 0,
+        "wu_match_resolved": 0,
+        "wu_match": 0,
+        "_price_sum": 0.0,
+        "with_price": 0,
+        "_pnl_sum": 0.0,
+        "_pnl_n": 0,
+    }
+
+
+def _finalize_forecast_group(stats: dict[str, Any]) -> dict[str, Any]:
+    resolved = int(stats["resolved"])
+    won = int(stats["would_have_won"])
+    om_r = int(stats["om_match_resolved"])
+    wu_r = int(stats["wu_match_resolved"])
+    with_price = int(stats["with_price"])
+    pnl_n = int(stats["_pnl_n"])
+    return {
+        "group": stats["group"],
+        "count": int(stats["count"]),
+        "resolved": resolved,
+        "would_have_won": won,
+        "would_have_lost": int(stats["would_have_lost"]),
+        "would_have_won_pct": round(100.0 * won / resolved, 1) if resolved else None,
+        "om_match": int(stats["om_match"]),
+        "om_match_resolved": om_r,
+        "om_match_pct": round(100.0 * int(stats["om_match"]) / om_r, 1) if om_r else None,
+        "wu_match": int(stats["wu_match"]),
+        "wu_match_resolved": wu_r,
+        "wu_match_pct": round(100.0 * int(stats["wu_match"]) / wu_r, 1) if wu_r else None,
+        "avg_price": round(float(stats["_price_sum"]) / with_price, 4) if with_price else None,
+        "total_pnl_if_bought": round(float(stats["_pnl_sum"]), 2) if pnl_n else None,
+        "pnl_n": pnl_n,
+    }
+
+
+def _bump_forecast_group(
+    stats: dict[str, Any],
+    *,
+    whw: Optional[bool],
+    om_match: Optional[bool],
+    wu_match: Optional[bool],
+    price: Optional[float],
+    pnl: Optional[float],
+) -> None:
+    stats["count"] += 1
+    if whw is True:
+        stats["resolved"] += 1
+        stats["would_have_won"] += 1
+    elif whw is False:
+        stats["resolved"] += 1
+        stats["would_have_lost"] += 1
+    if om_match is True:
+        stats["om_match_resolved"] += 1
+        stats["om_match"] += 1
+    elif om_match is False:
+        stats["om_match_resolved"] += 1
+    if wu_match is True:
+        stats["wu_match_resolved"] += 1
+        stats["wu_match"] += 1
+    elif wu_match is False:
+        stats["wu_match_resolved"] += 1
+    if price is not None:
+        stats["with_price"] += 1
+        stats["_price_sum"] += price
+    if pnl is not None:
+        stats["_pnl_sum"] += pnl
+        stats["_pnl_n"] += 1
+
+
+def _spread_band(spread: Optional[float]) -> str:
+    if spread is None:
+        return "unknown"
+    try:
+        s = float(spread)
+    except (TypeError, ValueError):
+        return "unknown"
+    if s < 0:
+        return "<0.00"
+    if s >= 0.50:
+        return "0.50+"
+    lo = int(s * 20) / 20.0
+    hi = round(lo + 0.05, 2)
+    return f"{lo:.2f}–{hi:.2f}"
+
+
+def _time_band_from_minutes(total: int, *, start: int = 12 * 60, end: int = 16 * 60) -> str:
+    if total < start:
+        return f"before {start // 60:02d}:{start % 60:02d}"
+    if total >= end:
+        return f"after {end // 60:02d}:{end % 60:02d}"
+    band_start = start + ((total - start) // 15) * 15
+    band_end = band_start + 15
+    return (
+        f"{band_start // 60:02d}:{band_start % 60:02d}-"
+        f"{band_end // 60:02d}:{band_end % 60:02d}"
+    )
+
+
+def _load_city_timezones() -> dict[str, str]:
+    path = DATA_DIR / "city_timezones.json"
+    if not path.exists():
+        return {}
+    try:
+        raw = json.loads(path.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+    if not isinstance(raw, dict):
+        return {}
+    return {str(k): str(v) for k, v in raw.items() if k and v}
+
+
+def _local_slot_for_skip(row: dict[str, Any], tz_map: dict[str, str]) -> str:
+    city = str(row.get("city") or "")
+    run_at = row.get("_run_at")
+    tz_name = tz_map.get(city)
+    if not run_at or not tz_name:
+        return "unknown"
+    try:
+        from zoneinfo import ZoneInfo
+
+        dt = datetime.fromisoformat(str(run_at).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            from datetime import timezone as _tz
+
+            dt = dt.replace(tzinfo=_tz.utc)
+        local = dt.astimezone(ZoneInfo(tz_name))
+        return _time_band_from_minutes(local.hour * 60 + local.minute)
+    except Exception:
+        return "unknown"
+
+
+def _market_dedupe_key(row: dict[str, Any]) -> Optional[str]:
+    mid = row.get("market_id")
+    if mid is not None and str(mid):
+        return f"market:{mid}"
+    eid = row.get("event_id")
+    title = _bought_title(row)
+    if eid is not None and title:
+        return f"event:{eid}:{title}"
+    slug = row.get("_resolved_event_slug") or row.get("event_slug")
+    if slug and title:
+        return f"slug:{slug}:{title}"
+    return None
+
+
+def _parse_float_opt(raw: Any) -> Optional[float]:
+    if raw is None:
+        return None
+    try:
+        return float(raw)
+    except (TypeError, ValueError):
+        return None
 
 
 def _load_resolution_map(cache_path: Optional[Path] = None) -> dict[str, str]:
@@ -460,6 +627,7 @@ def compute_skipped_analysis(
     by_market_snap, by_market_event, by_event_top = _build_price_indexes(rows)
     by_reason: dict[str, dict[str, Any]] = {}
     yes_price_max_bands: dict[str, dict[str, Any]] = {}
+    yes_price_max_first_bands: dict[str, dict[str, Any]] = {}
     recent_rows: list[dict[str, Any]] = []
     slug_hits = 0
     price_hits = 0
@@ -475,6 +643,24 @@ def compute_skipped_analysis(
     delta_win_n = 0
     delta_lose_sum = 0.0
     delta_lose_n = 0
+
+    tz_map = _load_city_timezones()
+    fc_overall = _empty_forecast_group("all")
+    fc_by_slot: dict[str, dict[str, Any]] = {}
+    fc_by_reason: dict[str, dict[str, Any]] = {}
+    fc_by_price: dict[str, dict[str, Any]] = {}
+    fc_by_spread: dict[str, dict[str, Any]] = {}
+
+    # Chronological for first-skip dedupe (assume bought at first skip opportunity).
+    chronological = sorted(rows, key=lambda r: _run_at_ts(r.get("_run_at")) or 0.0)
+    first_skip_row_ids: set[int] = set()
+    seen_markets: set[str] = set()
+    for row in chronological:
+        key = _market_dedupe_key(row)
+        if not key or key in seen_markets:
+            continue
+        seen_markets.add(key)
+        first_skip_row_ids.add(id(row))
 
     for row in rows:
         reason = str(row.get("reason") or "unknown")
@@ -516,17 +702,17 @@ def compute_skipped_analysis(
             total_pnl_sum += pnl
             total_pnl_n += 1
 
-        fc = row.get("forecast_temp_c")
-        ff = row.get("forecast_temp_f")
-        wu_c = row.get("forecast_wu_temp_c")
-        wu_f = row.get("forecast_wu_temp_f")
+        fc = _parse_float_opt(row.get("forecast_temp_c"))
+        ff = _parse_float_opt(row.get("forecast_temp_f"))
+        wu_c = _parse_float_opt(row.get("forecast_wu_temp_c"))
+        wu_f = _parse_float_opt(row.get("forecast_wu_temp_f"))
         delta = row.get("forecast_delta_c")
         if delta is None and title and (fc is not None or ff is not None):
             try:
                 delta = forecast_delta_c(
                     str(title),
-                    forecast_temp_f=float(ff) if ff is not None else None,
-                    forecast_temp_c=float(fc) if fc is not None else None,
+                    forecast_temp_f=ff,
+                    forecast_temp_c=fc,
                 )
             except (TypeError, ValueError):
                 delta = None
@@ -556,6 +742,34 @@ def compute_skipped_analysis(
                     delta_lose_sum += dabs
                     delta_lose_n += 1
 
+        winning = res_map.get(slug or "") if slug else None
+        om_match = forecast_matches_winning_temp(
+            winning, forecast_temp_c=fc, forecast_temp_f=ff
+        )
+        wu_match = forecast_matches_winning_temp(
+            winning, forecast_temp_c=wu_c, forecast_temp_f=wu_f
+        )
+        local_slot = _local_slot_for_skip(row, tz_map)
+        spread_raw = _parse_float_opt(row.get("spread"))
+        spread_band = _spread_band(spread_raw)
+        price_band = _buy_price_band(price) if price is not None else "unknown"
+
+        _bump_forecast_group(
+            fc_overall, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
+        )
+        for group_map, group_key in (
+            (fc_by_slot, local_slot),
+            (fc_by_reason, reason),
+            (fc_by_price, price_band),
+            (fc_by_spread, spread_band),
+        ):
+            gstats = group_map.setdefault(group_key, _empty_forecast_group(group_key))
+            _bump_forecast_group(
+                gstats, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
+            )
+
+        is_first_skip = id(row) in first_skip_row_ids
+
         if reason == "yes_price_max" and price is not None:
             band = _buy_price_band(price)
             band_stats = yes_price_max_bands.setdefault(band, _empty_reason_stats(band))
@@ -578,6 +792,29 @@ def compute_skipped_analysis(
                 band_stats["_pnl_sum"] += pnl
                 band_stats["_pnl_n"] += 1
 
+            if is_first_skip:
+                first_stats = yes_price_max_first_bands.setdefault(
+                    band, _empty_reason_stats(band)
+                )
+                first_stats["count"] += 1
+                first_stats["with_price"] += 1
+                first_stats["_price_sum"] += price
+                if title:
+                    first_stats["with_temp"] += 1
+                if slug:
+                    first_stats["with_slug"] += 1
+                if whw is True:
+                    first_stats["resolved"] += 1
+                    first_stats["would_have_won"] += 1
+                elif whw is False:
+                    first_stats["resolved"] += 1
+                    first_stats["would_have_lost"] += 1
+                elif title:
+                    first_stats["unknown_outcome"] += 1
+                if pnl is not None:
+                    first_stats["_pnl_sum"] += pnl
+                    first_stats["_pnl_n"] += 1
+
         recent_rows.append(
             {
                 "run_at": row.get("_run_at"),
@@ -596,6 +833,12 @@ def compute_skipped_analysis(
                 "forecast_wu_temp_f": wu_f,
                 "forecast_source": row.get("forecast_source"),
                 "forecast_delta_c": delta,
+                "winning_temp": winning,
+                "om_match_win": om_match,
+                "wu_match_win": wu_match,
+                "local_slot": local_slot,
+                "spread": spread_raw,
+                "first_skip": is_first_skip,
             }
         )
 
@@ -604,6 +847,8 @@ def compute_skipped_analysis(
 
     band_rows = [_finalize_stats(stats) for stats in yes_price_max_bands.values()]
     band_rows.sort(key=lambda r: r["reason"])
+    first_band_rows = [_finalize_stats(stats) for stats in yes_price_max_first_bands.values()]
+    first_band_rows.sort(key=lambda r: r["reason"])
 
     recent_rows.sort(
         key=lambda r: _run_at_ts(r.get("run_at")) or 0.0,
@@ -611,6 +856,12 @@ def compute_skipped_analysis(
     )
     recent_skips = recent_rows[:15]
 
+    def _sorted_fc_groups(groups: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+        rows_out = [_finalize_forecast_group(s) for s in groups.values()]
+        rows_out.sort(key=lambda r: str(r["group"]))
+        return rows_out
+
+    overall = _finalize_forecast_group(fc_overall)
     total = len(rows)
     resolved_total = sum(int(r["resolved"]) for r in reason_rows)
     won_total = sum(int(r["would_have_won"]) for r in reason_rows)
@@ -630,6 +881,8 @@ def compute_skipped_analysis(
         "resolutions_fetched": fetched,
         "by_reason": reason_rows,
         "yes_price_max_by_buy_band": band_rows,
+        "yes_price_max_by_buy_band_first_skip": first_band_rows,
+        "yes_price_max_includes_repeats": True,
         "recent_skips": recent_skips,
         # Keep samples alias for older dashboard payloads.
         "samples": recent_skips,
@@ -652,5 +905,10 @@ def compute_skipped_analysis(
             else None,
             "delta_would_win_n": delta_win_n,
             "delta_would_lose_n": delta_lose_n,
+            "overall": overall,
+            "by_local_slot": _sorted_fc_groups(fc_by_slot),
+            "by_reason": _sorted_fc_groups(fc_by_reason),
+            "by_price_band": _sorted_fc_groups(fc_by_price),
+            "by_spread_band": _sorted_fc_groups(fc_by_spread),
         },
     }
