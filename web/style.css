@@ -297,28 +297,16 @@ th {
 
 th:hover { color: #fff; }
 
-/* Keep date + city visible when scrolling the trade history table horizontally. */
-#trade-table th.sticky-date,
-#trade-table td:nth-child(1) {
+/* Keep city visible when scrolling the trade history table horizontally. */
+#trade-table th.sticky-city,
+#trade-table td.sticky-city {
   position: sticky;
   left: 0;
   background: var(--surface);
   z-index: 3;
-}
-#trade-table td:nth-child(1) {
-  z-index: 1;
-}
-#trade-table th.sticky-city,
-#trade-table td.sticky-city,
-#trade-table td:nth-child(2) {
-  position: sticky;
-  left: 5.75rem;
-  background: var(--surface);
-  z-index: 3;
   box-shadow: 4px 0 6px -4px rgba(0, 0, 0, 0.45);
 }
-#trade-table td.sticky-city,
-#trade-table td:nth-child(2) {
+#trade-table td.sticky-city {
   z-index: 1;
 }
 
@@ -350,8 +338,6 @@ table tbody tr:hover {
 }
 
 .table-wrap tbody tr:hover td.sticky-city,
-.table-wrap tbody tr:hover td:nth-child(1),
-.table-wrap tbody tr:hover td:nth-child(2),
 .table-wrap tbody tr:hover td:first-child,
 .mini-table tbody tr:hover td:first-child {
   background: #243044;

@@ -1569,6 +1569,9 @@ function renderSkippedAnalysis(data) {
     emptyText: "No yes_price_max skips with price",
   });
 
+  const firstSkipRows = Array.isArray(data.yes_price_max_by_buy_band_first_skip)
+    ? data.yes_price_max_by_buy_band_first_skip
+    : null;
   const firstBandSection = renderSkippedSortableTable({
     tableId: "skip-ypm-first",
     title: "yes_price_max by buy $ (0.05 band) — first skip only",
@@ -1576,8 +1579,10 @@ function renderSkippedAnalysis(data) {
       "One row per market (earliest skip). Assumes you would have bought at the first skip opportunity — no repeat-market inflation.",
     defaultSortKey: "reason",
     columns: bandCols,
-    rows: data.yes_price_max_by_buy_band_first_skip || [],
-    emptyText: "No first-skip yes_price_max rows",
+    rows: firstSkipRows || [],
+    emptyText: firstSkipRows == null
+      ? "Missing in trade_history.json — hard-refresh the page (or re-run enrich-trade-history / wait for hourly sync)."
+      : "No first-skip yes_price_max rows",
   });
 
   const fcCols = [
@@ -1592,6 +1597,13 @@ function renderSkippedAnalysis(data) {
     { key: "avg_price", label: "Avg price", fmt: (v) => fmtPrice(v) },
     { key: "total_pnl_if_bought", label: "P&L if bought", fmt: (v) => fmtPnl(v) },
   ];
+
+  const fcSlot = Array.isArray(fc.by_local_slot) ? fc.by_local_slot : null;
+  const fcReason = Array.isArray(fc.by_reason) ? fc.by_reason : null;
+  const fcPrice = Array.isArray(fc.by_price_band) ? fc.by_price_band : null;
+  const fcSpread = Array.isArray(fc.by_spread_band) ? fc.by_spread_band : null;
+  const fcMissingHint =
+    "Missing in trade_history.json — hard-refresh (or re-run enrich-trade-history / wait for hourly sync).";
 
   const forecastSection = `
     <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Forecast compare (skipped)</h3>
@@ -1610,6 +1622,8 @@ function renderSkippedAnalysis(data) {
         <strong>Would-win%</strong> = skipped market bucket == eventual winner.
         <strong>OM / WU match win%</strong> = Open-Meteo or WU forecast falls in the eventual winning temp bucket
         (independent of which bucket was skipped). Group tables below show both result% and forecast-match%.
+        OM/WU match% is only among skips that have a recorded forecast + resolved winner
+        (most older skips have no forecast yet — expect many “—” until new trade-hourly runs accumulate).
       </p>
     </div>
     ${renderSkippedSortableTable({
@@ -1618,28 +1632,32 @@ function renderSkippedAnalysis(data) {
       description: "Skip run_at converted to city local time (15-min bands in the trade window).",
       defaultSortKey: "group",
       columns: fcCols,
-      rows: fc.by_local_slot || [],
+      rows: fcSlot || [],
+      emptyText: fcSlot == null ? fcMissingHint : "No local-slot groups",
     })}
     ${renderSkippedSortableTable({
       tableId: "fc-reason",
       title: "Forecast match by skip reason",
       defaultSortKey: "count",
       columns: fcCols,
-      rows: fc.by_reason || [],
+      rows: fcReason || [],
+      emptyText: fcReason == null ? fcMissingHint : "No reason groups",
     })}
     ${renderSkippedSortableTable({
       tableId: "fc-price",
       title: "Forecast match by buy $ band",
       defaultSortKey: "group",
       columns: fcCols,
-      rows: fc.by_price_band || [],
+      rows: fcPrice || [],
+      emptyText: fcPrice == null ? fcMissingHint : "No price-band groups",
     })}
     ${renderSkippedSortableTable({
       tableId: "fc-spread",
       title: "Forecast match by spread band",
       defaultSortKey: "group",
       columns: fcCols,
-      rows: fc.by_spread_band || [],
+      rows: fcSpread || [],
+      emptyText: fcSpread == null ? fcMissingHint : "No spread-band groups",
     })}`;
 
   const recent = (data.recent_skips || data.samples || []).slice(0, 15).map((s) => {
@@ -1761,9 +1779,9 @@ function populateLocalTimeFilter() {
 
 async function loadData() {
   const [dataResp, tzResp, resResp] = await Promise.all([
-    fetch(DATA_URL),
-    fetch(TZ_URL).catch(() => null),
-    fetch(RESOLUTIONS_URL).catch(() => null),
+    fetch(DATA_URL, { cache: "no-store" }),
+    fetch(TZ_URL, { cache: "no-store" }).catch(() => null),
+    fetch(RESOLUTIONS_URL, { cache: "no-store" }).catch(() => null),
   ]);
   if (!dataResp.ok) throw new Error(`Failed to load ${DATA_URL}: ${dataResp.status}`);
   if (tzResp?.ok) cityTimezones = await tzResp.json();
