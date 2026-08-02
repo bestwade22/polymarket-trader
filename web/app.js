@@ -1619,10 +1619,9 @@ function renderSkippedAnalysis(data) {
         <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
       </div>
       <p class="muted" style="margin:0.5rem 0 0">
-        Uses <strong>every</strong> skip row (all reasons, including repeats).
+        Uses only skips that have a recorded forecast (Open-Meteo and/or WU).
         <strong>Would-win% (result)</strong> = skipped temp bucket equals the event’s actual winning temp.
-        <strong>OM / WU match win%</strong> = Open-Meteo or WU forecast at skip time falls in that same winning bucket
-        (only among skips that have a forecast recorded + a resolved winner; older skips without forecast stay “—” for OM/WU).
+        <strong>OM / WU match win%</strong> = that forecast falls in the winning bucket.
       </p>
     </div>
     ${renderSkippedSortableTable({
