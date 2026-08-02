@@ -292,13 +292,69 @@ th {
   user-select: none;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 th:hover { color: #fff; }
 
+/* Keep date + city visible when scrolling the trade history table horizontally. */
+#trade-table th.sticky-date,
+#trade-table td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 3;
+}
+#trade-table td:nth-child(1) {
+  z-index: 1;
+}
+#trade-table th.sticky-city,
+#trade-table td.sticky-city,
+#trade-table td:nth-child(2) {
+  position: sticky;
+  left: 5.75rem;
+  background: var(--surface);
+  z-index: 3;
+  box-shadow: 4px 0 6px -4px rgba(0, 0, 0, 0.45);
+}
+#trade-table td.sticky-city,
+#trade-table td:nth-child(2) {
+  z-index: 1;
+}
+
+.insight-table th.sticky-city,
+.insight-table td.sticky-city,
+.insight-table th:first-child,
+.insight-table td:first-child,
+.mini-table th:first-child,
+.mini-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 2;
+  box-shadow: 4px 0 6px -4px rgba(0, 0, 0, 0.35);
+}
+.insight-table td.sticky-city,
+.insight-table td:first-child,
+.mini-table td:first-child {
+  z-index: 1;
+}
+.insight-table th:first-child,
+.mini-table th:first-child {
+  z-index: 3;
+}
+
 .table-wrap tbody tr:hover,
 table tbody tr:hover {
   background: rgba(96, 165, 250, 0.12);
+}
+
+.table-wrap tbody tr:hover td.sticky-city,
+.table-wrap tbody tr:hover td:nth-child(1),
+.table-wrap tbody tr:hover td:nth-child(2),
+.table-wrap tbody tr:hover td:first-child,
+.mini-table tbody tr:hover td:first-child {
+  background: #243044;
 }
 
 .badge {
