@@ -1562,7 +1562,7 @@ function renderSkippedAnalysis(data) {
     tableId: "skip-ypm-all",
     title: "yes_price_max by buy $ (0.05 band) — all skips",
     description:
-      "Includes repeated skips of the same market across hourly runs (same market can appear many times).",
+      "Every yes_price_max skip, including the same market re-skipped later in the day (e.g. London 27°C at 14:15 and again at 14:45 both count).",
     defaultSortKey: "reason",
     columns: bandCols,
     rows: data.yes_price_max_by_buy_band || [],
@@ -1576,7 +1576,7 @@ function renderSkippedAnalysis(data) {
     tableId: "skip-ypm-first",
     title: "yes_price_max by buy $ (0.05 band) — first skip only",
     description:
-      "One row per market (earliest skip). Assumes you would have bought at the first skip opportunity — no repeat-market inflation.",
+      "Same columns as all-skips, but only the earliest yes_price_max skip per market. Example: London 27°C first skipped at 14:15 counts; the same market skipped again at 14:45 does not. (Other skip reasons do not block the first yes_price_max slot.)",
     defaultSortKey: "reason",
     columns: bandCols,
     rows: firstSkipRows || [],
@@ -1619,11 +1619,10 @@ function renderSkippedAnalysis(data) {
         <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
       </div>
       <p class="muted" style="margin:0.5rem 0 0">
-        <strong>Would-win%</strong> = skipped market bucket == eventual winner.
-        <strong>OM / WU match win%</strong> = Open-Meteo or WU forecast falls in the eventual winning temp bucket
-        (independent of which bucket was skipped). Group tables below show both result% and forecast-match%.
-        OM/WU match% is only among skips that have a recorded forecast + resolved winner
-        (most older skips have no forecast yet — expect many “—” until new trade-hourly runs accumulate).
+        Uses <strong>every</strong> skip row (all reasons, including repeats).
+        <strong>Would-win% (result)</strong> = skipped temp bucket equals the event’s actual winning temp.
+        <strong>OM / WU match win%</strong> = Open-Meteo or WU forecast at skip time falls in that same winning bucket
+        (only among skips that have a forecast recorded + a resolved winner; older skips without forecast stay “—” for OM/WU).
       </p>
     </div>
     ${renderSkippedSortableTable({
