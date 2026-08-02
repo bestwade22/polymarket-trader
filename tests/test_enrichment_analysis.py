@@ -495,7 +495,7 @@ def test_yes_price_max_first_skip_ignores_earlier_other_reason(tmp_path: Path):
 
 
 def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
-    """Forecast-compare tables include every skip; OM match vs winning temp when forecast present."""
+    """Forecast-compare tables only include skips that have a forecast value."""
     (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
         json.dumps(
             {
@@ -517,7 +517,7 @@ def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
                         "group_item_title": "31°C",
                         "event_slug": "highest-temperature-in-paris-on-july-20-2026",
                         "selection_price": 0.72,
-                        # no forecast on this skip
+                        # no forecast — excluded from forecast_compare tables
                     },
                     {
                         "city": "London",
@@ -541,14 +541,15 @@ def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
         fetch_missing_resolutions=False,
     )
     overall = analysis["forecast_compare"]["overall"]
-    assert overall["count"] == 3  # all skips
-    assert overall["resolved"] == 3
-    assert overall["would_have_won"] == 2  # both London skips would win; Paris lose
-    assert overall["om_match_resolved"] == 2  # only rows with forecast
-    assert overall["om_match"] == 1  # first London forecast 28 matches; second 30 misses
+    assert overall["count"] == 2  # Paris without forecast excluded
+    assert overall["resolved"] == 2
+    assert overall["would_have_won"] == 2  # both London skips would win
+    assert overall["om_match_resolved"] == 2
+    assert overall["om_match"] == 1  # 28 matches; 30 misses
     by_reason = {r["group"]: r for r in analysis["forecast_compare"]["by_reason"]}
     assert by_reason["spread_max"]["count"] == 1
-    assert by_reason["yes_price_max"]["count"] == 2
+    assert by_reason["yes_price_max"]["count"] == 1
+    assert "Paris" not in str(by_reason) or "yes_price_max" in by_reason
 
 
 def test_forecast_match_overall_vs_winning(tmp_path: Path):

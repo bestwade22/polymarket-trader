@@ -770,21 +770,32 @@ def compute_skipped_analysis(
         spread_band = _spread_band(spread_raw)
         price_band = _buy_price_band(price) if price is not None else "unknown"
 
-        # Every skip row contributes to forecast-compare groups (would-win vs event
-        # result whenever resolved; OM/WU match when that skip also has a forecast).
-        _bump_forecast_group(
-            fc_overall, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
-        )
-        for group_map, group_key in (
-            (fc_by_slot, local_slot),
-            (fc_by_reason, reason),
-            (fc_by_price, price_band),
-            (fc_by_spread, spread_band),
-        ):
-            gstats = group_map.setdefault(group_key, _empty_forecast_group(group_key))
+        # Forecast-compare tables only include skips that have a recorded forecast.
+        has_forecast = fc is not None or ff is not None or wu_c is not None or wu_f is not None
+        if has_forecast:
             _bump_forecast_group(
-                gstats, whw=whw, om_match=om_match, wu_match=wu_match, price=price, pnl=pnl
+                fc_overall,
+                whw=whw,
+                om_match=om_match,
+                wu_match=wu_match,
+                price=price,
+                pnl=pnl,
             )
+            for group_map, group_key in (
+                (fc_by_slot, local_slot),
+                (fc_by_reason, reason),
+                (fc_by_price, price_band),
+                (fc_by_spread, spread_band),
+            ):
+                gstats = group_map.setdefault(group_key, _empty_forecast_group(group_key))
+                _bump_forecast_group(
+                    gstats,
+                    whw=whw,
+                    om_match=om_match,
+                    wu_match=wu_match,
+                    price=price,
+                    pnl=pnl,
+                )
 
         is_first_ypm_skip = id(row) in first_ypm_skip_ids
 
