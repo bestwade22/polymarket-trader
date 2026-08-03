@@ -10166,5 +10166,21 @@
     "floor_price": 0.95,
     "current_mid": 0.67,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x7d8f35c5ed8e4d5ae86804d561bf0c98968373ff469055f0e50b2ae898f66096",
+    "token_id": "107261251303813894551558442542530442187195489620941741625793024572182993193070",
+    "order_id": "0x16307a014dee7eff8cad818e161d5205efc07549e1468d645f354692cbc99fcc",
+    "sold_at": "2026-08-03T15:00:12.557502+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-amsterdam-on-august-3-2026",
+    "price": 0.97,
+    "size": 13.8518,
+    "avg_buy_price": 0.46,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.64,
+    "reason": "tier3"
   }
 ]
