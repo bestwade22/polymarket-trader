@@ -1609,7 +1609,7 @@ function renderSkippedAnalysis(data) {
     <h3 style="margin:1rem 0 0.5rem;font-size:0.95rem;color:var(--muted)">Forecast compare (skipped)</h3>
     <div class="insight-card">
       <div class="summary-grid">
-        <div><span class="summary-label">With Open-Meteo / primary</span><span class="summary-value">${fc.with_forecast ?? 0}</span></div>
+        <div><span class="summary-label">With primary forecast</span><span class="summary-value">${fc.with_forecast ?? 0}</span></div>
         <div><span class="summary-label">With WU scrape</span><span class="summary-value">${fc.with_wu ?? 0}</span></div>
         <div><span class="summary-label">Would-win% (result)</span><span class="summary-value">${fmtPctCell(overall.would_have_won_pct)}</span></div>
         <div><span class="summary-label">OM match win%</span><span class="summary-value">${fmtPctCell(overall.om_match_pct)}</span></div>
@@ -1619,7 +1619,7 @@ function renderSkippedAnalysis(data) {
         <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
       </div>
       <p class="muted" style="margin:0.5rem 0 0">
-        Uses only skips that have a recorded forecast (Open-Meteo and/or WU).
+        Uses only skips that have a recorded forecast (Weather.com and/or WU).
         <strong>Would-win% (result)</strong> = skipped temp bucket equals the event’s actual winning temp.
         <strong>OM / WU match win%</strong> = that forecast falls in the winning bucket.
       </p>

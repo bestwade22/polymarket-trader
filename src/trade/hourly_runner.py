@@ -25,9 +25,9 @@ def attach_forecasts_to_selections(
     *,
     weather_client: Optional[WeatherClient] = None,
 ) -> list[MarketSelection]:
-    """Fetch daily max forecast for each selection (analysis only; does not change pick).
+    """Fetch predicted daily max for each selection (analysis only; does not change pick).
 
-    Records Open-Meteo as primary plus WU scrape when available for compare.
+    Records Weather.com as primary plus WU scrape when available.
     """
     if not selections:
         return selections
@@ -104,7 +104,7 @@ def attach_forecasts_to_skipped(
     weather_client: Optional[WeatherClient] = None,
     default_event_date: Optional[str] = None,
 ) -> list[dict]:
-    """Attach Open-Meteo + WU forecast fields onto skipped_bought rows (analysis only)."""
+    """Attach predicted + WU forecast fields onto skipped_bought rows (analysis only)."""
     if not skipped:
         return skipped
     client = weather_client or WeatherClient()

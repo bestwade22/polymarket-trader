@@ -16,7 +16,12 @@ from src.api.city_resolution_map import (
     extract_resolution_from_event,
     upsert_events_into_map,
 )
-from src.api.weather_client import ForecastMaxTemp, WeatherClient
+from src.api.weather_client import (
+    ForecastMaxTemp,
+    WeatherClient,
+    hourly_forecast_url,
+    parse_wu_high_from_text,
+)
 from src.trade.hourly_runner import attach_forecasts_to_selections, attach_forecasts_to_skipped
 from src.trade.strategies.base import MarketSelection
 
@@ -104,7 +109,47 @@ def test_upsert_does_not_overwrite_existing_coords():
     assert mapping["Tokyo"]["station_name"] == "Tokyo Haneda Airport Station"
 
 
-def test_weather_client_uses_map_coords_for_open_meteo(tmp_path: Path, monkeypatch):
+def test_hourly_forecast_url_rewrites_history_daily():
+    assert (
+        hourly_forecast_url(
+            "https://www.wunderground.com/history/daily/us/ga/atlanta/KATL"
+        )
+        == "https://www.wunderground.com/hourly/us/ga/atlanta/KATL"
+    )
+    assert (
+        hourly_forecast_url("https://www.wunderground.com/hourly/gb/london/EGLC")
+        == "https://www.wunderground.com/hourly/gb/london/EGLC"
+    )
+    assert hourly_forecast_url("https://example.com/other") is None
+
+
+def test_parse_wu_high_from_today_narrative_celsius():
+    text = (
+        "Hourly Forecast for Today, Monday 08/03 "
+        "Today 08/03 35% / 0.54 mm "
+        "Scattered thunderstorms developing this afternoon. High around 30C. "
+        "Winds W at 10 to 15 km/h. Chance of rain 40%. "
+        "Tonight 08/03 40% / 0.1 mm Rain showers this evening. Low 22C."
+    )
+    assert parse_wu_high_from_text(text, event_date="2026-08-03", default_unit="C") == (
+        30,
+        "C",
+    )
+
+
+def test_parse_wu_high_from_today_narrative_fahrenheit():
+    text = (
+        "Today 08/03 34 % / 0.06 in A few isolated thunderstorms developing this "
+        "afternoon. High 86F. Winds W at 5 to 10 mph. Chance of rain 30%. "
+        "Tonight 08/03 44 % / 0.2 in Showers early. Low 72F."
+    )
+    assert parse_wu_high_from_text(text, event_date="2026-08-03", default_unit="F") == (
+        86,
+        "F",
+    )
+
+
+def test_weather_client_uses_weather_com_prediction(tmp_path: Path, monkeypatch):
     map_path = tmp_path / "map.json"
     map_path.write_text(
         json.dumps(
@@ -125,34 +170,91 @@ def test_weather_client_uses_map_coords_for_open_meteo(tmp_path: Path, monkeypat
     monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
 
     client = WeatherClient()
-    mock_om = MagicMock()
-    mock_om.raise_for_status = MagicMock()
-    mock_om.json.return_value = {"daily": {"temperature_2m_max": [89.6]}}
+    mock_wc = MagicMock()
+    mock_wc.raise_for_status = MagicMock()
+    mock_wc.json.return_value = {
+        "validTimeLocal": ["2026-07-31T00:00:00+0900", "2026-08-01T00:00:00+0900"],
+        "calendarDayTemperatureMax": [33, 34],
+    }
     mock_wu = MagicMock()
     mock_wu.raise_for_status = MagicMock()
-    mock_wu.text = "High: 33 °C Today forecast"
+    mock_wu.text = (
+        "Today 07/31 35% / 0.54 mm Scattered thunderstorms developing this afternoon. "
+        "High around 32C. Winds W at 10 to 15 km/h. Chance of rain 40%. "
+        "Tonight 07/31 Low 25C."
+    )
+
+    called_urls: list[str] = []
 
     def fake_get(url, *args, **kwargs):
-        if "open-meteo" in str(url) or "open-meteo.com" in str(url):
-            return mock_om
-        if isinstance(url, str) and "wunderground" in url:
+        called_urls.append(str(url))
+        if "api.weather.com" in str(url):
+            return mock_wc
+        if "wunderground" in str(url):
             return mock_wu
-        # session.get(OPEN_METEO_URL, params=...) — url is constant
-        params = kwargs.get("params") or {}
-        if "latitude" in params:
-            return mock_om
-        return mock_wu
+        raise AssertionError(f"unexpected url {url}")
 
-    with patch.object(client.session, "get", side_effect=fake_get) as get:
+    with patch.object(client.session, "get", side_effect=fake_get):
         result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
     assert result is not None
-    assert result.source == "open_meteo"
-    assert result.temp_f == 90
-    assert result.temp_c == 32
+    assert result.source == "weather_com"
+    assert result.temp_c == 33
+    assert result.temp_f == 91
     assert result.icao == "RJTT"
-    assert result.wu_temp_c == 33
-    assert result.wu_temp_f == 91
-    assert get.call_count >= 2
+    assert result.wu_temp_c == 32
+    assert result.wu_temp_f == 90
+    assert any("api.weather.com" in u for u in called_urls)
+    assert any("/hourly/jp/tokyo/RJTT" in u for u in called_urls)
+
+
+def test_weather_client_falls_back_to_wu_scrape(tmp_path: Path, monkeypatch):
+    map_path = tmp_path / "map.json"
+    map_path.write_text(
+        json.dumps(
+            {
+                "Tokyo": {
+                    "city": "Tokyo",
+                    "icao": "RJTT",
+                    "resolution_source": "https://www.wunderground.com/history/daily/jp/tokyo/RJTT",
+                    "latitude": 35.55,
+                    "longitude": 139.78,
+                    "provider": "wunderground",
+                    "units": "C",
+                }
+            }
+        )
+    )
+    monkeypatch.setattr("src.api.weather_client.load_resolution_map", lambda: json.loads(map_path.read_text()))
+    monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
+
+    client = WeatherClient()
+    mock_wc = MagicMock()
+    mock_wc.raise_for_status = MagicMock()
+    # Event date not in Weather.com horizon → primary miss
+    mock_wc.json.return_value = {
+        "validTimeLocal": ["2026-08-01T00:00:00+0900"],
+        "calendarDayTemperatureMax": [34],
+    }
+    mock_wu = MagicMock()
+    mock_wu.raise_for_status = MagicMock()
+    mock_wu.text = (
+        "Today 07/31 High around 31C. Winds W at 10 to 15 km/h. "
+        "Tonight 07/31 Low 25C."
+    )
+
+    def fake_get(url, *args, **kwargs):
+        if "api.weather.com" in str(url):
+            return mock_wc
+        if "wunderground" in str(url):
+            return mock_wu
+        raise AssertionError(f"unexpected url {url}")
+
+    with patch.object(client.session, "get", side_effect=fake_get):
+        result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
+    assert result is not None
+    assert result.source == "wunderground_scrape"
+    assert result.temp_c == 31
+    assert result.wu_temp_c == 31
 
 
 def test_attach_forecasts_to_selections():
