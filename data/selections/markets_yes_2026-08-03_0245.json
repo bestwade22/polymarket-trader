@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-08-03T02:45:34.797838+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "779944",
+      "city": "Wellington",
+      "timezone": "NZ (UTC+12/+13)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 58,
+      "forecast_wu_temp_c": 14
+    }
+  ]
+}
