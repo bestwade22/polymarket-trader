@@ -1,0 +1,24 @@
+{
+  "run_at": "2026-08-03T14:15:40.274628+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "779940",
+      "city": "London",
+      "event_slug": "highest-temperature-in-london-on-august-3-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "29\u00b0C",
+      "market_id": "3254115",
+      "clob_mid_price": 0.655,
+      "gamma_title": "30\u00b0C",
+      "gamma_price": 0.595,
+      "forecast_temp_f": 89,
+      "forecast_temp_c": 32,
+      "forecast_source": "open_meteo",
+      "forecast_wu_temp_f": 86,
+      "forecast_wu_temp_c": 30,
+      "forecast_delta_c": 3.0
+    }
+  ]
+}
