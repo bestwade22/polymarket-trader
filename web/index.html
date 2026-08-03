@@ -96,10 +96,12 @@
       <p class="muted" style="margin:0 0 8px">
         <strong>Yes gap</strong> = top market Yes% − runner-up Yes% at buy time (how clearly “highest yes” led).
         Larger gap usually means a stronger leader; tiny gap means a close race.
-        <strong>Forecast</strong> = Open-Meteo daily max at the city resolution station at trade time
-        (shown in °C or °F to match the market); <strong>WU forecast</strong> = Wunderground scrape compare.
+        <strong>Forecast</strong> = predicted daily high for the event day at the resolution station
+        (Weather.com forward forecast by ICAO; WU hourly narrative if Weather.com misses);
+        shown in °C or °F to match the market. <strong>WU forecast</strong> = Wunderground hourly-page
+        narrative scrape (“High around …”) for compare.
         <strong>Δ forecast</strong> = forecast − bought bucket midpoint in the market’s units.
-        <strong>Forecast vs win</strong> = whether Open-Meteo forecast falls in the eventual winning temp bucket.
+        <strong>Forecast vs win</strong> = whether the predicted high falls in the eventual winning temp bucket.
       </p>
       <p class="muted" style="margin:0">
         <strong>Shipped stack</strong> = live trade filters:
