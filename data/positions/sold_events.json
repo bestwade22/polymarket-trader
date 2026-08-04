@@ -10230,5 +10230,21 @@
     "floor_price": 0.93,
     "current_mid": 0.295,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x267427b845dbd1ad749e9e021475787151a9357e6986c630820d331a738f67c4",
+    "token_id": "15426925269163780601126033760877298780689287491652568204767599279913994573374",
+    "order_id": "0x57a1af66cc14badc61743e1ed2f06992ebac929d5f29196c470a2da60908ecc5",
+    "sold_at": "2026-08-04T22:00:12.410203+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-san-francisco-on-august-4-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.5699,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.86,
+    "reason": "tier1"
   }
 ]
