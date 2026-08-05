@@ -2616,6 +2616,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "113157968271142127267057998119163351298281114103168633329856592156608965801072"
     },
+    "highest-temperature-in-denver-on-august-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on August 4?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "28208618615471548801672290041451477820468023821391232121219590700570116031977"
+    },
     "highest-temperature-in-denver-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Denver on July 1?",
@@ -7949,6 +7955,12 @@
       "title": "Highest temperature in Seattle on August 3?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "2048545367306575836006530603473540029259193644385696801263805104820572748804"
+    },
+    "highest-temperature-in-seattle-on-august-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on August 4?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "45179383119487580410206504462386308941906934764424098254344031641461789109448"
     },
     "highest-temperature-in-seattle-on-july-1-2026": {
       "closed": true,
