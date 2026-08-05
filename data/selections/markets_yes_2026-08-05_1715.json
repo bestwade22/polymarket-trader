@@ -1,0 +1,69 @@
+{
+  "run_at": "2026-08-05T17:15:52.499623+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "793793",
+      "city": "Sao Paulo",
+      "market_id": "3323901",
+      "groupItemTitle": "28\u00b0C",
+      "yes_price": 0.57,
+      "yes_token_id": "96278094026832833356115994956141005715813278347621048815550970093990109357318",
+      "buy_price": 0.59,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 85,
+      "forecast_wu_temp_c": 29,
+      "on_edge": true,
+      "order_price": 0.57,
+      "selection_price": 0.57,
+      "gamma_yes_price": 0.59,
+      "best_bid": 0.55,
+      "best_ask": 0.59,
+      "spread": 0.04,
+      "clob_buy_price": 0.59,
+      "last_trade_price": 0.68,
+      "midpoint": 0.57,
+      "outcomePrices": [
+        0.59,
+        0.41
+      ],
+      "competitive": 0.9919650828290844,
+      "event_slug": "highest-temperature-in-sao-paulo-on-august-5-2026",
+      "open_interest": 7054.30753,
+      "runner_up_yes": 0.48,
+      "yes_gap": 0.11,
+      "top_yes": 0.59,
+      "order_status": "live",
+      "order_id": "0x5fabda7da20d9023cd19116f1f29b6c4a985ba31aceedab2dec689ea80d6d726",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-08-05T17:40:51+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "793794",
+      "city": "Buenos Aires",
+      "market_id": "3323912",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-buenos-aires-on-august-5-2026",
+      "reason": "spread_max",
+      "spread": 0.1,
+      "spread_max": 0.05,
+      "selection_price": 0.45,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 62,
+      "forecast_wu_temp_c": 17,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
