@@ -1,0 +1,68 @@
+{
+  "run_at": "2026-08-05T17:45:54.004691+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "793794",
+      "city": "Buenos Aires",
+      "market_id": "3323912",
+      "groupItemTitle": "17\u00b0C",
+      "yes_price": 0.485,
+      "yes_token_id": "111157095140189984007156634877896609221890978184312298214474417007401676589626",
+      "buy_price": 0.5,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 61,
+      "forecast_wu_temp_c": 16,
+      "on_edge": false,
+      "order_price": 0.485,
+      "selection_price": 0.485,
+      "gamma_yes_price": 0.5,
+      "best_bid": 0.47,
+      "best_ask": 0.5,
+      "spread": 0.03,
+      "clob_buy_price": 0.5,
+      "last_trade_price": 0.59,
+      "midpoint": 0.485,
+      "outcomePrices": [
+        0.5,
+        0.5
+      ],
+      "competitive": 1.0,
+      "event_slug": "highest-temperature-in-buenos-aires-on-august-5-2026",
+      "open_interest": 9487.108605,
+      "runner_up_yes": 0.345,
+      "yes_gap": 0.155,
+      "top_yes": 0.5,
+      "order_status": "live",
+      "order_id": "0x9a359d6192a112bd3160e8b9d4d9e3c7c14222e8bf0d5d0e1a8e22d1b5ae7f4f",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-08-05T18:10:53+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "793793",
+      "city": "Sao Paulo",
+      "market_id": "3323901",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-august-5-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.655,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 85,
+      "forecast_wu_temp_c": 29,
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
