@@ -10374,5 +10374,21 @@
     "floor_price": 0.93,
     "current_mid": 0.46,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x7f7300eec8e4e29168fbf6d2830c6a13e79ebb2a0a3cb1168fdc62505d071928",
+    "token_id": "62072480035625435621698967357114463135258290033000890494806634080614710969858",
+    "order_id": "0x6c3f85afebc748ceadf408e12ec6abf5b81706a4a0ab9e5ccc3bc6ef18bdd854",
+    "sold_at": "2026-08-05T22:00:13.402779+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-denver-on-august-5-2026",
+    "price": 0.95,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.445,
+    "reason": "tier2"
   }
 ]
