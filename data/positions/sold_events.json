@@ -10422,5 +10422,21 @@
     "floor_price": 0.95,
     "current_mid": 0.34,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xc79fa24d14455f1bfd3df6fd6d1c6f51f378adfc25c01cab2096374d68aaf8cd",
+    "token_id": "18029782904849284455900269203866425555295256515123953400726457577050840031754",
+    "order_id": "0x195400c4dbde9ba8f47b8517e14df78decdbcf6a067c7a347912c2cca6e3b829",
+    "sold_at": "2026-08-06T15:00:12.955255+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-munich-on-august-6-2026",
+    "price": 0.97,
+    "size": 15.0,
+    "avg_buy_price": 0.51,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.13,
+    "reason": "tier3"
   }
 ]
