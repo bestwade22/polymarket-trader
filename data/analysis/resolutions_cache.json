@@ -1158,6 +1158,12 @@
       "winning_temp": "16\u00b0C",
       "winning_token_id": "81940854780019637941318687068126521821060860551518837997345682736270599204491"
     },
+    "highest-temperature-in-buenos-aires-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Buenos Aires on August 5?",
+      "winning_temp": "16\u00b0C",
+      "winning_token_id": "114469988684032172887228073040096407765053628856402025949075907545176228616216"
+    },
     "highest-temperature-in-buenos-aires-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Buenos Aires on July 1?",
@@ -7799,6 +7805,12 @@
       "title": "Highest temperature in Sao Paulo on August 4?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "93692599759103691970969165517724010282914367252736577280500852281665170873054"
+    },
+    "highest-temperature-in-sao-paulo-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on August 5?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "96278094026832833356115994956141005715813278347621048815550970093990109357318"
     },
     "highest-temperature-in-sao-paulo-on-july-1-2026": {
       "closed": true,
