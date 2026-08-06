@@ -738,6 +738,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "7272153340090528221557705893209547724411947779822047545689708000392562089628"
     },
+    "highest-temperature-in-austin-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on August 5?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "94648289761903877853702580529950164221226930243939923499692947546133325811437"
+    },
     "highest-temperature-in-austin-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on July 1?",
@@ -1967,6 +1973,12 @@
       "title": "Highest temperature in Chicago on August 4?",
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "39827616298843326848887419553115011882136432726453171808853589216282110803769"
+    },
+    "highest-temperature-in-chicago-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on August 5?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "85426214949108009363301058652396735951008143111033633726846945418123360463309"
     },
     "highest-temperature-in-chicago-on-july-1-2026": {
       "closed": true,
@@ -4823,6 +4835,12 @@
       "title": "Highest temperature in Los Angeles on August 4?",
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "99010093923967704215322976431857557201863578818132626696817039388823732809121"
+    },
+    "highest-temperature-in-los-angeles-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on August 5?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "4462714710107861173671577733536447964262313229796104440988434273304923614815"
     },
     "highest-temperature-in-los-angeles-on-july-1-2026": {
       "closed": true,
@@ -8099,6 +8117,12 @@
       "title": "Highest temperature in Seattle on August 4?",
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "45179383119487580410206504462386308941906934764424098254344031641461789109448"
+    },
+    "highest-temperature-in-seattle-on-august-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on August 5?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "44807111874820182592053904888302099880342467570015662618093256698215171800765"
     },
     "highest-temperature-in-seattle-on-july-1-2026": {
       "closed": true,
