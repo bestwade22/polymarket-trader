@@ -1,0 +1,34 @@
+{
+  "run_at": "2026-08-07T17:45:41.060043+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "803852",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 56,
+      "forecast_wu_temp_c": 13
+    },
+    {
+      "event_id": "803851",
+      "city": "Sao Paulo",
+      "market_id": "3372948",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-august-7-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
