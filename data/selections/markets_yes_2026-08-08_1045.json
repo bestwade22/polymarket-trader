@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-08-08T10:45:41.071568+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "804672",
+      "city": "Karachi",
+      "market_id": "3375744",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-august-8-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9955,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 90,
+      "forecast_wu_temp_c": 32,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
