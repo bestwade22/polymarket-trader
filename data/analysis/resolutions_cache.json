@@ -786,6 +786,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "102421331651048565208827653164046146250533319626667685901425489174462355179556"
     },
+    "highest-temperature-in-austin-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on August 7?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "90163482082293877838952928054243340146854456119201953674608506136943721882230"
+    },
     "highest-temperature-in-austin-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on July 1?",
@@ -3635,6 +3641,12 @@
       "title": "Highest temperature in Houston on August 6?",
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "105143565758711710620062362939132709039790322814651821958241434272831562750166"
+    },
+    "highest-temperature-in-houston-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on August 7?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "79957476994691572373809625804551864365043343014667058642596247119960505217571"
     },
     "highest-temperature-in-houston-on-july-1-2026": {
       "closed": true,
@@ -7020,6 +7032,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "59850581482466262472093103207507818376864278231329858209206317818694454606604"
     },
+    "highest-temperature-in-nyc-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on August 7?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "31946561073676236901364023787546777766168617937823155465340549940347152397653"
+    },
     "highest-temperature-in-nyc-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on July 1?",
@@ -7271,6 +7289,12 @@
       "title": "Highest temperature in Panama City on August 6?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "53888626062676724581901679329482503574923090222344506550490190378313052158048"
+    },
+    "highest-temperature-in-panama-city-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on August 7?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "106651042037620434343635053282135795442242728443431670964285215455442224856946"
     },
     "highest-temperature-in-panama-city-on-july-1-2026": {
       "closed": true,
@@ -10055,6 +10079,12 @@
       "title": "Highest temperature in Toronto on August 6?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "96462150526565781801959613580442210671118577689583118182195351464626596457349"
+    },
+    "highest-temperature-in-toronto-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on August 7?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "48557072744733089595463784376746535190677243743212471692035631646997594428378"
     },
     "highest-temperature-in-toronto-on-july-1-2026": {
       "closed": true,
