@@ -2040,6 +2040,12 @@
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "4124453942077650866713335184457600377467363199064140974986716751887105305702"
     },
+    "highest-temperature-in-chicago-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on August 7?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "71888138209892317177303522963721085347057969478594785045521862749677489109363"
+    },
     "highest-temperature-in-chicago-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on July 1?",
@@ -2483,6 +2489,12 @@
       "title": "Highest temperature in Dallas on August 6?",
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "21464865808247650145639198521688126795961666885427001222102746279538426581306"
+    },
+    "highest-temperature-in-dallas-on-august-7-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on August 7?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "13073998435631304578472392256345567060375796775936592568507677690840505800479"
     },
     "highest-temperature-in-dallas-on-july-1-2026": {
       "closed": true,
