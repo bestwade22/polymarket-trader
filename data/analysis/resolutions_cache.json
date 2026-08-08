@@ -4392,6 +4392,12 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "3326520161760240604802377525052174036655282818394262386861722293898424453676"
     },
+    "highest-temperature-in-karachi-on-august-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Karachi on August 8?",
+      "winning_temp": "34\u00b0C",
+      "winning_token_id": "92396458417623941676970624416502098243519036973497097228772892979113919309944"
+    },
     "highest-temperature-in-karachi-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Karachi on July 1?",
@@ -5675,6 +5681,12 @@
       "title": "Highest temperature in Manila on August 7?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "19564547501767227672616595160298516888349007264848902978615669617813857127763"
+    },
+    "highest-temperature-in-manila-on-august-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on August 8?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "111116928254194942774401709370127750626058065234254983013830979430580180596969"
     },
     "highest-temperature-in-manila-on-july-1-2026": {
       "closed": true,
@@ -9485,6 +9497,12 @@
       "title": "Highest temperature in Taipei on August 7?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "74341298372358857804533079724369059588200441242385964416969153547248272068184"
+    },
+    "highest-temperature-in-taipei-on-august-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on August 8?",
+      "winning_temp": "32\u00b0C or higher",
+      "winning_token_id": "69223707041020503762120752904857645570982304089154426487821416237097669219748"
     },
     "highest-temperature-in-taipei-on-july-1-2026": {
       "closed": true,
