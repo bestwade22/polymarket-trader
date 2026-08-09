@@ -496,16 +496,17 @@ def test_yes_price_max_first_skip_ignores_earlier_other_reason(tmp_path: Path):
 
 def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
     """Forecast-compare tables only include skips that have a forecast value."""
-    (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
+    (tmp_path / "markets_yes_2026-08-05_1400.json").write_text(
         json.dumps(
             {
-                "run_at": "2026-07-20T14:00:00+00:00",
+                "run_at": "2026-08-05T14:00:00+00:00",
                 "skipped_bought": [
                     {
                         "city": "London",
+                        "market_id": "m-lon-28",
                         "reason": "spread_max",
                         "group_item_title": "28°C",
-                        "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
                         "selection_price": 0.55,
                         "spread": 0.08,
                         "forecast_temp_c": 28,
@@ -513,17 +514,19 @@ def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
                     },
                     {
                         "city": "Paris",
+                        "market_id": "m-par-31",
                         "reason": "yes_price_max",
                         "group_item_title": "31°C",
-                        "event_slug": "highest-temperature-in-paris-on-july-20-2026",
+                        "event_slug": "highest-temperature-in-paris-on-august-5-2026",
                         "selection_price": 0.72,
                         # no forecast — excluded from forecast_compare tables
                     },
                     {
-                        "city": "London",
+                        "city": "Berlin",
+                        "market_id": "m-ber-28",
                         "reason": "yes_price_max",
                         "group_item_title": "28°C",
-                        "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "event_slug": "highest-temperature-in-berlin-on-august-5-2026",
                         "selection_price": 0.66,
                         "forecast_temp_c": 30,
                         "forecast_temp_f": 86,
@@ -535,34 +538,37 @@ def test_forecast_match_uses_all_skips_vs_event_result(tmp_path: Path):
     analysis = compute_skipped_analysis(
         selections_dir=tmp_path,
         resolutions={
-            "highest-temperature-in-london-on-july-20-2026": "28°C",
-            "highest-temperature-in-paris-on-july-20-2026": "30°C",
+            "highest-temperature-in-london-on-august-5-2026": "28°C",
+            "highest-temperature-in-paris-on-august-5-2026": "30°C",
+            "highest-temperature-in-berlin-on-august-5-2026": "28°C",
         },
         fetch_missing_resolutions=False,
     )
+    assert analysis["forecast_compare"]["since_date"] == "2026-08-04"
+    assert analysis["forecast_compare"]["first_skip_only"] is True
     overall = analysis["forecast_compare"]["overall"]
     assert overall["count"] == 2  # Paris without forecast excluded
     assert overall["resolved"] == 2
-    assert overall["would_have_won"] == 2  # both London skips would win
+    assert overall["would_have_won"] == 2  # London + Berlin buckets match winners
     assert overall["om_match_resolved"] == 2
     assert overall["om_match"] == 1  # 28 matches; 30 misses
     by_reason = {r["group"]: r for r in analysis["forecast_compare"]["by_reason"]}
     assert by_reason["spread_max"]["count"] == 1
     assert by_reason["yes_price_max"]["count"] == 1
-    assert "Paris" not in str(by_reason) or "yes_price_max" in by_reason
 
 
 def test_forecast_match_overall_vs_winning(tmp_path: Path):
-    (tmp_path / "markets_yes_2026-07-20_1400.json").write_text(
+    (tmp_path / "markets_yes_2026-08-05_1400.json").write_text(
         json.dumps(
             {
-                "run_at": "2026-07-20T14:00:00+00:00",
+                "run_at": "2026-08-05T14:00:00+00:00",
                 "skipped_bought": [
                     {
                         "city": "London",
+                        "market_id": "m-lon-28",
                         "reason": "spread_max",
                         "group_item_title": "28°C",
-                        "event_slug": "highest-temperature-in-london-on-july-20-2026",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
                         "selection_price": 0.55,
                         "spread": 0.08,
                         "forecast_temp_c": 28,
@@ -576,13 +582,139 @@ def test_forecast_match_overall_vs_winning(tmp_path: Path):
     )
     analysis = compute_skipped_analysis(
         selections_dir=tmp_path,
-        resolutions={"highest-temperature-in-london-on-july-20-2026": "28°C"},
+        resolutions={"highest-temperature-in-london-on-august-5-2026": "28°C"},
         fetch_missing_resolutions=False,
     )
     overall = analysis["forecast_compare"]["overall"]
     assert overall["om_match_pct"] == 100.0
     assert overall["wu_match_pct"] == 0.0
     assert overall["would_have_won_pct"] == 100.0
+
+
+def test_forecast_match_excludes_before_since_date(tmp_path: Path):
+    """Skips before FORECAST_COMPARE_SINCE_DATE are excluded from forecast compare."""
+    (tmp_path / "markets_yes_2026-08-03_1400.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-03T14:00:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "market_id": "m-old",
+                        "reason": "spread_max",
+                        "group_item_title": "28°C",
+                        "event_slug": "highest-temperature-in-london-on-august-3-2026",
+                        "selection_price": 0.55,
+                        "forecast_temp_c": 28,
+                        "forecast_temp_f": 82,
+                    }
+                ],
+            }
+        )
+    )
+    (tmp_path / "markets_yes_2026-08-04_1415.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-04T14:15:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "Paris",
+                        "market_id": "m-new",
+                        "reason": "yes_price_max",
+                        "group_item_title": "31°C",
+                        "event_slug": "highest-temperature-in-paris-on-august-4-2026",
+                        "selection_price": 0.70,
+                        "forecast_temp_c": 31,
+                        "forecast_temp_f": 88,
+                    }
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={
+            "highest-temperature-in-london-on-august-3-2026": "28°C",
+            "highest-temperature-in-paris-on-august-4-2026": "31°C",
+        },
+        fetch_missing_resolutions=False,
+    )
+    overall = analysis["forecast_compare"]["overall"]
+    assert overall["count"] == 1
+    assert overall["would_have_won"] == 1
+    by_reason = {r["group"]: r for r in analysis["forecast_compare"]["by_reason"]}
+    assert "spread_max" not in by_reason
+    assert by_reason["yes_price_max"]["count"] == 1
+
+
+def test_forecast_match_first_skip_per_market(tmp_path: Path):
+    """Repeated skips of same market: only earliest with forecast since since-date counts."""
+    (tmp_path / "markets_yes_2026-08-05_1415.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-05T14:15:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "market_id": "m-lon-27",
+                        "reason": "yes_price_max",
+                        "group_item_title": "27°C",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
+                        "selection_price": 0.63,
+                        "forecast_temp_c": 27,
+                        "forecast_temp_f": 81,
+                    }
+                ],
+            }
+        )
+    )
+    (tmp_path / "markets_yes_2026-08-05_1445.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-05T14:45:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "market_id": "m-lon-27",
+                        "reason": "yes_price_max",
+                        "group_item_title": "27°C",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
+                        "selection_price": 0.71,
+                        "forecast_temp_c": 28,
+                        "forecast_temp_f": 82,
+                    },
+                    {
+                        "city": "Berlin",
+                        "market_id": "m-ber-30",
+                        "reason": "spread_max",
+                        "group_item_title": "30°C",
+                        "event_slug": "highest-temperature-in-berlin-on-august-5-2026",
+                        "selection_price": 0.50,
+                        "spread": 0.09,
+                        "forecast_temp_c": 30,
+                        "forecast_temp_f": 86,
+                    },
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={
+            "highest-temperature-in-london-on-august-5-2026": "27°C",
+            "highest-temperature-in-berlin-on-august-5-2026": "30°C",
+        },
+        fetch_missing_resolutions=False,
+    )
+    overall = analysis["forecast_compare"]["overall"]
+    # London once (14:15) + Berlin once — not London's 14:45 re-skip
+    assert overall["count"] == 2
+    assert overall["om_match"] == 2  # first London fc=27 matches; Berlin 30 matches
+    # Price band should reflect first London skip (0.63), not 0.71
+    by_price = {r["group"]: r for r in analysis["forecast_compare"]["by_price_band"]}
+    assert by_price["0.60–0.65"]["count"] == 1
+    assert "0.70–0.75" not in by_price
+    assert by_price["0.50–0.55"]["count"] == 1
 
 
 def test_skipped_price_backfill_and_005_bands(tmp_path: Path, monkeypatch):

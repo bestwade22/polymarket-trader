@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import re
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Optional
 
@@ -19,6 +19,10 @@ from src.utils.market_parser import (
 )
 
 logger = logging.getLogger(__name__)
+
+# Forecast compare uses Weather.com / WU scrape paths shipped around this date;
+# earlier skips used a different (non-predictive) primary source.
+FORECAST_COMPARE_SINCE_DATE = date(2026, 8, 4)
 
 
 def _row_selection_price(row: dict[str, Any]) -> Optional[float]:
@@ -417,6 +421,56 @@ def _first_yes_price_max_skip_ids(rows: list[dict[str, Any]]) -> set[int]:
     return first_ids
 
 
+def _row_has_forecast(row: dict[str, Any]) -> bool:
+    return (
+        _parse_float_opt(row.get("forecast_temp_c")) is not None
+        or _parse_float_opt(row.get("forecast_temp_f")) is not None
+        or _parse_float_opt(row.get("forecast_wu_temp_c")) is not None
+        or _parse_float_opt(row.get("forecast_wu_temp_f")) is not None
+    )
+
+
+def _run_at_date(value: Any) -> Optional[date]:
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return dt.date()
+
+
+def _run_at_on_or_after(row: dict[str, Any], since: date) -> bool:
+    run_date = _run_at_date(row.get("_run_at"))
+    return run_date is not None and run_date >= since
+
+
+def _first_forecast_compare_skip_ids(
+    rows: list[dict[str, Any]],
+    *,
+    since: date = FORECAST_COMPARE_SINCE_DATE,
+) -> set[int]:
+    """Earliest skip per market among forecast-bearing rows on/after `since`.
+
+    Example: London 27°C first skipped at 14:15 counts; same market at 14:45 does not.
+    """
+    eligible = [
+        row
+        for row in rows
+        if _row_has_forecast(row) and _run_at_on_or_after(row, since)
+    ]
+    chronological = sorted(eligible, key=lambda r: _run_at_ts(r.get("_run_at")) or 0.0)
+    first_ids: set[int] = set()
+    seen: set[str] = set()
+    for row in chronological:
+        key = _market_dedupe_key(row)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        first_ids.add(id(row))
+    return first_ids
+
+
 def _parse_float_opt(raw: Any) -> Optional[float]:
     if raw is None:
         return None
@@ -676,6 +730,8 @@ def compute_skipped_analysis(
     # Earliest yes_price_max skip per market only (e.g. London 27°C at 14:15 counts;
     # same market again at 14:45 does not). Other skip reasons do not consume the slot.
     first_ypm_skip_ids = _first_yes_price_max_skip_ids(rows)
+    # Forecast compare: on/after FORECAST_COMPARE_SINCE_DATE + first skip per market only.
+    first_fc_skip_ids = _first_forecast_compare_skip_ids(rows)
 
     for row in rows:
         reason = str(row.get("reason") or "unknown")
@@ -731,34 +787,8 @@ def compute_skipped_analysis(
                 )
             except (TypeError, ValueError):
                 delta = None
-        if fc is not None or ff is not None:
-            forecast_n += 1
-        if wu_c is not None or wu_f is not None:
-            wu_n += 1
-        if fc is not None and wu_c is not None:
-            try:
-                diff = abs(float(fc) - float(wu_c))
-                om_wu_diff_sum += diff
-                om_wu_diff_n += 1
-                if diff <= 1.0:
-                    om_wu_agree_1c += 1
-            except (TypeError, ValueError):
-                pass
-        if delta is not None:
-            try:
-                dabs = abs(float(delta))
-            except (TypeError, ValueError):
-                dabs = None
-            if dabs is not None:
-                if whw is True:
-                    delta_win_sum += dabs
-                    delta_win_n += 1
-                elif whw is False:
-                    delta_lose_sum += dabs
-                    delta_lose_n += 1
-
+        # Forecast-compare: since FORECAST_COMPARE_SINCE_DATE + first skip per market only.
         winning = res_map.get(slug or "") if slug else None
-        # Forecast vs actual event result (winning temp) — needs forecast + resolution.
         om_match = forecast_matches_winning_temp(
             winning, forecast_temp_c=fc, forecast_temp_f=ff
         )
@@ -770,9 +800,34 @@ def compute_skipped_analysis(
         spread_band = _spread_band(spread_raw)
         price_band = _buy_price_band(price) if price is not None else "unknown"
 
-        # Forecast-compare tables only include skips that have a recorded forecast.
-        has_forecast = fc is not None or ff is not None or wu_c is not None or wu_f is not None
-        if has_forecast:
+        in_forecast_compare = id(row) in first_fc_skip_ids
+        if in_forecast_compare:
+            if fc is not None or ff is not None:
+                forecast_n += 1
+            if wu_c is not None or wu_f is not None:
+                wu_n += 1
+            if fc is not None and wu_c is not None:
+                try:
+                    diff = abs(float(fc) - float(wu_c))
+                    om_wu_diff_sum += diff
+                    om_wu_diff_n += 1
+                    if diff <= 1.0:
+                        om_wu_agree_1c += 1
+                except (TypeError, ValueError):
+                    pass
+            if delta is not None:
+                try:
+                    dabs = abs(float(delta))
+                except (TypeError, ValueError):
+                    dabs = None
+                if dabs is not None:
+                    if whw is True:
+                        delta_win_sum += dabs
+                        delta_win_n += 1
+                    elif whw is False:
+                        delta_lose_sum += dabs
+                        delta_lose_n += 1
+
             _bump_forecast_group(
                 fc_overall,
                 whw=whw,
@@ -916,6 +971,8 @@ def compute_skipped_analysis(
         # Keep samples alias for older dashboard payloads.
         "samples": recent_skips,
         "forecast_compare": {
+            "since_date": FORECAST_COMPARE_SINCE_DATE.isoformat(),
+            "first_skip_only": True,
             "with_forecast": forecast_n,
             "with_wu": wu_n,
             "om_wu_pairs": om_wu_diff_n,
