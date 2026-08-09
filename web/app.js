@@ -1619,7 +1619,9 @@ function renderSkippedAnalysis(data) {
         <div><span class="summary-label">Avg |Δ| would-lose</span><span class="summary-value">${fc.avg_abs_delta_would_lose_c != null ? `${fc.avg_abs_delta_would_lose_c}°C` : "—"}</span></div>
       </div>
       <p class="muted" style="margin:0.5rem 0 0">
-        Uses only skips that have a recorded forecast (Weather.com and/or WU).
+        Uses skips on/after ${fc.since_date || "2026-08-04"} with a recorded forecast
+        (Weather.com and/or WU), <strong>first skip per market only</strong>
+        (e.g. London 27°C at 14:15 counts; same market at 14:45 does not).
         <strong>Would-win% (result)</strong> = skipped temp bucket equals the event’s actual winning temp.
         <strong>OM / WU match win%</strong> = that forecast falls in the winning bucket.
       </p>
@@ -1627,7 +1629,10 @@ function renderSkippedAnalysis(data) {
     ${renderSkippedSortableTable({
       tableId: "fc-slot",
       title: "Forecast match by local time slot",
-      description: "Skip run_at converted to city local time (15-min bands in the trade window).",
+      description:
+        "First skip per market since " +
+        (fc.since_date || "2026-08-04") +
+        "; run_at → city local time (15-min bands).",
       defaultSortKey: "group",
       columns: fcCols,
       rows: fcSlot || [],
@@ -1636,6 +1641,8 @@ function renderSkippedAnalysis(data) {
     ${renderSkippedSortableTable({
       tableId: "fc-reason",
       title: "Forecast match by skip reason",
+      description:
+        "First skip per market since " + (fc.since_date || "2026-08-04") + " only.",
       defaultSortKey: "count",
       columns: fcCols,
       rows: fcReason || [],
@@ -1644,6 +1651,8 @@ function renderSkippedAnalysis(data) {
     ${renderSkippedSortableTable({
       tableId: "fc-price",
       title: "Forecast match by buy $ band",
+      description:
+        "First skip per market since " + (fc.since_date || "2026-08-04") + " only.",
       defaultSortKey: "group",
       columns: fcCols,
       rows: fcPrice || [],
@@ -1652,6 +1661,8 @@ function renderSkippedAnalysis(data) {
     ${renderSkippedSortableTable({
       tableId: "fc-spread",
       title: "Forecast match by spread band",
+      description:
+        "First skip per market since " + (fc.since_date || "2026-08-04") + " only.",
       defaultSortKey: "group",
       columns: fcCols,
       rows: fcSpread || [],
