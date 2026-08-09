@@ -1,6 +1,6 @@
 {
   "date": "2026-08-09",
-  "refreshed_at": "2026-08-09T22:00:54.611297+00:00",
+  "refreshed_at": "2026-08-09T23:00:54.785631+00:00",
   "bottom_n": 7,
   "rank_pool": "surviving",
   "rank_pool_n": 234,
@@ -12,11 +12,11 @@
   "timezones": [
     "India (UTC+5:30)",
     "Malaysia (UTC+8)",
-    "Taiwan (UTC+8)",
     "South Africa (UTC+2)",
     "Japan (UTC+9)",
     "NZ (UTC+12/+13)",
-    "China (UTC+8)"
+    "China (UTC+8)",
+    "Argentina (UTC-3)"
   ],
   "detail": {
     "India (UTC+5:30)": {
@@ -24,10 +24,6 @@
       "win_summary_denom": 1
     },
     "Malaysia (UTC+8)": {
-      "win_plus_sold_win_pct": 0.0,
-      "win_summary_denom": 1
-    },
-    "Taiwan (UTC+8)": {
       "win_plus_sold_win_pct": 0.0,
       "win_summary_denom": 1
     },
@@ -46,6 +42,10 @@
     "China (UTC+8)": {
       "win_plus_sold_win_pct": 38.9,
       "win_summary_denom": 18
+    },
+    "Argentina (UTC-3)": {
+      "win_plus_sold_win_pct": 40.0,
+      "win_summary_denom": 5
     }
   }
 }
