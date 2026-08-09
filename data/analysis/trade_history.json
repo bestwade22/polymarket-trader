@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-09T15:00:32.229195+00:00",
+  "synced_at": "2026-08-09T16:00:32.404706+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -46807,7 +46807,7 @@
         "resolved": 1409,
         "would_have_won": 1386,
         "would_have_lost": 23,
-        "unknown_outcome": 20,
+        "unknown_outcome": 16,
         "avg_price": 0.9798,
         "total_pnl_if_bought": 54.43,
         "pnl_n": 1409,
@@ -46942,13 +46942,13 @@
         "with_temp": 243,
         "with_slug": 243,
         "with_price": 243,
-        "resolved": 240,
-        "would_have_won": 235,
+        "resolved": 241,
+        "would_have_won": 236,
         "would_have_lost": 5,
-        "unknown_outcome": 3,
+        "unknown_outcome": 2,
         "avg_price": 0.9738,
-        "total_pnl_if_bought": 12.93,
-        "pnl_n": 240,
+        "total_pnl_if_bought": 13.28,
+        "pnl_n": 241,
         "would_have_won_pct": 97.9,
         "filter_costly": true,
         "filter_helpful": false
@@ -48265,7 +48265,7 @@
   },
   "timezone_skip_denylist": {
     "date": "2026-08-09",
-    "refreshed_at": "2026-08-09T15:00:58.152116+00:00",
+    "refreshed_at": "2026-08-09T16:00:56.389444+00:00",
     "bottom_n": 7,
     "rank_pool": "surviving",
     "rank_pool_n": 234,
