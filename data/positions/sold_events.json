@@ -10534,5 +10534,21 @@
     "floor_price": 0.95,
     "current_mid": 0.2415,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xa5028bc0e02225aac8df4b04a2d4911f5dd70ef055d7c8e850ad3b3b586bb525",
+    "token_id": "83301408241917163351193361879767716341311571148435760729897590126281452233879",
+    "order_id": "0x01475da53dfce1c8056f64f19dce3e2ae19464f1335b28987444a764f1950eb4",
+    "sold_at": "2026-08-09T09:00:12.785579+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-taipei-on-august-9-2026",
+    "price": 0.97,
+    "size": 15.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier3",
+    "floor_price": 0.97,
+    "current_mid": 0.367,
+    "reason": "tier3"
   }
 ]
