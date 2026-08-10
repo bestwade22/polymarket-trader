@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-08-10T11:16:10.624129+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "814305",
+      "city": "Ankara",
+      "market_id": "3415624",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 86,
+      "forecast_wu_temp_c": 30,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "814308",
+      "city": "Tel Aviv",
+      "market_id": "3415656",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "814320",
+      "city": "Moscow",
+      "market_id": "3415709",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "814321",
+      "city": "Istanbul",
+      "market_id": "3415721",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "814323",
+      "city": "Helsinki",
+      "market_id": "3415744",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 73,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "814324",
+      "city": "Jeddah",
+      "market_id": "3415759",
+      "group_item_title": "41\u00b0C or higher",
+      "event_slug": "highest-temperature-in-jeddah-on-august-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 109,
+      "forecast_temp_c": 43,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 105,
+      "forecast_wu_temp_c": 41,
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
