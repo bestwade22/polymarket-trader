@@ -2118,6 +2118,12 @@
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "43065605419819138123467634746183952411076478586934907786285581608941629084829"
     },
+    "highest-temperature-in-chicago-on-august-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on August 9?",
+      "winning_temp": "84-85\u00b0F",
+      "winning_token_id": "78653093436674853728478701191389791053330369125257010692650505335151544531295"
+    },
     "highest-temperature-in-chicago-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on July 1?",
@@ -2849,6 +2855,12 @@
       "title": "Highest temperature in Denver on August 8?",
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "37694506872257277987599834313471313901148752536589896397621145885827560855804"
+    },
+    "highest-temperature-in-denver-on-august-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on August 9?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "42647292906553624835911925650651597235591953851475389008105836850951204953315"
     },
     "highest-temperature-in-denver-on-july-1-2026": {
       "closed": true,
@@ -5219,6 +5231,12 @@
       "title": "Highest temperature in Los Angeles on August 8?",
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "96984105395109086393220008722947108294214774077416334069597818935923792995926"
+    },
+    "highest-temperature-in-los-angeles-on-august-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on August 9?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "64677917391168611726700352208740627720591969862314892007936243664263390813963"
     },
     "highest-temperature-in-los-angeles-on-july-1-2026": {
       "closed": true,
@@ -8286,6 +8304,12 @@
       "winning_temp": "67\u00b0F or below",
       "winning_token_id": "64586681627775358940611098591855419585295305197988581891563640035204813958155"
     },
+    "highest-temperature-in-san-francisco-on-august-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on August 9?",
+      "winning_temp": "75\u00b0F or below",
+      "winning_token_id": "27685133483659523465921579622115569479464126160559108918872802309849468237427"
+    },
     "highest-temperature-in-san-francisco-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on July 1?",
@@ -8807,6 +8831,12 @@
       "title": "Highest temperature in Seattle on August 8?",
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "43077838095383407448376076427829174810948665732904344311209646010562342753228"
+    },
+    "highest-temperature-in-seattle-on-august-9-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on August 9?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "7318413210311798742274581289009763863498788794988576329479751663145524752742"
     },
     "highest-temperature-in-seattle-on-july-1-2026": {
       "closed": true,
