@@ -46,7 +46,7 @@ let cityTimezones = {};
 let filterSweepData = null;
 let skippedAnalysisData = null;
 /** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
-let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.6, spread_max: 0.05, bottom_n: 7 };
+let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.6, spread_max: 0.08, bottom_n: 7 };
 let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
@@ -1809,7 +1809,7 @@ async function loadData() {
     skipStackFilters = {
       yes_price_min: denylist.yes_price_min ?? 0.45,
       yes_price_max: denylist.yes_price_max ?? 0.6,
-      spread_max: denylist.spread_max ?? 0.05,
+      spread_max: denylist.spread_max ?? 0.08,
       bottom_n: denylist.bottom_n ?? 7,
     };
   }
