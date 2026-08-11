@@ -48,7 +48,7 @@ def _spread_ok_live(rec: TradeRecord) -> bool:
     """Match live: missing spread allowed; otherwise require spread < SPREAD_MAX."""
     if rec.spread is None:
         return True
-    spread_max = float(getattr(settings, "spread_max", 0.05) or 0.05)
+    spread_max = float(getattr(settings, "spread_max", 0.08) or 0.08)
     return float(rec.spread) < spread_max
 
 

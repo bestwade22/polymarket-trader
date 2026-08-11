@@ -115,7 +115,7 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.05 + buy>=0.45`: skip bottom 7 city-timezone groups by win summary, require selection price `>= 0.45` and `< YES_PRICE_MAX`, and require spread `< 0.05`. Skip the city when the two leaders disagree.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45`: skip bottom 7 city-timezone groups by win summary, require selection price `>= 0.45` and `< YES_PRICE_MAX`, and require spread `< 0.08`. Skip the city when the two leaders disagree.
 
 **Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → position check (only survivors) → refresh selected market → re-check `YES_PRICE_MAX` and `SPREAD_MAX` → place order at `ORDER_PRICE_SOURCE`.
 
@@ -139,7 +139,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
 | `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack |
-| `SPREAD_MAX` | `0.05` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
+| `SPREAD_MAX` | `0.08` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
 | `SKIP_ON_EDGE` | `false` | Optional: skip when all cooler temp buckets had Yes &lt; 1% at select time |
 | `CITY_SKIP_ENABLED` | `true` | Skip markets in the worst city-timezone win summary groups |
 | `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary city timezones to skip |

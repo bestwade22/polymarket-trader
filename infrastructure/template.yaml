@@ -24,7 +24,7 @@ Parameters:
     Default: '0.45'
   SpreadMax:
     Type: String
-    Default: '0.05'
+    Default: '0.08'
   SkipOnEdge:
     Type: String
     Default: 'false'

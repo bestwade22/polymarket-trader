@@ -54,7 +54,7 @@ jobs:
               TradingWindowEndHour=16:00 \
               ShareCount=10 \
               YesPriceMin=0.45 \
-              SpreadMax=0.05 \
+              SpreadMax=0.08 \
               OrderExpiryMinutes=25 \
               StopLossPct=50 \
               StopLossPctFloor=10 \
