@@ -4590,6 +4590,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "21108965184514867136347239129383994876727108901395477335179617028116855700930"
     },
+    "highest-temperature-in-jinan-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on August 11?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "11028682956584152953386175175824867083841165096403333198941432270741015943357"
+    },
     "highest-temperature-in-jinan-on-august-8-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on August 8?",
@@ -5969,6 +5975,12 @@
       "title": "Highest temperature in Manila on August 10?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "52916602067226000494754467308051606428616532499719362833420542359945658435037"
+    },
+    "highest-temperature-in-manila-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on August 11?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "30238274747592298696783558808213185454112971695122808665028285371187904231635"
     },
     "highest-temperature-in-manila-on-august-2-2026": {
       "closed": true,
@@ -9780,6 +9792,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "69932322046566080374632525791480579637943319730968004260844153095677900093276"
     },
+    "highest-temperature-in-singapore-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on August 11?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "103314143067093636357582102215461235496339323853158272288579000134750767190695"
+    },
     "highest-temperature-in-singapore-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Singapore on August 2?",
@@ -10007,6 +10025,12 @@
       "title": "Highest temperature in Taipei on August 10?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "21575810309133503336637317506034103410131273814997293534731473687812966561596"
+    },
+    "highest-temperature-in-taipei-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on August 11?",
+      "winning_temp": "35\u00b0C",
+      "winning_token_id": "54530705775834415806090646400283913921534884765023016107762333061415682252053"
     },
     "highest-temperature-in-taipei-on-august-2-2026": {
       "closed": true,
@@ -11561,6 +11585,12 @@
       "title": "Highest temperature in Zhengzhou on August 10?",
       "winning_temp": "32\u00b0C or higher",
       "winning_token_id": "51571721355787423331962589264493222869058369768508889384134121637511558177043"
+    },
+    "highest-temperature-in-zhengzhou-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on August 11?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "45246593029880149803889646690921000792411191503553868665127785421748666855439"
     },
     "highest-temperature-in-zhengzhou-on-august-8-2026": {
       "closed": true,
