@@ -7045,5 +7045,32 @@
     "bought_at": "2026-08-11T13:46:54.714356+00:00",
     "price": 0.58,
     "size": 15
+  },
+  {
+    "event_id": "825080",
+    "market_id": "3472968",
+    "strategy": "highest_yes",
+    "order_id": "0x54d495491d878ccac60d6dca3eda18db0659f57e361d873e8f183b3ed157bbec",
+    "bought_at": "2026-08-11T19:16:49.072601+00:00",
+    "price": 0.52,
+    "size": 10
+  },
+  {
+    "event_id": "825084",
+    "market_id": "3473013",
+    "strategy": "highest_yes",
+    "order_id": "0xec1eb130e83b2dbade78e8c0e879e611abf8a33d16f7ff9939e882368dd78fb2",
+    "bought_at": "2026-08-11T19:16:50.179741+00:00",
+    "price": 0.56,
+    "size": 10
+  },
+  {
+    "event_id": "825086",
+    "market_id": "3473035",
+    "strategy": "highest_yes",
+    "order_id": "0x268a474c1b8b9c47675037527eafecc868fb5d2b41efaaa9690fb511383746c7",
+    "bought_at": "2026-08-11T19:16:51.068857+00:00",
+    "price": 0.53,
+    "size": 10
   }
 ]
