@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-08-12T14:15:40.991840+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "825621",
+      "city": "London",
+      "market_id": "3474611",
+      "group_item_title": "31\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 15.0,
+      "held_market_id": "3474611",
+      "held_group_item_title": "31\u00b0C",
+      "target_share_count": 15,
+      "selection_price": 0.565,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
