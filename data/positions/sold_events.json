@@ -10758,5 +10758,21 @@
     "floor_price": 0.97,
     "current_mid": 0.105,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x18868ff48934510bacddf03fa9d732f8dc060d424ece736db7150e0eb79490be",
+    "token_id": "115562022807564570360354314699507076437847947420269708706274632092740715565310",
+    "order_id": "0xb7998543af03137242c9cb4c037564e6ee48945f47c99ae90bccb40ada8062c3",
+    "sold_at": "2026-08-12T08:01:35.252734+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-singapore-on-august-12-2026",
+    "price": 0.95,
+    "size": 10.0,
+    "avg_buy_price": 0.48,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.91,
+    "reason": "tier2"
   }
 ]
