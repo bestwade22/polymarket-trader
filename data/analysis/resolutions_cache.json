@@ -834,6 +834,12 @@
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "32247867135320390739689899986831053797193629422852173446366258917285250552396"
     },
+    "highest-temperature-in-austin-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on August 11?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "88152037666893588484929175964907010240927994507735916151153337495241703724556"
+    },
     "highest-temperature-in-austin-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on August 2?",
@@ -2604,6 +2610,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "2438038758932324720735729169973876070604269177299741059155213095151280496597"
     },
+    "highest-temperature-in-dallas-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on August 11?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "109650565644458413299722002766326780971449177168267228040041770739214047423888"
+    },
     "highest-temperature-in-dallas-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on August 2?",
@@ -3846,6 +3858,12 @@
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "111191249178427596084080725190862213762487803376891666204438055476817593216539"
     },
+    "highest-temperature-in-houston-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on August 11?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "75261754037476932131980484494003212400094051413123331955508708495737802181632"
+    },
     "highest-temperature-in-houston-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Houston on August 2?",
@@ -5087,6 +5105,12 @@
       "title": "Highest temperature in London on August 10?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "24106271091074232745259560802952417817286980931812839676017365120585106492451"
+    },
+    "highest-temperature-in-london-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on August 11?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "32757646869726090962528616594949579700642961578189186050146177774007035199303"
     },
     "highest-temperature-in-london-on-august-2-2026": {
       "closed": true,
@@ -10823,6 +10847,12 @@
       "title": "Highest temperature in Toronto on August 10?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "102202845235907526150165845976126692334915142661661180348660948857579911963560"
+    },
+    "highest-temperature-in-toronto-on-august-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on August 11?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "35101918615247566957065720296089595238027791060576537160634809341375802092631"
     },
     "highest-temperature-in-toronto-on-august-2-2026": {
       "closed": true,
