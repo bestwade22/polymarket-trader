@@ -10774,5 +10774,21 @@
     "floor_price": 0.95,
     "current_mid": 0.91,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x52c37678a058c11962fddc1444edf13ab8cceca816d5c92035c10e97da8c9e41",
+    "token_id": "13917398563380168267923189936681816958353950510516695431048599061172248711396",
+    "order_id": "0x6534235a17de672139f8914b4b885dcad2e4a3c0f2c94403538053823cdcb99b",
+    "sold_at": "2026-08-12T12:00:13.325348+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-jeddah-on-august-12-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.705,
+    "reason": "tier1"
   }
 ]
