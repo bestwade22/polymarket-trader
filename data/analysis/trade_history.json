@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-14T04:00:33.228846+00:00",
+  "synced_at": "2026-08-14T05:00:32.615458+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -47441,7 +47441,7 @@
     "would_have_won_pct": 79.5,
     "total_pnl_if_bought": 1039.33,
     "pnl_n": 6017,
-    "resolutions_fetched": 1,
+    "resolutions_fetched": 0,
     "by_reason": [
       {
         "reason": "yes_price_max",
@@ -49269,7 +49269,7 @@
   },
   "timezone_skip_denylist": {
     "date": "2026-08-14",
-    "refreshed_at": "2026-08-14T04:00:54.623578+00:00",
+    "refreshed_at": "2026-08-14T05:00:55.880016+00:00",
     "bottom_n": 7,
     "rank_pool": "surviving",
     "rank_pool_n": 323,
