@@ -11062,5 +11062,21 @@
     "floor_price": 0.93,
     "current_mid": 0.5,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x8951311347d1a197716621d16e5849e93600c2d34debe50f0e5d42c444b8ad3c",
+    "token_id": "72886658728689973822931466091490855450196059468815041177290880016116266985222",
+    "order_id": "0x55f923e5f3e0ee829b7cf49de1ff259cfd848c1186188047d746acacf2f4f6b9",
+    "sold_at": "2026-08-14T21:00:56.604428+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-austin-on-august-14-2026",
+    "price": 0.95,
+    "size": 15.0,
+    "avg_buy_price": 0.48,
+    "tier": "tier2",
+    "floor_price": 0.95,
+    "current_mid": 0.215,
+    "reason": "tier2"
   }
 ]
