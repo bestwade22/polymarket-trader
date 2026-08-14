@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-08-14T14:15:42.011801+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "837150",
+      "city": "London",
+      "market_id": "3535269",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-august-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 93,
+      "forecast_wu_temp_c": 34,
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
