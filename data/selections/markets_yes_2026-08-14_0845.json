@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-08-14T08:45:34.568879+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "837161",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 91,
+      "forecast_temp_c": 33,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 89,
+      "forecast_wu_temp_c": 32
+    }
+  ]
+}
