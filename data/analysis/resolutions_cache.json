@@ -324,6 +324,12 @@
       "winning_temp": "27\u00b0C",
       "winning_token_id": "54997421267127443907109923440453366891034727488599985898529939961807815524260"
     },
+    "highest-temperature-in-ankara-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Ankara on August 15?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "51498868805260043301195239138131152860517437361309780544780646566002138539350"
+    },
     "highest-temperature-in-ankara-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Ankara on August 2?",
@@ -4368,6 +4374,12 @@
       "winning_temp": "27\u00b0C",
       "winning_token_id": "39826290537360635057501485488948160256167966317507692793447751482615295063299"
     },
+    "highest-temperature-in-istanbul-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Istanbul on August 15?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "89207793854182667085121283646855750216700971586705368335657817348398069080198"
+    },
     "highest-temperature-in-istanbul-on-august-2-2026": {
       "closed": true,
       "title": "Highest temperature in Istanbul on August 2?",
@@ -4649,6 +4661,12 @@
       "title": "Highest temperature in Jeddah on August 14?",
       "winning_temp": "39\u00b0C",
       "winning_token_id": "114556905393884194967262420350177535712544732752305333497666030618986059632902"
+    },
+    "highest-temperature-in-jeddah-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jeddah on August 15?",
+      "winning_temp": "40\u00b0C or higher",
+      "winning_token_id": "15685134657975591807882442396313198430374566017508700418652748599842246001282"
     },
     "highest-temperature-in-jeddah-on-august-2-2026": {
       "closed": true,
@@ -7499,6 +7517,12 @@
       "title": "Highest temperature in Moscow on August 14?",
       "winning_temp": "18\u00b0C",
       "winning_token_id": "71085459520999954609361710948800547787680454421112248718982534203599589585584"
+    },
+    "highest-temperature-in-moscow-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on August 15?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "14620542432326724231875650096432999846942558295204974698934237013172587967747"
     },
     "highest-temperature-in-moscow-on-august-2-2026": {
       "closed": true,
@@ -11075,6 +11099,12 @@
       "title": "Highest temperature in Tel Aviv on August 14?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "246975118487435126611185264882871887638201250628627873016204122709478092860"
+    },
+    "highest-temperature-in-tel-aviv-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tel Aviv on August 15?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "50929702677976661563448287404397847261249184316240465724495122253365937477334"
     },
     "highest-temperature-in-tel-aviv-on-august-2-2026": {
       "closed": true,
