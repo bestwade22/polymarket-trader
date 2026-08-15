@@ -4920,6 +4920,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "5443776312056235772523380356877886708402483548843272323628275134931482807863"
     },
+    "highest-temperature-in-jinan-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on August 15?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "110583451374549490194263768820208798346598756960252947790797433281066910253103"
+    },
     "highest-temperature-in-jinan-on-august-8-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on August 8?",
@@ -12419,6 +12425,12 @@
       "title": "Highest temperature in Zhengzhou on August 14?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "22403505016710839304240878126587591026200050409785754173678638944113582716332"
+    },
+    "highest-temperature-in-zhengzhou-on-august-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on August 15?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "109942398493772698125042218466743432098682701555624378517606709493799343592297"
     },
     "highest-temperature-in-zhengzhou-on-august-8-2026": {
       "closed": true,
