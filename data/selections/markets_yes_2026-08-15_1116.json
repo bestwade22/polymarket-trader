@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-08-15T11:16:54.454725+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "842138",
+      "city": "Ankara",
+      "market_id": "3558048",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-august-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 79,
+      "forecast_wu_temp_c": 26,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "842142",
+      "city": "Tel Aviv",
+      "market_id": "3558096",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-august-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "842165",
+      "city": "Istanbul",
+      "market_id": "3558271",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-august-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "842168",
+      "city": "Helsinki",
+      "market_id": "3558305",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-august-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "842170",
+      "city": "Jeddah",
+      "market_id": "3558331",
+      "group_item_title": "40\u00b0C or higher",
+      "event_slug": "highest-temperature-in-jeddah-on-august-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 109,
+      "forecast_temp_c": 43,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 105,
+      "forecast_wu_temp_c": 41,
+      "forecast_delta_c": 3.0
+    },
+    {
+      "event_id": "842156",
+      "city": "Moscow",
+      "market_id": "3558254",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-august-15-2026",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.08,
+      "selection_price": 0.505
+    }
+  ]
+}
