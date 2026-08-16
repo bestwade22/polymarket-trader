@@ -1,6 +1,6 @@
 {
   "date": "2026-08-16",
-  "refreshed_at": "2026-08-16T03:01:41.703701+00:00",
+  "refreshed_at": "2026-08-16T04:01:05.167801+00:00",
   "bottom_n": 7,
   "rank_pool": "surviving",
   "rank_pool_n": 327,
@@ -16,7 +16,7 @@
     "Malaysia (UTC+8)",
     "NZ (UTC+12/+13)",
     "Argentina (UTC-3)",
-    "China (UTC+8)"
+    "UK (UTC+0/+1)"
   ],
   "detail": {
     "India (UTC+5:30)": {
@@ -43,9 +43,9 @@
       "win_plus_sold_win_pct": 33.3,
       "win_summary_denom": 6
     },
-    "China (UTC+8)": {
-      "win_plus_sold_win_pct": 36.4,
-      "win_summary_denom": 33
+    "UK (UTC+0/+1)": {
+      "win_plus_sold_win_pct": 36.0,
+      "win_summary_denom": 25
     }
   }
 }
