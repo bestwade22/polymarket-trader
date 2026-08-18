@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-18T01:00:45.000947+00:00",
+  "synced_at": "2026-08-18T02:00:36.891335+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -49961,7 +49961,7 @@
   },
   "timezone_skip_denylist": {
     "date": "2026-08-18",
-    "refreshed_at": "2026-08-18T01:01:10.710639+00:00",
+    "refreshed_at": "2026-08-18T02:01:02.393075+00:00",
     "bottom_n": 7,
     "rank_pool": "surviving",
     "rank_pool_n": 331,
