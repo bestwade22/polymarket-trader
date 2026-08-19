@@ -1,0 +1,63 @@
+{
+  "run_at": "2026-08-19T17:45:49.174071+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "868527",
+      "city": "Sao Paulo",
+      "market_id": "3687045",
+      "groupItemTitle": "32\u00b0C",
+      "yes_price": 0.595,
+      "yes_token_id": "6577127707328395710218826791108696852260127102008136160872026217360466386035",
+      "buy_price": 0.62,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 91,
+      "forecast_temp_c": 33,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 91,
+      "forecast_wu_temp_c": 33,
+      "on_edge": false,
+      "order_price": 0.595,
+      "selection_price": 0.595,
+      "gamma_yes_price": 0.505,
+      "best_bid": 0.57,
+      "best_ask": 0.62,
+      "spread": 0.05,
+      "clob_buy_price": 0.62,
+      "last_trade_price": 0.56,
+      "midpoint": 0.595,
+      "outcomePrices": [
+        0.505,
+        0.495
+      ],
+      "competitive": 0.9999750006249843,
+      "event_slug": "highest-temperature-in-sao-paulo-on-august-19-2026",
+      "open_interest": 7842.333189,
+      "runner_up_yes": 0.275,
+      "yes_gap": 0.23,
+      "top_yes": 0.505,
+      "order_status": "live",
+      "order_id": "0x88ef4257de66acfa85bb2fd06b7f3cb63b9314d85e22393b5a04459c21597ebb",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-08-19T18:10:48+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "868528",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 65,
+      "forecast_wu_temp_c": 18
+    }
+  ]
+}
