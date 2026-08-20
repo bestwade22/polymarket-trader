@@ -1,0 +1,63 @@
+{
+  "run_at": "2026-08-20T05:46:47.138923+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "869102",
+      "city": "Busan",
+      "market_id": "3689133",
+      "groupItemTitle": "33\u00b0C",
+      "yes_price": 0.475,
+      "yes_token_id": "85362823764279987713900690646623174057465030613011804843915918287431538014158",
+      "buy_price": 0.49,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 93,
+      "forecast_wu_temp_c": 34,
+      "on_edge": true,
+      "order_price": 0.475,
+      "selection_price": 0.475,
+      "gamma_yes_price": 0.815,
+      "best_bid": 0.46,
+      "best_ask": 0.49,
+      "spread": 0.03,
+      "clob_buy_price": 0.49,
+      "last_trade_price": 0.69,
+      "midpoint": 0.475,
+      "outcomePrices": [
+        0.815,
+        0.185
+      ],
+      "competitive": 0.9097318565352862,
+      "event_slug": "highest-temperature-in-busan-on-august-20-2026",
+      "open_interest": 14147.227023,
+      "runner_up_yes": 0.285,
+      "yes_gap": 0.53,
+      "top_yes": 0.815,
+      "order_status": "live",
+      "order_id": "0x607710b78b80b7fe3d6d9bbde2b6be78f66662c0c78ee94ac80b12ff3237c30a",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-08-20T06:11:46+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "869079",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 90,
+      "forecast_wu_temp_c": 32
+    }
+  ]
+}
