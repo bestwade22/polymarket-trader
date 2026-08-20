@@ -1314,6 +1314,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "43836104753478698140307346876371178308457061426067086610927060429530345536394"
     },
+    "highest-temperature-in-beijing-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Beijing on August 20?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "50955642122240192853102843598855572910678990464286628363740346586024426922717"
+    },
     "highest-temperature-in-beijing-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on July 1?",
@@ -2226,6 +2232,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "102287368258211803540463152475703840567478769183354224336568250536702195469181"
     },
+    "highest-temperature-in-chengdu-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chengdu on August 20?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "88699644858370944796144295602795551571075896288730189074148168294202880001063"
+    },
     "highest-temperature-in-chengdu-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Chengdu on July 1?",
@@ -2771,6 +2783,12 @@
       "title": "Highest temperature in Chongqing on August 19?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "74898706451810844629157577291984823976382409185117709791941812837549142751894"
+    },
+    "highest-temperature-in-chongqing-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chongqing on August 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "89821150092883171560450997791378296877766373939167755939382213184134489675603"
     },
     "highest-temperature-in-chongqing-on-july-1-2026": {
       "closed": true,
@@ -3623,6 +3641,12 @@
       "title": "Highest temperature in Guangzhou on August 19?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "37198863300100580163506096442471369534584815649233901873515120505240445792497"
+    },
+    "highest-temperature-in-guangzhou-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Guangzhou on August 20?",
+      "winning_temp": "35\u00b0C",
+      "winning_token_id": "97626471380859069973148214332410623668776027879724718783923775880237400241820"
     },
     "highest-temperature-in-guangzhou-on-july-1-2026": {
       "closed": true,
@@ -5400,6 +5424,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "111128073215636809713383576792610788492606882353194507426178742196317025015285"
     },
+    "highest-temperature-in-jinan-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on August 20?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "107860923611216044420452896685931687778274079436360669228124360331753599642681"
+    },
     "highest-temperature-in-jinan-on-august-8-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on August 8?",
@@ -7025,6 +7055,12 @@
       "title": "Highest temperature in Manila on August 2?",
       "winning_temp": "30\u00b0C",
       "winning_token_id": "111076985867973275582578813042555610578636824753871886270109284791171932135612"
+    },
+    "highest-temperature-in-manila-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on August 20?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "57214106787253792783012803516276951892562500224962801574707537492401715681611"
     },
     "highest-temperature-in-manila-on-august-3-2026": {
       "closed": true,
@@ -9738,6 +9774,12 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "64080004448311904124860019487703266308440321390886719201974920843359013376599"
     },
+    "highest-temperature-in-qingdao-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Qingdao on August 20?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "47441531196092016312229965494267836402609280807380503989436668964178337224203"
+    },
     "highest-temperature-in-qingdao-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Qingdao on July 1?",
@@ -11064,6 +11106,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "262050684299968250132377466843547750445729977764847866677140973680820022716"
     },
+    "highest-temperature-in-shanghai-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shanghai on August 20?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "17940083221999525145671653113930792091993198111376792859000863340227336726569"
+    },
     "highest-temperature-in-shanghai-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Shanghai on July 1?",
@@ -11255,6 +11303,12 @@
       "title": "Highest temperature in Shenzhen on August 19?",
       "winning_temp": "35\u00b0C",
       "winning_token_id": "4974080244815289840528943767320815852401865497643356090624504504991688738817"
+    },
+    "highest-temperature-in-shenzhen-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Shenzhen on August 20?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "23075569497222047485314537851459225513881391213081296169744360854254337773471"
     },
     "highest-temperature-in-shenzhen-on-july-1-2026": {
       "closed": true,
@@ -11513,6 +11567,12 @@
       "title": "Highest temperature in Singapore on August 2?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "60866682444665278132944905389882195140066471426556649944976610801622198659469"
+    },
+    "highest-temperature-in-singapore-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on August 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "94301832086225137512149950997788801362509763336048497146657793011219697758090"
     },
     "highest-temperature-in-singapore-on-august-3-2026": {
       "closed": true,
@@ -11795,6 +11855,12 @@
       "title": "Highest temperature in Taipei on August 2?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "40062868550998573729993685849365500887764018209165456486292132548597460564580"
+    },
+    "highest-temperature-in-taipei-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on August 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "67419402881923555532004191141592845377781164246359308170459872903148176596868"
     },
     "highest-temperature-in-taipei-on-august-3-2026": {
       "closed": true,
@@ -13332,6 +13398,12 @@
       "winning_temp": "36\u00b0C",
       "winning_token_id": "104620704101832980793960583371395786813710123210263157408359114982699788990190"
     },
+    "highest-temperature-in-wuhan-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Wuhan on August 20?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "89943598647377538893713873232566807195169174976919218863168837452939147383809"
+    },
     "highest-temperature-in-wuhan-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Wuhan on July 1?",
@@ -13571,6 +13643,12 @@
       "title": "Highest temperature in Zhengzhou on August 19?",
       "winning_temp": "28\u00b0C",
       "winning_token_id": "109548848952275345338037623522939831704244303826518305661053041415517925138394"
+    },
+    "highest-temperature-in-zhengzhou-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on August 20?",
+      "winning_temp": "32\u00b0C or higher",
+      "winning_token_id": "95500938196847913559274693691029785375078453214939453723071104475149907645580"
     },
     "highest-temperature-in-zhengzhou-on-august-8-2026": {
       "closed": true,
