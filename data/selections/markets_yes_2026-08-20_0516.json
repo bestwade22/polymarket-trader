@@ -1,0 +1,32 @@
+{
+  "run_at": "2026-08-20T05:16:03.687016+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "869079",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 92,
+      "forecast_wu_temp_c": 33
+    },
+    {
+      "event_id": "869102",
+      "city": "Busan",
+      "market_id": "3689133",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-busan-on-august-20-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
