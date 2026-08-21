@@ -3408,6 +3408,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "63452533128046195439147885309223301616038778773405185938843375704969451738800"
     },
+    "highest-temperature-in-denver-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on August 20?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "70886571864697647942463075674988540112264237040488697591970892958495047638938"
+    },
     "highest-temperature-in-denver-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Denver on August 3?",
@@ -7409,6 +7415,12 @@
       "title": "Highest temperature in Mexico City on August 19?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "40153431352127247000413558022947533431454173027711352953212897161700170935368"
+    },
+    "highest-temperature-in-mexico-city-on-august-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on August 20?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "100110875076249253433839729405225215235551839723136329126854156311316729091572"
     },
     "highest-temperature-in-mexico-city-on-august-6-2026": {
       "closed": true,
