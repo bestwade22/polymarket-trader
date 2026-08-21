@@ -11398,5 +11398,21 @@
     "floor_price": 0.93,
     "current_mid": 0.965,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xce4f1205fe7296a70a63a7a2b98961340fb5b7470ca83759639bcea13869ad03",
+    "token_id": "13736580068614581339145766497269248209534663792008146963258515953732454327233",
+    "order_id": "0x4b60a279ac364095ffbb2bfd79f2a8fe52b5ae18c789accbccea162e7828752a",
+    "sold_at": "2026-08-21T07:00:15.802219+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-shenzhen-on-august-21-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.515,
+    "reason": "tier1"
   }
 ]
