@@ -81,13 +81,13 @@ Parameters:
     Default: '18:00'
   SellWinTier1Price:
     Type: String
-    Default: '0.91'
+    Default: '0.94'
   SellWinTier2Price:
     Type: String
-    Default: '0.93'
+    Default: '0.96'
   SellWinTier3Price:
     Type: String
-    Default: '0.95'
+    Default: '0.98'
 
 Conditions:
   StopLossScheduleIsEnabled: !Equals [!Ref StopLossScheduleEnabled, 'true']

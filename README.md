@@ -7,7 +7,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 - **Daily fetch** (`fetch-daily`): discovers today's highest-temp events via Gamma API, enriches with city timezone (API Ninjas) and local noon UTC window.
 - **Hourly trade** (`trade-hourly`): trades events inside the local trading window (default **14:00–16:00**). After position checks, refreshes each event's markets from the Gamma API and CLOB buy prices before selection and order placement.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **4:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
-- **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **91¢ / 93¢ / 95¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
+- **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **94¢ / 96¢ / 98¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy only when **CLOB midpoint** and **Gamma Yes %** agree on the same top market, and that market's selection price is below `YES_PRICE_MAX` (default 0.60); skip if they disagree.
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
@@ -160,7 +160,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SELL_WIN_SCHEDULE_ENABLED` | `true` | Enable/disable the AWS sell-win scheduler |
 | `SELL_WIN_WINDOW_START` | `15:00` | Sell-win local window start (city timezone) |
 | `SELL_WIN_WINDOW_END` | `18:00` | Sell-win local window end (exclusive) |
-| `SELL_WIN_TIER1_PRICE` / `TIER2_PRICE` / `TIER3_PRICE` | `0.91` / `0.93` / `0.95` | Tier floor prices for limit sell orders |
+| `SELL_WIN_TIER1_PRICE` / `TIER2_PRICE` / `TIER3_PRICE` | `0.94` / `0.96` / `0.98` | Tier floor prices for limit sell orders |
 
 ## Data layout
 
