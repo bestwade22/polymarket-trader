@@ -11462,5 +11462,21 @@
     "floor_price": 0.95,
     "current_mid": 0.555,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xf5e9190d032215ae5994b901f09331a65108b0d575a663c90dafac8878ac3b0a",
+    "token_id": "88291803713036895322054640596787135041784693001184298396027298421792274560527",
+    "order_id": "0x19dedb3ba27c6d901ba813e3eee52af13b09f239adab491ce4a6d23f2056847c",
+    "sold_at": "2026-08-22T12:00:13.772167+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-august-22-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.64,
+    "reason": "tier1"
   }
 ]
