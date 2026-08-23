@@ -32,6 +32,14 @@ def _best_market_by(markets: list[dict], price_fn) -> tuple[Optional[dict], Opti
     return best_market, best_price
 
 
+def _effective_min_price(sel: MarketSelection) -> Optional[float]:
+    """Price used for YES_PRICE_MIN — max of selection and CLOB ask."""
+    prices = [p for p in (sel.yes_price, sel.buy_price) if p is not None]
+    if not prices:
+        return None
+    return max(float(p) for p in prices)
+
+
 class HighestYesStrategy(BaseStrategy):
     name = "highest_yes"
 
@@ -163,12 +171,15 @@ class HighestYesStrategy(BaseStrategy):
                     }
                 )
                 continue
-            if yes_min > 0 and sel.yes_price < yes_min:
+            floor = _effective_min_price(sel)
+            if yes_min > 0 and floor is not None and floor < yes_min:
                 logger.info(
-                    "event=%s live selection %.3f < min %.3f; skip",
+                    "event=%s effective buy %.3f < min %.3f (sel=%s ask=%s); skip",
                     sel.event_id,
-                    sel.yes_price,
+                    floor,
                     yes_min,
+                    sel.yes_price,
+                    sel.buy_price,
                 )
                 step_log = sel.event.get("_step_logger") if sel.event else None
                 if step_log:
@@ -176,6 +187,8 @@ class HighestYesStrategy(BaseStrategy):
                         "filter_yes_price_min",
                         skipped=True,
                         selection_price=sel.yes_price,
+                        buy_price=sel.buy_price,
+                        effective_min_price=floor,
                         yes_price_min=yes_min,
                         market_id=sel.market_id,
                     )
@@ -188,6 +201,8 @@ class HighestYesStrategy(BaseStrategy):
                         "event_slug": (sel.event or {}).get("slug") if sel.event else None,
                         "reason": "yes_price_min",
                         "selection_price": sel.yes_price,
+                        "buy_price": sel.buy_price,
+                        "effective_min_price": floor,
                         "yes_price_min": yes_min,
                     }
                 )

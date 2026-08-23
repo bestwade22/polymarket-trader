@@ -60,9 +60,39 @@ def test_highest_yes_rejects_below_min_after_live_refresh(monkeypatch):
     sel = strategy.select_market(event)
     assert sel is not None
     sel.yes_price = 0.40
+    sel.buy_price = 0.40
     filtered, skipped = strategy.filter_by_yes_price_max([sel])
     assert filtered == []
     assert skipped[0]["reason"] == "yes_price_min"
+
+
+def test_highest_yes_rejects_chengdu_like_low_midpoint(monkeypatch):
+    """Midpoint 0.283 / ask 0.401 — both below YES_PRICE_MIN 0.45."""
+    from config import settings as settings_mod
+    from src.trade.strategies.base import MarketSelection
+
+    monkeypatch.setattr(settings_mod.settings, "yes_price_min", 0.45)
+    strategy = HighestYesStrategy(yes_price_max=0.60, share_count=15)
+    sel = MarketSelection(
+        event_id="878997",
+        city="Chengdu",
+        market_id="3736605",
+        group_item_title="29°C",
+        yes_price=0.283,
+        yes_token_id="tok",
+        buy_price=0.401,
+        share_count=15,
+        neg_risk=True,
+        tick_size="0.001",
+        order_min_size=5,
+        strategy="highest_yes",
+        event={"id": "878997", "city": "Chengdu"},
+        market={"bestBid": 0.159, "bestAsk": 0.401, "midpoint": 0.283},
+    )
+    filtered, skipped = strategy.filter_by_yes_price_max([sel])
+    assert filtered == []
+    assert skipped[0]["reason"] == "yes_price_min"
+    assert skipped[0]["effective_min_price"] == 0.401
 
 
 def test_filter_by_on_edge_skips(monkeypatch):

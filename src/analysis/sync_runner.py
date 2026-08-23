@@ -14,7 +14,12 @@ from config.settings import (
     ensure_dirs,
     settings,
 )
-from src.analysis.history_builder import build_records_from_activity
+from src.analysis.history_builder import (
+    _open_token_ids,
+    build_records_from_activity,
+    build_trade_record,
+    group_activity_rows,
+)
 from src.analysis.models import (
     TradeRecord,
     compute_outcome_value,
@@ -271,6 +276,19 @@ def _merge_records(
     for rec in fresh:
         prior = merged.get(rec.token_id)
         if prior is not None:
+            # Incremental sync can rebuild from a partial activity slice; never
+            # shrink shares/cost when merging enrichment onto a fuller prior row.
+            if (
+                rec.shares < prior.shares - 0.01
+                and rec.event_slug == prior.event_slug
+            ):
+                rec.shares = prior.shares
+                rec.buy_price = prior.buy_price
+                rec.cost_basis_usd = prior.cost_basis_usd
+                if rec.final_value_usd is not None and prior.final_value_usd is not None:
+                    if abs(rec.final_value_usd) < abs(prior.final_value_usd):
+                        rec.final_value_usd = prior.final_value_usd
+                        rec.outcome_value_usd = prior.outcome_value_usd
             if rec.spread is None and prior.spread is not None:
                 rec.spread = prior.spread
             if rec.on_edge is None and prior.on_edge is not None:
@@ -312,6 +330,67 @@ def _max_activity_ts(activity: list[dict[str, Any]]) -> Optional[int]:
     if not activity:
         return None
     return max(int(row.get("timestamp") or 0) for row in activity)
+
+
+def _rebuild_records_for_tokens(
+    wallet: str,
+    token_ids: set[str],
+    *,
+    existing: dict[str, TradeRecord],
+    closed_positions: list[dict[str, Any]],
+    end_ts: int,
+    fetch_price_drop: bool,
+) -> dict[str, TradeRecord]:
+    """Rebuild trade rows from full activity since first buy for each token.
+
+    Incremental sync only fetches activity after last_activity_ts, which can
+    drop earlier fills for the same token (e.g. Taipei 14.4 + 0.6 → 0.6 only).
+    """
+    if not token_ids:
+        return {}
+
+    # Full activity (no start) so earlier fills are not dropped when bought_at
+    # on the ledger row points at a later partial fill (Taipei 14.4 + 0.6 case).
+    activity = fetch_all_user_activity(
+        wallet,
+        types=["TRADE", "REDEEM"],
+        start=None,
+        end=end_ts,
+        sort_direction="ASC",
+    )
+    groups = group_activity_rows(activity)
+    clob = ClobPriceClient() if fetch_price_drop else None
+    open_tokens = _open_token_ids(wallet)
+    rebuilt: dict[str, TradeRecord] = {}
+    for group in groups:
+        if group.token_id not in token_ids:
+            continue
+        rebuilt[group.token_id] = build_trade_record(
+            group,
+            closed_positions=closed_positions,
+            open_tokens=open_tokens,
+            clob_client=clob,
+            fetch_price_drop=fetch_price_drop,
+        )
+    return rebuilt
+
+
+def _apply_rebuilt_records(
+    fresh_records: list[TradeRecord],
+    rebuilt: dict[str, TradeRecord],
+) -> list[TradeRecord]:
+    if not rebuilt:
+        return fresh_records
+    out: list[TradeRecord] = []
+    seen: set[str] = set()
+    for rec in fresh_records:
+        full = rebuilt.get(rec.token_id)
+        out.append(full if full is not None else rec)
+        seen.add(rec.token_id)
+    for tid, rec in rebuilt.items():
+        if tid not in seen:
+            out.append(rec)
+    return out
 
 
 def run_sync_trade_history(
@@ -391,6 +470,31 @@ def run_sync_trade_history(
                     wallet=wallet,
                     fetch_price_drop=fetch_price_drop,
                 )
+
+    if init_days is None and fresh_records and existing:
+        rebuild_ids = {
+            rec.token_id
+            for rec in fresh_records
+            if rec.token_id in existing
+            or (
+                (prior := existing.get(rec.token_id)) is not None
+                and rec.shares < prior.shares - 0.01
+            )
+        }
+        if rebuild_ids:
+            rebuilt = _rebuild_records_for_tokens(
+                wallet,
+                rebuild_ids,
+                existing=existing,
+                closed_positions=closed_positions,
+                end_ts=now_ts,
+                fetch_price_drop=fetch_price_drop,
+            )
+            fresh_records = _apply_rebuilt_records(fresh_records, rebuilt)
+            logger.info(
+                "Rebuilt %d token(s) from full wallet activity (incremental fix)",
+                len(rebuilt),
+            )
 
     all_records = _backfill_market_metrics(
         _backfill_on_edge(
