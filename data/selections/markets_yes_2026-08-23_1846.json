@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-08-23T18:46:07.915409+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "888233",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 54,
+      "forecast_temp_c": 12,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "888232",
+      "city": "Sao Paulo",
+      "market_id": "3772448",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-august-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "888234",
+      "city": "Toronto",
+      "market_id": "3772470",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-toronto-on-august-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "888236",
+      "city": "NYC",
+      "market_id": "3772493",
+      "group_item_title": "82-83\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-august-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 84,
+      "forecast_temp_c": 29,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.22
+    },
+    {
+      "event_id": "888238",
+      "city": "Atlanta",
+      "market_id": "3772515",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-august-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.71,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 91,
+      "forecast_temp_c": 33,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": -0.33
+    },
+    {
+      "event_id": "888239",
+      "city": "Miami",
+      "market_id": "3772528",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-august-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.67
+    }
+  ]
+}
