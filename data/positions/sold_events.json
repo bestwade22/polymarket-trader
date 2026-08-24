@@ -11542,5 +11542,53 @@
     "floor_price": 0.97,
     "current_mid": 0.22,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x606e88e108272b7744429d1f485f84d0b67032e4d4fd957a616af746a55c7d83",
+    "token_id": "53855476389786314744263267400911996309217108187356463617707437854334545834811",
+    "order_id": "0xec696118e4af57fe0e16a106f7e243cd3add76bef740a338779411fcc140a410",
+    "sold_at": "2026-08-24T07:00:14.568895+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chongqing-on-august-24-2026",
+    "price": 0.93,
+    "size": 14.9946,
+    "avg_buy_price": 0.57,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.375,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x4f99d55783a971a0a8d009418b05d407cd1fb8fccfe49abff0924f72bdbc3eaa",
+    "token_id": "25817653490045852452502343903421014509718599696051912890556756651045313604901",
+    "order_id": "0xc4ab1d8b77440be75765ee09f03149d5e0e14fd19cfaca430828a382902dbdf2",
+    "sold_at": "2026-08-24T07:00:15.522255+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chengdu-on-august-24-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.51,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.535,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x839e42ed6081a4a40e39b5e613afabb0edc1f913bcf19747c3f49fcfeddd6d91",
+    "token_id": "34986970652136156955192285997606190418354296841109832377847008469208331312285",
+    "order_id": "0x934dc3edd0e09b26c445c69816a89bc9e175341b27219e0964bebd4a0f5e3ab4",
+    "sold_at": "2026-08-24T07:00:18.179657+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-wuhan-on-august-24-2026",
+    "price": 0.93,
+    "size": 15.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier1",
+    "floor_price": 0.93,
+    "current_mid": 0.16,
+    "reason": "tier1"
   }
 ]
