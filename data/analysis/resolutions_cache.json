@@ -3246,6 +3246,12 @@
       "winning_temp": "104-105\u00b0F",
       "winning_token_id": "113989100716438559607284133573731294120197343359990965550283267728616076727500"
     },
+    "highest-temperature-in-dallas-on-august-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on August 23?",
+      "winning_temp": "108-109\u00b0F",
+      "winning_token_id": "24866679164686470301044301375139278590870841683365705928988880883355814901672"
+    },
     "highest-temperature-in-dallas-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on August 3?",
@@ -11027,6 +11033,12 @@
       "title": "Highest temperature in Sao Paulo on August 22?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "77248011230843939536389030370768026990728864589440392034314516186490240427850"
+    },
+    "highest-temperature-in-sao-paulo-on-august-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on August 23?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "51084423689758447471763160202937111031599737705880587332290021168238175302528"
     },
     "highest-temperature-in-sao-paulo-on-august-3-2026": {
       "closed": true,
