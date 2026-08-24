@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-08-24T14:15:36.986113+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "888677",
+      "city": "London",
+      "timezone": "UK (UTC+0/+1)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 76,
+      "forecast_wu_temp_c": 24
+    }
+  ]
+}
