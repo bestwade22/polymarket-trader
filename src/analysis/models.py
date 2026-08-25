@@ -48,6 +48,7 @@ class TradeRecord:
     gamma_yes_price: Optional[float] = None
     clob_buy_price: Optional[float] = None
     runner_up_yes: Optional[float] = None
+    runner_up_temp: Optional[str] = None
     yes_gap: Optional[float] = None
     # Pattern / autopsy enrichment (optional; filled offline or at select time)
     yes_gap_at_select: Optional[float] = None
@@ -59,6 +60,8 @@ class TradeRecord:
     forecast_source: Optional[str] = None
     forecast_wu_temp_f: Optional[float] = None
     forecast_wu_temp_c: Optional[float] = None
+    om_vs_win_delta_c: Optional[float] = None
+    wu_vs_win_delta_c: Optional[float] = None
     book_depth_near_touch: Optional[float] = None
     price_change_30m: Optional[float] = None
     price_change_90m: Optional[float] = None

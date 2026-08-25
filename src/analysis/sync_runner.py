@@ -41,7 +41,9 @@ from src.analysis.edge_lookup import (
     lookup_on_edge_from_snapshots,
 )
 from src.analysis.selection_enrichment import backfill_records_from_selections
+from src.analysis.dual_buy_analysis import compute_dual_buy_analysis
 from src.analysis.filter_sweep import compute_filter_sweep
+from src.analysis.forecast_backfill import backfill_missing_forecasts
 from src.analysis.skipped_analysis import compute_skipped_analysis
 from src.analysis.resolution import fetch_resolved_event
 from src.analysis.strategy_insights import compute_insights
@@ -297,31 +299,34 @@ def _merge_records(
                 rec.competitive = prior.competitive
             if rec.open_interest is None and prior.open_interest is not None:
                 rec.open_interest = prior.open_interest
-                for field in (
-                    "best_bid",
-                    "best_ask",
-                    "midpoint",
-                    "gamma_yes_price",
-                    "clob_buy_price",
-                    "runner_up_yes",
-                    "yes_gap",
-                    "yes_gap_at_select",
-                    "yes_gap_at_fill",
-                    "minutes_into_window",
-                    "forecast_temp_f",
-                    "forecast_temp_c",
-                    "forecast_delta_c",
-                    "forecast_source",
-                    "forecast_wu_temp_f",
-                    "forecast_wu_temp_c",
-                    "book_depth_near_touch",
-                    "price_change_30m",
-                    "price_change_90m",
-                    "city_streak",
-                    "loss_autopsy",
-                ):
-                    if getattr(rec, field, None) is None and getattr(prior, field, None) is not None:
-                        setattr(rec, field, getattr(prior, field))
+            for field in (
+                "best_bid",
+                "best_ask",
+                "midpoint",
+                "gamma_yes_price",
+                "clob_buy_price",
+                "runner_up_yes",
+                "runner_up_temp",
+                "yes_gap",
+                "yes_gap_at_select",
+                "yes_gap_at_fill",
+                "minutes_into_window",
+                "forecast_temp_f",
+                "forecast_temp_c",
+                "forecast_delta_c",
+                "forecast_source",
+                "forecast_wu_temp_f",
+                "forecast_wu_temp_c",
+                "om_vs_win_delta_c",
+                "wu_vs_win_delta_c",
+                "book_depth_near_touch",
+                "price_change_30m",
+                "price_change_90m",
+                "city_streak",
+                "loss_autopsy",
+            ):
+                if getattr(rec, field, None) is None and getattr(prior, field, None) is not None:
+                    setattr(rec, field, getattr(prior, field))
         merged[rec.token_id] = rec
     return sorted(merged.values(), key=lambda r: r.bought_at, reverse=True)
 
@@ -509,10 +514,12 @@ def run_sync_trade_history(
     )
     # Unified selection/event enrichment for remaining gaps + high-value fields
     backfill_records_from_selections(all_records)
+    backfill_missing_forecasts(all_records)
     summary = summarize_records(all_records)
     insights = compute_insights(all_records)
     filter_sweep = compute_filter_sweep(all_records)
     skipped_analysis = compute_skipped_analysis(fetch_missing_resolutions=True)
+    dual_buy_analysis = compute_dual_buy_analysis(all_records)
     denylist = refresh_timezone_skip_denylist(force=True)
 
     payload = {
@@ -523,6 +530,7 @@ def run_sync_trade_history(
         "insights": insights,
         "filter_sweep": filter_sweep,
         "skipped_analysis": skipped_analysis,
+        "dual_buy_analysis": dual_buy_analysis,
         "timezone_skip_denylist": denylist,
     }
     TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))
@@ -563,10 +571,13 @@ def run_enrich_trade_history() -> dict[str, Any]:
 
     records = [_record_from_dict(row) for row in data.get("records") or [] if isinstance(row, dict)]
     fill_counts = backfill_records_from_selections(records)
+    forecast_counts = backfill_missing_forecasts(records)
+    fill_counts = {**fill_counts, **{f"forecast_{k}": v for k, v in forecast_counts.items()}}
     summary = summarize_records(records)
     insights = compute_insights(records)
     filter_sweep = compute_filter_sweep(records)
     skipped_analysis = compute_skipped_analysis(fetch_missing_resolutions=True)
+    dual_buy_analysis = compute_dual_buy_analysis(records)
     denylist = refresh_timezone_skip_denylist(force=True)
     now = datetime.now(timezone.utc)
 
@@ -579,6 +590,7 @@ def run_enrich_trade_history() -> dict[str, Any]:
         "insights": insights,
         "filter_sweep": filter_sweep,
         "skipped_analysis": skipped_analysis,
+        "dual_buy_analysis": dual_buy_analysis,
         "timezone_skip_denylist": denylist,
     }
     TRADE_HISTORY_FILE.write_text(json.dumps(payload, indent=2))

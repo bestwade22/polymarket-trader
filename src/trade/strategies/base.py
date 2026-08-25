@@ -72,15 +72,16 @@ class MarketSelection:
         if self.event:
             data["event_slug"] = self.event.get("slug")
             data["open_interest"] = parse_float(self.event.get("openInterest"))
-            from src.analysis.runner_up import runner_up_yes_and_gap
+            from src.analysis.runner_up import runner_up_details
 
-            _top, runner_up, gap = runner_up_yes_and_gap(
+            details = runner_up_details(
                 self.event.get("markets") or [],
                 selected_market_id=self.market_id,
             )
-            data["runner_up_yes"] = runner_up
-            data["yes_gap"] = gap
-            data["top_yes"] = _top
+            data["runner_up_yes"] = details["runner_up_yes"]
+            data["runner_up_temp"] = details["runner_up_temp"]
+            data["yes_gap"] = details["yes_gap"]
+            data["top_yes"] = details["top_yes"]
         return data
 
 

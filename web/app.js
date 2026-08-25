@@ -224,6 +224,8 @@ function fmtForecastVsWin(r, { wu = false } = {}) {
     const win = r.winning_temp ? extractTempLabel(r.winning_temp) : "?";
     return `<span class="pnl-neg">miss→${win}</span>`;
   }
+  const hasFc = forecastAsC(r, { wu }) != null;
+  if (hasFc && !r.winning_temp) return "pending";
   return "—";
 }
 
@@ -256,6 +258,10 @@ function forecastAsC(r, { wu = false } = {}) {
 
 /** Forecast − winning midpoint (°C). Positive = forecast ran hot. */
 function forecastVsResultDeltaC(r, { wu = false } = {}) {
+  const storedKey = wu ? "wu_vs_win_delta_c" : "om_vs_win_delta_c";
+  if (r[storedKey] != null && Number.isFinite(Number(r[storedKey]))) {
+    return Number(r[storedKey]);
+  }
   const fc = forecastAsC(r, { wu });
   const mid = winningTempMidpointC(r.winning_temp);
   if (fc == null || mid == null) return null;
@@ -263,8 +269,17 @@ function forecastVsResultDeltaC(r, { wu = false } = {}) {
 }
 
 function fmtForecastVsResultDiff(r, { wu = false } = {}) {
-  const d = forecastVsResultDeltaC(r, { wu });
-  if (d == null || !Number.isFinite(d)) return "—";
+  // Prefer persisted enrich fields when present.
+  const storedKey = wu ? "wu_vs_win_delta_c" : "om_vs_win_delta_c";
+  let d =
+    r[storedKey] != null && Number.isFinite(Number(r[storedKey]))
+      ? Number(r[storedKey])
+      : forecastVsResultDeltaC(r, { wu });
+  if (d == null || !Number.isFinite(d)) {
+    const hasFc = forecastAsC(r, { wu }) != null;
+    if (hasFc && !r.winning_temp) return "pending";
+    return "—";
+  }
   const unit = recordTempUnit(r);
   let v = d;
   if (unit === "F") v = (v * 9) / 5;
@@ -1958,6 +1973,218 @@ function renderSkippedAnalysis(data) {
   bindSkippedSortHeaders(container);
 }
 
+/** Counterfactual: also buy runner-up Yes with same shares, both held to resolution. */
+function dualBuyRow(rec) {
+  const shares = Number(rec.shares);
+  if (!Number.isFinite(shares) || shares < 1) return null;
+  if (rec.result === "open" || !rec.winning_temp) return null;
+
+  const p1 = Number(rec.buy_price);
+  const p2 = Number(rec.runner_up_yes);
+  if (!Number.isFinite(p1) || p1 <= 0 || p1 >= 1) return null;
+  if (!Number.isFinite(p2) || p2 <= 0 || p2 >= 1) return null;
+
+  const boughtWins = U.compareTempBuckets(rec.bought_temp || "", rec.winning_temp) === "same";
+  const runnerTemp = (rec.runner_up_temp || "").trim() || null;
+
+  let runnerWins = false;
+  let cover;
+  if (boughtWins) {
+    cover = "bought";
+  } else if (!runnerTemp) {
+    return null;
+  } else {
+    runnerWins = U.compareTempBuckets(runnerTemp, rec.winning_temp) === "same";
+    cover = runnerWins ? "runner_up" : "neither";
+  }
+
+  const costBought = Math.round(shares * p1 * 10000) / 10000;
+  const costRunner = Math.round(shares * p2 * 10000) / 10000;
+  const costDual = Math.round((costBought + costRunner) * 10000) / 10000;
+  const payoutDual = boughtWins || runnerWins ? shares : 0;
+  const pnlBoughtHold = Math.round((boughtWins ? shares - costBought : -costBought) * 10000) / 10000;
+  const pnlRunnerHold = Math.round((runnerWins ? shares - costRunner : -costRunner) * 10000) / 10000;
+  const pnlDual = Math.round((payoutDual - costDual) * 10000) / 10000;
+  const actualPnl =
+    rec.realized_pnl_usd != null ? rec.realized_pnl_usd : rec.final_value_usd;
+
+  return {
+    date: rec.date,
+    city: rec.city,
+    bought_temp: rec.bought_temp,
+    runner_up_temp: runnerTemp,
+    winning_temp: rec.winning_temp,
+    shares,
+    buy_price: p1,
+    runner_up_yes: p2,
+    yes_gap: rec.yes_gap,
+    cover,
+    cost_bought: costBought,
+    cost_runner: costRunner,
+    cost_dual: costDual,
+    pnl_bought_hold: pnlBoughtHold,
+    pnl_runner_hold: pnlRunnerHold,
+    pnl_dual: pnlDual,
+    pnl_delta_vs_bought_hold: Math.round((pnlDual - pnlBoughtHold) * 10000) / 10000,
+    actual_pnl: actualPnl,
+    dual_profit: pnlDual > 0,
+  };
+}
+
+function computeDualBuyAnalysis(records) {
+  const rows = [];
+  for (const rec of records || []) {
+    const row = dualBuyRow(rec);
+    if (row) rows.push(row);
+  }
+  const n = rows.length;
+  const coverCounts = { bought: 0, runner_up: 0, neither: 0 };
+  for (const r of rows) coverCounts[r.cover] = (coverCounts[r.cover] || 0) + 1;
+
+  const dualPnl = rows.reduce((s, r) => s + r.pnl_dual, 0);
+  const boughtHoldPnl = rows.reduce((s, r) => s + r.pnl_bought_hold, 0);
+  const runnerHoldPnl = rows.reduce((s, r) => s + r.pnl_runner_hold, 0);
+  const dualWins = rows.filter((r) => r.pnl_dual > 0).length;
+  const dualFlat = rows.filter((r) => r.pnl_dual === 0).length;
+  const covered = coverCounts.bought + coverCounts.runner_up;
+
+  const byCover = {};
+  for (const cover of ["bought", "runner_up", "neither"]) {
+    const subset = rows.filter((r) => r.cover === cover);
+    byCover[cover] = {
+      cover,
+      n: subset.length,
+      pnl_dual: Math.round(subset.reduce((s, r) => s + r.pnl_dual, 0) * 100) / 100,
+      pnl_bought_hold:
+        Math.round(subset.reduce((s, r) => s + r.pnl_bought_hold, 0) * 100) / 100,
+      pnl_runner_hold:
+        Math.round(subset.reduce((s, r) => s + r.pnl_runner_hold, 0) * 100) / 100,
+      avg_cost_dual: subset.length
+        ? Math.round((subset.reduce((s, r) => s + r.cost_dual, 0) / subset.length) * 100) / 100
+        : null,
+      profit_pct: subset.length
+        ? Math.round((1000 * subset.filter((r) => r.pnl_dual > 0).length) / subset.length) / 10
+        : null,
+    };
+  }
+
+  const recent = [...rows].sort((a, b) => {
+    const ad = a.date || "";
+    const bd = b.date || "";
+    if (ad !== bd) return bd.localeCompare(ad);
+    return (b.city || "").localeCompare(a.city || "");
+  });
+
+  return {
+    n,
+    covered_n: covered,
+    covered_pct: n ? Math.round((1000 * covered) / n) / 10 : null,
+    cover_counts: coverCounts,
+    dual_pnl: Math.round(dualPnl * 100) / 100,
+    bought_hold_pnl: Math.round(boughtHoldPnl * 100) / 100,
+    runner_hold_pnl: Math.round(runnerHoldPnl * 100) / 100,
+    pnl_delta_vs_bought_hold: Math.round((dualPnl - boughtHoldPnl) * 100) / 100,
+    dual_profit_n: dualWins,
+    dual_flat_n: dualFlat,
+    dual_loss_n: n - dualWins - dualFlat,
+    dual_profit_pct: n ? Math.round((1000 * dualWins) / n) / 10 : null,
+    avg_dual_pnl: n ? Math.round((dualPnl / n) * 100) / 100 : null,
+    avg_cost_dual: n
+      ? Math.round((rows.reduce((s, r) => s + r.cost_dual, 0) / n) * 100) / 100
+      : null,
+    by_cover: byCover,
+    recent,
+  };
+}
+
+function renderDualBuyAnalysis(data) {
+  const container = document.getElementById("dual-buy-content");
+  if (!container) return;
+  if (!data || !data.n) {
+    container.innerHTML = `<p class="muted">No eligible trades — need settled result, ≥1 share, runner-up Yes price, and runner-up temp (re-run <code>enrich-trade-history</code> if temps missing).</p>`;
+    return;
+  }
+
+  const fmtPnl = (v) => {
+    if (v == null || v === "") return "—";
+    const n = Number(v);
+    if (!Number.isFinite(n)) return "—";
+    return fmtMoney(n);
+  };
+  const fmtPrice = (v) =>
+    v == null || !Number.isFinite(Number(v)) ? "—" : Number(v).toFixed(3);
+  const coverLabel = (c) =>
+    c === "bought" ? "bought won" : c === "runner_up" ? "2nd won" : "neither";
+
+  const header = `
+    <p class="muted" style="margin:0 0 0.75rem">
+      Counterfactual: at each buy, also buy the <strong>2nd-best Yes</strong> temp with the
+      <em>same share count</em> at <code>runner_up_yes</code>. Both held to resolution
+      (ignores early sells). Uses current page filters.
+    </p>
+    <div class="summary-grid" style="margin-bottom:1rem">
+      <div><span class="summary-label">Eligible n</span><span class="summary-value">${data.n}</span></div>
+      <div><span class="summary-label">Top-2 covered</span><span class="summary-value">${data.covered_n} (${data.covered_pct ?? "—"}%)</span></div>
+      <div><span class="summary-label">Dual P&amp;L</span><span class="summary-value">${fmtPnl(data.dual_pnl)}</span></div>
+      <div><span class="summary-label">Bought-only hold P&amp;L</span><span class="summary-value">${fmtPnl(data.bought_hold_pnl)}</span></div>
+      <div><span class="summary-label">Δ vs bought-only</span><span class="summary-value">${fmtPnl(data.pnl_delta_vs_bought_hold)}</span></div>
+      <div><span class="summary-label">2nd-only hold P&amp;L</span><span class="summary-value">${fmtPnl(data.runner_hold_pnl)}</span></div>
+      <div><span class="summary-label">Dual profit %</span><span class="summary-value">${data.dual_profit_pct ?? "—"}% (${data.dual_profit_n}/${data.n})</span></div>
+      <div><span class="summary-label">Avg dual cost</span><span class="summary-value">$${data.avg_cost_dual ?? "—"}</span></div>
+    </div>`;
+
+  const coverRows = ["bought", "runner_up", "neither"].map((k) => data.by_cover[k]).filter(Boolean);
+  const coverSection = renderSkippedSortableTable({
+    tableId: "dual-by-cover",
+    title: "By who covered the winner",
+    description:
+      "bought = your pick resolved yes; 2nd = runner-up resolved yes; neither = winner outside top-2 (both legs lose).",
+    defaultSortKey: "cover",
+    columns: [
+      { key: "cover", label: "Cover", fmt: (v) => coverLabel(v) },
+      { key: "n", label: "n" },
+      { key: "profit_pct", label: "Dual profit %", fmt: (v) => (v == null ? "—" : `${v}%`) },
+      { key: "pnl_dual", label: "Dual P&L", fmt: (v) => fmtPnl(v) },
+      { key: "pnl_bought_hold", label: "Bought-only P&L", fmt: (v) => fmtPnl(v) },
+      { key: "pnl_runner_hold", label: "2nd-only P&L", fmt: (v) => fmtPnl(v) },
+      { key: "avg_cost_dual", label: "Avg dual cost", fmt: (v) => (v == null ? "—" : `$${v}`) },
+    ],
+    rows: coverRows,
+    emptyText: "No cover groups",
+  });
+
+  const recentRows = (data.recent || []).slice(0, 40).map((r) => ({
+    ...r,
+    cover_label: coverLabel(r.cover),
+  }));
+  const recentSection = renderSkippedSortableTable({
+    tableId: "dual-recent",
+    title: "Recent dual-buy rows (up to 40)",
+    defaultSortKey: "date",
+    stickyCity: true,
+    columns: [
+      { key: "date", label: "Date" },
+      { key: "city", label: "City" },
+      { key: "bought_temp", label: "Bought" },
+      { key: "runner_up_temp", label: "2nd temp" },
+      { key: "winning_temp", label: "Winner" },
+      { key: "cover_label", label: "Cover" },
+      { key: "shares", label: "Shares" },
+      { key: "buy_price", label: "Buy $", fmt: (v) => fmtPrice(v) },
+      { key: "runner_up_yes", label: "2nd $", fmt: (v) => fmtPrice(v) },
+      { key: "cost_dual", label: "Dual cost", fmt: (v) => (v == null ? "—" : `$${Number(v).toFixed(2)}`) },
+      { key: "pnl_dual", label: "Dual P&L", fmt: (v) => fmtPnl(v) },
+      { key: "pnl_bought_hold", label: "Bought-only", fmt: (v) => fmtPnl(v) },
+      { key: "pnl_delta_vs_bought_hold", label: "Δ vs bought", fmt: (v) => fmtPnl(v) },
+    ],
+    rows: recentRows,
+    emptyText: "No rows",
+  });
+
+  container.innerHTML = `${header}${coverSection}${recentSection}`;
+  bindSkippedSortHeaders(container);
+}
+
 function render() {
   const filtered = sortRecords(applyFilters(allRecords));
   renderSummary(filtered);
@@ -1965,6 +2192,7 @@ function render() {
   renderWinLossFingerprint(filtered);
   renderInsights(computeInsights(filtered, { skipPoolRecords: allRecords }));
   renderFilterSweep(filterSweepData);
+  renderDualBuyAnalysis(computeDualBuyAnalysis(filtered));
   renderSkippedAnalysis(skippedAnalysisData);
 }
 

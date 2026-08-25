@@ -10,7 +10,7 @@ from typing import Any, Optional
 
 from config.settings import DATA_DIR, SELECTIONS_DIR
 from src.analysis.pattern_enrichment import apply_pattern_enrichment, apply_selection_pattern_fields
-from src.analysis.runner_up import runner_up_yes_and_gap
+from src.analysis.runner_up import runner_up_details
 from src.analysis.spread_lookup import compute_spread
 from src.utils.market_parser import get_yes_token_id, parse_float
 
@@ -28,6 +28,7 @@ ENRICH_FIELDS = (
     "competitive",
     "open_interest",
     "runner_up_yes",
+    "runner_up_temp",
     "yes_gap",
     "forecast_temp_f",
     "forecast_temp_c",
@@ -73,6 +74,11 @@ def _row_enrichment(row: dict[str, Any]) -> dict[str, Any]:
         "competitive": parse_float(row.get("competitive")),
         "open_interest": parse_float(row.get("open_interest")),
         "runner_up_yes": parse_float(row.get("runner_up_yes")),
+        "runner_up_temp": (
+            str(row["runner_up_temp"]).strip()
+            if isinstance(row.get("runner_up_temp"), str) and row.get("runner_up_temp").strip()
+            else None
+        ),
         "yes_gap": parse_float(row.get("yes_gap")),
         "forecast_temp_f": parse_float(row.get("forecast_temp_f")),
         "forecast_temp_c": parse_float(row.get("forecast_temp_c")),
@@ -195,7 +201,7 @@ def load_event_market_index(
         for event in events:
             oi = parse_float(event.get("openInterest"))
             markets = event.get("markets") or []
-            top_yes, runner_up, gap = runner_up_yes_and_gap(markets)
+            details = runner_up_details(markets)
             for market in markets:
                 if not isinstance(market, dict):
                     continue
@@ -220,10 +226,11 @@ def load_event_market_index(
                     "clob_buy_price": parse_float(market.get("clobBuyPrice")) or ask,
                     "competitive": parse_float(market.get("competitive")),
                     "open_interest": oi,
-                    "runner_up_yes": runner_up,
-                    "yes_gap": gap,
+                    "runner_up_yes": details["runner_up_yes"],
+                    "runner_up_temp": details["runner_up_temp"],
+                    "yes_gap": details["yes_gap"],
                     "event_slug": event.get("slug"),
-                    "top_yes": top_yes,
+                    "top_yes": details["top_yes"],
                 }
     return by_token
 
@@ -289,18 +296,26 @@ def backfill_records_from_selections(
                 counts[field] = counts.get(field, 0) + 1
 
         # Runner-up from event markets when still missing (even if other fields filled)
-        if getattr(rec, "yes_gap", None) is None or getattr(rec, "runner_up_yes", None) is None:
+        if (
+            getattr(rec, "yes_gap", None) is None
+            or getattr(rec, "runner_up_yes", None) is None
+            or getattr(rec, "runner_up_temp", None) is None
+        ):
             event_date = getattr(rec, "date", "") or ""
             slug = getattr(rec, "event_slug", "") or ""
             if event_date and slug:
                 for event in _load_events_for_date(event_date, data_dir or DATA_DIR):
                     if event.get("slug") != slug:
                         continue
-                    _top, runner, gap = runner_up_yes_and_gap(
+                    details = runner_up_details(
                         event.get("markets") or [],
                         selected_market_id=None,
                     )
-                    patch = {"runner_up_yes": runner, "yes_gap": gap}
+                    patch = {
+                        "runner_up_yes": details["runner_up_yes"],
+                        "runner_up_temp": details["runner_up_temp"],
+                        "yes_gap": details["yes_gap"],
+                    }
                     for field in apply_enrichment_to_record(rec, patch):
                         counts[field] = counts.get(field, 0) + 1
                     break
