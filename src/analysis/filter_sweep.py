@@ -24,6 +24,8 @@ SKIP_TZ_SURVIVING = "skip_bottom7_tz_surviving"
 SKIP_TZ_ALL = "skip_bottom7_tz"
 SPREAD_LIVE = "spread_live"
 BUY_LIVE = "buy_live"
+# Shipped live Lambda stack (timezone denylist from surviving pool + live buy/spread).
+LIVE_STACK = f"{SKIP_TZ_SURVIVING} + {SPREAD_LIVE} + {BUY_LIVE}"
 
 
 @dataclass(frozen=True)
@@ -179,7 +181,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
     stacks: list[FilterDef] = list(cat.values())
 
     combos: list[list[str]] = [
-        # Live-mirrored stack: bottom-7 from surviving pool + live buy/spread rules.
+        # Live-mirrored stack (must stay first among combos so it always exists).
         [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE],
         [SKIP_TZ_SURVIVING, "spread<0.05", "buy>=0.45"],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE],
@@ -330,9 +332,11 @@ def compute_filter_sweep(
         all_m = _metrics([r for r in records if pred2(r)])
         train_m = _metrics([r for r in train if pred2(r)])
         test_m = _metrics([r for r in test if pred2(r)])
+        is_live = name == LIVE_STACK
         rows.append(
             {
                 "stack": name,
+                "is_live": is_live,
                 "n": all_m["n"],
                 "denom": all_m["denom"],
                 "win_summary_pct": all_m["win_summary_pct"],
@@ -350,8 +354,10 @@ def compute_filter_sweep(
             }
         )
 
+    # Live first for easy compare, then ≥target OOS passers, then by OOS size / WS / PnL.
     rows.sort(
         key=lambda r: (
+            not r.get("is_live"),
             not r["oos_pass_60"],
             -r["oos_denom"],
             -r["win_summary_pct"],
@@ -368,10 +374,24 @@ def compute_filter_sweep(
             key=lambda r: (r["oos_denom"], r["denom"], r["pnl_usd"]),
         )
 
+    live_stack = next((r for r in rows if r.get("is_live")), None)
+    if live_stack is None:
+        # Guarantee a live row even if catalog somehow dropped the combo.
+        live_filt = next(
+            (f for f in candidate_stacks(records) if f.name == LIVE_STACK),
+            None,
+        )
+        if live_filt is not None:
+            live_stack = evaluate_stack(records, live_filt, train=train, test=test)
+            live_stack["is_live"] = True
+            rows.insert(0, live_stack)
+
     train_dates = sorted({r.date for r in train})
     test_dates = sorted({r.date for r in test})
     return {
         "target_win_summary_pct": target_ws,
+        "live_stack_name": LIVE_STACK,
+        "live_stack": live_stack,
         "train_dates": {"from": train_dates[0] if train_dates else None, "to": train_dates[-1] if train_dates else None, "n": len(train_dates)},
         "oos_dates": {"from": test_dates[0] if test_dates else None, "to": test_dates[-1] if test_dates else None, "n": len(test_dates)},
         "recommended": recommended,

@@ -7,7 +7,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.analysis.filter_sweep import compute_filter_sweep
+from src.analysis.filter_sweep import LIVE_STACK, compute_filter_sweep
 from src.analysis.models import TradeRecord
 from src.analysis.runner_up import runner_up_yes_and_gap
 from src.analysis.selection_enrichment import (
@@ -143,7 +143,13 @@ def test_filter_sweep_recommended_shape():
     assert sweep["stacks"]
     names = {row["stack"] for row in sweep["stacks"]}
     assert "skip_bottom7_tz_surviving" in names
-    assert "skip_bottom7_tz_surviving + spread_live + buy_live" in names
+    assert LIVE_STACK in names
+    assert sweep["live_stack_name"] == LIVE_STACK
+    assert sweep["live_stack"] is not None
+    assert sweep["live_stack"]["stack"] == LIVE_STACK
+    assert sweep["live_stack"]["is_live"] is True
+    assert sweep["stacks"][0]["is_live"] is True
+    assert sweep["stacks"][0]["stack"] == LIVE_STACK
 
 
 def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
@@ -423,6 +429,68 @@ def test_yes_price_max_first_skip_dedupes_market(tmp_path: Path):
     assert first_bands["0.70–0.75"]["count"] == 1
     assert first_bands["0.65–0.70"]["count"] == 1
     assert "0.75–0.80" not in first_bands
+
+
+def test_yes_price_max_first_skip_since_date(tmp_path: Path):
+    """First-skip-since table ignores yes_price_max before FORECAST_COMPARE_SINCE_DATE."""
+    (tmp_path / "markets_yes_2026-08-01_1415.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-01T14:15:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "Paris",
+                        "market_id": "m-old",
+                        "reason": "yes_price_max",
+                        "group_item_title": "30°C",
+                        "event_slug": "highest-temperature-in-paris-on-august-1-2026",
+                        "selection_price": 0.72,
+                    }
+                ],
+            }
+        )
+    )
+    (tmp_path / "markets_yes_2026-08-05_1415.json").write_text(
+        json.dumps(
+            {
+                "run_at": "2026-08-05T14:15:00+00:00",
+                "skipped_bought": [
+                    {
+                        "city": "London",
+                        "market_id": "m-new",
+                        "reason": "yes_price_max",
+                        "group_item_title": "27°C",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
+                        "selection_price": 0.66,
+                    },
+                    {
+                        "city": "London",
+                        "market_id": "m-new",
+                        "reason": "yes_price_max",
+                        "group_item_title": "27°C",
+                        "event_slug": "highest-temperature-in-london-on-august-5-2026",
+                        "selection_price": 0.68,
+                    },
+                ],
+            }
+        )
+    )
+    analysis = compute_skipped_analysis(
+        selections_dir=tmp_path,
+        resolutions={},
+        fetch_missing_resolutions=False,
+    )
+    assert analysis["yes_price_max_first_skip_since_date"] == "2026-08-04"
+    since_bands = {
+        r["reason"]: r for r in analysis["yes_price_max_by_buy_band_first_skip_since"]
+    }
+    assert sum(r["count"] for r in since_bands.values()) == 1
+    assert since_bands["0.65–0.70"]["count"] == 1
+    # All-time first-skip still includes the pre-cutoff Paris row.
+    all_first = sum(
+        r["count"] for r in analysis["yes_price_max_by_buy_band_first_skip"]
+    )
+    assert all_first == 2
 
 
 def test_yes_price_max_first_skip_ignores_earlier_other_reason(tmp_path: Path):

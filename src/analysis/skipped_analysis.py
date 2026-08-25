@@ -405,13 +405,23 @@ def _market_dedupe_key(row: dict[str, Any]) -> Optional[str]:
     return None
 
 
-def _first_yes_price_max_skip_ids(rows: list[dict[str, Any]]) -> set[int]:
-    """Earliest yes_price_max skip per market — later re-skips of same market excluded."""
+def _first_yes_price_max_skip_ids(
+    rows: list[dict[str, Any]],
+    *,
+    since: Optional[date] = None,
+) -> set[int]:
+    """Earliest yes_price_max skip per market — later re-skips of same market excluded.
+
+    When `since` is set, only skips on/after that date are eligible (first skip
+    among that window, not first-ever historically).
+    """
     chronological = sorted(rows, key=lambda r: _run_at_ts(r.get("_run_at")) or 0.0)
     first_ids: set[int] = set()
     seen: set[str] = set()
     for row in chronological:
         if str(row.get("reason") or "") != "yes_price_max":
+            continue
+        if since is not None and not _run_at_on_or_after(row, since):
             continue
         key = _market_dedupe_key(row)
         if not key or key in seen:
@@ -704,6 +714,7 @@ def compute_skipped_analysis(
     by_reason: dict[str, dict[str, Any]] = {}
     yes_price_max_bands: dict[str, dict[str, Any]] = {}
     yes_price_max_first_bands: dict[str, dict[str, Any]] = {}
+    yes_price_max_first_since_bands: dict[str, dict[str, Any]] = {}
     recent_rows: list[dict[str, Any]] = []
     slug_hits = 0
     price_hits = 0
@@ -730,6 +741,10 @@ def compute_skipped_analysis(
     # Earliest yes_price_max skip per market only (e.g. London 27°C at 14:15 counts;
     # same market again at 14:45 does not). Other skip reasons do not consume the slot.
     first_ypm_skip_ids = _first_yes_price_max_skip_ids(rows)
+    # Same, but only among skips on/after FORECAST_COMPARE_SINCE_DATE.
+    first_ypm_since_ids = _first_yes_price_max_skip_ids(
+        rows, since=FORECAST_COMPARE_SINCE_DATE
+    )
     # Forecast compare: on/after FORECAST_COMPARE_SINCE_DATE + first skip per market only.
     first_fc_skip_ids = _first_forecast_compare_skip_ids(rows)
 
@@ -853,6 +868,7 @@ def compute_skipped_analysis(
                 )
 
         is_first_ypm_skip = id(row) in first_ypm_skip_ids
+        is_first_ypm_since = id(row) in first_ypm_since_ids
 
         if reason == "yes_price_max" and price is not None:
             band = _buy_price_band(price)
@@ -899,6 +915,29 @@ def compute_skipped_analysis(
                     first_stats["_pnl_sum"] += pnl
                     first_stats["_pnl_n"] += 1
 
+            if is_first_ypm_since:
+                since_stats = yes_price_max_first_since_bands.setdefault(
+                    band, _empty_reason_stats(band)
+                )
+                since_stats["count"] += 1
+                since_stats["with_price"] += 1
+                since_stats["_price_sum"] += price
+                if title:
+                    since_stats["with_temp"] += 1
+                if slug:
+                    since_stats["with_slug"] += 1
+                if whw is True:
+                    since_stats["resolved"] += 1
+                    since_stats["would_have_won"] += 1
+                elif whw is False:
+                    since_stats["resolved"] += 1
+                    since_stats["would_have_lost"] += 1
+                elif title:
+                    since_stats["unknown_outcome"] += 1
+                if pnl is not None:
+                    since_stats["_pnl_sum"] += pnl
+                    since_stats["_pnl_n"] += 1
+
         recent_rows.append(
             {
                 "run_at": row.get("_run_at"),
@@ -933,6 +972,10 @@ def compute_skipped_analysis(
     band_rows.sort(key=lambda r: r["reason"])
     first_band_rows = [_finalize_stats(stats) for stats in yes_price_max_first_bands.values()]
     first_band_rows.sort(key=lambda r: r["reason"])
+    first_since_band_rows = [
+        _finalize_stats(stats) for stats in yes_price_max_first_since_bands.values()
+    ]
+    first_since_band_rows.sort(key=lambda r: r["reason"])
 
     recent_rows.sort(
         key=lambda r: _run_at_ts(r.get("run_at")) or 0.0,
@@ -966,6 +1009,8 @@ def compute_skipped_analysis(
         "by_reason": reason_rows,
         "yes_price_max_by_buy_band": band_rows,
         "yes_price_max_by_buy_band_first_skip": first_band_rows,
+        "yes_price_max_by_buy_band_first_skip_since": first_since_band_rows,
+        "yes_price_max_first_skip_since_date": FORECAST_COMPARE_SINCE_DATE.isoformat(),
         "yes_price_max_includes_repeats": True,
         "recent_skips": recent_skips,
         # Keep samples alias for older dashboard payloads.
