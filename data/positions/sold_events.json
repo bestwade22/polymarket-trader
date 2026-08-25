@@ -11766,5 +11766,21 @@
     "floor_price": 0.94,
     "current_mid": 0.425,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x01686efd7cdabb9a93471c008b8a13d3b3023a56eb34cd7ca19a6ab8fd54853a",
+    "token_id": "99324013615657828071953028786952896347534594084179612019457354392349098626472",
+    "order_id": "0x08078754938d7f51e87f56b8375b7bb21321a6d6c91eb09bee7b1f35a70d5b6f",
+    "sold_at": "2026-08-25T21:00:17.113480+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-august-25-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.575,
+    "reason": "tier2"
   }
 ]
