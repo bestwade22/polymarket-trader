@@ -1307,6 +1307,24 @@ function renderFilterSweep(data) {
       </div>`
     : `<p class="muted">No stack cleared ≥${target}% OOS with enough trades.</p>`;
 
+  const live = data.live_stack || (data.stacks || []).find((r) => r.is_live);
+  const liveCard = live
+    ? `<div class="insight-card" style="margin-bottom:1rem;border-left:3px solid var(--accent, #2a7)">
+        <h3>Live stack (current Lambda)</h3>
+        <div class="summary-grid">
+          <div><span class="summary-label">Stack</span><span class="summary-value">${live.stack}</span></div>
+          <div><span class="summary-label">All win summary</span><span class="summary-value">${live.win_summary_pct}%</span></div>
+          <div><span class="summary-label">All P&amp;L</span><span class="summary-value">$${Number(live.pnl_usd).toFixed(2)}</span></div>
+          <div><span class="summary-label">All n / denom</span><span class="summary-value">${live.n} / ${live.denom}</span></div>
+          <div><span class="summary-label">OOS win summary</span><span class="summary-value">${live.oos_win_summary_pct}%</span></div>
+          <div><span class="summary-label">OOS P&amp;L</span><span class="summary-value">$${Number(live.oos_pnl_usd).toFixed(2)}</span></div>
+          <div><span class="summary-label">OOS denom</span><span class="summary-value">${live.oos_denom}</span></div>
+          <div><span class="summary-label">≥${target}% OOS</span><span class="summary-value">${live.oos_pass_60 ? "yes" : "no"}</span></div>
+        </div>
+        <p class="insight-desc">Pinned for compare: <code>skip_bottom7_tz_surviving + spread_live + buy_live</code> (spread &lt; SPREAD_MAX allowing missing; buy in [YES_PRICE_MIN, YES_PRICE_MAX)).</p>
+      </div>`
+    : `<p class="muted">Live stack missing from filter_sweep — re-run <code>enrich-trade-history</code>.</p>`;
+
   const columns = [
     { key: "stack", label: "Stack" },
     { key: "win_summary_pct", label: "Win summary%" },
@@ -1320,6 +1338,11 @@ function renderFilterSweep(data) {
   ];
 
   const sorted = [...data.stacks].sort((a, b) => {
+    // Keep live stack pinned at top unless sorting by stack name alphabetically.
+    if (filterSweepSort.key !== "stack") {
+      if (a.is_live && !b.is_live) return -1;
+      if (!a.is_live && b.is_live) return 1;
+    }
     const key = filterSweepSort.key;
     let av = a[key];
     let bv = b[key];
@@ -1339,12 +1362,21 @@ function renderFilterSweep(data) {
     return filterSweepSort.asc ? av - bv : bv - av;
   });
 
-  const rows = sorted
-    .slice(0, 40)
+  // Always include live stack even if beyond the display cap.
+  const capped = sorted.slice(0, 40);
+  if (live && !capped.some((r) => r.is_live || r.stack === live.stack)) {
+    capped.unshift(live);
+  }
+
+  const rows = capped
     .map((r) => {
       const pass = r.oos_pass_60 ? "pass" : "";
-      return `<tr class="${pass}">
-        <td>${r.stack}</td>
+      const liveCls = r.is_live ? " live-stack" : "";
+      const stackLabel = r.is_live
+        ? `<strong>${r.stack}</strong> <span class="badge">LIVE</span>`
+        : r.stack;
+      return `<tr class="${pass}${liveCls}">
+        <td>${stackLabel}</td>
         <td>${r.win_summary_pct}%</td>
         <td>$${Number(r.pnl_usd).toFixed(1)}</td>
         <td>${r.denom}</td>
@@ -1365,7 +1397,7 @@ function renderFilterSweep(data) {
     })
     .join("");
 
-  container.innerHTML = `${glossary}${highlight}
+  container.innerHTML = `${glossary}${liveCard}${highlight}
     <div class="table-wrap" style="padding:0">
       <table class="insight-table">
         <thead><tr>${head}</tr></thead>
@@ -1585,6 +1617,25 @@ function renderSkippedAnalysis(data) {
       : "No first-skip yes_price_max rows",
   });
 
+  const sinceDate = data.yes_price_max_first_skip_since_date || "2026-08-04";
+  const firstSinceRows = Array.isArray(data.yes_price_max_by_buy_band_first_skip_since)
+    ? data.yes_price_max_by_buy_band_first_skip_since
+    : null;
+  const firstSinceBandSection = renderSkippedSortableTable({
+    tableId: "skip-ypm-first-since",
+    title: `yes_price_max by buy $ (0.05 band) — first skip per market since ${sinceDate}`,
+    description:
+      `Only yes_price_max skips on/after ${sinceDate}, first skip per market in that window. ` +
+      "Example: London 27°C first skipped at 14:15 counts; same market at 14:45 does not. " +
+      "Earlier historical skips before that date are excluded.",
+    defaultSortKey: "reason",
+    columns: bandCols,
+    rows: firstSinceRows || [],
+    emptyText: firstSinceRows == null
+      ? "Missing in trade_history.json — hard-refresh the page (or re-run enrich-trade-history / wait for hourly sync)."
+      : "No first-skip yes_price_max rows since cutoff",
+  });
+
   const fcCols = [
     { key: "group", label: "Group" },
     { key: "count", label: "Count" },
@@ -1709,6 +1760,7 @@ function renderSkippedAnalysis(data) {
     ${reasonSection}
     ${bandSection}
     ${firstBandSection}
+    ${firstSinceBandSection}
     ${forecastSection}
     ${recentSection}`;
   bindSkippedSortHeaders(container);
