@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime
 from functools import lru_cache
-from typing import Any, Callable
+from statistics import median
+from typing import Any, Callable, Optional
 
 from config.settings import DATA_DIR
 from src.analysis.models import (
@@ -20,6 +21,10 @@ from src.analysis.models import (
     _record_pnl_value,
     compute_outcome_value,
 )
+from src.utils.market_parser import forecast_vs_result_delta_c
+
+# Align with Weather.com / WU scrape forecast path (same cutoff as forecast_compare).
+FORECAST_BIAS_SINCE = date(2026, 8, 4)
 
 
 def _buy_price_band(price: float) -> str:
@@ -214,6 +219,127 @@ def _loss_autopsy_label(tag: str | None) -> str:
     return tag or "n/a"
 
 
+def _parse_record_date(rec: TradeRecord) -> Optional[date]:
+    raw = (rec.date or "")[:10]
+    if not raw:
+        return None
+    try:
+        return date.fromisoformat(raw)
+    except ValueError:
+        return None
+
+
+def _om_vs_result_delta(rec: TradeRecord) -> Optional[float]:
+    return forecast_vs_result_delta_c(
+        rec.winning_temp,
+        forecast_temp_c=rec.forecast_temp_c,
+        forecast_temp_f=rec.forecast_temp_f,
+    )
+
+
+def _wu_vs_result_delta(rec: TradeRecord) -> Optional[float]:
+    return forecast_vs_result_delta_c(
+        rec.winning_temp,
+        forecast_temp_c=rec.forecast_wu_temp_c,
+        forecast_temp_f=rec.forecast_wu_temp_f,
+    )
+
+
+def _forecast_vs_result_band(delta: Optional[float]) -> str:
+    """Integer °C bands for forecast − result (positive = forecast hot)."""
+    if delta is None:
+        return "unknown"
+    rounded = int(round(float(delta)))
+    if rounded <= -3:
+        return "≤-3"
+    if rounded >= 3:
+        return "≥+3"
+    if rounded > 0:
+        return f"+{rounded}"
+    return str(rounded)
+
+
+def _mean(vals: list[float]) -> Optional[float]:
+    if not vals:
+        return None
+    return round(sum(vals) / len(vals), 2)
+
+
+def _median(vals: list[float]) -> Optional[float]:
+    if not vals:
+        return None
+    return round(float(median(vals)), 2)
+
+
+def compute_city_forecast_bias(
+    records: list[TradeRecord],
+    *,
+    since: date = FORECAST_BIAS_SINCE,
+) -> dict[str, dict[str, Any]]:
+    """Per-city forecast − result bias (Weather.com/OM primary + WU) since `since`.
+
+    `om_corr` / `wu_corr` = −mean bias (add to future forecasts to de-bias).
+    """
+    om_by_city: dict[str, list[float]] = defaultdict(list)
+    wu_by_city: dict[str, list[float]] = defaultdict(list)
+    for rec in records:
+        d = _parse_record_date(rec)
+        if d is None or d < since:
+            continue
+        if not rec.winning_temp:
+            continue
+        city = rec.city or "Unknown"
+        om = _om_vs_result_delta(rec)
+        if om is not None:
+            om_by_city[city].append(float(om))
+        wu = _wu_vs_result_delta(rec)
+        if wu is not None:
+            wu_by_city[city].append(float(wu))
+
+    cities = set(om_by_city) | set(wu_by_city)
+    out: dict[str, dict[str, Any]] = {}
+    for city in cities:
+        om_vals = om_by_city.get(city) or []
+        wu_vals = wu_by_city.get(city) or []
+        om_mean = _mean(om_vals)
+        wu_mean = _mean(wu_vals)
+        out[city] = {
+            "bias_since": since.isoformat(),
+            "om_bias_n": len(om_vals),
+            "om_bias_mean": om_mean,
+            "om_bias_median": _median(om_vals),
+            "om_corr": round(-om_mean, 2) if om_mean is not None else None,
+            "wu_bias_n": len(wu_vals),
+            "wu_bias_mean": wu_mean,
+            "wu_bias_median": _median(wu_vals),
+            "wu_corr": round(-wu_mean, 2) if wu_mean is not None else None,
+        }
+    return out
+
+
+def _merge_city_bias(
+    city_stats: dict[str, dict[str, Any]],
+    bias: dict[str, dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    merged = dict(city_stats)
+    for city, row in merged.items():
+        b = bias.get(city) or {}
+        row.update(
+            {
+                "om_bias_n": b.get("om_bias_n", 0),
+                "om_bias_mean": b.get("om_bias_mean"),
+                "om_bias_median": b.get("om_bias_median"),
+                "om_corr": b.get("om_corr"),
+                "wu_bias_n": b.get("wu_bias_n", 0),
+                "wu_bias_mean": b.get("wu_bias_mean"),
+                "wu_bias_median": b.get("wu_bias_median"),
+                "wu_corr": b.get("wu_corr"),
+            }
+        )
+    # Cities with bias but no trades in filtered set still useful? Skip — city table is trades.
+    return merged
+
+
 def _sold_outcome_label(rec: TradeRecord) -> str:
     if rec.result != "sold":
         return "not_sold"
@@ -390,8 +516,25 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
             "outcome_value_usd": rec.outcome_value_usd or compute_outcome_value(rec),
         }
 
+    city_bias = compute_city_forecast_bias(records)
+    summary_by_city = _merge_city_bias(
+        _group_metrics(records, lambda rec: rec.city or "Unknown"),
+        city_bias,
+    )
+
+    bias_eligible = [
+        rec
+        for rec in records
+        if (_parse_record_date(rec) or date.min) >= FORECAST_BIAS_SINCE
+        and rec.winning_temp
+    ]
+    om_eligible = [r for r in bias_eligible if _om_vs_result_delta(r) is not None]
+    wu_eligible = [r for r in bias_eligible if _wu_vs_result_delta(r) is not None]
+
     return {
-        "summary_by_city": _group_metrics(records, lambda rec: rec.city or "Unknown"),
+        "summary_by_city": summary_by_city,
+        "city_forecast_bias": city_bias,
+        "forecast_bias_since": FORECAST_BIAS_SINCE.isoformat(),
         "summary_by_buy_price_band": _group_metrics(records, lambda rec: _buy_price_band(rec.buy_price)),
         "summary_by_local_buy_time_band": _group_metrics(
             records, lambda rec: _local_time_band(rec.bought_at_local)
@@ -426,6 +569,14 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
         ),
         "summary_by_loss_autopsy": _group_metrics(
             records, lambda rec: _loss_autopsy_label(rec.loss_autopsy)
+        ),
+        "summary_by_om_vs_result_band": _group_metrics(
+            om_eligible,
+            lambda rec: _forecast_vs_result_band(_om_vs_result_delta(rec)),
+        ),
+        "summary_by_wu_vs_result_band": _group_metrics(
+            wu_eligible,
+            lambda rec: _forecast_vs_result_band(_wu_vs_result_delta(rec)),
         ),
         "summary_by_city_timezone": _group_metrics(
             records, lambda rec: timezone_group(rec.city)

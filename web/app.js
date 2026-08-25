@@ -234,6 +234,92 @@ function forecastVsWinSortValue(r, { wu = false } = {}) {
   return 0;
 }
 
+const FORECAST_BIAS_SINCE = "2026-08-04";
+
+function winningTempMidpointC(winningTemp) {
+  const bucket = parseTempBucket(winningTemp);
+  if (!bucket) return null;
+  const mid =
+    bucket.high == null ? bucket.low : (bucket.low + bucket.high) / 2;
+  if (bucket.unit === "F") return ((mid - 32) * 5) / 9;
+  return mid;
+}
+
+function forecastAsC(r, { wu = false } = {}) {
+  const cKey = wu ? "forecast_wu_temp_c" : "forecast_temp_c";
+  const fKey = wu ? "forecast_wu_temp_f" : "forecast_temp_f";
+  if (r[cKey] != null && Number.isFinite(Number(r[cKey]))) return Number(r[cKey]);
+  if (r[fKey] != null && Number.isFinite(Number(r[fKey])))
+    return ((Number(r[fKey]) - 32) * 5) / 9;
+  return null;
+}
+
+/** Forecast − winning midpoint (°C). Positive = forecast ran hot. */
+function forecastVsResultDeltaC(r, { wu = false } = {}) {
+  const fc = forecastAsC(r, { wu });
+  const mid = winningTempMidpointC(r.winning_temp);
+  if (fc == null || mid == null) return null;
+  return Math.round((fc - mid) * 100) / 100;
+}
+
+function fmtForecastVsResultDiff(r, { wu = false } = {}) {
+  const d = forecastVsResultDeltaC(r, { wu });
+  if (d == null || !Number.isFinite(d)) return "—";
+  const unit = recordTempUnit(r);
+  let v = d;
+  if (unit === "F") v = (v * 9) / 5;
+  const sign = v > 0 ? "+" : "";
+  return `${sign}${v.toFixed(1)}°${unit}`;
+}
+
+function forecastVsResultBand(delta) {
+  if (delta == null || !Number.isFinite(Number(delta))) return "unknown";
+  const rounded = Math.round(Number(delta));
+  if (rounded <= -3) return "≤-3";
+  if (rounded >= 3) return "≥+3";
+  if (rounded > 0) return `+${rounded}`;
+  return String(rounded);
+}
+
+function computeCityForecastBias(records, since = FORECAST_BIAS_SINCE) {
+  const omBy = {};
+  const wuBy = {};
+  for (const r of records) {
+    const d = (r.date || "").slice(0, 10);
+    if (!d || d < since || !r.winning_temp) continue;
+    const city = r.city || "Unknown";
+    const om = forecastVsResultDeltaC(r);
+    if (om != null) {
+      if (!omBy[city]) omBy[city] = [];
+      omBy[city].push(om);
+    }
+    const wu = forecastVsResultDeltaC(r, { wu: true });
+    if (wu != null) {
+      if (!wuBy[city]) wuBy[city] = [];
+      wuBy[city].push(wu);
+    }
+  }
+  const cities = new Set([...Object.keys(omBy), ...Object.keys(wuBy)]);
+  const out = {};
+  for (const city of cities) {
+    const omVals = omBy[city] || [];
+    const wuVals = wuBy[city] || [];
+    const omMean = mean(omVals);
+    const wuMean = mean(wuVals);
+    out[city] = {
+      om_bias_n: omVals.length,
+      om_bias_mean: omMean != null ? Math.round(omMean * 100) / 100 : null,
+      om_bias_median: median(omVals) != null ? Math.round(median(omVals) * 100) / 100 : null,
+      om_corr: omMean != null ? Math.round(-omMean * 100) / 100 : null,
+      wu_bias_n: wuVals.length,
+      wu_bias_mean: wuMean != null ? Math.round(wuMean * 100) / 100 : null,
+      wu_bias_median: median(wuVals) != null ? Math.round(median(wuVals) * 100) / 100 : null,
+      wu_corr: wuMean != null ? Math.round(-wuMean * 100) / 100 : null,
+    };
+  }
+  return out;
+}
+
 function fmtHk(iso, fallback) {
   if (fallback) return fallback;
   if (!iso) return "—";
@@ -420,6 +506,14 @@ function sortRecords(records) {
       av = forecastVsWinSortValue(a, { wu: true });
       bv = forecastVsWinSortValue(b, { wu: true });
     }
+    if (sortKey === "om_vs_result") {
+      av = forecastVsResultDeltaC(a) ?? "";
+      bv = forecastVsResultDeltaC(b) ?? "";
+    }
+    if (sortKey === "wu_vs_result") {
+      av = forecastVsResultDeltaC(a, { wu: true }) ?? "";
+      bv = forecastVsResultDeltaC(b, { wu: true }) ?? "";
+    }
     if (av == null) av = "";
     if (bv == null) bv = "";
     if (typeof av === "number" && typeof bv === "number") {
@@ -567,7 +661,23 @@ const INSIGHT_COLUMNS = [
   { key: "avg_outcome_value_usd", label: "Avg outcome", type: "number" },
 ];
 
-function insightColumnsFor(_title) {
+const CITY_BIAS_COLUMNS = [
+  { key: "om_bias_n", label: "OM bias n", type: "number" },
+  { key: "om_bias_mean", label: "OM bias°C", type: "number" },
+  { key: "om_corr", label: "OM corr°C", type: "number" },
+  { key: "wu_bias_n", label: "WU bias n", type: "number" },
+  { key: "wu_bias_mean", label: "WU bias°C", type: "number" },
+  { key: "wu_corr", label: "WU corr°C", type: "number" },
+];
+
+function insightColumnsFor(title) {
+  if (title === "By city") {
+    // Insert bias cols after Win summary%
+    const cols = [...INSIGHT_COLUMNS];
+    const idx = cols.findIndex((c) => c.key === "win_plus_sold_win_pct");
+    cols.splice(idx + 1, 0, ...CITY_BIAS_COLUMNS);
+    return cols;
+  }
   return INSIGHT_COLUMNS;
 }
 
@@ -807,9 +917,35 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
 
   // Match Lambda: rank from all history + live buy/spread stack (ignore page filters).
   const surviving = survivingRecordsForSkip(skipPoolRecords || records);
+  const biasPool = skipPoolRecords || records;
+  const cityBias = computeCityForecastBias(biasPool);
+  const summaryByCity = groupInsightMetrics(records, (r) => r.city || "Unknown");
+  for (const [city, stats] of Object.entries(summaryByCity)) {
+    const b = cityBias[city] || {};
+    stats.om_bias_n = b.om_bias_n || 0;
+    stats.om_bias_mean = b.om_bias_mean ?? null;
+    stats.om_bias_median = b.om_bias_median ?? null;
+    stats.om_corr = b.om_corr ?? null;
+    stats.wu_bias_n = b.wu_bias_n || 0;
+    stats.wu_bias_mean = b.wu_bias_mean ?? null;
+    stats.wu_bias_median = b.wu_bias_median ?? null;
+    stats.wu_corr = b.wu_corr ?? null;
+  }
+
+  // Respect page filters for group-by tables when filtering cities/results.
+  const filteredBias = records.filter((r) => {
+    const d = (r.date || "").slice(0, 10);
+    return d && d >= FORECAST_BIAS_SINCE && r.winning_temp;
+  });
+  const omEligible = filteredBias.filter((r) => forecastVsResultDeltaC(r) != null);
+  const wuEligible = filteredBias.filter(
+    (r) => forecastVsResultDeltaC(r, { wu: true }) != null
+  );
 
   return {
-    summary_by_city: groupInsightMetrics(records, (r) => r.city || "Unknown"),
+    summary_by_city: summaryByCity,
+    city_forecast_bias: cityBias,
+    forecast_bias_since: FORECAST_BIAS_SINCE,
     summary_by_buy_price_band: groupInsightMetrics(records, (r) => buyPriceBand(r.buy_price)),
     summary_by_local_buy_time_band: groupInsightMetrics(records, (r) =>
       localBuyTimeBand(r.bought_at_local || fmtLocal(r.bought_at, r.city))
@@ -836,6 +972,12 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
     ),
     summary_by_yes_gap_band: groupInsightMetrics(records, (r) => yesGapBand(r.yes_gap)),
     summary_by_loss_autopsy: groupInsightMetrics(records, (r) => r.loss_autopsy || "n/a"),
+    summary_by_om_vs_result_band: groupInsightMetrics(omEligible, (r) =>
+      forecastVsResultBand(forecastVsResultDeltaC(r))
+    ),
+    summary_by_wu_vs_result_band: groupInsightMetrics(wuEligible, (r) =>
+      forecastVsResultBand(forecastVsResultDeltaC(r, { wu: true }))
+    ),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
     summary_by_city_timezone_surviving: groupInsightMetrics(surviving, (r) =>
       timezoneGroup(r.city)
@@ -928,6 +1070,9 @@ function renderGroupTable(title, data, options = {}) {
     if (title === "By competitive band" || title === "By open interest band" || title === "By yes gap band") {
       insightSortState[title] = { key: "group", asc: true };
     }
+    if (title === "By OM vs result Δ°C" || title === "By WU vs result Δ°C") {
+      insightSortState[title] = { key: "group", asc: true };
+    }
     if (title === SURVIVING_TZ_TITLE) {
       // Worst win summary first — same order as Lambda timezone-skip log.
       insightSortState[title] = { key: "win_plus_sold_win_pct", asc: true };
@@ -945,6 +1090,24 @@ function renderGroupTable(title, data, options = {}) {
                 const val = stats[col.key] ?? 0;
                 if (col.key === "win_rate_pct" || col.key === "win_plus_sold_win_pct") {
                   return `<td>${Number(val).toFixed(1)}%</td>`;
+                }
+                if (
+                  col.key === "om_bias_mean" ||
+                  col.key === "om_corr" ||
+                  col.key === "wu_bias_mean" ||
+                  col.key === "wu_corr" ||
+                  col.key === "om_bias_median" ||
+                  col.key === "wu_bias_median"
+                ) {
+                  if (val == null || val === "" || !Number.isFinite(Number(val))) {
+                    return `<td>—</td>`;
+                  }
+                  const n = Number(val);
+                  const sign = n > 0 ? "+" : "";
+                  return `<td>${sign}${n.toFixed(1)}</td>`;
+                }
+                if (col.key === "om_bias_n" || col.key === "wu_bias_n") {
+                  return `<td>${val ?? 0}</td>`;
                 }
                 if (col.key === "avg_buy_price" || col.key === "avg_spread") {
                   return `<td>${Number(val).toFixed(3)}</td>`;
@@ -1096,7 +1259,34 @@ function renderInsights(data) {
         description: "Last 10 days (newest first); respects active filters",
       },
     ],
-    ["By city", data.summary_by_city, { limit: null }],
+    ["By city", data.summary_by_city, {
+      limit: null,
+      description:
+        `Bias cols use forecast − result (°C) on/after ${data.forecast_bias_since || FORECAST_BIAS_SINCE} (full history, not page date filters). ` +
+        `Positive bias = forecast ran hot. Corr = −mean (add to future forecasts).`,
+    }],
+    [
+      "By OM vs result Δ°C",
+      data.summary_by_om_vs_result_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `Primary forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
+          `Bands are rounded °C (≤-3 … ≥+3). Positive = forecast hot vs result.`,
+      },
+    ],
+    [
+      "By WU vs result Δ°C",
+      data.summary_by_wu_vs_result_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `WU scrape forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
+          `Same band rules as OM vs result.`,
+      },
+    ],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
     [
@@ -1239,6 +1429,8 @@ function renderTable(records) {
       <td>${fmtForecastTemp(r, { wu: true })}</td>
       <td>${fmtForecastDelta(r)}</td>
       <td>${fmtForecastVsWin(r)}</td>
+      <td>${fmtForecastVsResultDiff(r)}</td>
+      <td>${fmtForecastVsResultDiff(r, { wu: true })}</td>
       <td>${r.trade_window || "—"}</td>
       <td>${hk}</td>
       <td>${soldHk}</td>

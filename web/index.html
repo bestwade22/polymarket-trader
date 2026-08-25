@@ -102,6 +102,9 @@
         narrative scrape (“High around …”) for compare.
         <strong>Δ forecast</strong> = forecast − bought bucket midpoint in the market’s units.
         <strong>Forecast vs win</strong> = whether the predicted high falls in the eventual winning temp bucket.
+        <strong>OM Δ vs win</strong> / <strong>WU Δ vs win</strong> = forecast − winning bucket midpoint
+        (°C/°F); positive = forecast ran hot vs the resolved result.
+        City bias (Strategy insights) uses the same diffs on/after 2026-08-04; <em>corr</em> = −mean bias.
       </p>
       <p class="muted" style="margin:0">
         <strong>Shipped stack</strong> = live trade filters:
@@ -135,6 +138,8 @@
           <th data-sort="forecast_wu_temp_c">WU forecast</th>
           <th data-sort="forecast_delta_c">Δ forecast</th>
           <th data-sort="forecast_vs_win">Forecast vs win</th>
+          <th data-sort="om_vs_result">OM Δ vs win</th>
+          <th data-sort="wu_vs_result">WU Δ vs win</th>
           <th data-sort="trade_window">Trade window</th>
           <th data-sort="bought_at_hk">Bought (HKT)</th>
           <th data-sort="sold_at_hk">Sold (HKT)</th>

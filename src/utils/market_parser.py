@@ -333,3 +333,53 @@ def forecast_matches_winning_temp(
     if forecast_temp_f is not None:
         return temp_matches_bucket(float(forecast_temp_f), winning_temp, temp_is_f=True)
     return None
+
+
+def forecast_temp_as_c(
+    *,
+    forecast_temp_c: Optional[float] = None,
+    forecast_temp_f: Optional[float] = None,
+) -> Optional[float]:
+    """Normalize a forecast to Celsius (prefers explicit °C)."""
+    if forecast_temp_c is not None:
+        try:
+            return float(forecast_temp_c)
+        except (TypeError, ValueError):
+            return None
+    if forecast_temp_f is not None:
+        try:
+            return (float(forecast_temp_f) - 32.0) * 5.0 / 9.0
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
+def winning_temp_midpoint_c(winning_temp: Optional[str]) -> Optional[float]:
+    """Winning bucket midpoint in °C (open-ended buckets use the bound)."""
+    bucket = parse_temperature_bucket(winning_temp or "")
+    if not bucket:
+        return None
+    low, high, unit = bucket
+    mid = float(low) if high is None else (float(low) + float(high)) / 2.0
+    if unit == "F":
+        return (mid - 32.0) * 5.0 / 9.0
+    return mid
+
+
+def forecast_vs_result_delta_c(
+    winning_temp: Optional[str],
+    *,
+    forecast_temp_c: Optional[float] = None,
+    forecast_temp_f: Optional[float] = None,
+) -> Optional[float]:
+    """Forecast daily high − winning bucket midpoint, in °C.
+
+    Positive = forecast ran hot vs the resolved result.
+    """
+    fc = forecast_temp_as_c(
+        forecast_temp_c=forecast_temp_c, forecast_temp_f=forecast_temp_f
+    )
+    mid = winning_temp_midpoint_c(winning_temp)
+    if fc is None or mid is None:
+        return None
+    return round(fc - mid, 2)
