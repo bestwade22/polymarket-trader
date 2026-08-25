@@ -63,7 +63,10 @@ jobs:
               StopLossOrderExpiryMinutes=13 \
               StopLossMinLocalTime=16:30 \
               SellWinDryRun=false \
-              SellWinScheduleEnabled=true"
+              SellWinScheduleEnabled=true \
+              SellWinTier1Price=0.94 \
+              SellWinTier2Price=0.96 \
+              SellWinTier3Price=0.98"
 
       - name: Diagnose CloudFormation failure
         if: failure()
