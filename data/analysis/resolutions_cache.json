@@ -6816,6 +6816,12 @@
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "45475992618913572151785652966941088938464885452057117275621957817190912362717"
     },
+    "highest-temperature-in-los-angeles-on-august-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on August 23?",
+      "winning_temp": "91\u00b0F or below",
+      "winning_token_id": "101566116602304091086472498694155428735567058918810801782438864477983375445980"
+    },
     "highest-temperature-in-los-angeles-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Los Angeles on August 3?",
@@ -9636,6 +9642,12 @@
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "38902169854652465630947854107317854773848010553570595835561074295476091954219"
     },
+    "highest-temperature-in-nyc-on-august-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on August 24?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "67913620292064703140021904281032033758453605245871508343496490926812792485268"
+    },
     "highest-temperature-in-nyc-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on August 3?",
@@ -10890,6 +10902,12 @@
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "74013097028338748713676080622763417531685633856001571893854911776494107901952"
     },
+    "highest-temperature-in-san-francisco-on-august-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on August 24?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "69232402591203816754395627807861620429209864159754104844727048682488126281385"
+    },
     "highest-temperature-in-san-francisco-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on August 3?",
@@ -11579,6 +11597,12 @@
       "title": "Highest temperature in Seattle on August 23?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "46188769659336950646868393460832923008227809017245386665074516541833471053144"
+    },
+    "highest-temperature-in-seattle-on-august-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on August 24?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "53262203092713174335119084059966208012249894236785935461648169938817949598752"
     },
     "highest-temperature-in-seattle-on-august-3-2026": {
       "closed": true,
