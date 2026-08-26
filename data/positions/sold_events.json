@@ -11798,5 +11798,37 @@
     "floor_price": 0.94,
     "current_mid": 0.515,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x484e4a94546ebae3cdf92d1777c1faafecd884eeea24220cb9606ddff41df288",
+    "token_id": "49505698219542354637855718734077751189858998536554469650215870277506075929436",
+    "order_id": "0xf89dc33bdbb956ab752e81f1f821023548156c182804ad789d0cd43233335414",
+    "sold_at": "2026-08-26T13:00:15.554201+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-jeddah-on-august-26-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.83,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x2ce92bac723ee4528c0b143de54cc121c225c992542c52cbf1767ce392d5c8da",
+    "token_id": "107672881738152176755839090990430622890867062750892414748212414935421370269189",
+    "order_id": "0x1d322fb4b7f169407c72f6ce85902ec8e5355c2c3487e1f12d3593674c91e2ec",
+    "sold_at": "2026-08-26T13:00:16.724414+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-amsterdam-on-august-26-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.49,
+    "reason": "tier1"
   }
 ]
