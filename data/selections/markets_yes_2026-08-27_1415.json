@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-08-27T14:15:44.718036+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "908167",
+      "city": "London",
+      "market_id": "3867527",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-august-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.785,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
