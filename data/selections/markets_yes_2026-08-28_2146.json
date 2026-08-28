@@ -1,0 +1,79 @@
+{
+  "run_at": "2026-08-28T21:46:06.511679+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "918594",
+      "city": "Los Angeles",
+      "event_slug": "highest-temperature-in-los-angeles-on-august-28-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "86-87\u00b0F",
+      "market_id": "3922430",
+      "clob_mid_price": 0.51,
+      "gamma_title": "84-85\u00b0F",
+      "gamma_price": 0.48,
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "918585",
+      "city": "Seattle",
+      "market_id": "3922332",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-august-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.66,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": -0.22
+    },
+    {
+      "event_id": "918592",
+      "city": "Denver",
+      "market_id": "3922409",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-august-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.67
+    },
+    {
+      "event_id": "918602",
+      "city": "Mexico City",
+      "market_id": "3922462",
+      "group_item_title": "25\u00b0C",
+      "event_slug": "highest-temperature-in-mexico-city-on-august-28-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "918595",
+      "city": "San Francisco",
+      "market_id": "3922442",
+      "group_item_title": "66-67\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-august-28-2026",
+      "reason": "spread_max",
+      "spread": 0.16,
+      "spread_max": 0.08,
+      "selection_price": 0.5,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.11
+    }
+  ]
+}
