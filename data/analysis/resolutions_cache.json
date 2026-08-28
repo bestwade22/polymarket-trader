@@ -2802,6 +2802,12 @@
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "97460207510286668612239576684636778172898470435521965126326679364595117593182"
     },
+    "highest-temperature-in-chicago-on-august-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on August 27?",
+      "winning_temp": "82-83\u00b0F",
+      "winning_token_id": "37278334798882167681130124798850891524317936571458160089757468289275177376623"
+    },
     "highest-temperature-in-chicago-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on August 3?",
@@ -3413,6 +3419,12 @@
       "title": "Highest temperature in Dallas on August 26?",
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "89160517197787990508997242302103088670062914931174545297383804604268764141767"
+    },
+    "highest-temperature-in-dallas-on-august-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on August 27?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "21993123654784112272714861723897404986078589370445216929380466963715221133424"
     },
     "highest-temperature-in-dallas-on-august-3-2026": {
       "closed": true,
@@ -5075,6 +5087,12 @@
       "title": "Highest temperature in Houston on August 26?",
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "52559293692426862089862053254740952351975985390684028383132931209427896204743"
+    },
+    "highest-temperature-in-houston-on-august-27-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on August 27?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "48141572081162259835943395720629016322147307160233516635661470182914064788433"
     },
     "highest-temperature-in-houston-on-august-3-2026": {
       "closed": true,
