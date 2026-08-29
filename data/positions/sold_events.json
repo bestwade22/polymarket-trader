@@ -12070,5 +12070,37 @@
     "floor_price": 0.94,
     "current_mid": 0.455,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x4e7304f72e087d712d18e863dbe15cd8bd00b684edc6c2e4dd0df536921b76e4",
+    "token_id": "86250700542989822457455069374872221016562410214319805730565268978861039764055",
+    "order_id": "0x41b9fa5f66a800e0ac743a1f2ed67e668e7fd48923936fac6e84a846432a6ccd",
+    "sold_at": "2026-08-29T15:00:17.152507+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-milan-on-august-29-2026",
+    "price": 0.98,
+    "size": 14.9925,
+    "avg_buy_price": 0.49,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.155,
+    "reason": "tier3"
+  },
+  {
+    "market_id": "0x6511584fa8c6334ec297fea76c0584531eb9b23ae8523da7f9e9b5544579ddf0",
+    "token_id": "15139391323116238705258261473107670827533030170288388905885049128341850087226",
+    "order_id": "0x52eec31e70508b9d7363c3b5ef8b23cb8fc2c1198c7b5f3dabb298253fceb02e",
+    "sold_at": "2026-08-29T15:00:18.505292+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-london-on-august-29-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.13,
+    "reason": "tier2"
   }
 ]
