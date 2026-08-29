@@ -5142,6 +5142,12 @@
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "48141572081162259835943395720629016322147307160233516635661470182914064788433"
     },
+    "highest-temperature-in-houston-on-august-28-2026": {
+      "closed": false,
+      "title": "Highest temperature in Houston on August 28?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "41861242071111555980636120483090385572601268948949554679886183395725404392368"
+    },
     "highest-temperature-in-houston-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Houston on August 3?",
@@ -8406,6 +8412,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "42545771979277726276745489886245348130043469415078431991733996752136881766682"
     },
+    "highest-temperature-in-mexico-city-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on August 28?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "77175123894321389212514882879974423649421232948057268565573975236686214998121"
+    },
     "highest-temperature-in-mexico-city-on-august-6-2026": {
       "closed": true,
       "title": "Highest temperature in Mexico City on August 6?",
@@ -10583,6 +10595,12 @@
       "title": "Highest temperature in Panama City on August 27?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "57318173902121581129051497994437657936246599010813977223676232866518903884829"
+    },
+    "highest-temperature-in-panama-city-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on August 28?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "23502136942164373931405124186472253882684211876050479038465053185996048637114"
     },
     "highest-temperature-in-panama-city-on-august-3-2026": {
       "closed": true,
