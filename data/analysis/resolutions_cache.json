@@ -6264,6 +6264,12 @@
       "winning_temp": "25\u00b0C",
       "winning_token_id": "62265449397898983076340320038421129130356732587232577959316039279649584808436"
     },
+    "highest-temperature-in-jinan-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on August 29?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "115614347267209803255573465826700638931406514871953351408033173829369652193852"
+    },
     "highest-temperature-in-jinan-on-august-8-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on August 8?",
@@ -6401,6 +6407,12 @@
       "title": "Highest temperature in Karachi on August 28?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "89531090525023597798336482269805539808657470656676914423228311620126257972325"
+    },
+    "highest-temperature-in-karachi-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Karachi on August 29?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "68192108264398694878014231694032608570697329365747570899751843156429496701759"
     },
     "highest-temperature-in-karachi-on-august-3-2026": {
       "closed": true,
