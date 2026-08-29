@@ -1,0 +1,87 @@
+{
+  "run_at": "2026-08-29T11:46:14.858625+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "919411",
+      "city": "Tel Aviv",
+      "market_id": "3926394",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-august-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.964,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "919433",
+      "city": "Moscow",
+      "market_id": "3926559",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-august-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.81,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "919434",
+      "city": "Istanbul",
+      "market_id": "3926568",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-august-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "919439",
+      "city": "Jeddah",
+      "market_id": "3926626",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-august-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 102,
+      "forecast_temp_c": 39,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 97,
+      "forecast_wu_temp_c": 36,
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "919407",
+      "city": "Ankara",
+      "market_id": "3926348",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-august-29-2026",
+      "reason": "spread_max",
+      "spread": 0.19,
+      "spread_max": 0.08,
+      "selection_price": 0.585,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 85,
+      "forecast_wu_temp_c": 29,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "919437",
+      "city": "Helsinki",
+      "market_id": "3926602",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-august-29-2026",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.08,
+      "selection_price": 0.595,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 65,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
