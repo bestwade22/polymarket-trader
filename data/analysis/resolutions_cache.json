@@ -6216,6 +6216,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "59951758938444639165388412723051307820948786476936383794221533208857289985240"
     },
+    "highest-temperature-in-jinan-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on August 28?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "62265449397898983076340320038421129130356732587232577959316039279649584808436"
+    },
     "highest-temperature-in-jinan-on-august-8-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on August 8?",
@@ -6821,6 +6827,12 @@
       "title": "Highest temperature in London on August 27?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "28837137821595737420839310288522701420295722017853461154386582191119759321905"
+    },
+    "highest-temperature-in-london-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on August 28?",
+      "winning_temp": "25\u00b0C or higher",
+      "winning_token_id": "81433646454910647017326223222400481054061010440284075475918915977202311159773"
     },
     "highest-temperature-in-london-on-august-3-2026": {
       "closed": true,
@@ -13247,6 +13259,12 @@
       "title": "Highest temperature in Singapore on August 27?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "8822874624066805311173214424654403617651446978797988511383836626639267231490"
+    },
+    "highest-temperature-in-singapore-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on August 28?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "73401859323849095882496574766307473480874284426874573722153485587618605261084"
     },
     "highest-temperature-in-singapore-on-august-3-2026": {
       "closed": true,
