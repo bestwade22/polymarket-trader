@@ -858,6 +858,12 @@
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "54262564214833708366296536624968427724509490955921499122907162609176220021028"
     },
+    "highest-temperature-in-atlanta-on-august-28-2026": {
+      "closed": false,
+      "title": "Highest temperature in Atlanta on August 28?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "85544483756839985385516591764889177840026092550192176491496191004685897114032"
+    },
     "highest-temperature-in-atlanta-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on August 3?",
@@ -8718,6 +8724,12 @@
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "62088714152047653521204285743298392983216218347537162956699116276613595952459"
     },
+    "highest-temperature-in-miami-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on August 28?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "11069566012852943585589306802928759038693243120511312878103883386427987001547"
+    },
     "highest-temperature-in-miami-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on August 3?",
@@ -10193,6 +10205,12 @@
       "title": "Highest temperature in NYC on August 27?",
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "64040152051378631013559602802224193425679588322421541485115184039816341997340"
+    },
+    "highest-temperature-in-nyc-on-august-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on August 28?",
+      "winning_temp": "84-85\u00b0F",
+      "winning_token_id": "33011130337978901280904465982983318257730003700812511081658899911073217098314"
     },
     "highest-temperature-in-nyc-on-august-3-2026": {
       "closed": true,
