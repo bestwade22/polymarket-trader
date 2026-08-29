@@ -12134,5 +12134,21 @@
     "floor_price": 0.96,
     "current_mid": 0.59,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xad384d7a1574eca5076bded3f4ce3e2a888fa2131059e24829a783decd7aef67",
+    "token_id": "68788376273322304731778788455404754764439203696631698599201724536701808408710",
+    "order_id": "0xa7d297db3e7ef038a44bfbf6a94d602797cd71ba17e8cfec7800531194e8a904",
+    "sold_at": "2026-08-29T21:00:16.633128+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-toronto-on-august-29-2026",
+    "price": 0.98,
+    "size": 15.0,
+    "avg_buy_price": 0.53,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.43,
+    "reason": "tier3"
   }
 ]
