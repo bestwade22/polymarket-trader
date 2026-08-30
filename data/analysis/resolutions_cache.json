@@ -4488,6 +4488,12 @@
       "winning_temp": "20\u00b0C",
       "winning_token_id": "90945383145983157291282636160443385376907269410332982840005376511514246642934"
     },
+    "highest-temperature-in-helsinki-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on August 29?",
+      "winning_temp": "19\u00b0C",
+      "winning_token_id": "63402050050275024391409003197081151895971243319625040397522840150586604284017"
+    },
     "highest-temperature-in-helsinki-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on August 3?",
@@ -14081,6 +14087,12 @@
       "title": "Highest temperature in Tel Aviv on August 28?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "44280770474722704117344546994561111627503354648920376959163191519560174099827"
+    },
+    "highest-temperature-in-tel-aviv-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tel Aviv on August 29?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "93407039145424769464858236274116227837214850588222148518674573599788309885079"
     },
     "highest-temperature-in-tel-aviv-on-august-3-2026": {
       "closed": true,
