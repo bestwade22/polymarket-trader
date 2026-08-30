@@ -12182,5 +12182,37 @@
     "floor_price": 0.94,
     "current_mid": 0.26,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xced6b7bb2f3060748332a6513552ad65d078a091058a97507671ecf54f24a5f3",
+    "token_id": "52804975665476981374193536984561888165599365581266791554755259698720074344472",
+    "order_id": "0x6ba5cf6b2a5c6d7949e4354a38bd0e07d7c36f35166417e6fbc7ee24e6c49e7d",
+    "sold_at": "2026-08-30T13:00:15.200392+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-helsinki-on-august-30-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.405,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x2bbaba6c8f5a2e83db6ba2ae358ae09da42856c5790dba382a081a33c3510ab6",
+    "token_id": "28553848668638594873008272126688490439316375468873226096381024490412047902372",
+    "order_id": "0x8267bb4a708c5d9b635ed69d47b3750a3592ebb36836d8243be3d4350558ee32",
+    "sold_at": "2026-08-30T13:00:16.151431+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-august-30-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.46,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.38,
+    "reason": "tier1"
   }
 ]
