@@ -126,6 +126,12 @@
       "winning_temp": "23\u00b0C",
       "winning_token_id": "32445925194845115994277610600202225931882231307076988456273249950787934177259"
     },
+    "highest-temperature-in-amsterdam-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Amsterdam on August 29?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "1172659203605686746396967786911806212515641914106925222459061447781601234728"
+    },
     "highest-temperature-in-amsterdam-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Amsterdam on August 3?",
@@ -497,6 +503,12 @@
       "title": "Highest temperature in Ankara on August 28?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "30491666014809589093158229134906777080703083867280228949681611656878481109269"
+    },
+    "highest-temperature-in-ankara-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Ankara on August 29?",
+      "winning_temp": "23\u00b0C",
+      "winning_token_id": "65574174214842986824556016276285109274261514961681417697180000106867874520603"
     },
     "highest-temperature-in-ankara-on-august-3-2026": {
       "closed": true,
@@ -5562,6 +5574,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "89609857951280755480141166487637425944766845635255208421047160115696613119655"
     },
+    "highest-temperature-in-istanbul-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Istanbul on August 29?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "1587255125106519575626185835081599457125161290042775677737192975599392200224"
+    },
     "highest-temperature-in-istanbul-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Istanbul on August 3?",
@@ -5927,6 +5945,12 @@
       "title": "Highest temperature in Jeddah on August 28?",
       "winning_temp": "38\u00b0C or higher",
       "winning_token_id": "47216625997718950377101713740905437414029914952878714323301667114084760300894"
+    },
+    "highest-temperature-in-jeddah-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jeddah on August 29?",
+      "winning_temp": "38\u00b0C",
+      "winning_token_id": "55097770896643110945604067181508605174287489315307816345577471586982793981605"
     },
     "highest-temperature-in-jeddah-on-august-3-2026": {
       "closed": true,
@@ -6894,6 +6918,12 @@
       "winning_temp": "25\u00b0C or higher",
       "winning_token_id": "81433646454910647017326223222400481054061010440284075475918915977202311159773"
     },
+    "highest-temperature-in-london-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on August 29?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "50583760585054011758684085001955657451296032542452848676759521968773901550476"
+    },
     "highest-temperature-in-london-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in London on August 3?",
@@ -7781,6 +7811,12 @@
       "title": "Highest temperature in Madrid on August 28?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "89005704331371166306568878177188376461947128745810099193767295379528706183000"
+    },
+    "highest-temperature-in-madrid-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Madrid on August 29?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "743018471906516066089528597974757611648523478712259606807914503251273625354"
     },
     "highest-temperature-in-madrid-on-august-3-2026": {
       "closed": true,
@@ -9180,6 +9216,12 @@
       "winning_temp": "30\u00b0C",
       "winning_token_id": "92540368864002725619797448682205583944346951516597132448946619361703927960023"
     },
+    "highest-temperature-in-milan-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on August 29?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "62244686735239612022228688322480642644995144268384130773936311154497417020250"
+    },
     "highest-temperature-in-milan-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Milan on August 3?",
@@ -9545,6 +9587,12 @@
       "title": "Highest temperature in Moscow on August 28?",
       "winning_temp": "21\u00b0C",
       "winning_token_id": "99087377435337911546001014365163981651207709366032175519299065842185969205104"
+    },
+    "highest-temperature-in-moscow-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on August 29?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "63626615840412487095859860314638162386952899635153390848689806782477911227765"
     },
     "highest-temperature-in-moscow-on-august-3-2026": {
       "closed": true,
@@ -9917,6 +9965,12 @@
       "title": "Highest temperature in Munich on August 28?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "61767781861084210076503377629282652836208949256763143229714146042816244389992"
+    },
+    "highest-temperature-in-munich-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on August 29?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "94990319858299375526939209955521402290523799028199172305573806108153370558995"
     },
     "highest-temperature-in-munich-on-august-3-2026": {
       "closed": true,
@@ -11033,6 +11087,12 @@
       "title": "Highest temperature in Paris on August 28?",
       "winning_temp": "24\u00b0C",
       "winning_token_id": "37698184250314786870871114396593032644337941667451363442063105668331945089298"
+    },
+    "highest-temperature-in-paris-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on August 29?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "30895573691699866586808604244506838446898135022488606254477809563009850913193"
     },
     "highest-temperature-in-paris-on-august-3-2026": {
       "closed": true,
@@ -15017,6 +15077,12 @@
       "title": "Highest temperature in Warsaw on August 28?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "88208798744379477304958536508320903064417442712822925898590844893578456081651"
+    },
+    "highest-temperature-in-warsaw-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on August 29?",
+      "winning_temp": "23\u00b0C",
+      "winning_token_id": "103946960464956996809675588172189288887486208454497746066887646185599136496044"
     },
     "highest-temperature-in-warsaw-on-august-3-2026": {
       "closed": true,
