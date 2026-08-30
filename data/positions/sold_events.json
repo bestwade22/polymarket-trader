@@ -12166,5 +12166,21 @@
     "floor_price": 0.94,
     "current_mid": 0.615,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xced6b7bb2f3060748332a6513552ad65d078a091058a97507671ecf54f24a5f3",
+    "token_id": "52804975665476981374193536984561888165599365581266791554755259698720074344472",
+    "order_id": "0x350af4b6deafde682a8979dae10fa6326e2dc03925b371cc59097f03aa7cc9cb",
+    "sold_at": "2026-08-30T12:00:17.076066+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-helsinki-on-august-30-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.26,
+    "reason": "tier1"
   }
 ]
