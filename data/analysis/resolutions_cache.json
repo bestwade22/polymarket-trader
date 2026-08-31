@@ -3564,6 +3564,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "33933889193895875276873737471750380332195398423342035493271895807913618484430"
     },
+    "highest-temperature-in-dallas-on-august-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on August 30?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "33572011514079054121670427942603705449045583047210197415116108736306459714013"
+    },
     "highest-temperature-in-dallas-on-august-4-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on August 4?",
@@ -8669,6 +8675,12 @@
       "title": "Highest temperature in Mexico City on August 29?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "56523321420001584019883394965035383119221647473080198693543955407384893090136"
+    },
+    "highest-temperature-in-mexico-city-on-august-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on August 30?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "108141226806084626391427146323399226625008700662314908671704173152336105856815"
     },
     "highest-temperature-in-mexico-city-on-august-6-2026": {
       "closed": true,
