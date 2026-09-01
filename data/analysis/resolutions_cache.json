@@ -918,6 +918,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "68276773607000031774175725842664856791114929325065782857919083178322553570570"
     },
+    "highest-temperature-in-atlanta-on-august-31-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on August 31?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "81645262816268560014032278021965015146541990362683569592187147342368227323714"
+    },
     "highest-temperature-in-atlanta-on-august-4-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on August 4?",
@@ -3588,6 +3594,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "33572011514079054121670427942603705449045583047210197415116108736306459714013"
     },
+    "highest-temperature-in-dallas-on-august-31-2026": {
+      "closed": false,
+      "title": "Highest temperature in Dallas on August 31?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "40974319969541547432924227810411429990973893810110858479032619133949237302470"
+    },
     "highest-temperature-in-dallas-on-august-4-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on August 4?",
@@ -5339,6 +5351,12 @@
       "title": "Highest temperature in Houston on August 30?",
       "winning_temp": "96-97\u00b0F",
       "winning_token_id": "60623387855252040163832959548835236079636715776759408010962118064422811292137"
+    },
+    "highest-temperature-in-houston-on-august-31-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on August 31?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "27226275865224948675645407394652110196258377082147128933551530935194613848422"
     },
     "highest-temperature-in-houston-on-august-4-2026": {
       "closed": true,
@@ -7121,6 +7139,12 @@
       "title": "Highest temperature in London on August 30?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "32184507961839138059953764351752288048372460567982311140257219986223083800221"
+    },
+    "highest-temperature-in-london-on-august-31-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on August 31?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "61892445678623341129182792440280083133143455798169120949137963477293214310642"
     },
     "highest-temperature-in-london-on-august-4-2026": {
       "closed": true,
