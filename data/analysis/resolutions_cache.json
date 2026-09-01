@@ -6528,6 +6528,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "21395362031248910794364755223092904082822061169293359642054856408475100591821"
     },
+    "highest-temperature-in-jinan-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 1?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "113111457683478388374874434765632830376805614779481181419284620127884647208688"
+    },
     "highest-temperature-in-karachi-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Karachi on August 1?",
@@ -8687,6 +8693,12 @@
       "title": "Highest temperature in Manila on June 29?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "39566723811474097991251025075637797068116069247529844434549126705218880899002"
+    },
+    "highest-temperature-in-manila-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Manila on September 1?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "71569672934878765669614058018810713939934745885498136876807860526839708982287"
     },
     "highest-temperature-in-mexico-city-on-august-10-2026": {
       "closed": true,
@@ -14123,6 +14135,12 @@
       "title": "Highest temperature in Singapore on June 27?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "68389311357437448593636856364777589784810652686604088403221614243536059571728"
+    },
+    "highest-temperature-in-singapore-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on September 1?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "90429533464990915288192986398483976804175754897096642754863786904504033574306"
     },
     "highest-temperature-in-taipei-on-august-1-2026": {
       "closed": true,
