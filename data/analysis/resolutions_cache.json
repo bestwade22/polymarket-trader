@@ -11010,6 +11010,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "23502136942164373931405124186472253882684211876050479038465053185996048637114"
     },
+    "highest-temperature-in-panama-city-on-august-29-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on August 29?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "23413167714926460721199713890920609030335028177964819591106291319184197249252"
+    },
     "highest-temperature-in-panama-city-on-august-3-2026": {
       "closed": true,
       "title": "Highest temperature in Panama City on August 3?",
@@ -12383,6 +12389,12 @@
       "title": "Highest temperature in Sao Paulo on August 30?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "78891287249964605126252154896313788511088770325605049210242829739422543829863"
+    },
+    "highest-temperature-in-sao-paulo-on-august-31-2026": {
+      "closed": false,
+      "title": "Highest temperature in Sao Paulo on August 31?",
+      "winning_temp": "29\u00b0C or below",
+      "winning_token_id": "42515253497371613519558461474121541723566002406945252040514526094447523078838"
     },
     "highest-temperature-in-sao-paulo-on-august-4-2026": {
       "closed": true,
