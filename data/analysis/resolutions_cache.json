@@ -3258,6 +3258,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "88002257153135910143221382688566352644274870753753505934602443789928693650027"
     },
+    "highest-temperature-in-chicago-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on September 1?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "34965333737256766225915742487789017630520644216790386265242009476029645446127"
+    },
     "highest-temperature-in-chongqing-on-august-16-2026": {
       "closed": true,
       "title": "Highest temperature in Chongqing on August 16?",
@@ -4283,6 +4289,12 @@
       "title": "Highest temperature in Denver on June 30?",
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "92092217272281333661917729156202291103964845077916235563581393405710776462840"
+    },
+    "highest-temperature-in-denver-on-september-1-2026": {
+      "closed": false,
+      "title": "Highest temperature in Denver on September 1?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "64479651882657156199241757423168396799112322173907335016909487025455819699798"
     },
     "highest-temperature-in-guangzhou-on-august-16-2026": {
       "closed": true,
@@ -9857,6 +9869,12 @@
       "title": "Highest temperature in Milan on June 27?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "18404154040662506742803301424993886649603754321828992742081959916379645273345"
+    },
+    "highest-temperature-in-milan-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on September 1?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "37151786722125684722439418782158873940037045256807457033110564361286839795161"
     },
     "highest-temperature-in-moscow-on-august-1-2026": {
       "closed": true,
