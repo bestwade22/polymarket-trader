@@ -1,0 +1,80 @@
+{
+  "run_at": "2026-09-02T11:46:16.591822+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "939957",
+      "city": "Ankara",
+      "market_id": "4018271",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-september-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.725,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "939961",
+      "city": "Tel Aviv",
+      "market_id": "4018315",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-september-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.995,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "939983",
+      "city": "Moscow",
+      "market_id": "4018476",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-september-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "939984",
+      "city": "Istanbul",
+      "market_id": "4018487",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-september-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.71,
+      "yes_price_max": 0.6
+    },
+    {
+      "event_id": "939989",
+      "city": "Jeddah",
+      "market_id": "4018545",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-september-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.815,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 100,
+      "forecast_temp_c": 38,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "939987",
+      "city": "Helsinki",
+      "market_id": "4018522",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-september-2-2026",
+      "reason": "spread_max",
+      "spread": 0.21,
+      "spread_max": 0.08,
+      "selection_price": 0.565,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
