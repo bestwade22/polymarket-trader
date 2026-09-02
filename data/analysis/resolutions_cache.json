@@ -4920,6 +4920,12 @@
       "winning_temp": "20\u00b0C",
       "winning_token_id": "56792641207838558460770649074816408275234162211623253893753183662045102189455"
     },
+    "highest-temperature-in-helsinki-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Helsinki on September 2?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "71842196794888397182406237201844636531597531185339443230460570095941789428100"
+    },
     "highest-temperature-in-hong-kong-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Hong Kong on August 1?",
@@ -15095,6 +15101,12 @@
       "title": "Highest temperature in Tel Aviv on September 1?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "33170943895756186955945769029536028857889310389941483182907942777396642521032"
+    },
+    "highest-temperature-in-tel-aviv-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Tel Aviv on September 2?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "111030661644412661790122518090851785330041574438119668947180065431933242277191"
     },
     "highest-temperature-in-tokyo-on-july-1-2026": {
       "closed": true,
