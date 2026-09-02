@@ -1188,6 +1188,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "94200865210471279656867162330880841439397680696140343426441808495157108945816"
     },
+    "highest-temperature-in-atlanta-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on September 1?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "40385369761612395634866923020429597717671915035264826965961455207404672760314"
+    },
     "highest-temperature-in-austin-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on August 1?",
@@ -3906,6 +3912,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "113026287202093853421684845411388117288949611980252249086362557886243262156937"
     },
+    "highest-temperature-in-dallas-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on September 1?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "83562041096308519091919752868064668637115371988684846483936231557932179803431"
+    },
     "highest-temperature-in-denver-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Denver on August 1?",
@@ -5273,6 +5285,12 @@
       "title": "Highest temperature in Hong Kong on July 9?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "93016320602458963906937567399103494977078611421248619409670735923640166022414"
+    },
+    "highest-temperature-in-hong-kong-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Hong Kong on September 1?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "103786910200539240854931191444060766744167269883386714551718639354017195918047"
     },
     "highest-temperature-in-houston-on-august-1-2026": {
       "closed": true,
@@ -9492,6 +9510,12 @@
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "25393608499586310240937705221479419523279004920819061186119502548451854212833"
     },
+    "highest-temperature-in-miami-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on September 1?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "2703026619151932147659731256959862501775822327957976631555780692198126513614"
+    },
     "highest-temperature-in-milan-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Milan on August 1?",
@@ -12857,6 +12881,12 @@
       "title": "Highest temperature in Sao Paulo on June 30?",
       "winning_temp": "27\u00b0C",
       "winning_token_id": "71146245931139032327334816530129882549003753438160854069935285470887525392841"
+    },
+    "highest-temperature-in-sao-paulo-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Sao Paulo on September 1?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "69519725410558860287791963094975892079522300095486902700021657847818122087503"
     },
     "highest-temperature-in-seattle-on-august-1-2026": {
       "closed": true,
