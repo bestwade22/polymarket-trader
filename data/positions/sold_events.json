@@ -12566,5 +12566,21 @@
     "floor_price": 0.98,
     "current_mid": 0.295,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xc5144e7a02f3ae575b5d3e8eded190c318a41af419ebddea227bcbc67ca39907",
+    "token_id": "42971376998394740509957550753967162481733286457034740841826518319364589945455",
+    "order_id": "0xb4390616592d195c87e465a7a5f6293899eef7f65c86110259f271b73de2f250",
+    "sold_at": "2026-09-02T20:00:16.404215+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-september-2-2026",
+    "price": 0.94,
+    "size": 11.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.695,
+    "reason": "tier1"
   }
 ]
