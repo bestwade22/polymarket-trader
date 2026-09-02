@@ -6606,6 +6606,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "113111457683478388374874434765632830376805614779481181419284620127884647208688"
     },
+    "highest-temperature-in-jinan-on-september-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 2?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "86634552348742143229540298399460121081192668591356352819259630982142540990919"
+    },
     "highest-temperature-in-karachi-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Karachi on August 1?",
@@ -14298,6 +14304,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "90429533464990915288192986398483976804175754897096642754863786904504033574306"
     },
+    "highest-temperature-in-singapore-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Singapore on September 2?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "92811739421545732662940896540291503227039621090893585770408774060604998508268"
+    },
     "highest-temperature-in-taipei-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Taipei on August 1?",
@@ -16571,6 +16583,12 @@
       "title": "Highest temperature in Zhengzhou on September 1?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "25727550440488058951824564749873340278689566533918593595457429156264521521323"
+    },
+    "highest-temperature-in-zhengzhou-on-september-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on September 2?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "79159894519327438596649867978212091610246670143266088972247749681608273645592"
     }
   },
   "version": 1
