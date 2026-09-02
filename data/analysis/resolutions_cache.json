@@ -6984,6 +6984,12 @@
       "winning_temp": "30\u00b0C",
       "winning_token_id": "7191427357152837916563942056208693108606614791286793904708160022634341948832"
     },
+    "highest-temperature-in-karachi-on-september-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Karachi on September 2?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "45334091417653054235234041136284466801842296757559537372337900167262590443360"
+    },
     "highest-temperature-in-kuala-lumpur-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Kuala Lumpur on July 1?",
@@ -14693,6 +14699,12 @@
       "title": "Highest temperature in Taipei on September 1?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "21540944016140477661197892817282291904226836406574681131230844601939219932341"
+    },
+    "highest-temperature-in-taipei-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Taipei on September 2?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "22203075503575579174012081801553251170988949846078129386042515989656949625477"
     },
     "highest-temperature-in-tel-aviv-on-august-1-2026": {
       "closed": true,
