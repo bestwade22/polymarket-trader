@@ -7848,6 +7848,12 @@
       "winning_temp": "70-71\u00b0F",
       "winning_token_id": "79733550453241129767916953725767113944281592499678062831156077949312128249510"
     },
+    "highest-temperature-in-los-angeles-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on September 1?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "10843204410795784205067836470981597151335058125273336619522202989155385482667"
+    },
     "highest-temperature-in-lucknow-on-july-1-2026": {
       "closed": true,
       "title": "Highest temperature in Lucknow on July 1?",
@@ -12444,6 +12450,12 @@
       "winning_temp": "72-73\u00b0F",
       "winning_token_id": "60739237033832813369736389342809092011546700652702742484975367774856767134674"
     },
+    "highest-temperature-in-san-francisco-on-september-1-2026": {
+      "closed": false,
+      "title": "Highest temperature in San Francisco on September 1?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "72212564726565708551610255976034518512611846645622894842709190888088506158903"
+    },
     "highest-temperature-in-sao-paulo-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Sao Paulo on August 1?",
@@ -13229,6 +13241,12 @@
       "title": "Highest temperature in Seattle on June 30?",
       "winning_temp": "64-65\u00b0F",
       "winning_token_id": "76724239689214609737246812597165437851160950076349889953344662195366130287301"
+    },
+    "highest-temperature-in-seattle-on-september-1-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on September 1?",
+      "winning_temp": "66-67\u00b0F",
+      "winning_token_id": "10929252392167535027447082236616179603945779967928933556969998080495887132835"
     },
     "highest-temperature-in-seoul-on-july-1-2026": {
       "closed": true,
