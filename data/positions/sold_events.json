@@ -12534,5 +12534,21 @@
     "floor_price": 0.96,
     "current_mid": 0.91,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xc535073b7e47a174b0d6c95785a105eb3e773482a0c47fe914a604242c88894e",
+    "token_id": "75499039999222062699369062962661606766397035529105015043454878059186275098000",
+    "order_id": "0xeb9c370a2aa067e1b0a88642b74417bb97ac7b0861155014d437073b6153ef69",
+    "sold_at": "2026-09-02T14:00:20.789434+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-september-2-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.46,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.205,
+    "reason": "tier2"
   }
 ]
