@@ -396,6 +396,12 @@
       "winning_temp": "20\u00b0C",
       "winning_token_id": "91896042700967308466479000377872327904022260759323832171381607413724214890035"
     },
+    "highest-temperature-in-amsterdam-on-september-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Amsterdam on September 2?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "93577208201291504908730115935733152812747280948728586070990930737081483642885"
+    },
     "highest-temperature-in-ankara-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Ankara on August 1?",
@@ -10776,6 +10782,12 @@
       "winning_temp": "24\u00b0C",
       "winning_token_id": "8472480877838624249391012575223505881720332321711432634968495845376202196224"
     },
+    "highest-temperature-in-munich-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Munich on September 2?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "69673742093349902613972973119250292782999875670232585543627722654522661002598"
+    },
     "highest-temperature-in-nyc-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on August 1?",
@@ -11951,6 +11963,12 @@
       "title": "Highest temperature in Paris on September 1?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "91794031620128966175155303362454598900619653930475042029745548170739283292604"
+    },
+    "highest-temperature-in-paris-on-september-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on September 2?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "75499039999222062699369062962661606766397035529105015043454878059186275098000"
     },
     "highest-temperature-in-qingdao-on-august-16-2026": {
       "closed": true,
@@ -16127,6 +16145,12 @@
       "title": "Highest temperature in Warsaw on September 1?",
       "winning_temp": "21\u00b0C",
       "winning_token_id": "86340208893778181250218500167799953183089755246074019195469071793100321021023"
+    },
+    "highest-temperature-in-warsaw-on-september-2-2026": {
+      "closed": false,
+      "title": "Highest temperature in Warsaw on September 2?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "58530129218869114407714460421594533387649197153173524846276733899050348708781"
     },
     "highest-temperature-in-wellington-on-july-1-2026": {
       "closed": true,
