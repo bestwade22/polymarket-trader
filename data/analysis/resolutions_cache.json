@@ -1644,6 +1644,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "91133842470692086223245909944278133934329225611767204849056190440379385451877"
     },
+    "highest-temperature-in-austin-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on September 3?",
+      "winning_temp": "98-99\u00b0F",
+      "winning_token_id": "30136561394131424973460895991592655159852874446542661406839116213226061777868"
+    },
     "highest-temperature-in-beijing-on-august-16-2026": {
       "closed": true,
       "title": "Highest temperature in Beijing on August 16?",
@@ -4391,6 +4397,12 @@
       "title": "Highest temperature in Denver on September 2?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "45092274348554408964501379564994767681125642338614936055355709333116731256122"
+    },
+    "highest-temperature-in-denver-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on September 3?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "53774860100185527388629611516606328270360980597365168007351452340103816138362"
     },
     "highest-temperature-in-guangzhou-on-august-16-2026": {
       "closed": true,
@@ -8063,6 +8075,12 @@
       "title": "Highest temperature in Los Angeles on September 2?",
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "7387107937906734473413014940172844500221901536018822796259117092816302600965"
+    },
+    "highest-temperature-in-los-angeles-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on September 3?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "65002754245080330792755966432338083025971859302098575273013869684348357019134"
     },
     "highest-temperature-in-lucknow-on-july-1-2026": {
       "closed": true,
@@ -12804,6 +12822,12 @@
       "winning_temp": "72-73\u00b0F",
       "winning_token_id": "106180981783306564075888725233035829756903320809834198776770718475033804970113"
     },
+    "highest-temperature-in-san-francisco-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on September 3?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "96539326523486929937712297896397925438096106056875397095739435764429801710100"
+    },
     "highest-temperature-in-sao-paulo-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Sao Paulo on August 1?",
@@ -13619,6 +13643,12 @@
       "title": "Highest temperature in Seattle on September 2?",
       "winning_temp": "68-69\u00b0F",
       "winning_token_id": "63328936222470046687750841496389349538381313777448316410985732394854515675032"
+    },
+    "highest-temperature-in-seattle-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on September 3?",
+      "winning_temp": "68-69\u00b0F",
+      "winning_token_id": "53592267195063613022743707744691486668314776618395119542277842043185437003617"
     },
     "highest-temperature-in-seoul-on-july-1-2026": {
       "closed": true,
