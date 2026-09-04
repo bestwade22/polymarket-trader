@@ -1,0 +1,78 @@
+{
+  "run_at": "2026-09-04T21:16:05.154467+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "953167",
+      "city": "Seattle",
+      "event_slug": "highest-temperature-in-seattle-on-september-4-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "68-69\u00b0F",
+      "market_id": "4125166",
+      "clob_mid_price": 0.45,
+      "gamma_title": "70-71\u00b0F",
+      "gamma_price": 0.47,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "952457",
+      "city": "Denver",
+      "market_id": "4115815",
+      "group_item_title": "92-93\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-september-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.67
+    },
+    {
+      "event_id": "953168",
+      "city": "Los Angeles",
+      "market_id": "4125179",
+      "group_item_title": "76-77\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.77,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.56
+    },
+    {
+      "event_id": "953169",
+      "city": "San Francisco",
+      "market_id": "4125190",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.89
+    },
+    {
+      "event_id": "953391",
+      "city": "Mexico City",
+      "market_id": "4129593",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-mexico-city-on-september-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.79,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
