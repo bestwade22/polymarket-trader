@@ -9348,6 +9348,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "66938736741977977124729073885726657861308544970088148059918079512037543415357"
     },
+    "highest-temperature-in-mexico-city-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on September 3?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "99532306770915997071318138238018423160257062409210015881771161237227771476931"
+    },
     "highest-temperature-in-miami-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on August 1?",
@@ -11381,6 +11387,12 @@
       "title": "Highest temperature in NYC on September 2?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "43349632520285161523679875608091818205500361952454956560339452611454386884381"
+    },
+    "highest-temperature-in-nyc-on-september-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on September 3?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "108151064729212017337468351314516280113084599699244339364861784492143664805834"
     },
     "highest-temperature-in-panama-city-on-august-1-2026": {
       "closed": true,
