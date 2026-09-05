@@ -7740,6 +7740,12 @@
       "winning_temp": "26\u00b0C",
       "winning_token_id": "21131513949247573578134575611003643751430120090675060901808591460680337634907"
     },
+    "highest-temperature-in-london-on-september-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in London on September 4?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "17606028897219334865252748402517292313124389661650217571565099058155937869421"
+    },
     "highest-temperature-in-los-angeles-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Los Angeles on August 1?",
@@ -10241,6 +10247,12 @@
       "title": "Highest temperature in Milan on September 3?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "104632577632528031343512909041030696579103861012272081990169300590760514169027"
+    },
+    "highest-temperature-in-milan-on-september-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on September 4?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "48290255141726510656952886642416893744671280152777998241665056549389492548923"
     },
     "highest-temperature-in-moscow-on-august-1-2026": {
       "closed": true,
