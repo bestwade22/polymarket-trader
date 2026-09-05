@@ -12934,5 +12934,21 @@
     "floor_price": 0.94,
     "current_mid": 0.8,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xcfd4ca90ee1374c085979a95cdf4ef01bd8823e2223e7ea37df76ff46c4b0cad",
+    "token_id": "22397186919982617629894725871386015470825656209146773461232728418360140651478",
+    "order_id": "0xa805592aadfe84562dd7168271dd46de401b2bb2c06c36ea5023f0afb426dd18",
+    "sold_at": "2026-09-05T22:00:15.936465+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-mexico-city-on-september-5-2026",
+    "price": 0.96,
+    "size": 8.0,
+    "avg_buy_price": 0.59,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.935,
+    "reason": "tier2"
   }
 ]
