@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-09-05T14:15:42.657990+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "957681",
+      "city": "London",
+      "market_id": "4182043",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-london-on-september-5-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.635,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 74,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
