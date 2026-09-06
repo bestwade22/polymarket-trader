@@ -6936,6 +6936,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "27649990459276640365195980410489280287079719293600140268447187904575595849501"
     },
+    "highest-temperature-in-jinan-on-september-6-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 6?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "84739253964884602460636392807504188918665496349421116485235840447765357953730"
+    },
     "highest-temperature-in-karachi-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Karachi on August 1?",
@@ -17447,6 +17453,12 @@
       "title": "Highest temperature in Zhengzhou on September 5?",
       "winning_temp": "31\u00b0C",
       "winning_token_id": "43510670131283097072060664264211416003100016793307269633776692926773363589557"
+    },
+    "highest-temperature-in-zhengzhou-on-september-6-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on September 6?",
+      "winning_temp": "32\u00b0C or higher",
+      "winning_token_id": "97999775101033101447185214273232243516003206418052247790421360550749577864646"
     }
   },
   "version": 1
