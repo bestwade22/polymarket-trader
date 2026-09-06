@@ -1260,6 +1260,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "114427471008030128979300454952634341503522370319998283831506972148575862038458"
     },
+    "highest-temperature-in-atlanta-on-september-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on September 5?",
+      "winning_temp": "96-97\u00b0F",
+      "winning_token_id": "89601183538135570943600931608348757813915020247969880557236922403719942272765"
+    },
     "highest-temperature-in-austin-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on August 1?",
@@ -9966,6 +9972,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "31097552163980364862907801303011830460818130648500091033942492151882230157077"
     },
+    "highest-temperature-in-miami-on-september-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on September 5?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "18177656871795854032663480796937524436192056860239337883660190355995189728"
+    },
     "highest-temperature-in-milan-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Milan on August 1?",
@@ -11640,6 +11652,12 @@
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "23704037847940457823732218670000284412456548942714762464689935394042363237542"
     },
+    "highest-temperature-in-nyc-on-september-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on September 5?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "49687106200225603347343738257125791838837951311441146090348470521601198253016"
+    },
     "highest-temperature-in-panama-city-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Panama City on August 1?",
@@ -12041,6 +12059,12 @@
       "title": "Highest temperature in Panama City on September 4?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "72987580841816967028094168427423844988113798502269854210814535448654311545215"
+    },
+    "highest-temperature-in-panama-city-on-september-5-2026": {
+      "closed": false,
+      "title": "Highest temperature in Panama City on September 5?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "97032067512396988397515194787286786031520616119297233214410587160266713814041"
     },
     "highest-temperature-in-paris-on-august-1-2026": {
       "closed": true,
