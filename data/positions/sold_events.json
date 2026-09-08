@@ -13094,5 +13094,21 @@
     "floor_price": 0.94,
     "current_mid": 0.155,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xd6575998ec57b79fd6370bef295684109ffd7d32468a385b942380bfe251cdc7",
+    "token_id": "17078001125728249347217829122430361223666851991586217396588647244173068532130",
+    "order_id": "0x8fdc31280bcf9dd91dd0be31e9144d6f64a6ca45c5ac53eb8e61138e8c66d616",
+    "sold_at": "2026-09-08T19:00:17.391312+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-september-8-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.53,
+    "reason": "tier1"
   }
 ]
