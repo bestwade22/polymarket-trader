@@ -1314,6 +1314,12 @@
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "113064619336922495033198407374554597003754254274318730357745428487226020071381"
     },
+    "highest-temperature-in-atlanta-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on September 8?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "42241531043802172160638835789969765339087334643703286649994275466816577983668"
+    },
     "highest-temperature-in-austin-on-august-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on August 1?",
@@ -1757,6 +1763,12 @@
       "title": "Highest temperature in Austin on September 7?",
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "12826636122463643983089179742198659351640842497713699944781963286613536925375"
+    },
+    "highest-temperature-in-austin-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on September 8?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "66182519186482290421181607945284638880840101582762688750283459628689552701855"
     },
     "highest-temperature-in-beijing-on-august-16-2026": {
       "closed": true,
@@ -3504,6 +3516,12 @@
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "105078304281669346887127039587621629803150647695164501085858592097011896932216"
     },
+    "highest-temperature-in-chicago-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on September 8?",
+      "winning_temp": "84-85\u00b0F",
+      "winning_token_id": "68822544545234487512321312169313347536316014667640585748579638591341174702011"
+    },
     "highest-temperature-in-chongqing-on-august-16-2026": {
       "closed": true,
       "title": "Highest temperature in Chongqing on August 16?",
@@ -4187,6 +4205,12 @@
       "title": "Highest temperature in Dallas on September 7?",
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "43922704501958294942924148475237088386412254946623770323138852780062605117026"
+    },
+    "highest-temperature-in-dallas-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on September 8?",
+      "winning_temp": "100-101\u00b0F",
+      "winning_token_id": "22663898961815188706666112180100495286152775124761637780365088196193860276322"
     },
     "highest-temperature-in-denver-on-august-1-2026": {
       "closed": true,
@@ -6113,6 +6137,12 @@
       "title": "Highest temperature in Houston on September 7?",
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "105918355830994957807268359407463290007494107743406260026365963319874325714933"
+    },
+    "highest-temperature-in-houston-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on September 8?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "77914814524338990397269702579046414906560384064469382980438885479056618419505"
     },
     "highest-temperature-in-istanbul-on-august-1-2026": {
       "closed": true,
@@ -9923,6 +9953,12 @@
       "title": "Highest temperature in Mexico City on September 7?",
       "winning_temp": "22\u00b0C",
       "winning_token_id": "70455037160734824447197836882951051414709689736041994714801566218360054601509"
+    },
+    "highest-temperature-in-mexico-city-on-september-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on September 8?",
+      "winning_temp": "25\u00b0C or higher",
+      "winning_token_id": "65252867509333904027900390799537974204758284236760833924416069395667146637956"
     },
     "highest-temperature-in-miami-on-august-1-2026": {
       "closed": true,
