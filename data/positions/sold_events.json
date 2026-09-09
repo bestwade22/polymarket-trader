@@ -13142,5 +13142,37 @@
     "floor_price": 0.94,
     "current_mid": 0.57,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x26d420589fca0bc357d216090350d3561b5b5fb0f1182d6eb8af4371fe430012",
+    "token_id": "98759705527130062966895417029232486766663158654075138231360361498986810070216",
+    "order_id": "0x8671c285f02be28549052f5120ef4969823a0b2824be3bfa8c5dd3c12b5672fa",
+    "sold_at": "2026-09-09T20:00:17.648722+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-austin-on-september-9-2026",
+    "price": 0.94,
+    "size": 8.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.565,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x93b2c3adaebea096f4f207d82ce23632d36d4e8b37dd31d4e21265e8bdbb9242",
+    "token_id": "68455784407203046328311966462152375272169917211906386403361910826041620796988",
+    "order_id": "0x5fbc9f53e8ae6c0a9f3e6dbdb6ae2560277c9ff5c7d7abf59c8bd9172bf0d09d",
+    "sold_at": "2026-09-09T20:00:18.949084+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-toronto-on-september-9-2026",
+    "price": 0.96,
+    "size": 5.08,
+    "avg_buy_price": 0.57,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.73,
+    "reason": "tier2"
   }
 ]
