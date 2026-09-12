@@ -13414,5 +13414,21 @@
     "floor_price": 0.96,
     "current_mid": 0.755,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x039bb16a7dff5c634803f88236f0bd7176f94d20b280b56c365592ef14071bf1",
+    "token_id": "41497556017670714214929128206347927807638721369898270024995989728266694952433",
+    "order_id": "0xa3a34ebf0c9a1617301854b58d3e0480fa2c2528c5a72401bb04d532968b9092",
+    "sold_at": "2026-09-12T12:00:17.576441+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-september-12-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.5,
+    "reason": "tier1"
   }
 ]
