@@ -1,0 +1,77 @@
+{
+  "run_at": "2026-09-12T21:46:10.081497+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "998101",
+      "city": "Denver",
+      "market_id": "4434149",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.645,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.33
+    },
+    {
+      "event_id": "998763",
+      "city": "Seattle",
+      "market_id": "4436695",
+      "group_item_title": "66-67\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.64,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.11
+    },
+    {
+      "event_id": "998767",
+      "city": "Los Angeles",
+      "market_id": "4436799",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.92,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 82,
+      "forecast_temp_c": 28,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.33
+    },
+    {
+      "event_id": "998768",
+      "city": "San Francisco",
+      "market_id": "4436817",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": -0.11
+    },
+    {
+      "event_id": "999006",
+      "city": "Mexico City",
+      "market_id": "4437529",
+      "group_item_title": "26\u00b0C or higher",
+      "event_slug": "highest-temperature-in-mexico-city-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
