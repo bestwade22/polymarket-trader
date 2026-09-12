@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-09-12T14:45:44.935477+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "997580",
+      "city": "London",
+      "market_id": "4431187",
+      "group_item_title": "24\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 15.0,
+      "held_market_id": "4431187",
+      "held_group_item_title": "24\u00b0C",
+      "target_share_count": 15,
+      "selection_price": 0.545,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
