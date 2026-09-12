@@ -7392,6 +7392,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "77837284845299730122640098955148493600693316752707408942781859567301216627214"
     },
+    "highest-temperature-in-jinan-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 12?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "77343966400004751714738803297521302203671590990027856805127839770658339312279"
+    },
     "highest-temperature-in-jinan-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on September 2?",
@@ -16548,6 +16554,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "22906567996166317242651567592260274215805155801288205302192631991581192878756"
     },
+    "highest-temperature-in-taipei-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on September 12?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "37476333955899928104715590565054213371291626080604173107571661592762489220910"
+    },
     "highest-temperature-in-taipei-on-september-2-2026": {
       "closed": false,
       "title": "Highest temperature in Taipei on September 2?",
@@ -18677,6 +18689,12 @@
       "title": "Highest temperature in Zhengzhou on September 11?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "111190608706993109622011013445636320557223646177016208366366313823247002406860"
+    },
+    "highest-temperature-in-zhengzhou-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on September 12?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "109779851365641063730733853949244931509432417615122319824773795119259281493734"
     },
     "highest-temperature-in-zhengzhou-on-september-2-2026": {
       "closed": true,
