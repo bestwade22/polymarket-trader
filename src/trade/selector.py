@@ -178,11 +178,74 @@ def filter_by_spread_max(
     return kept, skipped
 
 
+def filter_by_yes_gap_min(
+    selections: list[MarketSelection],
+    *,
+    yes_gap_min: Optional[float] = None,
+) -> tuple[list[MarketSelection], list[dict]]:
+    """Drop selections whose top−runner-up Yes gap is at or below YES_GAP_MIN.
+
+    Missing gap (fewer than two priced markets) is allowed, same as missing spread.
+    When YES_GAP_MIN <= 0 the filter is disabled.
+    """
+    from src.analysis.runner_up import runner_up_details
+
+    min_gap = settings.yes_gap_min if yes_gap_min is None else yes_gap_min
+    if min_gap is None or float(min_gap) <= 0:
+        return selections, []
+
+    threshold = float(min_gap)
+    kept: list[MarketSelection] = []
+    skipped: list[dict] = []
+    for sel in selections:
+        markets = (sel.event or {}).get("markets") or []
+        details = runner_up_details(markets, selected_market_id=sel.market_id)
+        gap = details.get("yes_gap")
+        if gap is not None and float(gap) <= threshold:
+            logger.info(
+                "event=%s city=%s market=%s yes_gap %.3f <= min %.3f; skip",
+                sel.event_id,
+                sel.city,
+                sel.market_id,
+                gap,
+                threshold,
+            )
+            step_log = sel.event.get("_step_logger") if sel.event else None
+            if step_log:
+                step_log.log_step(
+                    "filter_yes_gap_min",
+                    skipped=True,
+                    yes_gap=gap,
+                    yes_gap_min=threshold,
+                    runner_up_yes=details.get("runner_up_yes"),
+                    runner_up_temp=details.get("runner_up_temp"),
+                    market_id=sel.market_id,
+                )
+            skipped.append(
+                {
+                    "event_id": sel.event_id,
+                    "city": sel.city,
+                    "market_id": sel.market_id,
+                    "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                    "reason": "yes_gap_min",
+                    "yes_gap": gap,
+                    "yes_gap_min": threshold,
+                    "runner_up_yes": details.get("runner_up_yes"),
+                    "runner_up_temp": details.get("runner_up_temp"),
+                    "selection_price": sel.yes_price,
+                }
+            )
+            continue
+        kept.append(sel)
+    return kept, skipped
+
+
 def filter_selections_after_live_refresh(
     selections: list[MarketSelection],
     strategy_name: Optional[str] = None,
 ) -> tuple[list[MarketSelection], list[dict]]:
-    """Apply post-refresh guards: YES_PRICE min/max, SPREAD_MAX, optional on-edge skip."""
+    """Apply post-refresh guards: YES_PRICE min/max, SPREAD_MAX, YES_GAP_MIN, optional on-edge."""
     strategy = get_strategy(strategy_name)
     kept = selections
     skipped_all: list[dict] = []
@@ -190,6 +253,8 @@ def filter_selections_after_live_refresh(
         kept, skipped = strategy.filter_by_yes_price_max(kept)
         skipped_all.extend(skipped)
     kept, skipped = filter_by_spread_max(kept)
+    skipped_all.extend(skipped)
+    kept, skipped = filter_by_yes_gap_min(kept)
     skipped_all.extend(skipped)
     kept, skipped = filter_by_on_edge(kept)
     skipped_all.extend(skipped)

@@ -1489,7 +1489,7 @@ function renderFilterSweep(data) {
         <li><strong>Win summary%</strong> = win-summary wins ÷ denom (same rules as the main dashboard).</li>
         <li><strong>skip_bottom7_tz</strong> = bottom 7 timezones by win summary on <em>all</em> train trades (legacy research skip).</li>
         <li><strong>skip_bottom7_tz_surviving</strong> = bottom 7 on the <em>surviving</em> train pool (buy/spread stack), same ranking as live Lambda timezone skip.</li>
-        <li><strong>spread_live / buy_live</strong> = live rules: missing spread allowed; buy in [YES_PRICE_MIN, YES_PRICE_MAX). The shipped mirror is <code>skip_bottom7_tz_surviving + spread_live + buy_live</code>.</li>
+        <li><strong>spread_live / buy_live / yes_gap_live</strong> = live rules: missing spread/gap allowed; buy in [YES_PRICE_MIN, YES_PRICE_MAX); yes_gap &gt; YES_GAP_MIN. The shipped mirror is <code>skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live</code>.</li>
       </ul>
       <p class="insight-desc">
         Example split: <strong>Train</strong> ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days)
@@ -1528,7 +1528,7 @@ function renderFilterSweep(data) {
           <div><span class="summary-label">OOS denom</span><span class="summary-value">${live.oos_denom}</span></div>
           <div><span class="summary-label">≥${target}% OOS</span><span class="summary-value">${live.oos_pass_60 ? "yes" : "no"}</span></div>
         </div>
-        <p class="insight-desc">Pinned for compare: <code>skip_bottom7_tz_surviving + spread_live + buy_live</code> (spread &lt; SPREAD_MAX allowing missing; buy in [YES_PRICE_MIN, YES_PRICE_MAX)).</p>
+        <p class="insight-desc">Pinned for compare: <code>skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live</code> (spread &lt; SPREAD_MAX allowing missing; buy in [YES_PRICE_MIN, YES_PRICE_MAX); yes_gap &gt; YES_GAP_MIN allowing missing).</p>
       </div>`
     : `<p class="muted">Live stack missing from filter_sweep — re-run <code>enrich-trade-history</code>.</p>`;
 

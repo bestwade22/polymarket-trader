@@ -64,12 +64,14 @@ def load_trade_records(path: Optional[Path] = None) -> list[TradeRecord]:
 def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
     """Trades that would pass the live shipped stack when filter fields exist.
 
-    Uses current YES_PRICE_MIN / YES_PRICE_MAX / SPREAD_MAX. Missing spread is
-    allowed (same as live). Missing buy_price drops the row from ranking.
+    Uses current YES_PRICE_MIN / YES_PRICE_MAX / SPREAD_MAX / YES_GAP_MIN.
+    Missing spread or yes_gap is allowed (same as live). Missing buy_price
+    drops the row from ranking.
     """
     yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
     yes_max = float(getattr(settings, "yes_price_max", 0.60) or 0.60)
     spread_max = float(getattr(settings, "spread_max", 0.15) or 0.15)
+    yes_gap_min = float(getattr(settings, "yes_gap_min", 0.0) or 0.0)
     kept: list[TradeRecord] = []
     for rec in records:
         buy = rec.buy_price
@@ -80,6 +82,12 @@ def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
         if yes_min > 0 and buy < yes_min:
             continue
         if rec.spread is not None and float(rec.spread) >= spread_max:
+            continue
+        if (
+            yes_gap_min > 0
+            and rec.yes_gap is not None
+            and float(rec.yes_gap) <= yes_gap_min
+        ):
             continue
         kept.append(rec)
     return kept

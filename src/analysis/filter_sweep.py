@@ -24,8 +24,9 @@ SKIP_TZ_SURVIVING = "skip_bottom7_tz_surviving"
 SKIP_TZ_ALL = "skip_bottom7_tz"
 SPREAD_LIVE = "spread_live"
 BUY_LIVE = "buy_live"
-# Shipped live Lambda stack (timezone denylist from surviving pool + live buy/spread).
-LIVE_STACK = f"{SKIP_TZ_SURVIVING} + {SPREAD_LIVE} + {BUY_LIVE}"
+YES_GAP_LIVE = "yes_gap_live"
+# Shipped live Lambda stack (timezone denylist from surviving pool + live buy/spread/gap).
+LIVE_STACK = f"{SKIP_TZ_SURVIVING} + {SPREAD_LIVE} + {BUY_LIVE} + {YES_GAP_LIVE}"
 
 
 @dataclass(frozen=True)
@@ -66,6 +67,16 @@ def _buy_ok_live(rec: TradeRecord) -> bool:
     if yes_min > 0 and float(buy) < yes_min:
         return False
     return True
+
+
+def _yes_gap_ok_live(rec: TradeRecord) -> bool:
+    """Match live: missing yes_gap allowed; otherwise require gap > YES_GAP_MIN."""
+    yes_gap_min = float(getattr(settings, "yes_gap_min", 0.0) or 0.0)
+    if yes_gap_min <= 0:
+        return True
+    if rec.yes_gap is None:
+        return True
+    return float(rec.yes_gap) > yes_gap_min
 
 
 def _metrics(records: list[TradeRecord]) -> dict[str, Any]:
@@ -153,6 +164,7 @@ def build_filter_catalog(records: list[TradeRecord]) -> list[FilterDef]:
         FilterDef(SKIP_TZ_SURVIVING, skip7_surv),
         FilterDef(SPREAD_LIVE, _spread_ok_live),
         FilterDef(BUY_LIVE, _buy_ok_live),
+        FilterDef(YES_GAP_LIVE, _yes_gap_ok_live),
         FilterDef("spread<0.10", lambda r: _spread(r) < 0.10),
         FilterDef("spread<0.08", lambda r: _spread(r) < 0.08),
         FilterDef("spread<0.05", lambda r: _spread(r) < 0.05),
@@ -162,6 +174,7 @@ def build_filter_catalog(records: list[TradeRecord]) -> list[FilterDef]:
         FilterDef("buy>=0.55", lambda r: _buy(r) >= 0.55),
         FilterDef("not_on_edge", lambda r: r.on_edge is False),
         FilterDef("oi>=10000", lambda r: _oi(r) >= 10000),
+        FilterDef("yes_gap>0.05", lambda r: (r.yes_gap or 0) > 0.05),
         FilterDef("yes_gap>=0.05", lambda r: (r.yes_gap or 0) >= 0.05),
         FilterDef("yes_gap>=0.10", lambda r: (r.yes_gap or 0) >= 0.10),
     ]
@@ -182,6 +195,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
 
     combos: list[list[str]] = [
         # Live-mirrored stack (must stay first among combos so it always exists).
+        [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE, YES_GAP_LIVE],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE],
         [SKIP_TZ_SURVIVING, "spread<0.05", "buy>=0.45"],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE],
@@ -196,6 +210,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
         ["spread<0.08", "buy>=0.50"],
         ["spread<0.05", "buy>=0.45"],
         ["spread<0.05", "buy>=0.50"],
+        [SPREAD_LIVE, BUY_LIVE, YES_GAP_LIVE],
         [SPREAD_LIVE, BUY_LIVE],
         ["skip_bottom7_tz", "spread<0.08", "buy>=0.45"],
         ["skip_bottom7_tz", "spread<0.08", "buy>=0.45", "not_on_edge"],
@@ -204,6 +219,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
         ["skip_bottom7_tz", "not_on_edge", "spread<0.08"],
         ["skip_bottom7_tz", "not_on_edge", "buy>=0.50"],
         ["not_on_edge", "buy>=0.45", "spread<0.08"],
+        ["skip_bottom7_tz", "yes_gap>0.05", "spread<0.08"],
         ["skip_bottom7_tz", "yes_gap>=0.05", "spread<0.08"],
         ["skip_bottom7_tz", "oi>=10000", "buy>=0.50"],
         ["spread<0.08", "buy>=0.45", "not_on_edge"],
@@ -269,6 +285,9 @@ def _pred_from_name_parts(name: str, r: TradeRecord, bottom7: set[str]) -> bool:
         elif part == BUY_LIVE:
             if not _buy_ok_live(r):
                 return False
+        elif part == YES_GAP_LIVE:
+            if not _yes_gap_ok_live(r):
+                return False
         elif part == "spread<0.10":
             if not (_spread(r) < 0.10):
                 return False
@@ -295,6 +314,9 @@ def _pred_from_name_parts(name: str, r: TradeRecord, bottom7: set[str]) -> bool:
                 return False
         elif part == "oi>=10000":
             if not (_oi(r) >= 10000):
+                return False
+        elif part == "yes_gap>0.05":
+            if not ((r.yes_gap or 0) > 0.05):
                 return False
         elif part == "yes_gap>=0.05":
             if not ((r.yes_gap or 0) >= 0.05):

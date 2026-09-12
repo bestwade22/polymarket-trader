@@ -216,6 +216,84 @@ def test_filter_by_spread_max_allows_below_threshold():
     assert skipped == []
 
 
+def _sel_with_gap_markets(*, top_yes: float, runner_yes: float) -> "MarketSelection":
+    from src.trade.strategies.base import MarketSelection
+
+    top = {
+        "id": "m-top",
+        "groupItemTitle": "28°C",
+        "outcomes": '["Yes","No"]',
+        "outcomePrices": [str(top_yes), str(1.0 - top_yes)],
+        "clobTokenIds": '["tok-top","tok-no"]',
+        "midpoint": top_yes,
+    }
+    runner = {
+        "id": "m-run",
+        "groupItemTitle": "27°C",
+        "outcomes": '["Yes","No"]',
+        "outcomePrices": [str(runner_yes), str(1.0 - runner_yes)],
+        "clobTokenIds": '["tok-run","tok-no2"]',
+        "midpoint": runner_yes,
+    }
+    return MarketSelection(
+        event_id="1",
+        city="London",
+        market_id="m-top",
+        group_item_title="28°C",
+        yes_price=top_yes,
+        yes_token_id="tok-top",
+        buy_price=top_yes,
+        share_count=10,
+        neg_risk=True,
+        tick_size=0.01,
+        order_min_size=5,
+        strategy="highest_yes",
+        event={"markets": [top, runner], "slug": "highest-temperature-in-london"},
+        market=top,
+    )
+
+
+def test_filter_by_yes_gap_min_skips_narrow_gap():
+    from src.trade.selector import filter_by_yes_gap_min
+
+    # gap = 0.05 → skip when min is 0.05
+    sel = _sel_with_gap_markets(top_yes=0.50, runner_yes=0.45)
+    kept, skipped = filter_by_yes_gap_min([sel], yes_gap_min=0.05)
+    assert kept == []
+    assert skipped[0]["reason"] == "yes_gap_min"
+    assert skipped[0]["yes_gap"] == 0.05
+
+
+def test_filter_by_yes_gap_min_skips_below_threshold():
+    from src.trade.selector import filter_by_yes_gap_min
+
+    # gap = 0.03 → skip
+    sel = _sel_with_gap_markets(top_yes=0.48, runner_yes=0.45)
+    kept, skipped = filter_by_yes_gap_min([sel], yes_gap_min=0.05)
+    assert kept == []
+    assert skipped[0]["reason"] == "yes_gap_min"
+    assert skipped[0]["yes_gap"] == 0.03
+
+
+def test_filter_by_yes_gap_min_allows_above_threshold():
+    from src.trade.selector import filter_by_yes_gap_min
+
+    # gap = 0.06 → keep
+    sel = _sel_with_gap_markets(top_yes=0.51, runner_yes=0.45)
+    kept, skipped = filter_by_yes_gap_min([sel], yes_gap_min=0.05)
+    assert kept == [sel]
+    assert skipped == []
+
+
+def test_filter_by_yes_gap_min_disabled_when_zero():
+    from src.trade.selector import filter_by_yes_gap_min
+
+    sel = _sel_with_gap_markets(top_yes=0.46, runner_yes=0.45)
+    kept, skipped = filter_by_yes_gap_min([sel], yes_gap_min=0.0)
+    assert kept == [sel]
+    assert skipped == []
+
+
 def test_match_temp_to_bucket():
     event = load_sample_event()
     market = match_temp_to_market(event["markets"], 46)

@@ -276,7 +276,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         result="win",
     )
     assert _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live", missing, set()
+        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", missing, set()
     )
     assert not _pred_from_name_parts(
         "skip_bottom7_tz_surviving + spread<0.05 + buy>=0.45", missing, set()
@@ -291,7 +291,32 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         result="win",
     )
     assert not _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live", high, set()
+        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", high, set()
+    )
+    # Narrow yes_gap fails yes_gap_live
+    narrow = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="gap",
+        buy_price=0.50,
+        spread=0.02,
+        yes_gap=0.04,
+        result="win",
+    )
+    assert not _pred_from_name_parts(
+        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", narrow, set()
+    )
+    wide = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="gap2",
+        buy_price=0.50,
+        spread=0.02,
+        yes_gap=0.06,
+        result="win",
+    )
+    assert _pred_from_name_parts(
+        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", wide, set()
     )
 
 

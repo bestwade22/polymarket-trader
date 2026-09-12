@@ -55,6 +55,7 @@ jobs:
               ShareCount=10 \
               YesPriceMin=0.45 \
               SpreadMax=0.08 \
+              YesGapMin=0.05 \
               OrderExpiryMinutes=25 \
               StopLossPct=50 \
               StopLossPctFloor=10 \

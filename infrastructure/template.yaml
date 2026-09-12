@@ -25,6 +25,9 @@ Parameters:
   SpreadMax:
     Type: String
     Default: '0.08'
+  YesGapMin:
+    Type: String
+    Default: '0.05'
   SkipOnEdge:
     Type: String
     Default: 'false'
@@ -147,6 +150,7 @@ Resources:
           YES_PRICE_MAX: !Ref YesPriceMax
           YES_PRICE_MIN: !Ref YesPriceMin
           SPREAD_MAX: !Ref SpreadMax
+          YES_GAP_MIN: !Ref YesGapMin
           SKIP_ON_EDGE: !Ref SkipOnEdge
           SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource
           ORDER_PRICE_SOURCE: !Ref OrderPriceSource
