@@ -1788,6 +1788,12 @@
       "winning_temp": "100-101\u00b0F",
       "winning_token_id": "61020752225750276961533996706137058863948306309582255082186166852527209449983"
     },
+    "highest-temperature-in-austin-on-september-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on September 11?",
+      "winning_temp": "102-103\u00b0F",
+      "winning_token_id": "58586366276696878120708278306307420259768859383699509862247043635863842703462"
+    },
     "highest-temperature-in-austin-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on September 2?",
@@ -3569,6 +3575,12 @@
       "title": "Highest temperature in Chicago on September 10?",
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "18044815839621831108559336219788153642884394548512504108599758986069493531054"
+    },
+    "highest-temperature-in-chicago-on-september-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on September 11?",
+      "winning_temp": "82-83\u00b0F",
+      "winning_token_id": "23364416618489355702169890702035136124804325131838236416328514962679846477645"
     },
     "highest-temperature-in-chicago-on-september-2-2026": {
       "closed": true,
@@ -6263,6 +6275,12 @@
       "title": "Highest temperature in Houston on September 10?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "95494972257628018540631277226574894999410765125277769658302713329897346639172"
+    },
+    "highest-temperature-in-houston-on-september-11-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on September 11?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "32873001639648742756170409533571024715489704041434171498959606366697329907371"
     },
     "highest-temperature-in-houston-on-september-2-2026": {
       "closed": true,
