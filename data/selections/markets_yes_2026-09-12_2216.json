@@ -1,0 +1,82 @@
+{
+  "run_at": "2026-09-12T22:16:04.948010+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "998763",
+      "city": "Seattle",
+      "market_id": "4436695",
+      "groupItemTitle": "66-67\u00b0F",
+      "yes_price": 0.515,
+      "yes_token_id": "54792765452731724740462067942465668464462194377988521164867933212627334932738",
+      "buy_price": 0.52,
+      "share_count": 10,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 67,
+      "forecast_wu_temp_c": 19,
+      "on_edge": false,
+      "order_price": 0.515,
+      "selection_price": 0.515,
+      "gamma_yes_price": 0.565,
+      "best_bid": 0.51,
+      "best_ask": 0.52,
+      "spread": 0.01,
+      "clob_buy_price": 0.52,
+      "last_trade_price": 0.57,
+      "midpoint": 0.515,
+      "outcomePrices": [
+        0.565,
+        0.435
+      ],
+      "competitive": 0.9957927755234136,
+      "event_slug": "highest-temperature-in-seattle-on-september-12-2026",
+      "open_interest": 23137.976197999997,
+      "runner_up_yes": 0.27,
+      "runner_up_temp": "64-65\u00b0F",
+      "yes_gap": 0.295,
+      "top_yes": 0.565,
+      "order_status": null,
+      "order_id": null,
+      "dry_run": true,
+      "order_type": null,
+      "expires_at": null,
+      "order_error": "PolyApiException[status_code=None, error_message=Request exception!]"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "998767",
+      "city": "Los Angeles",
+      "market_id": "4436799",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 84,
+      "forecast_temp_c": 29,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.33
+    },
+    {
+      "event_id": "998768",
+      "city": "San Francisco",
+      "market_id": "4436817",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-12-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.98,
+      "yes_price_max": 0.6,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.89
+    }
+  ]
+}
