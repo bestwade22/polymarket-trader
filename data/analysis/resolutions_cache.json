@@ -4776,6 +4776,12 @@
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "115327280905252285298442351335595072070579973854319733662851790767890001154991"
     },
+    "highest-temperature-in-denver-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Denver on September 12?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "72180380429689674424202922433774392488462640527408577245176591633444281601930"
+    },
     "highest-temperature-in-denver-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Denver on September 2?",
@@ -10368,6 +10374,12 @@
       "winning_temp": "25\u00b0C",
       "winning_token_id": "34609068392408439255891794245547065980891213164139530614307522512988349511373"
     },
+    "highest-temperature-in-mexico-city-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on September 12?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "24748054440386155781528737913178379327964580733759748370231201437068485085102"
+    },
     "highest-temperature-in-mexico-city-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Mexico City on September 2?",
@@ -15173,6 +15185,12 @@
       "title": "Highest temperature in Seattle on September 11?",
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "87876111080454132585218064374459677349970813272095674109009639374909285218215"
+    },
+    "highest-temperature-in-seattle-on-september-12-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on September 12?",
+      "winning_temp": "66-67\u00b0F",
+      "winning_token_id": "54792765452731724740462067942465668464462194377988521164867933212627334932738"
     },
     "highest-temperature-in-seattle-on-september-2-2026": {
       "closed": false,
