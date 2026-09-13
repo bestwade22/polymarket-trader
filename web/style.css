@@ -146,6 +146,24 @@ header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
   align-items: start;
 }
 
+.insight-section-heading {
+  grid-column: 1 / -1;
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid var(--accent, #2a9);
+  background: rgba(42, 160, 120, 0.08);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.insight-section-heading .insight-desc {
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 .insight-card {
   border: 1px solid var(--border);
   border-radius: 6px;
