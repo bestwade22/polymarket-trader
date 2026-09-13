@@ -287,6 +287,16 @@ function fmtForecastVsResultDiff(r, { wu = false } = {}) {
   return `${sign}${v.toFixed(1)}°${unit}`;
 }
 
+/** Combined cell: forecast temp + Δ vs winning result, e.g. 26°C / +2.0°C */
+function fmtForecastSlashDeltaWin(r, { wu = false } = {}) {
+  const temp = fmtForecastTemp(r, { wu });
+  const delta = fmtForecastVsResultDiff(r, { wu });
+  if (temp === "—" && (delta === "—" || delta === "pending")) return "—";
+  if (temp === "—") return `— / ${delta}`;
+  if (delta === "—") return temp;
+  return `${temp} / ${delta}`;
+}
+
 function forecastVsResultBand(delta) {
   if (delta == null || !Number.isFinite(Number(delta))) return "unknown";
   const rounded = Math.round(Number(delta));
@@ -510,8 +520,12 @@ function sortRecords(records) {
       bv = outcomeValue(b) ?? "";
     }
     if (sortKey === "forecast_wu_temp_c") {
-      av = a.forecast_wu_temp_c ?? a.forecast_wu_temp_f ?? "";
-      bv = b.forecast_wu_temp_c ?? b.forecast_wu_temp_f ?? "";
+      av = forecastVsResultDeltaC(a, { wu: true }) ?? a.forecast_wu_temp_c ?? a.forecast_wu_temp_f ?? "";
+      bv = forecastVsResultDeltaC(b, { wu: true }) ?? b.forecast_wu_temp_c ?? b.forecast_wu_temp_f ?? "";
+    }
+    if (sortKey === "forecast_temp_c") {
+      av = forecastVsResultDeltaC(a) ?? a.forecast_temp_c ?? a.forecast_temp_f ?? "";
+      bv = forecastVsResultDeltaC(b) ?? b.forecast_temp_c ?? b.forecast_temp_f ?? "";
     }
     if (sortKey === "forecast_vs_win") {
       av = forecastVsWinSortValue(a);
@@ -948,16 +962,22 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
   }
 
   // Respect page filters for group-by tables when filtering cities/results.
-  const filteredBias = records.filter((r) => {
-    const d = (r.date || "").slice(0, 10);
-    return d && d >= FORECAST_BIAS_SINCE && r.winning_temp;
-  });
-  const omEligible = filteredBias.filter((r) => forecastVsResultDeltaC(r) != null);
-  const wuEligible = filteredBias.filter(
-    (r) => forecastVsResultDeltaC(r, { wu: true }) != null
-  );
+    const filteredBias = records.filter((r) => {
+      const d = (r.date || "").slice(0, 10);
+      return d && d >= FORECAST_BIAS_SINCE && r.winning_temp;
+    });
+    const omEligible = filteredBias.filter((r) => forecastVsResultDeltaC(r) != null);
+    const wuEligible = filteredBias.filter(
+      (r) => forecastVsResultDeltaC(r, { wu: true }) != null
+    );
+    const omWuAgreeEligible = filteredBias.filter((r) => {
+      const om = forecastVsResultDeltaC(r);
+      const wu = forecastVsResultDeltaC(r, { wu: true });
+      if (om == null || wu == null) return false;
+      return forecastVsResultBand(om) === forecastVsResultBand(wu);
+    });
 
-  return {
+    return {
     summary_by_city: summaryByCity,
     city_forecast_bias: cityBias,
     forecast_bias_since: FORECAST_BIAS_SINCE,
@@ -975,8 +995,6 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
     summary_by_month: groupInsightMetrics(records, (r) => monthLabel(r.date)),
     summary_by_result: groupInsightMetrics(records, (r) => r.result || "unknown"),
     summary_by_sold_outcome: groupInsightMetrics(records, (r) => soldOutcomeInsightKey(r)),
-    summary_by_trade_window: groupInsightMetrics(records, (r) => r.trade_window || "unknown"),
-    summary_by_roi_band: groupInsightMetrics(records, (r) => roiBand(r)),
     summary_by_spread_band: groupInsightMetrics(records, (r) => spreadBand(r.spread)),
     summary_by_edge: groupInsightMetrics(records, (r) => edgeLabel(r.on_edge)),
     summary_by_competitive_band: groupInsightMetrics(records, (r) =>
@@ -986,12 +1004,14 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
       openInterestBand(r.open_interest)
     ),
     summary_by_yes_gap_band: groupInsightMetrics(records, (r) => yesGapBand(r.yes_gap)),
-    summary_by_loss_autopsy: groupInsightMetrics(records, (r) => r.loss_autopsy || "n/a"),
     summary_by_om_vs_result_band: groupInsightMetrics(omEligible, (r) =>
       forecastVsResultBand(forecastVsResultDeltaC(r))
     ),
     summary_by_wu_vs_result_band: groupInsightMetrics(wuEligible, (r) =>
       forecastVsResultBand(forecastVsResultDeltaC(r, { wu: true }))
+    ),
+    summary_by_om_wu_agree_delta_band: groupInsightMetrics(omWuAgreeEligible, (r) =>
+      forecastVsResultBand(forecastVsResultDeltaC(r))
     ),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
     summary_by_city_timezone_surviving: groupInsightMetrics(surviving, (r) =>
@@ -1302,6 +1322,18 @@ function renderInsights(data) {
           `Same band rules as OM vs result.`,
       },
     ],
+    [
+      "By OM∩WU same Δ°C",
+      data.summary_by_om_wu_agree_delta_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `Only trades where OM and WU Δ vs win fall in the <em>same</em> °C band ` +
+          `(e.g. both +1), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
+          `Shows win summary / P&amp;L when both forecasts agree on how hot/cold they were vs the result.`,
+      },
+    ],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
     [
@@ -1350,30 +1382,12 @@ function renderInsights(data) {
           "Top Yes% − 2nd Yes% (0.05 bands). Larger gap = clearer highest-yes leader",
       },
     ],
-    [
-      "By loss autopsy",
-      data.summary_by_loss_autopsy,
-      {
-        limit: null,
-        description:
-          "Loss tags: wrong_bucket / sold_too_early / never_led / gap_collapsed (n/a = win or open)",
-      },
-    ],
     ["By sold outcome", data.summary_by_sold_outcome, { limit: null }],
     ["By result", data.summary_by_result, { limit: null }],
     ["By win temp vs bought", data.summary_by_win_temp_vs_bought, { limit: null }],
-    ["By trade window", data.summary_by_trade_window, { limit: null }],
     ["By weekday", data.summary_by_weekday, { limit: null }],
     ["By week", data.summary_by_week, { limit: null }],
     ["By month", data.summary_by_month, { limit: null }],
-    [
-      "By return % (ROI)",
-      data.summary_by_roi_band,
-      {
-        limit: null,
-        description: "P&amp;L ÷ cost basis: &lt;-50%, -50–0%, 0–50%, 50–100%, &gt;100%",
-      },
-    ],
     ["By city timezone", data.summary_by_city_timezone, { limit: null }],
     [
       SURVIVING_TZ_TITLE,
@@ -1440,12 +1454,8 @@ function renderTable(records) {
       <td>${r.date}</td>
       <td class="sticky-city">${r.city}</td>
       <td><a class="event-link" href="https://polymarket.com/event/${r.event_slug}" target="_blank" rel="noopener">${temp}</a></td>
-      <td>${fmtForecastTemp(r)}</td>
-      <td>${fmtForecastTemp(r, { wu: true })}</td>
-      <td>${fmtForecastDelta(r)}</td>
-      <td>${fmtForecastVsWin(r)}</td>
-      <td>${fmtForecastVsResultDiff(r)}</td>
-      <td>${fmtForecastVsResultDiff(r, { wu: true })}</td>
+      <td>${fmtForecastSlashDeltaWin(r)}</td>
+      <td>${fmtForecastSlashDeltaWin(r, { wu: true })}</td>
       <td>${r.trade_window || "—"}</td>
       <td>${hk}</td>
       <td>${soldHk}</td>
@@ -1797,17 +1807,6 @@ function renderSkippedAnalysis(data) {
     { key: "total_pnl_if_bought", label: "Total P&L if bought", fmt: (v) => fmtPnl(v) },
   ];
 
-  const bandSection = renderSkippedSortableTable({
-    tableId: "skip-ypm-all",
-    title: "yes_price_max by buy $ (0.05 band) — all skips",
-    description:
-      "Every yes_price_max skip, including the same market re-skipped later in the day (e.g. London 27°C at 14:15 and again at 14:45 both count).",
-    defaultSortKey: "reason",
-    columns: bandCols,
-    rows: data.yes_price_max_by_buy_band || [],
-    emptyText: "No yes_price_max skips with price",
-  });
-
   const firstSkipRows = Array.isArray(data.yes_price_max_by_buy_band_first_skip)
     ? data.yes_price_max_by_buy_band_first_skip
     : null;
@@ -1815,7 +1814,7 @@ function renderSkippedAnalysis(data) {
     tableId: "skip-ypm-first",
     title: "yes_price_max by buy $ (0.05 band) — first skip only",
     description:
-      "Same columns as all-skips, but only the earliest yes_price_max skip per market. Example: London 27°C first skipped at 14:15 counts; the same market skipped again at 14:45 does not. (Other skip reasons do not block the first yes_price_max slot.)",
+      "Only the earliest yes_price_max skip per market. Example: London 27°C first skipped at 14:15 counts; the same market skipped again at 14:45 does not. (Other skip reasons do not block the first yes_price_max slot.)",
     defaultSortKey: "reason",
     columns: bandCols,
     rows: firstSkipRows || [],
@@ -1856,8 +1855,6 @@ function renderSkippedAnalysis(data) {
     { key: "total_pnl_if_bought", label: "P&L if bought", fmt: (v) => fmtPnl(v) },
   ];
 
-  const fcSlot = Array.isArray(fc.by_local_slot) ? fc.by_local_slot : null;
-  const fcReason = Array.isArray(fc.by_reason) ? fc.by_reason : null;
   const fcPrice = Array.isArray(fc.by_price_band) ? fc.by_price_band : null;
   const fcSpread = Array.isArray(fc.by_spread_band) ? fc.by_spread_band : null;
   const fcMissingHint =
@@ -1885,28 +1882,6 @@ function renderSkippedAnalysis(data) {
       </p>
     </div>
     ${renderSkippedSortableTable({
-      tableId: "fc-slot",
-      title: "Forecast match by local time slot",
-      description:
-        "First skip per market since " +
-        (fc.since_date || "2026-08-04") +
-        "; run_at → city local time (15-min bands).",
-      defaultSortKey: "group",
-      columns: fcCols,
-      rows: fcSlot || [],
-      emptyText: fcSlot == null ? fcMissingHint : "No local-slot groups",
-    })}
-    ${renderSkippedSortableTable({
-      tableId: "fc-reason",
-      title: "Forecast match by skip reason",
-      description:
-        "First skip per market since " + (fc.since_date || "2026-08-04") + " only.",
-      defaultSortKey: "count",
-      columns: fcCols,
-      rows: fcReason || [],
-      emptyText: fcReason == null ? fcMissingHint : "No reason groups",
-    })}
-    ${renderSkippedSortableTable({
       tableId: "fc-price",
       title: "Forecast match by buy $ band",
       description:
@@ -1932,12 +1907,10 @@ function renderSkippedAnalysis(data) {
     return {
       ...s,
       run_at_short: (s.run_at || "").slice(0, 16),
-      forecast_fmt: fmtForecastTemp(rowForFmt),
-      wu_fmt: fmtForecastTemp(rowForFmt, { wu: true }),
-      delta_fmt: fmtForecastDelta(rowForFmt),
+      forecast_fmt: fmtForecastSlashDeltaWin(rowForFmt),
+      wu_fmt: fmtForecastSlashDeltaWin(rowForFmt, { wu: true }),
       whw_label:
         s.would_have_won === true ? "won" : s.would_have_won === false ? "lost" : "—",
-      om_vs_win: fmtForecastVsWin({ ...rowForFmt, winning_temp: s.winning_temp }),
     };
   });
 
@@ -1951,10 +1924,8 @@ function renderSkippedAnalysis(data) {
       { key: "city", label: "City" },
       { key: "reason", label: "Reason" },
       { key: "temp", label: "Temp" },
-      { key: "forecast_fmt", label: "Forecast", fmt: (_v, r) => r.forecast_fmt },
-      { key: "wu_fmt", label: "WU forecast", fmt: (_v, r) => r.wu_fmt },
-      { key: "delta_fmt", label: "Δ forecast", fmt: (_v, r) => r.delta_fmt },
-      { key: "om_vs_win", label: "Forecast vs win", fmt: (_v, r) => r.om_vs_win },
+      { key: "forecast_fmt", label: "Forecast / Δwin", fmt: (_v, r) => r.forecast_fmt },
+      { key: "wu_fmt", label: "WU / Δwin", fmt: (_v, r) => r.wu_fmt },
       { key: "selection_price", label: "Price", fmt: (v) => fmtPrice(v) },
       { key: "whw_label", label: "Would have", fmt: (_v, r) => r.whw_label },
       { key: "pnl_if_bought", label: "P&L if bought", fmt: (v) => fmtPnl(v) },
@@ -1965,7 +1936,6 @@ function renderSkippedAnalysis(data) {
 
   container.innerHTML = `${header}
     ${reasonSection}
-    ${bandSection}
     ${firstBandSection}
     ${firstSinceBandSection}
     ${forecastSection}
@@ -2192,7 +2162,6 @@ function render() {
   renderWinLossFingerprint(filtered);
   renderInsights(computeInsights(filtered, { skipPoolRecords: allRecords }));
   renderFilterSweep(filterSweepData);
-  renderDualBuyAnalysis(computeDualBuyAnalysis(filtered));
   renderSkippedAnalysis(skippedAnalysisData);
 }
 
