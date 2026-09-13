@@ -306,6 +306,21 @@ function forecastVsResultBand(delta) {
   return String(rounded);
 }
 
+/** Forecast − winning midpoint in °F (from °C delta × 9/5). */
+function forecastVsResultDeltaF(r, { wu = false } = {}) {
+  const dC = forecastVsResultDeltaC(r, { wu });
+  if (dC == null || !Number.isFinite(dC)) return null;
+  return Math.round(((dC * 9) / 5) * 100) / 100;
+}
+
+function forecastVsResultBandF(deltaF) {
+  return forecastVsResultBand(deltaF);
+}
+
+function isFahrenheitRecord(r) {
+  return recordTempUnit(r) === "F";
+}
+
 function computeCityForecastBias(records, since = FORECAST_BIAS_SINCE) {
   const omBy = {};
   const wuBy = {};
@@ -977,6 +992,19 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
       return forecastVsResultBand(om) === forecastVsResultBand(wu);
     });
 
+    // °F tables: Fahrenheit markets only (Atlanta, NYC, …), banded in °F.
+    const filteredBiasF = filteredBias.filter(isFahrenheitRecord);
+    const omEligibleF = filteredBiasF.filter((r) => forecastVsResultDeltaF(r) != null);
+    const wuEligibleF = filteredBiasF.filter(
+      (r) => forecastVsResultDeltaF(r, { wu: true }) != null
+    );
+    const omWuAgreeEligibleF = filteredBiasF.filter((r) => {
+      const om = forecastVsResultDeltaF(r);
+      const wu = forecastVsResultDeltaF(r, { wu: true });
+      if (om == null || wu == null) return false;
+      return forecastVsResultBandF(om) === forecastVsResultBandF(wu);
+    });
+
     return {
     summary_by_city: summaryByCity,
     city_forecast_bias: cityBias,
@@ -1012,6 +1040,15 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
     ),
     summary_by_om_wu_agree_delta_band: groupInsightMetrics(omWuAgreeEligible, (r) =>
       forecastVsResultBand(forecastVsResultDeltaC(r))
+    ),
+    summary_by_om_vs_result_band_f: groupInsightMetrics(omEligibleF, (r) =>
+      forecastVsResultBandF(forecastVsResultDeltaF(r))
+    ),
+    summary_by_wu_vs_result_band_f: groupInsightMetrics(wuEligibleF, (r) =>
+      forecastVsResultBandF(forecastVsResultDeltaF(r, { wu: true }))
+    ),
+    summary_by_om_wu_agree_delta_band_f: groupInsightMetrics(omWuAgreeEligibleF, (r) =>
+      forecastVsResultBandF(forecastVsResultDeltaF(r))
     ),
     summary_by_city_timezone: groupInsightMetrics(records, (r) => timezoneGroup(r.city)),
     summary_by_city_timezone_surviving: groupInsightMetrics(surviving, (r) =>
@@ -1308,7 +1345,7 @@ function renderInsights(data) {
         defaultSort: { key: "group", asc: true },
         description:
           `Primary forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `Bands are rounded °C (≤-3 … ≥+3). Positive = forecast hot vs result.`,
+          `All markets (F converted to °C). Bands ≤-3 … ≥+3 °C. Positive = forecast hot vs result.`,
       },
     ],
     [
@@ -1319,7 +1356,7 @@ function renderInsights(data) {
         defaultSort: { key: "group", asc: true },
         description:
           `WU scrape forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `Same band rules as OM vs result.`,
+          `All markets (F→°C). Same band rules as OM vs result.`,
       },
     ],
     [
@@ -1331,7 +1368,41 @@ function renderInsights(data) {
         description:
           `Only trades where OM and WU Δ vs win fall in the <em>same</em> °C band ` +
           `(e.g. both +1), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `Shows win summary / P&amp;L when both forecasts agree on how hot/cold they were vs the result.`,
+          `All markets. Shows win summary / P&amp;L when both forecasts agree.`,
+      },
+    ],
+    [
+      "By OM vs result Δ°F",
+      data.summary_by_om_vs_result_band_f,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `Fahrenheit markets only (e.g. Atlanta). Primary forecast − winning midpoint in °F ` +
+          `(from °C × 9/5), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
+          `Bands ≤-3 … ≥+3 °F.`,
+      },
+    ],
+    [
+      "By WU vs result Δ°F",
+      data.summary_by_wu_vs_result_band_f,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `Fahrenheit markets only. WU scrape − winning midpoint in °F, since ` +
+          `${data.forecast_bias_since || FORECAST_BIAS_SINCE}. Same band rules as OM vs result °F.`,
+      },
+    ],
+    [
+      "By OM∩WU same Δ°F",
+      data.summary_by_om_wu_agree_delta_band_f,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description:
+          `Fahrenheit markets only, where OM and WU Δ°F bands match (e.g. both +2°F), since ` +
+          `${data.forecast_bias_since || FORECAST_BIAS_SINCE}.`,
       },
     ],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
