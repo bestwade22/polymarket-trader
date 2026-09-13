@@ -1142,7 +1142,8 @@ function renderGroupTable(title, data, options = {}) {
     if (title === "By competitive band" || title === "By open interest band" || title === "By yes gap band") {
       insightSortState[title] = { key: "group", asc: true };
     }
-    if (title === "By OM vs result Δ°C" || title === "By WU vs result Δ°C") {
+    if (title === "By OM vs result Δ°C" || title === "By WU vs result Δ°C" || title === "By OM∩WU same Δ°C" ||
+        title === "By OM vs result Δ°F" || title === "By WU vs result Δ°F" || title === "By OM∩WU same Δ°F") {
       insightSortState[title] = { key: "group", asc: true };
     }
     if (title === SURVIVING_TZ_TITLE) {
@@ -1319,8 +1320,28 @@ function renderWinLossFingerprint(records) {
     </section>`;
 }
 
+function renderInsightHeading(text, sub = "") {
+  return `
+    <div class="insight-section-heading">
+      <strong>${text}</strong>
+      ${sub ? `<span class="insight-desc">${sub}</span>` : ""}
+    </div>`;
+}
+
+function insightGroupTradeCount(stats) {
+  return Object.values(stats || {}).reduce((sum, row) => sum + (Number(row.count) || 0), 0);
+}
+
 function renderInsights(data) {
   const container = document.getElementById("insights-content");
+  const since = data.forecast_bias_since || FORECAST_BIAS_SINCE;
+  const nOmC = insightGroupTradeCount(data.summary_by_om_vs_result_band);
+  const nWuC = insightGroupTradeCount(data.summary_by_wu_vs_result_band);
+  const nAgreeC = insightGroupTradeCount(data.summary_by_om_wu_agree_delta_band);
+  const nOmF = insightGroupTradeCount(data.summary_by_om_vs_result_band_f);
+  const nWuF = insightGroupTradeCount(data.summary_by_wu_vs_result_band_f);
+  const nAgreeF = insightGroupTradeCount(data.summary_by_om_wu_agree_delta_band_f);
+
   const insightSections = [
     [
       "By day",
@@ -1334,9 +1355,10 @@ function renderInsights(data) {
     ["By city", data.summary_by_city, {
       limit: null,
       description:
-        `Bias cols use forecast − result (°C) on/after ${data.forecast_bias_since || FORECAST_BIAS_SINCE} (full history, not page date filters). ` +
+        `Bias cols use forecast − result (°C) on/after ${since} (full history, not page date filters). ` +
         `Positive bias = forecast ran hot. Corr = −mean (add to future forecasts).`,
     }],
+    { heading: "Forecast Δ vs result (°C)", sub: `All markets · since ${since} · OM n=${nOmC}, WU n=${nWuC}, agree n=${nAgreeC}` },
     [
       "By OM vs result Δ°C",
       data.summary_by_om_vs_result_band,
@@ -1344,8 +1366,7 @@ function renderInsights(data) {
         limit: null,
         defaultSort: { key: "group", asc: true },
         description:
-          `Primary forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `All markets (F converted to °C). Bands ≤-3 … ≥+3 °C. Positive = forecast hot vs result.`,
+          `Primary forecast − winning midpoint (°C). All markets (F→°C). Bands ≤-3 … ≥+3. n=${nOmC}`,
       },
     ],
     [
@@ -1354,9 +1375,7 @@ function renderInsights(data) {
       {
         limit: null,
         defaultSort: { key: "group", asc: true },
-        description:
-          `WU scrape forecast − winning midpoint (°C), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `All markets (F→°C). Same band rules as OM vs result.`,
+        description: `WU scrape − winning midpoint (°C). All markets. n=${nWuC}`,
       },
     ],
     [
@@ -1366,11 +1385,18 @@ function renderInsights(data) {
         limit: null,
         defaultSort: { key: "group", asc: true },
         description:
-          `Only trades where OM and WU Δ vs win fall in the <em>same</em> °C band ` +
-          `(e.g. both +1), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `All markets. Shows win summary / P&amp;L when both forecasts agree.`,
+          `OM and WU in the same °C band (e.g. both +1). n=${nAgreeC}`,
       },
     ],
+    {
+      heading: "Forecast Δ vs result (°F)",
+      sub:
+        `Fahrenheit markets only (Atlanta, NYC, …) · since ${since} · ` +
+        `OM n=${nOmF}, WU n=${nWuF}, agree n=${nAgreeF}. ` +
+        (nOmF === 0
+          ? "No F-market rows in current filters — clear city/date filters to see these."
+          : ""),
+    },
     [
       "By OM vs result Δ°F",
       data.summary_by_om_vs_result_band_f,
@@ -1378,9 +1404,7 @@ function renderInsights(data) {
         limit: null,
         defaultSort: { key: "group", asc: true },
         description:
-          `Fahrenheit markets only (e.g. Atlanta). Primary forecast − winning midpoint in °F ` +
-          `(from °C × 9/5), since ${data.forecast_bias_since || FORECAST_BIAS_SINCE}. ` +
-          `Bands ≤-3 … ≥+3 °F.`,
+          `F markets only. Δ in °F (°C × 9/5). Bands ≤-3 … ≥+3 °F. n=${nOmF}`,
       },
     ],
     [
@@ -1389,9 +1413,7 @@ function renderInsights(data) {
       {
         limit: null,
         defaultSort: { key: "group", asc: true },
-        description:
-          `Fahrenheit markets only. WU scrape − winning midpoint in °F, since ` +
-          `${data.forecast_bias_since || FORECAST_BIAS_SINCE}. Same band rules as OM vs result °F.`,
+        description: `F markets only. WU Δ in °F. n=${nWuF}`,
       },
     ],
     [
@@ -1400,9 +1422,7 @@ function renderInsights(data) {
       {
         limit: null,
         defaultSort: { key: "group", asc: true },
-        description:
-          `Fahrenheit markets only, where OM and WU Δ°F bands match (e.g. both +2°F), since ` +
-          `${data.forecast_bias_since || FORECAST_BIAS_SINCE}.`,
+        description: `F markets only, OM and WU same °F band. n=${nAgreeF}`,
       },
     ],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
@@ -1473,7 +1493,13 @@ function renderInsights(data) {
     ],
   ];
   const cards = insightSections
-    .map(([title, stats, opts]) => renderGroupTable(title, stats, opts))
+    .map((item) => {
+      if (item && item.heading) {
+        return renderInsightHeading(item.heading, item.sub || "");
+      }
+      const [title, stats, opts] = item;
+      return renderGroupTable(title, stats, opts);
+    })
     .join("");
   const highlights = `
     <section class="insight-card insight-highlights">
