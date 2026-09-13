@@ -289,6 +289,26 @@ Or push to `main` — GitHub Actions runs `sam deploy` automatically.
 
 ---
 
+## ECR image cleanup (cost)
+
+Each `sam deploy` pushes a new container image. Old digests stay in ECR and bill storage.
+
+**Automatic:** Deploy workflow runs `scripts/apply_ecr_lifecycle.sh` after SAM deploy. Policy in [`infrastructure/ecr-lifecycle-policy.json`](../infrastructure/ecr-lifecycle-policy.json):
+
+- Expire **untagged** images after **1 day** (retagged digests from prior deploys)
+- Keep only the **newest 3** images per repo
+
+**One-shot (any machine with AWS creds):**
+
+```bash
+export AWS_REGION=ap-east-1
+bash scripts/apply_ecr_lifecycle.sh polymarket
+```
+
+Empty orphaned repos from deleted stacks cost almost nothing; delete them in the ECR console if desired. Lifecycle policies remove **images**, not repositories.
+
+---
+
 ## Quick reference
 
 | Resource | Name |

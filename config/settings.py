@@ -227,7 +227,7 @@ class Settings:
     forecast_agree_extra_shares: int = int(
         os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
     )
-    yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
+    yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.70"))
     # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05.
     yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))
     spread_max: float = float(os.getenv("SPREAD_MAX", "0.08"))

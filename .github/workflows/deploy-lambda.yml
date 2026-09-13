@@ -53,6 +53,7 @@ jobs:
               TradingWindowStartHour=14:00 \
               TradingWindowEndHour=16:00 \
               ShareCount=10 \
+              YesPriceMax=0.70 \
               YesPriceMin=0.45 \
               SpreadMax=0.08 \
               YesGapMin=0.05 \
@@ -69,6 +70,12 @@ jobs:
               SellWinTier1Price=0.94 \
               SellWinTier2Price=0.96 \
               SellWinTier3Price=0.98"
+
+      # SAM Image deploys leave old digests in ECR; lifecycle policy expires them.
+      - name: Apply ECR lifecycle policies
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION || 'ap-east-1' }}
+        run: bash scripts/apply_ecr_lifecycle.sh polymarket
 
       - name: Diagnose CloudFormation failure
         if: failure()

@@ -61,7 +61,7 @@ def _buy_ok_live(rec: TradeRecord) -> bool:
     if buy is None:
         return False
     yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
-    yes_max = float(getattr(settings, "yes_price_max", 0.60) or 0.60)
+    yes_max = float(getattr(settings, "yes_price_max", 0.70) or 0.70)
     if float(buy) >= yes_max:
         return False
     if yes_min > 0 and float(buy) < yes_min:

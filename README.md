@@ -9,7 +9,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 - **Stop-loss check** (`check-stop-loss`): every 15 minutes, scans live wallet positions via the Polymarket Data API; for events whose slug/title contains `highest-temperature-in-`, only evaluates positions when city local time is at or after **4:30 PM** on the event date; sells only when **`STOP_LOSS_PCT_FLOOR`% < value_pct < `STOP_LOSS_PCT`%** (where \(value\_pct = (current\_mid / avgPrice) \times 100\)); skips when an open sell order already exists.
 - **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **94¢ / 96¢ / 98¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
-  - `highest_yes` — buy only when **CLOB midpoint** and **Gamma Yes %** agree on the same top market, and that market's selection price is below `YES_PRICE_MAX` (default 0.60); skip if they disagree.
+  - `highest_yes` — buy only when **CLOB midpoint** and **Gamma Yes %** agree on the same top market, and that market's selection price is below `YES_PRICE_MAX` (default 0.70); skip if they disagree.
   - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
 - **Trade logging**: step-by-step JSON logs in `logs/trades/` and `logs/app.log`.
 - **Dry-run default**: no real orders until `DRY_RUN=false` or `--live`.
@@ -138,7 +138,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
 | `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `FORECAST_AGREE_EXTRA_SHARES` | `5` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
-| `YES_PRICE_MAX` | `0.60` | Max live selection price for highest_yes (checked after price refresh) |
+| `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
 | `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack |
 | `SPREAD_MAX` | `0.08` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
 | `YES_GAP_MIN` | `0.05` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables) |

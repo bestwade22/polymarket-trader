@@ -69,7 +69,7 @@ def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
     drops the row from ranking.
     """
     yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
-    yes_max = float(getattr(settings, "yes_price_max", 0.60) or 0.60)
+    yes_max = float(getattr(settings, "yes_price_max", 0.70) or 0.70)
     spread_max = float(getattr(settings, "spread_max", 0.15) or 0.15)
     yes_gap_min = float(getattr(settings, "yes_gap_min", 0.0) or 0.0)
     kept: list[TradeRecord] = []
@@ -192,7 +192,7 @@ def refresh_timezone_skip_denylist(
         "surviving_n": len(surviving),
         "all_n": len(records),
         "yes_price_min": float(getattr(settings, "yes_price_min", 0) or 0),
-        "yes_price_max": float(getattr(settings, "yes_price_max", 0.6) or 0.6),
+        "yes_price_max": float(getattr(settings, "yes_price_max", 0.70) or 0.70),
         "spread_max": float(getattr(settings, "spread_max", 0.15) or 0.15),
         "timezones": timezones,
         "detail": detail,
