@@ -13,6 +13,7 @@ from src.trade.position_checker import LivePositionChecker, filter_selections_wi
 from src.trade.position_tracker import PositionTracker
 from src.trade.price_refresher import refresh_events_markets, refresh_selection_prices
 from src.trade.selector import filter_tradable_events, filter_selections_after_live_refresh, select_markets_for_events
+from src.trade.forecast_share_bump import apply_forecast_agree_extra_shares
 from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import market_price_snapshot
 from src.utils.trade_logger import TradeStepLogger
@@ -294,6 +295,10 @@ def run_hourly_trade(
     )
     skipped_bought.extend(skipped_price_max)
 
+    # Forecasts needed before share bump + position target sizing.
+    selections = attach_forecasts_to_selections(selections)
+    selections = apply_forecast_agree_extra_shares(selections)
+
     position_checker = LivePositionChecker(executor)
     selections, skipped_positions = filter_selections_without_position(
         selections, position_checker
@@ -305,8 +310,9 @@ def run_hourly_trade(
         selections, strategy_name=strategy
     )
     skipped_bought.extend(skipped_price_max_late)
+    # Idempotent: only bumps if late path cleared the flag / reset shares.
+    selections = apply_forecast_agree_extra_shares(selections)
 
-    selections = attach_forecasts_to_selections(selections)
     skipped_bought = attach_forecasts_to_skipped(
         skipped_bought,
         events=events,

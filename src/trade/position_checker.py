@@ -244,8 +244,11 @@ def filter_selections_without_position(
     """
     kept = []
     skipped: list[dict] = []
-    target_share_count = settings.share_count
     for sel in selections:
+        # Prefer per-selection target (may include forecast-agree share bump).
+        target_share_count = int(
+            getattr(sel, "share_count", None) or settings.share_count
+        )
         event = sel.event
         if not event:
             kept.append(sel)

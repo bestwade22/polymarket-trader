@@ -223,6 +223,10 @@ class Settings:
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
     share_count: int = int(os.getenv("SHARE_COUNT", "10"))
+    # Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). 0 = off.
+    forecast_agree_extra_shares: int = int(
+        os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
+    )
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.60"))
     # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05.
     yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))

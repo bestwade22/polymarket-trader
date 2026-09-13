@@ -82,6 +82,9 @@ class MarketSelection:
             data["runner_up_temp"] = details["runner_up_temp"]
             data["yes_gap"] = details["yes_gap"]
             data["top_yes"] = details["top_yes"]
+        bump = getattr(self, "_forecast_agree_bump", None)
+        if isinstance(bump, dict) and bump.get("applied"):
+            data["forecast_agree_share_bump"] = bump
         return data
 
 
