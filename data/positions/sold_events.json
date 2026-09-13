@@ -13574,5 +13574,53 @@
     "floor_price": 0.96,
     "current_mid": 0.58,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xbe1230e47257d7d57ecf18903052fc063ba37bf3be004219a648deca8806a04d",
+    "token_id": "87210999863846599247311976728211366507295005417116738585747575138817241482156",
+    "order_id": "0xc228679503af4b67529dafee6c712d08764b8f4078ab85ee636ad68da66149c0",
+    "sold_at": "2026-09-13T21:00:17.345166+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-september-13-2026",
+    "price": 0.96,
+    "size": 10.0,
+    "avg_buy_price": 0.66,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.76,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xae2b178686368d4ea238058865d3fd32f7593834a02833f1aceb42c027d3dda4",
+    "token_id": "16252993149338702150149261481689208605938734030541767824818490639089005816385",
+    "order_id": "0xa4faf27fe9af4c3f3366c527896174a918f62cd1574521f839c612daff0b9954",
+    "sold_at": "2026-09-13T21:00:18.292937+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-mexico-city-on-september-13-2026",
+    "price": 0.94,
+    "size": 5.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.855,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x1361c7fac7a30246e303f9d18d1e439069f643c8f4dc93c1ccad331af215f9e9",
+    "token_id": "11171116655911978632110508556859067491692562638356501313515930677566433519372",
+    "order_id": "0xdb3fb1224d583ac5acc20744aaa949718188a0119acec339f41ef62c2736e994",
+    "sold_at": "2026-09-13T21:00:19.254257+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-denver-on-september-13-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.27,
+    "reason": "tier1"
   }
 ]
