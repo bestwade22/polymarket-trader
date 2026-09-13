@@ -46,7 +46,7 @@ let cityTimezones = {};
 let filterSweepData = null;
 let skippedAnalysisData = null;
 /** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
-let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.6, spread_max: 0.08, bottom_n: 7 };
+let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.7, spread_max: 0.08, bottom_n: 7 };
 let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
@@ -57,7 +57,7 @@ const SURVIVING_TZ_TITLE = "By city timezone (surviving pool — used for skip)"
 
 function survivingRecordsForSkip(records) {
   const yesMin = Number(skipStackFilters.yes_price_min) || 0;
-  const yesMax = Number(skipStackFilters.yes_price_max) || 0.6;
+  const yesMax = Number(skipStackFilters.yes_price_max) || 0.7;
   const spreadMax = Number(skipStackFilters.spread_max) || 0.15;
   return (records || []).filter((rec) => {
     const buy = rec.buy_price;
@@ -2346,7 +2346,7 @@ async function loadData() {
   if (denylist) {
     skipStackFilters = {
       yes_price_min: denylist.yes_price_min ?? 0.45,
-      yes_price_max: denylist.yes_price_max ?? 0.6,
+      yes_price_max: denylist.yes_price_max ?? 0.7,
       spread_max: denylist.spread_max ?? 0.08,
       bottom_n: denylist.bottom_n ?? 7,
     };
