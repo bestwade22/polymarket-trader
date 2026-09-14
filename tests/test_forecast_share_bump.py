@@ -72,6 +72,38 @@ def test_fahrenheit_plus_one_or_two_bumps():
     assert should_add_forecast_agree_shares(sel3) is False
 
 
+def test_seattle_f_prefers_f_not_rounded_c():
+    """Regression: 61°F vs 60°F both store 16°C — must not false-agree via °C."""
+    sel = _sel(
+        temp="60-61°F",
+        shares=10,
+        om_f=61,
+        om_c=16,
+        wu_f=60,
+        wu_c=16,
+    )
+    assert om_wu_agree_delta_vs_bought(sel) is None
+    assert should_add_forecast_agree_shares(sel) is False
+    apply_forecast_agree_extra_shares([sel], extra_shares=5)
+    assert sel.share_count == 10
+
+
+def test_fahrenheit_range_agree_plus_one_bumps():
+    """Bought 60-61°F (low 60), both forecasts 61°F → Δ=+1°F → bump."""
+    sel = _sel(
+        temp="60-61°F",
+        shares=10,
+        om_f=61,
+        om_c=16,
+        wu_f=61,
+        wu_c=16,
+    )
+    assert om_wu_agree_delta_vs_bought(sel) == ("F", 1)
+    assert should_add_forecast_agree_shares(sel) is True
+    apply_forecast_agree_extra_shares([sel], extra_shares=5)
+    assert sel.share_count == 15
+
+
 def test_bump_idempotent():
     sel = _sel(temp="26°C", shares=15, om_c=27, wu_c=27)
     apply_forecast_agree_extra_shares([sel], extra_shares=5)

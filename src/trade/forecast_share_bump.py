@@ -2,6 +2,10 @@
 
 Celsius: OM∩WU Δ vs bought rounds to +1°C → add FORECAST_AGREE_EXTRA_SHARES.
 Fahrenheit: OM∩WU Δ vs bought rounds to +1 or +2°F → same bump.
+
+Δ is computed in the market's native unit, preferring the matching forecast
+field (°F for F markets, °C for C). Do not prefer rounded °C on F markets —
+Weather.com often stores both 60°F and 61°F as 16°C, which falsely agrees.
 """
 
 from __future__ import annotations
@@ -10,9 +14,8 @@ import logging
 from typing import Optional
 
 from config.settings import settings
-from src.analysis.pattern_enrichment import forecast_delta_c
 from src.trade.strategies.base import MarketSelection
-from src.utils.market_parser import parse_temperature_bucket
+from src.utils.market_parser import parse_temperature_bucket, temp_bucket_sort_value
 
 logger = logging.getLogger(__name__)
 
@@ -30,20 +33,34 @@ def forecast_vs_bought_delta_native(
     forecast_temp_c: Optional[float] = None,
     forecast_temp_f: Optional[float] = None,
 ) -> Optional[float]:
-    """Forecast − bought midpoint in the market’s native unit (°C or °F)."""
-    unit = _market_unit(bought_temp)
-    if unit is None:
+    """Forecast − bought low-bound in the market’s native unit (°C or °F).
+
+    Prefers the native forecast field so F markets are not collapsed through
+    rounded °C (61°F and 60°F both map to 16°C).
+    """
+    bucket = parse_temperature_bucket(bought_temp or "")
+    bought_val = temp_bucket_sort_value(bucket)
+    if bucket is None or bought_val is None:
         return None
-    delta_c = forecast_delta_c(
-        bought_temp,
-        forecast_temp_f=forecast_temp_f,
-        forecast_temp_c=forecast_temp_c,
-    )
-    if delta_c is None:
-        return None
+    _low, _high, unit = bucket
+
     if unit == "F":
-        return round(float(delta_c) * 9.0 / 5.0, 2)
-    return float(delta_c)
+        if forecast_temp_f is not None:
+            forecast_f = float(forecast_temp_f)
+        elif forecast_temp_c is not None:
+            forecast_f = float(forecast_temp_c) * 9.0 / 5.0 + 32.0
+        else:
+            return None
+        return round(forecast_f - float(bought_val), 2)
+
+    # Celsius market
+    if forecast_temp_c is not None:
+        forecast_c = float(forecast_temp_c)
+    elif forecast_temp_f is not None:
+        forecast_c = (float(forecast_temp_f) - 32.0) * 5.0 / 9.0
+    else:
+        return None
+    return round(forecast_c - float(bought_val), 2)
 
 
 def om_wu_agree_delta_vs_bought(sel: MarketSelection) -> Optional[tuple[str, int]]:
