@@ -10500,6 +10500,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "24748054440386155781528737913178379327964580733759748370231201437068485085102"
     },
+    "highest-temperature-in-mexico-city-on-september-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on September 13?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "16252993149338702150149261481689208605938734030541767824818490639089005816385"
+    },
     "highest-temperature-in-mexico-city-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Mexico City on September 2?",
@@ -12833,6 +12839,12 @@
       "title": "Highest temperature in NYC on September 12?",
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "46784675067028385422940949709151912545359154195500629295314612230038807696940"
+    },
+    "highest-temperature-in-nyc-on-september-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on September 13?",
+      "winning_temp": "80-81\u00b0F",
+      "winning_token_id": "2212813148222335452288281783318167958972712938601297819045287414747697736564"
     },
     "highest-temperature-in-nyc-on-september-2-2026": {
       "closed": true,
