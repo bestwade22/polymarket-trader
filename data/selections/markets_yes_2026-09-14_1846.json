@@ -1,0 +1,90 @@
+{
+  "run_at": "2026-09-14T18:46:09.911856+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1010454",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1009108",
+      "city": "NYC",
+      "market_id": "4492074",
+      "group_item_title": "76-77\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-september-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.56
+    },
+    {
+      "event_id": "1010453",
+      "city": "Sao Paulo",
+      "market_id": "4495252",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-september-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9945,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1009116",
+      "city": "Atlanta",
+      "market_id": "4492095",
+      "group_item_title": "94-95\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-september-14-2026",
+      "reason": "spread_max",
+      "spread": 0.16,
+      "spread_max": 0.08,
+      "selection_price": 0.51,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": -0.44
+    },
+    {
+      "event_id": "1009117",
+      "city": "Miami",
+      "market_id": "4492106",
+      "group_item_title": "88-89\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-september-14-2026",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.08,
+      "selection_price": 0.615,
+      "forecast_temp_f": 91,
+      "forecast_temp_c": 33,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.89
+    },
+    {
+      "event_id": "1010455",
+      "city": "Toronto",
+      "market_id": "4495278",
+      "group_item_title": "20\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 10.0,
+      "held_market_id": "4495278",
+      "held_group_item_title": "20\u00b0C",
+      "target_share_count": 10,
+      "selection_price": 0.54,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
