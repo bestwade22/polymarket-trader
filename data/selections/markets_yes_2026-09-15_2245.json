@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-09-15T22:45:57.389338+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1017851",
+      "city": "Los Angeles",
+      "market_id": "4530144",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9945,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.33
+    },
+    {
+      "event_id": "1017852",
+      "city": "San Francisco",
+      "market_id": "4530153",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": -0.22
+    },
+    {
+      "event_id": "1017815",
+      "city": "Seattle",
+      "market_id": "4529803",
+      "group_item_title": "66-67\u00b0F",
+      "reason": "top_up_would_overshoot",
+      "held_shares": 14.998572,
+      "held_market_id": "4529803",
+      "held_group_item_title": "66-67\u00b0F",
+      "target_share_count": 15,
+      "selection_price": 0.55,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.11
+    }
+  ]
+}
