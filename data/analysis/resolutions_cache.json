@@ -426,6 +426,12 @@
       "winning_temp": "23\u00b0C",
       "winning_token_id": "110076718773865403771570950621915073136060584783127481692190662791409143077985"
     },
+    "highest-temperature-in-amsterdam-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Amsterdam on September 15?",
+      "winning_temp": "25\u00b0C",
+      "winning_token_id": "105843803400972166443002110459063024408401830315589974929300183493350085773937"
+    },
     "highest-temperature-in-amsterdam-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Amsterdam on September 2?",
@@ -9834,6 +9840,12 @@
       "winning_temp": "35\u00b0C",
       "winning_token_id": "25327866806329713282667550111576673131225192433542967028331185703098437172893"
     },
+    "highest-temperature-in-madrid-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Madrid on September 15?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "17014644752385483216266373256793895002255419455570000505044730156073505455567"
+    },
     "highest-temperature-in-madrid-on-september-2-2026": {
       "closed": false,
       "title": "Highest temperature in Madrid on September 2?",
@@ -11640,6 +11652,12 @@
       "winning_temp": "29\u00b0C",
       "winning_token_id": "92451625800143744069968101850280649056254368765016141982146852369299397923043"
     },
+    "highest-temperature-in-milan-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Milan on September 15?",
+      "winning_temp": "27\u00b0C",
+      "winning_token_id": "68390648853764194183664848193849362967502502596549511303301786248302935955192"
+    },
     "highest-temperature-in-milan-on-september-2-2026": {
       "closed": false,
       "title": "Highest temperature in Milan on September 2?",
@@ -12593,6 +12611,12 @@
       "title": "Highest temperature in Munich on September 14?",
       "winning_temp": "22\u00b0C",
       "winning_token_id": "25950572666326881928996657201720060825847366730859323364232124791810567676287"
+    },
+    "highest-temperature-in-munich-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on September 15?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "114078617268626048145294949237399381390171869052047823965708683743549652179343"
     },
     "highest-temperature-in-munich-on-september-2-2026": {
       "closed": false,
@@ -14003,6 +14027,12 @@
       "title": "Highest temperature in Paris on September 14?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "103290509686363360145148473994465869554198714541901567625811845697416605611720"
+    },
+    "highest-temperature-in-paris-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Paris on September 15?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "21274776723254346824742677850786007228541014975251122140088427998543745295287"
     },
     "highest-temperature-in-paris-on-september-2-2026": {
       "closed": true,
@@ -18803,6 +18833,12 @@
       "title": "Highest temperature in Warsaw on September 14?",
       "winning_temp": "19\u00b0C",
       "winning_token_id": "46966022805249481872778076487472732361949144961608679144118111615996040681612"
+    },
+    "highest-temperature-in-warsaw-on-september-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on September 15?",
+      "winning_temp": "20\u00b0C",
+      "winning_token_id": "109606008967475803435365831768650094706103321692266460703412938645616735126642"
     },
     "highest-temperature-in-warsaw-on-september-2-2026": {
       "closed": false,
