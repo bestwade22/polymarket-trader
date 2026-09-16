@@ -14294,5 +14294,53 @@
     "floor_price": 0.94,
     "current_mid": 0.685,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x98c050dfb26d44a2fa28691007e370a13110347d3f8f5e7b554d12ea2cfd99f7",
+    "token_id": "74484671317935907574796616096584852259993718541345834710828348255181065646803",
+    "order_id": "0x64194adeb3fe263c8bd87bbe163614531b2d25d2afb0c9ad7c54d30d87c016c6",
+    "sold_at": "2026-09-16T21:00:16.725486+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-september-16-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.6,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.695,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x49110337122783f5a912c190d7d70fdc1cbd35d0107d4b6da7a31f3e814ad156",
+    "token_id": "18820174940076975172404047014978138625567982854851899940377345628386210245450",
+    "order_id": "0xd77bcb133cd6d7bace6d8041a39238768674a2d9e1a52f2d6380758c880c7866",
+    "sold_at": "2026-09-16T21:00:17.771836+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-austin-on-september-16-2026",
+    "price": 0.96,
+    "size": 14.9911,
+    "avg_buy_price": 0.66,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.665,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x43d47c5945c16a2d28d6b523c99c4c6db3ba23731b26467f83309045d966faa6",
+    "token_id": "96602328368750558268853306745676439980614260019766587316205147144295839453504",
+    "order_id": "0xface3b2068e31859db8138bb012facedfae1db0c8025978a1bc9e5451eed062c",
+    "sold_at": "2026-09-16T21:00:18.737991+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-september-16-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.59,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.24,
+    "reason": "tier2"
   }
 ]
