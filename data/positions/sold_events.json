@@ -14102,5 +14102,37 @@
     "floor_price": 0.96,
     "current_mid": 0.695,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xf56aca31188995d0cd5977cce4ca61644fbd20d0200cb24aa9a4e6b1640680ec",
+    "token_id": "54111841418304804084673050088406102216262993554573356773643561583192097650683",
+    "order_id": "0x594aadbea3496559de4249c5e82ec51adf294a77e218f2074135ac9d46282b2d",
+    "sold_at": "2026-09-16T12:00:16.791082+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-moscow-on-september-16-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.58,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.575,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x15ca93f4f7e0c112149d25dc47b6fc6a431b7ed4285f6e0bebc20bad1347fb20",
+    "token_id": "45521755492190410275312253220431442254102173074210954061562244343610023492793",
+    "order_id": "0xf92a3ebc16617231266d3dfa68d031514c47f47deb90700c352f5f8ad582fae0",
+    "sold_at": "2026-09-16T12:00:17.763275+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-ankara-on-september-16-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.5,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.515,
+    "reason": "tier1"
   }
 ]
