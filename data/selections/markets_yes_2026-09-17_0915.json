@@ -1,0 +1,35 @@
+{
+  "run_at": "2026-09-17T09:15:46.638122+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1026512",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 87,
+      "forecast_wu_temp_c": 31
+    },
+    {
+      "event_id": "1026551",
+      "city": "Karachi",
+      "market_id": "4576579",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-september-17-2026",
+      "reason": "spread_max",
+      "spread": 0.23,
+      "spread_max": 0.08,
+      "selection_price": 0.675,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 92,
+      "forecast_wu_temp_c": 33,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
