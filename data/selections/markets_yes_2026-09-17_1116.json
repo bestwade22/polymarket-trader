@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-09-17T11:16:11.013916+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1026510",
+      "city": "Ankara",
+      "market_id": "4576231",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-september-17-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.7615,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1026514",
+      "city": "Tel Aviv",
+      "market_id": "4576275",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-september-17-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1026542",
+      "city": "Istanbul",
+      "market_id": "4576478",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-september-17-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1026547",
+      "city": "Jeddah",
+      "market_id": "4576535",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-september-17-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 100,
+      "forecast_temp_c": 38,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1026541",
+      "city": "Moscow",
+      "market_id": "4576469",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-september-17-2026",
+      "reason": "spread_max",
+      "spread": 0.21,
+      "spread_max": 0.08,
+      "selection_price": 0.585
+    },
+    {
+      "event_id": "1026545",
+      "city": "Helsinki",
+      "market_id": "4576511",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-september-17-2026",
+      "reason": "spread_max",
+      "spread": 0.15,
+      "spread_max": 0.08,
+      "selection_price": 0.575,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
