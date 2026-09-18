@@ -1,0 +1,21 @@
+{
+  "run_at": "2026-09-18T10:45:44.538052+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1031511",
+      "city": "Karachi",
+      "market_id": "4606543",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-september-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.997,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
