@@ -14582,5 +14582,21 @@
     "floor_price": 0.94,
     "current_mid": 0.83,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xc96226569b96ac02d170786d8aa51c4fdf7dbc54ecdb52d4bb18f219ed499656",
+    "token_id": "21612774509419220157181380861904568905412762958921999495793419223750648028538",
+    "order_id": "0x445900190cf24c10f402c8ffd2f66e0e255577bddbb66807259540c85d59933d",
+    "sold_at": "2026-09-19T12:00:18.092234+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-istanbul-on-september-19-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.475,
+    "reason": "tier1"
   }
 ]
