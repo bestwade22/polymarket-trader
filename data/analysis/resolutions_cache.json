@@ -9546,6 +9546,12 @@
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "21988108173356915552038177458900341693071209787736569706443051887718539997972"
     },
+    "highest-temperature-in-los-angeles-on-september-18-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on September 18?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "29571622077418177524212858386998422865074830406811152447583709384537049527875"
+    },
     "highest-temperature-in-los-angeles-on-september-2-2026": {
       "closed": true,
       "title": "Highest temperature in Los Angeles on September 2?",
@@ -15276,6 +15282,12 @@
       "winning_temp": "70-71\u00b0F",
       "winning_token_id": "84059639856306825721353945884116610827923236016397665909668440748415521327681"
     },
+    "highest-temperature-in-san-francisco-on-september-18-2026": {
+      "closed": false,
+      "title": "Highest temperature in San Francisco on September 18?",
+      "winning_temp": "68-69\u00b0F",
+      "winning_token_id": "23204613714865024612898245885967934007659998433786491235973561867172198329824"
+    },
     "highest-temperature-in-san-francisco-on-september-2-2026": {
       "closed": false,
       "title": "Highest temperature in San Francisco on September 2?",
@@ -16271,6 +16283,12 @@
       "title": "Highest temperature in Seattle on September 17?",
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "13133365384169946430146733601297584454001520898899809980977919949781955127652"
+    },
+    "highest-temperature-in-seattle-on-september-18-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on September 18?",
+      "winning_temp": "68-69\u00b0F",
+      "winning_token_id": "73525684162770330908895059901235409214502308143765876575625948747547818158713"
     },
     "highest-temperature-in-seattle-on-september-2-2026": {
       "closed": false,
