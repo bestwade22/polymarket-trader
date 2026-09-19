@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-09-19T22:45:58.035814+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1037818",
+      "city": "Seattle",
+      "market_id": "4637489",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-september-19-2026",
+      "reason": "yes_price_min",
+      "selection_price": 0.3275,
+      "buy_price": 0.363,
+      "effective_min_price": 0.363,
+      "yes_price_min": 0.45,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.22
+    },
+    {
+      "event_id": "1037819",
+      "city": "Los Angeles",
+      "market_id": "4637504",
+      "group_item_title": "76-77\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-19-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.56
+    },
+    {
+      "event_id": "1037820",
+      "city": "San Francisco",
+      "market_id": "4637511",
+      "group_item_title": "66-67\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-19-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 4.11
+    }
+  ]
+}
