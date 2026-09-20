@@ -8070,6 +8070,12 @@
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "86634552348742143229540298399460121081192668591356352819259630982142540990919"
     },
+    "highest-temperature-in-jinan-on-september-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 20?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "96416885932405412459059740239871461307139274387204114587849835376161084265828"
+    },
     "highest-temperature-in-jinan-on-september-3-2026": {
       "closed": true,
       "title": "Highest temperature in Jinan on September 3?",
@@ -8813,6 +8819,12 @@
       "title": "Highest temperature in Kuala Lumpur on September 19?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "72696911800371616244433015213591863986071604087664433852488939370365619553328"
+    },
+    "highest-temperature-in-kuala-lumpur-on-september-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Kuala Lumpur on September 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "95247027520103800055463955839656404809765585751423029395219034668941503133031"
     },
     "highest-temperature-in-london-on-august-1-2026": {
       "closed": true,
@@ -11735,6 +11747,12 @@
       "title": "Highest temperature in Miami on September 18?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "79934249364116045010672886514932529972250422339076726781848109588858098175026"
+    },
+    "highest-temperature-in-miami-on-september-19-2026": {
+      "closed": false,
+      "title": "Highest temperature in Miami on September 19?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "73844187030382637306798820161187256345231623027465892421784411489357813031607"
     },
     "highest-temperature-in-miami-on-september-2-2026": {
       "closed": true,
@@ -17592,6 +17610,12 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "92811739421545732662940896540291503227039621090893585770408774060604998508268"
     },
+    "highest-temperature-in-singapore-on-september-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on September 20?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "12354227080711622658270405254115219044635060658611455542367166623654183156264"
+    },
     "highest-temperature-in-singapore-on-september-3-2026": {
       "closed": false,
       "title": "Highest temperature in Singapore on September 3?",
@@ -18083,6 +18107,12 @@
       "title": "Highest temperature in Taipei on September 2?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "22203075503575579174012081801553251170988949846078129386042515989656949625477"
+    },
+    "highest-temperature-in-taipei-on-september-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on September 20?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "54069316333514630180970043952410285482847310154388908989978023965070446146063"
     },
     "highest-temperature-in-taipei-on-september-3-2026": {
       "closed": true,
@@ -19259,6 +19289,12 @@
       "title": "Highest temperature in Toronto on September 18?",
       "winning_temp": "21\u00b0C",
       "winning_token_id": "90498698773333626244827547154812141145895289297631853312035262112612725989037"
+    },
+    "highest-temperature-in-toronto-on-september-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on September 19?",
+      "winning_temp": "18\u00b0C",
+      "winning_token_id": "101190189239392826523009481040990734018368872019540988995985436444903289202001"
     },
     "highest-temperature-in-toronto-on-september-2-2026": {
       "closed": true,
