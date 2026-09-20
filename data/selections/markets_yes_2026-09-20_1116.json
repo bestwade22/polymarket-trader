@@ -1,0 +1,112 @@
+{
+  "run_at": "2026-09-20T11:16:15.326185+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "1041466",
+      "city": "Ankara",
+      "market_id": "4667770",
+      "groupItemTitle": "25\u00b0C",
+      "yes_price": 0.565,
+      "yes_token_id": "86468671748624250281249424433873818300148948090994430539938795793202735152984",
+      "buy_price": 0.58,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "on_edge": false,
+      "order_price": 0.565,
+      "selection_price": 0.565,
+      "gamma_yes_price": 0.535,
+      "best_bid": 0.55,
+      "best_ask": 0.58,
+      "spread": 0.03,
+      "clob_buy_price": 0.58,
+      "last_trade_price": 0.56,
+      "midpoint": 0.565,
+      "outcomePrices": [
+        0.535,
+        0.465
+      ],
+      "competitive": 0.9987764987889834,
+      "event_slug": "highest-temperature-in-ankara-on-september-20-2026",
+      "open_interest": 28609.334703,
+      "runner_up_yes": 0.445,
+      "runner_up_temp": "24\u00b0C",
+      "yes_gap": 0.09,
+      "top_yes": 0.535,
+      "order_status": "live",
+      "order_id": "0xdb3f163f62f7be70d88f98592add665cc0a5e080d73cd8e1be13e55a91ab75fe",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-09-20T11:41:14+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "1041470",
+      "city": "Tel Aviv",
+      "market_id": "4667813",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-september-20-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.975,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1041493",
+      "city": "Istanbul",
+      "market_id": "4667986",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-september-20-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.83,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1041496",
+      "city": "Helsinki",
+      "market_id": "4668021",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-september-20-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1041498",
+      "city": "Jeddah",
+      "market_id": "4668043",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-september-20-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 100,
+      "forecast_temp_c": 38,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1041492",
+      "city": "Moscow",
+      "market_id": "4667976",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-september-20-2026",
+      "reason": "spread_max",
+      "spread": 0.11,
+      "spread_max": 0.08,
+      "selection_price": 0.635
+    }
+  ]
+}
