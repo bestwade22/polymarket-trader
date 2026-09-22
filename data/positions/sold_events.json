@@ -15190,5 +15190,21 @@
     "floor_price": 0.96,
     "current_mid": 0.125,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x2c73d9710b6612028052b3182e0291e297e8ab5a21e85521e8bd850ad1e5a54b",
+    "token_id": "103961435298860625655286007583422788468083335623124588452691790953289387783920",
+    "order_id": "0x90f7ca938978bcfa5c30b0246425fb654c592a85f39b9a0361e80e8fecbe3c99",
+    "sold_at": "2026-09-22T22:00:17.773850+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seattle-on-september-22-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.62,
+    "reason": "tier1"
   }
 ]
