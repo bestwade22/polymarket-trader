@@ -15158,5 +15158,37 @@
     "floor_price": 0.94,
     "current_mid": 0.115,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x945f497dba2b8a03ae7371d4e29369d567b215db5425bf13454daa4483bee8d9",
+    "token_id": "2695719955771741073131745736328213435042072768453563982170029864352569704139",
+    "order_id": "0x83a348ece45c8db4452fa67e1312d819dcf9979cc2d017644afbf41fa739eb50",
+    "sold_at": "2026-09-22T21:00:18.526011+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-panama-city-on-september-22-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.582,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.6165,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xac268e8455a788743bb00204e106fed9687c59250a5c1788c3c78263a1b4451c",
+    "token_id": "12146381897223042326147527974624989665494905757853473070820864319164585939708",
+    "order_id": "0x9f8ccae90eaa2029c54d3bcd0d8ab6dd495771902a43a8de45357503a3494da9",
+    "sold_at": "2026-09-22T21:00:19.500001+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chicago-on-september-22-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.65,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.125,
+    "reason": "tier2"
   }
 ]
