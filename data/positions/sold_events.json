@@ -15142,5 +15142,21 @@
     "floor_price": 0.94,
     "current_mid": 0.89,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xac268e8455a788743bb00204e106fed9687c59250a5c1788c3c78263a1b4451c",
+    "token_id": "12146381897223042326147527974624989665494905757853473070820864319164585939708",
+    "order_id": "0xbc32c8fdf37b0b33a86d0b978446dac50fdf50f9fd4b1a740043bc4fd7bf7f43",
+    "sold_at": "2026-09-22T20:00:17.820202+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chicago-on-september-22-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.65,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.115,
+    "reason": "tier1"
   }
 ]
