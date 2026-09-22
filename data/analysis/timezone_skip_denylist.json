@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "refreshed_at": "2026-09-22T17:01:29.475888+00:00",
+  "refreshed_at": "2026-09-22T18:01:23.579062+00:00",
   "bottom_n": 7,
   "rank_pool": "surviving",
   "rank_pool_n": 393,
@@ -13,10 +13,10 @@
     "India (UTC+5:30)",
     "Japan (UTC+9)",
     "South Africa (UTC+2)",
+    "Malaysia (UTC+8)",
     "NZ (UTC+12/+13)",
     "China (UTC+8)",
-    "UK (UTC+0/+1)",
-    "Argentina (UTC-3)"
+    "UK (UTC+0/+1)"
   ],
   "detail": {
     "India (UTC+5:30)": {
@@ -31,6 +31,10 @@
       "win_plus_sold_win_pct": 0.0,
       "win_summary_denom": 4
     },
+    "Malaysia (UTC+8)": {
+      "win_plus_sold_win_pct": 33.3,
+      "win_summary_denom": 3
+    },
     "NZ (UTC+12/+13)": {
       "win_plus_sold_win_pct": 33.3,
       "win_summary_denom": 3
@@ -42,10 +46,6 @@
     "UK (UTC+0/+1)": {
       "win_plus_sold_win_pct": 36.8,
       "win_summary_denom": 19
-    },
-    "Argentina (UTC-3)": {
-      "win_plus_sold_win_pct": 40.0,
-      "win_summary_denom": 5
     }
   }
 }
