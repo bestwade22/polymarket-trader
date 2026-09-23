@@ -3054,6 +3054,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "68299217058392293113435897693177986258874197029438680128672612381305125211614"
     },
+    "highest-temperature-in-busan-on-september-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Busan on September 23?",
+      "winning_temp": "28\u00b0C",
+      "winning_token_id": "7630189983842062785771984283682162493382177803326437321439771375588276869868"
+    },
     "highest-temperature-in-busan-on-september-3-2026": {
       "closed": true,
       "title": "Highest temperature in Busan on September 3?",
@@ -8333,6 +8339,12 @@
       "title": "Highest temperature in Jinan on September 22?",
       "winning_temp": "26\u00b0C or higher",
       "winning_token_id": "113691254289931316560675129826420419353392428318048814001275920549543567793473"
+    },
+    "highest-temperature-in-jinan-on-september-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jinan on September 23?",
+      "winning_temp": "26\u00b0C or higher",
+      "winning_token_id": "53189028239551591027384774289161667586785684754737224370579143220135496068106"
     },
     "highest-temperature-in-jinan-on-september-3-2026": {
       "closed": true,
@@ -18168,6 +18180,12 @@
       "winning_temp": "31\u00b0C",
       "winning_token_id": "55752320155480400951027848769819334428105271466667623020521374758793094756861"
     },
+    "highest-temperature-in-singapore-on-september-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Singapore on September 23?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "93390012186236785046283795223758135855526829824085426511209619789390120291073"
+    },
     "highest-temperature-in-singapore-on-september-3-2026": {
       "closed": false,
       "title": "Highest temperature in Singapore on September 3?",
@@ -18677,6 +18695,12 @@
       "title": "Highest temperature in Taipei on September 22?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "78750437399170501595542478557864413223460758373043268895784812998206884041734"
+    },
+    "highest-temperature-in-taipei-on-september-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on September 23?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "109976805255974813661459106485045325498117845278440905048132983159020790090869"
     },
     "highest-temperature-in-taipei-on-september-3-2026": {
       "closed": true,
@@ -21071,6 +21095,12 @@
       "title": "Highest temperature in Zhengzhou on September 22?",
       "winning_temp": "29\u00b0C",
       "winning_token_id": "33258800158208493264710560940953676019146095527479561046143640762261021814788"
+    },
+    "highest-temperature-in-zhengzhou-on-september-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Zhengzhou on September 23?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "73765395830365190726188706659109476976936365035161587243289449706186053583411"
     },
     "highest-temperature-in-zhengzhou-on-september-3-2026": {
       "closed": true,
