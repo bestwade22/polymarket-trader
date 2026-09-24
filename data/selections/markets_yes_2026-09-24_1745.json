@@ -1,0 +1,70 @@
+{
+  "run_at": "2026-09-24T17:45:54.844111+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "1063904",
+      "city": "Sao Paulo",
+      "market_id": "4838636",
+      "groupItemTitle": "20\u00b0C",
+      "yes_price": 0.56,
+      "yes_token_id": "22503012655746459697007589883888609610492734668023490221546831091086500303097",
+      "buy_price": 0.58,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20,
+      "on_edge": false,
+      "order_price": 0.56,
+      "selection_price": 0.56,
+      "gamma_yes_price": 0.535,
+      "best_bid": 0.54,
+      "best_ask": 0.58,
+      "spread": 0.04,
+      "clob_buy_price": 0.58,
+      "last_trade_price": 0.54,
+      "midpoint": 0.56,
+      "outcomePrices": [
+        0.535,
+        0.465
+      ],
+      "competitive": 0.9987764987889834,
+      "event_slug": "highest-temperature-in-sao-paulo-on-september-24-2026",
+      "open_interest": 12350.018856,
+      "runner_up_yes": 0.26,
+      "runner_up_temp": "19\u00b0C",
+      "yes_gap": 0.275,
+      "top_yes": 0.535,
+      "order_status": "live",
+      "order_id": "0x498570634ca15c1d2f1f95f1644a8478a02e25c04bb0cae7479209745b1cf4f4",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-09-24T18:10:54+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "1063905",
+      "city": "Buenos Aires",
+      "market_id": "4838648",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-buenos-aires-on-september-24-2026",
+      "reason": "spread_max",
+      "spread": 0.17,
+      "spread_max": 0.08,
+      "selection_price": 0.605,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
