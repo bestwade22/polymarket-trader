@@ -15526,5 +15526,37 @@
     "floor_price": 0.98,
     "current_mid": 0.16,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xbb9d0eb64bdf2afedc3acb0d70f7364e42f3666345932aedbfbb94686d33af40",
+    "token_id": "41239453607106380634769065918318794436285293573745735165417556712637475972178",
+    "order_id": "0x0edbc63b06f6fcce41148686a2dea339510e28d885a6cbe621ec60ce1d4d8133",
+    "sold_at": "2026-09-24T19:00:18.084135+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-miami-on-september-24-2026",
+    "price": 0.97,
+    "size": 19.9971,
+    "avg_buy_price": 0.65,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.975,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x532f7e9715b33a5a61b393d945219bbaf8d11b01131509ade0471489d64fd8a3",
+    "token_id": "40262374158251245988685837638756196877296330430003023210986020552243370969079",
+    "order_id": "0x2b7f31e77f432e49f2fe402fba3fa2b1f1b87a1e9adfea93f0fb15c18b3db16d",
+    "sold_at": "2026-09-24T19:00:19.064219+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-september-24-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.735,
+    "reason": "tier1"
   }
 ]
