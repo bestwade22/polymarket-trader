@@ -6084,6 +6084,12 @@
       "winning_temp": "11\u00b0C",
       "winning_token_id": "22514869378270015881346122014039856142836792245095578418067930738171168510239"
     },
+    "highest-temperature-in-helsinki-on-september-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Helsinki on September 24?",
+      "winning_temp": "14\u00b0C",
+      "winning_token_id": "98690049273097273045009076668541145231484882139735701890693194918214850511722"
+    },
     "highest-temperature-in-helsinki-on-september-3-2026": {
       "closed": true,
       "title": "Highest temperature in Helsinki on September 3?",
@@ -7638,6 +7644,12 @@
       "winning_temp": "17\u00b0C",
       "winning_token_id": "51865067501012730217045668675811440708307312514995458997505454998632666719126"
     },
+    "highest-temperature-in-istanbul-on-september-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Istanbul on September 24?",
+      "winning_temp": "19\u00b0C",
+      "winning_token_id": "67553647924405156238015282702831191134113892138934420316157283525974829110030"
+    },
     "highest-temperature-in-istanbul-on-september-3-2026": {
       "closed": true,
       "title": "Highest temperature in Istanbul on September 3?",
@@ -8153,6 +8165,12 @@
       "title": "Highest temperature in Jeddah on September 23?",
       "winning_temp": "36\u00b0C",
       "winning_token_id": "115676441051555385128873884277519121971945707465671550487114208232335343753123"
+    },
+    "highest-temperature-in-jeddah-on-september-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Jeddah on September 24?",
+      "winning_temp": "36\u00b0C",
+      "winning_token_id": "11325924171051739632123061269265229166821895362126680041382629560163959269272"
     },
     "highest-temperature-in-jeddah-on-september-3-2026": {
       "closed": true,
@@ -13337,6 +13355,12 @@
       "title": "Highest temperature in Moscow on September 23?",
       "winning_temp": "18\u00b0C",
       "winning_token_id": "49877825867696433483663278549239505458229252750130573236098457578318052066978"
+    },
+    "highest-temperature-in-moscow-on-september-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Moscow on September 24?",
+      "winning_temp": "21\u00b0C or higher",
+      "winning_token_id": "39532788439838870730011111291494870516460819645495317901674981142164659954877"
     },
     "highest-temperature-in-moscow-on-september-3-2026": {
       "closed": true,
@@ -19427,6 +19451,12 @@
       "title": "Highest temperature in Tel Aviv on September 23?",
       "winning_temp": "30\u00b0C",
       "winning_token_id": "12363761728339525858299456131474719610493086318130851035762938162215798099386"
+    },
+    "highest-temperature-in-tel-aviv-on-september-24-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tel Aviv on September 24?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "38082342999140060561720174034189728532045749465828971875770174729822151580770"
     },
     "highest-temperature-in-tel-aviv-on-september-3-2026": {
       "closed": true,
