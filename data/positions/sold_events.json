@@ -15446,5 +15446,37 @@
     "floor_price": 0.94,
     "current_mid": 0.47,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x9c83c3222f24d30809fbcb6a713d0738267cc35342f4f0638088779a6b7d4481",
+    "token_id": "34585834362615339363187881024469630517785583820505169617421215913158319821127",
+    "order_id": "0x61c73b88e3ff16fa7d4dbf2ee52f69a2cdd2bc345cf70d5c7a5bb7ebc69f5da3",
+    "sold_at": "2026-09-24T13:00:19.354504+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-madrid-on-september-24-2026",
+    "price": 0.94,
+    "size": 14.01,
+    "avg_buy_price": 0.5849,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.525,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x00a5e1c62dfd2057a78faf89b1a94c22d4588fe703a27d20ff351b986fa86f75",
+    "token_id": "107492412420070632111033080545255050859817078006862193054221166739066078886257",
+    "order_id": "0x0026baaed6a5f013de90d0d77b14a32be782351538d15343889557b03630d437",
+    "sold_at": "2026-09-24T13:00:20.308304+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-istanbul-on-september-24-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.195,
+    "reason": "tier2"
   }
 ]
