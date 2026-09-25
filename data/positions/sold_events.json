@@ -15606,5 +15606,37 @@
     "floor_price": 0.98,
     "current_mid": 0.815,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x023dc7e3d2b4346959cd16447860a8defbcf9acfa4b9644c473d767da328d634",
+    "token_id": "8225887517157192716150385710025371616659024106350531998661518725286573775464",
+    "order_id": "0xce56ca9ae94e3e2be6312e29f4d8b28d3cebfc285e1f3875bf10547f6bb02b4d",
+    "sold_at": "2026-09-25T13:00:20.035925+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-september-25-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.64,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.68,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x984e22c6a2fbc56d82920928efd50e8dc8d5cd448334ef826a0ffc11a0eb7a9f",
+    "token_id": "2210065417283555475689315538217785384230798795341992996042331919751228859204",
+    "order_id": "0x5992ba58de4932cc35fe04a68b02ed89c7a7e9ec26b099de0f8ffcda93c4d7f3",
+    "sold_at": "2026-09-25T13:00:21.005922+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-milan-on-september-25-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.63,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.67,
+    "reason": "tier1"
   }
 ]
