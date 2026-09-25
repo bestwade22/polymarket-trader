@@ -1,0 +1,110 @@
+{
+  "run_at": "2026-09-25T13:46:18.364056+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1067567",
+      "city": "London",
+      "timezone": "UK (UTC+0/+1)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1067603",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1067568",
+      "city": "Paris",
+      "market_id": "4873045",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-paris-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.735,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 82,
+      "forecast_temp_c": 28,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1067573",
+      "city": "Munich",
+      "market_id": "4873101",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-munich-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.825,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1067588",
+      "city": "Madrid",
+      "market_id": "4873184",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1067589",
+      "city": "Warsaw",
+      "market_id": "4873195",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.996,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1067599",
+      "city": "Amsterdam",
+      "market_id": "4873306",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.78,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1067587",
+      "city": "Milan",
+      "market_id": "4873172",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-september-25-2026",
+      "reason": "spread_max",
+      "spread": 0.2,
+      "spread_max": 0.08,
+      "selection_price": 0.5,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
