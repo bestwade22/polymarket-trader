@@ -1,0 +1,30 @@
+{
+  "run_at": "2026-09-25T10:15:45.314747+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1067572",
+      "city": "Lucknow",
+      "timezone": "India (UTC+5:30)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1067606",
+      "city": "Karachi",
+      "market_id": "4873383",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-september-25-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9945,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
