@@ -98,7 +98,8 @@ def test_buy_pass_selects_highest_yes(monkeypatch):
     monkeypatch.setattr(
         bp,
         "sample_times_utc_for_event",
-        lambda e: [datetime(2026, 7, 15, 12, 5, tzinfo=timezone.utc)],
+        # 12:50 UTC = 14:50 Europe/Berlin (after BUY_BAND_LOW_MIN_LOCAL_TIME 14:45)
+        lambda e: [datetime(2026, 7, 15, 12, 50, tzinfo=timezone.utc)],
     )
 
     store = FakeStore()
@@ -108,6 +109,34 @@ def test_buy_pass_selects_highest_yes(monkeypatch):
     assert result.buy.selection.group_item_title == "24°C"
     assert result.buy.buy_price == pytest.approx(0.45)
     assert store.bought == "t2"
+
+
+def test_buy_pass_skips_low_band_before_local_cutoff(monkeypatch):
+    event = {
+        "id": "e1",
+        "city": "Munich",
+        "slug": "highest-temperature-in-munich-on-july-15-2026",
+        "title": "Highest temperature in Munich on July 15?",
+        "event_date": "2026-07-15",
+        "timezone": "Europe/Berlin",
+        "markets": [
+            _market(0.30, "m1", "22°C", "t1"),
+            _market(0.47, "m2", "24°C", "t2"),
+            _market(0.20, "m3", "26°C", "t3"),
+        ],
+    }
+    from src.simulation import buy_pass as bp
+
+    monkeypatch.setattr(bp, "build_event_at_time", _ready_event)
+    monkeypatch.setattr(
+        bp,
+        "sample_times_utc_for_event",
+        # 12:05 UTC = 14:05 Europe/Berlin — before 14:45 low-band cutoff
+        lambda e: [datetime(2026, 7, 15, 12, 5, tzinfo=timezone.utc)],
+    )
+    result = try_buy_event(event, MagicMock(), strategy_name="highest_yes", yes_price_max=0.60)
+    assert result.status == "no_buy"
+    assert result.buy is None
 
 
 def test_buy_pass_skips_yes_price_max(monkeypatch):

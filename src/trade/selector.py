@@ -1,5 +1,7 @@
 import logging
+from datetime import datetime, timezone
 from typing import Optional
+from zoneinfo import ZoneInfo
 
 from config.settings import settings
 from src.trade.strategies.base import BaseStrategy, MarketSelection
@@ -9,6 +11,33 @@ from src.utils.market_parser import get_spread
 from src.utils.time_window import is_event_tradable_now, next_trading_window_hint, trading_window_label
 
 logger = logging.getLogger(__name__)
+
+
+def _selection_buy_price(sel: MarketSelection) -> Optional[float]:
+    """Prefer live ask (buy_price); fall back to selection/mid price."""
+    if sel.buy_price is not None:
+        return float(sel.buy_price)
+    if sel.yes_price is not None:
+        return float(sel.yes_price)
+    return None
+
+
+def _event_local_now(
+    event: Optional[dict],
+    now_utc: Optional[datetime] = None,
+) -> Optional[datetime]:
+    if not event:
+        return None
+    event_date = event.get("event_date")
+    tz_name = event.get("timezone")
+    if not event_date or not tz_name:
+        return None
+    now = now_utc or datetime.now(timezone.utc)
+    try:
+        tz = ZoneInfo(str(tz_name))
+        return now.astimezone(tz)
+    except (ValueError, KeyError):
+        return None
 
 STRATEGIES: dict[str, type[BaseStrategy]] = {
     "highest_yes": HighestYesStrategy,
@@ -241,11 +270,180 @@ def filter_by_yes_gap_min(
     return kept, skipped
 
 
+def filter_by_buy_band_high_yes_gap(
+    selections: list[MarketSelection],
+    *,
+    band_min: Optional[float] = None,
+    band_max: Optional[float] = None,
+    yes_gap_min: Optional[float] = None,
+) -> tuple[list[MarketSelection], list[dict]]:
+    """In buy-price band [min, max), skip when yes_gap ≤ band yes-gap min.
+
+    Defaults: buy in [0.60, 0.70) requires yes_gap > 0.25.
+    Missing gap is allowed. Band rule disabled when yes_gap_min <= 0.
+    """
+    from src.analysis.runner_up import runner_up_details
+
+    lo = settings.buy_band_high_min if band_min is None else band_min
+    hi = settings.buy_band_high_max if band_max is None else band_max
+    gap_min = (
+        settings.buy_band_high_yes_gap_min if yes_gap_min is None else yes_gap_min
+    )
+    if gap_min is None or float(gap_min) <= 0 or float(hi) <= float(lo):
+        return selections, []
+
+    threshold = float(gap_min)
+    kept: list[MarketSelection] = []
+    skipped: list[dict] = []
+    for sel in selections:
+        price = _selection_buy_price(sel)
+        if price is None or not (float(lo) <= price < float(hi)):
+            kept.append(sel)
+            continue
+        markets = (sel.event or {}).get("markets") or []
+        details = runner_up_details(markets, selected_market_id=sel.market_id)
+        gap = details.get("yes_gap")
+        if gap is not None and float(gap) <= threshold:
+            logger.info(
+                "event=%s city=%s market=%s buy=%.3f in [%.2f,%.2f) "
+                "yes_gap %.3f <= band min %.3f; skip",
+                sel.event_id,
+                sel.city,
+                sel.market_id,
+                price,
+                lo,
+                hi,
+                gap,
+                threshold,
+            )
+            step_log = sel.event.get("_step_logger") if sel.event else None
+            if step_log:
+                step_log.log_step(
+                    "filter_buy_band_high_yes_gap",
+                    skipped=True,
+                    buy_price=price,
+                    yes_gap=gap,
+                    yes_gap_min=threshold,
+                    band_min=float(lo),
+                    band_max=float(hi),
+                    market_id=sel.market_id,
+                )
+            skipped.append(
+                {
+                    "event_id": sel.event_id,
+                    "city": sel.city,
+                    "market_id": sel.market_id,
+                    "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                    "reason": "buy_band_high_yes_gap",
+                    "buy_price": price,
+                    "yes_gap": gap,
+                    "yes_gap_min": threshold,
+                    "band_min": float(lo),
+                    "band_max": float(hi),
+                    "selection_price": sel.yes_price,
+                }
+            )
+            continue
+        kept.append(sel)
+    return kept, skipped
+
+
+def filter_by_buy_band_low_local_time(
+    selections: list[MarketSelection],
+    *,
+    band_min: Optional[float] = None,
+    band_max: Optional[float] = None,
+    min_local_hour: Optional[int] = None,
+    min_local_minute: Optional[int] = None,
+    now_utc: Optional[datetime] = None,
+) -> tuple[list[MarketSelection], list[dict]]:
+    """In buy-price band [min, max], skip when city local time is before cutoff.
+
+    Defaults: buy in [0.45, 0.50] requires local time >= 14:45.
+    Missing timezone/date is allowed (rule not applied). Band disabled when max < min.
+    """
+    lo = settings.buy_band_low_min if band_min is None else band_min
+    hi = settings.buy_band_low_max if band_max is None else band_max
+    hour = (
+        settings.buy_band_low_min_local_hour
+        if min_local_hour is None
+        else min_local_hour
+    )
+    minute = (
+        settings.buy_band_low_min_local_minute
+        if min_local_minute is None
+        else min_local_minute
+    )
+    if float(hi) < float(lo):
+        return selections, []
+
+    cutoff_mins = int(hour) * 60 + int(minute)
+    kept: list[MarketSelection] = []
+    skipped: list[dict] = []
+    for sel in selections:
+        price = _selection_buy_price(sel)
+        if price is None or not (float(lo) <= price <= float(hi)):
+            kept.append(sel)
+            continue
+        local_now = _event_local_now(sel.event, now_utc=now_utc)
+        if local_now is None:
+            kept.append(sel)
+            continue
+        local_mins = local_now.hour * 60 + local_now.minute
+        if local_mins < cutoff_mins:
+            local_label = f"{local_now.hour:02d}:{local_now.minute:02d}"
+            cutoff_label = f"{int(hour):02d}:{int(minute):02d}"
+            logger.info(
+                "event=%s city=%s market=%s buy=%.3f in [%.2f,%.2f] "
+                "local %s < %s; skip",
+                sel.event_id,
+                sel.city,
+                sel.market_id,
+                price,
+                lo,
+                hi,
+                local_label,
+                cutoff_label,
+            )
+            step_log = sel.event.get("_step_logger") if sel.event else None
+            if step_log:
+                step_log.log_step(
+                    "filter_buy_band_low_local_time",
+                    skipped=True,
+                    buy_price=price,
+                    local_time=local_label,
+                    min_local_time=cutoff_label,
+                    band_min=float(lo),
+                    band_max=float(hi),
+                    market_id=sel.market_id,
+                )
+            skipped.append(
+                {
+                    "event_id": sel.event_id,
+                    "city": sel.city,
+                    "market_id": sel.market_id,
+                    "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                    "reason": "buy_band_low_local_time",
+                    "buy_price": price,
+                    "local_time": local_label,
+                    "min_local_time": cutoff_label,
+                    "band_min": float(lo),
+                    "band_max": float(hi),
+                    "selection_price": sel.yes_price,
+                }
+            )
+            continue
+        kept.append(sel)
+    return kept, skipped
+
+
 def filter_selections_after_live_refresh(
     selections: list[MarketSelection],
     strategy_name: Optional[str] = None,
 ) -> tuple[list[MarketSelection], list[dict]]:
-    """Apply post-refresh guards: YES_PRICE min/max, SPREAD_MAX, YES_GAP_MIN, optional on-edge."""
+    """Apply post-refresh guards: price/spread/gap, buy-band rules, optional on-edge."""
     strategy = get_strategy(strategy_name)
     kept = selections
     skipped_all: list[dict] = []
@@ -255,6 +453,10 @@ def filter_selections_after_live_refresh(
     kept, skipped = filter_by_spread_max(kept)
     skipped_all.extend(skipped)
     kept, skipped = filter_by_yes_gap_min(kept)
+    skipped_all.extend(skipped)
+    kept, skipped = filter_by_buy_band_high_yes_gap(kept)
+    skipped_all.extend(skipped)
+    kept, skipped = filter_by_buy_band_low_local_time(kept)
     skipped_all.extend(skipped)
     kept, skipped = filter_by_on_edge(kept)
     skipped_all.extend(skipped)

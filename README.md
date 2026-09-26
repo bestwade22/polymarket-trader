@@ -115,11 +115,11 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05`: skip bottom 7 city-timezone groups by win summary, require selection price `>= 0.45` and `< YES_PRICE_MAX`, require spread `< 0.08`, and skip when top Yes − runner-up Yes is `<= 0.05`. Skip the city when the two leaders disagree.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05` plus buy-price band rules: for buy in `[0.60, 0.70)` skip when yes gap ≤ `0.25`; for buy in `[0.45, 0.50]` skip when city local time is before `14:45`. Skip the city when the two leaders disagree.
 
-**Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → drop if yes_gap ≤ `YES_GAP_MIN` → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/spread/gap guards → place order at `ORDER_PRICE_SOURCE`.
+**Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → drop if yes_gap ≤ `YES_GAP_MIN` → drop buy-band high yes-gap / low early-local-time → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/spread/gap/band guards → place order at `ORDER_PRICE_SOURCE`.
 
-City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Ranking uses **surviving** trades that match the live stack (`YES_PRICE_MIN` / `YES_PRICE_MAX` / `SPREAD_MAX` / `YES_GAP_MIN`) when those fields exist — not a hard-coded city list. Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped. The denylist is rewritten at least daily to `data/analysis/timezone_skip_denylist.json` (also on sync/enrich).
+City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Ranking uses **surviving** trades that match the live stack (`YES_PRICE_MIN` / `YES_PRICE_MAX` / `SPREAD_MAX` / `YES_GAP_MIN` / buy-band rules) when those fields exist — not a hard-coded city list. Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` timezone groups are skipped. The denylist is rewritten at least daily to `data/analysis/timezone_skip_denylist.json` (also on sync/enrich).
 
 `SKIP_ON_EDGE` remains optional and is **off by default**. Use the history dashboard **Filter sweep** section (`enrich-trade-history`) to research stricter stacks before enabling extra filters.
 
@@ -136,12 +136,16 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DEPOSIT_WALLET_ADDRESS` | — | Polymarket proxy/funder address (from your profile) |
 | `SIGNATURE_TYPE` | `1` | `0`=MetaMask EOA, `1`=email/Magic proxy, `2`=Gnosis Safe. Avoid `3` until SDK fix |
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
-| `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
+| `SHARE_COUNT` | `15` | Shares per buy (min 5 on weather markets) |
 | `FORECAST_AGREE_EXTRA_SHARES` | `5` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
 | `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
 | `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack |
 | `SPREAD_MAX` | `0.08` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
 | `YES_GAP_MIN` | `0.05` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables) |
+| `BUY_BAND_HIGH_MIN` / `BUY_BAND_HIGH_MAX` | `0.60` / `0.70` | Buy-price band `[min, max)` for stricter yes-gap rule |
+| `BUY_BAND_HIGH_YES_GAP_MIN` | `0.25` | In high buy band, skip if yes gap ≤ this (`0` disables band rule) |
+| `BUY_BAND_LOW_MIN` / `BUY_BAND_LOW_MAX` | `0.45` / `0.50` | Buy-price band `[min, max]` for early-local-time skip |
+| `BUY_BAND_LOW_MIN_LOCAL_TIME` | `14:45` | In low buy band, skip when city local time is before this |
 | `SKIP_ON_EDGE` | `false` | Optional: skip when all cooler temp buckets had Yes &lt; 1% at select time |
 | `CITY_SKIP_ENABLED` | `true` | Skip markets in the worst city-timezone win summary groups |
 | `CITY_SKIP_BOTTOM_N` | `7` | How many lowest win-summary city timezones to skip |

@@ -15,7 +15,7 @@ Parameters:
     Default: highest_yes
   ShareCount:
     Type: String
-    Default: '10'
+    Default: '15'
   YesPriceMax:
     Type: String
     Default: '0.70'
@@ -28,6 +28,24 @@ Parameters:
   YesGapMin:
     Type: String
     Default: '0.05'
+  BuyBandHighMin:
+    Type: String
+    Default: '0.60'
+  BuyBandHighMax:
+    Type: String
+    Default: '0.70'
+  BuyBandHighYesGapMin:
+    Type: String
+    Default: '0.25'
+  BuyBandLowMin:
+    Type: String
+    Default: '0.45'
+  BuyBandLowMax:
+    Type: String
+    Default: '0.50'
+  BuyBandLowMinLocalTime:
+    Type: String
+    Default: '14:45'
   ForecastAgreeExtraShares:
     Type: String
     Default: '5'
@@ -154,6 +172,12 @@ Resources:
           YES_PRICE_MIN: !Ref YesPriceMin
           SPREAD_MAX: !Ref SpreadMax
           YES_GAP_MIN: !Ref YesGapMin
+          BUY_BAND_HIGH_MIN: !Ref BuyBandHighMin
+          BUY_BAND_HIGH_MAX: !Ref BuyBandHighMax
+          BUY_BAND_HIGH_YES_GAP_MIN: !Ref BuyBandHighYesGapMin
+          BUY_BAND_LOW_MIN: !Ref BuyBandLowMin
+          BUY_BAND_LOW_MAX: !Ref BuyBandLowMax
+          BUY_BAND_LOW_MIN_LOCAL_TIME: !Ref BuyBandLowMinLocalTime
           FORECAST_AGREE_EXTRA_SHARES: !Ref ForecastAgreeExtraShares
           SKIP_ON_EDGE: !Ref SkipOnEdge
           SELECTION_PRICE_SOURCE: !Ref SelectionPriceSource

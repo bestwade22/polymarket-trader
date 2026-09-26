@@ -13,6 +13,8 @@ from src.simulation.price_at_time import PriceHistoryStore
 from src.simulation.sample_times import format_sample_time_local, sample_times_utc_for_event
 from src.simulation.snapshot_enrichment import SnapshotEnrichment
 from src.trade.selector import (
+    filter_by_buy_band_high_yes_gap,
+    filter_by_buy_band_low_local_time,
     filter_by_on_edge,
     filter_by_spread_max,
     filter_by_yes_gap_min,
@@ -161,6 +163,20 @@ def try_buy_event(
             selection = kept[0]
 
         kept, _skipped = filter_by_yes_gap_min([selection])
+        if not kept:
+            continue
+        selection = kept[0]
+
+        kept, _skipped = filter_by_buy_band_high_yes_gap([selection])
+        if not kept:
+            continue
+        selection = kept[0]
+
+        # Low-band local-time gate uses the sample's UTC moment as "now".
+        kept, _skipped = filter_by_buy_band_low_local_time(
+            [selection],
+            now_utc=at,
+        )
         if not kept:
             continue
         selection = kept[0]

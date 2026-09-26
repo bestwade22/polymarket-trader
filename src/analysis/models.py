@@ -35,7 +35,7 @@ class TradeRecord:
     bought_at_local: str = ""
     sold_at_hk: str = ""
     price_drop_below_threshold_at_hk: str = ""
-    share_count_target: int = 10
+    share_count_target: int = 15
     shares_over_target: bool = False
     outcome_value_usd: Optional[float] = None
     spread: Optional[float] = None

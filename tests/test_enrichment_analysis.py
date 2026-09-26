@@ -275,13 +275,11 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         spread=None,
         result="win",
     )
-    assert _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", missing, set()
-    )
+    assert _pred_from_name_parts(LIVE_STACK, missing, set())
     assert not _pred_from_name_parts(
         "skip_bottom7_tz_surviving + spread<0.05 + buy>=0.45", missing, set()
     )
-    # YES_PRICE_MAX: buy at 0.60 fails buy_live
+    # YES_PRICE_MAX: buy at 0.60 fails buy_live (monkeypatched max=0.60)
     high = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -290,9 +288,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         spread=0.02,
         result="win",
     )
-    assert not _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", high, set()
-    )
+    assert not _pred_from_name_parts(LIVE_STACK, high, set())
     # Narrow yes_gap fails yes_gap_live
     narrow = _rec(
         date="2026-07-05",
@@ -303,9 +299,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         yes_gap=0.04,
         result="win",
     )
-    assert not _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", narrow, set()
-    )
+    assert not _pred_from_name_parts(LIVE_STACK, narrow, set())
     wide = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -315,9 +309,42 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         yes_gap=0.06,
         result="win",
     )
-    assert _pred_from_name_parts(
-        "skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live", wide, set()
+    assert _pred_from_name_parts(LIVE_STACK, wide, set())
+    # High buy band: gap ≤ 0.25 fails buy_band_live (raise max so buy passes buy_live)
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_max", 0.70)
+    high_band_narrow = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="hbn",
+        buy_price=0.65,
+        spread=0.02,
+        yes_gap=0.20,
+        result="win",
     )
+    assert not _pred_from_name_parts(LIVE_STACK, high_band_narrow, set())
+    # Low buy band: local before 14:45 fails buy_band_live
+    early_low = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="early",
+        buy_price=0.47,
+        spread=0.02,
+        yes_gap=0.10,
+        bought_at_local="14:15",
+        result="win",
+    )
+    assert not _pred_from_name_parts(LIVE_STACK, early_low, set())
+    late_low = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="late",
+        buy_price=0.47,
+        spread=0.02,
+        yes_gap=0.10,
+        bought_at_local="14:45",
+        result="win",
+    )
+    assert _pred_from_name_parts(LIVE_STACK, late_low, set())
 
 
 def test_skipped_analysis_by_reason(tmp_path: Path):

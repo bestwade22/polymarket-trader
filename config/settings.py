@@ -142,6 +142,18 @@ def _parse_stop_loss_min_local_time() -> tuple[int, int]:
 _stop_loss_min_local_h, _stop_loss_min_local_m = _parse_stop_loss_min_local_time()
 
 
+def _parse_buy_band_low_min_local_time() -> tuple[int, int]:
+    hour, minute = _parse_trading_window_time(
+        os.getenv("BUY_BAND_LOW_MIN_LOCAL_TIME", "14:45"),
+        "BUY_BAND_LOW_MIN_LOCAL_TIME",
+        allow_hour_24=False,
+    )
+    return hour, minute
+
+
+_buy_band_low_min_local_h, _buy_band_low_min_local_m = _parse_buy_band_low_min_local_time()
+
+
 def _parse_sell_win_window_bounds() -> tuple[int, int, int, int]:
     start_h, start_m = _parse_trading_window_time(
         os.getenv("SELL_WIN_WINDOW_START", "15:00"),
@@ -222,17 +234,27 @@ class Settings:
     deposit_wallet_address: str = os.getenv("DEPOSIT_WALLET_ADDRESS", "")
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
-    share_count: int = int(os.getenv("SHARE_COUNT", "10"))
+    share_count: int = int(os.getenv("SHARE_COUNT", "15"))
     # Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). 0 = off.
     forecast_agree_extra_shares: int = int(
         os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
     )
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.70"))
-    # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05.
+    # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05
+    # + buy-band high yes-gap + buy-band low local-time.
     yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))
     spread_max: float = float(os.getenv("SPREAD_MAX", "0.08"))
     # Skip when top Yes − runner-up Yes is at or below this (0 = disabled).
     yes_gap_min: float = float(os.getenv("YES_GAP_MIN", "0.05"))
+    # Buy-price band [high_min, high_max): require stricter yes gap (0 gap disables).
+    buy_band_high_min: float = float(os.getenv("BUY_BAND_HIGH_MIN", "0.60"))
+    buy_band_high_max: float = float(os.getenv("BUY_BAND_HIGH_MAX", "0.70"))
+    buy_band_high_yes_gap_min: float = float(os.getenv("BUY_BAND_HIGH_YES_GAP_MIN", "0.25"))
+    # Buy-price band [low_min, low_max]: skip when city local time is before cutoff.
+    buy_band_low_min: float = float(os.getenv("BUY_BAND_LOW_MIN", "0.45"))
+    buy_band_low_max: float = float(os.getenv("BUY_BAND_LOW_MAX", "0.50"))
+    buy_band_low_min_local_hour: int = _buy_band_low_min_local_h
+    buy_band_low_min_local_minute: int = _buy_band_low_min_local_m
     # Skip cool-edge buckets when enabled (optional; off by default).
     skip_on_edge: bool = _env_bool("SKIP_ON_EDGE", False)
     selection_price_source: str = _normalize_selection_price_source(

@@ -709,7 +709,7 @@ def compute_skipped_analysis(
                 min(len(pending_slugs), max_fetches),
             )
 
-    shares = float(getattr(settings, "share_count", 10) or 10)
+    shares = float(getattr(settings, "share_count", 15) or 15)
     by_market_snap, by_market_event, by_event_top = _build_price_indexes(rows)
     by_reason: dict[str, dict[str, Any]] = {}
     yes_price_max_bands: dict[str, dict[str, Any]] = {}

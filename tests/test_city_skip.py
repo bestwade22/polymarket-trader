@@ -18,7 +18,7 @@ def _rec(city: str, *, result: str = "win", shares: float = 10, **extra) -> Trad
         city=city,
         bought_temp="28°C",
         bought_at_hk="2026-07-05 20:00:00 HKT",
-        bought_at_local="13:00",
+        bought_at_local="15:00",
         trade_window="14:00–16:00",
         bought_at="2026-07-05T12:00:00+00:00",
         sold_at=None,
@@ -105,13 +105,43 @@ def test_surviving_records_respect_live_stack(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
     records = [
-        _rec("Alpha", buy_price=0.50, spread=0.02, token_id="a"),
+        _rec("Alpha", buy_price=0.50, spread=0.02, token_id="a", bought_at_local="15:00"),
         _rec("Beta", buy_price=0.40, spread=0.02, token_id="b"),  # below min
         _rec("Gamma", buy_price=0.50, spread=0.12, token_id="c"),  # wide spread
         _rec("Delta", buy_price=0.52, spread=None, token_id="d"),  # missing spread ok
+        _rec(
+            "Early",
+            buy_price=0.47,
+            spread=0.02,
+            token_id="e",
+            bought_at_local="14:15",
+        ),  # low band too early
+        _rec(
+            "HighNarrow",
+            buy_price=0.55,
+            spread=0.02,
+            token_id="f",
+            yes_gap=0.10,
+        ),  # outside high band with patched max 0.60
     ]
     kept = surviving_records_for_skip(records)
-    assert {r.city for r in kept} == {"Alpha", "Delta"}
+    assert {r.city for r in kept} == {"Alpha", "Delta", "HighNarrow"}
+
+
+def test_surviving_records_buy_band_high_gap(monkeypatch):
+    from src.trade.city_skip import surviving_records_for_skip
+
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.70)
+    monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.08)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_gap_min", 0.05)
+    monkeypatch.setattr("src.trade.city_skip.settings.buy_band_high_yes_gap_min", 0.25)
+    records = [
+        _rec("Wide", buy_price=0.65, spread=0.02, yes_gap=0.30, token_id="w"),
+        _rec("Narrow", buy_price=0.65, spread=0.02, yes_gap=0.20, token_id="n"),
+    ]
+    kept = surviving_records_for_skip(records)
+    assert {r.city for r in kept} == {"Wide"}
 
 
 def test_insights_include_surviving_timezone_summary(monkeypatch):

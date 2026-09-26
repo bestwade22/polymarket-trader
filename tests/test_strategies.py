@@ -294,6 +294,129 @@ def test_filter_by_yes_gap_min_disabled_when_zero():
     assert skipped == []
 
 
+def test_filter_buy_band_high_yes_gap_skips_narrow_gap():
+    from src.trade.selector import filter_by_buy_band_high_yes_gap
+
+    # buy 0.65 in [0.60, 0.70), gap 0.20 ≤ 0.25 → skip
+    sel = _sel_with_gap_markets(top_yes=0.65, runner_yes=0.45)
+    sel.buy_price = 0.65
+    kept, skipped = filter_by_buy_band_high_yes_gap(
+        [sel], band_min=0.60, band_max=0.70, yes_gap_min=0.25
+    )
+    assert kept == []
+    assert skipped[0]["reason"] == "buy_band_high_yes_gap"
+    assert skipped[0]["yes_gap"] == 0.20
+
+
+def test_filter_buy_band_high_yes_gap_allows_wide_gap():
+    from src.trade.selector import filter_by_buy_band_high_yes_gap
+
+    # buy 0.65, gap 0.30 > 0.25 → keep
+    sel = _sel_with_gap_markets(top_yes=0.65, runner_yes=0.35)
+    sel.buy_price = 0.65
+    kept, skipped = filter_by_buy_band_high_yes_gap(
+        [sel], band_min=0.60, band_max=0.70, yes_gap_min=0.25
+    )
+    assert kept == [sel]
+    assert skipped == []
+
+
+def test_filter_buy_band_high_yes_gap_ignores_outside_band():
+    from src.trade.selector import filter_by_buy_band_high_yes_gap
+
+    # buy 0.55 outside [0.60, 0.70) — narrow gap still allowed by this filter
+    sel = _sel_with_gap_markets(top_yes=0.55, runner_yes=0.45)
+    sel.buy_price = 0.55
+    kept, skipped = filter_by_buy_band_high_yes_gap(
+        [sel], band_min=0.60, band_max=0.70, yes_gap_min=0.25
+    )
+    assert kept == [sel]
+    assert skipped == []
+
+
+def test_filter_buy_band_low_local_time_skips_before_cutoff():
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+
+    from src.trade.selector import filter_by_buy_band_low_local_time
+
+    # London 14:15 local on event day, buy 0.47 → skip
+    local = datetime(2026, 9, 14, 14, 15, tzinfo=ZoneInfo("Europe/London"))
+    now_utc = local.astimezone(timezone.utc)
+    sel = _sel_with_gap_markets(top_yes=0.47, runner_yes=0.30)
+    sel.buy_price = 0.47
+    sel.event = {
+        **(sel.event or {}),
+        "event_date": "2026-09-14",
+        "timezone": "Europe/London",
+    }
+    kept, skipped = filter_by_buy_band_low_local_time(
+        [sel],
+        band_min=0.45,
+        band_max=0.50,
+        min_local_hour=14,
+        min_local_minute=45,
+        now_utc=now_utc,
+    )
+    assert kept == []
+    assert skipped[0]["reason"] == "buy_band_low_local_time"
+    assert skipped[0]["local_time"] == "14:15"
+
+
+def test_filter_buy_band_low_local_time_allows_at_or_after_cutoff():
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+
+    from src.trade.selector import filter_by_buy_band_low_local_time
+
+    local = datetime(2026, 9, 14, 14, 45, tzinfo=ZoneInfo("Europe/London"))
+    now_utc = local.astimezone(timezone.utc)
+    sel = _sel_with_gap_markets(top_yes=0.47, runner_yes=0.30)
+    sel.buy_price = 0.47
+    sel.event = {
+        **(sel.event or {}),
+        "event_date": "2026-09-14",
+        "timezone": "Europe/London",
+    }
+    kept, skipped = filter_by_buy_band_low_local_time(
+        [sel],
+        band_min=0.45,
+        band_max=0.50,
+        min_local_hour=14,
+        min_local_minute=45,
+        now_utc=now_utc,
+    )
+    assert kept == [sel]
+    assert skipped == []
+
+
+def test_filter_buy_band_low_local_time_ignores_outside_band():
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+
+    from src.trade.selector import filter_by_buy_band_low_local_time
+
+    local = datetime(2026, 9, 14, 14, 15, tzinfo=ZoneInfo("Europe/London"))
+    now_utc = local.astimezone(timezone.utc)
+    sel = _sel_with_gap_markets(top_yes=0.55, runner_yes=0.30)
+    sel.buy_price = 0.55
+    sel.event = {
+        **(sel.event or {}),
+        "event_date": "2026-09-14",
+        "timezone": "Europe/London",
+    }
+    kept, skipped = filter_by_buy_band_low_local_time(
+        [sel],
+        band_min=0.45,
+        band_max=0.50,
+        min_local_hour=14,
+        min_local_minute=45,
+        now_utc=now_utc,
+    )
+    assert kept == [sel]
+    assert skipped == []
+
+
 def test_match_temp_to_bucket():
     event = load_sample_event()
     market = match_temp_to_market(event["markets"], 46)
