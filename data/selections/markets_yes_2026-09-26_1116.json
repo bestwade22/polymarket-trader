@@ -1,0 +1,87 @@
+{
+  "run_at": "2026-09-26T11:16:11.317199+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1072673",
+      "city": "Moscow",
+      "event_slug": "highest-temperature-in-moscow-on-september-26-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "16\u00b0C",
+      "market_id": "4900780",
+      "clob_mid_price": 0.5,
+      "gamma_title": "17\u00b0C",
+      "gamma_price": 0.675
+    },
+    {
+      "event_id": "1072651",
+      "city": "Tel Aviv",
+      "market_id": "4900617",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-september-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.994,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1072674",
+      "city": "Istanbul",
+      "market_id": "4900792",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-september-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.991,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1072677",
+      "city": "Helsinki",
+      "market_id": "4900827",
+      "group_item_title": "15\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-september-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 58,
+      "forecast_wu_temp_c": 14,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1072679",
+      "city": "Jeddah",
+      "market_id": "4900848",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-september-26-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 100,
+      "forecast_temp_c": 38,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 99,
+      "forecast_wu_temp_c": 37,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1072647",
+      "city": "Ankara",
+      "market_id": "4900574",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-september-26-2026",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.08,
+      "selection_price": 0.51,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
