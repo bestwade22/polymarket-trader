@@ -1,0 +1,190 @@
+{
+  "run_at": "2026-09-27T06:46:45.964692+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1078297",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078299",
+      "city": "Shanghai",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078313",
+      "city": "Chongqing",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 82,
+      "forecast_temp_c": 28,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078314",
+      "city": "Beijing",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 84,
+      "forecast_temp_c": 29,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078315",
+      "city": "Wuhan",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078316",
+      "city": "Chengdu",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078317",
+      "city": "Shenzhen",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078326",
+      "city": "Guangzhou",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078327",
+      "city": "Qingdao",
+      "timezone": "China (UTC+8)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1083928",
+      "city": "Zhengzhou",
+      "event_slug": "highest-temperature-in-zhengzhou-on-september-27-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "24\u00b0C",
+      "market_id": "4972399",
+      "clob_mid_price": 0.455,
+      "gamma_title": "25\u00b0C",
+      "gamma_price": 0.4
+    },
+    {
+      "event_id": "1078298",
+      "city": "Hong Kong",
+      "market_id": "4942733",
+      "group_item_title": "32\u00b0C",
+      "event_slug": "highest-temperature-in-hong-kong-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1078300",
+      "city": "Singapore",
+      "market_id": "4942752",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-singapore-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1078312",
+      "city": "Taipei",
+      "market_id": "4942807",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-taipei-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1078320",
+      "city": "Busan",
+      "market_id": "4942889",
+      "group_item_title": "24\u00b0C or below",
+      "event_slug": "highest-temperature-in-busan-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.978,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1078329",
+      "city": "Manila",
+      "market_id": "4942992",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-manila-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.945,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1083927",
+      "city": "Jinan",
+      "market_id": "4972396",
+      "group_item_title": "26\u00b0C or higher",
+      "event_slug": "highest-temperature-in-jinan-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9995,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1078323",
+      "city": "Kuala Lumpur",
+      "market_id": "4942924",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-kuala-lumpur-on-september-27-2026",
+      "reason": "spread_max",
+      "spread": 0.39,
+      "spread_max": 0.08,
+      "selection_price": 0.49,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
