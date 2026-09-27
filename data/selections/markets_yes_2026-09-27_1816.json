@@ -1,0 +1,92 @@
+{
+  "run_at": "2026-09-27T18:16:14.043940+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1079991",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1078911",
+      "city": "NYC",
+      "market_id": "4945235",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.22
+    },
+    {
+      "event_id": "1079990",
+      "city": "Sao Paulo",
+      "market_id": "4948565",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9985,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1079992",
+      "city": "Toronto",
+      "market_id": "4948587",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-toronto-on-september-27-2026",
+      "reason": "spread_max",
+      "spread": 0.14,
+      "spread_max": 0.08,
+      "selection_price": 0.5,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1078913",
+      "city": "Miami",
+      "market_id": "4945259",
+      "group_item_title": "86-87\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-september-27-2026",
+      "reason": "buy_band_high_yes_gap",
+      "buy_price": 0.65,
+      "yes_gap": 0.235,
+      "yes_gap_min": 0.25,
+      "band_min": 0.6,
+      "band_max": 0.7,
+      "selection_price": 0.615,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1078912",
+      "city": "Atlanta",
+      "market_id": "4945246",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-september-27-2026",
+      "reason": "spread_max",
+      "spread": 0.08,
+      "spread_max": 0.08,
+      "selection_price": 0.55,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.33
+    }
+  ]
+}
