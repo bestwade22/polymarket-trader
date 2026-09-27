@@ -200,6 +200,9 @@ def test_refresh_timezone_skip_denylist_writes_daily_file(tmp_path, monkeypatch)
     assert denylist.exists()
     assert payload["timezones"] == ["Bad"]
     assert payload["date"]
+    assert "yes_gap_min" in payload
+    assert "buy_band_high_yes_gap_min" in payload
+    assert "buy_band_low_min_local_hour" in payload
     # Second call without force reuses same-day file
     again = cs.refresh_timezone_skip_denylist(
         history_path=history, denylist_path=denylist, force=False

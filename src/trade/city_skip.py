@@ -222,6 +222,20 @@ def refresh_timezone_skip_denylist(
         "yes_price_min": float(getattr(settings, "yes_price_min", 0) or 0),
         "yes_price_max": float(getattr(settings, "yes_price_max", 0.70) or 0.70),
         "spread_max": float(getattr(settings, "spread_max", 0.15) or 0.15),
+        "yes_gap_min": float(getattr(settings, "yes_gap_min", 0.0) or 0.0),
+        "buy_band_high_min": float(getattr(settings, "buy_band_high_min", 0.60) or 0.60),
+        "buy_band_high_max": float(getattr(settings, "buy_band_high_max", 0.70) or 0.70),
+        "buy_band_high_yes_gap_min": float(
+            getattr(settings, "buy_band_high_yes_gap_min", 0.25) or 0.0
+        ),
+        "buy_band_low_min": float(getattr(settings, "buy_band_low_min", 0.45) or 0.45),
+        "buy_band_low_max": float(getattr(settings, "buy_band_low_max", 0.50) or 0.50),
+        "buy_band_low_min_local_hour": int(
+            getattr(settings, "buy_band_low_min_local_hour", 14)
+        ),
+        "buy_band_low_min_local_minute": int(
+            getattr(settings, "buy_band_low_min_local_minute", 45)
+        ),
         "timezones": timezones,
         "detail": detail,
     }
