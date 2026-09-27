@@ -46,7 +46,20 @@ let cityTimezones = {};
 let filterSweepData = null;
 let skippedAnalysisData = null;
 /** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
-let skipStackFilters = { yes_price_min: 0.45, yes_price_max: 0.7, spread_max: 0.08, bottom_n: 7 };
+let skipStackFilters = {
+  yes_price_min: 0.45,
+  yes_price_max: 0.7,
+  spread_max: 0.08,
+  yes_gap_min: 0.05,
+  buy_band_high_min: 0.6,
+  buy_band_high_max: 0.7,
+  buy_band_high_yes_gap_min: 0.25,
+  buy_band_low_min: 0.45,
+  buy_band_low_max: 0.5,
+  buy_band_low_min_local_hour: 14,
+  buy_band_low_min_local_minute: 45,
+  bottom_n: 7,
+};
 let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
 let sortAsc = false;
@@ -55,17 +68,61 @@ const skippedSortState = {};
 
 const SURVIVING_TZ_TITLE = "By city timezone (surviving pool — used for skip)";
 
+function localTimeMinutes(local) {
+  const text = String(local || "").trim();
+  if (!text.includes(":")) return null;
+  const [hh, mm] = text.split(":", 2);
+  const hour = Number(hh);
+  const minute = Number(mm);
+  if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+  return hour * 60 + minute;
+}
+
+/** Match Python surviving_records_for_skip (buy/spread/gap + buy-band rules). */
 function survivingRecordsForSkip(records) {
   const yesMin = Number(skipStackFilters.yes_price_min) || 0;
   const yesMax = Number(skipStackFilters.yes_price_max) || 0.7;
   const spreadMax = Number(skipStackFilters.spread_max) || 0.15;
+  const yesGapMin = Number(skipStackFilters.yes_gap_min) || 0;
+  const highLo = Number(skipStackFilters.buy_band_high_min) || 0.6;
+  const highHi = Number(skipStackFilters.buy_band_high_max) || 0.7;
+  const highGap = Number(skipStackFilters.buy_band_high_yes_gap_min) || 0;
+  const lowLo = Number(skipStackFilters.buy_band_low_min) || 0.45;
+  const lowHi = Number(skipStackFilters.buy_band_low_max) || 0.5;
+  const lowCutoff =
+    (Number(skipStackFilters.buy_band_low_min_local_hour) || 14) * 60 +
+    (Number(skipStackFilters.buy_band_low_min_local_minute) || 45);
+
   return (records || []).filter((rec) => {
     const buy = rec.buy_price;
-    if (buy == null || !Number.isFinite(buy)) return false;
-    if (buy >= yesMax) return false;
-    if (yesMin > 0 && buy < yesMin) return false;
+    if (buy == null || !Number.isFinite(Number(buy))) return false;
+    const buyF = Number(buy);
+    if (buyF >= yesMax) return false;
+    if (yesMin > 0 && buyF < yesMin) return false;
     if (rec.spread != null && Number.isFinite(rec.spread) && rec.spread >= spreadMax) {
       return false;
+    }
+    if (
+      yesGapMin > 0 &&
+      rec.yes_gap != null &&
+      Number.isFinite(Number(rec.yes_gap)) &&
+      Number(rec.yes_gap) <= yesGapMin
+    ) {
+      return false;
+    }
+    if (
+      highGap > 0 &&
+      buyF >= highLo &&
+      buyF < highHi &&
+      rec.yes_gap != null &&
+      Number.isFinite(Number(rec.yes_gap)) &&
+      Number(rec.yes_gap) <= highGap
+    ) {
+      return false;
+    }
+    if (lowHi >= lowLo && buyF >= lowLo && buyF <= lowHi) {
+      const mins = localTimeMinutes(rec.bought_at_local);
+      if (mins != null && mins < lowCutoff) return false;
     }
     return true;
   });
@@ -1486,9 +1543,9 @@ function renderInsights(data) {
       {
         limit: null,
         description:
-          `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, spread &lt; ${skipStackFilters.spread_max} when known). ` +
+          `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, spread &lt; ${skipStackFilters.spread_max} when known, yes_gap &gt; ${skipStackFilters.yes_gap_min} when known; buy [${skipStackFilters.buy_band_high_min}, ${skipStackFilters.buy_band_high_max}) needs yes_gap &gt; ${skipStackFilters.buy_band_high_yes_gap_min}; buy [${skipStackFilters.buy_band_low_min}, ${skipStackFilters.buy_band_low_max}] needs local ≥ ${String(skipStackFilters.buy_band_low_min_local_hour).padStart(2, "0")}:${String(skipStackFilters.buy_band_low_min_local_minute).padStart(2, "0")}). ` +
           `n=${data.surviving_pool_n ?? "—"} · bottom ${skipStackFilters.bottom_n ?? 7} by Win summary% are skipped on trade-hourly. ` +
-          `Uses full history (not page filters), same as Lambda.`,
+          `Uses full history (not page filters), same ranking as Lambda denylist.`,
       },
     ],
   ];
@@ -2348,6 +2405,14 @@ async function loadData() {
       yes_price_min: denylist.yes_price_min ?? 0.45,
       yes_price_max: denylist.yes_price_max ?? 0.7,
       spread_max: denylist.spread_max ?? 0.08,
+      yes_gap_min: denylist.yes_gap_min ?? 0.05,
+      buy_band_high_min: denylist.buy_band_high_min ?? 0.6,
+      buy_band_high_max: denylist.buy_band_high_max ?? 0.7,
+      buy_band_high_yes_gap_min: denylist.buy_band_high_yes_gap_min ?? 0.25,
+      buy_band_low_min: denylist.buy_band_low_min ?? 0.45,
+      buy_band_low_max: denylist.buy_band_low_max ?? 0.5,
+      buy_band_low_min_local_hour: denylist.buy_band_low_min_local_hour ?? 14,
+      buy_band_low_min_local_minute: denylist.buy_band_low_min_local_minute ?? 45,
       bottom_n: denylist.bottom_n ?? 7,
     };
   }
