@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-09-27T11:46:21.715610+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1078292",
+      "city": "Ankara",
+      "market_id": "4942667",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 72,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1078296",
+      "city": "Tel Aviv",
+      "market_id": "4942709",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9965,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1078318",
+      "city": "Moscow",
+      "market_id": "4942872",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1078319",
+      "city": "Istanbul",
+      "market_id": "4942884",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.99,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1078322",
+      "city": "Helsinki",
+      "market_id": "4942917",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-september-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.825,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 60,
+      "forecast_wu_temp_c": 16,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1078324",
+      "city": "Jeddah",
+      "market_id": "4942938",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-september-27-2026",
+      "reason": "spread_max",
+      "spread": 0.35,
+      "spread_max": 0.08,
+      "selection_price": 0.635,
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
