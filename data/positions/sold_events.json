@@ -15958,5 +15958,53 @@
     "floor_price": 0.94,
     "current_mid": 0.43,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x33370befe23b96182d9c4cbe5bfd62236f819cafc4628f55695f6236d3fa3d0e",
+    "token_id": "95001306344812093037044992979927248253058892759680272348819627308879829082741",
+    "order_id": "0xb0c5d40c671cc5bb1cbe0b9ad8ddacb1ca2668572bf16fa2af8b9e5bff7a5cbe",
+    "sold_at": "2026-09-28T20:00:19.552353+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-miami-on-september-28-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.64,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.94,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x76328b12c1b87e8d77b4fdb43eee87771e57065043e458bebb31bce3ec39a2d3",
+    "token_id": "82151302280525514198257624793993111525067357426532557696412323329241494929293",
+    "order_id": "0x645ed17ea92f4fc84284ce167371efd669ac185a277769b7c26e0a2c2400c2c0",
+    "sold_at": "2026-09-28T20:00:20.620554+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-september-28-2026",
+    "price": 0.94,
+    "size": 14.7253,
+    "avg_buy_price": 0.48,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.57,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x2409e91c41553ffc294102e1a10723951927118607601e6f6e68f6e2131096ef",
+    "token_id": "8168105694599270120619713823298088612630671498375752943136021091235287199929",
+    "order_id": "0x62071527fe43b234eb3595961420d9a60a1f1d3a725e6929e493ecf35dd7831c",
+    "sold_at": "2026-09-28T20:00:21.640065+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-atlanta-on-september-28-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.66,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.41,
+    "reason": "tier2"
   }
 ]
