@@ -2,18 +2,22 @@
 
 from __future__ import annotations
 
+import html
 import json
 import logging
 import urllib.error
 import urllib.request
-from datetime import date
+from datetime import date, datetime, timezone
+from functools import lru_cache
 from typing import Any, Optional, Sequence
+from zoneinfo import ZoneInfo
 
-from config.settings import settings
+from config.settings import DATA_DIR, settings
 
 logger = logging.getLogger(__name__)
 
 TELEGRAM_MAX_MESSAGE_LEN = 4096
+TELEGRAM_PARSE_MODE = "HTML"
 
 STOP_LOSS_IDLE_SKIP_REASONS = frozenset(
     {
@@ -80,7 +84,12 @@ def send_telegram_message(text: str) -> bool:
     chat_id = str(settings.telegram_chat_id).strip()
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = json.dumps(
-        {"chat_id": chat_id, "text": text, "disable_web_page_preview": True}
+        {
+            "chat_id": chat_id,
+            "text": text,
+            "parse_mode": TELEGRAM_PARSE_MODE,
+            "disable_web_page_preview": True,
+        }
     ).encode("utf-8")
     req = urllib.request.Request(
         url,
@@ -103,6 +112,18 @@ def send_telegram_message(text: str) -> bool:
 def _send_chunks(text: str) -> None:
     for part in chunk_message(text):
         send_telegram_message(part)
+
+
+def _esc(value: Any) -> str:
+    return html.escape(str(value if value is not None else ""), quote=False)
+
+
+def _bold(value: Any) -> str:
+    return f"<b>{_esc(value)}</b>"
+
+
+def _code(value: Any) -> str:
+    return f"<code>{_esc(value)}</code>"
 
 
 def _city_from_slug(event_slug: Optional[str]) -> str:
@@ -134,21 +155,122 @@ def _fmt_order_id(order_id: Any) -> str:
     return s
 
 
-def _format_buy_skip(row: dict[str, Any]) -> str:
+@lru_cache(maxsize=1)
+def _city_timezones() -> dict[str, str]:
+    path = DATA_DIR / "city_timezones.json"
+    try:
+        data = json.loads(path.read_text())
+        return data if isinstance(data, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _local_hhmm_for_city(city: Optional[str], now_utc: Optional[datetime] = None) -> str:
+    if not city:
+        return ""
+    tz_name = _city_timezones().get(str(city))
+    if not tz_name:
+        return ""
+    now = now_utc or datetime.now(timezone.utc)
+    try:
+        return now.astimezone(ZoneInfo(str(tz_name))).strftime("%H:%M")
+    except (ValueError, KeyError):
+        return ""
+
+
+def _local_hhmm_from_event(event: Optional[dict], now_utc: Optional[datetime] = None) -> str:
+    if not event:
+        return ""
+    tz_name = event.get("timezone")
+    if not tz_name:
+        return _local_hhmm_for_city(event.get("city"), now_utc=now_utc)
+    now = now_utc or datetime.now(timezone.utc)
+    try:
+        return now.astimezone(ZoneInfo(str(tz_name))).strftime("%H:%M")
+    except (ValueError, KeyError):
+        return _local_hhmm_for_city(event.get("city"), now_utc=now_utc)
+
+
+def _yes_price_from_row(row: dict[str, Any]) -> Optional[float]:
+    for key in ("selection_price", "yes_price", "gamma_yes_price"):
+        val = row.get(key)
+        if val is not None:
+            try:
+                return float(val)
+            except (TypeError, ValueError):
+                continue
+    return None
+
+
+def _top_yes_price_from_event(event: Optional[dict]) -> Optional[float]:
+    if not event:
+        return None
+    markets = event.get("markets") or []
+    if not markets:
+        return None
+    try:
+        from src.utils.market_parser import get_selection_price, get_gamma_yes_price
+    except ImportError:
+        return None
+    best: Optional[float] = None
+    for market in markets:
+        price = get_selection_price(market)
+        if price is None:
+            price = get_gamma_yes_price(market)
+        if price is None:
+            continue
+        if best is None or float(price) > best:
+            best = float(price)
+    return best
+
+
+def _resolve_skip_local_time(
+    row: dict[str, Any],
+    *,
+    events_by_id: dict[str, dict],
+    now_utc: Optional[datetime] = None,
+) -> str:
+    if row.get("local_time"):
+        return str(row["local_time"])
+    eid = str(row.get("event_id") or "")
+    event = events_by_id.get(eid)
+    local = _local_hhmm_from_event(event, now_utc=now_utc)
+    if local:
+        return local
+    return _local_hhmm_for_city(row.get("city"), now_utc=now_utc)
+
+
+def _resolve_skip_yes_price(
+    row: dict[str, Any],
+    *,
+    events_by_id: dict[str, dict],
+) -> Optional[float]:
+    price = _yes_price_from_row(row)
+    if price is not None:
+        return price
+    eid = str(row.get("event_id") or "")
+    return _top_yes_price_from_event(events_by_id.get(eid))
+
+
+def _format_buy_skip(
+    row: dict[str, Any],
+    *,
+    events_by_id: Optional[dict[str, dict]] = None,
+    now_utc: Optional[datetime] = None,
+) -> str:
+    events_by_id = events_by_id or {}
     city = row.get("city") or _city_from_slug(row.get("event_slug"))
     reason = row.get("reason") or "unknown"
-    parts = [f"SKIP {city} — {reason}"]
+    parts = [f"⏭ {_bold(city)} — {_code(reason)}"]
     if row.get("buy_price") is not None:
-        parts.append(f"buy {_fmt_price(row['buy_price'])}")
-    if row.get("local_time"):
-        parts.append(f"local {row['local_time']}")
-    if row.get("yes_gap") is not None:
-        parts.append(f"gap {_fmt_price(row['yes_gap'])}")
-    if row.get("timezone"):
-        parts.append(str(row["timezone"]))
-    if len(parts) == 1:
-        return parts[0]
-    return parts[0] + " — " + " ".join(parts[1:])
+        parts.append(f"buy {_code(_fmt_price(row['buy_price']))}")
+    yes = _resolve_skip_yes_price(row, events_by_id=events_by_id)
+    if yes is not None:
+        parts.append(f"@{_code(_fmt_price(yes))}")
+    local = _resolve_skip_local_time(row, events_by_id=events_by_id, now_utc=now_utc)
+    if local:
+        parts.append(f"🕒 {_code(local)}")
+    return " — ".join(parts)
 
 
 def _selection_label(sel: Any, event_id: Any) -> str:
@@ -162,12 +284,22 @@ def _selection_label(sel: Any, event_id: Any) -> str:
 def _format_buy_order(
     result: dict[str, Any],
     selections_by_event: dict[str, Any],
+    *,
+    now_utc: Optional[datetime] = None,
 ) -> str:
     event_id = str(result.get("event_id") or "")
     sel = selections_by_event.get(event_id)
     label = _selection_label(sel, event_id) if sel is not None else (event_id or "?")
+    local = ""
+    if sel is not None:
+        local = _local_hhmm_from_event(getattr(sel, "event", None), now_utc=now_utc)
+        if not local:
+            local = _local_hhmm_for_city(getattr(sel, "city", None), now_utc=now_utc)
     if result.get("error"):
-        return f"ORDER {label} — ERROR: {result['error']}"
+        line = f"❌ {_bold(label)} — {_bold('ERROR')}: {_esc(result['error'])}"
+        if local:
+            line += f" — 🕒 {_code(local)}"
+        return line
     status = result.get("status") or ("simulated" if result.get("dry_run") else "?")
     price = result.get("price")
     size = result.get("size")
@@ -175,7 +307,40 @@ def _format_buy_order(
         size = getattr(sel, "share_count", None)
     oid = _fmt_order_id(result.get("order_id"))
     size_s = f"{size:g}" if isinstance(size, (int, float)) else (str(size) if size else "?")
-    return f"ORDER {label} — {status} — {size_s} @ {_fmt_price(price)} — id {oid}"
+    status_l = str(status).lower()
+    if status_l in ("live", "matched", "filled") or (
+        not result.get("dry_run") and status_l not in ("simulated", "?")
+    ):
+        icon = "✅"
+    elif result.get("dry_run") or status_l == "simulated":
+        icon = "🧪"
+    else:
+        icon = "📤"
+    line = (
+        f"{icon} {_bold(label)} — {_code(status)} — "
+        f"{_code(size_s)} @ {_code(_fmt_price(price))} — id {_code(oid)}"
+    )
+    if local:
+        line += f" — 🕒 {_code(local)}"
+    return line
+
+
+def _events_by_id(
+    selections: Optional[Sequence[Any]],
+    events: Optional[Sequence[dict]] = None,
+) -> dict[str, dict]:
+    by_id: dict[str, dict] = {}
+    for event in events or []:
+        eid = str(event.get("id") or "")
+        if eid:
+            by_id[eid] = event
+    for sel in selections or []:
+        event = getattr(sel, "event", None)
+        if isinstance(event, dict):
+            eid = str(event.get("id") or getattr(sel, "event_id", "") or "")
+            if eid:
+                by_id[eid] = event
+    return by_id
 
 
 def format_buy_run_message(
@@ -183,6 +348,8 @@ def format_buy_run_message(
     skipped_bought: Sequence[dict[str, Any]],
     order_results: Sequence[dict[str, Any]],
     selections: Optional[Sequence[Any]] = None,
+    events: Optional[Sequence[dict]] = None,
+    now_utc: Optional[datetime] = None,
 ) -> str:
     date_s = event_date.isoformat() if isinstance(event_date, date) else str(event_date)
     skips = list(skipped_bought or [])
@@ -192,16 +359,27 @@ def format_buy_run_message(
         eid = str(getattr(sel, "event_id", "") or "")
         if eid:
             by_event[eid] = sel
+    events_map = _events_by_id(selections, events)
+    err_n = sum(1 for r in orders if r.get("error"))
+    ok_n = len(orders) - err_n
 
     lines = [
-        f"BUY {date_s}",
-        f"Skipped {len(skips)} | Orders {len(orders)}",
+        f"🛒 {_bold(f'BUY {date_s}')}",
+        f"⏭ Skipped {_bold(len(skips))} | ✅ Orders {_bold(ok_n)}"
+        + (f" | ❌ Errors {_bold(err_n)}" if err_n else ""),
         "",
     ]
-    for row in skips:
-        lines.append(_format_buy_skip(row))
-    for row in orders:
-        lines.append(_format_buy_order(row, by_event))
+    if skips:
+        lines.append(f"⏭ {_bold('SKIP')}")
+        for row in skips:
+            lines.append(
+                _format_buy_skip(row, events_by_id=events_map, now_utc=now_utc)
+            )
+        lines.append("")
+    if orders:
+        lines.append(f"📤 {_bold('ORDER')}")
+        for row in orders:
+            lines.append(_format_buy_order(row, by_event, now_utc=now_utc))
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -210,6 +388,7 @@ def notify_buy_run(
     skipped_bought: Sequence[dict[str, Any]],
     order_results: Sequence[dict[str, Any]],
     selections: Optional[Sequence[Any]] = None,
+    events: Optional[Sequence[dict]] = None,
 ) -> None:
     if not telegram_configured():
         return
@@ -219,7 +398,13 @@ def notify_buy_run(
         return
     try:
         _send_chunks(
-            format_buy_run_message(event_date, skips, orders, selections=selections)
+            format_buy_run_message(
+                event_date,
+                skips,
+                orders,
+                selections=selections,
+                events=events,
+            )
         )
     except Exception:
         logger.exception("Telegram buy notify failed")
@@ -235,57 +420,69 @@ def _interesting_skips(
 def _format_sell_skip(row: dict[str, Any]) -> str:
     city = _city_from_slug(row.get("event_slug"))
     reason = row.get("reason") or "unknown"
-    parts = [f"SKIP {city} — {reason}"]
+    parts = [f"⏭ {_bold(city)} — {_code(reason)}"]
     if row.get("tier"):
-        parts.append(f"tier {row['tier']}")
+        parts.append(f"tier {_code(row['tier'])}")
     if row.get("value_pct") is not None:
         try:
-            parts.append(f"value_pct={float(row['value_pct']):.1f}%")
+            pct = f"{float(row['value_pct']):.1f}%"
+            parts.append(f"value_pct={_code(pct)}")
         except (TypeError, ValueError):
-            parts.append(f"value_pct={row['value_pct']}")
+            parts.append(f"value_pct={_code(row['value_pct'])}")
     if row.get("current_mid") is not None:
-        parts.append(f"mid {_fmt_price(row['current_mid'])}")
+        parts.append(f"mid {_code(_fmt_price(row['current_mid']))}")
     if row.get("open_order_count") is not None:
-        parts.append(f"open={row['open_order_count']}")
-    if len(parts) == 1:
-        return parts[0]
-    return parts[0] + " — " + " ".join(parts[1:])
+        parts.append(f"open={_code(row['open_order_count'])}")
+    return " — ".join(parts)
 
 
 def _format_sell_order_row(row: dict[str, Any], *, kind: str) -> str:
     city = _city_from_slug(row.get("event_slug"))
     order = row.get("order") or {}
     if isinstance(order, dict) and order.get("error"):
-        return f"ORDER {city} — ERROR: {order['error']}"
+        return f"❌ {_bold(city)} — {_bold('ERROR')}: {_esc(order['error'])}"
     status = "?"
     price = None
     size = None
     oid = None
+    dry_run = False
     if isinstance(order, dict):
-        status = order.get("status") or ("simulated" if order.get("dry_run") else "?")
+        dry_run = bool(order.get("dry_run"))
+        status = order.get("status") or ("simulated" if dry_run else "?")
         price = order.get("price")
         size = order.get("size")
         oid = order.get("order_id")
     extras: list[str] = []
     if row.get("tier"):
-        extras.append(str(row["tier"]))
+        extras.append(_code(row["tier"]))
     if row.get("value_pct") is not None:
         try:
-            extras.append(f"value_pct={float(row['value_pct']):.1f}%")
+            pct_label = f"value_pct={float(row['value_pct']):.1f}%"
+            extras.append(_code(pct_label))
         except (TypeError, ValueError):
-            extras.append(f"value_pct={row['value_pct']}")
+            extras.append(_code(f"value_pct={row['value_pct']}"))
     size_s = f"{size:g}" if isinstance(size, (int, float)) else (str(size) if size else "?")
-    head = f"ORDER {city}"
+    status_l = str(status).lower()
+    if status_l in ("live", "matched", "filled") or (not dry_run and status_l not in ("simulated", "?")):
+        icon = "✅"
+    elif dry_run or status_l == "simulated":
+        icon = "🧪"
+    else:
+        icon = "📤"
+    head = f"{icon} {_bold(city)}"
     if extras:
         head += " — " + " — ".join(extras)
-    return f"{head} — {status} — {size_s} @ {_fmt_price(price)} — id {_fmt_order_id(oid)}"
+    return (
+        f"{head} — {_code(status)} — {_code(size_s)} @ {_code(_fmt_price(price))} "
+        f"— id {_code(_fmt_order_id(oid))}"
+    )
 
 
 def _format_error_row(row: dict[str, Any]) -> str:
     city = _city_from_slug(row.get("event_slug"))
     mid = row.get("market_id") or row.get("token_id") or "?"
     label = city if city != "?" else str(mid)[:16]
-    return f"ERROR {label} — {row.get('error') or 'unknown'}"
+    return f"❌ {_bold(label)} — {_esc(row.get('error') or 'unknown')}"
 
 
 def format_sell_win_message(result: dict[str, Any]) -> str:
@@ -293,8 +490,11 @@ def format_sell_win_message(result: dict[str, Any]) -> str:
     errors = list(result.get("errors") or [])
     interesting = _interesting_skips(result.get("skipped") or [], SELL_WIN_IDLE_SKIP_REASONS)
     lines = [
-        "SELL-WIN",
-        f"Placed {len(placed)} | Skip {len(interesting)} | Errors {len(errors)}",
+        f"🏆 {_bold('SELL-WIN')}",
+        (
+            f"✅ Placed {_bold(len(placed))} | ⏭ Skip {_bold(len(interesting))} | "
+            f"❌ Errors {_bold(len(errors))}"
+        ),
         "",
     ]
     for row in placed:
@@ -311,8 +511,11 @@ def format_stop_loss_message(result: dict[str, Any]) -> str:
     errors = list(result.get("errors") or [])
     interesting = _interesting_skips(result.get("skipped") or [], STOP_LOSS_IDLE_SKIP_REASONS)
     lines = [
-        "STOP-LOSS",
-        f"Sold {len(sold)} | Skip {len(interesting)} | Errors {len(errors)}",
+        f"🛑 {_bold('STOP-LOSS')}",
+        (
+            f"✅ Sold {_bold(len(sold))} | ⏭ Skip {_bold(len(interesting))} | "
+            f"❌ Errors {_bold(len(errors))}"
+        ),
         "",
     ]
     for row in sold:
@@ -332,7 +535,7 @@ def notify_sell_win_run(result: dict[str, Any]) -> None:
     if result.get("status") == "error":
         try:
             reason = result.get("reason") or "error"
-            _send_chunks(f"SELL-WIN\nERROR — {reason}\n")
+            _send_chunks(f"🏆 {_bold('SELL-WIN')}\n❌ {_bold('ERROR')} — {_esc(reason)}\n")
         except Exception:
             logger.exception("Telegram sell-win error notify failed")
         return
@@ -355,7 +558,7 @@ def notify_stop_loss_run(result: dict[str, Any]) -> None:
     if result.get("status") == "error":
         try:
             reason = result.get("reason") or "error"
-            _send_chunks(f"STOP-LOSS\nERROR — {reason}\n")
+            _send_chunks(f"🛑 {_bold('STOP-LOSS')}\n❌ {_bold('ERROR')} — {_esc(reason)}\n")
         except Exception:
             logger.exception("Telegram stop-loss error notify failed")
         return

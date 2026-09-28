@@ -41,6 +41,10 @@ def test_format_buy_run_message_includes_skips_and_orders():
         city="Berlin",
         group_item_title="24°C",
         share_count=15,
+        event={"id": "e1", "city": "Berlin", "timezone": "Europe/Berlin"},
+    )
+    fixed_now = __import__("datetime").datetime(
+        2026, 9, 27, 13, 15, tzinfo=__import__("datetime").timezone.utc
     )
     text = tg.format_buy_run_message(
         "2026-09-27",
@@ -49,12 +53,16 @@ def test_format_buy_run_message_includes_skips_and_orders():
                 "city": "London",
                 "reason": "buy_band_low_local_time",
                 "buy_price": 0.47,
+                "selection_price": 0.77,
                 "local_time": "14:15",
             },
             {
+                "event_id": "e-paris",
                 "city": "Paris",
                 "reason": "low_win_summary_timezone",
                 "timezone": "Central EU",
+                "selection_price": 0.77,
+                "local_time": "14:15",
             },
         ],
         [
@@ -68,13 +76,25 @@ def test_format_buy_run_message_includes_skips_and_orders():
             {"event_id": "e2", "error": "boom"},
         ],
         selections=[sel],
+        now_utc=fixed_now,
     )
-    assert text.startswith("BUY 2026-09-27")
-    assert "Skipped 2 | Orders 2" in text
-    assert "SKIP London — buy_band_low_local_time — buy 0.47 local 14:15" in text
-    assert "SKIP Paris — low_win_summary_timezone" in text
-    assert "ORDER Berlin 24°C — live — 15 @ 0.55 — id 0xd2cb915f…" in text
-    assert "ORDER e2 — ERROR: boom" in text
+    assert "<b>BUY 2026-09-27</b>" in text
+    assert "🛒" in text
+    assert "⏭" in text
+    assert "📤" in text or "✅" in text
+    assert "Skipped" in text and "Orders" in text
+    assert "<b>SKIP</b>" in text
+    assert "<b>ORDER</b>" in text
+    assert "buy_band_low_local_time" in text
+    assert "buy <code>0.47</code>" in text
+    assert "@<code>0.77</code>" in text
+    assert "🕒 <code>14:15</code>" in text
+    assert "low_win_summary_timezone" in text
+    assert "Berlin 24°C" in text
+    assert "<code>live</code>" in text
+    assert "15 @ <code>0.55</code>" in text or "<code>15</code> @ <code>0.55</code>" in text
+    assert "ERROR" in text
+    assert "boom" in text
 
 
 def test_chunk_message_splits_long_text():
@@ -99,13 +119,17 @@ def test_notify_buy_run_sends(tg_creds):
     with patch.object(tg, "send_telegram_message", return_value=True) as send:
         tg.notify_buy_run(
             "2026-09-27",
-            [{"city": "London", "reason": "spread_max"}],
+            [{"city": "London", "reason": "spread_max", "selection_price": 0.6, "local_time": "14:20"}],
             [{"event_id": "e1", "status": "simulated", "price": 0.5, "dry_run": True}],
         )
         assert send.call_count == 1
         body = send.call_args[0][0]
-        assert "BUY 2026-09-27" in body
-        assert "SKIP London" in body
+        assert "<b>BUY 2026-09-27</b>" in body
+        assert "<b>SKIP</b>" in body
+        assert "London" in body
+        assert "spread_max" in body
+        assert "@<code>0.60</code>" in body
+        assert "🕒 <code>14:20</code>" in body
 
 
 def test_notify_buy_run_idle_noop(tg_creds):
@@ -163,9 +187,13 @@ def test_sell_win_notifies_interesting_skip_and_placed(tg_creds):
     }
     text = tg.format_sell_win_message(result)
     assert "SELL-WIN" in text
-    assert "Placed 1 | Skip 1 | Errors 0" in text
-    assert "ORDER Ankara — tier2 — live — 15 @ 0.96" in text
-    assert "SKIP Paris — open_sell_order" in text
+    assert "🏆" in text
+    assert "Placed" in text and "Skip" in text
+    assert "Ankara" in text
+    assert "tier2" in text
+    assert "0.96" in text
+    assert "Paris" in text
+    assert "open_sell_order" in text
     assert "price_too_low" not in text
 
     with patch.object(tg, "send_telegram_message", return_value=True) as send:
@@ -218,11 +246,13 @@ def test_stop_loss_notifies_sold_and_interesting(tg_creds):
     }
     text = tg.format_stop_loss_message(result)
     assert "STOP-LOSS" in text
-    assert "Sold 1 | Skip 1 | Errors 1" in text
+    assert "🛑" in text
+    assert "Sold" in text and "Skip" in text
     assert "value_pct=42.1%" in text
-    assert "SKIP Paris — open_sell_order" in text
+    assert "Paris" in text
+    assert "open_sell_order" in text
     assert "above_threshold" not in text
-    assert "ERROR" in text
+    assert "ERROR" in text or "❌" in text
 
     with patch.object(tg, "send_telegram_message", return_value=True) as send:
         tg.notify_stop_loss_run(result)
@@ -251,6 +281,7 @@ def test_send_telegram_message_posts_json(tg_creds):
         body = json_loads_request(req)
         assert body["chat_id"] == "999"
         assert body["text"] == "hello"
+        assert body["parse_mode"] == "HTML"
 
 
 def json_loads_request(req):

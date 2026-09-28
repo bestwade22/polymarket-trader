@@ -405,6 +405,7 @@ def run_hourly_trade(
         skipped_bought,
         results,
         selections=selections,
+        events=events,
     )
 
     return {
