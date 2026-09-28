@@ -15942,5 +15942,21 @@
     "floor_price": 0.98,
     "current_mid": 0.23,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x33370befe23b96182d9c4cbe5bfd62236f819cafc4628f55695f6236d3fa3d0e",
+    "token_id": "95001306344812093037044992979927248253058892759680272348819627308879829082741",
+    "order_id": "0x471db7cb59decd9d73d0d52dd2dc807ffa8f63d48d89b76180584822a56c6267",
+    "sold_at": "2026-09-28T19:00:21.810870+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-miami-on-september-28-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.64,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.43,
+    "reason": "tier1"
   }
 ]
