@@ -155,6 +155,9 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `TRADING_WINDOW_START_HOUR` | `14:00` | Local time when trading opens: `14`, `14:00`, or `1400` (city timezone) |
 | `TRADING_WINDOW_END_HOUR` | `16:00` | Local time when trading closes: `16`, `16:00`, or `1600` (city timezone) |
 | `DRY_RUN` | `true` | Skip real order placement |
+| `TELEGRAM_BOT_TOKEN` | _(empty)_ | Bot token from [@BotFather](https://t.me/BotFather); enables skip/order digests when set with chat ID |
+| `TELEGRAM_CHAT_ID` | _(empty)_ | Destination chat ID (DM or group). Add both keys to Secrets Manager for Lambda |
+| `TELEGRAM_NOTIFY_ENABLED` | `true` | Set `false` to disable Telegram even when credentials are present |
 | `DAILY_FETCH_HOUR_UTC` | `6` | Scheduler daily fetch hour |
 | `EVENT_DATE` | _(empty)_ | Default date `YYYY-MM-DD` for fetch/trade (today if empty) |
 | `STOP_LOSS_DRY_RUN` | `true` | Stop-loss-only dry-run flag (independent from `DRY_RUN`) |
@@ -363,6 +366,15 @@ python scripts/check_geoblock.py
 ### Enabling live trading
 
 Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_MINUTES=25`), set `STOP_LOSS_DRY_RUN=false` to enable live **stop-loss sell** orders, and set `SELL_WIN_DRY_RUN=false` (default) for live **sell-win** limit orders. They are independent flags.
+
+### Telegram notifications
+
+Buy hourly digests every skip + order. Sell-win / stop-loss digests placed/sold orders, errors, and non-idle skips (routine holds like `above_threshold` / window-not-open stay in JSON only).
+
+1. Message [@BotFather](https://t.me/BotFather) → `/newbot` → copy the bot token.
+2. Open the bot and press **Start** once.
+3. Open `https://api.telegram.org/bot<TOKEN>/getUpdates` and copy `"chat":{"id": ...}` → that is `TELEGRAM_CHAT_ID`.
+4. Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `.env` (local) and in the Lambda Secrets Manager JSON (same keys). Optional: `TELEGRAM_NOTIFY_ENABLED=false` to disable.
 
 ### Deploy troubleshooting
 

@@ -132,7 +132,9 @@ After stack `polymarket-trader` reaches **CREATE_COMPLETE**:
   "PRIVATE_KEY": "0x...",
   "DEPOSIT_WALLET_ADDRESS": "0x...",
   "GITHUB_PAT": "github_pat_...",
-  "DRY_RUN": "true"
+  "DRY_RUN": "true",
+  "TELEGRAM_BOT_TOKEN": "123456789:AAH...",
+  "TELEGRAM_CHAT_ID": "123456789"
 }
 ```
 
@@ -142,6 +144,7 @@ After stack `polymarket-trader` reaches **CREATE_COMPLETE**:
 |-----|-------|
 | `GITHUB_PAT` | Fine-grained PAT with **Contents: read and write** on this repo |
 | `DRY_RUN` | `"true"` = no real orders; `"false"` = live trading (no redeploy needed) |
+| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | Optional; enables skip/order digests to Telegram (no redeploy needed once code is live) |
 
 Lambda reads this secret on every invoke via `SECRETS_ARN` env var.
 

@@ -29,6 +29,7 @@ from src.utils.market_parser import (
     get_yes_token_id,
     is_neg_risk,
 )
+from src.notify.telegram import notify_stop_loss_run
 
 logger = logging.getLogger(__name__)
 
@@ -184,13 +185,17 @@ def run_stop_loss_check(
 
     wallet = wallet_address or settings.deposit_wallet_address
     if not wallet:
-        return {"status": "error", "reason": "missing_wallet", "positions_checked": 0}
+        result = {"status": "error", "reason": "missing_wallet", "positions_checked": 0}
+        notify_stop_loss_run(result)
+        return result
 
     try:
         positions = fetch_user_positions(wallet)
     except Exception as exc:
         logger.exception("Failed to fetch positions")
-        return {"status": "error", "reason": str(exc), "positions_checked": 0}
+        result = {"status": "error", "reason": str(exc), "positions_checked": 0}
+        notify_stop_loss_run(result)
+        return result
 
     if not positions:
         return {
@@ -410,4 +415,5 @@ def run_stop_loss_check(
         "checked_at": datetime.now(timezone.utc).isoformat(),
     }
     _log_run_summary(result)
+    notify_stop_loss_run(result)
     return result

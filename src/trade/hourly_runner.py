@@ -17,6 +17,7 @@ from src.trade.forecast_share_bump import apply_forecast_agree_extra_shares
 from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import market_price_snapshot
 from src.utils.trade_logger import TradeStepLogger
+from src.notify.telegram import notify_buy_run
 
 logger = logging.getLogger(__name__)
 
@@ -398,6 +399,13 @@ def run_hourly_trade(
         orders=len(results),
     )
     step_logger_global.save()
+
+    notify_buy_run(
+        trade_date,
+        skipped_bought,
+        results,
+        selections=selections,
+    )
 
     return {
         "event_date": trade_date.isoformat(),

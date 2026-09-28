@@ -310,6 +310,11 @@ class Settings:
     city_skip_enabled: bool = _env_bool("CITY_SKIP_ENABLED", True)
     city_skip_bottom_n: int = int(os.getenv("CITY_SKIP_BOTTOM_N", "7"))
     data_api_base: str = os.getenv("DATA_API_BASE", "https://data-api.polymarket.com")
+    # Telegram digests for buy skips/orders and sell-win / stop-loss runs.
+    telegram_bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN", "")
+    telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "")
+    # Default on when credentials are present; set TELEGRAM_NOTIFY_ENABLED=false to disable.
+    telegram_notify_enabled: bool = _env_bool("TELEGRAM_NOTIFY_ENABLED", True)
 
 
 settings = Settings()
