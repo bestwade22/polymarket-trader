@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-09-29T22:15:55.876734+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1091431",
+      "city": "Seattle",
+      "market_id": "5027062",
+      "group_item_title": "62-63\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-september-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 64,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 1.33
+    },
+    {
+      "event_id": "1091433",
+      "city": "San Francisco",
+      "market_id": "5027084",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-september-29-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 84,
+      "forecast_temp_c": 29,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 81,
+      "forecast_wu_temp_c": 27,
+      "forecast_delta_c": 3.44
+    },
+    {
+      "event_id": "1091432",
+      "city": "Los Angeles",
+      "market_id": "5027072",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-september-29-2026",
+      "reason": "spread_max",
+      "spread": 0.4,
+      "spread_max": 0.08,
+      "selection_price": 0.64,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 82,
+      "forecast_wu_temp_c": 28,
+      "forecast_delta_c": 0.33
+    }
+  ]
+}
