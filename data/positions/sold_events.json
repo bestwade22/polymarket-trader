@@ -16038,5 +16038,37 @@
     "floor_price": 0.98,
     "current_mid": 0.89,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xb77fd09fc4fc01ce74485b8380d70d8d98507e265c6a3269dd0bca25b9b8c28c",
+    "token_id": "40008697530426278446167186953957019290400754621120129554764904699654277772202",
+    "order_id": "0x6432700cb221faebaaeed0ee722e81c8dbf9b775373dfcc062963302104dd765",
+    "sold_at": "2026-09-29T14:00:20.828451+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-madrid-on-september-29-2026",
+    "price": 0.96,
+    "size": 20.0,
+    "avg_buy_price": 0.63,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.55,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x2af469dd81632119f1ecbd778ce325dfdb443066ef5c2f435c957fe70398a766",
+    "token_id": "72852524603400436264856535352429589596591434572899012995516930475297306255956",
+    "order_id": "0xe11d46dccabbf2574b9e9e166651465ff811ab19cae53c09fefff7ffa0a24846",
+    "sold_at": "2026-09-29T14:00:21.850343+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-munich-on-september-29-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.69,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.495,
+    "reason": "tier2"
   }
 ]
