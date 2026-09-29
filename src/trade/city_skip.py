@@ -143,12 +143,39 @@ def timezone_win_summary_stats(
     return grouped
 
 
+def resolve_city_skip_min_count(
+    denoms: list[int],
+    *,
+    floor: Optional[int] = None,
+) -> int:
+    """Compute min_count for bottom-N eligibility.
+
+    Starts at ``CITY_SKIP_MIN_COUNT`` (default 3). Among timezone denoms that
+    are at least that floor, take the minimum — e.g. if the smallest zone with
+    denom ≥ 3 has denom 3, min_count is 3. Zones with denom ≤ min_count are
+    excluded from the bottom-N skip list.
+    """
+    floor_n = settings.city_skip_min_count if floor is None else int(floor)
+    if floor_n <= 0:
+        return 0
+    at_or_above = [int(d) for d in denoms if int(d) >= floor_n]
+    if not at_or_above:
+        return floor_n
+    return min(at_or_above)
+
+
 def lowest_win_summary_timezones(
     records: list[TradeRecord],
     *,
     bottom_n: Optional[int] = None,
+    min_count_floor: Optional[int] = None,
 ) -> list[str]:
-    """Return up to N timezone groups with the lowest win summary % (denom > 0)."""
+    """Return up to N timezone groups with the lowest win summary % (denom > min_count).
+
+    Zones with win_summary_denom ≤ computed min_count are ineligible (sparse
+    samples). min_count starts at CITY_SKIP_MIN_COUNT and is the minimum denom
+    among zones that already meet that floor.
+    """
     n = settings.city_skip_bottom_n if bottom_n is None else bottom_n
     if n <= 0:
         return []
@@ -158,8 +185,13 @@ def lowest_win_summary_timezones(
         for tz, row in stats.items()
         if int(row["win_summary_denom"]) > 0
     ]
-    ranked.sort(key=lambda item: (item[1], item[2], item[0]))
-    return [tz for tz, _pct, _denom in ranked[:n]]
+    min_count = resolve_city_skip_min_count(
+        [denom for _tz, _pct, denom in ranked],
+        floor=min_count_floor,
+    )
+    eligible = [item for item in ranked if item[2] > min_count]
+    eligible.sort(key=lambda item: (item[1], item[2], item[0]))
+    return [tz for tz, _pct, _denom in eligible[:n]]
 
 
 def _today_utc() -> str:
@@ -202,8 +234,14 @@ def refresh_timezone_skip_denylist(
     surviving = surviving_records_for_skip(records)
     # Fall back to all records if filters wipe the sample (cold start / missing fields).
     rank_pool = surviving if len(surviving) >= 20 else records
-    timezones = lowest_win_summary_timezones(rank_pool, bottom_n=bottom_n)
     stats = timezone_win_summary_stats(rank_pool)
+    denoms = [
+        int(row["win_summary_denom"])
+        for row in stats.values()
+        if int(row["win_summary_denom"]) > 0
+    ]
+    min_count = resolve_city_skip_min_count(denoms)
+    timezones = lowest_win_summary_timezones(rank_pool, bottom_n=bottom_n)
     detail = {
         tz: {
             "win_plus_sold_win_pct": stats.get(tz, {}).get("win_plus_sold_win_pct"),
@@ -215,6 +253,8 @@ def refresh_timezone_skip_denylist(
         "date": today,
         "refreshed_at": datetime.now(timezone.utc).isoformat(),
         "bottom_n": settings.city_skip_bottom_n if bottom_n is None else bottom_n,
+        "min_count": min_count,
+        "min_count_floor": int(settings.city_skip_min_count),
         "rank_pool": "surviving" if rank_pool is surviving else "all",
         "rank_pool_n": len(rank_pool),
         "surviving_n": len(surviving),
@@ -242,9 +282,12 @@ def refresh_timezone_skip_denylist(
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(payload, indent=2))
     logger.info(
-        "Timezone skip denylist refreshed (%s): bottom %d from %s n=%d → %s",
+        "Timezone skip denylist refreshed (%s): bottom %d (min_count=%d floor=%d) "
+        "from %s n=%d → %s",
         today,
         len(timezones),
+        min_count,
+        int(settings.city_skip_min_count),
         payload["rank_pool"],
         payload["rank_pool_n"],
         timezones,

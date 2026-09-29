@@ -164,6 +164,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    monkeypatch.setattr("src.trade.city_skip.settings.city_skip_min_count", 0)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.spread_max", 0.05)

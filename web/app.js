@@ -59,6 +59,8 @@ let skipStackFilters = {
   buy_band_low_min_local_hour: 14,
   buy_band_low_min_local_minute: 45,
   bottom_n: 7,
+  min_count: null,
+  min_count_floor: 3,
 };
 let filterSweepSort = { key: "oos_pass_60", asc: false };
 let sortKey = "bought_at";
@@ -1544,8 +1546,11 @@ function renderInsights(data) {
         limit: null,
         description:
           `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, spread &lt; ${skipStackFilters.spread_max} when known, yes_gap &gt; ${skipStackFilters.yes_gap_min} when known; buy [${skipStackFilters.buy_band_high_min}, ${skipStackFilters.buy_band_high_max}) needs yes_gap &gt; ${skipStackFilters.buy_band_high_yes_gap_min}; buy [${skipStackFilters.buy_band_low_min}, ${skipStackFilters.buy_band_low_max}] needs local ≥ ${String(skipStackFilters.buy_band_low_min_local_hour).padStart(2, "0")}:${String(skipStackFilters.buy_band_low_min_local_minute).padStart(2, "0")}). ` +
-          `n=${data.surviving_pool_n ?? "—"} · bottom ${skipStackFilters.bottom_n ?? 7} by Win summary% are skipped on trade-hourly. ` +
-          `Uses full history (not page filters), same ranking as Lambda denylist.`,
+          `n=${data.surviving_pool_n ?? "—"} · bottom ${skipStackFilters.bottom_n ?? 7} by Win summary% are skipped on trade-hourly` +
+          (skipStackFilters.min_count != null
+            ? ` (zones with denom ≤ ${skipStackFilters.min_count} ineligible)`
+            : "") +
+          `. Uses full history (not page filters), same ranking as Lambda denylist.`,
       },
     ],
   ];
@@ -2414,6 +2419,8 @@ async function loadData() {
       buy_band_low_min_local_hour: denylist.buy_band_low_min_local_hour ?? 14,
       buy_band_low_min_local_minute: denylist.buy_band_low_min_local_minute ?? 45,
       bottom_n: denylist.bottom_n ?? 7,
+      min_count: denylist.min_count ?? null,
+      min_count_floor: denylist.min_count_floor ?? 3,
     };
   }
   document.getElementById("sync-meta").textContent =

@@ -53,25 +53,80 @@ def test_lowest_win_summary_timezones_picks_worst(monkeypatch):
         "Beta": "Bad Zone A",
         "Gamma": "Mid Zone",
         "Delta": "Bad Zone B",
+        "Sparse": "Sparse Zone",
         "Dust": "Good Zone",
     }
     monkeypatch.setattr(
         "src.trade.city_skip.timezone_group",
         lambda city: mapping.get(city, "Unknown"),
     )
+    monkeypatch.setattr("src.trade.city_skip.settings.city_skip_min_count", 3)
+
+    def losses(city: str, n: int) -> list[TradeRecord]:
+        return [
+            _rec(city, result="loss", token_id=f"tok-{city}-{i}") for i in range(n)
+        ]
+
+    def wins(city: str, n: int) -> list[TradeRecord]:
+        return [
+            _rec(city, result="win", token_id=f"tok-{city}-{i}") for i in range(n)
+        ]
+
     records = [
-        _rec("Alpha", result="win"),
-        _rec("Alpha", result="win", token_id="tok-a2"),
-        _rec("Beta", result="loss"),
-        _rec("Beta", result="loss", token_id="tok-b2"),
-        _rec("Gamma", result="win"),
-        _rec("Gamma", result="loss", token_id="tok-g2"),
-        _rec("Delta", result="loss"),
+        *wins("Alpha", 4),  # Good Zone denom 4, 100% — ineligible? denom 4 > min_count 3
+        *losses("Beta", 4),  # Bad Zone A denom 4, 0%
+        *wins("Gamma", 2),
+        *losses("Gamma", 2),  # Mid Zone denom 4, 50%
+        *losses("Delta", 5),  # Bad Zone B denom 5, 0%
+        *losses("Sparse", 2),  # Sparse Zone denom 2 ≤ min_count — excluded
         _rec("Dust", result="win", shares=0.2),  # ignored in win summary
     ]
+    # min_count = min(denoms >= 3) = 4 → only denom > 4 eligible → Bad Zone B only for bottom 1
     bottom = lowest_win_summary_timezones(records, bottom_n=2)
-    # Both at 0%; lower denom sorts first (Bad Zone B=1, Bad Zone A=2).
-    assert bottom == ["Bad Zone B", "Bad Zone A"]
+    assert "Sparse Zone" not in bottom
+    # Both Bad Zone A (4) and Mid/Good have denom 4 == min_count → excluded; only B (5) eligible
+    assert bottom == ["Bad Zone B"]
+
+
+def test_lowest_win_summary_excludes_at_or_below_min_count(monkeypatch):
+    from src.trade.city_skip import resolve_city_skip_min_count
+
+    mapping = {
+        "MY": "Malaysia",
+        "PH": "Philippines",
+        "JP": "Japan",
+        "CN": "China",
+        "AR": "Argentina",
+        "ZA": "South Africa",
+        "UK": "UK",
+    }
+    monkeypatch.setattr(
+        "src.trade.city_skip.timezone_group",
+        lambda city: mapping.get(city, "Unknown"),
+    )
+    monkeypatch.setattr("src.trade.city_skip.settings.city_skip_min_count", 3)
+
+    def many(city: str, n: int, *, result: str) -> list[TradeRecord]:
+        return [
+            _rec(city, result=result, token_id=f"tok-{city}-{i}") for i in range(n)
+        ]
+
+    records = [
+        *many("MY", 3, result="win"),  # denom 3 = min_count → excluded
+        *many("PH", 2, result="loss"),  # 2 → excluded
+        *many("JP", 1, result="loss"),  # 1 → excluded
+        *many("CN", 4, result="loss"),  # 4 > 3, 0%
+        *many("AR", 4, result="loss"),  # 4 > 3, 0%
+        *many("ZA", 4, result="loss"),  # 4 > 3, 0%
+        *many("UK", 4, result="win"),  # 4 > 3, 100% — not bottom
+    ]
+    assert resolve_city_skip_min_count([3, 2, 1, 4, 4, 4, 4], floor=3) == 3
+    bottom = lowest_win_summary_timezones(records, bottom_n=3)
+    assert bottom == ["Argentina", "China", "South Africa"]
+    assert "Malaysia" not in bottom
+    assert "Philippines" not in bottom
+    assert "Japan" not in bottom
+    assert "UK" not in bottom
 
 
 def test_filter_events_by_skip_timezones(monkeypatch):
@@ -180,16 +235,15 @@ def test_refresh_timezone_skip_denylist_writes_daily_file(tmp_path, monkeypatch)
     monkeypatch.setattr(cs.settings, "yes_price_min", 0.0)
     monkeypatch.setattr(cs.settings, "spread_max", 0.15)
     monkeypatch.setattr(cs.settings, "city_skip_bottom_n", 1)
+    monkeypatch.setattr(cs.settings, "city_skip_min_count", 3)
     history = tmp_path / "trade_history.json"
     denylist = tmp_path / "denylist.json"
     history.write_text(
         json.dumps(
             {
                 "records": [
-                    _rec("Alpha", result="win", token_id="a1").to_dict(),
-                    _rec("Alpha", result="win", token_id="a2").to_dict(),
-                    _rec("Beta", result="loss", token_id="b1").to_dict(),
-                    _rec("Beta", result="loss", token_id="b2").to_dict(),
+                    *[_rec("Alpha", result="win", token_id=f"a{i}").to_dict() for i in range(4)],
+                    *[_rec("Beta", result="loss", token_id=f"b{i}").to_dict() for i in range(4)],
                 ]
             }
         )
@@ -198,11 +252,31 @@ def test_refresh_timezone_skip_denylist_writes_daily_file(tmp_path, monkeypatch)
         history_path=history, denylist_path=denylist, force=True
     )
     assert denylist.exists()
-    assert payload["timezones"] == ["Bad"]
-    assert payload["date"]
+    # min_count = 4 (both zones denom 4); denom > 4 required → empty eligible
+    # Wait: both have denom 4, min_count=4, eligible need >4 → empty
+    # Need Bad with more trades than Good's min tier.
+    assert payload["min_count"] == 4
+    assert payload["min_count_floor"] == 3
+    assert payload["timezones"] == []
     assert "yes_gap_min" in payload
     assert "buy_band_high_yes_gap_min" in payload
     assert "buy_band_low_min_local_hour" in payload
+    # Rebuild with Bad having denom 5 so it clears min_count
+    history.write_text(
+        json.dumps(
+            {
+                "records": [
+                    *[_rec("Alpha", result="win", token_id=f"a{i}").to_dict() for i in range(4)],
+                    *[_rec("Beta", result="loss", token_id=f"b{i}").to_dict() for i in range(5)],
+                ]
+            }
+        )
+    )
+    payload = cs.refresh_timezone_skip_denylist(
+        history_path=history, denylist_path=denylist, force=True
+    )
+    assert payload["min_count"] == 4
+    assert payload["timezones"] == ["Bad"]
     # Second call without force reuses same-day file
     again = cs.refresh_timezone_skip_denylist(
         history_path=history, denylist_path=denylist, force=False
