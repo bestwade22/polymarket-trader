@@ -6864,6 +6864,12 @@
       "winning_temp": "32\u00b0C",
       "winning_token_id": "91872050605655657135534937452887454904440198638659088046208563258952463214582"
     },
+    "highest-temperature-in-hong-kong-on-september-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Hong Kong on September 28?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "92853224065879374448986241352579037099619781922131207271212726500693479241272"
+    },
     "highest-temperature-in-hong-kong-on-september-3-2026": {
       "closed": false,
       "title": "Highest temperature in Hong Kong on September 3?",
@@ -21035,6 +21041,12 @@
       "title": "Highest temperature in Toronto on September 27?",
       "winning_temp": "24\u00b0C",
       "winning_token_id": "93901484995316598976848884336830724339368578254451093004557770073959097917573"
+    },
+    "highest-temperature-in-toronto-on-september-28-2026": {
+      "closed": true,
+      "title": "Highest temperature in Toronto on September 28?",
+      "winning_temp": "21\u00b0C",
+      "winning_token_id": "41887456541303232103351100250969347919736149237666477733389456448009719850604"
     },
     "highest-temperature-in-toronto-on-september-3-2026": {
       "closed": true,
