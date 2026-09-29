@@ -1,7 +1,9 @@
 {
   "date": "2026-09-29",
-  "refreshed_at": "2026-09-29T17:01:27.815586+00:00",
+  "refreshed_at": "2026-09-29T19:02:32.615546+00:00",
   "bottom_n": 7,
+  "min_count": 3,
+  "min_count_floor": 3,
   "rank_pool": "surviving",
   "rank_pool_n": 329,
   "surviving_n": 329,
@@ -18,27 +20,15 @@
   "buy_band_low_min_local_hour": 14,
   "buy_band_low_min_local_minute": 45,
   "timezones": [
-    "India (UTC+5:30)",
-    "Japan (UTC+9)",
-    "NZ (UTC+12/+13)",
     "South Africa (UTC+2)",
     "Argentina (UTC-3)",
     "China (UTC+8)",
-    "UK (UTC+0/+1)"
+    "UK (UTC+0/+1)",
+    "Poland (UTC+1/+2)",
+    "Canada East (UTC-5/-4)",
+    "US Mountain (UTC-7/-6)"
   ],
   "detail": {
-    "India (UTC+5:30)": {
-      "win_plus_sold_win_pct": 0.0,
-      "win_summary_denom": 1
-    },
-    "Japan (UTC+9)": {
-      "win_plus_sold_win_pct": 0.0,
-      "win_summary_denom": 1
-    },
-    "NZ (UTC+12/+13)": {
-      "win_plus_sold_win_pct": 0.0,
-      "win_summary_denom": 1
-    },
     "South Africa (UTC+2)": {
       "win_plus_sold_win_pct": 0.0,
       "win_summary_denom": 4
@@ -54,6 +44,18 @@
     "UK (UTC+0/+1)": {
       "win_plus_sold_win_pct": 37.5,
       "win_summary_denom": 16
+    },
+    "Poland (UTC+1/+2)": {
+      "win_plus_sold_win_pct": 44.4,
+      "win_summary_denom": 9
+    },
+    "Canada East (UTC-5/-4)": {
+      "win_plus_sold_win_pct": 46.2,
+      "win_summary_denom": 13
+    },
+    "US Mountain (UTC-7/-6)": {
+      "win_plus_sold_win_pct": 50.0,
+      "win_summary_denom": 6
     }
   }
 }
