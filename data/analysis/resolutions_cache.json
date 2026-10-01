@@ -1674,6 +1674,12 @@
       "winning_temp": "94-95\u00b0F",
       "winning_token_id": "28223355687959347320820090242492483394845916890717330482220749950203713191837"
     },
+    "highest-temperature-in-atlanta-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on September 30?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "66675979675918928192211740129577436742794165699550878096622934503315143336448"
+    },
     "highest-temperature-in-atlanta-on-september-4-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on September 4?",
@@ -4290,6 +4296,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "1602963222323511797161200142705017484930912740156109119442317014340715716219"
     },
+    "highest-temperature-in-chicago-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on September 30?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "47461488126616301525714059450742942498873844630188085869322207929387517470392"
+    },
     "highest-temperature-in-chicago-on-september-4-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on September 4?",
@@ -5105,6 +5117,12 @@
       "title": "Highest temperature in Dallas on September 3?",
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "23324027587444043721828696560910854042373093826895327105346433108633241628910"
+    },
+    "highest-temperature-in-dallas-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on September 30?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "16737908292541623726974084117533681270731390500332737591490173395286408679375"
     },
     "highest-temperature-in-dallas-on-september-4-2026": {
       "closed": true,
@@ -7547,6 +7565,12 @@
       "title": "Highest temperature in Houston on September 3?",
       "winning_temp": "92-93\u00b0F",
       "winning_token_id": "106689203922452517942186918052230387904870645767452076059354208575952176460379"
+    },
+    "highest-temperature-in-houston-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on September 30?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "8118939825939928379509311217838785449581984475170116552676489695892655322725"
     },
     "highest-temperature-in-houston-on-september-4-2026": {
       "closed": true,
@@ -15924,6 +15948,12 @@
       "winning_temp": "33\u00b0C or higher",
       "winning_token_id": "92476064775133405560210843432856889965080271839688432467259556154541271514637"
     },
+    "highest-temperature-in-panama-city-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on September 30?",
+      "winning_temp": "31\u00b0C",
+      "winning_token_id": "68305485072052376302452539674811126912637277760060413863043691912769993297251"
+    },
     "highest-temperature-in-panama-city-on-september-4-2026": {
       "closed": true,
       "title": "Highest temperature in Panama City on September 4?",
@@ -20699,6 +20729,12 @@
       "title": "Highest temperature in Tel Aviv on September 3?",
       "winning_temp": "32\u00b0C",
       "winning_token_id": "28478617013260213875415513150459131334638416122151744696494665488923199798209"
+    },
+    "highest-temperature-in-tel-aviv-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Tel Aviv on September 30?",
+      "winning_temp": "29\u00b0C",
+      "winning_token_id": "58030485843515077482023174065288511209837961906564393577314039089936641201214"
     },
     "highest-temperature-in-tel-aviv-on-september-4-2026": {
       "closed": true,
