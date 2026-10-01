@@ -2256,6 +2256,12 @@
       "winning_temp": "98-99\u00b0F",
       "winning_token_id": "30136561394131424973460895991592655159852874446542661406839116213226061777868"
     },
+    "highest-temperature-in-austin-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on September 30?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "72782925426581411908686750190183385343515420830687030674147604699764823095921"
+    },
     "highest-temperature-in-austin-on-september-4-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on September 4?",
@@ -12545,6 +12551,12 @@
       "title": "Highest temperature in Mexico City on September 3?",
       "winning_temp": "26\u00b0C",
       "winning_token_id": "99532306770915997071318138238018423160257062409210015881771161237227771476931"
+    },
+    "highest-temperature-in-mexico-city-on-september-30-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on September 30?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "33761646641201454255164275183219678713563357644684745094214656194016986917741"
     },
     "highest-temperature-in-mexico-city-on-september-4-2026": {
       "closed": true,
