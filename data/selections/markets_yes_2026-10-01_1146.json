@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-10-01T11:46:14.794339+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1101802",
+      "city": "Tel Aviv",
+      "market_id": "5116233",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9735,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1101825",
+      "city": "Istanbul",
+      "market_id": "5116407",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.986,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1101828",
+      "city": "Helsinki",
+      "market_id": "5116441",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-october-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.93,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 63,
+      "forecast_wu_temp_c": 17,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1101830",
+      "city": "Jeddah",
+      "market_id": "5116464",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9975,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1101824",
+      "city": "Moscow",
+      "market_id": "5116397",
+      "group_item_title": "14\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-1-2026",
+      "reason": "spread_max",
+      "spread": 0.09,
+      "spread_max": 0.08,
+      "selection_price": 0.555
+    },
+    {
+      "event_id": "1101798",
+      "city": "Ankara",
+      "market_id": "5116189",
+      "group_item_title": "17\u00b0C",
+      "reason": "has_full_position",
+      "held_shares": 15.0,
+      "held_market_id": "5116189",
+      "held_group_item_title": "17\u00b0C",
+      "target_share_count": 15,
+      "selection_price": 0.505,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 63,
+      "forecast_wu_temp_c": 17,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
