@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-10-02T11:16:13.141411+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1106954",
+      "city": "Tel Aviv",
+      "market_id": "5148178",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.97,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1106977",
+      "city": "Istanbul",
+      "market_id": "5148352",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9685,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1106982",
+      "city": "Jeddah",
+      "market_id": "5148408",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 97,
+      "forecast_wu_temp_c": 36,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1106950",
+      "city": "Ankara",
+      "market_id": "5148133",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-2-2026",
+      "reason": "spread_max",
+      "spread": 0.14,
+      "spread_max": 0.08,
+      "selection_price": 0.65,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 61,
+      "forecast_wu_temp_c": 16,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1106976",
+      "city": "Moscow",
+      "market_id": "5148341",
+      "group_item_title": "12\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-2-2026",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.08,
+      "selection_price": 0.64
+    },
+    {
+      "event_id": "1106980",
+      "city": "Helsinki",
+      "market_id": "5148385",
+      "group_item_title": "15\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-october-2-2026",
+      "reason": "spread_max",
+      "spread": 0.24,
+      "spread_max": 0.08,
+      "selection_price": 0.535,
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
