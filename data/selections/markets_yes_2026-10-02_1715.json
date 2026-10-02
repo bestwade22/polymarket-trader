@@ -1,0 +1,34 @@
+{
+  "run_at": "2026-10-02T17:15:46.224785+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1108496",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 63,
+      "forecast_wu_temp_c": 17
+    },
+    {
+      "event_id": "1108495",
+      "city": "Sao Paulo",
+      "market_id": "5154236",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-october-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.991,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
