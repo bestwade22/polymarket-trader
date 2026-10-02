@@ -16182,5 +16182,21 @@
     "floor_price": 0.98,
     "current_mid": 0.901,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xf00b768e0d10b81d8bd8179961bd5e09020fc1edbe0d1315e7ceb49ae85ea439",
+    "token_id": "31805475165180029543030635522240137495575409051736859899481613932765193835740",
+    "order_id": "0x9800dc571ecb2018486e3c48861b673e74daaa5e6484620efb3ed4321be168b3",
+    "sold_at": "2026-10-02T14:00:19.264649+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-milan-on-october-2-2026",
+    "price": 0.97,
+    "size": 15.0,
+    "avg_buy_price": 0.66,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.975,
+    "reason": "tier2"
   }
 ]
