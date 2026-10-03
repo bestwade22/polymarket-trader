@@ -1,0 +1,39 @@
+{
+  "run_at": "2026-10-03T09:15:51.322861+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1112149",
+      "city": "Lucknow",
+      "market_id": "5170395",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-lucknow-on-october-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 92,
+      "forecast_wu_temp_c": 33,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1112183",
+      "city": "Karachi",
+      "market_id": "5170690",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-october-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 92,
+      "forecast_wu_temp_c": 33,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
