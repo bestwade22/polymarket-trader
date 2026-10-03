@@ -2160,6 +2160,12 @@
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "102110848943820396520089530460825427880939052595272891905087331077662750769515"
     },
+    "highest-temperature-in-austin-on-october-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on October 2?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "91388403907225022456820551871231782007924667252859312696948313445418606518898"
+    },
     "highest-temperature-in-austin-on-september-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on September 1?",
@@ -12629,6 +12635,12 @@
       "title": "Highest temperature in Mexico City on October 1?",
       "winning_temp": "25\u00b0C",
       "winning_token_id": "58103306243101015623964419203046171447210589173005543136536125257538012645133"
+    },
+    "highest-temperature-in-mexico-city-on-october-2-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on October 2?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "13336231885468048814180589012934093548859709126747192104805084141580996269063"
     },
     "highest-temperature-in-mexico-city-on-september-1-2026": {
       "closed": true,
