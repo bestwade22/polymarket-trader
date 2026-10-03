@@ -16262,5 +16262,37 @@
     "floor_price": 0.96,
     "current_mid": 0.3205,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x7c2fd880bdb6d36c5e4d77915af99a44e87288e598dc1b2dff520bca2ef07b1f",
+    "token_id": "37021589276808397581352439487414226549359456405640864638363222233066632390497",
+    "order_id": "0xcfbc850e34494d5811c48207281f49bab67e2c117bd78755f7593b008c60a2cb",
+    "sold_at": "2026-10-03T14:00:18.453212+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-madrid-on-october-3-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.54,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x9fcdd1e1c185e2065168934d7a88ecf6d4fadb1ad5b689bd8ffe92d347fcb9e4",
+    "token_id": "43903386240377290730773352373550177617510332567676552335258350357793462305141",
+    "order_id": "0x6f9f84da8b128b9c98194810446a7695e3ce30209d154896ee2df1f301dcefac",
+    "sold_at": "2026-10-03T14:00:19.462617+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-helsinki-on-october-3-2026",
+    "price": 0.98,
+    "size": 15.0,
+    "avg_buy_price": 0.535,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.44,
+    "reason": "tier3"
   }
 ]
