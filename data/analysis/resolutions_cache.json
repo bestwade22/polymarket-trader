@@ -9948,6 +9948,12 @@
       "winning_temp": "33\u00b0C",
       "winning_token_id": "97817404638929590402524726805288855699385197934908009965745122532549182552672"
     },
+    "highest-temperature-in-kuala-lumpur-on-october-3-2026": {
+      "closed": false,
+      "title": "Highest temperature in Kuala Lumpur on October 3?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "14040383958465486062665482394244324418326194747917505905786868771132988703293"
+    },
     "highest-temperature-in-kuala-lumpur-on-september-13-2026": {
       "closed": true,
       "title": "Highest temperature in Kuala Lumpur on September 13?",
@@ -20435,6 +20441,12 @@
       "title": "Highest temperature in Taipei on October 2?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "56020708439702196643805419321457241658306231033945322237821329226709915523881"
+    },
+    "highest-temperature-in-taipei-on-october-3-2026": {
+      "closed": true,
+      "title": "Highest temperature in Taipei on October 3?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "83474857913648671883780749246849595518162090886601731017050566253675952316476"
     },
     "highest-temperature-in-taipei-on-september-1-2026": {
       "closed": true,
