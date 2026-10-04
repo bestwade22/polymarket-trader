@@ -1,0 +1,85 @@
+{
+  "run_at": "2026-10-04T11:46:12.024408+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1117499",
+      "city": "Ankara",
+      "market_id": "5197862",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.71,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 65,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1117503",
+      "city": "Tel Aviv",
+      "market_id": "5197903",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1117525",
+      "city": "Moscow",
+      "market_id": "5198069",
+      "group_item_title": "12\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.715,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1117526",
+      "city": "Istanbul",
+      "market_id": "5198078",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.94,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1117529",
+      "city": "Helsinki",
+      "market_id": "5198113",
+      "group_item_title": "15\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9765,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 58,
+      "forecast_wu_temp_c": 14,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1117531",
+      "city": "Jeddah",
+      "market_id": "5198135",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-4-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9705,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 96,
+      "forecast_wu_temp_c": 36,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
