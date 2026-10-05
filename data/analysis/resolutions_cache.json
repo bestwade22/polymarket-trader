@@ -2208,6 +2208,12 @@
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "33386640495285098150518134056621092112165503082681596130334733259877367863665"
     },
+    "highest-temperature-in-austin-on-october-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on October 4?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "75513847128631015319282065448267643688923707061644430197475570296055859948701"
+    },
     "highest-temperature-in-austin-on-september-1-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on September 1?",
@@ -4296,6 +4302,12 @@
       "winning_temp": "68-69\u00b0F",
       "winning_token_id": "62309632472238540214793988620436234860026617904276011313367229366661477042047"
     },
+    "highest-temperature-in-chicago-on-october-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on October 4?",
+      "winning_temp": "72-73\u00b0F",
+      "winning_token_id": "35870876865101376981978446350800275305438630948721521471980333384092973312430"
+    },
     "highest-temperature-in-chicago-on-september-1-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on September 1?",
@@ -5135,6 +5147,12 @@
       "title": "Highest temperature in Dallas on October 3?",
       "winning_temp": "74-75\u00b0F",
       "winning_token_id": "49094041176906665333553511320357116038974047431629739962769058839910032693022"
+    },
+    "highest-temperature-in-dallas-on-october-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on October 4?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "58956163410765066238160069799077961329606756316635177497913238540764774489852"
     },
     "highest-temperature-in-dallas-on-september-1-2026": {
       "closed": true,
@@ -7655,6 +7673,12 @@
       "title": "Highest temperature in Houston on October 3?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "111040279662919954212808274491571670147712280038760819591867201819629006720140"
+    },
+    "highest-temperature-in-houston-on-october-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on October 4?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "2841229564246162856461898033988369841950854950657907803439489307607347364845"
     },
     "highest-temperature-in-houston-on-september-1-2026": {
       "closed": true,
@@ -15809,6 +15833,12 @@
       "title": "Highest temperature in NYC on October 3?",
       "winning_temp": "70-71\u00b0F",
       "winning_token_id": "85738109932467352255351516922104001393842720067773874691657337383049368574644"
+    },
+    "highest-temperature-in-nyc-on-october-4-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on October 4?",
+      "winning_temp": "62-63\u00b0F",
+      "winning_token_id": "61362919233481263980841466279065304503391388729081751972980891124718461303051"
     },
     "highest-temperature-in-nyc-on-september-1-2026": {
       "closed": false,
