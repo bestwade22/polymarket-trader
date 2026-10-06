@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-10-06T11:16:13.338852+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1128826",
+      "city": "Tel Aviv",
+      "market_id": "5266659",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-6-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.7355,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1128852",
+      "city": "Helsinki",
+      "market_id": "5266869",
+      "group_item_title": "15\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-october-6-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 60,
+      "forecast_wu_temp_c": 16,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1128854",
+      "city": "Jeddah",
+      "market_id": "5266893",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-6-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.997,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 94,
+      "forecast_wu_temp_c": 34,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1128822",
+      "city": "Ankara",
+      "market_id": "5266619",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-6-2026",
+      "reason": "spread_max",
+      "spread": 0.22,
+      "spread_max": 0.08,
+      "selection_price": 0.58,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1128848",
+      "city": "Moscow",
+      "market_id": "5266826",
+      "group_item_title": "13\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-6-2026",
+      "reason": "spread_max",
+      "spread": 0.08,
+      "spread_max": 0.08,
+      "selection_price": 0.57
+    },
+    {
+      "event_id": "1128849",
+      "city": "Istanbul",
+      "market_id": "5266834",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-6-2026",
+      "reason": "spread_max",
+      "spread": 0.2,
+      "spread_max": 0.08,
+      "selection_price": 0.64
+    }
+  ]
+}
