@@ -15942,6 +15942,12 @@
       "winning_temp": "62-63\u00b0F",
       "winning_token_id": "61362919233481263980841466279065304503391388729081751972980891124718461303051"
     },
+    "highest-temperature-in-nyc-on-october-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on October 5?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "62435494983881639224776583238728728280307594240811759222786467064969512599096"
+    },
     "highest-temperature-in-nyc-on-september-1-2026": {
       "closed": false,
       "title": "Highest temperature in NYC on September 1?",
@@ -16529,6 +16535,12 @@
       "title": "Highest temperature in Panama City on October 4?",
       "winning_temp": "32\u00b0C or higher",
       "winning_token_id": "31273259954945098837540748338338781469850118889071089366468808230130128657829"
+    },
+    "highest-temperature-in-panama-city-on-october-5-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on October 5?",
+      "winning_temp": "32\u00b0C",
+      "winning_token_id": "64817180119682201407945329555804042118432036300552481158737978814693512765693"
     },
     "highest-temperature-in-panama-city-on-september-10-2026": {
       "closed": true,
