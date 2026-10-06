@@ -16486,5 +16486,37 @@
     "floor_price": 0.94,
     "current_mid": 0.535,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x19936a0ab96debea5252ff5bd7554e359585cc2f7b7f77fbf7e472f8f3a1ed82",
+    "token_id": "24387415937787739774832124534386717372681898506614282399309447419071936431145",
+    "order_id": "0x5479b0a923c5444af74b4a8989abd42e93c68488b9656d2f012a27beca25c8f8",
+    "sold_at": "2026-10-06T20:00:18.651848+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-atlanta-on-october-6-2026",
+    "price": 0.96,
+    "size": 14.9939,
+    "avg_buy_price": 0.54,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.495,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x14e63f03d030e4251949e2928209cfceb865dda62d501c7b7f9832ec86586fc9",
+    "token_id": "96421550689862612757720438064040054602068951736211856588109473145150289134886",
+    "order_id": "0x2fcc2c7ee82b62ccf7feba9f10b8db29fa1a05fb3945d6133eef688a37b874e4",
+    "sold_at": "2026-10-06T20:00:19.705590+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chicago-on-october-6-2026",
+    "price": 0.94,
+    "size": 14.9927,
+    "avg_buy_price": 0.53,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.455,
+    "reason": "tier1"
   }
 ]
