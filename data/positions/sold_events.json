@@ -16582,5 +16582,21 @@
     "floor_price": 0.94,
     "current_mid": 0.675,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xb2a63e7d5025e5b32ccaf55d7e1d27e843fc6b21c18230ed0973365dfacde2d0",
+    "token_id": "114810911928663995600149578298208039503067827966508019729345036848396438256830",
+    "order_id": "0xbb391aa58922f95cb107a4e4e164d3a16f95bf1c4b1751824770df2b2260390f",
+    "sold_at": "2026-10-08T08:00:20.640933+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-singapore-on-october-8-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.63,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.275,
+    "reason": "tier2"
   }
 ]
