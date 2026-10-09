@@ -1,0 +1,86 @@
+{
+  "run_at": "2026-10-09T11:16:15.154903+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1146588",
+      "city": "Tel Aviv",
+      "market_id": "5397746",
+      "group_item_title": "29\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-9-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9925,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1146610",
+      "city": "Moscow",
+      "market_id": "5397911",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-9-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.79,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1146611",
+      "city": "Istanbul",
+      "market_id": "5397922",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-9-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1146614",
+      "city": "Helsinki",
+      "market_id": "5397956",
+      "group_item_title": "13\u00b0C",
+      "event_slug": "highest-temperature-in-helsinki-on-october-9-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.993,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 57,
+      "forecast_temp_c": 14,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 52,
+      "forecast_wu_temp_c": 11,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1146616",
+      "city": "Jeddah",
+      "market_id": "5397978",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-9-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9555,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1146584",
+      "city": "Ankara",
+      "market_id": "5397706",
+      "group_item_title": "23\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-9-2026",
+      "reason": "spread_max",
+      "spread": 0.18,
+      "spread_max": 0.08,
+      "selection_price": 0.69,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 73,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
