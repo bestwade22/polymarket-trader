@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-10-09T01:15:49.195400+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "1146585",
+      "city": "Wellington",
+      "market_id": "5397716",
+      "groupItemTitle": "18\u00b0C",
+      "yes_price": 0.65,
+      "yes_token_id": "78214010290261532882575751965922035546737308488830964358041027944211272310577",
+      "buy_price": 0.68,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 69,
+      "forecast_wu_temp_c": 21,
+      "on_edge": true,
+      "order_price": 0.65,
+      "selection_price": 0.65,
+      "gamma_yes_price": 0.665,
+      "best_bid": 0.62,
+      "best_ask": 0.68,
+      "spread": 0.06,
+      "clob_buy_price": 0.68,
+      "last_trade_price": 0.63,
+      "midpoint": 0.65,
+      "outcomePrices": [
+        0.665,
+        0.335
+      ],
+      "competitive": 0.9734965562559322,
+      "event_slug": "highest-temperature-in-wellington-on-october-9-2026",
+      "open_interest": 27641.465955,
+      "runner_up_yes": 0.265,
+      "runner_up_temp": "19\u00b0C",
+      "yes_gap": 0.4,
+      "top_yes": 0.665,
+      "order_status": "live",
+      "order_id": "0x28bbc7212682f6fdccd3e7d34f515693b5aed1888d602f4cf085d0ced31e9437",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-10-09T01:40:48+00:00"
+    }
+  ]
+}
