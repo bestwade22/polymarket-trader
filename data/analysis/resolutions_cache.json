@@ -1674,6 +1674,12 @@
       "winning_temp": "78-79\u00b0F",
       "winning_token_id": "40899725269654963286007769178864540237459249059663510926226580083260837818685"
     },
+    "highest-temperature-in-atlanta-on-october-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on October 8?",
+      "winning_temp": "84-85\u00b0F",
+      "winning_token_id": "5477471522090667027302407352833770917611486661044960517975504889808515639363"
+    },
     "highest-temperature-in-atlanta-on-september-1-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on September 1?",
@@ -13908,6 +13914,12 @@
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "10381434821752036558097825185024533635360640195207659343582829287731245481360"
     },
+    "highest-temperature-in-miami-on-october-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on October 8?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "77008180526165734912052916320336251405207906614089404599019266573837184582442"
+    },
     "highest-temperature-in-miami-on-september-1-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on September 1?",
@@ -16373,6 +16385,12 @@
       "title": "Highest temperature in NYC on October 7?",
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "13210761228230480550617440238403655579563482226965331780279152830986485111455"
+    },
+    "highest-temperature-in-nyc-on-october-8-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on October 8?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "12740235964268331617912830039161661674562516243777393211084792208404122199171"
     },
     "highest-temperature-in-nyc-on-september-1-2026": {
       "closed": false,
