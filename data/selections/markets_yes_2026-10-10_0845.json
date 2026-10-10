@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-10-10T08:45:46.078224+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1152060",
+      "city": "Lucknow",
+      "market_id": "5423692",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-lucknow-on-october-10-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 87,
+      "forecast_wu_temp_c": 31,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
