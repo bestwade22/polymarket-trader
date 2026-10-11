@@ -16982,5 +16982,21 @@
     "floor_price": 0.96,
     "current_mid": 0.54,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x0f72e69f8889cfa12d25fbb574bd1000032235cc9787147dce3f4e9827b0aa4e",
+    "token_id": "97817080126236460968264818199881141391857528494293712222674379411708018023032",
+    "order_id": "0xf02652f1d547e3741c80b5657625d390665ed426f79083a239bc59f913f1f654",
+    "sold_at": "2026-10-11T15:00:19.408458+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-madrid-on-october-11-2026",
+    "price": 0.98,
+    "size": 20.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.18,
+    "reason": "tier3"
   }
 ]
