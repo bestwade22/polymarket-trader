@@ -1,17 +1,17 @@
 {
   "date": "2026-10-11",
-  "refreshed_at": "2026-10-11T17:02:49.816256+00:00",
+  "refreshed_at": "2026-10-11T18:02:45.319860+00:00",
   "bottom_n": 7,
   "min_count": 3,
   "min_count_floor": 3,
   "rank_pool": "surviving",
-  "rank_pool_n": 358,
-  "surviving_n": 358,
+  "rank_pool_n": 301,
+  "surviving_n": 301,
   "all_n": 935,
   "yes_price_min": 0.45,
   "yes_price_max": 0.7,
   "spread_max": 0.08,
-  "yes_gap_min": 0.05,
+  "yes_gap_min": 0.1,
   "buy_band_high_min": 0.6,
   "buy_band_high_max": 0.7,
   "buy_band_high_yes_gap_min": 0.25,
@@ -20,42 +20,42 @@
   "buy_band_low_min_local_hour": 14,
   "buy_band_low_min_local_minute": 45,
   "timezones": [
-    "South Africa (UTC+2)",
     "Argentina (UTC-3)",
+    "US Mountain (UTC-7/-6)",
     "China (UTC+8)",
     "UK (UTC+0/+1)",
-    "Poland (UTC+1/+2)",
     "Canada East (UTC-5/-4)",
-    "US Mountain (UTC-7/-6)"
+    "Eastern EU (UTC+2/+3)",
+    "Singapore (UTC+8)"
   ],
   "detail": {
-    "South Africa (UTC+2)": {
-      "win_plus_sold_win_pct": 0.0,
-      "win_summary_denom": 4
-    },
     "Argentina (UTC-3)": {
       "win_plus_sold_win_pct": 25.0,
       "win_summary_denom": 4
     },
-    "China (UTC+8)": {
+    "US Mountain (UTC-7/-6)": {
       "win_plus_sold_win_pct": 25.0,
-      "win_summary_denom": 20
+      "win_summary_denom": 4
+    },
+    "China (UTC+8)": {
+      "win_plus_sold_win_pct": 28.6,
+      "win_summary_denom": 14
     },
     "UK (UTC+0/+1)": {
-      "win_plus_sold_win_pct": 37.5,
-      "win_summary_denom": 16
-    },
-    "Poland (UTC+1/+2)": {
-      "win_plus_sold_win_pct": 44.4,
-      "win_summary_denom": 9
-    },
-    "Canada East (UTC-5/-4)": {
-      "win_plus_sold_win_pct": 46.2,
+      "win_plus_sold_win_pct": 38.5,
       "win_summary_denom": 13
     },
-    "US Mountain (UTC-7/-6)": {
+    "Canada East (UTC-5/-4)": {
+      "win_plus_sold_win_pct": 40.0,
+      "win_summary_denom": 10
+    },
+    "Eastern EU (UTC+2/+3)": {
+      "win_plus_sold_win_pct": 42.9,
+      "win_summary_denom": 7
+    },
+    "Singapore (UTC+8)": {
       "win_plus_sold_win_pct": 50.0,
-      "win_summary_denom": 6
+      "win_summary_denom": 4
     }
   }
 }
