@@ -145,6 +145,16 @@ function buyPriceBand(price) {
   return `${lo.toFixed(2)}–${hi.toFixed(2)}`;
 }
 
+/** Shares bought in bands of 5 (5–10, 10–15, …). */
+function sharesBand(shares) {
+  const s = Number(shares);
+  if (!Number.isFinite(s)) return "unknown";
+  if (s < 5) return "<5";
+  if (s >= 30) return "≥30";
+  const lo = Math.floor(s / 5) * 5;
+  return `${lo}–${lo + 5}`;
+}
+
 function recordPnl(r) {
   return U.recordPnl(r);
 }
@@ -546,6 +556,7 @@ function getFilters() {
     vs: document.getElementById("filter-vs").value,
     soldOutcome: document.getElementById("filter-sold-outcome").value,
     price: document.getElementById("filter-price").value,
+    shares: document.getElementById("filter-shares")?.value || "",
     dateFrom: document.getElementById("filter-date-from").value,
     dateTo: document.getElementById("filter-date-to").value,
   };
@@ -567,6 +578,7 @@ function applyFilters(records) {
       return false;
     }
     if (f.price && buyPriceBand(r.buy_price) !== f.price) return false;
+    if (f.shares && sharesBand(r.shares) !== f.shares) return false;
     if (f.dateFrom && r.date < f.dateFrom) return false;
     if (f.dateTo && r.date > f.dateTo) return false;
     return true;
@@ -1069,6 +1081,7 @@ function computeInsights(records, { skipPoolRecords = null } = {}) {
     city_forecast_bias: cityBias,
     forecast_bias_since: FORECAST_BIAS_SINCE,
     summary_by_buy_price_band: groupInsightMetrics(records, (r) => buyPriceBand(r.buy_price)),
+    summary_by_shares_band: groupInsightMetrics(records, (r) => sharesBand(r.shares)),
     summary_by_local_buy_time_band: groupInsightMetrics(records, (r) =>
       localBuyTimeBand(r.bought_at_local || fmtLocal(r.bought_at, r.city))
     ),
@@ -1486,6 +1499,15 @@ function renderInsights(data) {
     ],
     ["By local buy time", data.summary_by_local_buy_time_band, { limit: null }],
     ["By buy price band", data.summary_by_buy_price_band, { limit: null }],
+    [
+      "By shares bought",
+      data.summary_by_shares_band,
+      {
+        limit: null,
+        defaultSort: { key: "group", asc: true },
+        description: "Shares bought in bands of 5 (&lt;5, 5–10, …, ≥30)",
+      },
+    ],
     [
       "By spread band",
       data.summary_by_spread_band,

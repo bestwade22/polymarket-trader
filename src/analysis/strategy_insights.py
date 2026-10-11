@@ -38,6 +38,20 @@ def _buy_price_band(price: float) -> str:
     return f"{lo:.2f}–{hi:.2f}"
 
 
+def _shares_band(shares: Optional[float]) -> str:
+    """Shares bought in bands of 5 (<5, 5–10, …, ≥30)."""
+    try:
+        s = float(shares)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return "unknown"
+    if s < 5:
+        return "<5"
+    if s >= 30:
+        return "≥30"
+    lo = int(s // 5) * 5
+    return f"{lo}–{lo + 5}"
+
+
 def _time_band_from_minutes(total: int, *, start: int, end: int) -> str:
     if total < start:
         return f"before {start // 60:02d}:{start % 60:02d}"
@@ -536,6 +550,9 @@ def compute_insights(records: list[TradeRecord]) -> dict[str, Any]:
         "city_forecast_bias": city_bias,
         "forecast_bias_since": FORECAST_BIAS_SINCE.isoformat(),
         "summary_by_buy_price_band": _group_metrics(records, lambda rec: _buy_price_band(rec.buy_price)),
+        "summary_by_shares_band": _group_metrics(
+            records, lambda rec: _shares_band(rec.shares)
+        ),
         "summary_by_local_buy_time_band": _group_metrics(
             records, lambda rec: _local_time_band(rec.bought_at_local)
         ),

@@ -38,6 +38,16 @@ SELL_WIN_IDLE_SKIP_REASONS = frozenset(
     }
 )
 
+# Skips where wallet already holds / ordered this city — show "bought" marker.
+ALREADY_BOUGHT_SKIP_REASONS = frozenset(
+    {
+        "has_full_position",
+        "has_full_position_other_market",
+        "partial_on_other_market",
+        "open_order",
+    }
+)
+
 
 def telegram_configured() -> bool:
     if not settings.telegram_notify_enabled:
@@ -224,6 +234,48 @@ def _top_yes_price_from_event(event: Optional[dict]) -> Optional[float]:
     return best
 
 
+def _top_temp_from_event(event: Optional[dict]) -> str:
+    """Highest-Yes market temp label for an event (best-effort)."""
+    if not event:
+        return ""
+    markets = event.get("markets") or []
+    if not markets:
+        return ""
+    try:
+        from src.utils.market_parser import get_selection_price, get_gamma_yes_price
+    except ImportError:
+        return ""
+    best_price: Optional[float] = None
+    best_title = ""
+    for market in markets:
+        price = get_selection_price(market)
+        if price is None:
+            price = get_gamma_yes_price(market)
+        if price is None:
+            continue
+        title = str(market.get("groupItemTitle") or market.get("group_item_title") or "")
+        if best_price is None or float(price) > best_price:
+            best_price = float(price)
+            best_title = title
+    return best_title
+
+
+def _resolve_skip_bought_temp(
+    row: dict[str, Any],
+    *,
+    events_by_id: Optional[dict[str, dict]] = None,
+) -> str:
+    for key in ("group_item_title", "bought_temp"):
+        val = row.get(key)
+        if val:
+            return str(val)
+    held = row.get("held_group_item_title")
+    if held:
+        return str(held)
+    eid = str(row.get("event_id") or "")
+    return _top_temp_from_event((events_by_id or {}).get(eid))
+
+
 def _resolve_skip_local_time(
     row: dict[str, Any],
     *,
@@ -261,7 +313,25 @@ def _format_buy_skip(
     events_by_id = events_by_id or {}
     city = row.get("city") or _city_from_slug(row.get("event_slug"))
     reason = row.get("reason") or "unknown"
-    parts = [f"⏭ {_bold(city)} — {_code(reason)}"]
+    temp = _resolve_skip_bought_temp(row, events_by_id=events_by_id)
+    label = f"{city} {temp}".strip() if temp else str(city)
+    parts = [f"⏭ {_bold(label)} — {_code(reason)}"]
+    already = (
+        str(reason) in ALREADY_BOUGHT_SKIP_REASONS
+        or bool(row.get("has_position"))
+        or row.get("held_shares") is not None
+    )
+    if already:
+        parts.append(_bold("bought"))
+        if row.get("held_shares") is not None:
+            try:
+                held_s = f"{float(row['held_shares']):g}"
+            except (TypeError, ValueError):
+                held_s = str(row["held_shares"])
+            parts.append(f"held {_code(held_s)}")
+        held_temp = row.get("held_group_item_title")
+        if held_temp and str(held_temp) != temp:
+            parts.append(f"on {_code(held_temp)}")
     if row.get("buy_price") is not None:
         parts.append(f"buy {_code(_fmt_price(row['buy_price']))}")
     yes = _resolve_skip_yes_price(row, events_by_id=events_by_id)

@@ -52,6 +52,7 @@ def test_format_buy_run_message_includes_skips_and_orders():
             {
                 "city": "London",
                 "reason": "buy_band_low_local_time",
+                "group_item_title": "22°C",
                 "buy_price": 0.47,
                 "selection_price": 0.77,
                 "local_time": "14:15",
@@ -59,8 +60,10 @@ def test_format_buy_run_message_includes_skips_and_orders():
             {
                 "event_id": "e-paris",
                 "city": "Paris",
-                "reason": "low_win_summary_timezone",
-                "timezone": "Central EU",
+                "reason": "has_full_position",
+                "group_item_title": "17°C",
+                "held_shares": 15,
+                "held_group_item_title": "17°C",
                 "selection_price": 0.77,
                 "local_time": "14:15",
             },
@@ -86,10 +89,14 @@ def test_format_buy_run_message_includes_skips_and_orders():
     assert "<b>SKIP</b>" in text
     assert "<b>ORDER</b>" in text
     assert "buy_band_low_local_time" in text
+    assert "London 22°C" in text
     assert "buy <code>0.47</code>" in text
     assert "@<code>0.77</code>" in text
     assert "🕒 <code>14:15</code>" in text
-    assert "low_win_summary_timezone" in text
+    assert "has_full_position" in text
+    assert "Paris 17°C" in text
+    assert "<b>bought</b>" in text
+    assert "held <code>15</code>" in text
     assert "Berlin 24°C" in text
     assert "<code>live</code>" in text
     assert "15 @ <code>0.55</code>" in text or "<code>15</code> @ <code>0.55</code>" in text
