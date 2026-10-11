@@ -240,12 +240,12 @@ class Settings:
         os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
     )
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.70"))
-    # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05
+    # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.10
     # + buy-band high yes-gap + buy-band low local-time.
     yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))
     spread_max: float = float(os.getenv("SPREAD_MAX", "0.08"))
     # Skip when top Yes − runner-up Yes is at or below this (0 = disabled).
-    yes_gap_min: float = float(os.getenv("YES_GAP_MIN", "0.05"))
+    yes_gap_min: float = float(os.getenv("YES_GAP_MIN", "0.10"))
     # Buy-price band [high_min, high_max): require stricter yes gap (0 gap disables).
     buy_band_high_min: float = float(os.getenv("BUY_BAND_HIGH_MIN", "0.60"))
     buy_band_high_max: float = float(os.getenv("BUY_BAND_HIGH_MAX", "0.70"))

@@ -56,7 +56,7 @@ jobs:
               YesPriceMax=0.70 \
               YesPriceMin=0.45 \
               SpreadMax=0.08 \
-              YesGapMin=0.05 \
+              YesGapMin=0.10 \
               BuyBandHighMin=0.60 \
               BuyBandHighMax=0.70 \
               BuyBandHighYesGapMin=0.25 \

@@ -27,7 +27,7 @@ Parameters:
     Default: '0.08'
   YesGapMin:
     Type: String
-    Default: '0.05'
+    Default: '0.10'
   BuyBandHighMin:
     Type: String
     Default: '0.60'

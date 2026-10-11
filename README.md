@@ -115,7 +115,7 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.05` plus buy-price band rules: for buy in `[0.60, 0.70)` skip when yes gap ≤ `0.25`; for buy in `[0.45, 0.50]` skip when city local time is before `14:45`. Skip the city when the two leaders disagree.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.10` plus buy-price band rules: for buy in `[0.60, 0.70)` skip when yes gap ≤ `0.25`; for buy in `[0.45, 0.50]` skip when city local time is before `14:45`. Skip the city when the two leaders disagree.
 
 **Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → drop if yes_gap ≤ `YES_GAP_MIN` → drop buy-band high yes-gap / low early-local-time → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/spread/gap/band guards → place order at `ORDER_PRICE_SOURCE`.
 
@@ -141,7 +141,7 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
 | `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack |
 | `SPREAD_MAX` | `0.08` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
-| `YES_GAP_MIN` | `0.05` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables) |
+| `YES_GAP_MIN` | `0.10` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables) |
 | `BUY_BAND_HIGH_MIN` / `BUY_BAND_HIGH_MAX` | `0.60` / `0.70` | Buy-price band `[min, max)` for stricter yes-gap rule |
 | `BUY_BAND_HIGH_YES_GAP_MIN` | `0.25` | In high buy band, skip if yes gap ≤ this (`0` disables band rule) |
 | `BUY_BAND_LOW_MIN` / `BUY_BAND_LOW_MAX` | `0.45` / `0.50` | Buy-price band `[min, max]` for early-local-time skip |
