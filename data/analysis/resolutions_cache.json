@@ -2304,6 +2304,12 @@
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "102110848943820396520089530460825427880939052595272891905087331077662750769515"
     },
+    "highest-temperature-in-austin-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on October 10?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "48883622535383310150951946327937883541974828811773068458669605438537121929092"
+    },
     "highest-temperature-in-austin-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on October 2?",
@@ -5345,6 +5351,12 @@
       "title": "Highest temperature in Dallas on October 1?",
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "106350406802423347459551636264434894378859317385843439122351280975655410738625"
+    },
+    "highest-temperature-in-dallas-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on October 10?",
+      "winning_temp": "88-89\u00b0F",
+      "winning_token_id": "58797951357060017580990976482982443172555707544563205437209191276348253747139"
     },
     "highest-temperature-in-dallas-on-october-2-2026": {
       "closed": true,
@@ -11466,6 +11478,12 @@
       "winning_temp": "76-77\u00b0F",
       "winning_token_id": "78055887827308864921261108686033110140018577673482720668136163292075354735433"
     },
+    "highest-temperature-in-los-angeles-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Los Angeles on October 10?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "112597975079881710287085223433545367707162293538463641916026474772628040921313"
+    },
     "highest-temperature-in-los-angeles-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Los Angeles on October 2?",
@@ -14111,6 +14129,12 @@
       "title": "Highest temperature in Miami on October 1?",
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "67596288650347361141339446980901371677373209596555625471620167382752271179486"
+    },
+    "highest-temperature-in-miami-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on October 10?",
+      "winning_temp": "90-91\u00b0F",
+      "winning_token_id": "44248887349943867910594508354422487893860978018532200473319307539302316804832"
     },
     "highest-temperature-in-miami-on-october-2-2026": {
       "closed": true,
@@ -18708,6 +18732,12 @@
       "winning_temp": "72-73\u00b0F",
       "winning_token_id": "36970261659189531397160049755917078822456595379894731919541702601929765848870"
     },
+    "highest-temperature-in-san-francisco-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in San Francisco on October 10?",
+      "winning_temp": "64-65\u00b0F",
+      "winning_token_id": "69629099342671886270863299806716815223288090381591479160626089609054046404293"
+    },
     "highest-temperature-in-san-francisco-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in San Francisco on October 2?",
@@ -19967,6 +19997,12 @@
       "title": "Highest temperature in Seattle on October 1?",
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "74168725470085971042916162819051572071589105533302572540350582489003023227598"
+    },
+    "highest-temperature-in-seattle-on-october-10-2026": {
+      "closed": true,
+      "title": "Highest temperature in Seattle on October 10?",
+      "winning_temp": "56-57\u00b0F",
+      "winning_token_id": "110403606689060011123888106645235143033313108864559639308242756169821002342654"
     },
     "highest-temperature-in-seattle-on-october-2-2026": {
       "closed": true,
