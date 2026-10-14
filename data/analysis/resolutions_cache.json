@@ -1716,6 +1716,12 @@
       "winning_temp": "82-83\u00b0F",
       "winning_token_id": "87500081918197950184982735830189313051234835510910795752292755540427883919735"
     },
+    "highest-temperature-in-atlanta-on-october-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on October 13?",
+      "winning_temp": "86-87\u00b0F",
+      "winning_token_id": "96865341042788173162975364962708186480731923858955050582055644175469311283273"
+    },
     "highest-temperature-in-atlanta-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on October 2?",
@@ -4578,6 +4584,12 @@
       "winning_temp": "86-87\u00b0F",
       "winning_token_id": "6128325185713627217838418702573023381732357524629400608674907093635184736931"
     },
+    "highest-temperature-in-chicago-on-october-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on October 13?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "40683013820052404121761766912463102336924281970049849034123109844814610272826"
+    },
     "highest-temperature-in-chicago-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on October 2?",
@@ -5471,6 +5483,12 @@
       "title": "Highest temperature in Dallas on October 12?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "51978121654343565318318340164703607318416964115652850230846438791649186652115"
+    },
+    "highest-temperature-in-dallas-on-october-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on October 13?",
+      "winning_temp": "94-95\u00b0F",
+      "winning_token_id": "78387797267783838781699270657736267427479852970584371999730690121906305750250"
     },
     "highest-temperature-in-dallas-on-october-2-2026": {
       "closed": true,
@@ -8141,6 +8159,12 @@
       "title": "Highest temperature in Houston on October 12?",
       "winning_temp": "88-89\u00b0F",
       "winning_token_id": "104441534012734384161391287914389552184989213248670763138959418444554918885280"
+    },
+    "highest-temperature-in-houston-on-october-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on October 13?",
+      "winning_temp": "92-93\u00b0F",
+      "winning_token_id": "74219705608270275441333628034661658726111347053733593553031167396269257899573"
     },
     "highest-temperature-in-houston-on-october-2-2026": {
       "closed": true,
@@ -17693,6 +17717,12 @@
       "title": "Highest temperature in Panama City on October 12?",
       "winning_temp": "30\u00b0C",
       "winning_token_id": "56877367786524998700198496346654196503854449510821283627695962146306354200060"
+    },
+    "highest-temperature-in-panama-city-on-october-13-2026": {
+      "closed": true,
+      "title": "Highest temperature in Panama City on October 13?",
+      "winning_temp": "30\u00b0C",
+      "winning_token_id": "115077771959752036480439540405717864359796839269633473910410492366068336564947"
     },
     "highest-temperature-in-panama-city-on-october-2-2026": {
       "closed": true,
