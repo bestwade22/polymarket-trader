@@ -1,0 +1,40 @@
+{
+  "run_at": "2026-10-14T05:45:52.308138+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1175272",
+      "city": "Tokyo",
+      "market_id": "5595793",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-tokyo-on-october-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9925,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 73,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1175295",
+      "city": "Busan",
+      "market_id": "5595968",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-busan-on-october-14-2026",
+      "reason": "spread_max",
+      "spread": 0.15,
+      "spread_max": 0.08,
+      "selection_price": 0.65,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 72,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
