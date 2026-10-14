@@ -17190,5 +17190,21 @@
     "floor_price": 0.98,
     "current_mid": 0.585,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xb883bd7e8f9ae137a572c69018c33de23bbbf92627f15469473db03c24d2abca",
+    "token_id": "106441322899098956392972451037800471761209156545865112976901174830939767671694",
+    "order_id": "0x5c3c7226e39c9b33c703038d7a631acb0b149fb27e52caef51290d63cfc07826",
+    "sold_at": "2026-10-14T20:00:19.674570+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-october-14-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.915,
+    "reason": "tier2"
   }
 ]
