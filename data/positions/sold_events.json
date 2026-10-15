@@ -17238,5 +17238,21 @@
     "floor_price": 0.96,
     "current_mid": 0.94,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x2f14eddcfe82af9b2629f3a644492c70298b0d101d4732a25e42f2b890754bd8",
+    "token_id": "110028735197076036074219282505928168418914895228418308641026880988524194305452",
+    "order_id": "0xf1264608b91982618fc04f4f905007f4ad02eb00fae48aec2b55594259afe000",
+    "sold_at": "2026-10-15T21:00:19.204046+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-october-15-2026",
+    "price": 0.96,
+    "size": 19.9967,
+    "avg_buy_price": 0.57,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.86,
+    "reason": "tier2"
   }
 ]
