@@ -12804,6 +12804,12 @@
       "winning_temp": "28\u00b0C",
       "winning_token_id": "66292225122644747176121077087809921362894492633991233068510349189134904121576"
     },
+    "highest-temperature-in-madrid-on-october-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Madrid on October 15?",
+      "winning_temp": "26\u00b0C",
+      "winning_token_id": "9762866920692100633409868266106825561729505912891363290917517063507994995519"
+    },
     "highest-temperature-in-madrid-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Madrid on October 2?",
@@ -16643,6 +16649,12 @@
       "title": "Highest temperature in Munich on October 14?",
       "winning_temp": "18\u00b0C",
       "winning_token_id": "110600086679416056553889913134495231408431326853656535474751002508299192633472"
+    },
+    "highest-temperature-in-munich-on-october-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Munich on October 15?",
+      "winning_temp": "18\u00b0C or higher",
+      "winning_token_id": "3815185871782967137797334921100921644549652632566156736811754387241689390932"
     },
     "highest-temperature-in-munich-on-october-2-2026": {
       "closed": true,
@@ -24803,6 +24815,12 @@
       "title": "Highest temperature in Warsaw on October 14?",
       "winning_temp": "13\u00b0C",
       "winning_token_id": "100293674644432855284396781398229792303156523386582209682383376670543182416292"
+    },
+    "highest-temperature-in-warsaw-on-october-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Warsaw on October 15?",
+      "winning_temp": "13\u00b0C",
+      "winning_token_id": "11150614207687803228693760417050974276628375963032681375350760487018908256683"
     },
     "highest-temperature-in-warsaw-on-september-1-2026": {
       "closed": true,
