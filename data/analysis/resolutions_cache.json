@@ -2448,6 +2448,12 @@
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "114100438976440626003790203377429781649572365105448078409337847239042863462929"
     },
+    "highest-temperature-in-austin-on-october-16-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on October 16?",
+      "winning_temp": "74-75\u00b0F",
+      "winning_token_id": "3219454235784347143943595973586962203349171192048378812700815622447716394138"
+    },
     "highest-temperature-in-austin-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on October 2?",
@@ -4709,6 +4715,12 @@
       "title": "Highest temperature in Chicago on October 15?",
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "6133355974401430717028149559435032398745808669336058411441978419129987138954"
+    },
+    "highest-temperature-in-chicago-on-october-16-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on October 16?",
+      "winning_temp": "56-57\u00b0F",
+      "winning_token_id": "74855921916781960209633309719765562336322986209282317711735188648551074052654"
     },
     "highest-temperature-in-chicago-on-october-2-2026": {
       "closed": true,
@@ -14165,6 +14177,12 @@
       "title": "Highest temperature in Mexico City on October 15?",
       "winning_temp": "23\u00b0C",
       "winning_token_id": "18367733955236810676922708851833144168715068938922282781127947295284594151358"
+    },
+    "highest-temperature-in-mexico-city-on-october-16-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on October 16?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "56077527492672016422914276872217760140136891985772564254706378315243313876955"
     },
     "highest-temperature-in-mexico-city-on-october-2-2026": {
       "closed": true,
