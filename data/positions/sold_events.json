@@ -17382,5 +17382,21 @@
     "floor_price": 0.96,
     "current_mid": 0.335,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x8370c872e9748315d80f4226d291a2f4232822b2b276c6d74e92d9ed85620b4e",
+    "token_id": "102217788911486927900658292223052764247595752582427310983976205436773435099816",
+    "order_id": "0xc2f59e7e46af8e60652e3990c9df0f6f742c5e3e7633e1a0f8f726cff4dd88d6",
+    "sold_at": "2026-10-17T22:00:18.836347+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-los-angeles-on-october-17-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.835,
+    "reason": "tier1"
   }
 ]
