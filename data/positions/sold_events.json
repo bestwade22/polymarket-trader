@@ -17414,5 +17414,21 @@
     "floor_price": 0.94,
     "current_mid": 0.725,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xa8835690c5798966920644dde86069deb20f8fcb1c98510fe00a7e9d6e35f0ef",
+    "token_id": "38537558544775275126219363287932196709433675143115886943914361729940932176576",
+    "order_id": "0x5e8357c7b128ce072539c787695ad932fe7789cbbbaa3acfd4e7ae82390bbba3",
+    "sold_at": "2026-10-18T20:00:19.244428+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-atlanta-on-october-18-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.66,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.945,
+    "reason": "tier2"
   }
 ]
