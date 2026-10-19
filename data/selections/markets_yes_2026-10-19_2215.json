@@ -1,0 +1,58 @@
+{
+  "run_at": "2026-10-19T22:15:58.884610+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1204645",
+      "city": "Los Angeles",
+      "market_id": "5803678",
+      "group_item_title": "78-79\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-october-19-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.994,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 78,
+      "forecast_wu_temp_c": 26,
+      "forecast_delta_c": 1.44
+    },
+    {
+      "event_id": "1204646",
+      "city": "San Francisco",
+      "market_id": "5803691",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-october-19-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.966,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 65,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 1.22
+    },
+    {
+      "event_id": "1204644",
+      "city": "Seattle",
+      "market_id": "5803670",
+      "group_item_title": "62-63\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-october-19-2026",
+      "reason": "yes_gap_min",
+      "yes_gap": 0.085,
+      "yes_gap_min": 0.1,
+      "runner_up_yes": 0.46,
+      "runner_up_temp": "60-61\u00b0F",
+      "selection_price": 0.59,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 65,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 1.33
+    }
+  ]
+}
