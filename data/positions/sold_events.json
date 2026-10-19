@@ -17478,5 +17478,53 @@
     "floor_price": 0.98,
     "current_mid": 0.6455,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0xd2ef5a592e4bfcd591bf8207f01937ee29dc1021cb23725aacbb0d20a419d9d0",
+    "token_id": "4915407436747825593492198301709352721289222032935820304237062184141630887485",
+    "order_id": "0xe2081fa942a53f83801f953a48864ce54fd8570c5f1ec73376123bd89e50d08e",
+    "sold_at": "2026-10-19T20:00:20.881917+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-atlanta-on-october-19-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.56,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.915,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x65c5556d15b5410e90cb147c0a234078a11b6fb94cd043ab792974c50073e23c",
+    "token_id": "81728668674976691218176245205274709448812862875164004032617717139678065963511",
+    "order_id": "0x72203e370021e6f37f2c423b5335ac3953c4b78365b86596d6182d709c5c13c2",
+    "sold_at": "2026-10-19T20:00:21.912642+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-october-19-2026",
+    "price": 0.94,
+    "size": 20.0,
+    "avg_buy_price": 0.69,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.65,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0x14b23d1c11d09c0fa32580ade510c650c83cba17a08a25c352459b0d3058125c",
+    "token_id": "33195839421035637257601065267728071046387811437192876765372480759216031241373",
+    "order_id": "0x824266115c4652a303b51ddb4fc8eafeed7dd36966f273bf6fdb9b3cd1cdfb23",
+    "sold_at": "2026-10-19T20:00:22.971027+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chicago-on-october-19-2026",
+    "price": 0.94,
+    "size": 5.3529,
+    "avg_buy_price": 0.66,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.78,
+    "reason": "tier1"
   }
 ]
