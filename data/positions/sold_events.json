@@ -17750,5 +17750,37 @@
     "floor_price": 0.96,
     "current_mid": 0.875,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x328e4859d98542384f1c90d40c90b1dfc512f823671db4163db926111e3fad34",
+    "token_id": "569076496558132736273255898834121712260329844198366315521142130553819739775",
+    "order_id": "0x6464004682be9c8dbdaf697880dd41f190a5420ed81f42948993ccd665939bb1",
+    "sold_at": "2026-10-20T22:00:20.407762+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-dallas-on-october-20-2026",
+    "price": 0.98,
+    "size": 14.9902,
+    "avg_buy_price": 0.62,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.9655,
+    "reason": "tier3"
+  },
+  {
+    "market_id": "0x1353ff49944a3047e0b1124f0555a15f17e8b9158ede3c63ed271bef8631d49f",
+    "token_id": "18071336480706113763392101162650395837113894601467971381164168660106470777684",
+    "order_id": "0xc86740850591fcf9436b68df22adf83df6dc88febeb213fe565b405f64da7a12",
+    "sold_at": "2026-10-20T22:00:21.611467+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-san-francisco-on-october-20-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.39,
+    "reason": "tier1"
   }
 ]
