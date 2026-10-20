@@ -17590,5 +17590,21 @@
     "floor_price": 0.94,
     "current_mid": 0.585,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x36517206366cc1ce15aad6932b179ac3c919a5e05abc6aa6a72a969a69e95e9d",
+    "token_id": "38666128572367398363283719881185590857256372241756691867773173850690451233691",
+    "order_id": "0xec657285cb4a4930c58ade5b3cd02f67afa47e3ef6121659eefbf5b1547b6b72",
+    "sold_at": "2026-10-20T03:00:20.358258+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-wellington-on-october-20-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.53,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.485,
+    "reason": "tier2"
   }
 ]
