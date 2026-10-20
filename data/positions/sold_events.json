@@ -17782,5 +17782,21 @@
     "floor_price": 0.94,
     "current_mid": 0.39,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x1353ff49944a3047e0b1124f0555a15f17e8b9158ede3c63ed271bef8631d49f",
+    "token_id": "18071336480706113763392101162650395837113894601467971381164168660106470777684",
+    "order_id": "0x3ae289ca74daf9d5ad1b8ea569658af71eaf13b4492aa0906f9903abdfc8a7df",
+    "sold_at": "2026-10-20T23:00:19.234844+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-san-francisco-on-october-20-2026",
+    "price": 0.96,
+    "size": 15.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.76,
+    "reason": "tier2"
   }
 ]
