@@ -1818,6 +1818,12 @@
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "38537558544775275126219363287932196709433675143115886943914361729940932176576"
     },
+    "highest-temperature-in-atlanta-on-october-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on October 19?",
+      "winning_temp": "68-69\u00b0F",
+      "winning_token_id": "4915407436747825593492198301709352721289222032935820304237062184141630887485"
+    },
     "highest-temperature-in-atlanta-on-october-2-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on October 2?",
@@ -21473,6 +21479,12 @@
       "title": "Highest temperature in Seattle on October 18?",
       "winning_temp": "58-59\u00b0F",
       "winning_token_id": "7232782858319803015666250056572395190026548534717659833058930379756228487921"
+    },
+    "highest-temperature-in-seattle-on-october-19-2026": {
+      "closed": false,
+      "title": "Highest temperature in Seattle on October 19?",
+      "winning_temp": "62-63\u00b0F",
+      "winning_token_id": "60627676224976853568285259720162255009630831398159880178552068015969380884087"
     },
     "highest-temperature-in-seattle-on-october-2-2026": {
       "closed": true,
