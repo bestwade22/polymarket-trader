@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-10-21T11:16:22.681760+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1215952",
+      "city": "Helsinki",
+      "timezone": "Eastern EU (UTC+2/+3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 54,
+      "forecast_temp_c": 12,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 54,
+      "forecast_wu_temp_c": 12
+    },
+    {
+      "event_id": "1215926",
+      "city": "Tel Aviv",
+      "market_id": "5914097",
+      "group_item_title": "27\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-21-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.91,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1215954",
+      "city": "Jeddah",
+      "market_id": "5914328",
+      "group_item_title": "36\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-21-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9825,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 99,
+      "forecast_temp_c": 37,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1215922",
+      "city": "Ankara",
+      "market_id": "5914057",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-21-2026",
+      "reason": "spread_max",
+      "spread": 0.12,
+      "spread_max": 0.08,
+      "selection_price": 0.64,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 64,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1215948",
+      "city": "Moscow",
+      "market_id": "5914261",
+      "group_item_title": "11\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-21-2026",
+      "reason": "spread_max",
+      "spread": 0.16,
+      "spread_max": 0.08,
+      "selection_price": 0.56
+    },
+    {
+      "event_id": "1215949",
+      "city": "Istanbul",
+      "market_id": "5914273",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-21-2026",
+      "reason": "spread_max",
+      "spread": 0.08,
+      "spread_max": 0.08,
+      "selection_price": 0.51
+    }
+  ]
+}
