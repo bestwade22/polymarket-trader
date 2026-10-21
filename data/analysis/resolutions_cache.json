@@ -5802,6 +5802,12 @@
       "winning_temp": "80-81\u00b0F",
       "winning_token_id": "76109131804646497582355836764299625289383651232187795871251043536907903787864"
     },
+    "highest-temperature-in-dallas-on-october-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on October 20?",
+      "winning_temp": "78-79\u00b0F",
+      "winning_token_id": "569076496558132736273255898834121712260329844198366315521142130553819739775"
+    },
     "highest-temperature-in-dallas-on-october-3-2026": {
       "closed": true,
       "title": "Highest temperature in Dallas on October 3?",
@@ -8555,6 +8561,12 @@
       "title": "Highest temperature in Houston on October 2?",
       "winning_temp": "90-91\u00b0F",
       "winning_token_id": "73253784668922048358640798925299971351710403060649015272300574171613594564736"
+    },
+    "highest-temperature-in-houston-on-october-20-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on October 20?",
+      "winning_temp": "82-83\u00b0F",
+      "winning_token_id": "63799743470877028407374491871622264100147180058217227037455821998571515419279"
     },
     "highest-temperature-in-houston-on-october-3-2026": {
       "closed": true,
@@ -14555,6 +14567,12 @@
       "title": "Highest temperature in Mexico City on October 18?",
       "winning_temp": "23\u00b0C or higher",
       "winning_token_id": "17037302650732939457134189741524961601592259852186835528350579916580942850010"
+    },
+    "highest-temperature-in-mexico-city-on-october-19-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on October 19?",
+      "winning_temp": "23\u00b0C",
+      "winning_token_id": "74844200064175575778928968717434956358894523993831560550492503118632031807028"
     },
     "highest-temperature-in-mexico-city-on-october-2-2026": {
       "closed": true,
@@ -20915,6 +20933,12 @@
       "title": "Highest temperature in Sao Paulo on October 18?",
       "winning_temp": "24\u00b0C",
       "winning_token_id": "12605633955476932718767520159213687746629944482298969678134852498863779155927"
+    },
+    "highest-temperature-in-sao-paulo-on-october-19-2026": {
+      "closed": false,
+      "title": "Highest temperature in Sao Paulo on October 19?",
+      "winning_temp": "22\u00b0C",
+      "winning_token_id": "50906317234498436953323822459265356811105108263335707200417599333099311879743"
     },
     "highest-temperature-in-sao-paulo-on-october-2-2026": {
       "closed": true,
