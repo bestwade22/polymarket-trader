@@ -1,0 +1,82 @@
+{
+  "run_at": "2026-10-22T11:46:24.677242+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1221836",
+      "city": "Helsinki",
+      "timezone": "Eastern EU (UTC+2/+3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 55,
+      "forecast_wu_temp_c": 13
+    },
+    {
+      "event_id": "1221802",
+      "city": "Tel Aviv",
+      "market_id": "5958387",
+      "group_item_title": "30\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.785,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1221832",
+      "city": "Moscow",
+      "market_id": "5958642",
+      "group_item_title": "10\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.855,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1221838",
+      "city": "Jeddah",
+      "market_id": "5958708",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.994,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 93,
+      "forecast_wu_temp_c": 34,
+      "forecast_delta_c": -1.0
+    },
+    {
+      "event_id": "1221798",
+      "city": "Ankara",
+      "market_id": "5958346",
+      "group_item_title": "20\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-22-2026",
+      "reason": "spread_max",
+      "spread": 0.21,
+      "spread_max": 0.08,
+      "selection_price": 0.645,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": -1.0
+    },
+    {
+      "event_id": "1221833",
+      "city": "Istanbul",
+      "market_id": "5958647",
+      "group_item_title": "15\u00b0C or below",
+      "event_slug": "highest-temperature-in-istanbul-on-october-22-2026",
+      "reason": "spread_max",
+      "spread": 0.128,
+      "spread_max": 0.08,
+      "selection_price": 0.667
+    }
+  ]
+}
