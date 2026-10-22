@@ -1,0 +1,93 @@
+{
+  "run_at": "2026-10-22T18:46:20.377449+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1223667",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 72,
+      "forecast_wu_temp_c": 22
+    },
+    {
+      "event_id": "1223668",
+      "city": "Toronto",
+      "timezone": "Canada East (UTC-5/-4)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20
+    },
+    {
+      "event_id": "1222338",
+      "city": "NYC",
+      "market_id": "5963401",
+      "group_item_title": "66-67\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 0.11
+    },
+    {
+      "event_id": "1222340",
+      "city": "Atlanta",
+      "market_id": "5963423",
+      "group_item_title": "76-77\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.755,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 77,
+      "forecast_temp_c": 25,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 0.56
+    },
+    {
+      "event_id": "1222595",
+      "city": "Miami",
+      "market_id": "5965225",
+      "group_item_title": "80-81\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.925,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 79,
+      "forecast_wu_temp_c": 26,
+      "forecast_delta_c": -0.67
+    },
+    {
+      "event_id": "1223666",
+      "city": "Sao Paulo",
+      "market_id": "5969163",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-october-22-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9835,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": -3.0
+    }
+  ]
+}
