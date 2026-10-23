@@ -1,0 +1,80 @@
+{
+  "run_at": "2026-10-23T11:46:23.012251+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1227863",
+      "city": "Helsinki",
+      "timezone": "Eastern EU (UTC+2/+3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 54,
+      "forecast_temp_c": 12,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 54,
+      "forecast_wu_temp_c": 12
+    },
+    {
+      "event_id": "1227833",
+      "city": "Ankara",
+      "market_id": "6003553",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.89,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 72,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1227837",
+      "city": "Tel Aviv",
+      "market_id": "6003594",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9925,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1227859",
+      "city": "Moscow",
+      "market_id": "6003757",
+      "group_item_title": "12\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1227860",
+      "city": "Istanbul",
+      "market_id": "6003771",
+      "group_item_title": "23\u00b0C or higher",
+      "event_slug": "highest-temperature-in-istanbul-on-october-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9925,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1227865",
+      "city": "Jeddah",
+      "market_id": "6003822",
+      "group_item_title": "34\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.835,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
