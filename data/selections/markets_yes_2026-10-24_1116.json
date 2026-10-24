@@ -1,0 +1,81 @@
+{
+  "run_at": "2026-10-24T11:16:22.725052+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1233535",
+      "city": "Helsinki",
+      "timezone": "Eastern EU (UTC+2/+3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 52,
+      "forecast_temp_c": 11,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 52,
+      "forecast_wu_temp_c": 11
+    },
+    {
+      "event_id": "1233509",
+      "city": "Tel Aviv",
+      "market_id": "6035939",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9945,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1233531",
+      "city": "Moscow",
+      "market_id": "6036109",
+      "group_item_title": "13\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.815,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1233532",
+      "city": "Istanbul",
+      "market_id": "6036116",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.969,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1233537",
+      "city": "Jeddah",
+      "market_id": "6036175",
+      "group_item_title": "37\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.996,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 95,
+      "forecast_temp_c": 35,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 95,
+      "forecast_wu_temp_c": 35,
+      "forecast_delta_c": -2.0
+    },
+    {
+      "event_id": "1233505",
+      "city": "Ankara",
+      "market_id": "6035898",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-october-24-2026",
+      "reason": "spread_max",
+      "spread": 0.09,
+      "spread_max": 0.08,
+      "selection_price": 0.515,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20,
+      "forecast_delta_c": -1.0
+    }
+  ]
+}
