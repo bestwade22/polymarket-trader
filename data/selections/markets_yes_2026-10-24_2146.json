@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-10-24T21:46:13.958329+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1234086",
+      "city": "Denver",
+      "timezone": "US Mountain (UTC-7/-6)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15
+    },
+    {
+      "event_id": "1234655",
+      "city": "Los Angeles",
+      "market_id": "6038975",
+      "group_item_title": "74-75\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.76,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 0.67
+    },
+    {
+      "event_id": "1234656",
+      "city": "San Francisco",
+      "market_id": "6038988",
+      "group_item_title": "72-73\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 1.78
+    },
+    {
+      "event_id": "1235132",
+      "city": "Mexico City",
+      "market_id": "6041481",
+      "group_item_title": "22\u00b0C",
+      "event_slug": "highest-temperature-in-mexico-city-on-october-24-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9835,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": -3.0
+    },
+    {
+      "event_id": "1234654",
+      "city": "Seattle",
+      "market_id": "6038962",
+      "group_item_title": "54-55\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-october-24-2026",
+      "reason": "spread_max",
+      "spread": 0.13,
+      "spread_max": 0.08,
+      "selection_price": 0.665,
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 55,
+      "forecast_wu_temp_c": 13,
+      "forecast_delta_c": 0.78
+    }
+  ]
+}
