@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-10-27T21:16:17.400619+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1251361",
+      "city": "Denver",
+      "timezone": "US Mountain (UTC-7/-6)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 64,
+      "forecast_wu_temp_c": 18
+    },
+    {
+      "event_id": "1252010",
+      "city": "Seattle",
+      "market_id": "6184940",
+      "group_item_title": "54-55\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-october-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.85,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 55,
+      "forecast_wu_temp_c": 13,
+      "forecast_delta_c": 0.78
+    },
+    {
+      "event_id": "1252011",
+      "city": "Los Angeles",
+      "market_id": "6184953",
+      "group_item_title": "74-75\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-october-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9745,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 0.67
+    },
+    {
+      "event_id": "1252012",
+      "city": "San Francisco",
+      "market_id": "6184966",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-october-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.82,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 1.22
+    },
+    {
+      "event_id": "1252474",
+      "city": "Mexico City",
+      "market_id": "6192062",
+      "group_item_title": "24\u00b0C or higher",
+      "event_slug": "highest-temperature-in-mexico-city-on-october-27-2026",
+      "reason": "spread_max",
+      "spread": 0.11,
+      "spread_max": 0.08,
+      "selection_price": 0.565,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
