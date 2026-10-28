@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-10-28T15:45:40.657067+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1257732",
+      "city": "London",
+      "timezone": "UK (UTC+0/+1)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 61,
+      "forecast_wu_temp_c": 16
+    }
+  ]
+}
