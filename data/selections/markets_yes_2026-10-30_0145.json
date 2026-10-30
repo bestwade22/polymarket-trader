@@ -1,0 +1,24 @@
+{
+  "run_at": "2026-10-30T01:45:51.862774+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1270159",
+      "city": "Wellington",
+      "market_id": "6332445",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-wellington-on-october-30-2026",
+      "reason": "spread_max",
+      "spread": 0.19,
+      "spread_max": 0.08,
+      "selection_price": 0.535,
+      "forecast_temp_f": 63,
+      "forecast_temp_c": 17,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 63,
+      "forecast_wu_temp_c": 17,
+      "forecast_delta_c": -1.0
+    }
+  ]
+}
