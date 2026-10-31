@@ -337,6 +337,24 @@ def _max_activity_ts(activity: list[dict[str, Any]]) -> Optional[int]:
     return max(int(row.get("timestamp") or 0) for row in activity)
 
 
+def _orphan_token_ids(activity: list[dict[str, Any]]) -> set[str]:
+    """Tokens whose activity slice has a redeem/sell but no BUY fill.
+
+    This happens when a position was opened before the incremental sync window
+    (e.g. bought on Oct 20, redeemed on Oct 22 while the window starts at the
+    last activity timestamp). The BUY row is not in the fetched slice, so the
+    group carries no share count / buy price and cannot be reported directly.
+    The sync runner rebuilds those tokens from full wallet history instead.
+    """
+    orphans: set[str] = set()
+    for group in group_activity_rows(activity):
+        if group.has_buy_fills:
+            continue
+        if group.sell_fills or group.redeems:
+            orphans.add(group.token_id)
+    return orphans
+
+
 def _rebuild_records_for_tokens(
     wallet: str,
     token_ids: set[str],
@@ -370,13 +388,22 @@ def _rebuild_records_for_tokens(
     for group in groups:
         if group.token_id not in token_ids:
             continue
-        rebuilt[group.token_id] = build_trade_record(
-            group,
-            closed_positions=closed_positions,
-            open_tokens=open_tokens,
-            clob_client=clob,
-            fetch_price_drop=fetch_price_drop,
-        )
+        try:
+            rebuilt[group.token_id] = build_trade_record(
+                group,
+                closed_positions=closed_positions,
+                open_tokens=open_tokens,
+                clob_client=clob,
+                fetch_price_drop=fetch_price_drop,
+            )
+        except Exception as exc:
+            # One malformed token must not abort the whole hourly sync.
+            logger.warning(
+                "Skipped rebuild for token %s (%s): %s",
+                group.token_id[:12],
+                group.event_slug,
+                exc,
+            )
     return rebuilt
 
 
@@ -476,7 +503,18 @@ def run_sync_trade_history(
                     fetch_price_drop=fetch_price_drop,
                 )
 
-    if init_days is None and fresh_records and existing:
+    # Tokens whose activity slice has a redeem/sell but no BUY fill (position
+    # opened before the incremental window). They are rebuilt from full wallet
+    # history below so the ledger keeps the original buy price / shares.
+    orphan_ids = _orphan_token_ids(activity)
+    if orphan_ids:
+        logger.info(
+            "Rebuilding %d token(s) with no BUY fill in the sync window: %s",
+            len(orphan_ids),
+            ", ".join(sorted(t[:12] for t in orphan_ids)),
+        )
+
+    if init_days is None and existing:
         rebuild_ids = {
             rec.token_id
             for rec in fresh_records
@@ -486,6 +524,9 @@ def run_sync_trade_history(
                 and rec.shares < prior.shares - 0.01
             )
         }
+        # Orphans never reach fresh_records (no BUY fill in the window), so add
+        # them explicitly to pull their full history from the wallet.
+        rebuild_ids |= orphan_ids
         if rebuild_ids:
             rebuilt = _rebuild_records_for_tokens(
                 wallet,

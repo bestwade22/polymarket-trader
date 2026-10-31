@@ -5,10 +5,15 @@ from unittest.mock import patch
 
 import pytest
 
-from src.analysis.history_builder import build_trade_record, group_activity_rows
+from src.analysis.history_builder import (
+    build_records_from_activity,
+    build_trade_record,
+    group_activity_rows,
+)
 from src.analysis.models import TradeRecord, summarize_records
 from src.analysis.resolution import CachedResolution
 from src.analysis.strategy_insights import compute_insights
+from src.analysis.sync_runner import _orphan_token_ids
 from src.utils.market_parser import (
     compare_temp_buckets,
     extract_temp_label,
@@ -60,7 +65,6 @@ def _redeem_row(token_id: str = "tok1", ts: int = 1_700_200_000) -> dict:
         "timestamp": ts,
     }
 
-
 class TestTemperatureParsing:
     def test_single_degree_celsius(self):
         assert parse_temperature_bucket("28°C") == (28, 28, "C")
@@ -93,6 +97,36 @@ class TestActivityGrouping:
         assert len(groups) == 1
         assert groups[0].shares == 10.0
         assert groups[0].buy_price == pytest.approx(0.5)
+
+    def test_redeem_without_buy_fill_has_no_first_buy_ts(self):
+        """A redeem for a position opened before the sync window has no BUY fill.
+
+        The incremental sync only fetches activity after last_activity_ts, so a
+        redeem can arrive without its original BUY row. first_buy_ts must be
+        None instead of raising on min() of an empty sequence.
+        """
+        group = group_activity_rows([_redeem_row(ts=1_700_200_000)])[0]
+        assert group.has_buy_fills is False
+        assert group.first_buy_ts is None
+        assert group.redeems and not group.sell_fills
+
+    def test_orphan_token_ids_detects_redeem_without_buy(self):
+        rows = [
+            _redeem_row(ts=1_700_200_000, token_id="tok-orphan"),
+            _buy_row(ts=1_700_000_000, token_id="tok-normal"),
+        ]
+        assert _orphan_token_ids(rows) == {"tok-orphan"}
+
+    def test_build_records_skips_groups_without_buy_fill(self):
+        """A redeem-only slice must not crash the whole sync."""
+        rows = [_redeem_row(ts=1_700_200_000)]
+        records = build_records_from_activity(
+            rows,
+            [],
+            wallet="0xwallet",
+            fetch_price_drop=False,
+        )
+        assert records == []
 
     def test_attaches_sell_and_redeem(self):
         sell_group = group_activity_rows([_buy_row(), _sell_row()])[0]

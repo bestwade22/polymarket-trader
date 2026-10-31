@@ -20,6 +20,30 @@ ANALYSIS_PATHS = [
 ]
 
 
+def _notify_sync_failure(error: BaseException) -> None:
+    """Best-effort Telegram alert so a broken sync is not silent.
+
+    The dashboard reads the committed trade_history.json, so a failing sync
+    silently freezes the dashboard. This notification makes the failure visible.
+    """
+    try:
+        from src.notify.telegram import send_telegram_message
+
+        send_telegram_message(
+            "🚨 <b>SYNC-TRADE-HISTORY FAILED</b>\n"
+            f"❌ {_short_error(error)}\n"
+            "The dashboard will keep showing the last successful sync."
+        )
+    except Exception:
+        logger.exception("Telegram sync-failure notify failed")
+
+
+def _short_error(error: BaseException) -> str:
+    text = str(error).strip() or error.__class__.__name__
+    # Telegram HTML mode: the message is not escaped, so strip angle brackets.
+    return text.replace("<", "(").replace(">", ")")[:800]
+
+
 def run_sync_trade_history(workspace: str, init_days: Optional[int]) -> None:
     cmd = [sys.executable, "-m", "src.main", "sync-trade-history", "--skip-price-drop"]
     if init_days is not None:
@@ -44,14 +68,19 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     git_repo, branch, github_pat = git_settings_from_env()
     workspace = clone_or_update(github_pat, git_repo, branch)
 
-    run_sync_trade_history(workspace, init_days)
-    committed = commit_and_push(
-        ANALYSIS_PATHS,
-        "chore(data): sync trade history",
-        github_pat=github_pat,
-        git_repo=git_repo,
-        branch=branch,
-    )
+    try:
+        run_sync_trade_history(workspace, init_days)
+        committed = commit_and_push(
+            ANALYSIS_PATHS,
+            "chore(data): sync trade history",
+            github_pat=github_pat,
+            git_repo=git_repo,
+            branch=branch,
+        )
+    except Exception as exc:
+        logger.exception("sync-trade-history failed")
+        _notify_sync_failure(exc)
+        raise
 
     return {
         "status": "ok",

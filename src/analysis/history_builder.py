@@ -46,8 +46,20 @@ class PositionGroup:
     redeems: list[dict[str, Any]] = field(default_factory=list)
 
     @property
-    def first_buy_ts(self) -> int:
+    def first_buy_ts(self) -> Optional[int]:
+        """Timestamp of the earliest BUY fill.
+
+        None when the group has no buy fills: an incremental sync window can
+        contain a redeem/sell for a position opened *before* the window, so the
+        BUY row is simply not part of the fetched slice.
+        """
+        if not self.buy_fills:
+            return None
         return min(int(r.get("timestamp") or 0) for r in self.buy_fills)
+
+    @property
+    def has_buy_fills(self) -> bool:
+        return bool(self.buy_fills)
 
     @property
     def shares(self) -> float:
@@ -295,6 +307,11 @@ def build_trade_record(
     clob_client: Optional[ClobPriceClient] = None,
     fetch_price_drop: bool = True,
 ) -> TradeRecord:
+    if not group.has_buy_fills:
+        raise ValueError(
+            f"Cannot build trade record for token {group.token_id}: no BUY fill "
+            "(activity slice starts after the position was opened)"
+        )
     closed_map = _closed_position_map(closed_positions)
     closed_row = closed_map.get(group.token_id)
     resolution = fetch_resolved_event(group.event_slug)
@@ -450,17 +467,32 @@ def build_records_from_activity(
     fetch_price_drop: bool = True,
 ) -> list[TradeRecord]:
     groups = group_activity_rows(activity)
+    # A redeem/sell can land in an incremental slice for a position that was
+    # opened before the slice start, leaving the group with no BUY fill. Such a
+    # group has no buy price/shares to report, so it is skipped here and the
+    # position is instead rebuilt from full wallet history by the sync runner.
+    groups = [group for group in groups if group.has_buy_fills]
     open_tokens = _open_token_ids(wallet)
     clob = ClobPriceClient() if fetch_price_drop else None
-    records = [
-        build_trade_record(
-            group,
-            closed_positions=closed_positions,
-            open_tokens=open_tokens,
-            clob_client=clob,
-            fetch_price_drop=fetch_price_drop,
-        )
-        for group in groups
-    ]
+    records: list[TradeRecord] = []
+    for group in groups:
+        try:
+            records.append(
+                build_trade_record(
+                    group,
+                    closed_positions=closed_positions,
+                    open_tokens=open_tokens,
+                    clob_client=clob,
+                    fetch_price_drop=fetch_price_drop,
+                )
+            )
+        except Exception as exc:
+            # One malformed token must not abort the whole hourly sync.
+            logger.warning(
+                "Skipped trade record for token %s (%s): %s",
+                group.token_id[:12],
+                group.event_slug,
+                exc,
+            )
     records.sort(key=lambda r: r.bought_at, reverse=True)
     return records
