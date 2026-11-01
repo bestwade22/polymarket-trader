@@ -1,0 +1,67 @@
+{
+  "run_at": "2026-11-01T22:16:08.120405+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1282674",
+      "city": "Denver",
+      "timezone": "US Mountain (UTC-7/-6)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15
+    },
+    {
+      "event_id": "1282675",
+      "city": "Los Angeles",
+      "market_id": "6416689",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-november-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.991,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": -0.11
+    },
+    {
+      "event_id": "1282676",
+      "city": "San Francisco",
+      "market_id": "6416701",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-november-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.72,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 1.22
+    },
+    {
+      "event_id": "1282673",
+      "city": "Seattle",
+      "market_id": "6416663",
+      "group_item_title": "48-49\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-november-1-2026",
+      "reason": "spread_max",
+      "spread": 0.126,
+      "spread_max": 0.08,
+      "selection_price": 0.623,
+      "forecast_temp_f": 50,
+      "forecast_temp_c": 10,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 50,
+      "forecast_wu_temp_c": 10,
+      "forecast_delta_c": 1.11
+    }
+  ]
+}
