@@ -1,0 +1,55 @@
+{
+  "run_at": "2026-11-01T23:46:09.122463+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1282673",
+      "city": "Seattle",
+      "market_id": "6416663",
+      "group_item_title": "48-49\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-november-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9625,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 54,
+      "forecast_temp_c": 12,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 54,
+      "forecast_wu_temp_c": 12,
+      "forecast_delta_c": 3.11
+    },
+    {
+      "event_id": "1282675",
+      "city": "Los Angeles",
+      "market_id": "6416689",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-november-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.996,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 73,
+      "forecast_temp_c": 23,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 73,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 1.89
+    },
+    {
+      "event_id": "1282676",
+      "city": "San Francisco",
+      "market_id": "6416701",
+      "group_item_title": "64-65\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-november-1-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9745,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 1.22
+    }
+  ]
+}
