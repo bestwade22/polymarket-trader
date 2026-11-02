@@ -1,0 +1,82 @@
+{
+  "run_at": "2026-11-02T19:46:17.636616+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1288330",
+      "city": "Toronto",
+      "timezone": "Canada East (UTC-5/-4)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19
+    },
+    {
+      "event_id": "1287247",
+      "city": "NYC",
+      "market_id": "6448831",
+      "group_item_title": "66-67\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-november-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.965,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 0.11
+    },
+    {
+      "event_id": "1287249",
+      "city": "Atlanta",
+      "market_id": "6448852",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-november-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.915,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": -0.11
+    },
+    {
+      "event_id": "1287250",
+      "city": "Miami",
+      "market_id": "6448865",
+      "group_item_title": "84-85\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-november-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.988,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 86,
+      "forecast_wu_temp_c": 30,
+      "forecast_delta_c": 1.11
+    },
+    {
+      "event_id": "1288332",
+      "city": "Panama City",
+      "market_id": "6459615",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-november-2-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9905,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 90,
+      "forecast_wu_temp_c": 32,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
