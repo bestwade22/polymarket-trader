@@ -13,6 +13,12 @@ Parameters:
   Strategy:
     Type: String
     Default: highest_yes
+  WeatherComApiKey:
+    Type: String
+    Default: ''
+    Description: >
+      Optional Weather.com frontend API key. Leave empty to let the client refresh
+      the published key from wunderground.com when Weather.com rejects the one it holds.
   ShareCount:
     Type: String
     Default: '15'
@@ -167,6 +173,7 @@ Resources:
           GIT_REPO: !Ref GitHubRepo
           GIT_BRANCH: !Ref GitBranch
           STRATEGY: !Ref Strategy
+          WEATHER_COM_API_KEY: !Ref WeatherComApiKey
           SHARE_COUNT: !Ref ShareCount
           YES_PRICE_MAX: !Ref YesPriceMax
           YES_PRICE_MIN: !Ref YesPriceMin

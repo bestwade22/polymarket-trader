@@ -318,6 +318,9 @@ class Settings:
     telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "")
     # Default on when credentials are present; set TELEGRAM_NOTIFY_ENABLED=false to disable.
     telegram_notify_enabled: bool = _env_bool("TELEGRAM_NOTIFY_ENABLED", True)
+    # Weather.com frontend key. It is published (not secret) but rotates; when
+    # unset the client scrapes the current key from wunderground.com on a 401.
+    weather_com_api_key: str = os.getenv("WEATHER_COM_API_KEY", "")
 
 
 settings = Settings()

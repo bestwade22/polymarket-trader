@@ -6,6 +6,11 @@ Fahrenheit: OM∩WU Δ vs bought rounds to +1 or +2°F → same bump.
 Δ is computed in the market's native unit, preferring the matching forecast
 field (°F for F markets, °C for C). Do not prefer rounded °C on F markets —
 Weather.com often stores both 60°F and 61°F as 16°C, which falsely agrees.
+
+The two sides must come from *independent* providers. When the primary forecast
+falls back to the Wunderground scrape (source="wunderground_scrape"), primary
+and wu_* are the same scrape, so their agreement carries no information and must
+not trigger a bump.
 """
 
 from __future__ import annotations
@@ -18,6 +23,14 @@ from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import parse_temperature_bucket, temp_bucket_sort_value
 
 logger = logging.getLogger(__name__)
+
+# Primary forecast provider that reuses the WU scrape as its own value.
+WU_SCRAPE_SOURCE = "wunderground_scrape"
+
+
+def primary_is_wu_scrape(source: Optional[str]) -> bool:
+    """True when the primary forecast value is itself the WU scrape."""
+    return str(source or "").strip().lower() == WU_SCRAPE_SOURCE
 
 
 def _market_unit(bought_temp: str) -> Optional[str]:
@@ -65,6 +78,11 @@ def forecast_vs_bought_delta_native(
 
 def om_wu_agree_delta_vs_bought(sel: MarketSelection) -> Optional[tuple[str, int]]:
     """Return (unit, rounded_delta) when OM and WU agree on Δ vs bought; else None."""
+    # Primary and wu_* must be independent providers. When the primary fell back to
+    # the WU scrape they are the same number, so "agreement" is meaningless.
+    if primary_is_wu_scrape(sel.forecast_source):
+        return None
+
     bought = sel.group_item_title or ""
     unit = _market_unit(bought)
     if unit is None:

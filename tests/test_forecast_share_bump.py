@@ -16,6 +16,7 @@ def _sel(
     om_f=None,
     wu_c=None,
     wu_f=None,
+    source: str | None = "weather_com",
 ) -> MarketSelection:
     return MarketSelection(
         event_id="e1",
@@ -32,6 +33,7 @@ def _sel(
         strategy="highest_yes",
         forecast_temp_c=om_c,
         forecast_temp_f=om_f,
+        forecast_source=source,
         forecast_wu_temp_c=wu_c,
         forecast_wu_temp_f=wu_f,
         event={"slug": "highest-temperature-in-milan"},
@@ -115,3 +117,36 @@ def test_extra_zero_disables():
     sel = _sel(temp="26°C", shares=15, om_c=27, wu_c=27)
     apply_forecast_agree_extra_shares([sel], extra_shares=0)
     assert sel.share_count == 15
+
+
+def test_wu_scrape_primary_is_not_agreement():
+    """Primary fell back to the WU scrape → primary and wu_* are the same source.
+
+    Their "agreement" carries no information, so it must not bump shares.
+    """
+    sel = _sel(
+        temp="26°C",
+        shares=15,
+        om_c=27,
+        wu_c=27,
+        source="wunderground_scrape",
+    )
+    assert om_wu_agree_delta_vs_bought(sel) is None
+    assert should_add_forecast_agree_shares(sel) is False
+    apply_forecast_agree_extra_shares([sel], extra_shares=5)
+    assert sel.share_count == 15
+
+
+def test_open_meteo_primary_is_agreement():
+    """Open-Meteo is independent of the WU scrape → agreement is meaningful."""
+    sel = _sel(
+        temp="26°C",
+        shares=15,
+        om_c=27,
+        wu_c=27,
+        source="open_meteo",
+    )
+    assert om_wu_agree_delta_vs_bought(sel) == ("C", 1)
+    assert should_add_forecast_agree_shares(sel) is True
+    apply_forecast_agree_extra_shares([sel], extra_shares=5)
+    assert sel.share_count == 20

@@ -13,7 +13,10 @@ from src.trade.position_checker import LivePositionChecker, filter_selections_wi
 from src.trade.position_tracker import PositionTracker
 from src.trade.price_refresher import refresh_events_markets, refresh_selection_prices
 from src.trade.selector import filter_tradable_events, filter_selections_after_live_refresh, select_markets_for_events
-from src.trade.forecast_share_bump import apply_forecast_agree_extra_shares
+from src.trade.forecast_share_bump import (
+    apply_forecast_agree_extra_shares,
+    primary_is_wu_scrape,
+)
 from src.trade.strategies.base import MarketSelection
 from src.utils.market_parser import market_price_snapshot
 from src.utils.trade_logger import TradeStepLogger
@@ -34,6 +37,7 @@ def attach_forecasts_to_selections(
     if not selections:
         return selections
     client = weather_client or WeatherClient()
+    degraded = 0
     for sel in selections:
         need_primary = sel.forecast_temp_f is None or sel.forecast_temp_c is None
         need_wu = sel.forecast_wu_temp_f is None and sel.forecast_wu_temp_c is None
@@ -74,6 +78,15 @@ def attach_forecasts_to_selections(
             sel.forecast_wu_temp_f = forecast.wu_temp_f
         if sel.forecast_wu_temp_c is None and forecast.wu_temp_c is not None:
             sel.forecast_wu_temp_c = forecast.wu_temp_c
+        if primary_is_wu_scrape(forecast.source):
+            degraded += 1
+    if degraded:
+        logger.warning(
+            "Forecast degraded: %d/%d selections fell back to the WU scrape as primary "
+            "(Weather.com unavailable) — forecast-agree share bumps are disabled for them",
+            degraded,
+            len(selections),
+        )
     return selections
 
 

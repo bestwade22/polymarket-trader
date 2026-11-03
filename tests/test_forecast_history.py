@@ -255,6 +255,167 @@ def test_weather_client_falls_back_to_wu_scrape(tmp_path: Path, monkeypatch):
     assert result.source == "wunderground_scrape"
     assert result.temp_c == 31
     assert result.wu_temp_c == 31
+    # Primary IS the WU scrape here, so the two sides are not independent.
+    assert result.primary_is_wu_scrape is True
+
+
+def _tokyo_map(tmp_path: Path) -> None:
+    map_path = tmp_path / "map.json"
+    map_path.write_text(
+        json.dumps(
+            {
+                "Tokyo": {
+                    "city": "Tokyo",
+                    "icao": "RJTT",
+                    "resolution_source": "https://www.wunderground.com/history/daily/jp/tokyo/RJTT",
+                    "latitude": 35.55,
+                    "longitude": 139.78,
+                    "provider": "wunderground",
+                    "units": "C",
+                }
+            }
+        )
+    )
+
+
+def test_weather_client_falls_back_to_open_meteo(tmp_path: Path, monkeypatch):
+    """Weather.com miss → keyless Open-Meteo provides the primary forecast."""
+    _tokyo_map(tmp_path)
+    monkeypatch.setattr(
+        "src.api.weather_client.load_resolution_map", lambda: json.loads((tmp_path / "map.json").read_text())
+    )
+    monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
+
+    client = WeatherClient()
+    mock_wc = MagicMock()
+    mock_wc.raise_for_status = MagicMock()
+    # No row for the target date → Weather.com primary miss.
+    mock_wc.json.return_value = {
+        "validTimeLocal": ["2026-08-01T00:00:00+0900"],
+        "calendarDayTemperatureMax": [34],
+    }
+    mock_om = MagicMock()
+    mock_om.raise_for_status = MagicMock()
+    mock_om.json.return_value = {
+        "daily": {"time": ["2026-07-31"], "temperature_2m_max": [28.4]}
+    }
+    mock_wu = MagicMock()
+    mock_wu.raise_for_status = MagicMock()
+    mock_wu.text = "Today 07/31 High around 31C. Winds W at 10 to 15 km/h."
+
+    called_urls: list[str] = []
+
+    def fake_get(url, *args, **kwargs):
+        called_urls.append(str(url))
+        if "api.weather.com" in str(url):
+            return mock_wc
+        if "open-meteo" in str(url):
+            return mock_om
+        if "wunderground" in str(url):
+            return mock_wu
+        raise AssertionError(f"unexpected url {url}")
+
+    with patch.object(client.session, "get", side_effect=fake_get):
+        result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
+
+    assert result is not None
+    assert result.source == "open_meteo"
+    assert result.temp_c == 28
+    assert result.temp_f == 82
+    # Open-Meteo is independent of the WU scrape, so agreement is meaningful.
+    assert result.primary_is_wu_scrape is False
+    assert result.wu_temp_c == 31
+    assert any("open-meteo" in u for u in called_urls)
+
+
+def test_weather_client_refreshes_rejected_api_key(tmp_path: Path, monkeypatch):
+    """A 401 from Weather.com triggers a key refresh from wunderground.com."""
+    _tokyo_map(tmp_path)
+    monkeypatch.setattr(
+        "src.api.weather_client.load_resolution_map", lambda: json.loads((tmp_path / "map.json").read_text())
+    )
+    monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
+
+    client = WeatherClient()
+    client._api_key = "0" * 32
+
+    good_key = "a" * 32
+    mock_unauthorized = MagicMock()
+    mock_unauthorized.status_code = 401
+    mock_ok = MagicMock()
+    mock_ok.status_code = 200
+    mock_ok.raise_for_status = MagicMock()
+    mock_ok.json.return_value = {
+        "validTimeLocal": ["2026-07-31T00:00:00+0900"],
+        "calendarDayTemperatureMax": [33],
+    }
+    mock_wu_root = MagicMock()
+    mock_wu_root.raise_for_status = MagicMock()
+    mock_wu_root.text = f'const data = {{"API_KEY":"{good_key}","API_URL":"https://api.weather.com"}}'
+    mock_wu = MagicMock()
+    mock_wu.raise_for_status = MagicMock()
+    mock_wu.text = "Today 07/31 High around 32C. Winds W at 10 to 15 km/h."
+
+    seen_keys: list[str] = []
+
+    def fake_get(url, *args, **kwargs):
+        url = str(url)
+        if "api.weather.com" in url:
+            seen_keys.append(kwargs.get("params", {}).get("apiKey", ""))
+            return mock_unauthorized if len(seen_keys) == 1 else mock_ok
+        if url.rstrip("/") == "https://www.wunderground.com":
+            return mock_wu_root
+        if "wunderground" in url:
+            return mock_wu
+        raise AssertionError(f"unexpected url {url}")
+
+    with patch.object(client.session, "get", side_effect=fake_get):
+        result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
+
+    assert result is not None
+    assert result.source == "weather_com"
+    assert result.temp_c == 33
+    # First call used the rejected key, second used the refreshed one.
+    assert seen_keys[0] == "0" * 32
+    assert seen_keys[1] == good_key
+
+
+def test_weather_com_401_does_not_raise_when_refresh_fails(tmp_path: Path, monkeypatch):
+    """When the key cannot be refreshed the forecast degrades instead of raising."""
+    _tokyo_map(tmp_path)
+    monkeypatch.setattr(
+        "src.api.weather_client.load_resolution_map", lambda: json.loads((tmp_path / "map.json").read_text())
+    )
+    monkeypatch.setattr("src.api.weather_client.load_city_coords", lambda: {})
+
+    client = WeatherClient()
+    client._api_key = "0" * 32
+
+    mock_unauthorized = MagicMock()
+    mock_unauthorized.status_code = 401
+    mock_wu_root = MagicMock()
+    mock_wu_root.raise_for_status = MagicMock()
+    mock_wu_root.text = "no key here"
+    mock_wu = MagicMock()
+    mock_wu.raise_for_status = MagicMock()
+    mock_wu.text = "Today 07/31 High around 31C. Winds W at 10 to 15 km/h."
+
+    def fake_get(url, *args, **kwargs):
+        url = str(url)
+        if "api.weather.com" in url:
+            return mock_unauthorized
+        if url.rstrip("/") == "https://www.wunderground.com":
+            return mock_wu_root
+        if "wunderground" in url:
+            return mock_wu
+        raise AssertionError(f"unexpected url {url}")
+
+    with patch.object(client.session, "get", side_effect=fake_get):
+        result = client.fetch_forecast_max_temp("Tokyo", "2026-07-31")
+
+    assert result is not None
+    assert result.source == "wunderground_scrape"
+    assert result.primary_is_wu_scrape is True
 
 
 def test_attach_forecasts_to_selections():
