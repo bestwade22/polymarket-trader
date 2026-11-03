@@ -526,3 +526,95 @@ class TestDataClientHelpers:
 
         assert is_highest_temp_slug("highest-temperature-in-london-on-july-5-2026")
         assert not is_highest_temp_slug("other-market")
+
+
+def _v2_buy_row(token_id: str = "tok1", ts: int = 1_700_000_000, price: float = 0.5, size: float = 10.0) -> dict:
+    """Activity row shaped like Polymarket Data API v2 (snake_case)."""
+    return {
+        "type": "TRADE",
+        "side": "BUY",
+        "token_id": token_id,
+        "condition_id": "0xabc",
+        "event_slug": "highest-temperature-in-london-on-july-5-2026",
+        "title": "28°C",
+        "timestamp": ts,
+        "price": price,
+        "size": size,
+        "transaction_hash": "0xtx",
+    }
+
+
+def _v2_sell_row(token_id: str = "tok1", ts: int = 1_700_100_000, price: float = 0.2, size: float = 10.0) -> dict:
+    return {
+        "type": "TRADE",
+        "side": "SELL",
+        "token_id": token_id,
+        "event_slug": "highest-temperature-in-london-on-july-5-2026",
+        "title": "28°C",
+        "timestamp": ts,
+        "price": price,
+        "size": size,
+    }
+
+
+class TestDataApiV2FieldNames:
+    """Data API v2 renamed the row fields to snake_case."""
+
+    def test_groups_by_token_id(self):
+        groups = group_activity_rows([_v2_buy_row(), _v2_buy_row(ts=200, price=0.6, size=5)])
+        assert len(groups) == 1
+        assert groups[0].token_id == "tok1"
+        assert groups[0].shares == 15.0
+
+    def test_reads_condition_id_and_transaction_hash(self):
+        group = group_activity_rows([_v2_buy_row()])[0]
+        assert group.condition_id == "0xabc"
+        assert group.transaction_hash == "0xtx"
+
+    def test_classifies_sold_from_v2_rows(self):
+        groups = group_activity_rows([_v2_buy_row(), _v2_sell_row()])
+        assert len(groups) == 1
+        assert groups[0].sell_fills
+
+    @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
+    @patch("src.analysis.history_builder.resolve_winning_temp", return_value=None)
+    def test_builds_record_from_v2_closed_positions(self, _win, _event):
+        """Closed positions from v2 expose `token_id`/`realized_pnl`/`current_price`."""
+        groups = group_activity_rows([_v2_buy_row()])
+        closed = [
+            {
+                "token_id": "tok1",
+                "current_price": 1.0,
+                "realized_pnl": 5.0,
+                "event_slug": "highest-temperature-in-london-on-july-5-2026",
+            }
+        ]
+        record = build_trade_record(
+            groups[0],
+            closed_positions=closed,
+            open_tokens=set(),
+            fetch_price_drop=False,
+        )
+        assert record.result == "win"
+        assert record.realized_pnl_usd == pytest.approx(5.0)
+
+    @patch("src.analysis.history_builder.fetch_resolved_event", return_value=None)
+    @patch("src.analysis.history_builder.resolve_winning_temp", return_value=None)
+    @patch("src.analysis.history_builder.fetch_user_positions", return_value=[])
+    def test_builds_record_from_v2_activity_and_closed(self, _positions, _win, _event):
+        records = build_records_from_activity(
+            [_v2_buy_row()],
+            [
+                {
+                    "token_id": "tok1",
+                    "current_price": 1.0,
+                    "realized_pnl": 3.5,
+                    "event_slug": "highest-temperature-in-london-on-july-5-2026",
+                }
+            ],
+            wallet="0xwallet",
+            fetch_price_drop=False,
+        )
+        assert len(records) == 1
+        assert records[0].token_id == "tok1"
+        assert records[0].result == "win"

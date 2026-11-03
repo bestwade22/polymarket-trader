@@ -35,6 +35,19 @@ PRICE_LAST_ABOVE_THRESHOLD = 0.25
 MIN_POSITION_SHARES = 0.01
 
 
+def _row_value(row: dict[str, Any], *keys: str) -> Any:
+    """First present, non-None value among ``keys``.
+
+    Unlike ``a or b`` chaining this keeps a legitimate ``0.0`` instead of
+    falling through to the next key.
+    """
+    for key in keys:
+        value = row.get(key)
+        if value is not None:
+            return value
+    return None
+
+
 @dataclass
 class PositionGroup:
     token_id: str
@@ -108,7 +121,7 @@ class PositionGroup:
     @property
     def transaction_hash(self) -> Optional[str]:
         for row in self.buy_fills:
-            tx = row.get("transactionHash")
+            tx = _row_value(row, "transactionHash", "transaction_hash")
             if tx:
                 return str(tx)
         return None
@@ -117,8 +130,8 @@ class PositionGroup:
 def _new_position_group(row: dict[str, Any], token_id: str) -> PositionGroup:
     return PositionGroup(
         token_id=token_id,
-        condition_id=str(row.get("conditionId") or ""),
-        event_slug=str(row.get("eventSlug") or row.get("event_slug") or ""),
+        condition_id=str(_row_value(row, "conditionId", "condition_id") or ""),
+        event_slug=str(_row_value(row, "eventSlug", "event_slug") or ""),
         title=str(row.get("title") or ""),
     )
 
@@ -127,7 +140,8 @@ def group_activity_rows(activity: list[dict[str, Any]]) -> list[PositionGroup]:
     """Group wallet activity into position cycles (reset after each sell/redeem)."""
     by_token: dict[str, list[dict[str, Any]]] = {}
     for row in activity:
-        token_id = str(row.get("asset") or "").strip()
+        # Data API v1 used `asset`; v2 uses `token_id`.
+        token_id = str(_row_value(row, "asset", "token_id") or "").strip()
         if not token_id:
             continue
         by_token.setdefault(token_id, []).append(row)
@@ -213,7 +227,8 @@ def _closed_position_map(
 ) -> dict[str, dict[str, Any]]:
     by_asset: dict[str, dict[str, Any]] = {}
     for row in closed_positions:
-        asset = str(row.get("asset") or "").strip()
+        # Data API v1 used `asset`; v2 uses `token_id`.
+        asset = str(_row_value(row, "asset", "token_id") or "").strip()
         if asset:
             by_asset[asset] = row
     return by_asset
@@ -251,12 +266,12 @@ def _classify_result(
             return "open"
 
     if closed_row is not None:
-        cur = parse_float(closed_row.get("curPrice"))
+        cur = parse_float(_row_value(closed_row, "curPrice", "current_price"))
         if cur is not None and cur >= 0.99:
             return "win"
         if cur is not None and cur <= 0.01:
             return "loss"
-        pnl = parse_float(closed_row.get("realizedPnl"))
+        pnl = parse_float(_row_value(closed_row, "realizedPnl", "realized_pnl"))
         if pnl is not None:
             return "win" if pnl > 0 else "loss"
 
@@ -334,7 +349,11 @@ def build_trade_record(
         sell_price = round(sell_price, 4)
     cost_basis = round(shares * buy_price, 4)
 
-    realized_pnl = parse_float(closed_row.get("realizedPnl")) if closed_row else None
+    realized_pnl = (
+        parse_float(_row_value(closed_row, "realizedPnl", "realized_pnl"))
+        if closed_row
+        else None
+    )
     final_value = _record_pnl(result, shares, buy_price, sell_price, realized_pnl)
     sold_but_would_have_won = (
         result == "sold"
