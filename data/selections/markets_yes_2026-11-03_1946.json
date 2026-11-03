@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-11-03T19:46:18.437030+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1294726",
+      "city": "Toronto",
+      "timezone": "Canada East (UTC-5/-4)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 75,
+      "forecast_wu_temp_c": 24
+    },
+    {
+      "event_id": "1293461",
+      "city": "NYC",
+      "market_id": "6511600",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.74,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 70,
+      "forecast_wu_temp_c": 21,
+      "forecast_delta_c": -0.11
+    },
+    {
+      "event_id": "1293464",
+      "city": "Miami",
+      "market_id": "6511634",
+      "group_item_title": "86-87\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9685,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 88,
+      "forecast_temp_c": 31,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 84,
+      "forecast_wu_temp_c": 29,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1294728",
+      "city": "Panama City",
+      "market_id": "6524075",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.993,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 88,
+      "forecast_wu_temp_c": 31,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1293463",
+      "city": "Atlanta",
+      "market_id": "6511619",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-november-3-2026",
+      "reason": "spread_max",
+      "spread": 0.1,
+      "spread_max": 0.08,
+      "selection_price": 0.435,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 72,
+      "forecast_wu_temp_c": 22,
+      "forecast_delta_c": 0.89
+    }
+  ]
+}
