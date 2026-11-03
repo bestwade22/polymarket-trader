@@ -1,0 +1,60 @@
+{
+  "run_at": "2026-11-03T11:46:15.789768+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1293064",
+      "city": "Moscow",
+      "market_id": "6509507",
+      "group_item_title": "2\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.795,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1293065",
+      "city": "Istanbul",
+      "market_id": "6509517",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.79,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1293070",
+      "city": "Jeddah",
+      "market_id": "6509573",
+      "group_item_title": "39\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-november-3-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.996,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 97,
+      "forecast_wu_temp_c": 36,
+      "forecast_delta_c": -3.0
+    },
+    {
+      "event_id": "1293038",
+      "city": "Ankara",
+      "market_id": "6509298",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-november-3-2026",
+      "reason": "spread_max",
+      "spread": 0.143,
+      "spread_max": 0.08,
+      "selection_price": 0.586,
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "wunderground_scrape",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15,
+      "forecast_delta_c": -1.0
+    }
+  ]
+}
