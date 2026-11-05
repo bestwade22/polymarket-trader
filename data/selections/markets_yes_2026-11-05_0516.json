@@ -1,0 +1,70 @@
+{
+  "run_at": "2026-11-05T05:16:04.548768+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "1306075",
+      "city": "Tokyo",
+      "market_id": "6626685",
+      "groupItemTitle": "17\u00b0C",
+      "yes_price": 0.68,
+      "yes_token_id": "23319552672866272040866484306735859748936219733421045679504733055004821109611",
+      "buy_price": 0.7,
+      "share_count": 15,
+      "neg_risk": true,
+      "tick_size": "0.01",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 61,
+      "forecast_wu_temp_c": 16,
+      "on_edge": false,
+      "order_price": 0.68,
+      "selection_price": 0.68,
+      "gamma_yes_price": 0.68,
+      "best_bid": 0.66,
+      "best_ask": 0.7,
+      "spread": 0.04,
+      "clob_buy_price": 0.7,
+      "last_trade_price": 0.65,
+      "midpoint": 0.68,
+      "outcomePrices": [
+        0.68,
+        0.32
+      ],
+      "competitive": 0.9686168151879117,
+      "event_slug": "highest-temperature-in-tokyo-on-november-5-2026",
+      "open_interest": 25537.966415,
+      "runner_up_yes": 0.25,
+      "runner_up_temp": "16\u00b0C",
+      "yes_gap": 0.45,
+      "top_yes": 0.7,
+      "order_status": "live",
+      "order_id": "0x7e9257f9055d7f2ff2b737fbb2ca0fa6ee489592503587303caf6b966648202c",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-11-05T05:41:03+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "1306098",
+      "city": "Busan",
+      "event_slug": "highest-temperature-in-busan-on-november-5-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "14\u00b0C",
+      "market_id": "6626854",
+      "clob_mid_price": 0.5015,
+      "gamma_title": "15\u00b0C",
+      "gamma_price": 0.44,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15,
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
