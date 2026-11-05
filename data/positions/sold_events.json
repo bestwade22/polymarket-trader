@@ -17974,5 +17974,21 @@
     "floor_price": 0.96,
     "current_mid": 0.715,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xdaaa5b3c4308daa89faacb4a713b8516de1a459a35fc98aa33a64ffed0ae8be0",
+    "token_id": "82909905180132172066543089081796291511945406374880722846667418315744757653214",
+    "order_id": "0xb7655339e7057b64170c936d37ced6337a7cbbb32f586cfeae4e269106cd2254",
+    "sold_at": "2026-11-05T14:00:24.804973+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-amsterdam-on-november-5-2026",
+    "price": 0.94,
+    "size": 5.0,
+    "avg_buy_price": 0.6,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.9,
+    "reason": "tier1"
   }
 ]
