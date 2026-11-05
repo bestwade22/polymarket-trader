@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-04",
-  "refreshed_at": "2026-11-04T23:01:56.024929+00:00",
+  "date": "2026-11-05",
+  "refreshed_at": "2026-11-05T00:01:51.738418+00:00",
   "bottom_n": 7,
   "min_count": 3,
   "min_count_floor": 3,
@@ -20,15 +20,19 @@
   "buy_band_low_min_local_hour": 14,
   "buy_band_low_min_local_minute": 45,
   "timezones": [
+    "South Africa (UTC+2)",
     "Argentina (UTC-3)",
     "US Mountain (UTC-7/-6)",
     "China (UTC+8)",
     "UK (UTC+0/+1)",
     "Canada East (UTC-5/-4)",
-    "Eastern EU (UTC+2/+3)",
-    "Singapore (UTC+8)"
+    "Eastern EU (UTC+2/+3)"
   ],
   "detail": {
+    "South Africa (UTC+2)": {
+      "win_plus_sold_win_pct": 0.0,
+      "win_summary_denom": 4
+    },
     "Argentina (UTC-3)": {
       "win_plus_sold_win_pct": 25.0,
       "win_summary_denom": 4
@@ -52,10 +56,6 @@
     "Eastern EU (UTC+2/+3)": {
       "win_plus_sold_win_pct": 42.9,
       "win_summary_denom": 7
-    },
-    "Singapore (UTC+8)": {
-      "win_plus_sold_win_pct": 50.0,
-      "win_summary_denom": 4
     }
   }
 }
