@@ -17942,5 +17942,21 @@
     "floor_price": 0.94,
     "current_mid": 0.95,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xbb9ed9caeaed573b4b6beb8c0d9f224a55b5cf66cc8d5a09944002409cce2096",
+    "token_id": "23319552672866272040866484306735859748936219733421045679504733055004821109611",
+    "order_id": "0xbf9b67715f952b7f4d9fab9bc47f84889dcdda5d54c3f3a6393482eac300b53b",
+    "sold_at": "2026-11-05T06:00:23.445716+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-tokyo-on-november-5-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.45,
+    "reason": "tier1"
   }
 ]
