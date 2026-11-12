@@ -1,4 +1,4 @@
-AWS diagnostics collected at 2026-11-12T16:49:42Z
+AWS diagnostics collected at 2026-11-12T16:52:53Z
 ==================================================================
 
 ## Stack status
@@ -64,160 +64,1748 @@ AWS diagnostics collected at 2026-11-12T16:49:42Z
 
 ## Lambda states
 === fetch-daily ===
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-fetch-daily because no identity-based policy allows the lambda:GetFunctionConfiguration action
+-----------------------------------
+|    GetFunctionConfiguration     |
++---------------------------------+
+|  polymarket-trader-fetch-daily  |
+|  Active                         |
+|  None                           |
+|  2026-11-03T17:23:43.000+0000   |
+|  None                           |
+|  300                            |
+|  512                            |
+|  None                           |
++---------------------------------+
 === trade-hourly ===
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-trade-hourly because no identity-based policy allows the lambda:GetFunctionConfiguration action
+------------------------------------
+|     GetFunctionConfiguration     |
++----------------------------------+
+|  polymarket-trader-trade-hourly  |
+|  Active                          |
+|  None                            |
+|  2026-11-03T17:23:43.000+0000    |
+|  None                            |
+|  900                             |
+|  1024                            |
+|  None                            |
++----------------------------------+
 === stop-loss-check ===
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-stop-loss-check because no identity-based policy allows the lambda:GetFunctionConfiguration action
+---------------------------------------
+|      GetFunctionConfiguration       |
++-------------------------------------+
+|  polymarket-trader-stop-loss-check  |
+|  Active                             |
+|  None                               |
+|  2026-11-03T17:23:43.000+0000       |
+|  None                               |
+|  900                                |
+|  1024                               |
+|  None                               |
++-------------------------------------+
 === sell-win-check ===
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-sell-win-check because no identity-based policy allows the lambda:GetFunctionConfiguration action
+--------------------------------------
+|      GetFunctionConfiguration      |
++------------------------------------+
+|  polymarket-trader-sell-win-check  |
+|  Active                            |
+|  None                              |
+|  2026-11-03T17:23:43.000+0000      |
+|  None                              |
+|  900                               |
+|  1024                              |
+|  None                              |
++------------------------------------+
 === sync-trade-history ===
+------------------------------------------
+|        GetFunctionConfiguration        |
++----------------------------------------+
+|  polymarket-trader-sync-trade-history  |
+|  Active                                |
+|  None                                  |
+|  2026-11-03T17:23:43.000+0000          |
+|  None                                  |
+|  900                                   |
+|  1024                                  |
+|  None                                  |
++----------------------------------------+
 
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-sync-trade-history because no identity-based policy allows the lambda:GetFunctionConfiguration action
+## Log group last write times
+--------------------------------------------------------------------------
+|                            DescribeLogGroups                           |
++---------------------------------------------------+-------+------------+
+|  /aws/lambda/polymarket-trader-fetch-daily        |  None |  539409    |
+|  /aws/lambda/polymarket-trader-sell-win-check     |  None |  4144383   |
+|  /aws/lambda/polymarket-trader-stop-loss-check    |  None |  2056934   |
+|  /aws/lambda/polymarket-trader-sync-trade-history |  None |  7491957   |
+|  /aws/lambda/polymarket-trader-trade-hourly       |  None |  42891137  |
++---------------------------------------------------+-------+------------+
 
-## Lambda image details
-=== fetch-daily ===
-[
-    "Active",
-    null,
-    null,
-    "Image",
-    null
-]
-=== trade-hourly ===
-[
-    "Active",
-    null,
-    null,
-    "Image",
-    null
-]
-=== stop-loss-check ===
-[
-    "Active",
-    null,
-    null,
-    "Image",
-    null
-]
-=== sell-win-check ===
-[
-    "Active",
-    null,
-    null,
-    "Image",
-    null
-]
-=== sync-trade-history ===
-[
-    "Active",
-    null,
-    null,
-    "Image",
-    null
-]
-
-## Recent CloudFormation stack events
----------------------------------------------------------------------------------------------------------------------------
-|                                                   DescribeStackEvents                                                   |
-+-----------------------------------+---------------------------------------+---------------------------+-----------------+
-|  2026-11-03T17:24:02.193000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
-|  2026-11-03T17:24:01.610000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
-|  2026-11-03T17:23:58.731000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
-|  2026-11-03T17:23:58.338000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
-|  2026-11-03T17:23:58.276000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
-|  2026-11-03T17:23:58.246000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
-|  2026-11-03T17:23:58.214000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
-|  2026-11-03T17:23:41.790000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
-|  2026-11-03T17:23:41.788000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
-|  2026-11-03T17:23:41.742000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
-|  2026-11-03T17:23:41.739000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
-|  2026-11-03T17:23:41.722000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
-|  2026-11-03T17:23:38.477000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
-|  2026-11-03T16:42:23.248000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
-|  2026-11-03T16:42:22.666000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
-|  2026-11-03T16:42:19.556000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
-|  2026-11-03T16:42:14.422000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
-|  2026-11-03T16:42:14.051000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
-|  2026-11-03T16:42:14.011000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
-|  2026-11-03T16:42:13.986000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
-|  2026-11-03T16:41:58.014000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
-|  2026-11-03T16:41:57.635000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
-|  2026-11-03T16:41:57.581000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
-|  2026-11-03T16:41:57.578000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
-|  2026-11-03T16:41:57.575000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
-|  2026-11-03T16:41:54.343000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
-|  2026-10-31T17:19:22.264000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
-|  2026-10-31T17:19:21.751000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
-|  2026-10-31T17:19:18.961000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
-|  2026-10-31T17:19:18.921000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
-|  2026-10-31T17:19:18.884000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
-|  2026-10-31T17:19:18.856000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
-|  2026-10-31T17:19:18.843000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
-|  2026-10-31T17:19:02.292000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
-|  2026-10-31T17:19:02.276000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
-|  2026-10-31T17:19:02.247000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
-|  2026-10-31T17:19:02.247000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
-|  2026-10-31T17:19:02.212000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
-|  2026-10-31T17:18:58.833000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
-|  2026-10-11T17:25:32.404000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
-+-----------------------------------+---------------------------------------+---------------------------+-----------------+
-
-## Log groups
-----------------------------------------------------------------------------------
-|                                DescribeLogGroups                               |
-+---------------------------------------------------+-------+-------+------------+
-|  /aws/lambda/polymarket-trader-fetch-daily        |  None |  None |  539409    |
-|  /aws/lambda/polymarket-trader-sell-win-check     |  None |  None |  4144383   |
-|  /aws/lambda/polymarket-trader-stop-loss-check    |  None |  None |  2056934   |
-|  /aws/lambda/polymarket-trader-sync-trade-history |  None |  None |  7491957   |
-|  /aws/lambda/polymarket-trader-trade-hourly       |  None |  None |  42891137  |
-+---------------------------------------------------+-------+-------+------------+
-
-## CloudWatch error events (last 10 days)
+## CloudWatch ERROR events (last 10 days)
 ########## fetch-daily ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-fetch-daily because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067362151,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067371160,
+            "eventId": "40009039112329413862898157171681064347943885707682381901"
+        },
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067362166,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067371160,
+            "eventId": "40009039112663925040876116518804100122033611130272088224"
+        },
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067490746,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067499762,
+            "eventId": "40009041980093742667943640212937362492735198990909374541"
+        },
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067490746,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067499762,
+            "eventId": "40009041980093742667943640212937362492735198990909374624"
+        },
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067680391,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067689408,
+            "eventId": "40009046209318565843283666118746483559313227079275642957"
+        },
+        {
+            "logStreamName": "2026/11/07/[$LATEST]18eb50bba5bc4aa6bfaaa97498c826a1",
+            "timestamp": 1794067680407,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794067689408,
+            "eventId": "40009046209675377766460156089011055051675600863371329696"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794153761859,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794153770873,
+            "eventId": "40010965890202749310766748351255396724939594229046050893"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794153761860,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794153770873,
+            "eventId": "40010965890225050055965278974396932443212242590552031392"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794153894164,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794153903181,
+            "eventId": "40010968840702842802360843252088832107189937916857090125"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794153894164,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794153903181,
+            "eventId": "40010968840702842802360843252088832107189937916857090208"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794154077704,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794154086716,
+            "eventId": "40010972933781616540671414871434870736716309260237668429"
+        },
+        {
+            "logStreamName": "2026/11/08/[$LATEST]25a2a68dfba548d08f6249fb9f7ada8a",
+            "timestamp": 1794154077704,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794154086716,
+            "eventId": "40010972933781616540671414871434870736716309260237668512"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240164775,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240173790,
+            "eventId": "40012892739616875355521578572749185422607659532080644173"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240164775,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240173790,
+            "eventId": "40012892739616875355521578572749185422607659532080644256"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240294678,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240303694,
+            "eventId": "40012895636550578880245116684707880895581859937501118541"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240294678,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240303694,
+            "eventId": "40012895636550578880245116684707880895581859937501118624"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240484259,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240493276,
+            "eventId": "40012899864348154362879182709381442292128633091521314893"
+        },
+        {
+            "logStreamName": "2026/11/09/[$LATEST]0fc74313209649b290a34635909fa67c",
+            "timestamp": 1794240484259,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794240493276,
+            "eventId": "40012899864348154362879182709381442292128633091521314976"
+        },
+        {
+            "logStreamName": "2026/11/12/[$LATEST]6d1f798db82e4b73a821705997f05e8e",
+            "timestamp": 1794499362817,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794499371832,
+            "eventId": "40018673049107475394317217871004234574760622259040485453"
+        },
+        {
+            "logStreamName": "2026/11/12/[$LATEST]6d1f798db82e4b73a821705997f05e8e",
+            "timestamp": 1794499362818,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794499371832,
+            "eventId": "40018673049129776139515748494145770293033270620546465952"
+        },
+        {
+            "logStreamName": "2026/11/12/[$LATEST]6d1f798db82e4b73a821705997f05e8e",
+            "timestamp": 1794499486296,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794499495312,
+            "eventId": "40018675802781191763680032913971244946266767118170587213"
+        },
+        {
+            "logStreamName": "2026/11/12/[$LATEST]6d1f798db82e4b73a821705997f05e8e",
+            "timestamp": 1794499486296,
+            "message": "with tempfile.NamedTemporaryFile(\"w\", delete=False, dir=out.parent, suffix=\".tmp\") as tmp:\n",
+            "ingestionTime": 1794499495312,
+            "eventId": "40018675802781191763680032913971244946266767118170587296"
+        }
+    ],
+    "searchedLogStreams": []
+}
 
 ########## trade-hourly ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-trade-hourly because no identity-based policy allows the logs:FilterLogEvents action
-
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/02/[$LATEST]8569b79b6d0041658cc5f6c77f7049ef",
+            "timestamp": 1793646983591,
+            "message": "2026-11-03 03:16:20 INFO event=1287247 city=NYC step=select_market {'strategy': 'highest_yes', 'market_id': '6448831', 'yes_price': 0.615, 'buy_price': 0.63, 'group_item_title': '66-67°F', 'forecast_temp_f': 68, 'forecast_temp_c': 20, 'forecast_source': 'wunderground_scrape', 'forecast_wu_temp_f': 68, 'forecast_wu_temp_c': 20, 'price_snapshot': {'market_id': '6448831', 'yes_price': 0.645, 'selection_price': 0.615, 'buy_price': 0.63, 'order_price': 0.615, 'best_bid': 0.6, 'best_ask': 0.63, 'spread': 0.03, 'clob_buy_price': 0.63, 'last_trade_price': 0.55, 'midpoint': 0.615, 'outcomePrices': [0.645, 0.355]}}\n",
+            "ingestionTime": 1793646992602,
+            "eventId": "39999664357175928645425507503752114723600388212898922556"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]2e231587ce0d42619abdf7ad984afcc8",
+            "timestamp": 1793690187478,
+            "message": "2026-11-03 15:16:21 ERROR [py_clob_client_v2] request error: The read operation timed out\n",
+            "ingestionTime": 1793690196494,
+            "eventId": "40000627836051501755033806228231600059768982989302857773"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]8c8a786e6a4541149f4ab996baad179b",
+            "timestamp": 1793794601123,
+            "message": "2026-11-04 20:16:37 INFO event=1299366 city=Cape Town step=select_market {'strategy': 'highest_yes', 'market_id': '6566051', 'yes_price': 0.6995, 'buy_price': 0.735, 'group_item_title': '28°C', 'forecast_temp_f': 84, 'forecast_temp_c': 29, 'forecast_source': 'weather_com', 'forecast_wu_temp_f': 84, 'forecast_wu_temp_c': 29, 'price_snapshot': {'market_id': '6566051', 'yes_price': 0.7055, 'selection_price': 0.6995, 'buy_price': 0.735, 'order_price': 0.6995, 'best_bid': 0.664, 'best_ask': 0.735, 'spread': 0.071, 'clob_buy_price': 0.735, 'last_trade_price': 0.74, 'midpoint': 0.6995, 'outcomePrices': [0.7055, 0.2945]}}\n",
+            "ingestionTime": 1793794610137,
+            "eventId": "40002956338143896586040261551823151038462814143296962633"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]8c4cc9c4cbff4e78a2bbf423d03e0a80",
+            "timestamp": 1793841352421,
+            "message": "2026-11-05 09:15:40 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793841361432,
+            "eventId": "40003998926928295160364933703213466835753785151525683205"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]8c4cc9c4cbff4e78a2bbf423d03e0a80",
+            "timestamp": 1793841352421,
+            "message": "2026-11-05 09:15:40 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793841361432,
+            "eventId": "40003998926928295160364933703213466835753785151525683206"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]086b0dbabe7846f6a662f267559385a0",
+            "timestamp": 1793843152760,
+            "message": "2026-11-05 09:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793843161773,
+            "eventId": "40004039075829605137788471888965269524286525038332870661"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]086b0dbabe7846f6a662f267559385a0",
+            "timestamp": 1793843152760,
+            "message": "2026-11-05 09:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793843161773,
+            "eventId": "40004039075829605137788471888965269524286525038332870662"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6da7141e9f014d4cb26f216c9af3e40f",
+            "timestamp": 1793844951626,
+            "message": "2026-11-05 10:15:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793844960641,
+            "eventId": "40004079191881917437776402185455064588327266519322132485"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6da7141e9f014d4cb26f216c9af3e40f",
+            "timestamp": 1793844951626,
+            "message": "2026-11-05 10:15:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793844960641,
+            "eventId": "40004079191881917437776402185455064588327266519322132486"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]7ea591b33f0446b79118d9d76aa1f28c",
+            "timestamp": 1793846754525,
+            "message": "2026-11-05 10:45:41 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793846763538,
+            "eventId": "40004119397873135123438335616628540851237565958967721989"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]7ea591b33f0446b79118d9d76aa1f28c",
+            "timestamp": 1793846754525,
+            "message": "2026-11-05 10:45:41 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793846763538,
+            "eventId": "40004119397873135123438335616628540851237565958967721990"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]7f9b4cc5b9ee43ebbd973ffbdb9ba39a",
+            "timestamp": 1793855765453,
+            "message": "2026-11-05 13:15:38 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793855774464,
+            "eventId": "40004320348282465428589270022336423786956159468519292934"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]7f9b4cc5b9ee43ebbd973ffbdb9ba39a",
+            "timestamp": 1793855765453,
+            "message": "2026-11-05 13:15:38 INFO event=hourly_run step=filter_timezone_win_summary {'count': 2, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793855774464,
+            "eventId": "40004320348282465428589270022336423786956159468519292935"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]7f9b4cc5b9ee43ebbd973ffbdb9ba39a",
+            "timestamp": 1793855765453,
+            "message": "2026-11-05 13:16:02 INFO event=1306075 city=Tokyo step=select_market {'strategy': 'highest_yes', 'market_id': '6626685', 'yes_price': 0.68, 'buy_price': 0.7, 'group_item_title': '17°C', 'forecast_temp_f': 64, 'forecast_temp_c': 18, 'forecast_source': 'weather_com', 'forecast_wu_temp_f': 61, 'forecast_wu_temp_c': 16, 'price_snapshot': {'market_id': '6626685', 'yes_price': 0.68, 'selection_price': 0.68, 'buy_price': 0.7, 'order_price': 0.68, 'best_bid': 0.66, 'best_ask': 0.7, 'spread': 0.04, 'clob_buy_price': 0.7, 'last_trade_price': 0.65, 'midpoint': 0.68, 'outcomePrices': [0.68, 0.32]}}\n",
+            "ingestionTime": 1793855774464,
+            "eventId": "40004320348282465428589270022336423786956159468519292965"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]5aeba640f3e24d8ba8ff3ea06311e272",
+            "timestamp": 1793857561483,
+            "message": "2026-11-05 13:45:40 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793857570497,
+            "eventId": "40004360401089864345544353086003329427076178886963363846"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]5aeba640f3e24d8ba8ff3ea06311e272",
+            "timestamp": 1793857561483,
+            "message": "2026-11-05 13:45:40 INFO event=hourly_run step=filter_timezone_win_summary {'count': 2, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793857570497,
+            "eventId": "40004360401089864345544353086003329427076178886963363847"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]5520637af7f14caa94ec2a6f8c74fb24",
+            "timestamp": 1793859426425,
+            "message": "2026-11-05 14:15:38 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793859435440,
+            "eventId": "40004401990686216383641738162486270008801855588066918419"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]5520637af7f14caa94ec2a6f8c74fb24",
+            "timestamp": 1793859426425,
+            "message": "2026-11-05 14:15:38 INFO event=hourly_run step=filter_timezone_win_summary {'count': 7, 'skipped': 8, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793859435440,
+            "eventId": "40004401990686216383641738162486270008801855588066918436"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]dd94c33c24d14709b4713abea83d6eeb",
+            "timestamp": 1793861221073,
+            "message": "2026-11-05 14:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793861230089,
+            "eventId": "40004442012673985436227500042877810294290729172345421843"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]dd94c33c24d14709b4713abea83d6eeb",
+            "timestamp": 1793861221073,
+            "message": "2026-11-05 14:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 7, 'skipped': 8, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793861230089,
+            "eventId": "40004442012673985436227500042877810294290729172345421860"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ce53304593d042cbb7a4431dc8a53802",
+            "timestamp": 1793862999546,
+            "message": "2026-11-05 15:15:40 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793863008558,
+            "eventId": "40004481673947200902580432589368151278238552458402529297"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ce53304593d042cbb7a4431dc8a53802",
+            "timestamp": 1793862999546,
+            "message": "2026-11-05 15:15:40 INFO event=hourly_run step=filter_timezone_win_summary {'count': 5, 'skipped': 8, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793863008558,
+            "eventId": "40004481673947200902580432589368151278238552458402529314"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]d4156b9465664cbeaa5c6013c3b56c6d",
+            "timestamp": 1793864800629,
+            "message": "2026-11-05 15:45:41 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793864809646,
+            "eventId": "40004521839440265307710754393325882305416460098742059025"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]d4156b9465664cbeaa5c6013c3b56c6d",
+            "timestamp": 1793864800629,
+            "message": "2026-11-05 15:45:41 INFO event=hourly_run step=filter_timezone_win_summary {'count': 5, 'skipped': 8, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793864809646,
+            "eventId": "40004521839440265307710754393325882305416460098742059042"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]bf4edeae2c024ba6bff93c535e057e6e",
+            "timestamp": 1793868354835,
+            "message": "2026-11-05 16:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793868363848,
+            "eventId": "40004601100882654396442712075191801591227297761019494405"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]bf4edeae2c024ba6bff93c535e057e6e",
+            "timestamp": 1793868354835,
+            "message": "2026-11-05 16:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793868363848,
+            "eventId": "40004601100882654396442712075191801591227297761019494406"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]b14a84f4e2e44974bf114628be54d087",
+            "timestamp": 1793870163396,
+            "message": "2026-11-05 17:15:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793870172410,
+            "eventId": "40004641433140691396185033740589359441268781785948356614"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]b14a84f4e2e44974bf114628be54d087",
+            "timestamp": 1793870163396,
+            "message": "2026-11-05 17:15:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 2, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793870172410,
+            "eventId": "40004641433140691396185033740589359441268781785948356615"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]babfd9d35db549a6a194343beaf756f1",
+            "timestamp": 1793871966169,
+            "message": "2026-11-05 17:45:42 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793871975181,
+            "eventId": "40004681636322015186832108655776956513121051257217941510"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]babfd9d35db549a6a194343beaf756f1",
+            "timestamp": 1793871966169,
+            "message": "2026-11-05 17:45:42 INFO event=hourly_run step=filter_timezone_win_summary {'count': 2, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793871975181,
+            "eventId": "40004681636322015186832108655776956513121051257217941511"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]526d9bea6cf24f1c8f4e318cf8f8532e",
+            "timestamp": 1793873762074,
+            "message": "2026-11-05 18:15:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793873771082,
+            "eventId": "40004721686341820953970863826592597051464473081033654278"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]526d9bea6cf24f1c8f4e318cf8f8532e",
+            "timestamp": 1793873762074,
+            "message": "2026-11-05 18:15:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 2, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793873771082,
+            "eventId": "40004721686341820953970863826592597051464473081033654279"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]95be19494a534597866e544b3a7d1f58",
+            "timestamp": 1793875554276,
+            "message": "2026-11-05 18:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793875563288,
+            "eventId": "40004761653781967250950721499833559878633211544324734981"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]95be19494a534597866e544b3a7d1f58",
+            "timestamp": 1793875554276,
+            "message": "2026-11-05 18:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793875563288,
+            "eventId": "40004761653781967250950721499833559878633211544324734982"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]b5465472398a4873b57612991ecbf7ea",
+            "timestamp": 1793877381425,
+            "message": "2026-11-05 19:15:38 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793877390444,
+            "eventId": "40004802400566256000980266142576225773557158738938560520"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]b5465472398a4873b57612991ecbf7ea",
+            "timestamp": 1793877381425,
+            "message": "2026-11-05 19:15:38 INFO event=hourly_run step=filter_timezone_win_summary {'count': 4, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793877390444,
+            "eventId": "40004802400566256000980266142576225773557158738938560521"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]8fda508b4d4e454bba28ead47c0609f6",
+            "timestamp": 1793879180051,
+            "message": "2026-11-05 19:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793879189067,
+            "eventId": "40004842511266389453320846884800514422240766214988234760"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]8fda508b4d4e454bba28ead47c0609f6",
+            "timestamp": 1793879180051,
+            "message": "2026-11-05 19:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 4, 'skipped': 0, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793879189067,
+            "eventId": "40004842511266389453320846884800514422240766214988234761"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]757e13401b944920b1fa1e15de7c2e1f",
+            "timestamp": 1793880990236,
+            "message": "2026-11-05 20:15:40 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793880999276,
+            "eventId": "40004882879740836655476900534042896697732517086115790859"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]757e13401b944920b1fa1e15de7c2e1f",
+            "timestamp": 1793880990236,
+            "message": "2026-11-05 20:15:40 INFO event=1306103 city=Cape Town timezone=South Africa (UTC+2) in bottom win-summary timezones; skip\n",
+            "ingestionTime": 1793880999276,
+            "eventId": "40004882879740836655476900534042896697732517086115790862"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]757e13401b944920b1fa1e15de7c2e1f",
+            "timestamp": 1793880990236,
+            "message": "2026-11-05 20:15:40 INFO event=1306103 city=Cape Town step=filter_timezone_win_summary {'skipped': True, 'city': 'Cape Town', 'timezone': 'South Africa (UTC+2)', 'reason': 'low_win_summary_timezone'}\n",
+            "ingestionTime": 1793880999276,
+            "eventId": "40004882879740836655476900534042896697732517086115790863"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]757e13401b944920b1fa1e15de7c2e1f",
+            "timestamp": 1793880990236,
+            "message": "2026-11-05 20:15:40 INFO event=hourly_run step=filter_timezone_win_summary {'count': 5, 'skipped': 2, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793880999276,
+            "eventId": "40004882879740836655476900534042896697732517086115790864"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6b7655616a214945acdab74815f0bea5",
+            "timestamp": 1793882791247,
+            "message": "2026-11-05 20:45:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793882800258,
+            "eventId": "40004923043628247406313017471682124854160120186127122443"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6b7655616a214945acdab74815f0bea5",
+            "timestamp": 1793882791247,
+            "message": "2026-11-05 20:45:39 INFO event=1306103 city=Cape Town timezone=South Africa (UTC+2) in bottom win-summary timezones; skip\n",
+            "ingestionTime": 1793882800258,
+            "eventId": "40004923043628247406313017471682124854160120186127122446"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6b7655616a214945acdab74815f0bea5",
+            "timestamp": 1793882791247,
+            "message": "2026-11-05 20:45:39 INFO event=1306103 city=Cape Town step=filter_timezone_win_summary {'skipped': True, 'city': 'Cape Town', 'timezone': 'South Africa (UTC+2)', 'reason': 'low_win_summary_timezone'}\n",
+            "ingestionTime": 1793882800258,
+            "eventId": "40004923043628247406313017471682124854160120186127122447"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]6b7655616a214945acdab74815f0bea5",
+            "timestamp": 1793882791247,
+            "message": "2026-11-05 20:45:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 5, 'skipped': 2, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793882800258,
+            "eventId": "40004923043628247406313017471682124854160120186127122448"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ec9f5c6e609745c2a8a5ce64db97c6b3",
+            "timestamp": 1793884608840,
+            "message": "2026-11-05 21:15:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (UTC+2)=0.0% (4), Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7)\n",
+            "ingestionTime": 1793884617854,
+            "eventId": "40004963577306615039183927362351656278552676004665163789"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ec9f5c6e609745c2a8a5ce64db97c6b3",
+            "timestamp": 1793884608840,
+            "message": "2026-11-05 21:15:39 INFO event=1306103 city=Cape Town timezone=South Africa (UTC+2) in bottom win-summary timezones; skip\n",
+            "ingestionTime": 1793884617854,
+            "eventId": "40004963577306615039183927362351656278552676004665163792"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ec9f5c6e609745c2a8a5ce64db97c6b3",
+            "timestamp": 1793884608840,
+            "message": "2026-11-05 21:15:39 INFO event=1306103 city=Cape Town step=filter_timezone_win_summary {'skipped': True, 'city': 'Cape Town', 'timezone': 'South Africa (UTC+2)', 'reason': 'low_win_summary_timezone'}\n",
+            "ingestionTime": 1793884617854,
+            "eventId": "40004963577306615039183927362351656278552676004665163793"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]ec9f5c6e609745c2a8a5ce64db97c6b3",
+            "timestamp": 1793884608840,
+            "message": "2026-11-05 21:15:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 7, 'skipped': 2, 'skip_timezones': ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']}\n",
+            "ingestionTime": 1793884617854,
+            "eventId": "40004963577306615039183927362351656278552676004665163794"
+        },
+        {
+            "logStreamName": "2026/11/05/[$LATEST]75e60a0ad7264f99bbe6df244c17df34",
+            "timestamp": 1793886418441,
+            "message": "2026-11-05 21:45:40 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → South Africa (U
 ########## stop-loss-check ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-stop-loss-check because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [],
+    "searchedLogStreams": []
+}
 
 ########## sell-win-check ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sell-win-check because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [],
+    "searchedLogStreams": []
+}
 
 ########## sync-trade-history ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sync-trade-history because no identity-based policy allows the logs:FilterLogEvents action
-
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504410"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]255d82bfeb1e4ee887753f1101dda41b",
+            "timestamp": 1793642504485,
+            "message": "2026-11-03 02:01:44 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793642513500,
+            "eventId": "39999564469774305435720205097365374778790884825032687641"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]fc84f2ec6585456dbdc3a0823b413078",
+            "timestamp": 1793646176734,
+            "message": "2026-11-03 03:02:56 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793646185747,
+            "eventId": "39999646363663559994602510418239416930452960613430591514"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]6287e6924cf041c2a1123fcb35ea4ba5",
+            "timestamp": 1793649706748,
+            "message": "2026-11-03 04:01:46 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793649715765,
+            "eventId": "39999725085606321240481633030836313356880665166318075930"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]839fb1bcd135475cba657a638ae00fee",
+            "timestamp": 1793653371273,
+            "message": "2026-11-03 05:02:51 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793653380288,
+            "eventId": "39999806807244619885913405197150734615761230073317294105"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]d659533973714c50beea662438aa0b80",
+            "timestamp": 1793656911498,
+            "message": "2026-11-03 06:01:51 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793656920513,
+            "eventId": "39999885756900290353988720720308570808669666432596181018"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]334b15db41e54d6888f2655ef8b7d99a",
+            "timestamp": 1793728926652,
+            "message": "2026-11-04 02:02:06 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793728935667,
+            "eventId": "40001491748500077297388061439835323174981853114811613210"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]f6368cfe38d8446787918d2f809aec32",
+            "timestamp": 1793732499847,
+            "message": "2026-11-04 03:01:39 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793732508862,
+            "eventId": "40001571433411316961018021979283670444485114143817072648"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]54aab5ff87e944718696d120a52e9fc0",
+            "timestamp": 1793736102753,
+            "message": "2026-11-04 04:01:42 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793736111768,
+            "eventId": "40001651780899997218191326712818412275431092067646701576"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]2dc8393618d5418db8c0dfbb01744096",
+            "timestamp": 1793739703995,
+            "message": "2026-11-04 05:01:43 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793739713009,
+            "eventId": "40001732091280237465009674536824781786664610025991110663"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]4ea3e39e218445dda9faeec2be365344",
+            "timestamp": 1793743301534,
+            "message": "2026-11-04 06:01:41 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793743310547,
+            "eventId": "40001812319080818241669124863247865299988303024110960648"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]74f0c691ba25402a9754a4b458b87c65",
+            "timestamp": 1793746903001,
+            "message": "2026-11-04 07:01:42 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793746912016,
+            "eventId": "40001892634478726158156862894375213821552899226638745608"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]e4e98f93d13e49cea7a36e2af784d510",
+            "timestamp": 1793750501516,
+            "message": "2026-11-04 08:01:41 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793750510532,
+            "eventId": "40001972884044834248582201408119892990699467859991658504"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]9c96f4d5fd11421fa90d5636fd3cd644",
+            "timestamp": 1793754093847,
+            "message": "2026-11-04 09:01:33 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793754102862,
+            "eventId": "40002052995703134031294166407128568546789564037362941959"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]1610515db87e423d9bdc2f213d02884f",
+            "timestamp": 1793757695456,
+            "message": "2026-11-04 10:01:35 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793757704472,
+            "eventId": "40002133314267747765973252924524271749429489721807077383"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]dfded5863ad14022ba689378190c00ae",
+            "timestamp": 1793761296177,
+            "message": "2026-11-04 11:01:36 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793761305194,
+            "eventId": "40002213613029299764357146091163247286316572894865522696"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]c22073b0bee8450688c0dfe1ef620268",
+            "timestamp": 1793764896027,
+            "message": "2026-11-04 12:01:35 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793764905040,
+            "eventId": "40002293892366902694820866500465393383103566354277466120"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]956384e9c91b450380bf47679651f648",
+            "timestamp": 1793768493963,
+            "message": "2026-11-04 13:01:33 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793768502981,
+            "eventId": "40002374129020879315296974214565723018245227784577941511"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]213b149ccf2f4eb9b7e964b9476fe756",
+            "timestamp": 1793772095541,
+            "message": "2026-11-04 14:01:35 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793772104557,
+            "eventId": "40002454446894169948821611414533034263859713668684054536"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]e1a1c5d302c94ef2a6c14f93a28d0a79",
+            "timestamp": 1793775698777,
+            "message": "2026-11-04 15:01:38 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793775707789,
+            "eventId": "40002534801742096121510021785168231635105681528256462856"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]d09bae6a888f4925b4070cfc77da8e5c",
+            "timestamp": 1793779298797,
+            "message": "2026-11-04 16:01:38 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793779307810,
+            "eventId": "40002615084870825735723948128743414459207856668663808008"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]1d5e918bbabb46e6b31211bcd254b2ec",
+            "timestamp": 1793782894753,
+            "message": "2026-11-04 17:01:34 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793782903770,
+            "eventId": "40002695277369326863109422020207503545269194124014321671"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]748fac2c053940e0b8d261b7d00c7a37",
+            "timestamp": 1793786493394,
+            "message": "2026-11-04 18:01:33 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793786502408,
+            "eventId": "40002775529745328848549619049932290591229052478978588680"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]748fac2c053940e0b8d261b7d00c7a37",
+            "timestamp": 1793786645559,
+            "message": "2026-11-04 18:04:05 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793786654573,
+            "eventId": "40002778923138221982961889565671073909370956353650163720"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]7b474318b4624043bce82bbb9ee34e91",
+            "timestamp": 1793790094136,
+            "message": "2026-11-04 19:01:34 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793790103152,
+            "eventId": "40002855828975196496102655302570368564737194529650376711"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]a21b5ec735e14216874c17defacd68f9",
+            "timestamp": 1793793697556,
+            "message": "2026-11-04 20:01:37 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793793706572,
+            "eventId": "40002936187926459785320700331475775874869512611112484872"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]e95c1d7ef78141a6822a0898716fc853",
+            "timestamp": 1793797301832,
+            "message": "2026-11-04 21:01:41 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 4, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 1, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793797310842,
+            "eventId": "40003016565967160964480958770563508153233224814424293385"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]55d541319c284a8085c56b593a0f401c",
+            "timestamp": 1793800920536,
+            "message": "2026-11-04 22:02:00 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 3, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 1, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793800929551,
+            "eventId": "40003097265763013868041047913183616924658082955176706060"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]3e9aadc864b442d79e59c4f67c3d7d60",
+            "timestamp": 1793804518313,
+            "message": "2026-11-04 23:01:58 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 3, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 1, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793804527328,
+            "eventId": "40003177498871172001950786547581124272965935528558723084"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]c3aeb4096df1428e944c8c03a68c799d",
+            "timestamp": 1793808119613,
+            "message": "2026-11-05 00:01:59 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 3, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 1, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793808128626,
+            "eventId": "40003257810544855470283910513865788757490334337241120781"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]5df54e37df7d4d6db72e6e9e1f9d0ae2",
+            "timestamp": 1793811717721,
+            "message": "2026-11-05 01:01:57 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 3, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 1, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793811726737,
+            "eventId": "40003338051034560264907285408515009621534021740911919117"
+        },
+        {
+            "logStreamName": "2026/11/04/[$LATEST]c05e21a793bf4b23a8b0437f1c462a80",
+            "timestamp": 1793815315047,
+            "message": "2026-11-05 02:01:54 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 3, 'path': '/tmp/repo/data/analysis/trade_histo
 
 ## CloudWatch tail (last 10 days)
 ########## fetch-daily ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-fetch-daily because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721694686,
+            "message": "START RequestId: 686aea05-3c75-4b64-b3f8-353ee9b726a7 Version: $LATEST\n",
+            "ingestionTime": 1793721697620,
+            "eventId": "40001330470269026860671534290071426094087945275433418752"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.fetch_daily 2026-11-04 00:02:00 INFO Fetched 365 events (offset up to 300)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343104"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:00 INFO Found 145 unique highest-temperature events\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343105"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:00 INFO Fetched 145 highest-temperature events; filtering for 2026-11-04\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343106"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:00 INFO Timezone for Paris: Europe/Paris (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343107"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:00 INFO Timezone for Ankara: Europe/Istanbul (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343108"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:00 INFO Timezone for Wellington: Pacific/Auckland (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343109"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:01 INFO Timezone for Lucknow: Asia/Kolkata (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343110"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:02 INFO Timezone for Munich: Europe/Berlin (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343111"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:04 INFO Timezone for Tel Aviv: Asia/Jerusalem (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343112"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:05 INFO Timezone for Tokyo: Asia/Tokyo (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343113"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:05 INFO Timezone for Hong Kong: Asia/Hong_Kong (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343114"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:05 INFO Timezone for Shanghai: Asia/Shanghai (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343115"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:06 INFO Timezone for Singapore: Asia/Singapore (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343116"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:07 INFO Timezone for Milan: Europe/Rome (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343117"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:08 INFO Timezone for Madrid: Europe/Madrid (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343118"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:10 INFO Timezone for Warsaw: Europe/Warsaw (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343119"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:11 INFO Timezone for Taipei: Asia/Taipei (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343120"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:12 INFO Timezone for Chongqing: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343121"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:13 INFO Timezone for Beijing: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343122"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:14 INFO Timezone for Wuhan: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343123"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:15 INFO Timezone for Chengdu: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343124"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:16 INFO Timezone for Shenzhen: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343125"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:18 INFO Timezone for Moscow: Europe/Moscow (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343126"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:19 INFO Timezone for Istanbul: Europe/Istanbul (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343127"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:20 INFO Timezone for Busan: Asia/Seoul (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343128"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:21 INFO Timezone for Amsterdam: Europe/Amsterdam (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343129"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:22 INFO Timezone for Helsinki: Europe/Helsinki (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343130"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:24 INFO Timezone for Kuala Lumpur: Asia/Kuala_Lumpur (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343131"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:24 INFO Timezone for Jeddah: Asia/Riyadh (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343132"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:26 INFO Timezone for Cape Town: Africa/Johannesburg (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343133"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:27 INFO Timezone for Guangzhou: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343134"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:28 INFO Timezone for Qingdao: Asia/Shanghai (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343135"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:29 INFO Timezone for Karachi: Asia/Karachi (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343136"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for Manila: Asia/Manila (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343137"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for London: Europe/London (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343138"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for NYC: America/New_York (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343139"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for Dallas: America/Chicago (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343140"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for Atlanta: America/New_York (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343141"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for Miami: America/New_York (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343142"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:30 INFO Timezone for Chicago: America/Chicago (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343143"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:31 INFO Timezone for Austin: America/Chicago (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343144"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:32 INFO Timezone for Houston: America/Chicago (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343145"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:32 INFO Timezone for Seattle: America/Los_Angeles (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343146"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:33 INFO Timezone for Denver: America/Denver (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343147"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:35 INFO Timezone for Los Angeles: America/Los_Angeles (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343148"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:36 INFO Timezone for San Francisco: America/Los_Angeles (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343149"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:36 INFO Timezone for Sao Paulo: America/Sao_Paulo (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343150"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:36 INFO Timezone for Buenos Aires: America/Argentina/Buenos_Aires (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343151"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:36 INFO Timezone for Toronto: America/Toronto (via city_coords.json)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343152"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:38 INFO Timezone for Mexico City: America/Mexico_City (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343153"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:40 INFO Timezone for Panama City: America/Panama (via open-meteo-geocoding)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343154"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:40 INFO Enriched 48 events for 2026-11-04 (skipped 97 wrong-date, 0 no-timezone)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343155"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:40 INFO Saved 48 events to /tmp/repo/data/events_2026-11-04.json\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343156"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:40 INFO Upserted city resolution map (49 cities)\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343157"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721761001,
+            "message": "2026-11-04 00:02:40 INFO Daily fetch complete for 2026-11-04: 48 events\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001331949142944701229808008534898568654510021975343158"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721767583,
+            "message": "INFO lambda_handlers.git_sync Committed and pushed: ['data/events_2026-11-04.json']",
+            "ingestionTime": 1793722154234,
+            "eventId": "40001332095926449597958369990613120087215626597862670336"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721767585,
+            "message": "END RequestId: 686aea05-3c75-4b64-b3f8-353ee9b726a7\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001332095971051088355430772406067675771322177350402103"
+        },
+        {
+            "logStreamName": "2026/11/03/[$LATEST]b6087445510a43f4a933942cea563b62",
+            "timestamp": 1793721767585,
+            "message": "REPORT RequestId: 686aea05-3c75-4b64-b3f8-353ee9b726a7\tDuration: 72898.88 ms\tBilled Duration: 73309 ms\tMemory Size: 512 MB\tMax Memory Used: 504 MB\tInit Duration: 410.02 ms\t\n",
+            "ingestionTime": 1793721770017,
+            "eventId": "40001332095971051088355430772406067675771322177350402104"
+        }
+    ],
+    "searchedLogStreams": [],
+    "nextToken": "Bxkq6kVGFtq2y_MoigeqscPOdhXVbhiVtLoAmXb5jCoQVc3YUp-V6qImodsKprjW5vRkrjSOo2-n7fNNsUdsxozwewnZmPr7oTH_fCL_0Jkigmcqnp16fueHAYxP3Z4d30GgpGiUCTfFEj0VAwtnY4xK6pxz6FCWCmE6unIWmoTZs4VxTWgcz77b2W4C88kVRrko_v6ln-FsSHRZIbpXRhHZXELgmfjChQyDh9dhd-13WBtTohDqfYWt1KeIADtYSav1dop7M1rS817RGz5y6M5pJ4TtEYfV_T-DQUVMjD9xXOAZ3FlMPJ0m0GFlYCKlQLlubeNXkkJQp978sYd4mKt2BtyfNBeXEFjmoBTF6lw"
+}
 
 ########## trade-hourly ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-trade-hourly because no identity-based policy allows the logs:FilterLogEvents action
-
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639725701,
+            "message": "START RequestId: 166ae8c5-146b-4bc8-a580-a36776191d9a Version: $LATEST\n",
+            "ingestionTime": 1793639732352,
+            "eventId": "39999502500820359682001106005974226426295401372724494336"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "INFO botocore.credentials Found credentials in environment variables.INFO lambda_handlers.trade_hourly trade-hourly start force=False now_hkt=2026-11-03 01:15:25 HKT window=14:00-16:00INFO lambda_handlers.gate_data Fetched gate events: events_2026-11-02.jsonINFO lambda_handlers.gate_data Fetched gate events: events_2026-11-01.jsonINFO lambda_handlers.trade_hourly Gate data dir: /tmp/gate_dataINFO lambda_handlers.trade_hourly Gate summary: status=go reason=tradable_events window=14:00–16:00 data_dir=/tmp/gate_data files=['events_2026-11-02.json', 'events_2026-11-01.json'] events_loaded=96 tradable_count=2 tradable_cities=['Buenos Aires', 'Sao Paulo']INFO lambda_handlers.trade_hourly Gate tradable: city=Sao Paulo event_date=2026-11-02 tz=America/Sao_Paulo local_now=2026-11-02 14:15 window_local=14:00–16:00 window_hkt=2026-11-03 01:00:00 HKT..2026-11-03 03:00:00 HKT reason=in_windowINFO lambda_handlers.trade_hourly Gate tradable: city=Buenos Aires event_date=2026-11-02 tz=America/Argentina/Buenos_Aires local_now=2026-11-02 14:15 window_local=14:00–16:00 window_hkt=2026-11-03 01:00:00 HKT..2026-11-03 03:00:00 HKT reason=in_windowINFO lambda_handlers.trade_hourly Gate skipped events by reason: {'after_window': 16, 'local_date_not_event_date': 64, 'before_window': 14}INFO lambda_handlers.trade_hourly Gate skipped sample: city=Paris event_date=2026-11-02 tz=Europe/Paris local_now=2026-11-02 18:15 window_local=14:00–16:00 reason=after_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Ankara event_date=2026-11-02 tz=Europe/Istanbul local_now=2026-11-02 20:15 window_local=14:00–16:00 reason=after_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Wellington event_date=2026-11-02 tz=Pacific/Auckland local_now=2026-11-03 06:15 window_local=None reason=local_date_not_event_dateINFO lambda_handlers.trade_hourly Gate skipped sample: city=Lucknow event_date=2026-11-02 tz=Asia/Kolkata local_now=2026-11-02 22:45 window_local=14:00–16:00 reason=after_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Munich event_date=2026-11-02 tz=Europe/Berlin local_now=2026-11-02 18:15 window_local=14:00–16:00 reason=after_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tel Aviv event_date=2026-11-02 tz=Asia/Jerusalem local_now=2026-11-02 19:15 window_local=14:00–16:00 reason=after_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tokyo event_date=2026-11-02 tz=Asia/Tokyo local_now=2026-11-03 02:15 window_local=None reason=local_date_not_event_dateINFO lambda_handlers.trade_hourly Gate skipped sample: city=Hong Kong event_date=2026-11-02 tz=Asia/Hong_Kong local_now=2026-11-03 01:15 window_local=None reason=local_date_not_event_dateINFO lambda_handlers.trade_hourly Gate skipped 86 more events (not shown); see gate.event_checks in responseINFO lambda_handlers.trade_hourly Gate passed for cities: Buenos Aires, Sao PauloINFO lambda_handlers.trade_hourly Running trade-hourly for dates: ['2026-11-02']WARNING lambda_handlers.trade_hourly 2026-11-03 01:15:39 INFO Loading events from /tmp/repo/data/events_2026-11-02.json\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332224"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=hourly_run step=load_events {'count': 48, 'event_date': '2026-11-02', 'events_file': '/tmp/repo/data/events_2026-11-02.json'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332225"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO Found 2 tradable events in 14:00–16:00 local window\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332226"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=hourly_run step=filter_tradable {'count': 2, 'all_cities': False}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332227"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=1288328 city=Sao Paulo step=load_events {'tradable': True, 'city': 'Sao Paulo'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332228"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=1288329 city=Buenos Aires step=load_events {'tradable': True, 'city': 'Buenos Aires'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332229"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO Timezone skip: bottom 7 by city-timezone win summary% (surviving pool) → Argentina (UTC-3)=25.0% (4), US Mountain (UTC-7/-6)=25.0% (4), China (UTC+8)=28.6% (14), UK (UTC+0/+1)=38.5% (13), Canada East (UTC-5/-4)=40.0% (10), Eastern EU (UTC+2/+3)=42.9% (7), Singapore (UTC+8)=50.0% (4)\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332230"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=1288329 city=Buenos Aires timezone=Argentina (UTC-3) in bottom win-summary timezones; skip\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332231"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=1288329 city=Buenos Aires step=filter_timezone_win_summary {'skipped': True, 'city': 'Buenos Aires', 'timezone': 'Argentina (UTC-3)', 'reason': 'low_win_summary_timezone'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332232"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:39 INFO event=hourly_run step=filter_timezone_win_summary {'count': 1, 'skipped': 1, 'skip_timezones': ['Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)', 'Singapore (UTC+8)']}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332233"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:48 INFO Refreshed event 1288328 (Sao Paulo): 11 markets\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332234"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO HTTP Request: POST https://clob.polymarket.com/auth/api-key \"HTTP/2 400 Bad Request\"\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332235"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 ERROR [py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332236"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO HTTP Request: GET https://clob.polymarket.com/auth/derive-api-key \"HTTP/2 200 OK\"\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332237"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO HTTP Request: GET https://clob.polymarket.com/data/orders?next_cursor=MA%3D%3D \"HTTP/2 200 OK\"\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332238"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO event=1288328 city=Sao Paulo step=check_open_orders {'has_open_order': False}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332239"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO event=1288328 city=Sao Paulo step=refresh_prices {'refreshed_at': '2026-11-02T17:15:40.615473+00:00', 'markets': 11}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332240"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO event=1288328 live selection 0.885 >= max 0.700; skip\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332241"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 INFO event=1288328 city=Sao Paulo step=filter_yes_price_max {'skipped': True, 'selection_price': 0.885, 'yes_price_max': 0.7, 'market_id': '6459567'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332242"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:50 WARNING Weather.com forecast failed icao=SAEZ date=2026-11-02: 401 Client Error: Unauthorized for url: https://api.weather.com/v3/wx/forecast/daily/15day?apiKey=e1f10a1e78da46f5b10a1e78da96f525&icaoCode=SAEZ&units=m&language=en-US&format=json\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332243"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:51 INFO forecast_source=wunderground_scrape city=Buenos Aires icao=SAEZ date=2026-11-02 temp_f=81 temp_c=27 raw_unit=C\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332244"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:51 WARNING Weather.com forecast failed icao=SBGR date=2026-11-02: 401 Client Error: Unauthorized for url: https://api.weather.com/v3/wx/forecast/daily/15day?apiKey=e1f10a1e78da46f5b10a1e78da96f525&icaoCode=SBGR&units=m&language=en-US&format=json\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332245"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:51 INFO forecast_source=wunderground_scrape city=Sao Paulo icao=SBGR date=2026-11-02 temp_f=75 temp_c=24 raw_unit=C\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332246"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:51 INFO Saved 0 selections (2 skipped: open orders, positions, or other) to /tmp/repo/data/selections/markets_yes_2026-11-02_1715.json\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332247"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:51 INFO event=hourly_run step=complete {'tradable': 2, 'eligible': 1, 'skipped_bought': 2, 'selections': 0, 'orders': 0}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332248"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639753738,
+            "message": "2026-11-03 01:15:53 INFO Hourly trade complete: {'event_date': '2026-11-02', 'tradable': 2, 'eligible': 1, 'skipped_bought': 2, 'selections': 0, 'orders': 0, 'selection_file': '/tmp/repo/data/selections/markets_yes_2026-11-02_1715.json', 'events_file': '/tmp/repo/data/events_2026-11-02.json'}\n",
+            "ingestionTime": 1793639762751,
+            "eventId": "39999503126066352813204187061961395111241064709425332249"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]75055d4167d94c0eafb6aba1971200fc",
+            "timestamp": 1793639758123,
+            "message": "INFO lambda_handlers.git_sync Committed and pushed: ['data/positions/bought_events.json', 'data/selections/markets_yes_2026-11-02_0115.json', 'data/selections/markets_yes_2026-11-02_0145.json', 'data/selections/markets_yes_2026-11-02_0215.json', 'data/selections/markets_yes_2026-11-02_0245.json', 'data/selections/markets_yes_2026-11-02_0515.json', 'data/selections/markets_yes_2026-11-02_0546.json', 'data/selections/markets_yes_2026-11-02_0616.json', 'data/selections/markets_yes_2026-11-02_0646.json', 'data/selections/markets_yes_2026-11-02_0716.json', 'data/selections/markets_yes_2026-11-02_0746.json', 'data/selections/markets_yes_2026-11-02_0845.json', 'data/selections/markets_yes_2026-11-02_0916.json', 'data/selections/markets_yes_2026-11-02_0946.json', 'data/selections/markets_yes_2026-11-02_1016.json', 'data/selections/markets_yes_2026-11-02_1045.json', 'data/selections/markets_yes_2026-11-02_1116.json', 'data/selections/markets_yes_2026-11-02_1146.json', 'data/selections/markets_yes_2026-11-02_1216.json', 'data/selections/markets_yes_2026-11-02_1246.json', 'data/selections/markets_yes_2026-11-02_1316.json', 'data/selections/markets_yes_2026-11-02_1346.json', 'data/selections/markets_yes_2026-11-02_1416.json', 'data/selections/markets_yes_2026-11-02_1446.json', 'data/selections/markets_yes_2026-11-02_1515.json', 'data/selections/markets_yes_2026-11-02_1545.json', 'data/selections/markets_yes_2026-11-02_1715.json']INFO lambda_handlers.trade_hourly trade-hourly complete: {\"status\": \"ok\", \"job\": \"trade-hourly\", \"dates\": [\"2026-11-02\"], \"committed\": true, \"selection_files\": [\"data/positions/bought_events.json\", \"data/selections/markets_yes_2026-11-02_0115.json\", \"data/selections/markets_yes_2026-11-02_0145.json\", \"data/selections/markets_yes_2026-11-02_0215.json\", \"data/selections/markets_yes_2026-11-02_0245.json\", \"data/selections/markets_yes_2026-11-02_0515.json\", \"data/selections/markets_yes_2026-11-02_0546.json\", \"data/selections/markets_yes_2026-11-02_0616.json\", \"data/selections/markets_yes_2026-11-02_0646.json\", \"data/selections/markets_yes_2026-11-02_0716.json\", \"data/selections/markets_yes_2026-11-02_0746.json\", \"data/selections/markets_yes_2026-11-02_0845.json\", \"data/selections/markets_yes_2026-11-02_0916.json\", \"data/selections/markets_yes_2026-11-02_0946.json\", \"data/selections/markets_yes_2026-11-02_1016.json\", \"data/selections/markets_yes_2026-11-02_1045.json\", \"data/selections/markets_yes_2026-11-02_1116.json\", \"data/selections/markets_yes_2026-11-02_1146.json\", \"data/selections/markets_yes_2026-11-02_1216.json\", \"data/selections/markets_yes_2026-11-02_1246.json\", \"data/selections/markets_yes_2026-11-02_1316.json\", \"data/selections/markets_yes_2026-11-02_1346.json\", \"data/selections/markets_yes_2026-11-02_1416.json\", \"data/selections/markets_yes_2026-11-02_1446.json\", \"data/selections/markets_yes_2026-11-02_1515.json\", \"data/selections/markets_yes_2026-11-02_1545.json\", \"data/selections/markets_yes_2026-11-02_1715.json\"], \"force\": false, \"gate\": {\"now_hkt\": \"2026-11-03 01:15:25 HKT\", \"window\": \"14:00\\u201316:00\", \"data_dir\": \"/tmp/gate_data\", \"files_checked\": [\"events_2026-11-02.json\", \"events_2026-11-01.json\"], \"events_loaded\": 96, \"event_checks\": [{\"city\": \"Paris\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Paris\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Ankara\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Istanbul\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 19:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 21:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Wellington\", \"event_date\": \"2026-11-02\", \"timezone\": \"Pacific/Auckland\", \"tradable\": false, \"local_now\": \"2026-11-03 06:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Lucknow\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Kolkata\", \"tradable\": false, \"local_now\": \"2026-11-02 22:45\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 16:30:00 HKT\", \"window_hkt_end\": \"2026-11-02 18:30:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Munich\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Berlin\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Tel Aviv\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Jerusalem\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 20:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 22:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Tokyo\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Tokyo\", \"tradable\": false, \"local_now\": \"2026-11-03 02:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Hong Kong\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Hong_Kong\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Shanghai\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Singapore\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Singapore\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Milan\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Rome\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Madrid\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Madrid\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Warsaw\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Warsaw\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Taipei\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Taipei\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Chongqing\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Beijing\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Wuhan\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Chengdu\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Shenzhen\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Moscow\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Moscow\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 19:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 21:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Istanbul\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Istanbul\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 19:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 21:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Busan\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Seoul\", \"tradable\": false, \"local_now\": \"2026-11-03 02:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Amsterdam\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Amsterdam\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 21:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 23:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Helsinki\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/Helsinki\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 20:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 22:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Kuala Lumpur\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Kuala_Lumpur\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Jeddah\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Riyadh\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 19:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 21:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Cape Town\", \"event_date\": \"2026-11-02\", \"timezone\": \"Africa/Johannesburg\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 20:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 22:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Guangzhou\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Qingdao\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Karachi\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Karachi\", \"tradable\": false, \"local_now\": \"2026-11-02 22:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 17:00:00 HKT\", \"window_hkt_end\": \"2026-11-02 19:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"Manila\", \"event_date\": \"2026-11-02\", \"timezone\": \"Asia/Manila\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"London\", \"event_date\": \"2026-11-02\", \"timezone\": \"Europe/London\", \"tradable\": false, \"local_now\": \"2026-11-02 17:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-02 22:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 00:00:00 HKT\", \"reason\": \"after_window\"}, {\"city\": \"NYC\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 03:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 05:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Dallas\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 04:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 06:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Atlanta\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 03:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 05:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Miami\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 03:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 05:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Chicago\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 04:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 06:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Austin\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 04:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 06:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Houston\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 04:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 06:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Seattle\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Los_Angeles\", \"tradable\": false, \"local_now\": \"2026-11-02 09:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 06:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 08:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Denver\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Denver\", \"tradable\": false, \"local_now\": \"2026-11-02 10:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 05:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 07:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Los Angeles\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Los_Angeles\", \"tradable\": false, \"local_now\": \"2026-11-02 09:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 06:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 08:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"San Francisco\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Los_Angeles\", \"tradable\": false, \"local_now\": \"2026-11-02 09:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 06:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 08:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Sao Paulo\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Sao_Paulo\", \"tradable\": true, \"local_now\": \"2026-11-02 14:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 01:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 03:00:00 HKT\", \"reason\": \"in_window\"}, {\"city\": \"Buenos Aires\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Argentina/Buenos_Aires\", \"tradable\": true, \"local_now\": \"2026-11-02 14:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 01:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 03:00:00 HKT\", \"reason\": \"in_window\"}, {\"city\": \"Toronto\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Toronto\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 03:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 05:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Mexico City\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Mexico_City\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 04:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 06:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Panama City\", \"event_date\": \"2026-11-02\", \"timezone\": \"America/Panama\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"window_local\": \"14:00\\u201316:00\", \"window_hkt_start\": \"2026-11-03 03:00:00 HKT\", \"window_hkt_end\": \"2026-11-03 05:00:00 HKT\", \"reason\": \"before_window\"}, {\"city\": \"Paris\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Paris\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Ankara\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Istanbul\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Wellington\", \"event_date\": \"2026-11-01\", \"timezone\": \"Pacific/Auckland\", \"tradable\": false, \"local_now\": \"2026-11-03 06:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Lucknow\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Kolkata\", \"tradable\": false, \"local_now\": \"2026-11-02 22:45\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Munich\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Berlin\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Tel Aviv\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Jerusalem\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Tokyo\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Tokyo\", \"tradable\": false, \"local_now\": \"2026-11-03 02:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Hong Kong\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Hong_Kong\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Shanghai\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Singapore\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Singapore\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Milan\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Rome\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Madrid\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Madrid\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Warsaw\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Warsaw\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Taipei\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Taipei\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Chongqing\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Beijing\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Wuhan\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Chengdu\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Shenzhen\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Moscow\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Moscow\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Istanbul\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Istanbul\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Busan\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Seoul\", \"tradable\": false, \"local_now\": \"2026-11-03 02:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Amsterdam\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Amsterdam\", \"tradable\": false, \"local_now\": \"2026-11-02 18:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Helsinki\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/Helsinki\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Kuala Lumpur\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Kuala_Lumpur\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Jeddah\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Riyadh\", \"tradable\": false, \"local_now\": \"2026-11-02 20:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Cape Town\", \"event_date\": \"2026-11-01\", \"timezone\": \"Africa/Johannesburg\", \"tradable\": false, \"local_now\": \"2026-11-02 19:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Guangzhou\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Qingdao\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Shanghai\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Karachi\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Karachi\", \"tradable\": false, \"local_now\": \"2026-11-02 22:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Manila\", \"event_date\": \"2026-11-01\", \"timezone\": \"Asia/Manila\", \"tradable\": false, \"local_now\": \"2026-11-03 01:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"London\", \"event_date\": \"2026-11-01\", \"timezone\": \"Europe/London\", \"tradable\": false, \"local_now\": \"2026-11-02 17:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Dallas\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Atlanta\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Chicago\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"NYC\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Miami\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/New_York\", \"tradable\": false, \"local_now\": \"2026-11-02 12:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Austin\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Houston\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Chicago\", \"tradable\": false, \"local_now\": \"2026-11-02 11:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Seattle\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Los_Angeles\", \"tradable\": false, \"local_now\": \"2026-11-02 09:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Denver\", \"event_date\": \"2026-11-01\", \"timezone\": \"America/Denver\", \"tradable\": false, \"local_now\": \"2026-11-02 10:15\", \"reason\": \"local_date_not_event_date\"}, {\"city\": \"Los Angeles\", \"event_date\": \"2026-
 ########## stop-loss-check ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-stop-loss-check because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [],
+    "searchedLogStreams": []
+}
 
 ########## sell-win-check ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sell-win-check because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638803699,
+            "message": "START RequestId: 546ae8c1-90ea-45be-9d07-372fb4023572 Version: $LATEST\n",
+            "ingestionTime": 1793638811308,
+            "eventId": "39999481939488685146369507150284907983760756056505712640"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818165,
+            "message": "INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-03 01:00:18 INFO Fetched 1 live positions for wallet 0xe8dccecc\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482262091265188313501534923826589109626816798982144"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818165,
+            "message": "2026-11-03 01:00:18 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482262091265188313501534923826589109626816798982145"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818165,
+            "message": "2026-11-03 01:00:18 INFO sell-win run placed: none\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482262091265188313501534923826589109626816798982146"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818165,
+            "message": "2026-11-03 01:00:18 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482262091265188313501534923826589109626816798982147"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818896,
+            "message": "INFO lambda_handlers.git_sync No staged changes to commit",
+            "ingestionTime": 1793638858113,
+            "eventId": "39999482278393109928439387088787183300981315054637416448"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818907,
+            "message": "END RequestId: 546ae8c1-90ea-45be-9d07-372fb4023572\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482278638418125623223905943329547414711054236450820"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]ea394fd22c4c402e89a92c54a3c5d732",
+            "timestamp": 1793638818907,
+            "message": "REPORT RequestId: 546ae8c1-90ea-45be-9d07-372fb4023572\tDuration: 15206.89 ms\tBilled Duration: 15596 ms\tMemory Size: 1024 MB\tMax Memory Used: 717 MB\tInit Duration: 388.58 ms\t\n",
+            "ingestionTime": 1793638827176,
+            "eventId": "39999482278638418125623223905943329547414711054236450821"
+        }
+    ],
+    "searchedLogStreams": [],
+    "nextToken": "Bxkq6kVGFtq2y_MoigeqscPOdhXVbhiVtLoAmXb5jCq9xVm_BMl1cuBT5AZfzf5ti1Jlp6u7vMjDWdJYIyqa6MjtjBR4fBCpvYz_TrY_G1au8dpdsvjrI3d94TeGdd0Z7ChAH674KgPb51de0jPeujLYbfgi8KDa8WXhjQfifPy7uQnNhRYqkRKNaA2Ysb-VsbBlz5KpXi42WORiLPlx6Gj79Q6tItmEOaemz8zd6iVl3hbYs-dCuVsQ1Yi0-x-bOnHBl9wU-Ujjl-7Yeu3tkSDJQ9CzpAz1OCCU4Wu2X6D9_4GvJZ4sV77dn6g5HEMopR_kSd2LaratUwbjvGcpETO_h4fB6bUdTHeZttQ_Pd0"
+}
 
 ########## sync-trade-history ##########
-
-aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sync-trade-history because no identity-based policy allows the logs:FilterLogEvents action
+{
+    "events": [
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638826765,
+            "message": "START RequestId: 1d6ae8c1-9036-4d51-bfc3-263cd34398f3 Version: $LATEST\n",
+            "ingestionTime": 1793638830455,
+            "eventId": "39999482453877673895676860556095078093385624268252774400"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-03 01:00:39 INFO Syncing trade history for 0xe8dccecc from ts=1793541642 (init_days=None)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504384"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504385"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:00:49 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504386"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:00:49 INFO Fetched 1 live positions for wallet 0xe8dccecc\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504387"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:00:57 INFO on_edge CLOB backfill progress 25/26\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504388"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-10-20 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504389"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-10-11 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504390"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-10-10 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504391"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-10-06 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504392"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Istanbul date=2026-09-24 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504393"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-09-19 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504394"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Istanbul date=2026-09-19 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504395"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-09-16 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504396"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-09-08 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504397"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-09-07 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504398"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-09-03 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504399"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Hong Kong date=2026-08-27 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504400"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Istanbul date=2026-08-24 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504401"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Tel Aviv date=2026-08-20 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504402"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-08-17 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504403"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Hong Kong date=2026-08-13 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504404"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 WARNING No forecast for city=Moscow date=2026-08-05 (Weather.com / WU miss)\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504405"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:15 INFO Forecast backfill: {'attempted': 17, 'failed': 17}\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504406"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:36 INFO Skipped analysis fetched 3/18 missing resolutions\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504407"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:46 INFO Timezone skip denylist refreshed (2026-11-02): bottom 7 (min_count=3 floor=3) from surviving n=332 → ['Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)', 'Singapore (UTC+8)']\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504408"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:47 INFO Wrote 969 trade records to /tmp/repo/data/analysis/trade_history.json\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504409"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638907198,
+            "message": "2026-11-03 01:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 969, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 969, 'win_count': 196, 'loss_count': 431, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5820.17, 'total_realized_pnl_usd': -250.68, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.26, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3101.54, 'avg_outcome_value_usd': 3.2}}\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484247593512449090471802912754612715308326975504410"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638911463,
+            "message": "INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']",
+            "ingestionTime": 1793639294320,
+            "eventId": "39999484342706190720823579958666066760732788909864517632"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638911465,
+            "message": "END RequestId: 1d6ae8c1-9036-4d51-bfc3-263cd34398f3\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484342750792211220640747845664482105866872993939483"
+        },
+        {
+            "logStreamName": "2026/11/02/[$LATEST]9d7f7a30e53e4c15a953a2ca3ef82ecb",
+            "timestamp": 1793638911465,
+            "message": "REPORT RequestId: 1d6ae8c1-9036-4d51-bfc3-263cd34398f3\tDuration: 84699.28 ms\tBilled Duration: 85128 ms\tMemory Size: 1024 MB\tMax Memory Used: 1019 MB\tInit Duration: 427.98 ms\t\n",
+            "ingestionTime": 1793638916213,
+            "eventId": "39999484342750792211220640747845664482105866872993939484"
+        }
+    ],
+    "searchedLogStreams": [],
+    "nextToken": "Bxkq6kVGFtq2y_MoigeqscPOdhXVbhiVtLoAmXb5jCoDAOR1XEJhpTrLYLAp1ZLUJ5XuDc2wNDvfYoUU-knXVGFDrNAzggU3yeAIcQhOePA3c4bTAe9x0spor7fWbvg8GLDy8liWhWCsDHDE7sYMe5C9KRApBWeOUjOE0ggvFJSXxKOYn4rLUohWlYfGhOBPgKZJz7M5zhQsNmGpshXYM1LPVmst-OsD5YQgiuBA6vJnLsbC9GmmDhj2r8BbR6qHyB6XLSBnoFu8jy-hmiEDiYqGPLXFTECYKV-KnrKgJ9pTu-I-SUIppoXkXfGwJKRZvR8IepFf7oqReX9YQeVLyKTeAUUMTlS0lnmkS-ZIfwY"
+}
 
