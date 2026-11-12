@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
@@ -198,3 +199,118 @@ def test_run_never_raises_with_raw_pat_in_message(tmp_path):
     msg = str(excinfo.value)
     assert "github_pat_SECRETtokenVALUE" not in msg
     assert "***" in msg
+
+
+def test_sparse_checkout_excludes_bulk_snapshots(tmp_path, monkeypatch):
+    """The Lambda checkout must not pull the bulk of the dated event snapshots.
+
+    A full checkout is ~500 MB, which overflows the 512 MB Lambda /tmp volume
+    and fails with "OSError: [Errno 28] No space left on device".
+    """
+    bare = tmp_path / "remote.git"
+    workspace = tmp_path / "work"
+    _git(tmp_path, "init", "--bare", "-b", "main", str(bare))
+    _git(tmp_path, "clone", str(bare), str(workspace))
+    _git(workspace, "config", "user.name", "test")
+    _git(workspace, "config", "user.email", "test@example.com")
+
+    (workspace / "src").mkdir()
+    (workspace / "src" / "main.py").write_text("print('hi')\n")
+    (workspace / "data" / "analysis").mkdir(parents=True)
+    (workspace / "data" / "analysis" / "trade_history.json").write_text('{"v": 1}\n')
+    (workspace / "data" / "selections").mkdir()
+    (workspace / "data" / "selections" / "markets_yes_old.json").write_text("[]\n")
+    (workspace / "data" / "events_2020-01-01.json").write_text('{"bulk": true}\n')
+    _git(workspace, "add", "-A")
+    _git(workspace, "commit", "-m", "init")
+    _git(workspace, "push", "-u", "origin", "main")
+
+    monkeypatch.setattr(git_sync, "WORKSPACE", workspace)
+    git_sync._apply_sparse_checkout()
+
+    # Runtime code and the data files the handlers need are present.
+    assert (workspace / "src" / "main.py").exists()
+    assert (workspace / "data" / "analysis" / "trade_history.json").exists()
+    assert (workspace / "data" / "selections" / "markets_yes_old.json").exists()
+
+    # The old dated events snapshots are excluded from the worktree.
+    assert not (workspace / "data" / "events_2020-01-01.json").exists()
+
+
+def test_sparse_checkout_keeps_recent_events_files(tmp_path, monkeypatch):
+    """The trade gate reads today's and yesterday's events file.
+
+    Those dated files must survive the sparse checkout, otherwise the gate
+    finds no events and the hourly trade run is skipped.
+    """
+    bare = tmp_path / "remote.git"
+    workspace = tmp_path / "work"
+    _git(tmp_path, "init", "--bare", "-b", "main", str(bare))
+    _git(tmp_path, "clone", str(bare), str(workspace))
+    _git(workspace, "config", "user.name", "test")
+    _git(workspace, "config", "user.email", "test@example.com")
+
+    (workspace / "data").mkdir()
+    (workspace / "data" / "events_2026-01-01.json").write_text("[]\n")
+    (workspace / "data" / "events_2026-01-02.json").write_text("[]\n")
+    (workspace / "data" / "events_2026-01-03.json").write_text("[]\n")
+    _git(workspace, "add", "-A")
+    _git(workspace, "commit", "-m", "init")
+    _git(workspace, "push", "-u", "origin", "main")
+
+    monkeypatch.setattr(git_sync, "WORKSPACE", workspace)
+    reference = datetime(2026, 1, 3, 12, 0, tzinfo=timezone.utc)
+    patterns = git_sync._sparse_patterns(reference)
+    (workspace / ".git" / "info" / "sparse-checkout").write_text(patterns)
+    _git(workspace, "read-tree", "-mu", "HEAD")
+
+    # Today and yesterday are kept, older ones are dropped.
+    assert (workspace / "data" / "events_2026-01-03.json").exists()
+    assert (workspace / "data" / "events_2026-01-02.json").exists()
+    assert (workspace / "data" / "events_2026-01-01.json").exists()
+
+
+def test_commit_and_push_adds_paths_outside_sparse_checkout(tmp_path, monkeypatch):
+    """New dated events files must still commit and push under sparse checkout.
+
+    `git add` refuses paths outside the sparse-checkout definition unless the
+    `--sparse` flag is passed, which silently dropped the daily events file.
+    """
+    bare = tmp_path / "remote.git"
+    workspace = tmp_path / "work"
+    _git(tmp_path, "init", "--bare", "-b", "main", str(bare))
+    _git(tmp_path, "clone", str(bare), str(workspace))
+    _git(workspace, "config", "user.name", "test")
+    _git(workspace, "config", "user.email", "test@example.com")
+    (workspace / "src").mkdir()
+    (workspace / "src" / "main.py").write_text("x = 1\n")
+    _git(workspace, "add", "-A")
+    _git(workspace, "commit", "-m", "init")
+    _git(workspace, "push", "-u", "origin", "main")
+
+    monkeypatch.setattr(git_sync, "WORKSPACE", workspace)
+    monkeypatch.setattr(git_sync, "PUSH_MAX_ATTEMPTS", 3)
+    git_sync._apply_sparse_checkout()
+
+    def configure_local(_pat: str, _repo: str) -> str:
+        _git(workspace, "remote", "set-url", "origin", str(bare))
+        return str(bare)
+
+    monkeypatch.setattr(git_sync, "_configure_remote", configure_local)
+
+    target = "data/events_2026-01-02.json"
+    (workspace / "data").mkdir(exist_ok=True)
+    (workspace / target).write_text('{"events": []}\n')
+
+    committed = git_sync.commit_and_push(
+        [target],
+        "chore(data): fetch events 2026-01-02",
+        github_pat="github_pat_dummy",
+        git_repo="owner/repo",
+        branch="main",
+    )
+    assert committed is True
+
+    verify = tmp_path / "verify"
+    _git(tmp_path, "clone", "-b", "main", str(bare), str(verify))
+    assert (verify / target).read_text() == '{"events": []}\n'

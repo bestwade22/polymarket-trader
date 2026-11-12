@@ -11,5 +11,7 @@ COPY scripts ${LAMBDA_TASK_ROOT}/scripts
 COPY lambda_handlers ${LAMBDA_TASK_ROOT}/lambda_handlers
 RUN mkdir -p ${LAMBDA_TASK_ROOT}/data
 COPY data/city_coords.json ${LAMBDA_TASK_ROOT}/data/city_coords.json
+COPY data/city_timezones.json ${LAMBDA_TASK_ROOT}/data/city_timezones.json
+COPY data/city_resolution_sources.json ${LAMBDA_TASK_ROOT}/data/city_resolution_sources.json
 
 CMD ["lambda_handlers.fetch_daily.handler"]

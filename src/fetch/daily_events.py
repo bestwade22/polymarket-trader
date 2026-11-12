@@ -135,10 +135,19 @@ def save_events(events: list[dict], target_date: Optional[date] = None, path: Op
     ensure_dirs()
     out = path or events_file_for_date(target_date)
     out.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", delete=False, dir=out.parent, suffix=".tmp") as tmp:
-        json.dump(events, tmp, indent=2)
-        tmp_path = Path(tmp.name)
-    tmp_path.replace(out)
+    tmp_path: Optional[Path] = None
+    try:
+        with tempfile.NamedTemporaryFile("w", delete=False, dir=out.parent, suffix=".tmp") as tmp:
+            json.dump(events, tmp, indent=2)
+            tmp_path = Path(tmp.name)
+        tmp_path.replace(out)
+    except OSError:
+        # A failed write leaves a partial .tmp file behind. On a warm Lambda
+        # container those leftovers accumulate until the /tmp volume is full
+        # and every later write fails with "No space left on device".
+        if tmp_path is not None:
+            tmp_path.unlink(missing_ok=True)
+        raise
     logger.info("Saved %d events to %s", len(events), out)
     return out
 

@@ -8,16 +8,55 @@ import re
 import shutil
 import subprocess
 import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 
 logger = logging.getLogger(__name__)
 
 WORKSPACE = Path("/tmp/repo")
+GATE_DATA_DIR = Path("/tmp/gate_data")
 GIT_USER_NAME = "polymarket-lambda[bot]"
 GIT_USER_EMAIL = "41898282+github-actions[bot]@users.noreply.github.com"
 PUSH_MAX_ATTEMPTS = 3
 FETCH_DEPTH = 30
+
+# The repo tracks a large amount of bulk market data (hundreds of MB of dated
+# events/selections snapshots). A full checkout does not fit in the Lambda
+# /tmp filesystem (512 MB by default) and the clone fails with
+# "OSError: [Errno 28] No space left on device".
+#
+# The Lambda runtime only needs the code plus the current data files. The old
+# dated events snapshots are read by the offline analysis scripts and the
+# dashboard, never by the handlers, so they are excluded from the checkout.
+#
+# What the handlers actually touch at runtime:
+#   - data/events_<date>.json for today and yesterday (trade gate + hourly run)
+#   - data/selections/       (written by the hourly runner, committed back)
+#   - data/positions/        (bought/sold events)
+#   - data/analysis/         (trade history, sync state, skip denylist)
+#   - data/stop_loss/        (stop loss snapshots)
+#   - data/simulation/ is offline-only and is excluded.
+SPARSE_INCLUDE_DIRS = (
+    "/src/",
+    "/config/",
+    "/scripts/",
+    "/lambda_handlers/",
+    "/infrastructure/",
+    "/data/analysis/",
+    "/data/positions/",
+    "/data/selections/",
+    "/data/stop_loss/",
+)
+
+# Number of days of dated events files to keep in the checkout. The handlers
+# read today and yesterday; the extra days give a safety margin around
+# midnight (HKT) and clock skew between Lambda and GitHub.
+EVENT_HISTORY_DAYS = 7
+
+# Extra days kept on the future side of the window, because fetch-daily writes
+# the Hong Kong date while the trade gate looks up the UTC date.
+EVENT_HISTORY_PADDING_DAYS = 2
 
 _SECRET_PATTERNS = (
     re.compile(r"github_pat_[A-Za-z0-9_]+"),
@@ -89,6 +128,24 @@ def _cleanup_git_state() -> None:
             logger.warning("Could not remove stale index.lock")
 
 
+def _cleanup_stale_temp_files() -> None:
+    """Remove leftover .tmp files from earlier failed writes.
+
+    A Lambda container is reused across invocations. When a write fails part
+    way through (for example because the volume was full) the .tmp file is
+    left behind, and the leftovers pile up until every write fails.
+    """
+    for directory in (WORKSPACE / "data", GATE_DATA_DIR):
+        if not directory.is_dir():
+            continue
+        for stale in directory.glob("*.tmp"):
+            try:
+                stale.unlink()
+                logger.info("Removed stale temp file %s", stale)
+            except OSError:
+                logger.warning("Could not remove stale temp file %s", stale)
+
+
 def _read_file_bytes(path: Path) -> Optional[bytes]:
     try:
         return path.read_bytes()
@@ -103,8 +160,62 @@ def _restore_files(snapshots: dict[str, bytes]) -> None:
         dest.write_bytes(content)
 
 
+def _sparse_patterns(now: Optional[datetime] = None) -> str:
+    """Build the sparse-checkout pattern list for the current date.
+
+    Keeps the code, the data directories the handlers use, and only the most
+    recent dated events files. Everything older is left out of the checkout so
+    the clone fits inside the Lambda /tmp volume.
+
+    Pattern order matters in git's non-cone mode: later patterns win, so the
+    bulk events files are excluded first and the few dates that are kept are
+    re-included afterwards.
+    """
+    reference = now or datetime.now(timezone.utc)
+    patterns = ["/*", "!/*/"]
+    patterns.extend(SPARSE_INCLUDE_DIRS)
+
+    # Keep the data/ directory itself so individual files can be re-included.
+    patterns.append("/data/")
+
+    # Keep the small always-current data files in data/.
+    patterns.append("/data/*.json")
+
+    # Drop the bulk dated events files, then re-include only the recent ones.
+    #
+    # The window is centred on UTC but padded on the future side, because
+    # fetch-daily writes the Hong Kong date while the trade gate looks up the
+    # UTC date, so around midnight the two can differ by a day.
+    patterns.append("!/data/events_*.json")
+    for offset in range(-EVENT_HISTORY_PADDING_DAYS, EVENT_HISTORY_DAYS + 1):
+        day = (reference + timedelta(days=offset)).date().isoformat()
+        patterns.append(f"/data/events_{day}.json")
+
+    return "\n".join(patterns) + "\n"
+
+
+def _apply_sparse_checkout() -> None:
+    """Restrict the worktree to the paths the runtime actually needs.
+
+    Without this the checkout holds ~500 MB of dated market snapshots, which
+    overflows the Lambda /tmp volume before the handler can even start.
+    """
+    patterns = _sparse_patterns()
+    _run(["git", "sparse-checkout", "init", "--no-cone"], cwd=WORKSPACE)
+    _run(["git", "config", "core.sparseCheckout", "true"], cwd=WORKSPACE)
+    # Write the pattern file directly: `git sparse-checkout set` needs the
+    # patterns on stdin and the git version in the Lambda base image does not
+    # accept them that way.
+    info_dir = WORKSPACE / ".git" / "info"
+    info_dir.mkdir(parents=True, exist_ok=True)
+    (info_dir / "sparse-checkout").write_text(patterns)
+    _run(["git", "read-tree", "-mu", "HEAD"], cwd=WORKSPACE)
+
+
 def clone_or_update(github_pat: str, git_repo: str, branch: str) -> Path:
     url = _remote_url(github_pat, git_repo)
+
+    _cleanup_stale_temp_files()
 
     if WORKSPACE.exists() and (WORKSPACE / ".git").is_dir():
         try:
@@ -118,6 +229,7 @@ def clone_or_update(github_pat: str, git_repo: str, branch: str) -> Path:
             _run(["git", "reset", "--hard", f"origin/{branch}"], cwd=WORKSPACE)
             _run(["git", "clean", "-fd"], cwd=WORKSPACE)
             _configure_identity()
+            _apply_sparse_checkout()
             return WORKSPACE
         except Exception as exc:
             logger.warning(
@@ -137,6 +249,7 @@ def clone_or_update(github_pat: str, git_repo: str, branch: str) -> Path:
             "clone",
             "--depth",
             str(FETCH_DEPTH),
+            "--no-checkout",
             "-b",
             branch,
             url,
@@ -144,6 +257,7 @@ def clone_or_update(github_pat: str, git_repo: str, branch: str) -> Path:
         ]
     )
     _configure_identity()
+    _apply_sparse_checkout()
     return WORKSPACE
 
 
@@ -181,7 +295,7 @@ def _reapply_paths_on_origin(paths: list[str], message: str, branch: str) -> Non
     _run(["git", "reset", "--hard", f"origin/{branch}"], cwd=WORKSPACE)
     _restore_files(snapshots)
     for path in snapshots:
-        _run(["git", "add", "-f", path], cwd=WORKSPACE)
+        _run(["git", "add", "-f", "--sparse", path], cwd=WORKSPACE)
 
     diff = subprocess.run(
         ["git", "diff", "--staged", "--quiet"],
@@ -211,7 +325,7 @@ def commit_and_push(
 
     _cleanup_git_state()
     for path in existing:
-        _run(["git", "add", "-f", path], cwd=WORKSPACE)
+        _run(["git", "add", "-f", "--sparse", path], cwd=WORKSPACE)
 
     diff = subprocess.run(
         ["git", "diff", "--staged", "--quiet"],

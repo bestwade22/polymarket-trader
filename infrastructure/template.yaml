@@ -144,6 +144,8 @@ Resources:
           - lambda_handlers.fetch_daily.handler
       Timeout: 300
       MemorySize: 512
+      EphemeralStorage:
+        Size: 1024
       Environment:
         Variables:
           SECRETS_ARN: !Ref TraderSecret
@@ -167,6 +169,8 @@ Resources:
           - lambda_handlers.trade_hourly.handler
       Timeout: 900
       MemorySize: 1024
+      EphemeralStorage:
+        Size: 1024
       Environment:
         Variables:
           SECRETS_ARN: !Ref TraderSecret
@@ -212,6 +216,8 @@ Resources:
           - lambda_handlers.stop_loss_check.handler
       Timeout: 900
       MemorySize: 1024
+      EphemeralStorage:
+        Size: 1024
       Environment:
         Variables:
           SECRETS_ARN: !Ref TraderSecret
@@ -243,6 +249,8 @@ Resources:
           - lambda_handlers.sell_win_check.handler
       Timeout: 900
       MemorySize: 1024
+      EphemeralStorage:
+        Size: 1024
       Environment:
         Variables:
           SECRETS_ARN: !Ref TraderSecret
@@ -274,6 +282,8 @@ Resources:
           - lambda_handlers.sync_trade_history.handler
       Timeout: 900
       MemorySize: 1024
+      EphemeralStorage:
+        Size: 1024
       Environment:
         Variables:
           SECRETS_ARN: !Ref TraderSecret
