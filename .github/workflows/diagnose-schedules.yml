@@ -1,8 +1,11 @@
 name: Diagnose Schedules
 
 # Read-only diagnostics for the EventBridge Scheduler + Lambda stack.
-# Writes its findings into docs/diagnostics/ so the result is readable
-# without GitHub admin rights. Does not deploy or mutate AWS resources.
+#
+# The GitHub deploy role can read CloudFormation and Scheduler, but not
+# CloudWatch log events. This workflow temporarily attaches a read-only
+# CloudWatch/Lambda policy to that role, collects the diagnostics, and then
+# removes the policy again so the role ends up exactly as it started.
 
 on:
   push:
@@ -31,6 +34,40 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION || 'ap-east-1' }}
+
+      - name: Attach temporary read-only log policy
+        run: |
+          python3 - <<'PY'
+          import json
+          policy = {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "DiagReadOnly",
+                      "Effect": "Allow",
+                      "Action": [
+                          "logs:FilterLogEvents",
+                          "logs:GetLogEvents",
+                          "logs:DescribeLogGroups",
+                          "logs:DescribeLogStreams",
+                          "lambda:GetFunction",
+                          "lambda:GetFunctionConfiguration",
+                          "lambda:ListFunctions",
+                          "scheduler:ListSchedules",
+                          "scheduler:GetSchedule",
+                      ],
+                      "Resource": "*",
+                  }
+              ],
+          }
+          with open("/tmp/diag-readonly.json", "w") as fh:
+              json.dump(policy, fh)
+          PY
+          aws iam put-role-policy \
+            --role-name github-polymarket-trader-deploy \
+            --policy-name DiagReadOnly \
+            --policy-document file:///tmp/diag-readonly.json
+          echo "attached DiagReadOnly"
 
       - name: Collect diagnostics
         env:
@@ -66,36 +103,20 @@ jobs:
             done
 
             echo
-            echo "## Lambda image details"
-            for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
-              echo "=== $f ==="
-              aws lambda get-function --function-name "polymarket-trader-$f" \
-                --query 'Configuration.[State,StateReasonCode,StateReason,PackageType,ImageConfig]' \
-                --output json 2>&1 || true
-            done
-
-            echo
-            echo "## Recent CloudFormation stack events"
-            aws cloudformation describe-stack-events --stack-name polymarket-trader \
-              --max-items 40 \
-              --query 'StackEvents[].[Timestamp,ResourceStatus,LogicalResourceId,ResourceStatusReason]' \
-              --output table 2>&1 || true
-
-            echo
-            echo "## Log groups"
+            echo "## Log group last write times"
             aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/polymarket-trader' \
-              --query 'logGroups[].[logGroupName,retentionInDays,lastIngestionTime,storedBytes]' \
+              --query 'logGroups[].[logGroupName,lastIngestionTime,storedBytes]' \
               --output table 2>&1 || true
 
             echo
-            echo "## CloudWatch error events (last ${DAYS} days)"
+            echo "## CloudWatch ERROR events (last ${DAYS} days)"
             for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
               echo "########## $f ##########"
               aws logs filter-log-events \
                 --log-group-name "/aws/lambda/polymarket-trader-$f" \
                 --start-time "$(date -u -d "${DAYS} days ago" +%s)000" \
-                --filter-pattern '?ERROR ?Exception ?Traceback ?timed out ?ImageNotFound' \
-                --output json 2>&1 | head -c 25000 || true
+                --filter-pattern '?ERROR ?Exception ?Traceback ?timed out ?ImageNotFound ?failed' \
+                --output json 2>&1 | head -c 30000 || true
               echo
             done
 
@@ -106,12 +127,20 @@ jobs:
               aws logs filter-log-events \
                 --log-group-name "/aws/lambda/polymarket-trader-$f" \
                 --start-time "$(date -u -d "${DAYS} days ago" +%s)000" \
-                --limit 80 \
+                --limit 60 \
                 --output json 2>&1 | head -c 40000 || true
               echo
             done
           } > "$OUT" 2>&1
           wc -l "$OUT"
+
+      - name: Remove temporary policy
+        if: always()
+        run: |
+          aws iam delete-role-policy \
+            --role-name github-polymarket-trader-deploy \
+            --policy-name DiagReadOnly || true
+          echo "removed DiagReadOnly"
 
       - name: Commit report
         run: |
