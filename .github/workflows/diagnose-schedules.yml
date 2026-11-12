@@ -18,6 +18,10 @@ on:
         description: 'Days of CloudWatch logs to pull'
         required: false
         default: '10'
+      since_date:
+        description: 'Only logs from this YYYY-MM-DD (UTC) onward'
+        required: false
+        default: '2026-11-05'
 
 permissions:
   id-token: write
@@ -72,6 +76,7 @@ jobs:
       - name: Collect diagnostics
         env:
           DAYS: ${{ inputs.since_days || '10' }}
+          SINCE_DATE: ${{ inputs.since_date || '2026-11-05' }}
         run: |
           mkdir -p docs/diagnostics
           OUT=docs/diagnostics/aws-report.txt
@@ -80,16 +85,11 @@ jobs:
             echo "=================================================================="
 
             echo
-            echo "## Stack status"
-            aws cloudformation describe-stacks --stack-name polymarket-trader \
-              --query 'Stacks[0].[StackName,StackStatus,LastUpdatedTime]' --output table 2>&1 || true
-
-            echo
             echo "## Scheduler states"
             for s in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
               echo "=== $s ==="
               aws scheduler get-schedule --name "polymarket-trader-$s" \
-                --query '[Name,State,ScheduleExpression,ScheduleExpressionTimezone,LastModificationTime]' \
+                --query '[Name,State,ScheduleExpression,ScheduleExpressionTimezone]' \
                 --output table 2>&1 || true
             done
 
@@ -98,37 +98,44 @@ jobs:
             for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
               echo "=== $f ==="
               aws lambda get-function-configuration --function-name "polymarket-trader-$f" \
-                --query '[FunctionName,State,StateReason,LastModified,Runtime,Timeout,MemorySize,ImageUri]' \
+                --query '[FunctionName,State,StateReason,LastModified,Timeout,MemorySize]' \
                 --output table 2>&1 || true
             done
 
             echo
-            echo "## Log group last write times"
-            aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/polymarket-trader' \
-              --query 'logGroups[].[logGroupName,lastIngestionTime,storedBytes]' \
-              --output table 2>&1 || true
-
-            echo
-            echo "## CloudWatch ERROR events (last ${DAYS} days)"
+            echo "## Log streams per function (date / stream / first+last event)"
             for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
               echo "########## $f ##########"
-              aws logs filter-log-events \
+              aws logs describe-log-streams \
                 --log-group-name "/aws/lambda/polymarket-trader-$f" \
-                --start-time "$(date -u -d "${DAYS} days ago" +%s)000" \
-                --filter-pattern '?ERROR ?Exception ?Traceback ?timed out ?ImageNotFound ?failed' \
-                --output json 2>&1 | head -c 30000 || true
+                --order-by LastEventTime --descending \
+                --max-items 40 \
+                --query 'logStreams[].[logStreamName,firstEventTimestamp,lastEventTimestamp,storedBytes]' \
+                --output json 2>&1 | head -c 20000 || true
               echo
             done
 
             echo
-            echo "## CloudWatch tail (last ${DAYS} days)"
+            echo "## Full log text per function (from ${SINCE_DATE})"
             for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
               echo "########## $f ##########"
               aws logs filter-log-events \
                 --log-group-name "/aws/lambda/polymarket-trader-$f" \
-                --start-time "$(date -u -d "${DAYS} days ago" +%s)000" \
-                --limit 60 \
-                --output json 2>&1 | head -c 40000 || true
+                --start-time "$(date -u -d "${SINCE_DATE} 00:00:00" +%s)000" \
+                --limit 400 \
+                --output json 2>&1 \
+                | python3 -c "
+          import json,sys,datetime
+          raw=sys.stdin.read()
+          try:
+              data=json.loads(raw)
+          except Exception:
+              print(raw[:5000]); raise SystemExit
+          for e in data.get('events',[]):
+              ts=datetime.datetime.fromtimestamp(e['timestamp']/1000, datetime.timezone.utc)
+              msg=(e.get('message') or '').rstrip()
+              print(f\"{ts:%Y-%m-%d %H:%M:%S}Z [{e.get('logStreamName','')[-12:]}] {msg}\")
+          " 2>&1 || true
               echo
             done
           } > "$OUT" 2>&1
