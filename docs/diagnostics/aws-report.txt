@@ -1,0 +1,223 @@
+AWS diagnostics collected at 2026-11-12T16:49:42Z
+==================================================================
+
+## Stack status
+--------------------------------------
+|           DescribeStacks           |
++------------------------------------+
+|  polymarket-trader                 |
+|  UPDATE_COMPLETE                   |
+|  2026-11-03T17:23:38.477000+00:00  |
++------------------------------------+
+
+## Scheduler states
+=== fetch-daily ===
+-----------------------------------
+|           GetSchedule           |
++---------------------------------+
+|  polymarket-trader-fetch-daily  |
+|  ENABLED                        |
+|  cron(1 0 * * ? *)              |
+|  Asia/Hong_Kong                 |
+|  None                           |
++---------------------------------+
+=== trade-hourly ===
+------------------------------------
+|            GetSchedule           |
++----------------------------------+
+|  polymarket-trader-trade-hourly  |
+|  ENABLED                         |
+|  cron(15,45 * * * ? *)           |
+|  UTC                             |
+|  None                            |
++----------------------------------+
+=== stop-loss-check ===
+---------------------------------------
+|             GetSchedule             |
++-------------------------------------+
+|  polymarket-trader-stop-loss-check  |
+|  DISABLED                           |
+|  cron(0/15 * * * ? *)               |
+|  UTC                                |
+|  None                               |
++-------------------------------------+
+=== sell-win-check ===
+--------------------------------------
+|             GetSchedule            |
++------------------------------------+
+|  polymarket-trader-sell-win-check  |
+|  ENABLED                           |
+|  cron(0 * * * ? *)                 |
+|  UTC                               |
+|  None                              |
++------------------------------------+
+=== sync-trade-history ===
+------------------------------------------
+|               GetSchedule              |
++----------------------------------------+
+|  polymarket-trader-sync-trade-history  |
+|  ENABLED                               |
+|  cron(0 * * * ? *)                     |
+|  UTC                                   |
+|  None                                  |
++----------------------------------------+
+
+## Lambda states
+=== fetch-daily ===
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-fetch-daily because no identity-based policy allows the lambda:GetFunctionConfiguration action
+=== trade-hourly ===
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-trade-hourly because no identity-based policy allows the lambda:GetFunctionConfiguration action
+=== stop-loss-check ===
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-stop-loss-check because no identity-based policy allows the lambda:GetFunctionConfiguration action
+=== sell-win-check ===
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-sell-win-check because no identity-based policy allows the lambda:GetFunctionConfiguration action
+=== sync-trade-history ===
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the GetFunctionConfiguration operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: lambda:GetFunctionConfiguration on resource: arn:aws:lambda:ap-east-1:830430162436:function:polymarket-trader-sync-trade-history because no identity-based policy allows the lambda:GetFunctionConfiguration action
+
+## Lambda image details
+=== fetch-daily ===
+[
+    "Active",
+    null,
+    null,
+    "Image",
+    null
+]
+=== trade-hourly ===
+[
+    "Active",
+    null,
+    null,
+    "Image",
+    null
+]
+=== stop-loss-check ===
+[
+    "Active",
+    null,
+    null,
+    "Image",
+    null
+]
+=== sell-win-check ===
+[
+    "Active",
+    null,
+    null,
+    "Image",
+    null
+]
+=== sync-trade-history ===
+[
+    "Active",
+    null,
+    null,
+    "Image",
+    null
+]
+
+## Recent CloudFormation stack events
+---------------------------------------------------------------------------------------------------------------------------
+|                                                   DescribeStackEvents                                                   |
++-----------------------------------+---------------------------------------+---------------------------+-----------------+
+|  2026-11-03T17:24:02.193000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
+|  2026-11-03T17:24:01.610000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
+|  2026-11-03T17:23:58.731000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
+|  2026-11-03T17:23:58.338000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
+|  2026-11-03T17:23:58.276000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
+|  2026-11-03T17:23:58.246000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
+|  2026-11-03T17:23:58.214000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
+|  2026-11-03T17:23:41.790000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
+|  2026-11-03T17:23:41.788000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
+|  2026-11-03T17:23:41.742000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
+|  2026-11-03T17:23:41.739000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
+|  2026-11-03T17:23:41.722000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
+|  2026-11-03T17:23:38.477000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
+|  2026-11-03T16:42:23.248000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
+|  2026-11-03T16:42:22.666000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
+|  2026-11-03T16:42:19.556000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
+|  2026-11-03T16:42:14.422000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
+|  2026-11-03T16:42:14.051000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
+|  2026-11-03T16:42:14.011000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
+|  2026-11-03T16:42:13.986000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
+|  2026-11-03T16:41:58.014000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
+|  2026-11-03T16:41:57.635000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
+|  2026-11-03T16:41:57.581000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
+|  2026-11-03T16:41:57.578000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
+|  2026-11-03T16:41:57.575000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
+|  2026-11-03T16:41:54.343000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
+|  2026-10-31T17:19:22.264000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
+|  2026-10-31T17:19:21.751000+00:00 |  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS  |  polymarket-trader        |  None           |
+|  2026-10-31T17:19:18.961000+00:00 |  UPDATE_COMPLETE                      |  TradeHourlyFunction      |  None           |
+|  2026-10-31T17:19:18.921000+00:00 |  UPDATE_COMPLETE                      |  StopLossCheckFunction    |  None           |
+|  2026-10-31T17:19:18.884000+00:00 |  UPDATE_COMPLETE                      |  SyncTradeHistoryFunction |  None           |
+|  2026-10-31T17:19:18.856000+00:00 |  UPDATE_COMPLETE                      |  SellWinCheckFunction     |  None           |
+|  2026-10-31T17:19:18.843000+00:00 |  UPDATE_COMPLETE                      |  FetchDailyFunction       |  None           |
+|  2026-10-31T17:19:02.292000+00:00 |  UPDATE_IN_PROGRESS                   |  SyncTradeHistoryFunction |  None           |
+|  2026-10-31T17:19:02.276000+00:00 |  UPDATE_IN_PROGRESS                   |  TradeHourlyFunction      |  None           |
+|  2026-10-31T17:19:02.247000+00:00 |  UPDATE_IN_PROGRESS                   |  StopLossCheckFunction    |  None           |
+|  2026-10-31T17:19:02.247000+00:00 |  UPDATE_IN_PROGRESS                   |  FetchDailyFunction       |  None           |
+|  2026-10-31T17:19:02.212000+00:00 |  UPDATE_IN_PROGRESS                   |  SellWinCheckFunction     |  None           |
+|  2026-10-31T17:18:58.833000+00:00 |  UPDATE_IN_PROGRESS                   |  polymarket-trader        |  User Initiated |
+|  2026-10-11T17:25:32.404000+00:00 |  UPDATE_COMPLETE                      |  polymarket-trader        |  None           |
++-----------------------------------+---------------------------------------+---------------------------+-----------------+
+
+## Log groups
+----------------------------------------------------------------------------------
+|                                DescribeLogGroups                               |
++---------------------------------------------------+-------+-------+------------+
+|  /aws/lambda/polymarket-trader-fetch-daily        |  None |  None |  539409    |
+|  /aws/lambda/polymarket-trader-sell-win-check     |  None |  None |  4144383   |
+|  /aws/lambda/polymarket-trader-stop-loss-check    |  None |  None |  2056934   |
+|  /aws/lambda/polymarket-trader-sync-trade-history |  None |  None |  7491957   |
+|  /aws/lambda/polymarket-trader-trade-hourly       |  None |  None |  42891137  |
++---------------------------------------------------+-------+-------+------------+
+
+## CloudWatch error events (last 10 days)
+########## fetch-daily ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-fetch-daily because no identity-based policy allows the logs:FilterLogEvents action
+
+########## trade-hourly ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-trade-hourly because no identity-based policy allows the logs:FilterLogEvents action
+
+########## stop-loss-check ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-stop-loss-check because no identity-based policy allows the logs:FilterLogEvents action
+
+########## sell-win-check ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sell-win-check because no identity-based policy allows the logs:FilterLogEvents action
+
+########## sync-trade-history ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sync-trade-history because no identity-based policy allows the logs:FilterLogEvents action
+
+
+## CloudWatch tail (last 10 days)
+########## fetch-daily ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-fetch-daily because no identity-based policy allows the logs:FilterLogEvents action
+
+########## trade-hourly ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-trade-hourly because no identity-based policy allows the logs:FilterLogEvents action
+
+########## stop-loss-check ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-stop-loss-check because no identity-based policy allows the logs:FilterLogEvents action
+
+########## sell-win-check ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sell-win-check because no identity-based policy allows the logs:FilterLogEvents action
+
+########## sync-trade-history ##########
+
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the FilterLogEvents operation: User: arn:aws:sts::830430162436:assumed-role/github-polymarket-trader-deploy/GitHubActions is not authorized to perform: logs:FilterLogEvents on resource: arn:aws:logs:ap-east-1:830430162436:log-group:/aws/lambda/polymarket-trader-sync-trade-history because no identity-based policy allows the logs:FilterLogEvents action
+
