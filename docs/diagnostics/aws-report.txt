@@ -1,4 +1,4 @@
-AWS diagnostics collected at 2026-11-12T17:00:14Z
+AWS diagnostics collected at 2026-11-12T17:05:05Z
 ==================================================================
 
 ## Scheduler states
@@ -1329,154 +1329,154 @@ AWS diagnostics collected at 2026-11-12T17:00:14Z
 
 ## Full log text per function (from 2026-11-05)
 ########## fetch-daily ##########
-2026-11-05 16:01:34Z [ebfba625df38] START RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7 Version: $LATEST
-2026-11-05 16:02:42Z [ebfba625df38] INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.fetch_daily 2026-11-06 00:02:01 INFO Fetched 364 events (offset up to 300)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:01 INFO Found 145 unique highest-temperature events
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:01 INFO Fetched 145 highest-temperature events; filtering for 2026-11-06
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:01 INFO Timezone for Paris: Europe/Paris (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:01 INFO Timezone for Ankara: Europe/Istanbul (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:01 INFO Timezone for Wellington: Pacific/Auckland (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:02 INFO Timezone for Lucknow: Asia/Kolkata (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:03 INFO Timezone for Munich: Europe/Berlin (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:05 INFO Timezone for Tel Aviv: Asia/Jerusalem (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:06 INFO Timezone for Tokyo: Asia/Tokyo (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:06 INFO Timezone for Hong Kong: Asia/Hong_Kong (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:06 INFO Timezone for Shanghai: Asia/Shanghai (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:07 INFO Timezone for Singapore: Asia/Singapore (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:08 INFO Timezone for Milan: Europe/Rome (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:09 INFO Timezone for Madrid: Europe/Madrid (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:11 INFO Timezone for Warsaw: Europe/Warsaw (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:12 INFO Timezone for Taipei: Asia/Taipei (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:13 INFO Timezone for Chongqing: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:14 INFO Timezone for Beijing: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:15 INFO Timezone for Wuhan: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:16 INFO Timezone for Chengdu: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:18 INFO Timezone for Shenzhen: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:19 INFO Timezone for Moscow: Europe/Moscow (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:20 INFO Timezone for Istanbul: Europe/Istanbul (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:21 INFO Timezone for Busan: Asia/Seoul (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:22 INFO Timezone for Amsterdam: Europe/Amsterdam (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:23 INFO Timezone for Helsinki: Europe/Helsinki (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:25 INFO Timezone for Kuala Lumpur: Asia/Kuala_Lumpur (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:25 INFO Timezone for Jeddah: Asia/Riyadh (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:27 INFO Timezone for Cape Town: Africa/Johannesburg (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:28 INFO Timezone for Guangzhou: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:29 INFO Timezone for Qingdao: Asia/Shanghai (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:30 INFO Timezone for Karachi: Asia/Karachi (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for Manila: Asia/Manila (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for London: Europe/London (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for NYC: America/New_York (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for Dallas: America/Chicago (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for Atlanta: America/New_York (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for Miami: America/New_York (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:31 INFO Timezone for Chicago: America/Chicago (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:32 INFO Timezone for Austin: America/Chicago (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:34 INFO Timezone for Houston: America/Chicago (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:34 INFO Timezone for Seattle: America/Los_Angeles (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:35 INFO Timezone for Denver: America/Denver (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:37 INFO Timezone for Los Angeles: America/Los_Angeles (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:38 INFO Timezone for San Francisco: America/Los_Angeles (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:38 INFO Timezone for Sao Paulo: America/Sao_Paulo (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:38 INFO Timezone for Buenos Aires: America/Argentina/Buenos_Aires (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:38 INFO Timezone for Toronto: America/Toronto (via city_coords.json)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:40 INFO Timezone for Mexico City: America/Mexico_City (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:42 INFO Timezone for Panama City: America/Panama (via open-meteo-geocoding)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:42 INFO Enriched 48 events for 2026-11-06 (skipped 97 wrong-date, 0 no-timezone)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:42 INFO Saved 48 events to /tmp/repo/data/events_2026-11-06.json
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:42 INFO Upserted city resolution map (49 cities)
-2026-11-05 16:02:42Z [ebfba625df38] 2026-11-06 00:02:42 INFO Daily fetch complete for 2026-11-06: 48 events
-2026-11-05 16:02:48Z [ebfba625df38] WARNING lambda_handlers.git_sync Push rejected on attempt 1/3: remote: Internal Server Error
-2026-11-05 16:02:48Z [ebfba625df38] remote: Request ID 87E2:1A8144:3F7FA8:5E2F1E:6AECA8A6
-2026-11-05 16:02:48Z [ebfba625df38] remote: Time 2026-11-05T16:02:47Z
-2026-11-05 16:02:48Z [ebfba625df38] To https://github.com/bestwade22/polymarket-trader.git
-2026-11-05 16:02:48Z [ebfba625df38] ! [remote rejected] HEAD -> main (Internal Server Error)
-2026-11-05 16:02:53Z [ebfba625df38] error: failed to push some refs to 'https://github.com/bestwade22/polymarket-trader.git'WARNING lambda_handlers.git_sync Push rejected on attempt 2/3: remote: fatal error in commit_refs_rules
-2026-11-05 16:02:53Z [ebfba625df38] To https://github.com/bestwade22/polymarket-trader.git
-2026-11-05 16:02:53Z [ebfba625df38] ! [remote rejected] HEAD -> main (fatal error in commit_refs_rules
-2026-11-05 16:02:53Z [ebfba625df38] )
-2026-11-05 16:03:02Z [ebfba625df38] error: failed to push some refs to 'https://github.com/bestwade22/polymarket-trader.git'INFO lambda_handlers.git_sync Committed and pushed: ['data/events_2026-11-06.json']
-2026-11-05 16:03:02Z [ebfba625df38] END RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7
-2026-11-05 16:03:02Z [ebfba625df38] REPORT RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7	Duration: 88153.35 ms	Billed Duration: 88501 ms	Memory Size: 512 MB	Max Memory Used: 504 MB	Init Duration: 347.53 ms
+2026-11-05 16:01:34Z START RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7 Version: $LATEST
+2026-11-05 16:02:42Z INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.fetch_daily 2026-11-06 00:02:01 INFO Fetched 364 events (offset up to 300)
+2026-11-05 16:02:42Z 2026-11-06 00:02:01 INFO Found 145 unique highest-temperature events
+2026-11-05 16:02:42Z 2026-11-06 00:02:01 INFO Fetched 145 highest-temperature events; filtering for 2026-11-06
+2026-11-05 16:02:42Z 2026-11-06 00:02:01 INFO Timezone for Paris: Europe/Paris (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:01 INFO Timezone for Ankara: Europe/Istanbul (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:01 INFO Timezone for Wellington: Pacific/Auckland (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:02 INFO Timezone for Lucknow: Asia/Kolkata (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:03 INFO Timezone for Munich: Europe/Berlin (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:05 INFO Timezone for Tel Aviv: Asia/Jerusalem (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:06 INFO Timezone for Tokyo: Asia/Tokyo (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:06 INFO Timezone for Hong Kong: Asia/Hong_Kong (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:06 INFO Timezone for Shanghai: Asia/Shanghai (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:07 INFO Timezone for Singapore: Asia/Singapore (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:08 INFO Timezone for Milan: Europe/Rome (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:09 INFO Timezone for Madrid: Europe/Madrid (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:11 INFO Timezone for Warsaw: Europe/Warsaw (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:12 INFO Timezone for Taipei: Asia/Taipei (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:13 INFO Timezone for Chongqing: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:14 INFO Timezone for Beijing: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:15 INFO Timezone for Wuhan: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:16 INFO Timezone for Chengdu: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:18 INFO Timezone for Shenzhen: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:19 INFO Timezone for Moscow: Europe/Moscow (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:20 INFO Timezone for Istanbul: Europe/Istanbul (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:21 INFO Timezone for Busan: Asia/Seoul (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:22 INFO Timezone for Amsterdam: Europe/Amsterdam (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:23 INFO Timezone for Helsinki: Europe/Helsinki (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:25 INFO Timezone for Kuala Lumpur: Asia/Kuala_Lumpur (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:25 INFO Timezone for Jeddah: Asia/Riyadh (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:27 INFO Timezone for Cape Town: Africa/Johannesburg (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:28 INFO Timezone for Guangzhou: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:29 INFO Timezone for Qingdao: Asia/Shanghai (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:30 INFO Timezone for Karachi: Asia/Karachi (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for Manila: Asia/Manila (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for London: Europe/London (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for NYC: America/New_York (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for Dallas: America/Chicago (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for Atlanta: America/New_York (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for Miami: America/New_York (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:31 INFO Timezone for Chicago: America/Chicago (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:32 INFO Timezone for Austin: America/Chicago (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:34 INFO Timezone for Houston: America/Chicago (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:34 INFO Timezone for Seattle: America/Los_Angeles (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:35 INFO Timezone for Denver: America/Denver (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:37 INFO Timezone for Los Angeles: America/Los_Angeles (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:38 INFO Timezone for San Francisco: America/Los_Angeles (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:38 INFO Timezone for Sao Paulo: America/Sao_Paulo (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:38 INFO Timezone for Buenos Aires: America/Argentina/Buenos_Aires (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:38 INFO Timezone for Toronto: America/Toronto (via city_coords.json)
+2026-11-05 16:02:42Z 2026-11-06 00:02:40 INFO Timezone for Mexico City: America/Mexico_City (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:42 INFO Timezone for Panama City: America/Panama (via open-meteo-geocoding)
+2026-11-05 16:02:42Z 2026-11-06 00:02:42 INFO Enriched 48 events for 2026-11-06 (skipped 97 wrong-date, 0 no-timezone)
+2026-11-05 16:02:42Z 2026-11-06 00:02:42 INFO Saved 48 events to /tmp/repo/data/events_2026-11-06.json
+2026-11-05 16:02:42Z 2026-11-06 00:02:42 INFO Upserted city resolution map (49 cities)
+2026-11-05 16:02:42Z 2026-11-06 00:02:42 INFO Daily fetch complete for 2026-11-06: 48 events
+2026-11-05 16:02:48Z WARNING lambda_handlers.git_sync Push rejected on attempt 1/3: remote: Internal Server Error
+2026-11-05 16:02:48Z remote: Request ID 87E2:1A8144:3F7FA8:5E2F1E:6AECA8A6
+2026-11-05 16:02:48Z remote: Time 2026-11-05T16:02:47Z
+2026-11-05 16:02:48Z To https://github.com/bestwade22/polymarket-trader.git
+2026-11-05 16:02:48Z ! [remote rejected] HEAD -> main (Internal Server Error)
+2026-11-05 16:02:53Z error: failed to push some refs to 'https://github.com/bestwade22/polymarket-trader.git'WARNING lambda_handlers.git_sync Push rejected on attempt 2/3: remote: fatal error in commit_refs_rules
+2026-11-05 16:02:53Z To https://github.com/bestwade22/polymarket-trader.git
+2026-11-05 16:02:53Z ! [remote rejected] HEAD -> main (fatal error in commit_refs_rules
+2026-11-05 16:02:53Z )
+2026-11-05 16:03:02Z error: failed to push some refs to 'https://github.com/bestwade22/polymarket-trader.git'INFO lambda_handlers.git_sync Committed and pushed: ['data/events_2026-11-06.json']
+2026-11-05 16:03:02Z END RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7
+2026-11-05 16:03:02Z REPORT RequestId: 686aeca8-3c75-4b64-b3f8-353ee9b726a7	Duration: 88153.35 ms	Billed Duration: 88501 ms	Memory Size: 512 MB	Max Memory Used: 504 MB	Init Duration: 347.53 ms
 
 ########## trade-hourly ##########
-2026-11-05 00:15:25Z [7ceb7973fd16] START RequestId: 166aebca-846b-4bc8-a580-a36776191d9a Version: $LATEST
-2026-11-05 00:15:27Z [7ceb7973fd16] INFO botocore.credentials Found credentials in environment variables.INFO lambda_handlers.trade_hourly trade-hourly start force=False now_hkt=2026-11-05 08:15:25 HKT window=14:00-16:00INFO lambda_handlers.gate_data Fetched gate events: events_2026-11-05.jsonINFO lambda_handlers.gate_data Fetched gate events: events_2026-11-04.jsonINFO lambda_handlers.trade_hourly Gate data dir: /tmp/gate_dataINFO lambda_handlers.trade_hourly Gate summary: status=skip reason=no_tradable_events window=14:00–16:00 data_dir=/tmp/gate_data files=['events_2026-11-05.json', 'events_2026-11-04.json'] events_loaded=96 tradable_count=0 tradable_cities=[]INFO lambda_handlers.trade_hourly Gate skipped events by reason: {'before_window': 32, 'local_date_not_event_date': 48, 'after_window': 16}INFO lambda_handlers.trade_hourly Gate skipped sample: city=Paris event_date=2026-11-05 tz=Europe/Paris local_now=2026-11-05 01:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Ankara event_date=2026-11-05 tz=Europe/Istanbul local_now=2026-11-05 03:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Wellington event_date=2026-11-05 tz=Pacific/Auckland local_now=2026-11-05 13:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Lucknow event_date=2026-11-05 tz=Asia/Kolkata local_now=2026-11-05 05:45 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Munich event_date=2026-11-05 tz=Europe/Berlin local_now=2026-11-05 01:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tel Aviv event_date=2026-11-05 tz=Asia/Jerusalem local_now=2026-11-05 02:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tokyo event_date=2026-11-05 tz=Asia/Tokyo local_now=2026-11-05 09:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Hong Kong event_date=2026-11-05 tz=Asia/Hong_Kong local_now=2026-11-05 08:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped 88 more events (not shown); see gate.event_checks in responseINFO lambda_handlers.trade_hourly Gate skip: no_tradable_events; window=14:00–16:00; events_loaded=96; now_hkt=2026-11-05 08:15:25 HKTGate skip: no_tradable_events; window=14:00–16:00; events_loaded=96; now_hkt=2026-11-05 08:15:25 HKT
-2026-11-05 00:15:27Z [7ceb7973fd16] END RequestId: 166aebca-846b-4bc8-a580-a36776191d9a
-2026-11-05 00:15:27Z [7ceb7973fd16] REPORT RequestId: 166aebca-846b-4bc8-a580-a36776191d9a	Duration: 1652.30 ms	Billed Duration: 2105 ms	Memory Size: 1024 MB	Max Memory Used: 123 MB	Init Duration: 451.75 ms
+2026-11-05 00:15:25Z START RequestId: 166aebca-846b-4bc8-a580-a36776191d9a Version: $LATEST
+2026-11-05 00:15:27Z INFO botocore.credentials Found credentials in environment variables.INFO lambda_handlers.trade_hourly trade-hourly start force=False now_hkt=2026-11-05 08:15:25 HKT window=14:00-16:00INFO lambda_handlers.gate_data Fetched gate events: events_2026-11-05.jsonINFO lambda_handlers.gate_data Fetched gate events: events_2026-11-04.jsonINFO lambda_handlers.trade_hourly Gate data dir: /tmp/gate_dataINFO lambda_handlers.trade_hourly Gate summary: status=skip reason=no_tradable_events window=14:00–16:00 data_dir=/tmp/gate_data files=['events_2026-11-05.json', 'events_2026-11-04.json'] events_loaded=96 tradable_count=0 tradable_cities=[]INFO lambda_handlers.trade_hourly Gate skipped events by reason: {'before_window': 32, 'local_date_not_event_date': 48, 'after_window': 16}INFO lambda_handlers.trade_hourly Gate skipped sample: city=Paris event_date=2026-11-05 tz=Europe/Paris local_now=2026-11-05 01:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Ankara event_date=2026-11-05 tz=Europe/Istanbul local_now=2026-11-05 03:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Wellington event_date=2026-11-05 tz=Pacific/Auckland local_now=2026-11-05 13:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Lucknow event_date=2026-11-05 tz=Asia/Kolkata local_now=2026-11-05 05:45 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Munich event_date=2026-11-05 tz=Europe/Berlin local_now=2026-11-05 01:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tel Aviv event_date=2026-11-05 tz=Asia/Jerusalem local_now=2026-11-05 02:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Tokyo event_date=2026-11-05 tz=Asia/Tokyo local_now=2026-11-05 09:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped sample: city=Hong Kong event_date=2026-11-05 tz=Asia/Hong_Kong local_now=2026-11-05 08:15 window_local=14:00–16:00 reason=before_windowINFO lambda_handlers.trade_hourly Gate skipped 88 more events (not shown); see gate.event_checks in responseINFO lambda_handlers.trade_hourly Gate skip: no_tradable_events; window=14:00–16:00; events_loaded=96; now_hkt=2026-11-05 08:15:25 HKTGate skip: no_tradable_events; window=14:00–16:00; events_loaded=96; now_hkt=2026-11-05 08:15:25 HKT
+2026-11-05 00:15:27Z END RequestId: 166aebca-846b-4bc8-a580-a36776191d9a
+2026-11-05 00:15:27Z REPORT RequestId: 166aebca-846b-4bc8-a580-a36776191d9a	Duration: 1652.30 ms	Billed Duration: 2105 ms	Memory Size: 1024 MB	Max Memory Used: 123 MB	Init Duration: 451.75 ms
 
 ########## stop-loss-check ##########
 
 ########## sell-win-check ##########
-2026-11-05 00:00:03Z [3ab54c6bf842] START RequestId: 546aebc7-00ea-45be-9d07-372fb4023572 Version: $LATEST
-2026-11-05 00:00:20Z [3ab54c6bf842] INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 08:00:20 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 00:00:20Z [3ab54c6bf842] 2026-11-05 08:00:20 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
-2026-11-05 00:00:20Z [3ab54c6bf842] 2026-11-05 08:00:20 INFO sell-win run placed: none
-2026-11-05 00:00:20Z [3ab54c6bf842] 2026-11-05 08:00:20 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
-2026-11-05 00:00:20Z [3ab54c6bf842] INFO lambda_handlers.git_sync No staged changes to commit
-2026-11-05 00:00:20Z [3ab54c6bf842] END RequestId: 546aebc7-00ea-45be-9d07-372fb4023572
-2026-11-05 00:00:20Z [3ab54c6bf842] REPORT RequestId: 546aebc7-00ea-45be-9d07-372fb4023572	Duration: 17176.82 ms	Billed Duration: 17557 ms	Memory Size: 1024 MB	Max Memory Used: 729 MB	Init Duration: 379.88 ms
-2026-11-05 01:00:03Z [b85d8d7d3350] START RequestId: 546aebd5-10ea-45be-9d07-372fb4023572 Version: $LATEST
-2026-11-05 01:00:21Z [b85d8d7d3350] INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 09:00:21 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 01:00:21Z [b85d8d7d3350] 2026-11-05 09:00:21 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
-2026-11-05 01:00:21Z [b85d8d7d3350] 2026-11-05 09:00:21 INFO sell-win run placed: none
-2026-11-05 01:00:21Z [b85d8d7d3350] 2026-11-05 09:00:21 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
-2026-11-05 01:00:21Z [b85d8d7d3350] INFO lambda_handlers.git_sync No staged changes to commit
-2026-11-05 01:00:21Z [b85d8d7d3350] END RequestId: 546aebd5-10ea-45be-9d07-372fb4023572
-2026-11-05 01:00:21Z [b85d8d7d3350] REPORT RequestId: 546aebd5-10ea-45be-9d07-372fb4023572	Duration: 18260.77 ms	Billed Duration: 18643 ms	Memory Size: 1024 MB	Max Memory Used: 729 MB	Init Duration: 382.12 ms
-2026-11-05 02:00:03Z [78e928f1a495] START RequestId: 546aebe3-20ea-45be-9d07-372fb4023572 Version: $LATEST
-2026-11-05 02:00:20Z [78e928f1a495] INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 10:00:20 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 02:00:20Z [78e928f1a495] 2026-11-05 10:00:20 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
-2026-11-05 02:00:20Z [78e928f1a495] 2026-11-05 10:00:20 INFO sell-win run placed: none
-2026-11-05 02:00:20Z [78e928f1a495] 2026-11-05 10:00:20 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
-2026-11-05 02:00:20Z [78e928f1a495] INFO lambda_handlers.git_sync No staged changes to commit
-2026-11-05 02:00:20Z [78e928f1a495] END RequestId: 546aebe3-20ea-45be-9d07-372fb4023572
-2026-11-05 02:00:20Z [78e928f1a495] REPORT RequestId: 546aebe3-20ea-45be-9d07-372fb4023572	Duration: 16860.82 ms	Billed Duration: 17231 ms	Memory Size: 1024 MB	Max Memory Used: 724 MB	Init Duration: 369.66 ms
+2026-11-05 00:00:03Z START RequestId: 546aebc7-00ea-45be-9d07-372fb4023572 Version: $LATEST
+2026-11-05 00:00:20Z INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 08:00:20 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 00:00:20Z 2026-11-05 08:00:20 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
+2026-11-05 00:00:20Z 2026-11-05 08:00:20 INFO sell-win run placed: none
+2026-11-05 00:00:20Z 2026-11-05 08:00:20 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
+2026-11-05 00:00:20Z INFO lambda_handlers.git_sync No staged changes to commit
+2026-11-05 00:00:20Z END RequestId: 546aebc7-00ea-45be-9d07-372fb4023572
+2026-11-05 00:00:20Z REPORT RequestId: 546aebc7-00ea-45be-9d07-372fb4023572	Duration: 17176.82 ms	Billed Duration: 17557 ms	Memory Size: 1024 MB	Max Memory Used: 729 MB	Init Duration: 379.88 ms
+2026-11-05 01:00:03Z START RequestId: 546aebd5-10ea-45be-9d07-372fb4023572 Version: $LATEST
+2026-11-05 01:00:21Z INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 09:00:21 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 01:00:21Z 2026-11-05 09:00:21 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
+2026-11-05 01:00:21Z 2026-11-05 09:00:21 INFO sell-win run placed: none
+2026-11-05 01:00:21Z 2026-11-05 09:00:21 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
+2026-11-05 01:00:21Z INFO lambda_handlers.git_sync No staged changes to commit
+2026-11-05 01:00:21Z END RequestId: 546aebd5-10ea-45be-9d07-372fb4023572
+2026-11-05 01:00:21Z REPORT RequestId: 546aebd5-10ea-45be-9d07-372fb4023572	Duration: 18260.77 ms	Billed Duration: 18643 ms	Memory Size: 1024 MB	Max Memory Used: 729 MB	Init Duration: 382.12 ms
+2026-11-05 02:00:03Z START RequestId: 546aebe3-20ea-45be-9d07-372fb4023572 Version: $LATEST
+2026-11-05 02:00:20Z INFO botocore.credentials Found credentials in environment variables.INFO src.api.data_client Fetched 1 live positions for wallet 0xe8dcceccINFO lambda_handlers.sell_win_check sell-win mode: SELL_WIN_DRY_RUN=false live=TrueWARNING lambda_handlers.sell_win_check 2026-11-05 10:00:20 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 02:00:20Z 2026-11-05 10:00:20 INFO sell-win skip: token=8957627413659520 event_slug=highest-grossing-movie-in-2026 reason=not_temp_market
+2026-11-05 02:00:20Z 2026-11-05 10:00:20 INFO sell-win run placed: none
+2026-11-05 02:00:20Z 2026-11-05 10:00:20 INFO Sell-win check complete: status=ok dry_run=False positions_loaded=1 positions_checked=0 placed_count=0 skipped_count=1 error_count=0
+2026-11-05 02:00:20Z INFO lambda_handlers.git_sync No staged changes to commit
+2026-11-05 02:00:20Z END RequestId: 546aebe3-20ea-45be-9d07-372fb4023572
+2026-11-05 02:00:20Z REPORT RequestId: 546aebe3-20ea-45be-9d07-372fb4023572	Duration: 16860.82 ms	Billed Duration: 17231 ms	Memory Size: 1024 MB	Max Memory Used: 724 MB	Init Duration: 369.66 ms
 
 ########## sync-trade-history ##########
-2026-11-05 00:00:26Z [fb05c3ba84f4] START RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3 Version: $LATEST
-2026-11-05 00:01:52Z [fb05c3ba84f4] INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 08:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:41 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:50 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:52 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:00:54 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:01:01 INFO on_edge CLOB backfill progress 25/26
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:01:41 INFO Skipped analysis fetched 6/20 missing resolutions
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:01:51 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:01:51 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
-2026-11-05 00:01:52Z [fb05c3ba84f4] 2026-11-05 08:01:51 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
-2026-11-05 00:01:56Z [fb05c3ba84f4] INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
-2026-11-05 00:01:56Z [fb05c3ba84f4] END RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3
-2026-11-05 00:01:56Z [fb05c3ba84f4] REPORT RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3	Duration: 90006.71 ms	Billed Duration: 90393 ms	Memory Size: 1024 MB	Max Memory Used: 1018 MB	Init Duration: 386.09 ms
-2026-11-05 01:00:26Z [01b65d4e3845] START RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3 Version: $LATEST
-2026-11-05 01:01:48Z [01b65d4e3845] INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 09:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:42 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:49 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:51 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:00:53 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:01:02 INFO on_edge CLOB backfill progress 25/26
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:01:47 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:01:47 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
-2026-11-05 01:01:48Z [01b65d4e3845] 2026-11-05 09:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
-2026-11-05 01:01:52Z [01b65d4e3845] INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
-2026-11-05 01:01:52Z [01b65d4e3845] END RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3
-2026-11-05 01:01:52Z [01b65d4e3845] REPORT RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3	Duration: 85353.48 ms	Billed Duration: 85799 ms	Memory Size: 1024 MB	Max Memory Used: 1018 MB	Init Duration: 445.30 ms
-2026-11-05 02:00:26Z [a95141be2eed] START RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3 Version: $LATEST
-2026-11-05 02:01:47Z [a95141be2eed] INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 10:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:41 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:50 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:51 INFO Fetched 1 live positions for wallet 0xe8dccecc
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:00:53 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:01:01 INFO on_edge CLOB backfill progress 25/26
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:01:46 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:01:47 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
-2026-11-05 02:01:47Z [a95141be2eed] 2026-11-05 10:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
-2026-11-05 02:01:50Z [a95141be2eed] INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
-2026-11-05 02:01:50Z [a95141be2eed] END RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3
-2026-11-05 02:01:50Z [a95141be2eed] REPORT RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3	Duration: 84065.19 ms	Billed Duration: 84518 ms	Memory Size: 1024 MB	Max Memory Used: 1019 MB	Init Duration: 452.52 ms
+2026-11-05 00:00:26Z START RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3 Version: $LATEST
+2026-11-05 00:01:52Z INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 08:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
+2026-11-05 00:01:52Z 2026-11-05 08:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 00:01:52Z 2026-11-05 08:00:41 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
+2026-11-05 00:01:52Z 2026-11-05 08:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 00:01:52Z 2026-11-05 08:00:50 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 00:01:52Z 2026-11-05 08:00:52 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 00:01:52Z 2026-11-05 08:00:54 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
+2026-11-05 00:01:52Z 2026-11-05 08:01:01 INFO on_edge CLOB backfill progress 25/26
+2026-11-05 00:01:52Z 2026-11-05 08:01:41 INFO Skipped analysis fetched 6/20 missing resolutions
+2026-11-05 00:01:52Z 2026-11-05 08:01:51 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
+2026-11-05 00:01:52Z 2026-11-05 08:01:51 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
+2026-11-05 00:01:52Z 2026-11-05 08:01:51 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
+2026-11-05 00:01:56Z INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
+2026-11-05 00:01:56Z END RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3
+2026-11-05 00:01:56Z REPORT RequestId: 1d6aebc7-0036-4d51-bfc3-263cd34398f3	Duration: 90006.71 ms	Billed Duration: 90393 ms	Memory Size: 1024 MB	Max Memory Used: 1018 MB	Init Duration: 386.09 ms
+2026-11-05 01:00:26Z START RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3 Version: $LATEST
+2026-11-05 01:01:48Z INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 09:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
+2026-11-05 01:01:48Z 2026-11-05 09:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 01:01:48Z 2026-11-05 09:00:42 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
+2026-11-05 01:01:48Z 2026-11-05 09:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 01:01:48Z 2026-11-05 09:00:49 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 01:01:48Z 2026-11-05 09:00:51 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 01:01:48Z 2026-11-05 09:00:53 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
+2026-11-05 01:01:48Z 2026-11-05 09:01:02 INFO on_edge CLOB backfill progress 25/26
+2026-11-05 01:01:48Z 2026-11-05 09:01:47 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
+2026-11-05 01:01:48Z 2026-11-05 09:01:47 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
+2026-11-05 01:01:48Z 2026-11-05 09:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
+2026-11-05 01:01:52Z INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
+2026-11-05 01:01:52Z END RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3
+2026-11-05 01:01:52Z REPORT RequestId: 1d6aebd5-1036-4d51-bfc3-263cd34398f3	Duration: 85353.48 ms	Billed Duration: 85799 ms	Memory Size: 1024 MB	Max Memory Used: 1018 MB	Init Duration: 445.30 ms
+2026-11-05 02:00:26Z START RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3 Version: $LATEST
+2026-11-05 02:01:47Z INFO botocore.credentials Found credentials in environment variables.WARNING lambda_handlers.sync_trade_history 2026-11-05 10:00:38 INFO Syncing trade history for 0xe8dccecc from ts=1793794939 (init_days=None)
+2026-11-05 02:01:47Z 2026-11-05 10:00:39 INFO Fetched 1 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 02:01:47Z 2026-11-05 10:00:41 INFO Fetched 747 highest-temp closed positions for wallet 0xe8dccecc
+2026-11-05 02:01:47Z 2026-11-05 10:00:43 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 02:01:47Z 2026-11-05 10:00:50 INFO Fetched 3317 highest-temp activity rows for wallet 0xe8dccecc
+2026-11-05 02:01:47Z 2026-11-05 10:00:51 INFO Fetched 1 live positions for wallet 0xe8dccecc
+2026-11-05 02:01:47Z 2026-11-05 10:00:53 INFO Rebuilt 1 token(s) from full wallet activity (incremental fix)
+2026-11-05 02:01:47Z 2026-11-05 10:01:01 INFO on_edge CLOB backfill progress 25/26
+2026-11-05 02:01:47Z 2026-11-05 10:01:46 INFO Timezone skip denylist refreshed (2026-11-05): bottom 7 (min_count=3 floor=3) from surviving n=333 → ['South Africa (UTC+2)', 'Argentina (UTC-3)', 'US Mountain (UTC-7/-6)', 'China (UTC+8)', 'UK (UTC+0/+1)', 'Canada East (UTC-5/-4)', 'Eastern EU (UTC+2/+3)']
+2026-11-05 02:01:47Z 2026-11-05 10:01:47 INFO Wrote 970 trade records to /tmp/repo/data/analysis/trade_history.json
+2026-11-05 02:01:47Z 2026-11-05 10:01:47 INFO Trade history sync complete: {'status': 'ok', 'record_count': 970, 'activity_rows': 1, 'path': '/tmp/repo/data/analysis/trade_history.json', 'summary': {'total_count': 970, 'win_count': 196, 'loss_count': 432, 'sold_count': 342, 'open_count': 0, 'win_pct': 20.2, 'total_cost_basis_usd': 5834.15, 'total_realized_pnl_usd': -264.66, 'sold_but_would_have_won_count': 8, 'avg_buy_usd': 6.01, 'avg_buy_price': 0.513, 'avg_spread': 0.0742, 'avg_pnl_usd': -0.27, 'sold_win_count': 276, 'sold_lose_count': 37, 'win_plus_sold_win_count': 490, 'win_plus_sold_win_pct': 50.7, 'total_outcome_value_usd': 3087.56, 'avg_outcome_value_usd': 3.18}}
+2026-11-05 02:01:50Z INFO lambda_handlers.git_sync Committed and pushed: ['data/analysis/trade_history.json', 'data/analysis/sync_state.json', 'data/analysis/resolutions_cache.json', 'data/analysis/timezone_skip_denylist.json']
+2026-11-05 02:01:50Z END RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3
+2026-11-05 02:01:50Z REPORT RequestId: 1d6aebe3-2036-4d51-bfc3-263cd34398f3	Duration: 84065.19 ms	Billed Duration: 84518 ms	Memory Size: 1024 MB	Max Memory Used: 1019 MB	Init Duration: 452.52 ms
 
