@@ -1,0 +1,92 @@
+name: Diagnose Schedules
+
+# Read-only diagnostics for the EventBridge Scheduler + Lambda stack.
+# Does not deploy or mutate anything. Uses only read permissions that the
+# existing GitHub deploy role already grants.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-schedules.yml'
+  workflow_dispatch:
+    inputs:
+      since_days:
+        description: 'Days of CloudWatch logs to pull'
+        required: false
+        default: '10'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'ap-east-1' }}
+
+      - name: Stack status
+        run: |
+          aws cloudformation describe-stacks --stack-name polymarket-trader \
+            --query 'Stacks[0].[StackName,StackStatus,LastUpdatedTime]' --output table || true
+
+      - name: Scheduler states
+        run: |
+          for s in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
+            echo "=== $s ==="
+            aws scheduler get-schedule --name "polymarket-trader-$s" \
+              --query '[Name,State,ScheduleExpression,ScheduleExpressionTimezone,LastModificationTime]' \
+              --output table 2>&1 || true
+          done
+
+      - name: Lambda states
+        run: |
+          for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
+            echo "=== $f ==="
+            aws lambda get-function-configuration --function-name "polymarket-trader-$f" \
+              --query '[FunctionName,State,StateReason,LastModified,Runtime,Timeout,MemorySize,ImageUri]' \
+              --output table 2>&1 || true
+          done
+
+      - name: Lambda image details
+        run: |
+          for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
+            echo "=== $f ==="
+            aws lambda get-function --function-name "polymarket-trader-$f" \
+              --query 'Configuration.[State,StateReasonCode,StateReason,PackageType,ImageConfig]' \
+              --output json 2>&1 || true
+          done
+
+      - name: CloudFormation stack events (recent)
+        run: |
+          aws cloudformation describe-stack-events --stack-name polymarket-trader \
+            --max-items 40 \
+            --query 'StackEvents[].[Timestamp,ResourceStatus,LogicalResourceId,ResourceStatusReason]' \
+            --output table 2>&1 || true
+
+      - name: Log groups
+        run: |
+          aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/polymarket-trader' \
+            --query 'logGroups[].[logGroupName,retentionInDays,lastIngestionTime,storedBytes]' \
+            --output table 2>&1 || true
+
+      - name: Attempt log tail (needs logs:GetLogEvents)
+        env:
+          DAYS: ${{ inputs.since_days || '10' }}
+        run: |
+          for f in fetch-daily trade-hourly stop-loss-check sell-win-check sync-trade-history; do
+            echo "########## $f ##########"
+            aws logs filter-log-events \
+              --log-group-name "/aws/lambda/polymarket-trader-$f" \
+              --start-time "$(date -u -d "${DAYS} days ago" +%s)000" \
+              --filter-pattern '?ERROR ?Exception ?Traceback ?timed out ?ImageNotFound' \
+              --output json 2>&1 | head -c 25000 || true
+            echo
+          done
