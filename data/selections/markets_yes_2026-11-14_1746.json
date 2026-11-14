@@ -1,0 +1,30 @@
+{
+  "run_at": "2026-11-14T17:46:45.270987+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1370920",
+      "city": "Buenos Aires",
+      "timezone": "Argentina (UTC-3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 84,
+      "forecast_temp_c": 29,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1370919",
+      "city": "Sao Paulo",
+      "market_id": "6985129",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.87,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 86,
+      "forecast_temp_c": 30,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    }
+  ]
+}
