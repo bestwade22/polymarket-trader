@@ -1,0 +1,55 @@
+{
+  "run_at": "2026-11-14T11:16:52.926635+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1369505",
+      "city": "Ankara",
+      "market_id": "6981073",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.745,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1369531",
+      "city": "Moscow",
+      "market_id": "6981276",
+      "group_item_title": "5\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9725,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1369532",
+      "city": "Istanbul",
+      "market_id": "6981289",
+      "group_item_title": "21\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9875,
+      "yes_price_max": 0.7
+    },
+    {
+      "event_id": "1369537",
+      "city": "Jeddah",
+      "market_id": "6981347",
+      "group_item_title": "35\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.969,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 97,
+      "forecast_temp_c": 36,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
