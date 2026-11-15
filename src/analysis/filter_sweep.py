@@ -26,10 +26,10 @@ SPREAD_LIVE = "spread_live"
 BUY_LIVE = "buy_live"
 YES_GAP_LIVE = "yes_gap_live"
 BUY_BAND_LIVE = "buy_band_live"
-# Shipped live Lambda stack (timezone denylist from surviving pool + live buy/spread/gap/bands).
-LIVE_STACK = (
-    f"{SKIP_TZ_SURVIVING} + {SPREAD_LIVE} + {BUY_LIVE} + {YES_GAP_LIVE} + {BUY_BAND_LIVE}"
-)
+OI_LIVE = "oi_live"
+# Shipped live Lambda stack (Tier-1): timezone denylist from surviving pool
+# + live open-interest floor + live buy band.
+LIVE_STACK = f"{SKIP_TZ_SURVIVING} + {OI_LIVE} + {BUY_LIVE}"
 
 
 @dataclass(frozen=True)
@@ -51,10 +51,15 @@ def _oi(rec: TradeRecord) -> float:
 
 
 def _spread_ok_live(rec: TradeRecord) -> bool:
-    """Match live: missing spread allowed; otherwise require spread < SPREAD_MAX."""
+    """Match live: missing spread allowed; otherwise require spread < SPREAD_MAX.
+
+    SPREAD_MAX <= 0 disables the guard entirely (same as live).
+    """
+    spread_max = float(getattr(settings, "spread_max", 0.0) or 0.0)
+    if spread_max <= 0:
+        return True
     if rec.spread is None:
         return True
-    spread_max = float(getattr(settings, "spread_max", 0.08) or 0.08)
     return float(rec.spread) < spread_max
 
 
@@ -70,6 +75,17 @@ def _buy_ok_live(rec: TradeRecord) -> bool:
     if yes_min > 0 and float(buy) < yes_min:
         return False
     return True
+
+
+def _oi_ok_live(rec: TradeRecord) -> bool:
+    """Match live: open interest must be known and >= OPEN_INTEREST_MIN (fail closed)."""
+    oi_min = float(getattr(settings, "open_interest_min", 0.0) or 0.0)
+    if oi_min <= 0:
+        return True
+    oi = rec.open_interest
+    if oi is None:
+        return False
+    return float(oi) >= oi_min
 
 
 def _yes_gap_ok_live(rec: TradeRecord) -> bool:
@@ -91,7 +107,7 @@ def _buy_band_ok_live(rec: TradeRecord) -> bool:
 
     high_lo = float(getattr(settings, "buy_band_high_min", 0.60) or 0.60)
     high_hi = float(getattr(settings, "buy_band_high_max", 0.70) or 0.70)
-    high_gap = float(getattr(settings, "buy_band_high_yes_gap_min", 0.25) or 0.0)
+    high_gap = float(getattr(settings, "buy_band_high_yes_gap_min", 0) or 0.0)
     if (
         high_gap > 0
         and high_lo <= buy_f < high_hi
@@ -101,7 +117,7 @@ def _buy_band_ok_live(rec: TradeRecord) -> bool:
         return False
 
     low_lo = float(getattr(settings, "buy_band_low_min", 0.45) or 0.45)
-    low_hi = float(getattr(settings, "buy_band_low_max", 0.50) or 0.50)
+    low_hi = float(getattr(settings, "buy_band_low_max", 0.00) or 0.00)
     if low_hi >= low_lo and low_lo <= buy_f <= low_hi:
         local = (rec.bought_at_local or "").strip()
         if ":" in local:
@@ -206,6 +222,7 @@ def build_filter_catalog(records: list[TradeRecord]) -> list[FilterDef]:
         FilterDef(BUY_LIVE, _buy_ok_live),
         FilterDef(YES_GAP_LIVE, _yes_gap_ok_live),
         FilterDef(BUY_BAND_LIVE, _buy_band_ok_live),
+        FilterDef(OI_LIVE, _oi_ok_live),
         FilterDef("spread<0.10", lambda r: _spread(r) < 0.10),
         FilterDef("spread<0.08", lambda r: _spread(r) < 0.08),
         FilterDef("spread<0.05", lambda r: _spread(r) < 0.05),
@@ -236,6 +253,7 @@ def candidate_stacks(records: list[TradeRecord]) -> list[FilterDef]:
 
     combos: list[list[str]] = [
         # Live-mirrored stack (must stay first among combos so it always exists).
+        [SKIP_TZ_SURVIVING, OI_LIVE, BUY_LIVE],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE, YES_GAP_LIVE, BUY_BAND_LIVE],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE, YES_GAP_LIVE],
         [SKIP_TZ_SURVIVING, SPREAD_LIVE, BUY_LIVE],
@@ -333,6 +351,9 @@ def _pred_from_name_parts(name: str, r: TradeRecord, bottom7: set[str]) -> bool:
                 return False
         elif part == BUY_BAND_LIVE:
             if not _buy_band_ok_live(r):
+                return False
+        elif part == OI_LIVE:
+            if not _oi_ok_live(r):
                 return False
         elif part == "spread<0.10":
             if not (_spread(r) < 0.10):

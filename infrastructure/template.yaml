@@ -27,13 +27,16 @@ Parameters:
     Default: '0.70'
   YesPriceMin:
     Type: String
-    Default: '0.45'
+    Default: '0.50'
+  OpenInterestMin:
+    Type: String
+    Default: '10000'
   SpreadMax:
     Type: String
-    Default: '0.08'
+    Default: '0'
   YesGapMin:
     Type: String
-    Default: '0.10'
+    Default: '0'
   BuyBandHighMin:
     Type: String
     Default: '0.60'
@@ -42,13 +45,13 @@ Parameters:
     Default: '0.70'
   BuyBandHighYesGapMin:
     Type: String
-    Default: '0.25'
+    Default: '0'
   BuyBandLowMin:
     Type: String
     Default: '0.45'
   BuyBandLowMax:
     Type: String
-    Default: '0.50'
+    Default: '0.00'
   BuyBandLowMinLocalTime:
     Type: String
     Default: '14:45'
@@ -181,6 +184,7 @@ Resources:
           SHARE_COUNT: !Ref ShareCount
           YES_PRICE_MAX: !Ref YesPriceMax
           YES_PRICE_MIN: !Ref YesPriceMin
+          OPEN_INTEREST_MIN: !Ref OpenInterestMin
           SPREAD_MAX: !Ref SpreadMax
           YES_GAP_MIN: !Ref YesGapMin
           BUY_BAND_HIGH_MIN: !Ref BuyBandHighMin
@@ -289,6 +293,19 @@ Resources:
           SECRETS_ARN: !Ref TraderSecret
           GIT_REPO: !Ref GitHubRepo
           GIT_BRANCH: !Ref GitBranch
+          # Same buy-filter thresholds as trade-hourly: the denylist ranking
+          # and filter_sweep must mirror the stack that actually trades.
+          YES_PRICE_MAX: !Ref YesPriceMax
+          YES_PRICE_MIN: !Ref YesPriceMin
+          OPEN_INTEREST_MIN: !Ref OpenInterestMin
+          SPREAD_MAX: !Ref SpreadMax
+          YES_GAP_MIN: !Ref YesGapMin
+          BUY_BAND_HIGH_MIN: !Ref BuyBandHighMin
+          BUY_BAND_HIGH_MAX: !Ref BuyBandHighMax
+          BUY_BAND_HIGH_YES_GAP_MIN: !Ref BuyBandHighYesGapMin
+          BUY_BAND_LOW_MIN: !Ref BuyBandLowMin
+          BUY_BAND_LOW_MAX: !Ref BuyBandLowMax
+          BUY_BAND_LOW_MIN_LOCAL_TIME: !Ref BuyBandLowMinLocalTime
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref TraderSecret

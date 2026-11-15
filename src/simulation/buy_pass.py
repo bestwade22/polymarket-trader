@@ -16,6 +16,7 @@ from src.trade.selector import (
     filter_by_buy_band_high_yes_gap,
     filter_by_buy_band_low_local_time,
     filter_by_on_edge,
+    filter_by_open_interest_min,
     filter_by_spread_max,
     filter_by_yes_gap_min,
     get_strategy,
@@ -161,6 +162,12 @@ def try_buy_event(
             if not kept:
                 continue
             selection = kept[0]
+
+        # OPEN_INTEREST_MIN — event-level open interest floor (fail closed)
+        kept, _skipped = filter_by_open_interest_min([selection])
+        if not kept:
+            continue
+        selection = kept[0]
 
         kept, _skipped = filter_by_yes_gap_min([selection])
         if not kept:

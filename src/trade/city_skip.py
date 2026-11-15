@@ -64,20 +64,22 @@ def load_trade_records(path: Optional[Path] = None) -> list[TradeRecord]:
 def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
     """Trades that would pass the live shipped stack when filter fields exist.
 
-    Uses current YES_PRICE_MIN / YES_PRICE_MAX / SPREAD_MAX / YES_GAP_MIN
-    plus buy-price band rules (high-band yes gap, low-band local time).
-    Missing spread or yes_gap is allowed (same as live). Missing buy_price
-    drops the row from ranking.
+    Uses current YES_PRICE_MIN / YES_PRICE_MAX / OPEN_INTEREST_MIN / SPREAD_MAX
+    / YES_GAP_MIN plus buy-price band rules (high-band yes gap, low-band local
+    time). Missing spread or yes_gap is allowed (same as live). Missing
+    buy_price or missing open interest drops the row from ranking (live OI
+    filter fails closed).
     """
     yes_min = float(getattr(settings, "yes_price_min", 0.0) or 0.0)
     yes_max = float(getattr(settings, "yes_price_max", 0.70) or 0.70)
-    spread_max = float(getattr(settings, "spread_max", 0.15) or 0.15)
+    oi_min = float(getattr(settings, "open_interest_min", 0.0) or 0.0)
+    spread_max = float(getattr(settings, "spread_max", 0.0) or 0.0)
     yes_gap_min = float(getattr(settings, "yes_gap_min", 0.0) or 0.0)
     high_lo = float(getattr(settings, "buy_band_high_min", 0.60) or 0.60)
     high_hi = float(getattr(settings, "buy_band_high_max", 0.70) or 0.70)
-    high_gap = float(getattr(settings, "buy_band_high_yes_gap_min", 0.25) or 0.0)
+    high_gap = float(getattr(settings, "buy_band_high_yes_gap_min", 0.0) or 0.0)
     low_lo = float(getattr(settings, "buy_band_low_min", 0.45) or 0.45)
-    low_hi = float(getattr(settings, "buy_band_low_max", 0.50) or 0.50)
+    low_hi = float(getattr(settings, "buy_band_low_max", 0.00) or 0.00)
     low_cutoff = (
         int(getattr(settings, "buy_band_low_min_local_hour", 14)) * 60
         + int(getattr(settings, "buy_band_low_min_local_minute", 45))
@@ -92,7 +94,11 @@ def surviving_records_for_skip(records: list[TradeRecord]) -> list[TradeRecord]:
             continue
         if yes_min > 0 and buy_f < yes_min:
             continue
-        if rec.spread is not None and float(rec.spread) >= spread_max:
+        if oi_min > 0:
+            oi = rec.open_interest
+            if oi is None or float(oi) < oi_min:
+                continue
+        if spread_max > 0 and rec.spread is not None and float(rec.spread) >= spread_max:
             continue
         if (
             yes_gap_min > 0
@@ -261,15 +267,16 @@ def refresh_timezone_skip_denylist(
         "all_n": len(records),
         "yes_price_min": float(getattr(settings, "yes_price_min", 0) or 0),
         "yes_price_max": float(getattr(settings, "yes_price_max", 0.70) or 0.70),
-        "spread_max": float(getattr(settings, "spread_max", 0.15) or 0.15),
+        "open_interest_min": float(getattr(settings, "open_interest_min", 0) or 0),
+        "spread_max": float(getattr(settings, "spread_max", 0) or 0),
         "yes_gap_min": float(getattr(settings, "yes_gap_min", 0.0) or 0.0),
         "buy_band_high_min": float(getattr(settings, "buy_band_high_min", 0.60) or 0.60),
         "buy_band_high_max": float(getattr(settings, "buy_band_high_max", 0.70) or 0.70),
         "buy_band_high_yes_gap_min": float(
-            getattr(settings, "buy_band_high_yes_gap_min", 0.25) or 0.0
+            getattr(settings, "buy_band_high_yes_gap_min", 0) or 0.0
         ),
         "buy_band_low_min": float(getattr(settings, "buy_band_low_min", 0.45) or 0.45),
-        "buy_band_low_max": float(getattr(settings, "buy_band_low_max", 0.50) or 0.50),
+        "buy_band_low_max": float(getattr(settings, "buy_band_low_max", 0.00) or 0.00),
         "buy_band_low_min_local_hour": int(
             getattr(settings, "buy_band_low_min_local_hour", 14)
         ),

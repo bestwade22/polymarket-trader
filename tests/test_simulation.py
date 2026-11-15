@@ -74,6 +74,11 @@ def _market(mid: float, market_id: str, title: str, token: str, *, bid=None, ask
 
 
 def test_buy_pass_selects_highest_yes(monkeypatch):
+    from config import settings as settings_mod
+
+    # Tier-1 stack ships with buy>=0.50 + oi>=10000; this test targets selection only.
+    monkeypatch.setattr(settings_mod.settings, "yes_price_min", 0.0)
+    monkeypatch.setattr(settings_mod.settings, "open_interest_min", 0.0)
     event = {
         "id": "e1",
         "city": "Munich",
@@ -193,6 +198,7 @@ def test_buy_pass_allows_missing_spread(monkeypatch):
     from config import settings as settings_mod
 
     monkeypatch.setattr(settings_mod.settings, "yes_price_min", 0.0)
+    monkeypatch.setattr(settings_mod.settings, "open_interest_min", 0.0)
     monkeypatch.setattr(settings_mod.settings, "skip_on_edge", False)
     event = {
         "id": "e1",
@@ -518,6 +524,8 @@ def test_simulate_trades_skips_completed_dates(tmp_path, monkeypatch):
             "to_date": "2026-07-17",
             "strategy": "highest_yes",
             "yes_price_max": 0.6,
+            "yes_price_min": sim_runner.settings.yes_price_min,
+            "open_interest_min": sim_runner.settings.open_interest_min,
             "spread_max": 0.15,
             "share_count": 10,
             "trade_window": "14:00–16:00",

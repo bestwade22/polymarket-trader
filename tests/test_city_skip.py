@@ -159,6 +159,11 @@ def test_surviving_records_respect_live_stack(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    # Tier-1 stack ships with the OI floor and the buy-band rules disabled.
+    monkeypatch.setattr("src.trade.city_skip.settings.open_interest_min", 0.0)
+    monkeypatch.setattr("src.trade.city_skip.settings.yes_gap_min", 0.0)
+    monkeypatch.setattr("src.trade.city_skip.settings.buy_band_high_yes_gap_min", 0.0)
+    monkeypatch.setattr("src.trade.city_skip.settings.buy_band_low_max", 0.50)
     records = [
         _rec("Alpha", buy_price=0.50, spread=0.02, token_id="a", bought_at_local="15:00"),
         _rec("Beta", buy_price=0.40, spread=0.02, token_id="b"),  # below min
@@ -191,6 +196,7 @@ def test_surviving_records_buy_band_high_gap(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.08)
     monkeypatch.setattr("src.trade.city_skip.settings.yes_gap_min", 0.05)
     monkeypatch.setattr("src.trade.city_skip.settings.buy_band_high_yes_gap_min", 0.25)
+    monkeypatch.setattr("src.trade.city_skip.settings.open_interest_min", 0.0)
     records = [
         _rec("Wide", buy_price=0.65, spread=0.02, yes_gap=0.30, token_id="w"),
         _rec("Narrow", buy_price=0.65, spread=0.02, yes_gap=0.20, token_id="n"),
@@ -205,6 +211,7 @@ def test_insights_include_surviving_timezone_summary(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    monkeypatch.setattr("src.trade.city_skip.settings.open_interest_min", 0.0)
     monkeypatch.setattr(
         "src.analysis.strategy_insights.timezone_group",
         lambda city: {"Alpha": "Good", "Beta": "Bad"}.get(city, "Unknown"),

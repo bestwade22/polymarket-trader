@@ -164,10 +164,12 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.trade.city_skip.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.trade.city_skip.settings.spread_max", 0.05)
+    monkeypatch.setattr("src.trade.city_skip.settings.open_interest_min", 0.0)
     monkeypatch.setattr("src.trade.city_skip.settings.city_skip_min_count", 0)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_min", 0.45)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_max", 0.60)
     monkeypatch.setattr("src.analysis.filter_sweep.settings.spread_max", 0.05)
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.open_interest_min", 0.0)
     mapping = {
         "GoodCity": "Good TZ",
         "BadSurv": "Bad Surv TZ",
@@ -267,7 +269,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
     assert _bottom_tz_set(records, 1) == {"Bad All TZ"}
     assert _bottom_tz_set_surviving(records, 1) == {"Bad Surv TZ"}
 
-    # Live stack allows missing spread; strict spread<0.05 does not
+    # Tier-1 live stack: spread / yes_gap / buy bands are no longer part of it.
     missing = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -290,7 +292,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         result="win",
     )
     assert not _pred_from_name_parts(LIVE_STACK, high, set())
-    # Narrow yes_gap fails yes_gap_live
+    # Spread / yes_gap no longer gate the Tier-1 live stack.
     narrow = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -300,7 +302,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         yes_gap=0.04,
         result="win",
     )
-    assert not _pred_from_name_parts(LIVE_STACK, narrow, set())
+    assert _pred_from_name_parts(LIVE_STACK, narrow, set())
     wide = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -311,7 +313,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         result="win",
     )
     assert _pred_from_name_parts(LIVE_STACK, wide, set())
-    # High buy band: gap ≤ 0.25 fails buy_band_live (raise max so buy passes buy_live)
+    # Buy-band rules no longer gate the Tier-1 live stack either.
     monkeypatch.setattr("src.analysis.filter_sweep.settings.yes_price_max", 0.70)
     high_band_narrow = _rec(
         date="2026-07-05",
@@ -322,8 +324,8 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         yes_gap=0.20,
         result="win",
     )
-    assert not _pred_from_name_parts(LIVE_STACK, high_band_narrow, set())
-    # Low buy band: local before 14:45 fails buy_band_live
+    assert _pred_from_name_parts(LIVE_STACK, high_band_narrow, set())
+    # Low buy band: local before 14:45 no longer blocks the Tier-1 live stack.
     early_low = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -334,7 +336,7 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         bought_at_local="14:15",
         result="win",
     )
-    assert not _pred_from_name_parts(LIVE_STACK, early_low, set())
+    assert _pred_from_name_parts(LIVE_STACK, early_low, set())
     late_low = _rec(
         date="2026-07-05",
         city="GoodCity",
@@ -346,6 +348,35 @@ def test_filter_sweep_surviving_skip_ranks_from_surviving_pool(monkeypatch):
         result="win",
     )
     assert _pred_from_name_parts(LIVE_STACK, late_low, set())
+
+    # Open-interest floor is part of the Tier-1 live stack (fail closed).
+    monkeypatch.setattr("src.analysis.filter_sweep.settings.open_interest_min", 10000)
+    low_oi = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="oilow",
+        buy_price=0.50,
+        open_interest=9999.0,
+        result="win",
+    )
+    assert not _pred_from_name_parts(LIVE_STACK, low_oi, set())
+    missing_oi = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="oimissing",
+        buy_price=0.50,
+        result="win",
+    )
+    assert not _pred_from_name_parts(LIVE_STACK, missing_oi, set())
+    good_oi = _rec(
+        date="2026-07-05",
+        city="GoodCity",
+        token_id="oigood",
+        buy_price=0.50,
+        open_interest=10000.0,
+        result="win",
+    )
+    assert _pred_from_name_parts(LIVE_STACK, good_oi, set())
 
 
 def test_skipped_analysis_by_reason(tmp_path: Path):

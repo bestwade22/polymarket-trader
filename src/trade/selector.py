@@ -7,7 +7,7 @@ from config.settings import settings
 from src.trade.strategies.base import BaseStrategy, MarketSelection
 from src.trade.strategies.forecast_match import ForecastMatchStrategy
 from src.trade.strategies.highest_yes import HighestYesStrategy
-from src.utils.market_parser import get_spread
+from src.utils.market_parser import get_spread, parse_float
 from src.utils.time_window import is_event_tradable_now, next_trading_window_hint, trading_window_label
 
 logger = logging.getLogger(__name__)
@@ -164,8 +164,13 @@ def filter_by_spread_max(
     *,
     spread_max: Optional[float] = None,
 ) -> tuple[list[MarketSelection], list[dict]]:
-    """Drop selections whose live bid–ask spread is at or above SPREAD_MAX."""
+    """Drop selections whose live bid–ask spread is at or above SPREAD_MAX.
+
+    Disabled when SPREAD_MAX <= 0 (Tier-1 stack ships without a spread guard).
+    """
     max_spread = settings.spread_max if spread_max is None else spread_max
+    if max_spread is None or float(max_spread) <= 0:
+        return selections, []
     kept: list[MarketSelection] = []
     skipped: list[dict] = []
     for sel in selections:
@@ -439,6 +444,65 @@ def filter_by_buy_band_low_local_time(
     return kept, skipped
 
 
+def filter_by_open_interest_min(
+    selections: list[MarketSelection],
+    *,
+    open_interest_min: Optional[float] = None,
+) -> tuple[list[MarketSelection], list[dict]]:
+    """Drop selections whose event open interest is below OPEN_INTEREST_MIN.
+
+    Fail-closed: an event with missing/unknown open interest is skipped.
+    Disabled when the threshold is <= 0.
+    """
+    threshold = (
+        settings.open_interest_min
+        if open_interest_min is None
+        else open_interest_min
+    )
+    if threshold is None or float(threshold) <= 0:
+        return selections, []
+
+    min_oi = float(threshold)
+    kept: list[MarketSelection] = []
+    skipped: list[dict] = []
+    for sel in selections:
+        oi = parse_float((sel.event or {}).get("openInterest"))
+        if oi is None or oi < min_oi:
+            logger.info(
+                "event=%s city=%s market=%s open_interest %s < min %.0f; skip",
+                sel.event_id,
+                sel.city,
+                sel.market_id,
+                "unknown" if oi is None else f"{oi:.0f}",
+                min_oi,
+            )
+            step_log = sel.event.get("_step_logger") if sel.event else None
+            if step_log:
+                step_log.log_step(
+                    "filter_open_interest_min",
+                    skipped=True,
+                    open_interest=oi,
+                    open_interest_min=min_oi,
+                    market_id=sel.market_id,
+                )
+            skipped.append(
+                {
+                    "event_id": sel.event_id,
+                    "city": sel.city,
+                    "market_id": sel.market_id,
+                    "group_item_title": sel.group_item_title,
+                    "event_slug": (sel.event or {}).get("slug") if sel.event else None,
+                    "reason": "open_interest_min",
+                    "open_interest": oi,
+                    "open_interest_min": min_oi,
+                    "selection_price": sel.yes_price,
+                }
+            )
+            continue
+        kept.append(sel)
+    return kept, skipped
+
+
 def filter_selections_after_live_refresh(
     selections: list[MarketSelection],
     strategy_name: Optional[str] = None,
@@ -450,6 +514,8 @@ def filter_selections_after_live_refresh(
     if hasattr(strategy, "filter_by_yes_price_max"):
         kept, skipped = strategy.filter_by_yes_price_max(kept)
         skipped_all.extend(skipped)
+    kept, skipped = filter_by_open_interest_min(kept)
+    skipped_all.extend(skipped)
     kept, skipped = filter_by_spread_max(kept)
     skipped_all.extend(skipped)
     kept, skipped = filter_by_yes_gap_min(kept)

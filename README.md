@@ -64,6 +64,10 @@ python -m src.main sync-trade-history
 python -m src.main simulate-trades
 python -m src.main simulate-trades --from 2026-07-13 --to 2026-07-19 --strategy highest_yes
 
+# Offline walk-through of the live filter chain on a cached events file (no orders)
+python scripts/tier1_check_demo.py
+python scripts/tier1_check_demo.py data/events_2026-11-15.json
+
 # Run built-in scheduler (daily fetch + hourly trade)
 python -m src.main run-scheduler
 ```
@@ -115,11 +119,13 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is `skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.10` plus buy-price band rules: for buy in `[0.60, 0.70)` skip when yes gap ≤ `0.25`; for buy in `[0.45, 0.50]` skip when city local time is before `14:45`. Skip the city when the two leaders disagree.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is **Tier-1**: `skip_bottom7_tz + oi>=OPEN_INTEREST_MIN + buy>=0.50`. The spread / yes-gap / buy-band guards are **disabled by default** (`0` or an empty band) and can be re-enabled per environment. Skip the city when the two leaders disagree.
 
-**Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price ≥ `YES_PRICE_MAX` → drop if bid–ask spread ≥ `SPREAD_MAX` → drop if yes_gap ≤ `YES_GAP_MIN` → drop buy-band high yes-gap / low early-local-time → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/spread/gap/band guards → place order at `ORDER_PRICE_SOURCE`.
+**Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price < `YES_PRICE_MIN` → drop if event open interest < `OPEN_INTEREST_MIN` (missing OI is skipped) → drop if spread ≥ `SPREAD_MAX` *(disabled by default)* → drop if yes_gap ≤ `YES_GAP_MIN` *(disabled)* → drop buy-band high yes-gap / low early-local-time *(disabled)* → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/open-interest/spread/gap/band guards → place order at `ORDER_PRICE_SOURCE`.
 
-City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Ranking uses **surviving** trades that match the full live stack (`YES_PRICE_MIN` / `YES_PRICE_MAX` / `SPREAD_MAX` / `YES_GAP_MIN` / buy-band rules) when those fields exist — not a hard-coded city list. Timezones with win-summary denom ≤ computed `min_count` are ineligible for the skip list: `min_count` starts at `CITY_SKIP_MIN_COUNT` (default 3) and is the minimum denom among zones that already meet that floor (so sparse 1–2 trade zones, and the floor-tier itself, are never skipped). Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` **eligible** timezone groups are skipped. The denylist is rewritten at least daily to `data/analysis/timezone_skip_denylist.json` (also on sync/enrich). The dashboard **By city timezone (surviving pool)** table uses the same filter logic in JS.
+City timezone groups (same as strategy insight **By city timezone**) are ranked by **win summary %** on current `trade_history.json` (opens and shares &lt; 1 excluded). Ranking uses **surviving** trades that match the full live stack (`YES_PRICE_MIN` / `YES_PRICE_MAX` / `OPEN_INTEREST_MIN` / `SPREAD_MAX` / `YES_GAP_MIN` / buy-band rules) when those fields exist — not a hard-coded city list. Timezones with win-summary denom ≤ computed `min_count` are ineligible for the skip list: `min_count` starts at `CITY_SKIP_MIN_COUNT` (default 3) and is the minimum denom among zones that already meet that floor (so sparse 1–2 trade zones, and the floor-tier itself, are never skipped). Markets whose city falls in the bottom `CITY_SKIP_BOTTOM_N` **eligible** timezone groups are skipped. The denylist is rewritten at least daily to `data/analysis/timezone_skip_denylist.json` (also on sync/enrich). The dashboard **By city timezone (surviving pool)** table uses the same filter logic in JS.
+
+> **Note on `OPEN_INTEREST_MIN`:** the threshold is checked against the **event-level** `openInterest` from Gamma. The filter is **fail-closed** — an event with missing/unknown open interest is skipped. `0` disables the filter. Because daily event liquidity varies a lot, this is the most restrictive guard in the stack; set it lower per environment if trade volume matters more than market quality.
 
 `SKIP_ON_EDGE` remains optional and is **off by default**. Use the history dashboard **Filter sweep** section (`enrich-trade-history`) to research stricter stacks before enabling extra filters.
 
@@ -139,12 +145,13 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `SHARE_COUNT` | `15` | Shares per buy (min 5 on weather markets) |
 | `FORECAST_AGREE_EXTRA_SHARES` | `5` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
 | `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
-| `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack |
-| `SPREAD_MAX` | `0.08` | Max bid–ask spread; skip market if spread ≥ this value (all strategies) |
-| `YES_GAP_MIN` | `0.10` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables) |
+| `YES_PRICE_MIN` | `0.50` | Min live selection price for the shipped profit stack (Tier-1) |
+| `OPEN_INTEREST_MIN` | `10000` | Min event open interest (Gamma `openInterest`); skip market if OI &lt; this value or OI is unknown (`0` disables) |
+| `SPREAD_MAX` | `0` | Max bid–ask spread; skip market if spread ≥ this value (`0` disables — off in Tier-1) |
+| `YES_GAP_MIN` | `0` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables — off in Tier-1) |
 | `BUY_BAND_HIGH_MIN` / `BUY_BAND_HIGH_MAX` | `0.60` / `0.70` | Buy-price band `[min, max)` for stricter yes-gap rule |
-| `BUY_BAND_HIGH_YES_GAP_MIN` | `0.25` | In high buy band, skip if yes gap ≤ this (`0` disables band rule) |
-| `BUY_BAND_LOW_MIN` / `BUY_BAND_LOW_MAX` | `0.45` / `0.50` | Buy-price band `[min, max]` for early-local-time skip |
+| `BUY_BAND_HIGH_YES_GAP_MIN` | `0` | In high buy band, skip if yes gap ≤ this (`0` disables band rule — off in Tier-1) |
+| `BUY_BAND_LOW_MIN` / `BUY_BAND_LOW_MAX` | `0.45` / `0.00` | Buy-price band `[min, max]` for early-local-time skip (band is disabled when `max` &lt; `min`) |
 | `BUY_BAND_LOW_MIN_LOCAL_TIME` | `14:45` | In low buy band, skip when city local time is before this |
 | `SKIP_ON_EDGE` | `false` | Optional: skip when all cooler temp buckets had Yes &lt; 1% at select time |
 | `CITY_SKIP_ENABLED` | `true` | Skip markets in the worst city-timezone win summary groups |
@@ -210,7 +217,7 @@ Output: `data/analysis/trade_history.json` with per-trade rows (date, city, temp
 
 History dashboard sections:
 - **Strategy insights** — win summary by city, spread, edge, OI, timezone, …
-- **Filter sweep (≥60% OOS)** — candidate stacks with train/OOS win summary, P&L, n; recommended = loosest stack that clears ≥60% OOS
+- **Filter sweep (≥60% OOS)** — candidate stacks with train/OOS win summary, P&L, n; recommended = loosest stack that clears ≥60% OOS. The **live stack** row mirrors what actually trades (`skip_bottom7_tz_surviving + oi_live + buy_live` for Tier-1)
 - **Skipped / not-bought** — `skipped_bought` reasons from `markets_yes_*` with would-have-won when resolution is known
 
 **Simulator:** https://bestwade22.github.io/polymarket-trader/web/simulator.html
@@ -242,7 +249,7 @@ python -m src.main simulate-trades --strategy highest_yes --yes-price-max 0.55 -
 python -m src.main simulate-trades --force  # redo even if dates already simulated
 ```
 
-**Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:15 / :45** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
+**Flow:** for each date → load `events_YYYY-MM-DD.json` (fetch if missing) → at city-local **:15 / :45** inside the trading window → price each bucket from CLOB `/prices-history` (Polymarket chart %) → run strategy + `YES_PRICE_MAX` / `YES_PRICE_MIN` → apply `OPEN_INTEREST_MIN` (event-level, fail-closed) → apply `SPREAD_MAX` only when nearest `markets_yes_*` has spread → first pass buys `SHARE_COUNT` (100% fill at that %) → simulate sell-win tiers on the same history → else resolve win/loss via Gamma cache.
 
 **Idempotency:** `sim_trade_history.json` stores `process_version`, `completed_dates`, and `simulated_events`. Re-running the same strategy/process skips already-completed dates; only new dates (or `--force` / bumped process version / changed strategy params) are simulated. Events marked `pending` (CLOB price history not yet fresh within 5 minutes of the sample time) are retried on the next run; that date is not marked complete until those resolve. Each run still **concludes open** sim records from `resolutions_cache.json` / Gamma once markets resolve.
 

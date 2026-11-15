@@ -241,19 +241,24 @@ class Settings:
         os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
     )
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.70"))
-    # Shipped live stack: skip_bottom7_tz + spread<0.08 + buy>=0.45 + yes_gap>0.10
-    # + buy-band high yes-gap + buy-band low local-time.
-    yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))
-    spread_max: float = float(os.getenv("SPREAD_MAX", "0.08"))
+    # Tier-1 live stack: skip_bottom7_tz + open_interest>=OPEN_INTEREST_MIN
+    # + buy>=YES_PRICE_MIN. The extra guards (spread / yes-gap / buy bands)
+    # are disabled by default (0 / empty band) and only re-enabled via env.
+    yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.50"))
+    # Minimum event open interest required to trade (0 = disabled).
+    open_interest_min: float = float(os.getenv("OPEN_INTEREST_MIN", "10000"))
+    # Spread guard: SPREAD_MAX <= 0 disables it.
+    spread_max: float = float(os.getenv("SPREAD_MAX", "0"))
     # Skip when top Yes − runner-up Yes is at or below this (0 = disabled).
-    yes_gap_min: float = float(os.getenv("YES_GAP_MIN", "0.10"))
+    yes_gap_min: float = float(os.getenv("YES_GAP_MIN", "0"))
     # Buy-price band [high_min, high_max): require stricter yes gap (0 gap disables).
     buy_band_high_min: float = float(os.getenv("BUY_BAND_HIGH_MIN", "0.60"))
     buy_band_high_max: float = float(os.getenv("BUY_BAND_HIGH_MAX", "0.70"))
-    buy_band_high_yes_gap_min: float = float(os.getenv("BUY_BAND_HIGH_YES_GAP_MIN", "0.25"))
+    buy_band_high_yes_gap_min: float = float(os.getenv("BUY_BAND_HIGH_YES_GAP_MIN", "0"))
     # Buy-price band [low_min, low_max]: skip when city local time is before cutoff.
+    # Band is disabled when max < min (Tier-1 default: 0.00 < 0.45 → disabled).
     buy_band_low_min: float = float(os.getenv("BUY_BAND_LOW_MIN", "0.45"))
-    buy_band_low_max: float = float(os.getenv("BUY_BAND_LOW_MAX", "0.50"))
+    buy_band_low_max: float = float(os.getenv("BUY_BAND_LOW_MAX", "0.00"))
     buy_band_low_min_local_hour: int = _buy_band_low_min_local_h
     buy_band_low_min_local_minute: int = _buy_band_low_min_local_m
     # Skip cool-edge buckets when enabled (optional; off by default).
