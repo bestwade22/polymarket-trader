@@ -118,9 +118,10 @@
         Parallel <strong>Δ°F</strong> insight tables use Fahrenheit markets only (US cities), banded in °F.
       </p>
       <p class="muted" style="margin:0">
-        <strong>Shipped stack</strong> = live trade filters:
+        <strong>Shipped stack</strong> = live trade filters (Tier-1):
         skip bottom-7 city timezones (refreshed daily from surviving trades) +
-        spread &lt; SPREAD_MAX + buy in [YES_PRICE_MIN, YES_PRICE_MAX) + yes_gap + buy-band rules.
+        open interest ≥ OPEN_INTEREST_MIN + buy in [YES_PRICE_MIN, YES_PRICE_MAX).
+        The spread / yes-gap / buy-band guards are off by default.
         Most insight tables use the <em>current page filters</em>.
         <strong>By city timezone (surviving pool)</strong> always uses all trades that pass the full live stack — same ranking Lambda uses for skip.
       </p>

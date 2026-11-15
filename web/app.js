@@ -47,15 +47,16 @@ let filterSweepData = null;
 let skippedAnalysisData = null;
 /** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
 let skipStackFilters = {
-  yes_price_min: 0.45,
+  yes_price_min: 0.50,
   yes_price_max: 0.7,
-  spread_max: 0.08,
-  yes_gap_min: 0.10,
+  open_interest_min: 10000,
+  spread_max: 0,
+  yes_gap_min: 0,
   buy_band_high_min: 0.6,
   buy_band_high_max: 0.7,
-  buy_band_high_yes_gap_min: 0.25,
+  buy_band_high_yes_gap_min: 0,
   buy_band_low_min: 0.45,
-  buy_band_low_max: 0.5,
+  buy_band_low_max: 0.0,
   buy_band_low_min_local_hour: 14,
   buy_band_low_min_local_minute: 45,
   bottom_n: 7,
@@ -80,17 +81,18 @@ function localTimeMinutes(local) {
   return hour * 60 + minute;
 }
 
-/** Match Python surviving_records_for_skip (buy/spread/gap + buy-band rules). */
+/** Match Python surviving_records_for_skip (buy/oi + spread/gap + buy-band rules). */
 function survivingRecordsForSkip(records) {
   const yesMin = Number(skipStackFilters.yes_price_min) || 0;
   const yesMax = Number(skipStackFilters.yes_price_max) || 0.7;
-  const spreadMax = Number(skipStackFilters.spread_max) || 0.15;
+  const oiMin = Number(skipStackFilters.open_interest_min) || 0;
+  const spreadMax = Number(skipStackFilters.spread_max) || 0;
   const yesGapMin = Number(skipStackFilters.yes_gap_min) || 0;
   const highLo = Number(skipStackFilters.buy_band_high_min) || 0.6;
   const highHi = Number(skipStackFilters.buy_band_high_max) || 0.7;
   const highGap = Number(skipStackFilters.buy_band_high_yes_gap_min) || 0;
   const lowLo = Number(skipStackFilters.buy_band_low_min) || 0.45;
-  const lowHi = Number(skipStackFilters.buy_band_low_max) || 0.5;
+  const lowHi = Number(skipStackFilters.buy_band_low_max) || 0.0;
   const lowCutoff =
     (Number(skipStackFilters.buy_band_low_min_local_hour) || 14) * 60 +
     (Number(skipStackFilters.buy_band_low_min_local_minute) || 45);
@@ -101,7 +103,18 @@ function survivingRecordsForSkip(records) {
     const buyF = Number(buy);
     if (buyF >= yesMax) return false;
     if (yesMin > 0 && buyF < yesMin) return false;
-    if (rec.spread != null && Number.isFinite(rec.spread) && rec.spread >= spreadMax) {
+    if (oiMin > 0) {
+      const oi = rec.open_interest;
+      if (oi == null || !Number.isFinite(Number(oi)) || Number(oi) < oiMin) {
+        return false;
+      }
+    }
+    if (
+      spreadMax > 0 &&
+      rec.spread != null &&
+      Number.isFinite(rec.spread) &&
+      rec.spread >= spreadMax
+    ) {
       return false;
     }
     if (
@@ -1567,7 +1580,7 @@ function renderInsights(data) {
       {
         limit: null,
         description:
-          `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, spread &lt; ${skipStackFilters.spread_max} when known, yes_gap &gt; ${skipStackFilters.yes_gap_min} when known; buy [${skipStackFilters.buy_band_high_min}, ${skipStackFilters.buy_band_high_max}) needs yes_gap &gt; ${skipStackFilters.buy_band_high_yes_gap_min}; buy [${skipStackFilters.buy_band_low_min}, ${skipStackFilters.buy_band_low_max}] needs local ≥ ${String(skipStackFilters.buy_band_low_min_local_hour).padStart(2, "0")}:${String(skipStackFilters.buy_band_low_min_local_minute).padStart(2, "0")}). ` +
+          `Trades that pass the live stack (buy ≥ ${skipStackFilters.yes_price_min}, buy &lt; ${skipStackFilters.yes_price_max}, open interest ≥ ${skipStackFilters.open_interest_min} when known${skipStackFilters.spread_max > 0 ? `, spread &lt; ${skipStackFilters.spread_max} when known` : ""}${skipStackFilters.yes_gap_min > 0 ? `, yes_gap &gt; ${skipStackFilters.yes_gap_min} when known` : ""}${skipStackFilters.buy_band_high_yes_gap_min > 0 ? `; buy [${skipStackFilters.buy_band_high_min}, ${skipStackFilters.buy_band_high_max}) needs yes_gap &gt; ${skipStackFilters.buy_band_high_yes_gap_min}` : ""}${skipStackFilters.buy_band_low_max >= skipStackFilters.buy_band_low_min ? `; buy [${skipStackFilters.buy_band_low_min}, ${skipStackFilters.buy_band_low_max}] needs local ≥ ${String(skipStackFilters.buy_band_low_min_local_hour).padStart(2, "0")}:${String(skipStackFilters.buy_band_low_min_local_minute).padStart(2, "0")}` : ""}). ` +
           `n=${data.surviving_pool_n ?? "—"} · bottom ${skipStackFilters.bottom_n ?? 7} by Win summary% are skipped on trade-hourly` +
           (skipStackFilters.min_count != null
             ? ` (zones with denom ≤ ${skipStackFilters.min_count} ineligible)`
@@ -1679,8 +1692,8 @@ function renderFilterSweep(data) {
         <li><strong>denom</strong> = win-summary denominator: settled trades with ≥1 share (wins + losses + sold). Opens and dust (&lt;1 share) are excluded. <strong>n</strong> is all matching rows including opens.</li>
         <li><strong>Win summary%</strong> = win-summary wins ÷ denom (same rules as the main dashboard).</li>
         <li><strong>skip_bottom7_tz</strong> = bottom 7 timezones by win summary on <em>all</em> train trades (legacy research skip).</li>
-        <li><strong>skip_bottom7_tz_surviving</strong> = bottom 7 on the <em>surviving</em> train pool (buy/spread stack), same ranking as live Lambda timezone skip.</li>
-        <li><strong>spread_live / buy_live / yes_gap_live / buy_band_live</strong> = live rules: missing spread/gap allowed; buy in [YES_PRICE_MIN, YES_PRICE_MAX); yes_gap &gt; YES_GAP_MIN; buy [0.60, 0.70) needs yes_gap &gt; 0.25; buy [0.45, 0.50] needs local ≥ 14:45. The shipped mirror is <code>skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live + buy_band_live</code>.</li>
+        <li><strong>skip_bottom7_tz_surviving</strong> = bottom 7 on the <em>surviving</em> train pool (buy/oi stack), same ranking as live Lambda timezone skip.</li>
+        <li><strong>spread_live / buy_live / yes_gap_live / buy_band_live / oi_live</strong> = live rules: missing spread/gap allowed; buy in [YES_PRICE_MIN, YES_PRICE_MAX); open interest ≥ OPEN_INTEREST_MIN (missing OI fails); yes_gap &gt; YES_GAP_MIN; buy [0.60, 0.70) needs yes_gap &gt; 0.25; buy [0.45, 0.50] needs local ≥ 14:45. The shipped mirror (Tier-1) is <code>skip_bottom7_tz_surviving + oi_live + buy_live</code>.</li>
       </ul>
       <p class="insight-desc">
         Example split: <strong>Train</strong> ${train.from || "?"}→${train.to || "?"} (${train.n || 0} days)
@@ -1719,7 +1732,7 @@ function renderFilterSweep(data) {
           <div><span class="summary-label">OOS denom</span><span class="summary-value">${live.oos_denom}</span></div>
           <div><span class="summary-label">≥${target}% OOS</span><span class="summary-value">${live.oos_pass_60 ? "yes" : "no"}</span></div>
         </div>
-        <p class="insight-desc">Pinned for compare: <code>skip_bottom7_tz_surviving + spread_live + buy_live + yes_gap_live + buy_band_live</code> (spread &lt; SPREAD_MAX allowing missing; buy in [YES_PRICE_MIN, YES_PRICE_MAX); yes_gap &gt; YES_GAP_MIN allowing missing; buy-band high/low rules).</p>
+        <p class="insight-desc">Pinned for compare: <code>skip_bottom7_tz_surviving + oi_live + buy_live</code> (open interest ≥ OPEN_INTEREST_MIN, missing OI fails; buy in [YES_PRICE_MIN, YES_PRICE_MAX)).</p>
       </div>`
     : `<p class="muted">Live stack missing from filter_sweep — re-run <code>enrich-trade-history</code>.</p>`;
 
@@ -2429,15 +2442,16 @@ async function loadData() {
   const denylist = data.timezone_skip_denylist || null;
   if (denylist) {
     skipStackFilters = {
-      yes_price_min: denylist.yes_price_min ?? 0.45,
+      yes_price_min: denylist.yes_price_min ?? 0.50,
       yes_price_max: denylist.yes_price_max ?? 0.7,
-      spread_max: denylist.spread_max ?? 0.08,
-      yes_gap_min: denylist.yes_gap_min ?? 0.10,
+      open_interest_min: denylist.open_interest_min ?? 10000,
+      spread_max: denylist.spread_max ?? 0,
+      yes_gap_min: denylist.yes_gap_min ?? 0,
       buy_band_high_min: denylist.buy_band_high_min ?? 0.6,
       buy_band_high_max: denylist.buy_band_high_max ?? 0.7,
-      buy_band_high_yes_gap_min: denylist.buy_band_high_yes_gap_min ?? 0.25,
+      buy_band_high_yes_gap_min: denylist.buy_band_high_yes_gap_min ?? 0,
       buy_band_low_min: denylist.buy_band_low_min ?? 0.45,
-      buy_band_low_max: denylist.buy_band_low_max ?? 0.5,
+      buy_band_low_max: denylist.buy_band_low_max ?? 0.0,
       buy_band_low_min_local_hour: denylist.buy_band_low_min_local_hour ?? 14,
       buy_band_low_min_local_minute: denylist.buy_band_low_min_local_minute ?? 45,
       bottom_n: denylist.bottom_n ?? 7,
