@@ -1,0 +1,77 @@
+{
+  "run_at": "2026-11-14T05:16:02.821099+00:00",
+  "strategy": "highest_yes",
+  "selections": [
+    {
+      "event_id": "1369533",
+      "city": "Busan",
+      "market_id": "6981295",
+      "groupItemTitle": "14\u00b0C",
+      "yes_price": 0.563,
+      "yes_token_id": "25558029128126252958496354794369301374369123310751965055247788823938705716146",
+      "buy_price": 0.599,
+      "share_count": 20,
+      "neg_risk": true,
+      "tick_size": "0.001",
+      "order_min_size": 5,
+      "strategy": "highest_yes",
+      "forecast_temp_f": 59,
+      "forecast_temp_c": 15,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 59,
+      "forecast_wu_temp_c": 15,
+      "on_edge": true,
+      "order_price": 0.563,
+      "selection_price": 0.563,
+      "gamma_yes_price": 0.561,
+      "best_bid": 0.527,
+      "best_ask": 0.599,
+      "spread": 0.072,
+      "clob_buy_price": 0.599,
+      "last_trade_price": 0.599,
+      "midpoint": 0.563,
+      "outcomePrices": [
+        0.561,
+        0.439
+      ],
+      "competitive": 0.9962927945116223,
+      "event_slug": "highest-temperature-in-busan-on-november-14-2026",
+      "open_interest": 7681.910529000001,
+      "runner_up_yes": 0.34,
+      "runner_up_temp": "15\u00b0C",
+      "yes_gap": 0.221,
+      "top_yes": 0.561,
+      "forecast_agree_share_bump": {
+        "applied": true,
+        "unit": "C",
+        "delta": 1,
+        "extra_shares": 5,
+        "shares_before": 15,
+        "shares_after": 20
+      },
+      "order_status": "live",
+      "order_id": "0x568ed8ae63d54cbfb90f8893267be308c703ae21183ca787887f5b9bff0fe7e5",
+      "dry_run": false,
+      "order_type": "GTD",
+      "expires_at": "2026-11-14T05:41:01+00:00"
+    }
+  ],
+  "skipped_bought": [
+    {
+      "event_id": "1369510",
+      "city": "Tokyo",
+      "market_id": "6981125",
+      "group_item_title": "19\u00b0C",
+      "event_slug": "highest-temperature-in-tokyo-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.96,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 68,
+      "forecast_temp_c": 20,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 66,
+      "forecast_wu_temp_c": 19,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}

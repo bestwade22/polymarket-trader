@@ -1,0 +1,73 @@
+{
+  "run_at": "2026-11-14T19:46:14.170760+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1370921",
+      "city": "Toronto",
+      "timezone": "Canada East (UTC-5/-4)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 46,
+      "forecast_temp_c": 8,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1370061",
+      "city": "Atlanta",
+      "market_id": "6983039",
+      "group_item_title": "54-55\u00b0F",
+      "event_slug": "highest-temperature-in-atlanta-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.84,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.78
+    },
+    {
+      "event_id": "1370062",
+      "city": "Miami",
+      "market_id": "6983049",
+      "group_item_title": "70-71\u00b0F",
+      "event_slug": "highest-temperature-in-miami-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.92,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 72,
+      "forecast_temp_c": 22,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.89
+    },
+    {
+      "event_id": "1370923",
+      "city": "Panama City",
+      "market_id": "6985176",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-panama-city-on-november-14-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.826,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1370059",
+      "city": "NYC",
+      "market_id": "6983016",
+      "group_item_title": "46-47\u00b0F",
+      "event_slug": "highest-temperature-in-nyc-on-november-14-2026",
+      "reason": "spread_max",
+      "spread": 0.182,
+      "spread_max": 0.08,
+      "selection_price": 0.49,
+      "forecast_temp_f": 46,
+      "forecast_temp_c": 8,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.22
+    }
+  ]
+}

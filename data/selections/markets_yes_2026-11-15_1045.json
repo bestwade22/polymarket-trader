@@ -1,0 +1,21 @@
+{
+  "run_at": "2026-11-15T10:45:48.528508+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1377315",
+      "city": "Karachi",
+      "market_id": "7007814",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-november-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.998,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
