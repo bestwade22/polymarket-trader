@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-11-15T01:45:49.551362+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1377280",
+      "city": "Wellington",
+      "market_id": "7007491",
+      "group_item_title": "18\u00b0C",
+      "event_slug": "highest-temperature-in-wellington-on-november-15-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.875,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 66,
+      "forecast_temp_c": 19,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 73,
+      "forecast_wu_temp_c": 23,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
