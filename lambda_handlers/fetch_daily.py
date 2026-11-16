@@ -44,8 +44,12 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 
     run_fetch_daily(workspace, event_date)
     events_path = f"data/events_{event_date}.json"
+    # The city resolution map is refreshed by fetch-daily as well. It must be
+    # committed too, otherwise a brand-new city has no station ICAO / coords in
+    # the next trade run and gets skipped for lack of a forecast.
+    resolution_map_path = "data/city_resolution_sources.json"
     committed = commit_and_push(
-        [events_path],
+        [events_path, resolution_map_path],
         f"chore(data): fetch events {event_date}",
         github_pat=github_pat,
         git_repo=git_repo,

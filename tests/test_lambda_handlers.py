@@ -111,6 +111,22 @@ class TestFetchDailyHandler:
         mock_run.assert_called_once()
         mock_commit.assert_called_once()
 
+    @patch("lambda_handlers.fetch_daily.commit_and_push", return_value=True)
+    @patch("lambda_handlers.fetch_daily.run_fetch_daily")
+    @patch("lambda_handlers.fetch_daily.clone_or_update")
+    @patch("lambda_handlers.fetch_daily.git_settings_from_env", return_value=("o/r", "main", "pat"))
+    @patch("lambda_handlers.fetch_daily.apply_secrets")
+    def test_handler_commits_resolution_map(self, _secrets, _git, mock_clone, mock_run, mock_commit):
+        """The resolution map must be committed, or a brand-new city has no
+        station ICAO / coords in the next trade run and gets skipped."""
+        mock_clone.return_value = MagicMock()
+        from lambda_handlers.fetch_daily import handler
+
+        handler({"date": "2026-06-27"}, None)
+        paths = mock_commit.call_args[0][0]
+        assert "data/events_2026-06-27.json" in paths
+        assert "data/city_resolution_sources.json" in paths
+
 
 class TestTradeHourlyHandler:
     @patch("lambda_handlers.trade_hourly.gate_data_dir", return_value=None)
