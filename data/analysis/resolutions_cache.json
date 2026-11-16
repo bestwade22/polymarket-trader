@@ -2808,6 +2808,12 @@
       "winning_temp": "68-69\u00b0F",
       "winning_token_id": "57168984544870320125238374097738518583257332731761399408900445590353228426440"
     },
+    "highest-temperature-in-austin-on-november-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Austin on November 15?",
+      "winning_temp": "55\u00b0F or below",
+      "winning_token_id": "46183580904684898012450281480844722635473627455178987471572672620441237008294"
+    },
     "highest-temperature-in-austin-on-november-2-2026": {
       "closed": true,
       "title": "Highest temperature in Austin on November 2?",
@@ -5448,6 +5454,12 @@
       "winning_temp": "46-47\u00b0F",
       "winning_token_id": "53837447822559891149564203537872943411286208049031880742606847200945266467287"
     },
+    "highest-temperature-in-chicago-on-november-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Chicago on November 15?",
+      "winning_temp": "52-53\u00b0F",
+      "winning_token_id": "67579015250620797630617599769585315083733770331836873358951426346174090323823"
+    },
     "highest-temperature-in-chicago-on-november-2-2026": {
       "closed": true,
       "title": "Highest temperature in Chicago on November 2?",
@@ -6485,6 +6497,12 @@
       "title": "Highest temperature in Dallas on November 14?",
       "winning_temp": "62-63\u00b0F",
       "winning_token_id": "32219372573839313430482530313368289310724913951836082573738965753515751486603"
+    },
+    "highest-temperature-in-dallas-on-november-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Dallas on November 15?",
+      "winning_temp": "52-53\u00b0F",
+      "winning_token_id": "83916745678464775084391790452943798801849907473204181867904137854181353600432"
     },
     "highest-temperature-in-dallas-on-november-2-2026": {
       "closed": true,
@@ -9449,6 +9467,12 @@
       "title": "Highest temperature in Houston on November 14?",
       "winning_temp": "66-67\u00b0F",
       "winning_token_id": "50009027614322186938162127374562315051950275263305388172000476980139584059340"
+    },
+    "highest-temperature-in-houston-on-november-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Houston on November 15?",
+      "winning_temp": "64-65\u00b0F",
+      "winning_token_id": "43793460404374444142716512634212763279028856298286317735598154466880572971074"
     },
     "highest-temperature-in-houston-on-november-2-2026": {
       "closed": true,
@@ -16463,6 +16487,12 @@
       "title": "Highest temperature in Mexico City on November 14?",
       "winning_temp": "24\u00b0C or higher",
       "winning_token_id": "90692970441570491979885831170074326922478472562786691610732572745752354745546"
+    },
+    "highest-temperature-in-mexico-city-on-november-15-2026": {
+      "closed": true,
+      "title": "Highest temperature in Mexico City on November 15?",
+      "winning_temp": "24\u00b0C",
+      "winning_token_id": "9449398953507351041858050240653855924935568437802148076055497857460817306536"
     },
     "highest-temperature-in-mexico-city-on-november-2-2026": {
       "closed": true,
