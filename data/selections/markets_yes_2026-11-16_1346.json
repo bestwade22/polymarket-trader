@@ -1,0 +1,123 @@
+{
+  "run_at": "2026-11-16T13:46:41.547982+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1384559",
+      "city": "Helsinki",
+      "timezone": "Eastern EU (UTC+2/+3)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 46,
+      "forecast_temp_c": 8,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1384575",
+      "city": "Cape Town",
+      "timezone": "South Africa (UTC+2)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 79,
+      "forecast_temp_c": 26,
+      "forecast_source": "weather_com"
+    },
+    {
+      "event_id": "1384493",
+      "city": "Paris",
+      "market_id": "7030816",
+      "group_item_title": "13\u00b0C",
+      "event_slug": "highest-temperature-in-paris-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9655,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 57,
+      "forecast_temp_c": 14,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1384519",
+      "city": "Munich",
+      "market_id": "7030891",
+      "group_item_title": "12\u00b0C",
+      "event_slug": "highest-temperature-in-munich-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9685,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1384520",
+      "city": "Tel Aviv",
+      "market_id": "7030899",
+      "group_item_title": "24\u00b0C",
+      "event_slug": "highest-temperature-in-tel-aviv-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9975,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 75,
+      "forecast_temp_c": 24,
+      "forecast_source": "open_meteo",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1384525",
+      "city": "Milan",
+      "market_id": "7030955",
+      "group_item_title": "11\u00b0C",
+      "event_slug": "highest-temperature-in-milan-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.8875,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 55,
+      "forecast_temp_c": 13,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 2.0
+    },
+    {
+      "event_id": "1384526",
+      "city": "Madrid",
+      "market_id": "7030968",
+      "group_item_title": "16\u00b0C",
+      "event_slug": "highest-temperature-in-madrid-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.885,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1384527",
+      "city": "Warsaw",
+      "market_id": "7030979",
+      "group_item_title": "9\u00b0C",
+      "event_slug": "highest-temperature-in-warsaw-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9655,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 50,
+      "forecast_temp_c": 10,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1384554",
+      "city": "Amsterdam",
+      "market_id": "7031106",
+      "group_item_title": "10\u00b0C",
+      "event_slug": "highest-temperature-in-amsterdam-on-november-16-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9865,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 52,
+      "forecast_temp_c": 11,
+      "forecast_source": "weather_com",
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
