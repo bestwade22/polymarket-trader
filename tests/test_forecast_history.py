@@ -12,6 +12,8 @@ from src.analysis.models import TradeRecord
 from src.analysis.pattern_enrichment import apply_selection_pattern_fields, forecast_delta_c
 from src.analysis.selection_enrichment import apply_enrichment_to_record
 from src.api.city_resolution_map import (
+    _icao_from_description,
+    _icao_from_url,
     build_city_resolution_map,
     extract_resolution_from_event,
     upsert_events_into_map,
@@ -21,9 +23,11 @@ from src.api.weather_client import (
     WeatherClient,
     hourly_forecast_url,
     parse_wu_high_from_text,
+    wu_hourly_url_for_icao,
 )
 from src.trade.hourly_runner import attach_forecasts_to_selections, attach_forecasts_to_skipped
 from src.trade.strategies.base import MarketSelection
+from src.utils.market_parser import market_unit, market_unit_from_title
 
 
 TOKYO_EVENT = {

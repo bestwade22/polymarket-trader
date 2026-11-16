@@ -23,6 +23,15 @@ _WU_ICAO = re.compile(
     r"wunderground\.com/history/daily/(?:[^/\s]+/){1,3}([A-Z0-9]{3,4})/?(?:[?#].*)?$",
     re.IGNORECASE,
 )
+# AviationWeather (aviationweather.gov) METAR/TAF endpoints carry the station as
+# a query parameter, e.g. .../api/data/metar?ids=KDEN&format=raw&... .
+# Without this the ICAO cannot be recovered and no forecast provider can be used.
+_AW_ICAO = re.compile(r"[?&]ids=([A-Z0-9]{3,4})\b", re.IGNORECASE)
+# The market description names the resolving station in parentheses, e.g.
+# "highest temperature reported at Denver International Airport (KDEN) on 15 Nov '26".
+# This is the authoritative station for the market, so it wins over any value
+# scraped from the URL (the URL for older events may point at a different site).
+_DESC_ICAO = re.compile(r"\(([A-Z]{4})\)")
 _STATION_NAME = re.compile(
     r"recorded at the\s+(.+?)\s+in degrees",
     re.IGNORECASE | re.DOTALL,
@@ -45,6 +54,10 @@ def _provider_for_url(url: str) -> str:
 def _icao_from_url(url: str) -> Optional[str]:
     if not url:
         return None
+    # AviationWeather station query parameter (ids=KDEN).
+    m = _AW_ICAO.search(url)
+    if m:
+        return m.group(1).upper()
     m = _WU_ICAO.search(url.rstrip("/"))
     if m:
         return m.group(1).upper()
@@ -54,6 +67,20 @@ def _icao_from_url(url: str) -> Optional[str]:
         tail = parts[-1].split("?")[0]
         if re.fullmatch(r"[A-Za-z0-9]{3,4}", tail):
             return tail.upper()
+    return None
+
+
+def _icao_from_description(description: str) -> Optional[str]:
+    """Station ICAO named in the market description, e.g. '(KDEN)'.
+
+    The description is the market's own wording for which station resolves it,
+    so it is authoritative over anything derived from the URL.
+    """
+    if not description:
+        return None
+    m = _DESC_ICAO.search(description)
+    if m:
+        return m.group(1).upper()
     return None
 
 
@@ -102,6 +129,18 @@ def extract_resolution_from_event(event: dict[str, Any]) -> Optional[dict[str, A
 
     provider = _provider_for_url(resolution_source) if resolution_source else "other"
     icao = _icao_from_url(resolution_source) if resolution_source else None
+    # The description names the station that resolves the market ("...(KDEN)"),
+    # so it overrides the URL-derived ICAO. Older events for the same city can
+    # resolve at a different site (e.g. Denver: KBKF in Oct, KDEN in Nov).
+    desc_icao = _icao_from_description(description)
+    if desc_icao and desc_icao != icao:
+        logger.info(
+            "city=%s description ICAO %s overrides URL ICAO %s",
+            city,
+            desc_icao,
+            icao,
+        )
+        icao = desc_icao
     station_name = _station_name_from_description(description)
     units = _units_from_description(description)
 

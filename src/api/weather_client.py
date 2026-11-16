@@ -78,6 +78,18 @@ def _c_to_f(temp_c: float) -> int:
     return int(round(float(temp_c) * 9.0 / 5.0 + 32.0))
 
 
+def _normalize_units(units: Optional[str]) -> Optional[str]:
+    """Normalize a unit string to "F" or "C"; None/blank/unknown → None."""
+    raw = (units or "").strip().upper()
+    if not raw:
+        return None
+    if raw.startswith("F"):
+        return "F"
+    if raw.startswith("C"):
+        return "C"
+    return None
+
+
 # Narrative from WU hourly day summary, e.g.:
 # "Scattered thunderstorms ... High around 30C. Winds W ..."
 # "High near 85F." / "High 86F."
@@ -95,9 +107,12 @@ _WU_HIGH_PATTERNS = (
 def hourly_forecast_url(resolution_source: str) -> Optional[str]:
     """Map a WU history/resolution URL to the hourly forecast page.
 
-    Example:
+   Example:
       https://www.wunderground.com/history/daily/us/ga/atlanta/KATL
       → https://www.wunderground.com/hourly/us/ga/atlanta/KATL
+
+   Non-Wunderground resolution sources (e.g. aviationweather.gov METAR URLs)
+   yield None — there is no WU page to scrape for them.
     """
     if not resolution_source or "wunderground.com" not in resolution_source:
         return None
@@ -110,6 +125,20 @@ def hourly_forecast_url(resolution_source: str) -> Optional[str]:
     if "/history/" in url:
         return re.sub(r"/history/[^/]+/", "/hourly/", url, count=1).split("?")[0].rstrip("/")
     return url.split("?")[0].rstrip("/")
+
+
+def wu_hourly_url_for_icao(icao: Optional[str]) -> Optional[str]:
+    """WU hourly page for a bare ICAO code, e.g. 'KATL' → /hourly/us/ga/atlanta/KATL.
+
+   Wunderground serves /hourly/{ICAO} for any station, which gives a second
+   independent forecast source for markets whose resolution source is not
+   Wunderground (e.g. aviationweather.gov). Without it those markets have no
+   second forecast and the forecast-agree share bump can never fire.
+    """
+    code = (icao or "").strip().upper()
+    if not re.fullmatch(r"[A-Z0-9]{3,4}", code):
+        return None
+    return f"https://www.wunderground.com/hourly/{code}"
 
 
 def _mmdd_from_event_date(event_date: str) -> Optional[str]:
@@ -244,12 +273,20 @@ class WeatherClient:
         city: str,
         event_date: str,
         resolution_source: Optional[str] = None,
+        units: Optional[str] = None,
     ) -> Optional[ForecastMaxTemp]:
         """Predicted daily max for event_date (YYYY-MM-DD).
 
         Primary: Weather.com daily forecast high for the station ICAO.
         Fallbacks: Open-Meteo (keyless) then the WU hourly narrative scrape.
         The WU scrape is always fetched for the wu_* compare fields.
+
+        `units` ("F"/"C") is the unit the forecast should be expressed in.
+        Pass the market's bucket unit so the provider is queried in the unit the
+        market settles in — a Fahrenheit market must not be priced off a
+        Celsius value rounded to the nearest degree, which shifts the forecast
+        by up to 1°F and can land in the wrong bucket. When omitted, the unit
+        recorded for the city in the resolution map is used.
         """
         entry = get_city_entry(city, self._resolution_map)
         mapped_source = (entry or {}).get("resolution_source") if entry else None
@@ -258,13 +295,23 @@ class WeatherClient:
             icao = str(icao).upper()
         source_url = mapped_source or resolution_source
         map_units = self.get_city_units(city)
+        request_units = _normalize_units(units) or map_units
+        if request_units != map_units:
+            logger.info(
+                "forecast units override city=%s map_units=%s request_units=%s",
+                city,
+                map_units,
+                request_units,
+            )
 
         primary_f: Optional[int] = None
         primary_c: Optional[int] = None
         primary_source: Optional[str] = None
 
         if icao:
-            wc = self._fetch_weather_com_forecast_max(icao, event_date, units=map_units)
+            wc = self._fetch_weather_com_forecast_max(
+                icao, event_date, units=request_units
+            )
             if wc is not None:
                 primary_c, primary_f = wc
                 primary_source = "weather_com"
@@ -280,7 +327,16 @@ class WeatherClient:
 
         wu_f: Optional[int] = None
         wu_c: Optional[int] = None
-        wu = self._fetch_wunderground_forecast(source_url, event_date, default_unit=map_units)
+        wu = self._fetch_wunderground_forecast(
+            source_url, event_date, default_unit=request_units
+        )
+        if wu is None and icao:
+            # Non-Wunderground resolution source (e.g. aviationweather.gov): use
+            # the bare-ICAO WU hourly page so a second, independent forecast
+            # source exists for these markets.
+            wu = self._fetch_wunderground_forecast(
+                wu_hourly_url_for_icao(icao), event_date, default_unit=request_units
+            )
         if wu is not None:
             wu_temp, wu_unit = wu
             if wu_unit == "C":
@@ -315,7 +371,7 @@ class WeatherClient:
         coords = self.get_coords_for_city(city)
         if coords is not None:
             om = self._fetch_open_meteo_max(
-                coords[0], coords[1], event_date, units=map_units
+                coords[0], coords[1], event_date, units=request_units
             )
             if om is not None:
                 primary_c, primary_f = om

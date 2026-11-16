@@ -18,7 +18,7 @@ from src.trade.forecast_share_bump import (
     primary_is_wu_scrape,
 )
 from src.trade.strategies.base import MarketSelection
-from src.utils.market_parser import market_price_snapshot
+from src.utils.market_parser import market_unit, market_price_snapshot
 from src.utils.trade_logger import TradeStepLogger
 from src.notify.telegram import notify_buy_run
 
@@ -62,6 +62,7 @@ def attach_forecasts_to_selections(
                 city=sel.city or "",
                 event_date=event_date,
                 resolution_source=resolution_source,
+                units=market_unit(event.get("markets") or []),
             )
         except Exception as exc:
             logger.warning("Forecast fetch failed event=%s city=%s: %s", sel.event_id, sel.city, exc)
@@ -124,8 +125,8 @@ def attach_forecasts_to_skipped(
         return skipped
     client = weather_client or WeatherClient()
     events_by_id = {str(e.get("id")): e for e in (events or []) if e.get("id") is not None}
-    # Cache by (city, date) to avoid repeat HTTP for same city in one run.
-    cache: dict[tuple[str, str], Optional[ForecastMaxTemp]] = {}
+    # Cache by (city, date, units) to avoid repeat HTTP for same city in one run.
+    cache: dict[tuple[str, str, Optional[str]], Optional[ForecastMaxTemp]] = {}
     for row in skipped:
         if not isinstance(row, dict):
             continue
@@ -143,13 +144,15 @@ def attach_forecasts_to_skipped(
         event_id = str(row.get("event_id") or "")
         event = events_by_id.get(event_id) if event_id else None
         resolution_source = None
+        units = None
         if event:
             resolution_source = event.get("resolutionSource")
             if not resolution_source and event.get("markets"):
                 markets = event.get("markets") or []
                 if markets and isinstance(markets[0], dict):
                     resolution_source = markets[0].get("resolutionSource")
-        cache_key = (city.lower(), event_date)
+            units = market_unit(event.get("markets") or [])
+        cache_key = (city.lower(), event_date, units)
         if cache_key in cache:
             forecast = cache[cache_key]
         else:
@@ -158,6 +161,7 @@ def attach_forecasts_to_skipped(
                     city=city,
                     event_date=event_date,
                     resolution_source=resolution_source,
+                    units=units,
                 )
             except Exception as exc:
                 logger.warning("Forecast fetch failed skip city=%s: %s", city, exc)

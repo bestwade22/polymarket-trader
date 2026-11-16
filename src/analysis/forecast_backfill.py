@@ -9,7 +9,7 @@ from typing import Any, Optional
 from src.analysis.models import TradeRecord
 from src.analysis.pattern_enrichment import forecast_delta_c
 from src.api.weather_client import WeatherClient
-from src.utils.market_parser import forecast_vs_result_delta_c
+from src.utils.market_parser import forecast_vs_result_delta_c, market_unit_from_title
 
 logger = logging.getLogger(__name__)
 
@@ -92,7 +92,11 @@ def backfill_missing_forecasts(
     for rec in targets:
         counts["attempted"] += 1
         try:
-            forecast = client.fetch_forecast_max_temp(rec.city, rec.date)
+            forecast = client.fetch_forecast_max_temp(
+                rec.city,
+                rec.date,
+                units=market_unit_from_title(rec.bought_temp),
+            )
         except Exception as exc:  # noqa: BLE001 — keep enrich resilient
             logger.warning("Forecast backfill failed %s %s: %s", rec.date, rec.city, exc)
             counts["failed"] += 1

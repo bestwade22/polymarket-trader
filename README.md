@@ -10,7 +10,7 @@ Periodic Python bot for Polymarket "highest temperature" daily weather markets.
 - **Sell-win check** (`check-sell-win`): every hour, scans live wallet positions and places tiered limit **sell orders** during each city's **15:00–18:00** local window. Tier floors default to **94¢ / 96¢ / 98¢** (or current price if higher); orders expire 5 minutes before the next tier hour; skips when an open sell order already exists.
 - **Two strategies** (select via `STRATEGY` env or `--strategy`):
   - `highest_yes` — buy only when **CLOB midpoint** and **Gamma Yes %** agree on the same top market, and that market's selection price is below `YES_PRICE_MAX` (default 0.70); skip if they disagree.
-  - `forecast_match` — fetch forecast max temp (Wunderground resolution source or Open-Meteo fallback), buy matching bucket.
+  - `forecast_match` — fetch forecast max temp (Weather.com by station ICAO, Open-Meteo fallback, Wunderground hourly scrape as the second source), buy the matching bucket. The forecast is requested in the unit the market's buckets settle in, so Fahrenheit markets are not priced off a Celsius value rounded to the nearest degree.
 - **Trade logging**: step-by-step JSON logs in `logs/trades/` and `logs/app.log`.
 - **Dry-run default**: no real orders until `DRY_RUN=false` or `--live`.
 - **Strategy simulator** (`simulate-trades`): replay `highest_yes` (or other strategies) on historical weather events using CLOB Yes-% history; optional sell-win tiers; dashboard at `web/simulator.html`.
@@ -130,6 +130,30 @@ City timezone groups (same as strategy insight **By city timezone**) are ranked 
 `SKIP_ON_EDGE` remains optional and is **off by default**. Use the history dashboard **Filter sweep** section (`enrich-trade-history`) to research stricter stacks before enabling extra filters.
 
 Example: Gamma shows 23°C highest (44%) but book midpoint peaks on 22°C (40¢ mid on a wide spread) — **skip**, do not buy.
+
+### Resolution sources and the forecast
+
+The **resolution source** is where Polymarket reads the *realized* daily high from. It is **not** a forecast source — the bot only uses it to identify the resolving station.
+
+| Resolution source | Station identified from | Realized value |
+|-------------------|------------------------|----------------|
+| `aviationweather.gov` (METAR) | `ids=` query param, then the `(XXXX)` code in the market description | Hourly METAR `T` group (tenths of °C), routine reports only |
+| `wunderground.com` | `/history/daily/.../{ICAO}` path | Daily high from the history page |
+| `weather.gov.hk` | description text | Daily high |
+| `weather.gov` / `noaa.gov` | `?site=` param / path | Daily high |
+
+The station ICAO is stored in `data/city_resolution_sources.json` and drives the **forecast** lookup:
+
+- **Primary forecast** — Weather.com daily high for that station's ICAO.
+- **Fallback** — Open-Meteo daily high at the city coordinates.
+- **Second source** — Wunderground hourly page for the station (`/hourly/{ICAO}`), used for the `FORECAST_AGREE_EXTRA_SHARES` bump. This works even when the resolution source is not Wunderground.
+
+Two details matter for correctness:
+
+- **The station comes from the market, not the URL alone.** The description names the resolving station ("…at Denver International Airport (KDEN)…"); a city's older events may have resolved at a different site (Denver moved from `KBKF` to `KDEN`). The description code wins.
+- **The forecast is requested in the market's bucket unit.** A market's buckets settle in °F or °C independently of the resolution source (METAR is always °C). Requesting a °F market's forecast in °C rounds it to the nearest degree Celsius and then converts, which shifts the forecast by up to 1°F — enough to land in the wrong 2°F-wide bucket. Measured over 58 aviationweather city/dates: **43.1%** bucket hit rate when requested in the market's unit vs **24.1%** when routed through °C.
+
+> AviationWeather itself provides **no** daily-max-temperature forecast — TAFs carry no temperature group and there is no gridpoint endpoint. Its METAR stream is the *realized* max, which is why it is used for resolution, not prediction.
 
 Selection snapshots in `data/selections/` include `order_price`, `order_status`, and `order_id` after the run.
 

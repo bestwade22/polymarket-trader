@@ -11,6 +11,7 @@ from src.utils.market_parser import (
     get_yes_price,
     get_yes_token_id,
     is_neg_risk,
+    market_unit,
     match_temp_to_market,
 )
 
@@ -35,17 +36,23 @@ class ForecastMatchStrategy(BaseStrategy):
         if not resolution_source and event.get("markets"):
             resolution_source = event["markets"][0].get("resolutionSource")
 
+        # Forecast in the unit the market's buckets settle in, so the forecast is
+        # not routed through a rounded Celsius value on Fahrenheit markets.
+        markets = event.get("markets", [])
+        units = market_unit(markets)
+
         forecast = self.weather_client.fetch_forecast_max_temp(
             city=city,
             event_date=event_date,
             resolution_source=resolution_source,
+            units=units,
         )
         if forecast is None:
             logger.warning("event=%s no forecast for %s on %s", event.get("id"), city, event_date)
             return None
         forecast_f = forecast.temp_f
 
-        market = match_temp_to_market(event.get("markets", []), forecast_f)
+        market = match_temp_to_market(markets, forecast_f)
         if not market:
             logger.warning(
                 "event=%s no bucket match for forecast %d°F",

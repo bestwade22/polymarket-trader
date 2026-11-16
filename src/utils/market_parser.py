@@ -209,6 +209,35 @@ def parse_temperature_bucket(group_item_title: str) -> Optional[Tuple[int, Optio
     return None
 
 
+def market_unit(markets: List[dict]) -> Optional[str]:
+    """Unit ("F" or "C") of the market's temperature buckets, if determinable.
+
+    The bucket labels carry the unit the market settles in (e.g. "48-49°F" vs
+    "11°C"), which is not always the unit the resolution source reports in.
+    The market's own unit is what a forecast must be expressed in to be
+    compared against the buckets.
+    """
+    for market in markets or []:
+        if not isinstance(market, dict):
+            continue
+        title = market.get("groupItemTitle") or ""
+        if "°F" in title:
+            return "F"
+        if "°C" in title:
+            return "C"
+    return None
+
+
+def market_unit_from_title(title: str) -> Optional[str]:
+    """Unit ("F"/"C") of a single temperature bucket label, e.g. '48-49°F'."""
+    text = (title or "").strip()
+    if "°F" in text:
+        return "F"
+    if "°C" in text:
+        return "C"
+    return None
+
+
 def extract_temp_label(title: str) -> str:
     """Human-readable temperature bucket from groupItemTitle or market question."""
     raw = (title or "").strip()
