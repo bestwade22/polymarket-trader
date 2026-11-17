@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-11-17T08:45:51.237630+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1392260",
+      "city": "Lucknow",
+      "market_id": "7058200",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-lucknow-on-november-17-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.988,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 82,
+      "forecast_temp_c": 28,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 82,
+      "forecast_wu_temp_c": 28,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
