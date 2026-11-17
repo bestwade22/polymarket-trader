@@ -18038,5 +18038,37 @@
     "floor_price": 0.94,
     "current_mid": 0.295,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x8059df1150d94165195f53803c05df90c8d80afe9940c7605ffe7d4e26da0a55",
+    "token_id": "42501353711454607877362360991711464952184198759508563618643926824357575871439",
+    "order_id": "0x085fc0cd21d83da727774fc001fb9dcbd3d6d6b82db94ce75e4a291f16ea6641",
+    "sold_at": "2026-11-17T21:00:23.039439+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-november-17-2026",
+    "price": 0.978,
+    "size": 15.0,
+    "avg_buy_price": 0.64,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.978,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0x274bb21943dfdad7e880e4d2817b7fa395c5b4329183071bc1d7ab686c68b551",
+    "token_id": "114793182049265398181415719517329527888857197487220867753857026648629809782061",
+    "order_id": "0x6a2fea4d6b964de7c5906cac30d6b8b729a050af17ea3bf517399fa651670fc7",
+    "sold_at": "2026-11-17T21:00:24.315265+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-houston-on-november-17-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.637,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.9215,
+    "reason": "tier1"
   }
 ]
