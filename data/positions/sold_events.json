@@ -18022,5 +18022,21 @@
     "floor_price": 0.94,
     "current_mid": 0.744,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x419b152b5236bf1af3cb0d6d601ab7d859b99beece1e065617bd359f94b1a40b",
+    "token_id": "35428250125707879759271451776838771315007121620699541811049492828556797590655",
+    "order_id": "0xa7a879e0d9f6314ba2563772e307257e8b880a6d204dc780d7037ffc08ab2829",
+    "sold_at": "2026-11-17T14:00:23.311880+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-munich-on-november-17-2026",
+    "price": 0.94,
+    "size": 15.0,
+    "avg_buy_price": 0.47,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.295,
+    "reason": "tier1"
   }
 ]
