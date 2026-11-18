@@ -1,0 +1,71 @@
+{
+  "run_at": "2026-11-18T22:46:14.490832+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1401094",
+      "city": "Seattle",
+      "market_id": "7090615",
+      "group_item_title": "50-51\u00b0F",
+      "event_slug": "highest-temperature-in-seattle-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.845,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 52,
+      "forecast_temp_c": 11,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 52,
+      "forecast_wu_temp_c": 11,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1401101",
+      "city": "Denver",
+      "market_id": "7090632",
+      "group_item_title": "58-59\u00b0F",
+      "event_slug": "highest-temperature-in-denver-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9935,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 58,
+      "forecast_temp_c": 14,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 57,
+      "forecast_wu_temp_c": 14,
+      "forecast_delta_c": -0.44
+    },
+    {
+      "event_id": "1401102",
+      "city": "Los Angeles",
+      "market_id": "7090643",
+      "group_item_title": "68-69\u00b0F",
+      "event_slug": "highest-temperature-in-los-angeles-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9785,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1401103",
+      "city": "San Francisco",
+      "market_id": "7090654",
+      "group_item_title": "58-59\u00b0F",
+      "event_slug": "highest-temperature-in-san-francisco-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.982,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 58,
+      "forecast_temp_c": 14,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 55,
+      "forecast_wu_temp_c": 13,
+      "forecast_delta_c": -0.44
+    }
+  ]
+}
