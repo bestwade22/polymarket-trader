@@ -1,0 +1,39 @@
+{
+  "run_at": "2026-11-18T17:46:01.167977+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1401243",
+      "city": "Sao Paulo",
+      "market_id": "7091136",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-sao-paulo-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9965,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1401244",
+      "city": "Buenos Aires",
+      "market_id": "7091143",
+      "group_item_title": "26\u00b0C",
+      "event_slug": "highest-temperature-in-buenos-aires-on-november-18-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.985,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 81,
+      "forecast_temp_c": 27,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 77,
+      "forecast_wu_temp_c": 25,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
