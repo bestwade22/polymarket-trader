@@ -119,7 +119,7 @@ Both selection and orders use **live CLOB book** prices (after `refresh_prices`)
 | `buy_price` / `best_ask` | Lowest ask on the book. |
 | `best_bid` | Highest bid. |
 
-**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is **Tier-1**: `skip_bottom7_tz + oi>=OPEN_INTEREST_MIN + buy>=0.50`. The spread / yes-gap / buy-band guards are **disabled by default** (`0` or an empty band) and can be re-enabled per environment. Skip the city when the two leaders disagree.
+**Default (`highest_yes`):** require the same market to be highest by CLOB `midpoint` **and** Gamma Yes %; then place limit buy at refreshed `ORDER_PRICE_SOURCE`. The shipped live stack is **Tier-1**: `skip_bottom7_tz + oi>=OPEN_INTEREST_MIN + buy>=0.45`. The spread / yes-gap / buy-band guards are **disabled by default** (`0` or an empty band) and can be re-enabled per environment. Skip the city when the two leaders disagree.
 
 **Flow:** city-timezone win-summary skip (bottom `CITY_SKIP_BOTTOM_N`) → refresh all markets (Gamma + CLOB) → open-order filter → select only if CLOB mid + Gamma agree on top market → drop if selection price < `YES_PRICE_MIN` → drop if event open interest < `OPEN_INTEREST_MIN` (missing OI is skipped) → drop if spread ≥ `SPREAD_MAX` *(disabled by default)* → drop if yes_gap ≤ `YES_GAP_MIN` *(disabled)* → drop buy-band high yes-gap / low early-local-time *(disabled)* → attach forecasts → if OM∩WU Δ vs bought is +1°C (or +1/+2°F) add `FORECAST_AGREE_EXTRA_SHARES` → position check (only survivors) → refresh selected market → re-check price/open-interest/spread/gap/band guards → place order at `ORDER_PRICE_SOURCE`.
 
@@ -166,10 +166,10 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DEPOSIT_WALLET_ADDRESS` | — | Polymarket proxy/funder address (from your profile) |
 | `SIGNATURE_TYPE` | `1` | `0`=MetaMask EOA, `1`=email/Magic proxy, `2`=Gnosis Safe. Avoid `3` until SDK fix |
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
-| `SHARE_COUNT` | `7` | Shares per buy (min 5 on weather markets) |
+| `SHARE_COUNT` | `10` | Shares per buy (min 5 on weather markets) |
 | `FORECAST_AGREE_EXTRA_SHARES` | `0` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
 | `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
-| `YES_PRICE_MIN` | `0.50` | Min live selection price for the shipped profit stack (Tier-1) |
+| `YES_PRICE_MIN` | `0.45` | Min live selection price for the shipped profit stack (Tier-1) |
 | `OPEN_INTEREST_MIN` | `10000` | Min event open interest (Gamma `openInterest`); skip market if OI &lt; this value or OI is unknown (`0` disables) |
 | `SPREAD_MAX` | `0` | Max bid–ask spread; skip market if spread ≥ this value (`0` disables — off in Tier-1) |
 | `YES_GAP_MIN` | `0` | Min top−runner-up Yes gap; skip if gap ≤ this value (`0` disables — off in Tier-1) |

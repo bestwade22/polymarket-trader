@@ -21,13 +21,13 @@ Parameters:
       the published key from wunderground.com when Weather.com rejects the one it holds.
   ShareCount:
     Type: String
-    Default: '7'
+    Default: '10'
   YesPriceMax:
     Type: String
     Default: '0.70'
   YesPriceMin:
     Type: String
-    Default: '0.50'
+    Default: '0.45'
   OpenInterestMin:
     Type: String
     Default: '10000'

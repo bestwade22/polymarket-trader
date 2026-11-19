@@ -52,9 +52,9 @@ jobs:
               GitBranch=main \
               TradingWindowStartHour=14:00 \
               TradingWindowEndHour=16:00 \
-              ShareCount=7 \
+              ShareCount=10 \
               YesPriceMax=0.70 \
-              YesPriceMin=0.50 \
+              YesPriceMin=0.45 \
               OpenInterestMin=10000 \
               SpreadMax=0 \
               YesGapMin=0 \

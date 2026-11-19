@@ -47,7 +47,7 @@ let filterSweepData = null;
 let skippedAnalysisData = null;
 /** Live stack thresholds used for timezone skip (from denylist or shipped defaults). */
 let skipStackFilters = {
-  yes_price_min: 0.50,
+  yes_price_min: 0.45,
   yes_price_max: 0.7,
   open_interest_min: 10000,
   spread_max: 0,
@@ -1640,7 +1640,7 @@ function renderTable(records) {
       const local = fmtLocal(r.bought_at, r.city, r.bought_at_local);
       const sharesCls = r.shares_over_target ? "shares-warn" : "";
       const sharesTitle = r.shares_over_target
-        ? ` title="Over target ${r.share_count_target ?? 7}"`
+        ? ` title="Over target ${r.share_count_target ?? 10}"`
         : "";
       const outcome = outcomeValue(r);
       return `
@@ -1934,7 +1934,7 @@ function renderSkippedAnalysis(data) {
     container.innerHTML = `<p class="muted">No skipped_analysis in trade_history.json — run <code>python -m src.main enrich-trade-history</code>.</p>`;
     return;
   }
-  const shares = data.share_count_assumed ?? 7;
+  const shares = data.share_count_assumed ?? 10;
   const fmtPnl = (v) => {
     if (v == null || !Number.isFinite(Number(v))) return "—";
     const n = Number(v);
@@ -2442,7 +2442,7 @@ async function loadData() {
   const denylist = data.timezone_skip_denylist || null;
   if (denylist) {
     skipStackFilters = {
-      yes_price_min: denylist.yes_price_min ?? 0.50,
+      yes_price_min: denylist.yes_price_min ?? 0.45,
       yes_price_max: denylist.yes_price_max ?? 0.7,
       open_interest_min: denylist.open_interest_min ?? 10000,
       spread_max: denylist.spread_max ?? 0,

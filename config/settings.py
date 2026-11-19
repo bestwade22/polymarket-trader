@@ -235,7 +235,7 @@ class Settings:
     deposit_wallet_address: str = os.getenv("DEPOSIT_WALLET_ADDRESS", "")
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
-    share_count: int = int(os.getenv("SHARE_COUNT", "7"))
+    share_count: int = int(os.getenv("SHARE_COUNT", "10"))
     # Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). 0 = off.
     forecast_agree_extra_shares: int = int(
         os.getenv("FORECAST_AGREE_EXTRA_SHARES", "0")
@@ -244,7 +244,7 @@ class Settings:
     # Tier-1 live stack: skip_bottom7_tz + open_interest>=OPEN_INTEREST_MIN
     # + buy>=YES_PRICE_MIN. The extra guards (spread / yes-gap / buy bands)
     # are disabled by default (0 / empty band) and only re-enabled via env.
-    yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.50"))
+    yes_price_min: float = float(os.getenv("YES_PRICE_MIN", "0.45"))
     # Minimum event open interest required to trade (0 = disabled).
     open_interest_min: float = float(os.getenv("OPEN_INTEREST_MIN", "10000"))
     # Spread guard: SPREAD_MAX <= 0 disables it.

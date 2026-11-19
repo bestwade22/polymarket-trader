@@ -86,7 +86,7 @@ def main() -> None:
         print()
 
     # --- Step 3: price band --------------------------------------------
-    step("3] buy>=0.50 / <0.70", lambda s: strategy.filter_by_yes_price_max(s))
+    step("3] buy>=0.45 / <0.70", lambda s: strategy.filter_by_yes_price_max(s))
     # --- Step 4: open interest -----------------------------------------
     step("4] oi>=10000", lambda s: filter_by_open_interest_min(s))
     # --- Step 5..7: optional guards (disabled in Tier-1) ---------------
