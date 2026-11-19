@@ -52,7 +52,7 @@ jobs:
               GitBranch=main \
               TradingWindowStartHour=14:00 \
               TradingWindowEndHour=16:00 \
-              ShareCount=15 \
+              ShareCount=7 \
               YesPriceMax=0.70 \
               YesPriceMin=0.50 \
               OpenInterestMin=10000 \
@@ -64,7 +64,7 @@ jobs:
               BuyBandLowMin=0.45 \
               BuyBandLowMax=0.00 \
               BuyBandLowMinLocalTime=14:45 \
-              ForecastAgreeExtraShares=5 \
+              ForecastAgreeExtraShares=0 \
               OrderExpiryMinutes=25 \
               StopLossPct=50 \
               StopLossPctFloor=10 \

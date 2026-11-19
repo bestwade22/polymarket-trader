@@ -21,7 +21,7 @@ Parameters:
       the published key from wunderground.com when Weather.com rejects the one it holds.
   ShareCount:
     Type: String
-    Default: '15'
+    Default: '7'
   YesPriceMax:
     Type: String
     Default: '0.70'
@@ -57,7 +57,7 @@ Parameters:
     Default: '14:45'
   ForecastAgreeExtraShares:
     Type: String
-    Default: '5'
+    Default: '0'
   SkipOnEdge:
     Type: String
     Default: 'false'

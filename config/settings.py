@@ -235,10 +235,10 @@ class Settings:
     deposit_wallet_address: str = os.getenv("DEPOSIT_WALLET_ADDRESS", "")
     signature_type: int = int(os.getenv("SIGNATURE_TYPE", "1"))
     strategy: str = os.getenv("STRATEGY", "highest_yes")
-    share_count: int = int(os.getenv("SHARE_COUNT", "15"))
+    share_count: int = int(os.getenv("SHARE_COUNT", "7"))
     # Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). 0 = off.
     forecast_agree_extra_shares: int = int(
-        os.getenv("FORECAST_AGREE_EXTRA_SHARES", "5")
+        os.getenv("FORECAST_AGREE_EXTRA_SHARES", "0")
     )
     yes_price_max: float = float(os.getenv("YES_PRICE_MAX", "0.70"))
     # Tier-1 live stack: skip_bottom7_tz + open_interest>=OPEN_INTEREST_MIN

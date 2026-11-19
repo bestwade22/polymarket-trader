@@ -949,7 +949,7 @@ function renderTable(records) {
       const localTimes = U.fmtBuySoldLocalTimes(r, cityTimezones);
       const sharesCls = r.shares_over_target ? "shares-warn" : "";
       const sharesTitle = r.shares_over_target
-        ? ` title="Over target ${r.share_count_target ?? 15}"`
+        ? ` title="Over target ${r.share_count_target ?? 7}"`
         : "";
       const outcome = outcomeValue(r);
       return `

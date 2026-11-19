@@ -166,8 +166,8 @@ Selection snapshots in `data/selections/` include `order_price`, `order_status`,
 | `DEPOSIT_WALLET_ADDRESS` | — | Polymarket proxy/funder address (from your profile) |
 | `SIGNATURE_TYPE` | `1` | `0`=MetaMask EOA, `1`=email/Magic proxy, `2`=Gnosis Safe. Avoid `3` until SDK fix |
 | `STRATEGY` | `highest_yes` | `highest_yes` or `forecast_match` |
-| `SHARE_COUNT` | `15` | Shares per buy (min 5 on weather markets) |
-| `FORECAST_AGREE_EXTRA_SHARES` | `5` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
+| `SHARE_COUNT` | `7` | Shares per buy (min 5 on weather markets) |
+| `FORECAST_AGREE_EXTRA_SHARES` | `0` | Extra shares when OM∩WU forecast Δ vs bought is +1°C (or +1/+2°F). `0` disables |
 | `YES_PRICE_MAX` | `0.70` | Max live selection price for highest_yes (checked after price refresh) |
 | `YES_PRICE_MIN` | `0.50` | Min live selection price for the shipped profit stack (Tier-1) |
 | `OPEN_INTEREST_MIN` | `10000` | Min event open interest (Gamma `openInterest`); skip market if OI &lt; this value or OI is unknown (`0` disables) |
