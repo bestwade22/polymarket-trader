@@ -18166,5 +18166,21 @@
     "floor_price": 0.96,
     "current_mid": 0.895,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x25e3b03aeb8adbfc1afb1335224f8c77cf3160070889413bbc1ab82c960dadaa",
+    "token_id": "103509759678003745999087652242447946003542844464248952250610825140291311932121",
+    "order_id": "0x5eafe79797e4456e7bed1b1ccb750c57bd238a43c98096c38cbb451ded47721e",
+    "sold_at": "2026-11-20T23:00:23.913034+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-seattle-on-november-20-2026",
+    "price": 0.94,
+    "size": 7.4546,
+    "avg_buy_price": 0.518,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.8155,
+    "reason": "tier1"
   }
 ]
