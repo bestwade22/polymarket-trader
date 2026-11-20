@@ -18150,5 +18150,21 @@
     "floor_price": 0.94,
     "current_mid": 0.274,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x6bc53f2ebc5e45a9448fa9eb1c9e40c056d33948e18845eeb329f06a86a82930",
+    "token_id": "21290105446581795017547584179322429359992881523264345797420813954372001496964",
+    "order_id": "0xb4b7e7f725354d499f22ed309ca3f03d282dd29aa96d8b1ca87e56f34baff741",
+    "sold_at": "2026-11-20T08:00:23.954440+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-chongqing-on-november-20-2026",
+    "price": 0.96,
+    "size": 6.76,
+    "avg_buy_price": 0.586,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.895,
+    "reason": "tier2"
   }
 ]
