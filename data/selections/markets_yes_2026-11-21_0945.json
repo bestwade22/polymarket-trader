@@ -1,0 +1,40 @@
+{
+  "run_at": "2026-11-21T09:45:58.871016+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1422265",
+      "city": "Karachi",
+      "event_slug": "highest-temperature-in-karachi-on-november-21-2026",
+      "reason": "clob_gamma_disagree",
+      "group_item_title": "32\u00b0C",
+      "market_id": "7166118",
+      "clob_mid_price": 0.525,
+      "gamma_title": "31\u00b0C",
+      "gamma_price": 0.84,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 88,
+      "forecast_wu_temp_c": 31,
+      "forecast_delta_c": 0.0
+    },
+    {
+      "event_id": "1422165",
+      "city": "Lucknow",
+      "market_id": "7165743",
+      "group_item_title": "28\u00b0C",
+      "event_slug": "highest-temperature-in-lucknow-on-november-21-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.993,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 82,
+      "forecast_temp_c": 28,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 82,
+      "forecast_wu_temp_c": 28,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
