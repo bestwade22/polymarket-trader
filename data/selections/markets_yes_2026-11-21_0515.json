@@ -1,0 +1,29 @@
+{
+  "run_at": "2026-11-21T05:15:38.889443+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1422175",
+      "city": "Tokyo",
+      "timezone": "Japan (UTC+9)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 61,
+      "forecast_temp_c": 16,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 61,
+      "forecast_wu_temp_c": 16
+    },
+    {
+      "event_id": "1422224",
+      "city": "Busan",
+      "timezone": "Korea (UTC+9)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 48,
+      "forecast_temp_c": 9,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 48,
+      "forecast_wu_temp_c": 9
+    }
+  ]
+}
