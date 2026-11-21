@@ -18230,5 +18230,53 @@
     "floor_price": 0.94,
     "current_mid": 0.19,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x2e7b5597234e1f502889879a42e78a1fbde8fb92183415a9a811caa770722263",
+    "token_id": "90678183866672980926546705547214045985648829701938650294947944769185405720910",
+    "order_id": "0x5e12165f63ff018cb56cc9b5711dd108c311ee51032a0eda584e28e6adc25a76",
+    "sold_at": "2026-11-21T08:00:22.047683+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-shenzhen-on-november-21-2026",
+    "price": 0.96,
+    "size": 10.0,
+    "avg_buy_price": 0.68,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.855,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xb51300d69d7c81234a12a23d68b2fe257d54c2551421dd8ef45f7f7156f9666a",
+    "token_id": "10903603903636913072397190451176865167307214428154901358839048895959199515754",
+    "order_id": "0x5cf720896b3fada113de55e4f626862bc567f06b444b7662aa04f1db28f855b2",
+    "sold_at": "2026-11-21T08:00:23.256948+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-hong-kong-on-november-21-2026",
+    "price": 0.96,
+    "size": 8.63,
+    "avg_buy_price": 0.791,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.831,
+    "reason": "tier2"
+  },
+  {
+    "market_id": "0xe44b7bc273c9f6c2e4cecf7cca1b9337fbd2c1e34fb228106d0ca821e42686e7",
+    "token_id": "5626900856385573138417298652862173044777832009259112619443616740144170528391",
+    "order_id": "0x6424d9ab8b26a982075ccef640d332c033c55bba8f16c5b7d915ca8f9a6eba12",
+    "sold_at": "2026-11-21T08:00:24.444977+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-singapore-on-november-21-2026",
+    "price": 0.96,
+    "size": 10.0,
+    "avg_buy_price": 0.55,
+    "tier": "tier2",
+    "floor_price": 0.96,
+    "current_mid": 0.685,
+    "reason": "tier2"
   }
 ]
