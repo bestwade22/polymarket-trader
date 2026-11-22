@@ -18422,5 +18422,37 @@
     "floor_price": 0.94,
     "current_mid": 0.968,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0x0d8c9e0a9b3f52ad73aec211684e3d2e6ea071c807487a93347ba08cff1e3f3e",
+    "token_id": "8536884806757065797094082178137819538050306918123081104944345360235781920237",
+    "order_id": "0xd0b1374f9d17b3644b8d6a88f8175ebc80e36f8f1e740dbfb25d6ed6f06bf5dd",
+    "sold_at": "2026-11-22T20:00:23.214524+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-november-22-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.389,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.5095,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xa8789207cd239dba34deb072bcc5c1a76daf914ffa250ba178ecca8c0b32d2b0",
+    "token_id": "104342067628970641948438043129348596613595626152471553738642278715599202604752",
+    "order_id": "0x25beba0d468926b95587a6b585e789e0ee8598c941aaab273d39ff380693cc11",
+    "sold_at": "2026-11-22T20:00:24.465110+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-atlanta-on-november-22-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.566,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.42,
+    "reason": "tier1"
   }
 ]
