@@ -18486,5 +18486,21 @@
     "floor_price": 0.96,
     "current_mid": 0.1215,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0x0d8c9e0a9b3f52ad73aec211684e3d2e6ea071c807487a93347ba08cff1e3f3e",
+    "token_id": "8536884806757065797094082178137819538050306918123081104944345360235781920237",
+    "order_id": "0xc1e952cf19c76e437abb3378f5e0b51a2fd947f7777c942589c69dbbdc861997",
+    "sold_at": "2026-11-22T22:00:22.925306+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-nyc-on-november-22-2026",
+    "price": 0.98,
+    "size": 10.0,
+    "avg_buy_price": 0.389,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.3265,
+    "reason": "tier3"
   }
 ]
