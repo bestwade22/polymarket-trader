@@ -18390,5 +18390,21 @@
     "floor_price": 0.96,
     "current_mid": 0.805,
     "reason": "tier2"
+  },
+  {
+    "market_id": "0xa62a76deacb78299b759c5bbf9877dac1b7da8ed059e22c204f53c88143b451d",
+    "token_id": "49263262817183064501201769340532084279013472581556392993208208350540146909271",
+    "order_id": "0xd2bc0ca6fd4699539d5bb3e5cb340c8913df38ccb4ba88f97156a426ab78c86d",
+    "sold_at": "2026-11-22T09:00:21.940133+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-hong-kong-on-november-22-2026",
+    "price": 0.98,
+    "size": 10.0,
+    "avg_buy_price": 0.54,
+    "tier": "tier3",
+    "floor_price": 0.98,
+    "current_mid": 0.52,
+    "reason": "tier3"
   }
 ]
