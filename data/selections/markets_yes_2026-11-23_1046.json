@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-11-23T10:46:00.096611+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1435510",
+      "city": "Karachi",
+      "market_id": "7218424",
+      "group_item_title": "31\u00b0C",
+      "event_slug": "highest-temperature-in-karachi-on-november-23-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.966,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 90,
+      "forecast_temp_c": 32,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 90,
+      "forecast_wu_temp_c": 32,
+      "forecast_delta_c": 1.0
+    }
+  ]
+}
