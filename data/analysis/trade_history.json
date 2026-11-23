@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-11-23T03:00:37.276602+00:00",
+  "synced_at": "2026-11-23T04:00:37.523907+00:00",
   "wallet": "0xe8dccecc574ae33cbbdb946d0fc9cfa86cabd8a4",
   "records": [
     {
@@ -63253,27 +63253,16 @@
       }
     },
     "city_forecast_bias": {
-      "Toronto": {
+      "San Francisco": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 13,
-        "om_bias_mean": 0.69,
-        "om_bias_median": 1.0,
-        "om_corr": -0.69,
-        "wu_bias_n": 11,
-        "wu_bias_mean": 0.45,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.45
-      },
-      "London": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 7,
-        "om_bias_mean": 0.71,
-        "om_bias_median": 1.0,
-        "om_corr": -0.71,
-        "wu_bias_n": 6,
-        "wu_bias_mean": 0.67,
-        "wu_bias_median": 1.0,
-        "wu_corr": -0.67
+        "om_bias_n": 6,
+        "om_bias_mean": 0.5,
+        "om_bias_median": -0.23,
+        "om_corr": -0.5,
+        "wu_bias_n": 5,
+        "wu_bias_mean": 0.85,
+        "wu_bias_median": 0.72,
+        "wu_corr": -0.85
       },
       "Moscow": {
         "bias_since": "2026-08-04",
@@ -63286,6 +63275,94 @@
         "wu_bias_median": null,
         "wu_corr": null
       },
+      "Shenzhen": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 2,
+        "om_bias_mean": 1.0,
+        "om_bias_median": 1.0,
+        "om_corr": -1.0,
+        "wu_bias_n": 2,
+        "wu_bias_mean": 0.5,
+        "wu_bias_median": 0.5,
+        "wu_corr": -0.5
+      },
+      "Tokyo": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": 0.0,
+        "om_bias_median": 0.0,
+        "om_corr": -0.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": -2.0,
+        "wu_bias_median": -2.0,
+        "wu_corr": 2.0
+      },
+      "Amsterdam": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 9,
+        "om_bias_mean": 0.11,
+        "om_bias_median": 0.0,
+        "om_corr": -0.11,
+        "wu_bias_n": 7,
+        "wu_bias_mean": 0.0,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.0
+      },
+      "Atlanta": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 19,
+        "om_bias_mean": 0.38,
+        "om_bias_median": 0.5,
+        "om_corr": -0.38,
+        "wu_bias_n": 18,
+        "wu_bias_mean": 1.1,
+        "wu_bias_median": 0.77,
+        "wu_corr": -1.1
+      },
+      "Taipei": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": 0.0,
+        "om_bias_median": 0.0,
+        "om_corr": -0.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": 0.0,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.0
+      },
+      "Madrid": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 24,
+        "om_bias_mean": -0.12,
+        "om_bias_median": 0.0,
+        "om_corr": 0.12,
+        "wu_bias_n": 20,
+        "wu_bias_mean": -0.5,
+        "wu_bias_median": 0.0,
+        "wu_corr": 0.5
+      },
+      "Guangzhou": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": 1.0,
+        "om_bias_median": 1.0,
+        "om_corr": -1.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": 0.0,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.0
+      },
+      "Chongqing": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 3,
+        "om_bias_mean": 0.0,
+        "om_bias_median": 0.0,
+        "om_corr": -0.0,
+        "wu_bias_n": 3,
+        "wu_bias_mean": -0.33,
+        "wu_bias_median": 0.0,
+        "wu_corr": 0.33
+      },
       "Wuhan": {
         "bias_since": "2026-08-04",
         "om_bias_n": 1,
@@ -63297,49 +63374,49 @@
         "wu_bias_median": -1.0,
         "wu_corr": 1.0
       },
-      "Busan": {
+      "Milan": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 1.0,
-        "om_bias_median": 1.0,
-        "om_corr": -1.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": 1.0,
-        "wu_bias_median": 1.0,
-        "wu_corr": -1.0
-      },
-      "Kuala Lumpur": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": -2.0,
-        "om_bias_median": -2.0,
-        "om_corr": 2.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": -2.0,
-        "wu_bias_median": -2.0,
-        "wu_corr": 2.0
-      },
-      "Singapore": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 4,
-        "om_bias_mean": 1.5,
-        "om_bias_median": 1.5,
-        "om_corr": -1.5,
-        "wu_bias_n": 4,
-        "wu_bias_mean": 0.25,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.25
-      },
-      "Tel Aviv": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 0.0,
+        "om_bias_n": 21,
+        "om_bias_mean": 0.29,
         "om_bias_median": 0.0,
-        "om_corr": -0.0,
-        "wu_bias_n": 0,
-        "wu_bias_mean": null,
-        "wu_bias_median": null,
-        "wu_corr": null
+        "om_corr": -0.29,
+        "wu_bias_n": 17,
+        "wu_bias_mean": -0.12,
+        "wu_bias_median": 0.0,
+        "wu_corr": 0.12
+      },
+      "Seattle": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 21,
+        "om_bias_mean": 0.07,
+        "om_bias_median": 0.17,
+        "om_corr": -0.07,
+        "wu_bias_n": 19,
+        "wu_bias_mean": 0.42,
+        "wu_bias_median": 0.5,
+        "wu_corr": -0.42
+      },
+      "Helsinki": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 6,
+        "om_bias_mean": 0.17,
+        "om_bias_median": 0.5,
+        "om_corr": -0.17,
+        "wu_bias_n": 6,
+        "wu_bias_mean": 0.0,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.0
+      },
+      "Warsaw": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 6,
+        "om_bias_mean": 0.17,
+        "om_bias_median": 0.0,
+        "om_corr": -0.17,
+        "wu_bias_n": 5,
+        "wu_bias_mean": 0.2,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.2
       },
       "Buenos Aires": {
         "bias_since": "2026-08-04",
@@ -63352,27 +63429,27 @@
         "wu_bias_median": 0.0,
         "wu_corr": -0.0
       },
-      "Hong Kong": {
+      "Wellington": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 4,
-        "om_bias_mean": -1.0,
-        "om_bias_median": -1.0,
-        "om_corr": 1.0,
-        "wu_bias_n": 0,
-        "wu_bias_mean": null,
-        "wu_bias_median": null,
-        "wu_corr": null
+        "om_bias_n": 2,
+        "om_bias_mean": 0.5,
+        "om_bias_median": 0.5,
+        "om_corr": -0.5,
+        "wu_bias_n": 2,
+        "wu_bias_mean": 3.0,
+        "wu_bias_median": 3.0,
+        "wu_corr": -3.0
       },
-      "Paris": {
+      "Toronto": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 26,
-        "om_bias_mean": -0.12,
-        "om_bias_median": 0.0,
-        "om_corr": 0.12,
-        "wu_bias_n": 24,
-        "wu_bias_mean": -0.17,
+        "om_bias_n": 13,
+        "om_bias_mean": 0.69,
+        "om_bias_median": 1.0,
+        "om_corr": -0.69,
+        "wu_bias_n": 11,
+        "wu_bias_mean": 0.45,
         "wu_bias_median": 0.0,
-        "wu_corr": 0.17
+        "wu_corr": -0.45
       },
       "Ankara": {
         "bias_since": "2026-08-04",
@@ -63385,27 +63462,60 @@
         "wu_bias_median": -1.0,
         "wu_corr": 0.86
       },
-      "Chengdu": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 4,
-        "om_bias_mean": -0.75,
-        "om_bias_median": -0.5,
-        "om_corr": 0.75,
-        "wu_bias_n": 4,
-        "wu_bias_mean": 0.0,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.0
-      },
-      "Cape Town": {
+      "Panama City": {
         "bias_since": "2026-08-04",
         "om_bias_n": 1,
-        "om_bias_mean": -1.0,
-        "om_bias_median": -1.0,
-        "om_corr": 1.0,
+        "om_bias_mean": 2.0,
+        "om_bias_median": 2.0,
+        "om_corr": -2.0,
         "wu_bias_n": 1,
-        "wu_bias_mean": -1.0,
-        "wu_bias_median": -1.0,
-        "wu_corr": 1.0
+        "wu_bias_mean": 1.0,
+        "wu_bias_median": 1.0,
+        "wu_corr": -1.0
+      },
+      "Houston": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 8,
+        "om_bias_mean": 0.85,
+        "om_bias_median": 0.55,
+        "om_corr": -0.85,
+        "wu_bias_n": 6,
+        "wu_bias_mean": 0.15,
+        "wu_bias_median": 0.0,
+        "wu_corr": -0.15
+      },
+      "Tel Aviv": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": 0.0,
+        "om_bias_median": 0.0,
+        "om_corr": -0.0,
+        "wu_bias_n": 0,
+        "wu_bias_mean": null,
+        "wu_bias_median": null,
+        "wu_corr": null
+      },
+      "Busan": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": 1.0,
+        "om_bias_median": 1.0,
+        "om_corr": -1.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": 1.0,
+        "wu_bias_median": 1.0,
+        "wu_corr": -1.0
+      },
+      "Chicago": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 9,
+        "om_bias_mean": 0.09,
+        "om_bias_median": 0.06,
+        "om_corr": -0.09,
+        "wu_bias_n": 7,
+        "wu_bias_mean": -0.26,
+        "wu_bias_median": -0.17,
+        "wu_corr": 0.26
       },
       "Los Angeles": {
         "bias_since": "2026-08-04",
@@ -63418,6 +63528,17 @@
         "wu_bias_median": -1.39,
         "wu_corr": 1.39
       },
+      "Kuala Lumpur": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": -2.0,
+        "om_bias_median": -2.0,
+        "om_corr": 2.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": -2.0,
+        "wu_bias_median": -2.0,
+        "wu_corr": 2.0
+      },
       "Denver": {
         "bias_since": "2026-08-04",
         "om_bias_n": 2,
@@ -63429,24 +63550,24 @@
         "wu_bias_median": -4.95,
         "wu_corr": 4.95
       },
-      "Munich": {
+      "Dallas": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 15,
-        "om_bias_mean": 0.0,
-        "om_bias_median": 0.0,
-        "om_corr": -0.0,
-        "wu_bias_n": 12,
-        "wu_bias_mean": 0.25,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.25
+        "om_bias_n": 16,
+        "om_bias_mean": 0.32,
+        "om_bias_median": 0.17,
+        "om_corr": -0.32,
+        "wu_bias_n": 14,
+        "wu_bias_mean": 0.15,
+        "wu_bias_median": 0.28,
+        "wu_corr": -0.15
       },
-      "Helsinki": {
+      "Jeddah": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 6,
-        "om_bias_mean": 0.17,
-        "om_bias_median": 0.5,
-        "om_corr": -0.17,
-        "wu_bias_n": 6,
+        "om_bias_n": 3,
+        "om_bias_mean": 1.0,
+        "om_bias_median": 1.0,
+        "om_corr": -1.0,
+        "wu_bias_n": 3,
         "wu_bias_mean": 0.0,
         "wu_bias_median": 0.0,
         "wu_corr": -0.0
@@ -63462,93 +63583,16 @@
         "wu_bias_median": -0.28,
         "wu_corr": 0.09
       },
-      "Milan": {
+      "Istanbul": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 21,
-        "om_bias_mean": 0.29,
-        "om_bias_median": 0.0,
-        "om_corr": -0.29,
-        "wu_bias_n": 17,
-        "wu_bias_mean": -0.12,
-        "wu_bias_median": 0.0,
-        "wu_corr": 0.12
-      },
-      "San Francisco": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 6,
-        "om_bias_mean": 0.5,
-        "om_bias_median": -0.23,
-        "om_corr": -0.5,
-        "wu_bias_n": 5,
-        "wu_bias_mean": 0.85,
-        "wu_bias_median": 0.72,
-        "wu_corr": -0.85
-      },
-      "Nyc": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 15,
-        "om_bias_mean": -0.39,
-        "om_bias_median": -0.28,
-        "om_corr": 0.39,
-        "wu_bias_n": 14,
-        "wu_bias_mean": -0.71,
-        "wu_bias_median": -0.33,
-        "wu_corr": 0.71
-      },
-      "Chicago": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 9,
-        "om_bias_mean": 0.09,
-        "om_bias_median": 0.06,
-        "om_corr": -0.09,
-        "wu_bias_n": 7,
-        "wu_bias_mean": -0.26,
-        "wu_bias_median": -0.17,
-        "wu_corr": 0.26
-      },
-      "Warsaw": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 6,
-        "om_bias_mean": 0.17,
-        "om_bias_median": 0.0,
-        "om_corr": -0.17,
-        "wu_bias_n": 5,
-        "wu_bias_mean": 0.2,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.2
-      },
-      "Houston": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 8,
-        "om_bias_mean": 0.85,
-        "om_bias_median": 0.55,
-        "om_corr": -0.85,
-        "wu_bias_n": 6,
-        "wu_bias_mean": 0.15,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.15
-      },
-      "Amsterdam": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 9,
-        "om_bias_mean": 0.11,
-        "om_bias_median": 0.0,
-        "om_corr": -0.11,
-        "wu_bias_n": 7,
-        "wu_bias_mean": 0.0,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.0
-      },
-      "Taipei": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 0.0,
-        "om_bias_median": 0.0,
-        "om_corr": -0.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": 0.0,
-        "wu_bias_median": 0.0,
-        "wu_corr": -0.0
+        "om_bias_n": 3,
+        "om_bias_mean": 1.0,
+        "om_bias_median": 1.0,
+        "om_corr": -1.0,
+        "wu_bias_n": 0,
+        "wu_bias_mean": null,
+        "wu_bias_median": null,
+        "wu_corr": null
       },
       "Austin": {
         "bias_since": "2026-08-04",
@@ -63561,16 +63605,38 @@
         "wu_bias_median": -0.06,
         "wu_corr": 0.09
       },
-      "Madrid": {
+      "Paris": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 24,
+        "om_bias_n": 26,
         "om_bias_mean": -0.12,
         "om_bias_median": 0.0,
         "om_corr": 0.12,
-        "wu_bias_n": 20,
-        "wu_bias_mean": -0.5,
+        "wu_bias_n": 24,
+        "wu_bias_mean": -0.17,
         "wu_bias_median": 0.0,
-        "wu_corr": 0.5
+        "wu_corr": 0.17
+      },
+      "Nyc": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 15,
+        "om_bias_mean": -0.39,
+        "om_bias_median": -0.28,
+        "om_corr": 0.39,
+        "wu_bias_n": 14,
+        "wu_bias_mean": -0.71,
+        "wu_bias_median": -0.33,
+        "wu_corr": 0.71
+      },
+      "Cape Town": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 1,
+        "om_bias_mean": -1.0,
+        "om_bias_median": -1.0,
+        "om_corr": 1.0,
+        "wu_bias_n": 1,
+        "wu_bias_mean": -1.0,
+        "wu_bias_median": -1.0,
+        "wu_corr": 1.0
       },
       "Mexico City": {
         "bias_since": "2026-08-04",
@@ -63583,126 +63649,60 @@
         "wu_bias_median": -1.0,
         "wu_corr": 0.2
       },
-      "Jeddah": {
+      "London": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 3,
-        "om_bias_mean": 1.0,
+        "om_bias_n": 7,
+        "om_bias_mean": 0.71,
         "om_bias_median": 1.0,
-        "om_corr": -1.0,
-        "wu_bias_n": 3,
+        "om_corr": -0.71,
+        "wu_bias_n": 6,
+        "wu_bias_mean": 0.67,
+        "wu_bias_median": 1.0,
+        "wu_corr": -0.67
+      },
+      "Chengdu": {
+        "bias_since": "2026-08-04",
+        "om_bias_n": 4,
+        "om_bias_mean": -0.75,
+        "om_bias_median": -0.5,
+        "om_corr": 0.75,
+        "wu_bias_n": 4,
         "wu_bias_mean": 0.0,
         "wu_bias_median": 0.0,
         "wu_corr": -0.0
       },
-      "Guangzhou": {
+      "Munich": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 1.0,
-        "om_bias_median": 1.0,
-        "om_corr": -1.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": 0.0,
+        "om_bias_n": 15,
+        "om_bias_mean": 0.0,
+        "om_bias_median": 0.0,
+        "om_corr": -0.0,
+        "wu_bias_n": 12,
+        "wu_bias_mean": 0.25,
         "wu_bias_median": 0.0,
-        "wu_corr": -0.0
+        "wu_corr": -0.25
       },
-      "Shenzhen": {
+      "Hong Kong": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 2,
-        "om_bias_mean": 1.0,
-        "om_bias_median": 1.0,
-        "om_corr": -1.0,
-        "wu_bias_n": 2,
-        "wu_bias_mean": 0.5,
-        "wu_bias_median": 0.5,
-        "wu_corr": -0.5
-      },
-      "Istanbul": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 3,
-        "om_bias_mean": 1.0,
-        "om_bias_median": 1.0,
-        "om_corr": -1.0,
+        "om_bias_n": 4,
+        "om_bias_mean": -1.0,
+        "om_bias_median": -1.0,
+        "om_corr": 1.0,
         "wu_bias_n": 0,
         "wu_bias_mean": null,
         "wu_bias_median": null,
         "wu_corr": null
       },
-      "Wellington": {
+      "Singapore": {
         "bias_since": "2026-08-04",
-        "om_bias_n": 2,
-        "om_bias_mean": 0.5,
-        "om_bias_median": 0.5,
-        "om_corr": -0.5,
-        "wu_bias_n": 2,
-        "wu_bias_mean": 3.0,
-        "wu_bias_median": 3.0,
-        "wu_corr": -3.0
-      },
-      "Tokyo": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 0.0,
-        "om_bias_median": 0.0,
-        "om_corr": -0.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": -2.0,
-        "wu_bias_median": -2.0,
-        "wu_corr": 2.0
-      },
-      "Dallas": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 16,
-        "om_bias_mean": 0.32,
-        "om_bias_median": 0.17,
-        "om_corr": -0.32,
-        "wu_bias_n": 14,
-        "wu_bias_mean": 0.15,
-        "wu_bias_median": 0.28,
-        "wu_corr": -0.15
-      },
-      "Chongqing": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 3,
-        "om_bias_mean": 0.0,
-        "om_bias_median": 0.0,
-        "om_corr": -0.0,
-        "wu_bias_n": 3,
-        "wu_bias_mean": -0.33,
+        "om_bias_n": 4,
+        "om_bias_mean": 1.5,
+        "om_bias_median": 1.5,
+        "om_corr": -1.5,
+        "wu_bias_n": 4,
+        "wu_bias_mean": 0.25,
         "wu_bias_median": 0.0,
-        "wu_corr": 0.33
-      },
-      "Panama City": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 1,
-        "om_bias_mean": 2.0,
-        "om_bias_median": 2.0,
-        "om_corr": -2.0,
-        "wu_bias_n": 1,
-        "wu_bias_mean": 1.0,
-        "wu_bias_median": 1.0,
-        "wu_corr": -1.0
-      },
-      "Atlanta": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 19,
-        "om_bias_mean": 0.38,
-        "om_bias_median": 0.5,
-        "om_corr": -0.38,
-        "wu_bias_n": 18,
-        "wu_bias_mean": 1.1,
-        "wu_bias_median": 0.77,
-        "wu_corr": -1.1
-      },
-      "Seattle": {
-        "bias_since": "2026-08-04",
-        "om_bias_n": 21,
-        "om_bias_mean": 0.07,
-        "om_bias_median": 0.17,
-        "om_corr": -0.07,
-        "wu_bias_n": 19,
-        "wu_bias_mean": 0.42,
-        "wu_bias_median": 0.5,
-        "wu_corr": -0.42
+        "wu_corr": -0.25
       }
     },
     "forecast_bias_since": "2026-08-04",
@@ -70606,11 +70606,11 @@
       "events_top_yes": 60
     },
     "share_count_assumed": 10.0,
-    "resolved_skips": 18779,
-    "would_have_won_total": 15640,
+    "resolved_skips": 18783,
+    "would_have_won_total": 15642,
     "would_have_won_pct": 83.3,
-    "total_pnl_if_bought": 3412.87,
-    "pnl_n": 18587,
+    "total_pnl_if_bought": 3403.86,
+    "pnl_n": 18591,
     "resolutions_fetched": 1,
     "by_reason": [
       {
@@ -70619,13 +70619,13 @@
         "with_temp": 14974,
         "with_slug": 14974,
         "with_price": 14974,
-        "resolved": 14932,
-        "would_have_won": 13419,
+        "resolved": 14934,
+        "would_have_won": 13421,
         "would_have_lost": 1513,
-        "unknown_outcome": 42,
+        "unknown_outcome": 40,
         "avg_price": 0.8863,
-        "total_pnl_if_bought": 1876.39,
-        "pnl_n": 14932,
+        "total_pnl_if_bought": 1876.68,
+        "pnl_n": 14934,
         "would_have_won_pct": 89.9,
         "filter_costly": true,
         "filter_helpful": false
@@ -70670,14 +70670,14 @@
         "with_temp": 409,
         "with_slug": 409,
         "with_price": 409,
-        "resolved": 408,
+        "resolved": 409,
         "would_have_won": 205,
-        "would_have_lost": 203,
-        "unknown_outcome": 1,
+        "would_have_lost": 204,
+        "unknown_outcome": 0,
         "avg_price": 0.522,
-        "total_pnl_if_bought": -80.14,
-        "pnl_n": 408,
-        "would_have_won_pct": 50.2,
+        "total_pnl_if_bought": -84.79,
+        "pnl_n": 409,
+        "would_have_won_pct": 50.1,
         "filter_costly": true,
         "filter_helpful": false
       },
@@ -70738,14 +70738,14 @@
         "with_temp": 83,
         "with_slug": 83,
         "with_price": 83,
-        "resolved": 76,
+        "resolved": 77,
         "would_have_won": 44,
-        "would_have_lost": 32,
-        "unknown_outcome": 7,
+        "would_have_lost": 33,
+        "unknown_outcome": 6,
         "avg_price": 0.5664,
-        "total_pnl_if_bought": 6.72,
-        "pnl_n": 76,
-        "would_have_won_pct": 57.9,
+        "total_pnl_if_bought": 2.07,
+        "pnl_n": 77,
+        "would_have_won_pct": 57.1,
         "filter_costly": true,
         "filter_helpful": false
       },
@@ -71029,13 +71029,13 @@
         "with_temp": 7008,
         "with_slug": 7008,
         "with_price": 7008,
-        "resolved": 6980,
-        "would_have_won": 6902,
+        "resolved": 6982,
+        "would_have_won": 6904,
         "would_have_lost": 78,
-        "unknown_outcome": 28,
+        "unknown_outcome": 26,
         "avg_price": 0.9827,
-        "total_pnl_if_bought": 428.3,
-        "pnl_n": 6980,
+        "total_pnl_if_bought": 428.59,
+        "pnl_n": 6982,
         "would_have_won_pct": 98.9,
         "filter_costly": true,
         "filter_helpful": false
@@ -71167,13 +71167,13 @@
         "with_temp": 1348,
         "with_slug": 1348,
         "with_price": 1348,
-        "resolved": 1342,
-        "would_have_won": 1322,
+        "resolved": 1343,
+        "would_have_won": 1323,
         "would_have_lost": 20,
-        "unknown_outcome": 6,
+        "unknown_outcome": 5,
         "avg_price": 0.9773,
-        "total_pnl_if_bought": 105.52,
-        "pnl_n": 1342,
+        "total_pnl_if_bought": 105.67,
+        "pnl_n": 1343,
         "would_have_won_pct": 98.5,
         "filter_costly": true,
         "filter_helpful": false
@@ -71305,13 +71305,13 @@
         "with_temp": 1143,
         "with_slug": 1143,
         "with_price": 1143,
-        "resolved": 1137,
-        "would_have_won": 1121,
+        "resolved": 1138,
+        "would_have_won": 1122,
         "would_have_lost": 16,
-        "unknown_outcome": 6,
+        "unknown_outcome": 5,
         "avg_price": 0.9778,
-        "total_pnl_if_bought": 92.38,
-        "pnl_n": 1137,
+        "total_pnl_if_bought": 92.53,
+        "pnl_n": 1138,
         "would_have_won_pct": 98.6,
         "filter_costly": true,
         "filter_helpful": false
@@ -72054,42 +72054,42 @@
       "om_wu_agree_within_1c_pct": 77.2,
       "avg_abs_delta_would_win_c": 0.9,
       "avg_abs_delta_would_lose_c": 0.88,
-      "delta_would_win_n": 2993,
-      "delta_would_lose_n": 931,
+      "delta_would_win_n": 2994,
+      "delta_would_lose_n": 932,
       "overall": {
         "group": "all",
         "count": 3942,
-        "resolved": 3924,
-        "would_have_won": 2993,
-        "would_have_lost": 931,
+        "resolved": 3926,
+        "would_have_won": 2994,
+        "would_have_lost": 932,
         "would_have_won_pct": 76.3,
         "om_match": 1544,
-        "om_match_resolved": 3924,
+        "om_match_resolved": 3926,
         "om_match_pct": 39.3,
-        "wu_match": 1323,
-        "wu_match_resolved": 3528,
+        "wu_match": 1324,
+        "wu_match_resolved": 3530,
         "wu_match_pct": 37.5,
         "avg_price": 0.7403,
-        "total_pnl_if_bought": 887.6,
-        "pnl_n": 3924
+        "total_pnl_if_bought": 883.1,
+        "pnl_n": 3926
       },
       "by_local_slot": [
         {
           "group": "14:15-14:30",
           "count": 2931,
-          "resolved": 2918,
+          "resolved": 2919,
           "would_have_won": 2279,
-          "would_have_lost": 639,
+          "would_have_lost": 640,
           "would_have_won_pct": 78.1,
           "om_match": 1115,
-          "om_match_resolved": 2918,
+          "om_match_resolved": 2919,
           "om_match_pct": 38.2,
-          "wu_match": 996,
-          "wu_match_resolved": 2617,
+          "wu_match": 997,
+          "wu_match_resolved": 2618,
           "wu_match_pct": 38.1,
           "avg_price": 0.7626,
-          "total_pnl_if_bought": 544.39,
-          "pnl_n": 2918
+          "total_pnl_if_bought": 539.74,
+          "pnl_n": 2919
         },
         {
           "group": "14:45-15:00",
@@ -72111,19 +72111,19 @@
         {
           "group": "15:15-15:30",
           "count": 322,
-          "resolved": 319,
-          "would_have_won": 248,
+          "resolved": 320,
+          "would_have_won": 249,
           "would_have_lost": 71,
-          "would_have_won_pct": 77.7,
+          "would_have_won_pct": 77.8,
           "om_match": 120,
-          "om_match_resolved": 319,
-          "om_match_pct": 37.6,
+          "om_match_resolved": 320,
+          "om_match_pct": 37.5,
           "wu_match": 73,
-          "wu_match_resolved": 274,
-          "wu_match_pct": 26.6,
+          "wu_match_resolved": 275,
+          "wu_match_pct": 26.5,
           "avg_price": 0.7187,
-          "total_pnl_if_bought": 191.61,
-          "pnl_n": 319
+          "total_pnl_if_bought": 191.76,
+          "pnl_n": 320
         },
         {
           "group": "15:45-16:00",
@@ -72249,19 +72249,19 @@
         {
           "group": "open_interest_min",
           "count": 46,
-          "resolved": 44,
+          "resolved": 45,
           "would_have_won": 28,
-          "would_have_lost": 16,
-          "would_have_won_pct": 63.6,
+          "would_have_lost": 17,
+          "would_have_won_pct": 62.2,
           "om_match": 16,
-          "om_match_resolved": 44,
-          "om_match_pct": 36.4,
-          "wu_match": 10,
-          "wu_match_resolved": 40,
-          "wu_match_pct": 25.0,
+          "om_match_resolved": 45,
+          "om_match_pct": 35.6,
+          "wu_match": 11,
+          "wu_match_resolved": 41,
+          "wu_match_pct": 26.8,
           "avg_price": 0.5677,
-          "total_pnl_if_bought": 28.33,
-          "pnl_n": 44
+          "total_pnl_if_bought": 23.68,
+          "pnl_n": 45
         },
         {
           "group": "partial_on_other_market",
@@ -72334,19 +72334,19 @@
         {
           "group": "yes_price_max",
           "count": 2464,
-          "resolved": 2451,
-          "would_have_won": 2154,
+          "resolved": 2452,
+          "would_have_won": 2155,
           "would_have_lost": 297,
           "would_have_won_pct": 87.9,
           "om_match": 926,
-          "om_match_resolved": 2451,
+          "om_match_resolved": 2452,
           "om_match_pct": 37.8,
           "wu_match": 849,
-          "wu_match_resolved": 2216,
+          "wu_match_resolved": 2217,
           "wu_match_pct": 38.3,
           "avg_price": 0.8631,
-          "total_pnl_if_bought": 390.2,
-          "pnl_n": 2451
+          "total_pnl_if_bought": 390.35,
+          "pnl_n": 2452
         },
         {
           "group": "yes_price_min",
@@ -72472,19 +72472,19 @@
         {
           "group": "0.45\u20130.50",
           "count": 254,
-          "resolved": 251,
+          "resolved": 252,
           "would_have_won": 129,
-          "would_have_lost": 122,
-          "would_have_won_pct": 51.4,
+          "would_have_lost": 123,
+          "would_have_won_pct": 51.2,
           "om_match": 111,
-          "om_match_resolved": 251,
-          "om_match_pct": 44.2,
-          "wu_match": 84,
-          "wu_match_resolved": 217,
-          "wu_match_pct": 38.7,
+          "om_match_resolved": 252,
+          "om_match_pct": 44.0,
+          "wu_match": 85,
+          "wu_match_resolved": 218,
+          "wu_match_pct": 39.0,
           "avg_price": 0.4746,
-          "total_pnl_if_bought": 98.68,
-          "pnl_n": 251
+          "total_pnl_if_bought": 94.03,
+          "pnl_n": 252
         },
         {
           "group": "0.50\u20130.55",
@@ -72642,19 +72642,19 @@
         {
           "group": "0.95\u20131.00",
           "count": 909,
-          "resolved": 903,
-          "would_have_won": 889,
+          "resolved": 904,
+          "would_have_won": 890,
           "would_have_lost": 14,
-          "would_have_won_pct": 98.4,
+          "would_have_won_pct": 98.5,
           "om_match": 311,
-          "om_match_resolved": 903,
+          "om_match_resolved": 904,
           "om_match_pct": 34.4,
           "wu_match": 302,
-          "wu_match_resolved": 815,
-          "wu_match_pct": 37.1,
+          "wu_match_resolved": 816,
+          "wu_match_pct": 37.0,
           "avg_price": 0.9781,
-          "total_pnl_if_bought": 58.29,
-          "pnl_n": 903
+          "total_pnl_if_bought": 58.44,
+          "pnl_n": 904
         }
       ],
       "by_spread_band": [
@@ -72831,19 +72831,19 @@
         {
           "group": "unknown",
           "count": 3006,
-          "resolved": 2988,
-          "would_have_won": 2430,
-          "would_have_lost": 558,
+          "resolved": 2990,
+          "would_have_won": 2431,
+          "would_have_lost": 559,
           "would_have_won_pct": 81.3,
           "om_match": 1131,
-          "om_match_resolved": 2988,
-          "om_match_pct": 37.9,
-          "wu_match": 1011,
-          "wu_match_resolved": 2695,
+          "om_match_resolved": 2990,
+          "om_match_pct": 37.8,
+          "wu_match": 1012,
+          "wu_match_resolved": 2697,
           "wu_match_pct": 37.5,
           "avg_price": 0.7983,
-          "total_pnl_if_bought": 445.43,
-          "pnl_n": 2988
+          "total_pnl_if_bought": 440.93,
+          "pnl_n": 2990
         }
       ]
     }
@@ -73782,7 +73782,7 @@
   },
   "timezone_skip_denylist": {
     "date": "2026-11-23",
-    "refreshed_at": "2026-11-23T03:02:22.827738+00:00",
+    "refreshed_at": "2026-11-23T04:01:33.984716+00:00",
     "bottom_n": 7,
     "min_count": 3,
     "min_count_floor": 3,
