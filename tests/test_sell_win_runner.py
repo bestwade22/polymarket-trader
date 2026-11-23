@@ -50,6 +50,7 @@ class TestSellWinRunner:
             "id": "m1",
             "groupItemTitle": "72-73°F",
             "clobTokenIds": '["tok1"]',
+            "midpoint": 0.88,
             "orderMinSize": 5,
             "orderPriceMinTickSize": "0.01",
         }
@@ -91,10 +92,84 @@ class TestSellWinRunner:
             result = run_sell_win_check(dry_run=True, wallet_address="0xabc")
 
         assert len(result["placed"]) == 1
+        placed = result["placed"][0]
+        assert placed["current_mid"] == 0.88
+        assert placed["is_highest_yes"] is True
         executor.sell_yes.assert_called_once()
         call_kwargs = executor.sell_yes.call_args.kwargs
         assert call_kwargs["order_price"] == 0.91
         assert call_kwargs["expiration_ts"] == 1_900_000_000
+
+    @patch("src.trade.sell_win_runner.TradeExecutor")
+    @patch("src.trade.sell_win_runner.LiveOpenOrderChecker")
+    @patch("src.trade.sell_win_runner.get_sell_price", return_value=0.88)
+    @patch("src.trade.sell_win_runner.refresh_market_prices")
+    @patch("src.trade.sell_win_runner.resolve_event_for_position")
+    @patch("src.trade.sell_win_runner.fetch_user_positions")
+    def test_placed_row_flags_market_that_is_no_longer_top_yes(
+        self,
+        mock_fetch,
+        mock_resolve,
+        mock_refresh_market,
+        _sell_price,
+        mock_open_checker_cls,
+        mock_executor_cls,
+    ):
+        held_market = {
+            "id": "m1",
+            "groupItemTitle": "72-73°F",
+            "clobTokenIds": '["tok1"]',
+            "midpoint": 0.40,
+            "orderMinSize": 5,
+            "orderPriceMinTickSize": "0.01",
+        }
+        other_market = {
+            "id": "m2",
+            "groupItemTitle": "74-75°F",
+            "clobTokenIds": '["tok2"]',
+            "midpoint": 0.80,
+            "orderMinSize": 5,
+            "orderPriceMinTickSize": "0.01",
+        }
+        event = {
+            "id": "ev1",
+            "title": "Highest temperature in NYC on June 28?",
+            "slug": "highest-temperature-in-nyc-on-june-28",
+            "city": "NYC",
+            "event_date": "2026-06-28",
+            "timezone": "America/New_York",
+            "markets": [held_market, other_market],
+        }
+        mock_fetch.return_value = [_position()]
+        mock_resolve.return_value = event
+        mock_refresh_market.return_value = held_market
+        open_checker = MagicMock()
+        open_checker.token_has_open_sell_order.return_value = (False, [])
+        mock_open_checker_cls.return_value = open_checker
+
+        executor = MagicMock(dry_run=True)
+        executor.sell_yes.return_value = {
+            "dry_run": True,
+            "side": "SELL",
+            "price": 0.91,
+            "size": 10,
+        }
+        mock_executor_cls.return_value = executor
+
+        with patch(
+            "src.trade.sell_win_runner.active_sell_win_tier",
+            return_value=(
+                SellWinTier("tier1", time(15, 0), 0.91, time(15, 55)),
+                "ok",
+            ),
+        ), patch(
+            "src.trade.sell_win_runner.sell_win_expiration_utc",
+            return_value=1_900_000_000,
+        ):
+            result = run_sell_win_check(dry_run=True, wallet_address="0xabc")
+
+        assert len(result["placed"]) == 1
+        assert result["placed"][0]["is_highest_yes"] is False
 
     @patch("src.trade.sell_win_runner.TradeExecutor")
     @patch("src.trade.sell_win_runner.LiveOpenOrderChecker")

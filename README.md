@@ -403,6 +403,8 @@ Set `DRY_RUN=false` to enable live **buy** orders (default expiry `ORDER_EXPIRY_
 
 Buy hourly digests every skip + order. Sell-win / stop-loss digests placed/sold orders, errors, and non-idle skips (routine holds like `above_threshold` / window-not-open stay in JSON only).
 
+Sell-order rows also carry the live market price (`now <mid>`) and whether the held bucket is still the highest-Yes market of its event (`🥇 top yes` / `⚠️ not top`). The badge is omitted when the event has no comparable markets (unknown, rather than a wrong claim).
+
 1. Message [@BotFather](https://t.me/BotFather) → `/newbot` → copy the bot token.
 2. Open the bot and press **Start** once.
 3. Open `https://api.telegram.org/bot<TOKEN>/getUpdates` and copy `"chat":{"id": ...}` → that is `TELEGRAM_CHAT_ID`.

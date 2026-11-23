@@ -19,6 +19,7 @@ from src.trade.sell_win import (
     sell_win_expiration_utc,
     sell_win_order_price,
 )
+from src.trade.sell_order_context import highest_yes_status
 from src.trade.stop_loss_runner import (
     _find_market_in_event,
     resolve_event_for_position,
@@ -345,6 +346,11 @@ def run_sell_win_check(
                     "tier": tier.name,
                     "floor_price": tier.floor_price,
                     "current_mid": current_mid,
+                    "is_highest_yes": highest_yes_status(
+                        event,
+                        position.token_id,
+                        market_id=position.market_id,
+                    ),
                     "order": order_result,
                 }
             )

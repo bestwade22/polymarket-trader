@@ -506,6 +506,15 @@ def _format_sell_skip(row: dict[str, Any]) -> str:
     return " — ".join(parts)
 
 
+def _highest_yes_label(value: Any) -> Optional[str]:
+    """Badge for the "still highest yes?" flag (None when unknown)."""
+    if value is None:
+        return None
+    if value:
+        return "🥇 top yes"
+    return "⚠️ not top"
+
+
 def _format_sell_order_row(row: dict[str, Any], *, kind: str) -> str:
     city = _city_from_slug(row.get("event_slug"))
     order = row.get("order") or {}
@@ -531,6 +540,11 @@ def _format_sell_order_row(row: dict[str, Any], *, kind: str) -> str:
             extras.append(_code(pct_label))
         except (TypeError, ValueError):
             extras.append(_code(f"value_pct={row['value_pct']}"))
+    if row.get("current_mid") is not None:
+        extras.append(f"now {_code(_fmt_price(row['current_mid']))}")
+    top_label = _highest_yes_label(row.get("is_highest_yes"))
+    if top_label:
+        extras.append(top_label)
     size_s = f"{size:g}" if isinstance(size, (int, float)) else (str(size) if size else "?")
     status_l = str(status).lower()
     if status_l in ("live", "matched", "filled") or (not dry_run and status_l not in ("simulated", "?")):

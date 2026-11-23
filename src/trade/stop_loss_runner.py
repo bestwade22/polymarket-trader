@@ -15,6 +15,7 @@ from src.trade.open_order_checker import LiveOpenOrderChecker
 from src.trade.position_checker import MIN_POSITION_SHARES
 from src.trade.position_tracker import SoldPositionTracker
 from src.trade.price_refresher import refresh_market_prices
+from src.trade.sell_order_context import highest_yes_status
 from src.trade.stop_loss import (
     is_stop_loss_eligible_event,
     is_stop_loss_local_time_eligible,
@@ -385,6 +386,12 @@ def run_stop_loss_check(
                     "token_id": position.token_id,
                     "event_slug": position.event_slug,
                     "value_pct": value_pct,
+                    "current_mid": current_mid,
+                    "is_highest_yes": highest_yes_status(
+                        event,
+                        position.token_id,
+                        market_id=position.market_id,
+                    ),
                     "order": order_result,
                 }
             )

@@ -266,6 +266,105 @@ def test_stop_loss_notifies_sold_and_interesting(tg_creds):
         assert send.call_count == 1
 
 
+def test_sell_order_row_shows_current_price_and_top_yes(tg_creds):
+    result = {
+        "status": "ok",
+        "skipped": [],
+        "placed": [
+            {
+                "event_slug": "highest-temperature-in-ankara-on-july-4-2026",
+                "tier": "tier2",
+                "current_mid": 0.93,
+                "is_highest_yes": True,
+                "order": {
+                    "status": "live",
+                    "price": 0.96,
+                    "size": 15,
+                    "order_id": "0xabc",
+                },
+            }
+        ],
+        "errors": [],
+    }
+    text = tg.format_sell_win_message(result)
+    assert "now <code>0.93</code>" in text
+    assert "🥇 top yes" in text
+
+
+def test_sell_order_row_flags_not_top_yes(tg_creds):
+    result = {
+        "status": "ok",
+        "skipped": [],
+        "placed": [
+            {
+                "event_slug": "highest-temperature-in-ankara-on-july-4-2026",
+                "tier": "tier2",
+                "current_mid": 0.55,
+                "is_highest_yes": False,
+                "order": {
+                    "status": "live",
+                    "price": 0.96,
+                    "size": 15,
+                    "order_id": "0xabc",
+                },
+            }
+        ],
+        "errors": [],
+    }
+    text = tg.format_sell_win_message(result)
+    assert "now <code>0.55</code>" in text
+    assert "⚠️ not top" in text
+    assert "🥇 top yes" not in text
+
+
+def test_sell_order_row_omits_top_yes_when_unknown(tg_creds):
+    result = {
+        "status": "ok",
+        "skipped": [],
+        "placed": [
+            {
+                "event_slug": "highest-temperature-in-ankara-on-july-4-2026",
+                "tier": "tier2",
+                "order": {
+                    "status": "live",
+                    "price": 0.96,
+                    "size": 15,
+                    "order_id": "0xabc",
+                },
+            }
+        ],
+        "errors": [],
+    }
+    text = tg.format_sell_win_message(result)
+    assert "top yes" not in text
+    assert "not top" not in text
+
+
+def test_stop_loss_sold_row_shows_current_price_and_top_yes(tg_creds):
+    result = {
+        "status": "ok",
+        "skipped": [],
+        "sold": [
+            {
+                "event_slug": "highest-temperature-in-madrid-on-july-4-2026",
+                "value_pct": 42.1,
+                "current_mid": 0.22,
+                "is_highest_yes": False,
+                "order": {
+                    "status": "live",
+                    "price": 0.22,
+                    "size": 15,
+                    "order_id": "0xdeadbeef",
+                },
+            }
+        ],
+        "errors": [],
+    }
+    text = tg.format_stop_loss_message(result)
+    assert "now <code>0.22</code>" in text
+    assert "⚠️ not top" in text
+
+
 def test_notify_sell_win_error_status(tg_creds):
     with patch.object(tg, "send_telegram_message", return_value=True) as send:
         tg.notify_sell_win_run({"status": "error", "reason": "missing_wallet"})
