@@ -2154,6 +2154,12 @@
       "winning_temp": "61\u00b0F or below",
       "winning_token_id": "31701285580940197774165546151065189726108204780097208302794717709335891230890"
     },
+    "highest-temperature-in-atlanta-on-november-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Atlanta on November 23?",
+      "winning_temp": "66-67\u00b0F",
+      "winning_token_id": "5148490454044239680333367324414538537584631981741473773308009521243317935658"
+    },
     "highest-temperature-in-atlanta-on-november-3-2026": {
       "closed": true,
       "title": "Highest temperature in Atlanta on November 3?",
@@ -18276,6 +18282,12 @@
       "winning_temp": "84-85\u00b0F",
       "winning_token_id": "88468748306372357901386436865159320493476132171274351341808486377447996409910"
     },
+    "highest-temperature-in-miami-on-november-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in Miami on November 23?",
+      "winning_temp": "76-77\u00b0F",
+      "winning_token_id": "18988143009262280561385823562214260035870148059669365991435201946441804243905"
+    },
     "highest-temperature-in-miami-on-november-3-2026": {
       "closed": true,
       "title": "Highest temperature in Miami on November 3?",
@@ -21648,6 +21660,12 @@
       "winning_temp": "62-63\u00b0F",
       "winning_token_id": "39208363164671757232643249309798435121817705901176116627585027267707415348814"
     },
+    "highest-temperature-in-nyc-on-november-23-2026": {
+      "closed": true,
+      "title": "Highest temperature in NYC on November 23?",
+      "winning_temp": "70-71\u00b0F",
+      "winning_token_id": "3432050457242531277590977241564394175051206778317851828221676009555600426072"
+    },
     "highest-temperature-in-nyc-on-november-3-2026": {
       "closed": true,
       "title": "Highest temperature in NYC on November 3?",
@@ -22475,6 +22493,12 @@
       "title": "Highest temperature in Panama City on November 22?",
       "winning_temp": "33\u00b0C",
       "winning_token_id": "43011614743532461944496682058799014798632114873601356038405217856498849856064"
+    },
+    "highest-temperature-in-panama-city-on-november-23-2026": {
+      "closed": false,
+      "title": "Highest temperature in Panama City on November 23?",
+      "winning_temp": "33\u00b0C",
+      "winning_token_id": "74481004910134530394435777573713944883320512579029718859314906218577049331871"
     },
     "highest-temperature-in-panama-city-on-november-3-2026": {
       "closed": true,
