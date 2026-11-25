@@ -18598,5 +18598,37 @@
     "floor_price": 0.94,
     "current_mid": 0.665,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xdfb96508af23f0c0e2ff7ae3e32358633f9c055c7ec0609576f8e9dfcf0d6f38",
+    "token_id": "34057438701440545159771365826288857763569248148495695374215652734442265985741",
+    "order_id": "0xd71f1bdc37399c3aaa4d098ed7a02ef284b41e5ab56e18d4ee812ebc59d54a43",
+    "sold_at": "2026-11-25T14:00:22.768153+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-milan-on-november-25-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.69,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.64,
+    "reason": "tier1"
+  },
+  {
+    "market_id": "0xa4c074aa55df982f3592ee115301b2c0f29ab17a25eab69423db29aa368871c7",
+    "token_id": "81703336840186778803875824274571369237009628942947964858372027356325441549070",
+    "order_id": "0x37ce9969cdf5ba6b9c5f1d7576776395f14031e259454ecba5f482fd0278e0d1",
+    "sold_at": "2026-11-25T14:00:24.046144+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-paris-on-november-25-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.67,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.56,
+    "reason": "tier1"
   }
 ]
