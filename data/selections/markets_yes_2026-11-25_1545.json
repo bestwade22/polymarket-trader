@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-11-25T15:45:39.636390+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1446179",
+      "city": "London",
+      "timezone": "UK (UTC+0/+1)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 46,
+      "forecast_temp_c": 8,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 43,
+      "forecast_wu_temp_c": 6
+    }
+  ]
+}
