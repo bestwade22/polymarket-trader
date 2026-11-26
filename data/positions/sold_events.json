@@ -18694,5 +18694,21 @@
     "floor_price": 0.98,
     "current_mid": 0.585,
     "reason": "tier3"
+  },
+  {
+    "market_id": "0x103bdc8eac8c8d199be61784cacacb211e95687d4a4e47d5908dbcecc4304ee8",
+    "token_id": "21086047940610351776933988678831616731996676823184226715229006061447361775289",
+    "order_id": "0xd7d9d1cfa15cfe1116cc9d643daac133d98c759343a26f993558c93d12a93015",
+    "sold_at": "2026-11-26T07:00:25.966557+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-guangzhou-on-november-26-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.525,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.691,
+    "reason": "tier1"
   }
 ]
