@@ -18710,5 +18710,21 @@
     "floor_price": 0.94,
     "current_mid": 0.691,
     "reason": "tier1"
+  },
+  {
+    "market_id": "0xf6120157704019edcefa58245bd6d687bcadf5199ee1db085339d9aea45d0bc6",
+    "token_id": "18721133422618510417798354470364270524632273601763057963168669582107221877922",
+    "order_id": "0xf5ac2d8d666073d35bcc9a0d7019d5b3f41676fc7f318cd5775f1ae6c55daa46",
+    "sold_at": "2026-11-26T21:00:24.293102+00:00",
+    "action": "sell_order_placed",
+    "strategy": "sell_win",
+    "event_slug": "highest-temperature-in-austin-on-november-26-2026",
+    "price": 0.94,
+    "size": 10.0,
+    "avg_buy_price": 0.52,
+    "tier": "tier1",
+    "floor_price": 0.94,
+    "current_mid": 0.13,
+    "reason": "tier1"
   }
 ]
