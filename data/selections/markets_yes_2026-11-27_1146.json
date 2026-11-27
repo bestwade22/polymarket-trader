@@ -1,0 +1,72 @@
+{
+  "run_at": "2026-11-27T11:46:16.262842+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1456838",
+      "city": "Moscow",
+      "market_id": "7336838",
+      "group_item_title": "-2\u00b0C",
+      "event_slug": "highest-temperature-in-moscow-on-november-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9745,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 28,
+      "forecast_temp_c": -2,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 30,
+      "forecast_wu_temp_c": -1,
+      "forecast_delta_c": -4.0
+    },
+    {
+      "event_id": "1456843",
+      "city": "Istanbul",
+      "market_id": "7336854",
+      "group_item_title": "17\u00b0C",
+      "event_slug": "highest-temperature-in-istanbul-on-november-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.95,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 64,
+      "forecast_temp_c": 18,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 64,
+      "forecast_wu_temp_c": 18,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1456865",
+      "city": "Jeddah",
+      "market_id": "7336934",
+      "group_item_title": "33\u00b0C",
+      "event_slug": "highest-temperature-in-jeddah-on-november-27-2026",
+      "reason": "yes_price_max",
+      "selection_price": 0.9965,
+      "yes_price_max": 0.7,
+      "forecast_temp_f": 93,
+      "forecast_temp_c": 34,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 91,
+      "forecast_wu_temp_c": 33,
+      "forecast_delta_c": 1.0
+    },
+    {
+      "event_id": "1456793",
+      "city": "Ankara",
+      "market_id": "7336622",
+      "group_item_title": "11\u00b0C",
+      "event_slug": "highest-temperature-in-ankara-on-november-27-2026",
+      "reason": "open_interest_min",
+      "open_interest": 6165.005272,
+      "open_interest_min": 10000.0,
+      "selection_price": 0.575,
+      "forecast_temp_f": 52,
+      "forecast_temp_c": 11,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 50,
+      "forecast_wu_temp_c": 10,
+      "forecast_delta_c": 0.0
+    }
+  ]
+}
