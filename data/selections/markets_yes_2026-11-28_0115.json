@@ -1,0 +1,18 @@
+{
+  "run_at": "2026-11-28T01:15:40.357388+00:00",
+  "strategy": "highest_yes",
+  "selections": [],
+  "skipped_bought": [
+    {
+      "event_id": "1462042",
+      "city": "Wellington",
+      "timezone": "NZ (UTC+12/+13)",
+      "reason": "low_win_summary_timezone",
+      "forecast_temp_f": 70,
+      "forecast_temp_c": 21,
+      "forecast_source": "weather_com",
+      "forecast_wu_temp_f": 68,
+      "forecast_wu_temp_c": 20
+    }
+  ]
+}
